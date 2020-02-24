@@ -1,6 +1,6 @@
-﻿namespace BlueSolAsoc
+﻿namespace BlueSolAsoc.Fom_Meniuri
 {
-    partial class FormBluebit
+    partial class structura_asociatie
     {
         /// <summary>
         /// Required designer variable.
@@ -30,18 +30,17 @@
         {
             this.SuspendLayout();
             // 
-            // FormBluebit
+            // structura_asociatie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1258, 811);
-            this.ControlBox = false;
-            this.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.Name = "FormBluebit";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormBlueBit";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.BackColor = System.Drawing.Color.Yellow;
+            this.ClientSize = new System.Drawing.Size(1000, 506);
+            this.Location = new System.Drawing.Point(0, 0);
+            this.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            this.Name = "structura_asociatie";
+            this.Text = "structura_asociatie";
+            this.Load += new System.EventHandler(this.structura_asociatie_Load);
             this.ResumeLayout(false);
 
         }
@@ -49,4 +48,3 @@
         #endregion
     }
 }
-

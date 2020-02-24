@@ -46,16 +46,88 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="AsociatieForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="AsociatieForm.Designer.cs">
+      <DependentUpon>AsociatieForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="butoane si controale\butonInchidere.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="butoane si controale\butonInchidere.Designer.cs">
+      <DependentUpon>butonInchidere.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fom Meniuri\cheltuieli-plati.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fom Meniuri\cheltuieli-plati.Designer.cs">
+      <DependentUpon>cheltuieli-plati.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fom Meniuri\structura-asociatie-formuri\Structura-asociatie-definire .cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fom Meniuri\structura-asociatie-formuri\Structura-asociatie-definire .Designer.cs">
+      <DependentUpon>Structura-asociatie-definire .cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fom Meniuri\structura-asociatie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fom Meniuri\structura-asociatie.Designer.cs">
+      <DependentUpon>structura-asociatie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fom Meniuri\venituri-incasari.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fom Meniuri\venituri-incasari.Designer.cs">
+      <DependentUpon>venituri-incasari.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormBluebit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormBluebit.Designer.cs">
+      <DependentUpon>FormBluebit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MeniuForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MeniuForm.Designer.cs">
+      <DependentUpon>MeniuForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="AsociatieForm.resx">
+      <DependentUpon>AsociatieForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="butoane si controale\butonInchidere.resx">
+      <DependentUpon>butonInchidere.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fom Meniuri\cheltuieli-plati.resx">
+      <DependentUpon>cheltuieli-plati.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fom Meniuri\structura-asociatie-formuri\Structura-asociatie-definire .resx">
+      <DependentUpon>Structura-asociatie-definire .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fom Meniuri\structura-asociatie.resx">
+      <DependentUpon>structura-asociatie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fom Meniuri\venituri-incasari.resx">
+      <DependentUpon>venituri-incasari.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormBluebit.resx">
+      <DependentUpon>FormBluebit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MeniuForm.resx">
+      <DependentUpon>MeniuForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -78,6 +150,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imagine buton.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
