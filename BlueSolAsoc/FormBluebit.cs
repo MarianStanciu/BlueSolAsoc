@@ -16,5 +16,10 @@ namespace BlueSolAsoc
         {
             InitializeComponent();
         }
+
+        private void FormBluebit_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

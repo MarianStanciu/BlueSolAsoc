@@ -28,49 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Asociatie");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Structura_asociatie_definire));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.treeView1 = new System.Windows.Forms.TreeView();
-            this.lblDenumireAsociatie = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.lblDenumireAsociatie = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.lblDenumireAsociatie);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1006, 66);
+            this.panel1.Size = new System.Drawing.Size(1107, 77);
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
-            // treeView1
-            // 
-            this.treeView1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.treeView1.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.treeView1.Location = new System.Drawing.Point(0, 66);
-            this.treeView1.Name = "treeView1";
-            treeNode1.Name = "Node0";
-            treeNode1.Text = "Asociatie";
-            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
-            this.treeView1.Size = new System.Drawing.Size(231, 684);
-            this.treeView1.TabIndex = 0;
-            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
-            // 
-            // lblDenumireAsociatie
-            // 
-            this.lblDenumireAsociatie.AutoSize = true;
-            this.lblDenumireAsociatie.Font = new System.Drawing.Font("Mongolian Baiti", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDenumireAsociatie.Location = new System.Drawing.Point(97, 13);
-            this.lblDenumireAsociatie.Name = "lblDenumireAsociatie";
-            this.lblDenumireAsociatie.Size = new System.Drawing.Size(89, 25);
-            this.lblDenumireAsociatie.TabIndex = 0;
-            this.lblDenumireAsociatie.Text = "aaaaaaa";
             // 
             // button1
             // 
@@ -79,22 +54,31 @@
             this.button1.FlatAppearance.BorderSize = 5;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(945, 12);
+            this.button1.Location = new System.Drawing.Point(1040, 14);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(49, 49);
+            this.button1.Size = new System.Drawing.Size(54, 57);
             this.button1.TabIndex = 1;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // lblDenumireAsociatie
+            // 
+            this.lblDenumireAsociatie.AutoSize = true;
+            this.lblDenumireAsociatie.Font = new System.Drawing.Font("Mongolian Baiti", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDenumireAsociatie.Location = new System.Drawing.Point(107, 15);
+            this.lblDenumireAsociatie.Name = "lblDenumireAsociatie";
+            this.lblDenumireAsociatie.Size = new System.Drawing.Size(89, 25);
+            this.lblDenumireAsociatie.TabIndex = 0;
+            this.lblDenumireAsociatie.Text = "aaaaaaa";
+            // 
             // Structura_asociatie_definire
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1006, 750);
-            this.Controls.Add(this.treeView1);
+            this.ClientSize = new System.Drawing.Size(1107, 875);
             this.Controls.Add(this.panel1);
             this.Location = new System.Drawing.Point(0, 0);
-            this.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            this.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
             this.Name = "Structura_asociatie_definire";
             this.Text = "";
             this.Load += new System.EventHandler(this.Structura_asociatie_definire_Load);
@@ -107,7 +91,6 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.Label lblDenumireAsociatie;
         private System.Windows.Forms.Button button1;
     }

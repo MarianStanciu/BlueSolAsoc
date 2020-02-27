@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MeniuForm));
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.logo = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblNumeFirma = new System.Windows.Forms.Label();
+            this.lblCeas = new System.Windows.Forms.Label();
             this.pnlMama = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -48,72 +49,74 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1000, 93);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1100, 108);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // logo
-            // 
-            this.logo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.logo.Image = ((System.Drawing.Image)(resources.GetObject("logo.Image")));
-            this.logo.Location = new System.Drawing.Point(883, 1);
-            this.logo.Name = "logo";
-            this.logo.Size = new System.Drawing.Size(115, 93);
-            this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.logo.TabIndex = 1;
-            this.logo.TabStop = false;
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
+            this.panel1.Controls.Add(this.lblNumeFirma);
+            this.panel1.Controls.Add(this.lblCeas);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 93);
+            this.panel1.Location = new System.Drawing.Point(0, 108);
             this.panel1.Margin = new System.Windows.Forms.Padding(1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1000, 8);
+            this.panel1.Size = new System.Drawing.Size(1100, 40);
             this.panel1.TabIndex = 2;
             // 
-            // tableLayoutPanel2
+            // lblNumeFirma
             // 
-            this.tableLayoutPanel2.BackColor = System.Drawing.SystemColors.Control;
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 101);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1000, 50);
-            this.tableLayoutPanel2.TabIndex = 4;
+            this.lblNumeFirma.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblNumeFirma.AutoSize = true;
+            this.lblNumeFirma.Font = new System.Drawing.Font("MS UI Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumeFirma.ForeColor = System.Drawing.Color.PaleGreen;
+            this.lblNumeFirma.Location = new System.Drawing.Point(868, 6);
+            this.lblNumeFirma.Name = "lblNumeFirma";
+            this.lblNumeFirma.Size = new System.Drawing.Size(236, 28);
+            this.lblNumeFirma.TabIndex = 1;
+            this.lblNumeFirma.Text = "BlueBit Data SRL";
+            // 
+            // lblCeas
+            // 
+            this.lblCeas.AutoSize = true;
+            this.lblCeas.Font = new System.Drawing.Font("MS PGothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCeas.ForeColor = System.Drawing.Color.PaleGreen;
+            this.lblCeas.Location = new System.Drawing.Point(12, 6);
+            this.lblCeas.Name = "lblCeas";
+            this.lblCeas.Size = new System.Drawing.Size(84, 30);
+            this.lblCeas.TabIndex = 0;
+            this.lblCeas.Text = "label1";
             // 
             // pnlMama
             // 
-            this.pnlMama.BackColor = System.Drawing.Color.Blue;
-            this.pnlMama.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlMama.BackgroundImage")));
+            this.pnlMama.BackColor = System.Drawing.Color.Transparent;
+            this.pnlMama.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlMama.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMama.Location = new System.Drawing.Point(0, 151);
+            this.pnlMama.Location = new System.Drawing.Point(0, 148);
             this.pnlMama.Name = "pnlMama";
-            this.pnlMama.Size = new System.Drawing.Size(1000, 355);
+            this.pnlMama.Size = new System.Drawing.Size(1100, 442);
             this.pnlMama.TabIndex = 5;
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // MeniuForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1000, 506);
+            this.ClientSize = new System.Drawing.Size(1100, 590);
             this.Controls.Add(this.pnlMama);
-            this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.logo);
             this.Controls.Add(this.tableLayoutPanel1);
             this.HelpButton = true;
             this.Location = new System.Drawing.Point(0, 0);
-            this.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            this.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
             this.Name = "MeniuForm";
             this.Text = "MeniuForm";
             this.Load += new System.EventHandler(this.MeniuForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -121,9 +124,10 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.PictureBox logo;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Panel pnlMama;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label lblCeas;
+        private System.Windows.Forms.Label lblNumeFirma;
     }
 }

@@ -52,11 +52,29 @@
     <Compile Include="AsociatieForm.Designer.cs">
       <DependentUpon>AsociatieForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="butoane si controale\butonInchidere.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="butoane si controale\ClassButon.cs">
+      <SubType>Component</SubType>
     </Compile>
-    <Compile Include="butoane si controale\butonInchidere.Designer.cs">
-      <DependentUpon>butonInchidere.cs</DependentUpon>
+    <Compile Include="butoane si controale\ClassButonInteriorAdsauSalveaza.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="butoane si controale\ClassButonInteriorSterge.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="butoane si controale\ClassButonModifica.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="butoane si controale\ClassGroupBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="butoane si controale\ClassLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="butoane si controale\ClassTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="butoane si controale\ClassTextBox.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Fom Meniuri\cheltuieli-plati.cs">
       <SubType>Form</SubType>
@@ -105,9 +123,6 @@
     <EmbeddedResource Include="AsociatieForm.resx">
       <DependentUpon>AsociatieForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="butoane si controale\butonInchidere.resx">
-      <DependentUpon>butonInchidere.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Fom Meniuri\cheltuieli-plati.resx">
       <DependentUpon>cheltuieli-plati.cs</DependentUpon>
     </EmbeddedResource>
@@ -154,5 +169,6 @@
   <ItemGroup>
     <None Include="Resources\imagine buton.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
