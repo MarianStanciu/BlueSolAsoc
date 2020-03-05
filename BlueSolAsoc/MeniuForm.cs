@@ -19,7 +19,7 @@ namespace BlueSolAsoc
         {
             InitializeComponent();
             
-            lblAsociatie_Selectata.Text = dataInFormNou;
+            lblAsociatie_Selectata.Text = dataInFormNou+id;
             
         }
 

@@ -75,7 +75,7 @@ namespace BlueSolAsoc
                 this.TablePanelSelectAsoc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100 / columnCount));
 
             }
-            List<string> denumiri = (meniuAsociatii);
+           // List<string> denumiri = (meniuAsociatii);
             int index = 0;
             for (int i = 0; i < rowCount * columnCount; i++)
             {
@@ -83,9 +83,9 @@ namespace BlueSolAsoc
                 //  var b = new ButonMeniuPrincipal();
 
                 // for (int z = 0; z < denumiri.Length ; z++)
-                if (index < denumiri.Count)
+                if (index < meniuAsociatii.Count)
                 {
-                    b.Text = denumiri[index++];
+                    b.Text = meniuAsociatii[index++];
                 }
 
                 b.Name = string.Format("b_{0}", i + 1);
@@ -112,37 +112,40 @@ namespace BlueSolAsoc
 
                 FormBluebit MeniuForm = new MeniuForm(dataInFormNou, id);
                 MeniuForm.Show();
+
+               
+
             }
 
-          /*  if (b != null)
-            {
-                switch (b.TabIndex)
-                {
-                    case (1):
-                        this.Hide();
-                        string dataInFormNou = b.Text;
-                        int id = 1;
+            /*  if (b != null)
+              {
+                  switch (b.TabIndex)
+                  {
+                      case (1):
+                          this.Hide();
+                          string dataInFormNou = b.Text;
+                          int id = 1;
 
-                        FormBluebit MeniuForm = new MeniuForm(dataInFormNou,id);
-                        MeniuForm.Show();
-                        
-                        
-                        
-
-                        break;
+                          FormBluebit MeniuForm = new MeniuForm(dataInFormNou,id);
+                          MeniuForm.Show();
 
 
-                    case (0):
-
-                        var CreareAsoc = new CreareAsociatie();
-                        CreareAsoc.Show();
-                        this.Hide();
-                        
 
 
-                        break;
-                }*/
-            }
+                          break;
+
+
+                      case (0):
+
+                          var CreareAsoc = new CreareAsociatie();
+                          CreareAsoc.Show();
+                          this.Hide();
+
+
+
+                          break;
+                  }*/
+        }
 
         }
 
