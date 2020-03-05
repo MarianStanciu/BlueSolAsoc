@@ -79,6 +79,12 @@
     <Compile Include="butoane si controale\ClassTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="CreareAsociatie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreareAsociatie.Designer.cs">
+      <DependentUpon>CreareAsociatie.cs</DependentUpon>
+    </Compile>
     <Compile Include="Fom Meniuri\cheltuieli-plati.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +137,9 @@
     </Compile>
     <EmbeddedResource Include="AsociatieForm.resx">
       <DependentUpon>AsociatieForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreareAsociatie.resx">
+      <DependentUpon>CreareAsociatie.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fom Meniuri\cheltuieli-plati.resx">
       <DependentUpon>cheltuieli-plati.cs</DependentUpon>

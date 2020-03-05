@@ -1,4 +1,5 @@
 ﻿using BlueSolAsoc.butoane_si_controale;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +19,7 @@ namespace BlueSolAsoc
         public SelectieAsociatie()
         {
             InitializeComponent();
+            
         }
 
         private void SelectieAsociatie_Load(object sender, EventArgs e)
@@ -25,24 +27,23 @@ namespace BlueSolAsoc
 
             PopulareMeniuAsociatii(meniuAsociatii);
         }
-        //SqlString SelectieUtilizatori = "Select * from dbo.Tabel_Utilizatori";
-        //string[] meniuAsociatii = SelectieUtilizatori.ToString;
-        //List<string> meniuAsociatii = new List<string>() { "Asociatie 1", "+", "Gol", "Setari" };
-        List<String> meniuAsociatii = new List<String>();
+        List<String> meniuAsociatii = new List<String>() { "+" };
+        
+       //RegistryKey key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\BlueBit");
 
-
-        public void PopulareMeniuAsociatii(List<string> myCollection)
+        public void PopulareMeniuAsociatii(List<String> meniuAsociatii)
         {
            
 
             using (SqlConnection connection = new SqlConnection(@"Data Source = 82.208.137.149\sqlexpress, 8833; Initial Catalog = proba_transare; Persist Security Info = True; User ID = sa; Password = pro"))
             {
                 connection.Open();
-                string query = "SELECT utilizator FROM dbo.Tabel_Utilizatori";
+                string query = "select valoare from dbo.tabela_organizatii where id_tip=1";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
+                       
                         while (reader.Read())
                         {
                             meniuAsociatii.Add(reader.GetString(0));
@@ -50,21 +51,11 @@ namespace BlueSolAsoc
                     }
                 }
             }
-            /*  var lungimescadere = 2;
-              if (meniuAsociatii.Length == 4)
-              {
-                  lungimescadere = 2;
-              }
-              if (meniuAsociatii.Length >= 6)
-              {
-                  lungimescadere = 3;
-              }*/
-
             var rowCount = 2;
-            var columnCount = myCollection.Count/2;
-            if (columnCount % 2 != 0)
+            var columnCount = meniuAsociatii.Count/2;
+            if (meniuAsociatii.Count%2 != 0)
             {
-                columnCount = columnCount + 1;
+                columnCount = columnCount+1;
 
             }
 
@@ -107,36 +98,56 @@ namespace BlueSolAsoc
         public void ApasareButon(object sender, EventArgs e)
         {
             var b = (ClassButonSelectieAsoc)sender;
-            if (b != null)
+            if (b.TabIndex == 0)
             {
-                switch (b.Text)
-                {
-                    case ("Asociatie 1"):
+                var CreareAsoc = new CreareAsociatie();
+                CreareAsoc.Show();
+                this.Hide();
+            }
+            else
+            {
+                this.Hide();
+                string dataInFormNou = b.Text;
+                int id = 1;
 
+                FormBluebit MeniuForm = new MeniuForm(dataInFormNou, id);
+                MeniuForm.Show();
+            }
+
+          /*  if (b != null)
+            {
+                switch (b.TabIndex)
+                {
+                    case (1):
                         this.Hide();
                         string dataInFormNou = b.Text;
+                        int id = 1;
 
-                        FormBluebit MeniuForm = new MeniuForm(dataInFormNou);
+                        FormBluebit MeniuForm = new MeniuForm(dataInFormNou,id);
                         MeniuForm.Show();
+                        
+                        
+                        
 
+                        break;
+
+
+                    case (0):
+
+                        var CreareAsoc = new CreareAsociatie();
+                        CreareAsoc.Show();
+                        this.Hide();
+                        
 
 
                         break;
-
-
-                    case ("+"):
-
-                        meniuAsociatii.Add("Asociatie 2");
-         
-
-                        break;
-                }
+                }*/
             }
 
         }
 
 
     }
-}
+
     
 

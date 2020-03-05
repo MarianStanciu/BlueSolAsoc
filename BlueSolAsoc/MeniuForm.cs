@@ -15,7 +15,7 @@ namespace BlueSolAsoc
 {
     public partial class MeniuForm : FormBluebit
     {
-        public MeniuForm(string dataInFormNou)
+        public MeniuForm(string dataInFormNou, int id)
         {
             InitializeComponent();
             
