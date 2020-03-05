@@ -8,30 +8,30 @@ using System.Windows.Forms;
 
 namespace BlueSolAsoc.butoane_si_controale
 {
-    class ClassConexiuneServer
+    public static class ClassConexiuneServer
     {
         private static SqlConnection con = null;
-        private string sirConectare = @"Data Source = 82.208.137.149\sqlexpress, 8833; Initial Catalog = proba_transare; Persist Security Info = True; User ID = sa; Password = pro";
+        private static string sirConectare = @"Data Source = 82.208.137.149\sqlexpress, 8833; Initial Catalog = proba_transare; Persist Security Info = True; User ID = sa; Password = pro";
 
-        public void ConectareDedicata()
+        public static void ConectareDedicata()
         {
             
-            SqlConnection con;
+        
 
             con = new SqlConnection(sirConectare );
-            con.Open();
+            // con.Open();
         }
-        public Boolean setStringConectare (string sir)
+        public static Boolean setStringConectare (string sir)
         {
             sirConectare = sir;
             return true;
         }
-        public SqlConnection GetConnection()
+        public static SqlConnection GetConnection()
         {
             return con;
         }
 
-        public SqlDataReader sqlDataReader(string QuerySql)
+        public static SqlDataReader sqlDataReader(string QuerySql)
         {
             SqlDataReader dr = null;
 

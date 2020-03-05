@@ -69,6 +69,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1100, 591);
+            this.ControlBox = true;
             this.Controls.Add(this.classButonInteriorAdsauSalveaza1);
             this.Controls.Add(this.lblDenCreareAsoc);
             this.Controls.Add(this.DenumireCreareAsocBox);
