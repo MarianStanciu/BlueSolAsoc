@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblAsociatie_Selectata = new System.Windows.Forms.Label();
+            this.lblNumeFirma = new System.Windows.Forms.Label();
             this.lblCeas = new System.Windows.Forms.Label();
             this.pnlMama = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -54,6 +56,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
+            this.panel1.Controls.Add(this.lblAsociatie_Selectata);
+            this.panel1.Controls.Add(this.lblNumeFirma);
             this.panel1.Controls.Add(this.lblCeas);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 108);
@@ -61,6 +65,27 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1100, 40);
             this.panel1.TabIndex = 2;
+            // 
+            // lblAsociatie_Selectata
+            // 
+            this.lblAsociatie_Selectata.AutoSize = true;
+            this.lblAsociatie_Selectata.Location = new System.Drawing.Point(307, 10);
+            this.lblAsociatie_Selectata.Name = "lblAsociatie_Selectata";
+            this.lblAsociatie_Selectata.Size = new System.Drawing.Size(60, 21);
+            this.lblAsociatie_Selectata.TabIndex = 2;
+            this.lblAsociatie_Selectata.Text = "label1";
+            // 
+            // lblNumeFirma
+            // 
+            this.lblNumeFirma.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblNumeFirma.AutoSize = true;
+            this.lblNumeFirma.Font = new System.Drawing.Font("MS UI Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumeFirma.ForeColor = System.Drawing.Color.PaleGreen;
+            this.lblNumeFirma.Location = new System.Drawing.Point(868, 6);
+            this.lblNumeFirma.Name = "lblNumeFirma";
+            this.lblNumeFirma.Size = new System.Drawing.Size(236, 28);
+            this.lblNumeFirma.TabIndex = 1;
+            this.lblNumeFirma.Text = "BlueBit Data SRL";
             // 
             // lblCeas
             // 
@@ -115,5 +140,7 @@
         private System.Windows.Forms.Panel pnlMama;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lblCeas;
+        private System.Windows.Forms.Label lblNumeFirma;
+        private System.Windows.Forms.Label lblAsociatie_Selectata;
     }
 }

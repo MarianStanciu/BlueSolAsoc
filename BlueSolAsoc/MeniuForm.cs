@@ -15,13 +15,17 @@ namespace BlueSolAsoc
 {
     public partial class MeniuForm : FormBluebit
     {
-        public MeniuForm()
+        public MeniuForm(string dataInFormNou, int id)
         {
             InitializeComponent();
+            
+            lblAsociatie_Selectata.Text = dataInFormNou;
+            
         }
 
         private void MeniuForm_Load(object sender, EventArgs e)
         {
+            
             timer1.Start();
             PopulareMeniuPrincipal(meniuPrincipal);
         }

@@ -16,7 +16,7 @@ namespace BlueSolAsoc
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MeniuForm());
+            Application.Run(new SelectieAsociatie());
         }
     }
 }
