@@ -81,7 +81,7 @@
             this.lblNumeFirma.AutoSize = true;
             this.lblNumeFirma.Font = new System.Drawing.Font("MS UI Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNumeFirma.ForeColor = System.Drawing.Color.PaleGreen;
-            this.lblNumeFirma.Location = new System.Drawing.Point(868, 6);
+            this.lblNumeFirma.Location = new System.Drawing.Point(843, 5);
             this.lblNumeFirma.Name = "lblNumeFirma";
             this.lblNumeFirma.Size = new System.Drawing.Size(236, 28);
             this.lblNumeFirma.TabIndex = 1;
