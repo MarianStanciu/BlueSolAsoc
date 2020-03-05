@@ -15,6 +15,8 @@ namespace BlueSolAsoc
 {
     public partial class MeniuForm : FormBluebit
     {
+        private string denumireAsociatie;
+        private int idAsociatie;
         public MeniuForm(string dataInFormNou, int id)
         {
             InitializeComponent();
@@ -148,7 +150,7 @@ namespace BlueSolAsoc
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            lblCeas.Text = DateTime.Now.ToString("dd  MMM    HH:mm:ss");
+            lblNumeFirma.Text = DateTime.Now.ToString("dd  MMM    HH:mm:ss");
         }
 
        
