@@ -89,10 +89,11 @@
             // 
             // lblCeas
             // 
+            this.lblCeas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCeas.AutoSize = true;
             this.lblCeas.Font = new System.Drawing.Font("MS PGothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCeas.ForeColor = System.Drawing.Color.PaleGreen;
-            this.lblCeas.Location = new System.Drawing.Point(12, 6);
+            this.lblCeas.Location = new System.Drawing.Point(864, 3);
             this.lblCeas.Name = "lblCeas";
             this.lblCeas.Size = new System.Drawing.Size(84, 30);
             this.lblCeas.TabIndex = 0;
