@@ -48,9 +48,14 @@ namespace BlueSolAsoc
                         {
                             meniuAsociatii.Add(reader.GetString(0));
                         }
+                        reader.Close();
+                        command.Dispose();
                     }
                 }
+                connection.Close();
+               
             }
+           
             var rowCount = 2;
             var columnCount = meniuAsociatii.Count/2;
             if (meniuAsociatii.Count%2 != 0)
@@ -106,45 +111,40 @@ namespace BlueSolAsoc
             }
             else
             {
-                this.Hide();
-                string dataInFormNou = b.Text;
-                int id = 1;
+                if (!string.IsNullOrEmpty(b.Text))
+                {
+                    string denumireAsociatieString = b.Text;
+                    int id;
+                    using (SqlConnection connection = new SqlConnection(@"Data Source = 82.208.137.149\sqlexpress, 8833; Initial Catalog = proba_transare; Persist Security Info = True; User ID = sa; Password = pro"))
+                    {
+                        connection.Open();
+                        string query = "select id from dbo.tabela_organizatii where valoare='" + b.Text + "'";
+                        //"select id from dbo.tabela_organizatii where valoare='asociatia marmota'"
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            using (SqlDataReader reader = command.ExecuteReader())
+                            {
+                                reader.Read();
 
-                FormBluebit MeniuForm = new MeniuForm(dataInFormNou, id);
-                MeniuForm.Show();
+                                id = reader.GetInt32(0);
 
-               
 
+                                reader.Close();
+                            }
+                            connection.Close();
+                            command.Dispose();
+                        }
+                    }
+
+
+                    FormBluebit MeniuForm = new MeniuForm(denumireAsociatieString, id);
+                    MeniuForm.Show();
+
+
+                }
             }
 
-            /*  if (b != null)
-              {
-                  switch (b.TabIndex)
-                  {
-                      case (1):
-                          this.Hide();
-                          string dataInFormNou = b.Text;
-                          int id = 1;
-
-                          FormBluebit MeniuForm = new MeniuForm(dataInFormNou,id);
-                          MeniuForm.Show();
-
-
-
-
-                          break;
-
-
-                      case (0):
-
-                          var CreareAsoc = new CreareAsociatie();
-                          CreareAsoc.Show();
-                          this.Hide();
-
-
-
-                          break;
-                  }*/
+          
         }
 
         }
