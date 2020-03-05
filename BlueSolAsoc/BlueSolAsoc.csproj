@@ -64,6 +64,7 @@
     <Compile Include="butoane si controale\ClassButonModifica.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="butoane si controale\ClassConexiuneServer.cs" />
     <Compile Include="butoane si controale\ClassGroupBox.cs">
       <SubType>Component</SubType>
     </Compile>

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AsociatieForm));
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Asociatie");
             this.button1 = new System.Windows.Forms.Button();
             this.classTabControl1 = new BlueSolAsoc.butoane_si_controale.ClassTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -41,6 +41,7 @@
             this.classButonInteriorSterge1 = new BlueSolAsoc.butoane_si_controale.ClassButonInteriorSterge();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.classTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.classGroupBox1.SuspendLayout();
@@ -152,13 +153,9 @@
             // treeView1
             // 
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.treeView1.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.treeView1.Font = new System.Drawing.Font("Mongolian Baiti", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.treeView1.Location = new System.Drawing.Point(3, 3);
             this.treeView1.Name = "treeView1";
-            treeNode1.Name = "Node0";
-            treeNode1.Text = "Asociatie";
-            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
             this.treeView1.Size = new System.Drawing.Size(152, 527);
             this.treeView1.TabIndex = 1;
             // 
@@ -172,6 +169,12 @@
             this.tabPage2.Text = "Structura Cheltuieli";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
             // AsociatieForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
@@ -182,7 +185,7 @@
             this.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.Name = "AsociatieForm";
             this.Text = "AsociatieForm1";
-            this.Load += new System.EventHandler(this.AsociatieForm1_Load);
+            this.Load += new System.EventHandler(this.AsociatieForm_Load);
             this.classTabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -204,5 +207,6 @@
         private butoane_si_controale.ClassButonModifica classButonModifica1;
         private butoane_si_controale.ClassTextBox classTextBox1;
         private butoane_si_controale.ClassLabel classLabel1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }

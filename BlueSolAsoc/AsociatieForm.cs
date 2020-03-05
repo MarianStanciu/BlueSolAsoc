@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,27 +14,30 @@ namespace BlueSolAsoc
 {
     public partial class AsociatieForm : FormBluebit
     {
+        
         public AsociatieForm()
         {
             InitializeComponent();
         }
 
-        private void AsociatieForm1_Load(object sender, EventArgs e)
-        {
-           /*  classTabControl1.TabPages.Clear();
-            String[] denumiri = { "Structura asociatie", "Structura asociatie", "Structura asociatie" };
-            int index = 0;
-            foreach (string s in denumiri) 
-            { 
-            var tabPageName = new TabPage(denumiri[index]);
-            classTabControl1.TabPages.Add(tabPageName);
-            }*/
-        }
+      
 
 
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void AsociatieForm_Load(object sender, EventArgs e)
+        {
+            string[] blocuri = new string[3] { "Bloc marmota", " Bloc elefant", "Bloc foca" };
+
+            foreach (string s in blocuri)
+            {
+                TreeNode Node = new TreeNode(s);
+                treeView1.Nodes.Add(Node);
+            }
+
         }
     }
 }
