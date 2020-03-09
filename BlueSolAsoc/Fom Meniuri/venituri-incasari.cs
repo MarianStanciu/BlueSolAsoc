@@ -12,7 +12,7 @@ namespace BlueSolAsoc.Fom_Meniuri
 {
     public partial class venituri_incasari : FormBluebit
     {
-        public venituri_incasari()
+        public venituri_incasari(string denumireAsociatie, int idAsociatie)
         {
             InitializeComponent();
         }

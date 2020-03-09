@@ -12,7 +12,7 @@ namespace BlueSolAsoc.Fom_Meniuri
 {
     public partial class cheltuieli_plati : FormBluebit
     {
-        public cheltuieli_plati()
+        public cheltuieli_plati(string denumireAsociatie, int idAsociatie)
         {
             InitializeComponent();
         }

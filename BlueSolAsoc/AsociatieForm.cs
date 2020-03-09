@@ -15,13 +15,21 @@ namespace BlueSolAsoc
     public partial class AsociatieForm : FormBluebit
     {
         
-        public AsociatieForm()
+        private string denumireAsociatie;
+        private int idAsociatie;
+        public AsociatieForm(string denumireAsociatie, int idAsociatie)
         {
             InitializeComponent();
-        }
+            this.denumireAsociatie = denumireAsociatie;
+            this.idAsociatie = idAsociatie;
+            //ClassConexiuneServer ConectareNoua = new ClassConexiuneServer();
+            //ConectareNoua.ConectareDedicata();
 
-      
-        
+
+        }
+       
+
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -30,14 +38,14 @@ namespace BlueSolAsoc
 
         private void AsociatieForm_Load(object sender, EventArgs e)
         {
-            string[] blocuri = new string[3] { "Bloc marmota", " Bloc elefant", "Bloc foca" };
-
-            foreach (string s in blocuri)
+          
             {
-                TreeNode Node = new TreeNode(s);
+                TreeNode Node = new TreeNode(denumireAsociatie);
                 treeView1.Nodes.Add(Node);
             }
 
         }
+
+      
     }
 }

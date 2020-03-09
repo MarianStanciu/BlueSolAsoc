@@ -17,12 +17,22 @@ namespace BlueSolAsoc
     {
         private string denumireAsociatie;
         private int idAsociatie;
+
         public MeniuForm(string denumireAsociatieString, int id)
         {
             InitializeComponent();
+            denumireAsociatie = denumireAsociatieString;
+            idAsociatie = id;
+         //  lblAsociatie_Selectata.Text = denumireAsociatieString + " "+id;
             
-            lblAsociatie_Selectata.Text = denumireAsociatieString + " "+id;
-            
+        }
+        public string GetDenumireAsociatie()
+        {
+            return this.denumireAsociatie;
+        }
+        public int GetIdAsociatie()
+        {
+            return this.idAsociatie;
         }
 
         private void MeniuForm_Load(object sender, EventArgs e)
@@ -97,20 +107,30 @@ namespace BlueSolAsoc
                         }else
                  //       AsociatieForm asociatie = new AsociatieForm();
                  //       asociatie.Show();
-                       DeschidePanelMama(new  AsociatieForm());
+                       DeschidePanelMama(new  AsociatieForm(this.denumireAsociatie, this.idAsociatie));
 
                  //       PopulareMeniuSecundar( meniuSecundar);
                   //      MessageBox.Show("aaaaaaaaaaaaaaaa");
                         
                         break;
                     case ("Venituri/incasari"):
-                   //     MessageBox.Show("ooooooooooo");
-                        DeschidePanelMama(new venituri_incasari());
+                        if (Application.OpenForms.OfType<venituri_incasari>().Any())
+                        {
+                            Application.OpenForms.OfType<venituri_incasari>().First().BringToFront();
+                        }
+                        else
+                            //     MessageBox.Show("ooooooooooo");
+                            DeschidePanelMama(new venituri_incasari(this.denumireAsociatie, this.idAsociatie));
                    //     PopulareMeniuSecundar(meniuSecundar1);
                         break;
                     case ("Cheltuieli/plati"):
-                 //       MessageBox.Show("ooooooooooo");
-                        DeschidePanelMama(new cheltuieli_plati());
+                        if (Application.OpenForms.OfType<cheltuieli_plati>().Any())
+                        {
+                            Application.OpenForms.OfType<cheltuieli_plati>().First().BringToFront();
+                        }
+                        else
+                            //       MessageBox.Show("ooooooooooo");
+                            DeschidePanelMama(new cheltuieli_plati(this.denumireAsociatie, this.idAsociatie));
                     //    PopulareMeniuSecundar(meniuSecundar2);
                         break;
                     case ("Inchide Aplicatia"):

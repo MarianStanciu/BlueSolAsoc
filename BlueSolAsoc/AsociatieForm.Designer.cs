@@ -90,7 +90,7 @@
             // classLabel1
             // 
             this.classLabel1.AutoSize = true;
-            this.classLabel1.Location = new System.Drawing.Point(206, 21);
+            this.classLabel1.Location = new System.Drawing.Point(246, 44);
             this.classLabel1.Name = "classLabel1";
             this.classLabel1.Size = new System.Drawing.Size(124, 30);
             this.classLabel1.TabIndex = 4;
@@ -98,7 +98,7 @@
             // 
             // classTextBox1
             // 
-            this.classTextBox1.Location = new System.Drawing.Point(181, 67);
+            this.classTextBox1.Location = new System.Drawing.Point(221, 90);
             this.classTextBox1.Name = "classTextBox1";
             this.classTextBox1.Size = new System.Drawing.Size(464, 39);
             this.classTextBox1.TabIndex = 3;
@@ -156,7 +156,7 @@
             this.treeView1.Font = new System.Drawing.Font("Mongolian Baiti", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.treeView1.Location = new System.Drawing.Point(3, 3);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(152, 527);
+            this.treeView1.Size = new System.Drawing.Size(212, 527);
             this.treeView1.TabIndex = 1;
             // 
             // tabPage2
