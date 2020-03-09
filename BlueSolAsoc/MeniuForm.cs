@@ -37,6 +37,8 @@ namespace BlueSolAsoc
         string[] meniuSecundar1 = { "alb", "negru" };
         string[] meniuSecundar2 = { "cheltuieli", "plati" };
 
+        
+
 
         // metoda de populare meniu principal========================================================
         public void PopulareMeniuPrincipal(string [] meniuPrincipal)
