@@ -18,6 +18,12 @@ namespace BlueSolAsoc
         {
             InitializeComponent();
             sirconbox.Visible = false;
+            button_sircon_ok.Visible = false;
+            //pentru test - stergere key din config
+            Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+
+            config.AppSettings.Settings.Remove("String_Conectare_Key");
+            config.Save(ConfigurationSaveMode.Modified);
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
@@ -97,9 +103,8 @@ namespace BlueSolAsoc
             {
                 MessageBox.Show("Stringul de conectare nu a fost gasit, completeaza-l acum");
                 sirconbox.Visible = true;
-                Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
-                config.AppSettings.Settings.Add("String_Conectare_Key", sirconbox.Text);
-                config.Save(ConfigurationSaveMode.Modified);
+                button_sircon_ok.Visible = true;
+
             }
         }
 
@@ -113,6 +118,14 @@ namespace BlueSolAsoc
             {
                 sirconbox.Visible = false;
             }
+        }
+        //PENTRU TEST
+        private void button_sircon_ok_Click(object sender, EventArgs e)
+        {
+            Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+            config.AppSettings.Settings.Add("String_Conectare_Key", sirconbox.Text);
+            config.Save(ConfigurationSaveMode.Modified);
+            Application.Restart();
         }
     }
 }

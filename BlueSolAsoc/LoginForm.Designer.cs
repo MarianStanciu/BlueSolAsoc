@@ -34,6 +34,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.butonsircon = new System.Windows.Forms.Button();
             this.sirconbox = new System.Windows.Forms.TextBox();
+            this.button_sircon_ok = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // utilizatorbox
@@ -95,12 +96,23 @@
             this.sirconbox.Size = new System.Drawing.Size(616, 31);
             this.sirconbox.TabIndex = 5;
             // 
+            // button_sircon_ok
+            // 
+            this.button_sircon_ok.Location = new System.Drawing.Point(714, 27);
+            this.button_sircon_ok.Name = "button_sircon_ok";
+            this.button_sircon_ok.Size = new System.Drawing.Size(61, 35);
+            this.button_sircon_ok.TabIndex = 6;
+            this.button_sircon_ok.Text = "OK";
+            this.button_sircon_ok.UseVisualStyleBackColor = true;
+            this.button_sircon_ok.Click += new System.EventHandler(this.button_sircon_ok_Click);
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1100, 591);
             this.ControlBox = true;
+            this.Controls.Add(this.button_sircon_ok);
             this.Controls.Add(this.sirconbox);
             this.Controls.Add(this.butonsircon);
             this.Controls.Add(this.button2);
@@ -125,5 +137,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button butonsircon;
         private System.Windows.Forms.TextBox sirconbox;
+        private System.Windows.Forms.Button button_sircon_ok;
     }
 }
