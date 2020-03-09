@@ -19,52 +19,49 @@ namespace BlueSolAsoc
         public SelectieAsociatie()
         {
             InitializeComponent();
+            ClassConexiuneServer.ConectareDedicata();
             
         }
 
         private void SelectieAsociatie_Load(object sender, EventArgs e)
         {
 
-            PopulareMeniuAsociatii(meniuAsociatii);
+            PopulareMeniuAsociatii();
         }
-        List<String> meniuAsociatii = new List<String>() { "+" };
+        // List<String> meniuAsociatii = new List<String>();
         
        //RegistryKey key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\BlueBit");
 
-        public void PopulareMeniuAsociatii(List<String> meniuAsociatii)
+        public void PopulareMeniuAsociatii()
         {
-           
 
-            using (SqlConnection connection = new SqlConnection(@"Data Source = 82.208.137.149\sqlexpress, 8833; Initial Catalog = proba_transare; Persist Security Info = True; User ID = sa; Password = pro"))
-            {
-                connection.Open();
-                string query = "select valoare from dbo.tabela_organizatii where id_tip=1";
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                       
-                        while (reader.Read())
-                        {
-                            meniuAsociatii.Add(reader.GetString(0));
-                        }
-                    }
-                }
-            }
+
+            //SqlConnection connection = new SqlConnection(@"Data Source = 82.208.137.149\sqlexpress, 8833; Initial Catalog = proba_transare; Persist Security Info = True; User ID = sa; Password = pro");
+            SqlConnection connection = ClassConexiuneServer.GetConnection();
+            connection.Open();
+            string query = "select id,valoare from dbo.tabela_organizatii where id_tip=1";
+            SqlCommand command = new SqlCommand(query, connection);
+            
+            SqlDataAdapter da = new SqlDataAdapter();
+            da.SelectCommand = command;
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            int nRows = ds.Tables[0].Rows.Count;
+           
             var rowCount = 2;
-            var columnCount = meniuAsociatii.Count/2;
-            if (meniuAsociatii.Count%2 != 0)
+            var columnCount = nRows / rowCount;
+            if (nRows % 2 != 0)
             {
-                columnCount = columnCount+1;
+                columnCount = columnCount + 1;
 
             }
 
             this.TablePanelSelectAsoc.ColumnCount = columnCount;
             this.TablePanelSelectAsoc.RowCount = rowCount;
 
-
             this.TablePanelSelectAsoc.ColumnStyles.Clear();
             this.TablePanelSelectAsoc.RowStyles.Clear();
+
 
             for (int i = 0; i < rowCount; i++)
             {
@@ -73,26 +70,35 @@ namespace BlueSolAsoc
             for (int i = 0; i < columnCount; i++)
             {
                 this.TablePanelSelectAsoc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100 / columnCount));
-
             }
-            List<string> denumiri = (meniuAsociatii);
-            int index = 0;
-            for (int i = 0; i < rowCount * columnCount; i++)
+
             {
                 var b = new ClassButonSelectieAsoc();
-                //  var b = new ButonMeniuPrincipal();
-
-                // for (int z = 0; z < denumiri.Length ; z++)
-                if (index < denumiri.Count)
-                {
-                    b.Text = denumiri[index++];
-                }
-
-                b.Name = string.Format("b_{0}", i + 1);
+                b.Name = string.Format("bplus");
                 b.Click += ApasareButon;
                 b.Dock = DockStyle.Fill;
-                this.TablePanelSelectAsoc.Controls.Add(b);
+                TablePanelSelectAsoc.Controls.Add(b);
             }
+
+            foreach (DataRow row in  ds.Tables[0].Rows)
+            {
+                var b = new ClassButonSelectieAsoc();
+                b.Click += ApasareButon;
+                b.Dock = DockStyle.Fill;
+                b.Text = row["valoare"].ToString();
+                b.Tag = row["id"];
+               // b.Tag = reader.GetInt16(reader.GetOrdinal("id"));
+                this.TablePanelSelectAsoc.Controls.Add(b);
+
+            }
+
+            
+            
+            this.TablePanelSelectAsoc.Refresh();
+            
+            connection.Close();
+            command.Dispose();
+          
         }
         // metoda comuna pentru click pe butoane ---------------------------------------------------------------------
         public void ApasareButon(object sender, EventArgs e)
@@ -106,43 +112,41 @@ namespace BlueSolAsoc
             }
             else
             {
-                this.Hide();
-                string dataInFormNou = b.Text;
-                int id = 1;
-
-                FormBluebit MeniuForm = new MeniuForm(dataInFormNou, id);
-                MeniuForm.Show();
-            }
-
-          /*  if (b != null)
-            {
-                switch (b.TabIndex)
+                if (!string.IsNullOrEmpty(b.Text))
                 {
-                    case (1):
-                        this.Hide();
-                        string dataInFormNou = b.Text;
-                        int id = 1;
+                    string denumireAsociatieString = b.Text;
+                    int id;
+                    using (SqlConnection connection = new SqlConnection(@"Data Source = 82.208.137.149\sqlexpress, 8833; Initial Catalog = proba_transare; Persist Security Info = True; User ID = sa; Password = pro"))
+                    {
+                        connection.Open();
+                        string query = "select id from dbo.tabela_organizatii where valoare='" + b.Text + "'";
+                        //"select id from dbo.tabela_organizatii where valoare='asociatia marmota'"
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            using (SqlDataReader reader = command.ExecuteReader())
+                            {
+                                reader.Read();
 
-                        FormBluebit MeniuForm = new MeniuForm(dataInFormNou,id);
-                        MeniuForm.Show();
-                        
-                        
-                        
-
-                        break;
-
-
-                    case (0):
-
-                        var CreareAsoc = new CreareAsociatie();
-                        CreareAsoc.Show();
-                        this.Hide();
-                        
+                                id = reader.GetInt32(0);
 
 
-                        break;
-                }*/
+                                reader.Close();
+                            }
+                            connection.Close();
+                            command.Dispose();
+                        }
+                    }
+
+
+                    FormBluebit MeniuForm = new MeniuForm(denumireAsociatieString, id);
+                    MeniuForm.Show();
+
+
+                }
             }
+
+          
+        }
 
         }
 

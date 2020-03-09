@@ -17,11 +17,11 @@ namespace BlueSolAsoc
     {
         private string denumireAsociatie;
         private int idAsociatie;
-        public MeniuForm(string dataInFormNou, int id)
+        public MeniuForm(string denumireAsociatieString, int id)
         {
             InitializeComponent();
             
-            lblAsociatie_Selectata.Text = dataInFormNou;
+            lblAsociatie_Selectata.Text = denumireAsociatieString + " "+id;
             
         }
         public string GetDenumireAsociatie()
