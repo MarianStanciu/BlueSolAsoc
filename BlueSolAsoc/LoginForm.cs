@@ -20,10 +20,10 @@ namespace BlueSolAsoc
             sirconbox.Visible = false;
             button_sircon_ok.Visible = false;
             //pentru test - stergere key din config
-            Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+            //Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
 
-            config.AppSettings.Settings.Remove("String_Conectare_Key");
-            config.Save(ConfigurationSaveMode.Modified);
+            //config.AppSettings.Settings.Remove("String_Conectare_Key");
+            //config.Save(ConfigurationSaveMode.Modified);
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
