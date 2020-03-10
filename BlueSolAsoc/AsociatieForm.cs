@@ -123,7 +123,7 @@ namespace BlueSolAsoc
             if (classTextBox1.Text == null || classTextBox1.Text == "")
                 MessageBox.Show("Avertizare", "nu puteti insera campuri goale", MessageBoxButtons.OK);
             else if (classTextBox1.Text == treeView1.SelectedNode.Text)
-            { MessageBox.Show("Avertizare", "nu puteti insera campuri goale", MessageBoxButtons.OK); }
+            { MessageBox.Show( "nu puteti insera dubluri","AVERTIZARE", MessageBoxButtons.OK); }
             else
             {
                 TreeNode nodeNou = new TreeNode(classTextBox1.Text);
