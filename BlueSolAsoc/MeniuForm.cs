@@ -45,6 +45,8 @@ namespace BlueSolAsoc
         string[] meniuPrincipal = { "Structura Asociatie", "Venituri/incasari", "Cheltuieli/plati", "Inchide Aplicatia" };
        
 
+        
+
 
         // metoda de populare meniu principal========================================================
         public void PopulareMeniuPrincipal(string [] meniuPrincipal)

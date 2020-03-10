@@ -19,11 +19,13 @@ namespace BlueSolAsoc
             InitializeComponent();
             sirconbox.Visible = false;
             button_sircon_ok.Visible = false;
-            //pentru test - stergere key din config
-            //Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+            //pentru test - stergere key din config - a se comenta
+           /* Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
 
-            //config.AppSettings.Settings.Remove("String_Conectare_Key");
-            //config.Save(ConfigurationSaveMode.Modified);
+            config.AppSettings.Settings.Remove("String_Conectare_Key");
+            config.Save(ConfigurationSaveMode.Modified);*/
+
+            // a se comenta
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
