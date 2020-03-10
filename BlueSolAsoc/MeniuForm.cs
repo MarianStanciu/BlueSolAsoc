@@ -21,6 +21,8 @@ namespace BlueSolAsoc
         public MeniuForm(string denumireAsociatieString, int id)
         {
             InitializeComponent();
+            timer1.Start();
+            PopulareMeniuPrincipal(meniuPrincipal);
             denumireAsociatie = denumireAsociatieString;
             idAsociatie = id;
          //  lblAsociatie_Selectata.Text = denumireAsociatieString + " "+id;
@@ -38,8 +40,7 @@ namespace BlueSolAsoc
         private void MeniuForm_Load(object sender, EventArgs e)
         {
             
-            timer1.Start();
-            PopulareMeniuPrincipal(meniuPrincipal);
+           
         }
         // arrayuri pt butoane======================================================================
         string[] meniuPrincipal = { "Structura Asociatie", "Venituri/incasari", "Cheltuieli/plati", "Inchide Aplicatia" };

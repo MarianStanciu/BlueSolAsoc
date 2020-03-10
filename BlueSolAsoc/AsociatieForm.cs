@@ -25,6 +25,7 @@ namespace BlueSolAsoc
             try
             {
                 ClassConexiuneServer.ConectareDedicata();
+            
                 AdaugaRadacinaTreeView();
             }
             catch (Exception)
@@ -50,9 +51,9 @@ namespace BlueSolAsoc
 
         public void AdaugaRadacinaTreeView()
         {
-            TreeNode asociatie = new TreeNode(denumireAsociatie);
-            treeView1.Nodes.Add(asociatie);
-            AdRamura(treeView1.Nodes, 0);
+            //TreeNode asociatie = new TreeNode(denumireAsociatie);
+            //treeView1.Nodes.Add(asociatie);
+            AdRamura(treeView1.Nodes, idAsociatie);
 
         }
         // INPLEMENTEZ AFTERSELECT CARE SE APELEAZA DUPA CE SE DA CLICK PE UN NOD 
@@ -67,10 +68,14 @@ namespace BlueSolAsoc
         // ADAUGA O RAMURA LA UN NOD
         private void AdRamura(TreeNodeCollection nodes, int nId)
         {
-
+            SqlConnection connection = ClassConexiuneServer.GetConnection();
+            if (connection.State == ConnectionState.Open)
+                connection.Close();
             try
             {
-              //  nodes.Clear();
+                
+
+                nodes.Clear();
                 SqlDataReader dr = SqlQueryNoduri(nId);
                 while (dr.Read())
                 {
@@ -92,12 +97,13 @@ namespace BlueSolAsoc
 
         private SqlDataReader SqlQueryNoduri(int nIdMaster)
         {
-          //  nIdMaster = idAsociatie;
+           
+           // string denumire = this.denumireAsociatie;
             SqlDataReader dr = null;
             SqlConnection connection = ClassConexiuneServer.GetConnection();
-            connection.Open();
- 
-            SqlCommand cmd = new SqlCommand("select * from vOrganizatii where id_master=" + nIdMaster, connection);
+           connection.Open();
+         
+           SqlCommand cmd = new SqlCommand("select * from vOrganizatii where id_master=" + nIdMaster  , connection);
             try
             {
                 dr = cmd.ExecuteReader();
@@ -107,14 +113,39 @@ namespace BlueSolAsoc
                 MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
+            
             return dr;
-
+            
         }
-        private void SelectNode(TreeNode node)
+             private void AdaugareEntitati()
+                {
+
+            if (classTextBox1.Text == null || classTextBox1.Text == "")
+                MessageBox.Show("Avertizare", "nu puteti insera campuri goale", MessageBoxButtons.OK);
+            else if (classTextBox1.Text == treeView1.SelectedNode.Text)
+            { MessageBox.Show("Avertizare", "nu puteti insera campuri goale", MessageBoxButtons.OK); }
+            else
+            {
+                TreeNode nodeNou = new TreeNode(classTextBox1.Text);
+                treeView1.SelectedNode.Nodes.Add(nodeNou);
+            }
+            
+            
+                  }
+
+
+
+
+
+
+
+
+        private void classButonInteriorAdsauSalveaza2_Click(object sender, EventArgs e)
         {
-            if (node.IsSelected)
-               
-                node.TreeView.Focus();
+
+           
+         
+            AdaugareEntitati();
         }
     }
 }

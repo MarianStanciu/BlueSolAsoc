@@ -138,6 +138,7 @@
             this.classButonInteriorAdsauSalveaza2.TabIndex = 2;
             this.classButonInteriorAdsauSalveaza2.Text = "Adauga";
             this.classButonInteriorAdsauSalveaza2.UseVisualStyleBackColor = false;
+            this.classButonInteriorAdsauSalveaza2.Click += new System.EventHandler(this.classButonInteriorAdsauSalveaza2_Click);
             // 
             // classButonInteriorSterge1
             // 
@@ -158,6 +159,7 @@
             this.treeView1.Name = "treeView1";
             this.treeView1.Size = new System.Drawing.Size(212, 527);
             this.treeView1.TabIndex = 1;
+            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeView1_AfterSelect);
             // 
             // tabPage2
             // 
