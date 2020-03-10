@@ -127,6 +127,7 @@
             this.classButonModifica1.TabIndex = 3;
             this.classButonModifica1.Text = "Modifica";
             this.classButonModifica1.UseVisualStyleBackColor = false;
+            this.classButonModifica1.Click += new System.EventHandler(this.classButonModifica1_Click);
             // 
             // classButonInteriorAdsauSalveaza2
             // 
@@ -150,6 +151,7 @@
             this.classButonInteriorSterge1.TabIndex = 1;
             this.classButonInteriorSterge1.Text = "Sterge";
             this.classButonInteriorSterge1.UseVisualStyleBackColor = false;
+            this.classButonInteriorSterge1.Click += new System.EventHandler(this.classButonInteriorSterge1_Click);
             // 
             // treeView1
             // 
@@ -159,7 +161,7 @@
             this.treeView1.Name = "treeView1";
             this.treeView1.Size = new System.Drawing.Size(212, 527);
             this.treeView1.TabIndex = 1;
-            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeView1_AfterSelect);
+            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeView1_AfterSelect2);
             // 
             // tabPage2
             // 

@@ -53,7 +53,7 @@ namespace BlueSolAsoc
         {
             //TreeNode asociatie = new TreeNode(denumireAsociatie);
             //treeView1.Nodes.Add(asociatie);
-            AdRamura(treeView1.Nodes, idAsociatie);
+            AdRamura(treeView1.Nodes, 0);
 
         }
         // INPLEMENTEZ AFTERSELECT CARE SE APELEAZA DUPA CE SE DA CLICK PE UN NOD 
@@ -118,20 +118,24 @@ namespace BlueSolAsoc
             
         }
              private void AdaugareEntitati()
-                {
+            {
+            
+            TreeNode nodeNou = new TreeNode(classTextBox1.Text);
+
 
             if (classTextBox1.Text == null || classTextBox1.Text == "")
                 MessageBox.Show("Avertizare", "nu puteti insera campuri goale", MessageBoxButtons.OK);
             else if (classTextBox1.Text == treeView1.SelectedNode.Text)
             { MessageBox.Show( "nu puteti insera dubluri","AVERTIZARE", MessageBoxButtons.OK); }
             else
-            {
-                TreeNode nodeNou = new TreeNode(classTextBox1.Text);
+            {              
                 treeView1.SelectedNode.Nodes.Add(nodeNou);
+            }       
+            
+
+
             }
-            
-            
-                  }
+       
 
 
 
@@ -141,11 +145,22 @@ namespace BlueSolAsoc
 
 
         private void classButonInteriorAdsauSalveaza2_Click(object sender, EventArgs e)
-        {
-
-           
-         
-            AdaugareEntitati();
+        {         
+                     AdaugareEntitati();
         }
-    }
+
+        private void classButonModifica1_Click(object sender, EventArgs e)
+        {
+            treeView1.SelectedNode.Text = classTextBox1.Text;
+        }
+        private void TreeView1_AfterSelect2(object sender, TreeViewEventArgs e)
+        {
+            classTextBox1.Text = treeView1.SelectedNode.Text;
+        }
+
+        private void classButonInteriorSterge1_Click(object sender, EventArgs e)
+        {
+            treeView1.SelectedNode.Remove();
+        }
+    }       
 }
