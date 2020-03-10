@@ -43,9 +43,7 @@ namespace BlueSolAsoc
         }
         // arrayuri pt butoane======================================================================
         string[] meniuPrincipal = { "Structura Asociatie", "Venituri/incasari", "Cheltuieli/plati", "Inchide Aplicatia" };
-        string[] meniuSecundar = { "structura asociatie", "structura cheltuieli", "aaaaaaaa", "bbbbbbbbbbbb" };
-        string[] meniuSecundar1 = { "alb", "negru" };
-        string[] meniuSecundar2 = { "cheltuieli", "plati" };
+       
 
 
         // metoda de populare meniu principal========================================================
