@@ -25,8 +25,10 @@ namespace BlueSolAsoc
             try
             {
                 ClassConexiuneServer.ConectareDedicata();
-            
-                AdaugaRadacinaTreeView();
+                classLabel2.Text = denumireAsociatie;
+
+               AdaugaRadacinaParinteTreeView();
+               
             }
             catch (Exception)
             {
@@ -49,14 +51,19 @@ namespace BlueSolAsoc
         {          
         }
 
-        public void AdaugaRadacinaTreeView()
-        {
-            //TreeNode asociatie = new TreeNode(denumireAsociatie);
-            //treeView1.Nodes.Add(asociatie);
-            AdRamura(treeView1.Nodes, 0);
 
+        public void AdaugaRadacinaParinteTreeView()
+        {
+            
+            //    TreeNode asociatie = new TreeNode(denumireAsociatie);
+            //    treeView1.Nodes.Add(asociatie);
+            //}
+            //else
+                AdRamura(treeView1.Nodes, 0);
         }
-        // INPLEMENTEZ AFTERSELECT CARE SE APELEAZA DUPA CE SE DA CLICK PE UN NOD 
+
+        
+        
         private void TreeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
             
@@ -75,14 +82,18 @@ namespace BlueSolAsoc
             {
                 
 
-                nodes.Clear();
+               // nodes.Clear();
                 SqlDataReader dr = SqlQueryNoduri(nId);
                 while (dr.Read())
                 {
-                    TreeNode node = new TreeNode(dr["valoare"].ToString());
-                    // SALVEZ VALOAREA ID-ULUI IN PROPRIETATEA TAG A NODULUI PENTRU A PUTEA APELA MAI DEPARTE QUERY PENTRU NODURILE ACESTEI RAMURI
-                    node.Tag = dr["id"];
-                    nodes.Add(node);
+                   
+                        TreeNode node = new TreeNode(dr["valoare"].ToString());
+                        // SALVEZ VALOAREA ID-ULUI IN PROPRIETATEA TAG A NODULUI PENTRU A PUTEA APELA MAI DEPARTE QUERY PENTRU NODURILE ACESTEI RAMURI
+                        node.Tag = dr["id"];
+                        nodes.Add(node);
+                 
+                    
+                  
                 }
                 dr.Close();
 
@@ -97,8 +108,8 @@ namespace BlueSolAsoc
 
         private SqlDataReader SqlQueryNoduri(int nIdMaster)
         {
-           
-           // string denumire = this.denumireAsociatie;
+
+            
             SqlDataReader dr = null;
             SqlConnection connection = ClassConexiuneServer.GetConnection();
            connection.Open();
@@ -117,25 +128,31 @@ namespace BlueSolAsoc
             return dr;
             
         }
-             private void AdaugareEntitati()
+        private void AdaugareEntitati()
+        {
+            if (treeView1.Nodes.Count ==0)
             {
-            
-            TreeNode nodeNou = new TreeNode(classTextBox1.Text);
-
-
-            if (classTextBox1.Text == null || classTextBox1.Text == "")
-                MessageBox.Show("Avertizare", "nu puteti insera campuri goale", MessageBoxButtons.OK);
-            else if (classTextBox1.Text == treeView1.SelectedNode.Text)
-            { MessageBox.Show( "nu puteti insera dubluri","AVERTIZARE", MessageBoxButtons.OK); }
+                TreeNode nodeBloc = new TreeNode(classTextBox1.Text);
+                treeView1.Nodes.Add(nodeBloc);
+            }
             else
-            {              
+            {
+                TreeNode nodeNou = new TreeNode(classTextBox1.Text);
                 treeView1.SelectedNode.Nodes.Add(nodeNou);
-            }       
-            
+
+                if (classTextBox1.Text == null || classTextBox1.Text == "")
+                    MessageBox.Show("Avertizare", "nu puteti insera campuri goale", MessageBoxButtons.OK);
+                //else if (classTextBox1.Text != treeView1.SelectedNode.Text)
+                //{ MessageBox.Show("nu puteti insera dubluri", "AVERTIZARE", MessageBoxButtons.OK); }
+                //else
+                //{
+                //    treeView1.SelectedNode.Nodes.Add(nodeNou);
+                //}
+
 
 
             }
-       
+        }
 
 
 
@@ -153,10 +170,10 @@ namespace BlueSolAsoc
         {
             treeView1.SelectedNode.Text = classTextBox1.Text;
         }
-        private void TreeView1_AfterSelect2(object sender, TreeViewEventArgs e)
-        {
-            classTextBox1.Text = treeView1.SelectedNode.Text;
-        }
+        //private void TreeView1_AfterSelect2(object sender, TreeViewEventArgs e)
+        //{
+        //    classTextBox1.Text = treeView1.SelectedNode.Text;
+        //}
 
         private void classButonInteriorSterge1_Click(object sender, EventArgs e)
         {
