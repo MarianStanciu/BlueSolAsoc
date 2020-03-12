@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -8,23 +9,43 @@ using System.Windows.Forms;
 
 namespace BlueSolAsoc.butoane_si_controale
 {
+    
     public static class ClassConexiuneServer
+
     {
         private static SqlConnection con = null;
-        private static string sirConectare = @"Data Source = 82.208.137.149\sqlexpress, 8833; Initial Catalog = proba_transare; Persist Security Info = True; User ID = sa; Password = pro";
+        private static string sirConectare;
+       // private static string sirConectare = @"Data Source = 82.208.137.149\sqlexpress, 8833; Initial Catalog = proba_transare; Persist Security Info = True; User ID = sa; Password = pro";
 
         public static void ConectareDedicata()
         {
             
         
 
-            con = new SqlConnection(sirConectare );
+            con = new SqlConnection(sirConectare);
             // con.Open();
+        }
+
+        public static Boolean DeschideConexiunea()
+        {
+            try
+            {
+                con.Open();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
         public static Boolean setStringConectare (string sir)
         {
             sirConectare = sir;
             return true;
+        }
+        public static string getStringConectare()
+        {
+            return sirConectare;
         }
         public static SqlConnection GetConnection()
         {
@@ -39,6 +60,7 @@ namespace BlueSolAsoc.butoane_si_controale
             try
             {
                 dr = cmd.ExecuteReader();
+                cmd.Dispose();
             }
             catch (Exception ex)
             {
@@ -47,6 +69,14 @@ namespace BlueSolAsoc.butoane_si_controale
             }
             return dr;
 
+        }
+        public static object getScalar(string QuerySql)
+        {
+            SqlCommand cmd = new SqlCommand(QuerySql, con);
+            object Scalar;
+            Scalar = cmd.ExecuteScalar();
+            cmd.Dispose();
+            return Scalar;
         }
 
     }

@@ -46,13 +46,13 @@ namespace BlueSolAsoc
             da.SelectCommand = command;
             DataSet ds = new DataSet();
             da.Fill(ds);
-            int nRows = ds.Tables[0].Rows.Count;
+            int nRows = ds.Tables[0].Rows.Count+1;
            
             var rowCount = 2;
             var columnCount = nRows / rowCount;
             if (nRows % 2 != 0)
             {
-                columnCount = columnCount + 1;
+                columnCount = columnCount + 1; // 1 - butonul de plus
 
             }
 
@@ -75,6 +75,7 @@ namespace BlueSolAsoc
             {
                 var b = new ClassButonSelectieAsoc();
                 b.Name = string.Format("bplus");
+                b.Image = Properties.Resources.iconfinder_Artboard_26_3741736;
                 b.Click += ApasareButon;
                 b.Dock = DockStyle.Fill;
                 TablePanelSelectAsoc.Controls.Add(b);
@@ -91,7 +92,10 @@ namespace BlueSolAsoc
                 this.TablePanelSelectAsoc.Controls.Add(b);
 
             }
-
+/*            if (nRows >= 8)
+            {
+                columnCount = columnCount + 1;
+            }*/
             
             
             this.TablePanelSelectAsoc.Refresh();
