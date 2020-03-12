@@ -30,7 +30,12 @@ namespace BlueSolAsoc.butoane_si_controale
         {
             try
             {
-                con.Open();
+                if (con.State != System.Data.ConnectionState.Open)
+                {
+
+
+                    con.Open();
+                }
                 return true;
             }
             catch
