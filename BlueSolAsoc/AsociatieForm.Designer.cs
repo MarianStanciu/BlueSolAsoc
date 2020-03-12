@@ -42,6 +42,7 @@
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.classLabel2 = new BlueSolAsoc.butoane_si_controale.ClassLabel();
             this.classTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.classGroupBox1.SuspendLayout();
@@ -75,6 +76,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.classLabel2);
             this.tabPage1.Controls.Add(this.classLabel1);
             this.tabPage1.Controls.Add(this.classTextBox1);
             this.tabPage1.Controls.Add(this.classGroupBox1);
@@ -90,7 +92,7 @@
             // classLabel1
             // 
             this.classLabel1.AutoSize = true;
-            this.classLabel1.Location = new System.Drawing.Point(246, 44);
+            this.classLabel1.Location = new System.Drawing.Point(338, 145);
             this.classLabel1.Name = "classLabel1";
             this.classLabel1.Size = new System.Drawing.Size(124, 30);
             this.classLabel1.TabIndex = 4;
@@ -98,7 +100,7 @@
             // 
             // classTextBox1
             // 
-            this.classTextBox1.Location = new System.Drawing.Point(221, 90);
+            this.classTextBox1.Location = new System.Drawing.Point(343, 190);
             this.classTextBox1.Name = "classTextBox1";
             this.classTextBox1.Size = new System.Drawing.Size(464, 39);
             this.classTextBox1.TabIndex = 3;
@@ -127,6 +129,7 @@
             this.classButonModifica1.TabIndex = 3;
             this.classButonModifica1.Text = "Modifica";
             this.classButonModifica1.UseVisualStyleBackColor = false;
+            this.classButonModifica1.Click += new System.EventHandler(this.classButonModifica1_Click);
             // 
             // classButonInteriorAdsauSalveaza2
             // 
@@ -138,6 +141,7 @@
             this.classButonInteriorAdsauSalveaza2.TabIndex = 2;
             this.classButonInteriorAdsauSalveaza2.Text = "Adauga";
             this.classButonInteriorAdsauSalveaza2.UseVisualStyleBackColor = false;
+            this.classButonInteriorAdsauSalveaza2.Click += new System.EventHandler(this.classButonInteriorAdsauSalveaza2_Click);
             // 
             // classButonInteriorSterge1
             // 
@@ -149,6 +153,7 @@
             this.classButonInteriorSterge1.TabIndex = 1;
             this.classButonInteriorSterge1.Text = "Sterge";
             this.classButonInteriorSterge1.UseVisualStyleBackColor = false;
+            this.classButonInteriorSterge1.Click += new System.EventHandler(this.classButonInteriorSterge1_Click);
             // 
             // treeView1
             // 
@@ -158,6 +163,7 @@
             this.treeView1.Name = "treeView1";
             this.treeView1.Size = new System.Drawing.Size(212, 527);
             this.treeView1.TabIndex = 1;
+            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeView1_AfterSelect);
             // 
             // tabPage2
             // 
@@ -174,6 +180,15 @@
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // classLabel2
+            // 
+            this.classLabel2.AutoSize = true;
+            this.classLabel2.Location = new System.Drawing.Point(343, 19);
+            this.classLabel2.Name = "classLabel2";
+            this.classLabel2.Size = new System.Drawing.Size(144, 30);
+            this.classLabel2.TabIndex = 5;
+            this.classLabel2.Text = "classLabel2";
             // 
             // AsociatieForm
             // 
@@ -208,5 +223,6 @@
         private butoane_si_controale.ClassTextBox classTextBox1;
         private butoane_si_controale.ClassLabel classLabel1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private butoane_si_controale.ClassLabel classLabel2;
     }
 }

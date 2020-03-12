@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblAsociatie_Selectata = new System.Windows.Forms.Label();
             this.lblNumeFirma = new System.Windows.Forms.Label();
             this.lblCeas = new System.Windows.Forms.Label();
             this.pnlMama = new System.Windows.Forms.Panel();
@@ -56,7 +55,6 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
-            this.panel1.Controls.Add(this.lblAsociatie_Selectata);
             this.panel1.Controls.Add(this.lblNumeFirma);
             this.panel1.Controls.Add(this.lblCeas);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -65,15 +63,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1100, 40);
             this.panel1.TabIndex = 2;
-            // 
-            // lblAsociatie_Selectata
-            // 
-            this.lblAsociatie_Selectata.AutoSize = true;
-            this.lblAsociatie_Selectata.Location = new System.Drawing.Point(307, 10);
-            this.lblAsociatie_Selectata.Name = "lblAsociatie_Selectata";
-            this.lblAsociatie_Selectata.Size = new System.Drawing.Size(60, 21);
-            this.lblAsociatie_Selectata.TabIndex = 2;
-            this.lblAsociatie_Selectata.Text = "label1";
             // 
             // lblNumeFirma
             // 
@@ -141,6 +130,5 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lblCeas;
         private System.Windows.Forms.Label lblNumeFirma;
-        private System.Windows.Forms.Label lblAsociatie_Selectata;
     }
 }
