@@ -14,7 +14,7 @@ namespace BlueSolAsoc
 {
     public partial class AsociatieForm : FormBluebit
     {
-        
+        //pt meniul de adauga modifica sterge - cand este selecta unul se ascund celelalte
         private string denumireAsociatie;
         private int idAsociatie;
         public AsociatieForm(string denumireAsociatie, int idAsociatie)
@@ -25,10 +25,10 @@ namespace BlueSolAsoc
             try
             {
                 ClassConexiuneServer.ConectareDedicata();
-                classLabel2.Text = denumireAsociatie;
+                
 
                AdaugaRadacinaParinteTreeView();
-               
+                treeView1.SelectedNode = treeView1.Nodes[0];
             }
             catch (Exception)
             {
@@ -54,12 +54,13 @@ namespace BlueSolAsoc
 
         public void AdaugaRadacinaParinteTreeView()
         {
-            
-            //    TreeNode asociatie = new TreeNode(denumireAsociatie);
-            //    treeView1.Nodes.Add(asociatie);
-            //}
-            //else
-                AdRamura(treeView1.Nodes, 0);
+
+            TreeNode asociatie = new TreeNode(denumireAsociatie);
+            asociatie.Tag = idAsociatie;
+            treeView1.Nodes.Add(asociatie);
+           // treeView1.SelectedNode = treeView1.Nodes[0];
+           
+            //  AdRamura(treeView1.Nodes, 0);
         }
 
         
@@ -71,6 +72,7 @@ namespace BlueSolAsoc
             
             AdRamura(e.Node.Nodes, nId);
 
+            classLabel1.Text = treeView1.SelectedNode.Text;
         }
         // ADAUGA O RAMURA LA UN NOD
         private void AdRamura(TreeNodeCollection nodes, int nId)
@@ -82,7 +84,7 @@ namespace BlueSolAsoc
             {
                 
 
-               // nodes.Clear();
+                nodes.Clear();
                 SqlDataReader dr = SqlQueryNoduri(nId);
                 while (dr.Read())
                 {
@@ -163,9 +165,19 @@ namespace BlueSolAsoc
 
         private void classButonInteriorAdsauSalveaza2_Click(object sender, EventArgs e)
         {         
-                     AdaugareEntitati();
+                    // AdaugareEntitati();
+                    foreach(var a in splitContainer1.Panel1.Controls)
+            {
+                if (a is TextBox)
+                {
+                    TextBox txt = (TextBox)a;
+                    txt.Text = "qwqeq";
+                }
+            }
+                   
+            classLabel1.Text = treeView1.SelectedNode.Text;
         }
-
+        
         private void classButonModifica1_Click(object sender, EventArgs e)
         {
             treeView1.SelectedNode.Text = classTextBox1.Text;
