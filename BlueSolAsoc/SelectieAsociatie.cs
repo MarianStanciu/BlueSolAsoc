@@ -20,6 +20,7 @@ namespace BlueSolAsoc
         {
             InitializeComponent();
             ClassConexiuneServer.ConectareDedicata();
+            ClassConexiuneServer.DeschideConexiunea();
             
         }
 
@@ -36,18 +37,19 @@ namespace BlueSolAsoc
         {
 
 
+
             //SqlConnection connection = new SqlConnection(@"Data Source = 82.208.137.149\sqlexpress, 8833; Initial Catalog = proba_transare; Persist Security Info = True; User ID = sa; Password = pro");
             SqlConnection connection = ClassConexiuneServer.GetConnection();
-            connection.Open();
+           // connection.Open();
             string query = "select id,valoare from dbo.tabela_organizatii where id_tip=1";
             SqlCommand command = new SqlCommand(query, connection);
-            
+
             SqlDataAdapter da = new SqlDataAdapter();
             da.SelectCommand = command;
             DataSet ds = new DataSet();
             da.Fill(ds);
-            int nRows = ds.Tables[0].Rows.Count+1;
-           
+            int nRows = ds.Tables[0].Rows.Count + 1;
+
             var rowCount = 2;
             var columnCount = nRows / rowCount;
             if (nRows % 2 != 0)
@@ -55,6 +57,7 @@ namespace BlueSolAsoc
                 columnCount = columnCount + 1; // 1 - butonul de plus
 
             }
+
 
             this.TablePanelSelectAsoc.ColumnCount = columnCount;
             this.TablePanelSelectAsoc.RowCount = rowCount;
@@ -100,8 +103,7 @@ namespace BlueSolAsoc
             
             this.TablePanelSelectAsoc.Refresh();
             
-            connection.Close();
-            command.Dispose();
+                       command.Dispose();
           
         }
         // metoda comuna pentru click pe butoane ---------------------------------------------------------------------

@@ -32,14 +32,19 @@
             this.classTabControl1 = new BlueSolAsoc.butoane_si_controale.ClassTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.classLabel5 = new BlueSolAsoc.butoane_si_controale.ClassLabel();
+            this.classTextBox6 = new BlueSolAsoc.butoane_si_controale.ClassTextBox();
+            this.classLabel7 = new BlueSolAsoc.butoane_si_controale.ClassLabel();
             this.classLabel4 = new BlueSolAsoc.butoane_si_controale.ClassLabel();
+            this.classLabel6 = new BlueSolAsoc.butoane_si_controale.ClassLabel();
+            this.classTextBox4 = new BlueSolAsoc.butoane_si_controale.ClassTextBox();
             this.classTextBox3 = new BlueSolAsoc.butoane_si_controale.ClassTextBox();
+            this.classTextBox5 = new BlueSolAsoc.butoane_si_controale.ClassTextBox();
             this.classLabel3 = new BlueSolAsoc.butoane_si_controale.ClassLabel();
             this.classTextBox2 = new BlueSolAsoc.butoane_si_controale.ClassTextBox();
             this.classLabel2 = new BlueSolAsoc.butoane_si_controale.ClassLabel();
             this.classLabel1 = new BlueSolAsoc.butoane_si_controale.ClassLabel();
             this.classTextBox1 = new BlueSolAsoc.butoane_si_controale.ClassTextBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.classGroupBox1 = new BlueSolAsoc.butoane_si_controale.ClassGroupBox();
@@ -47,19 +52,11 @@
             this.button1 = new System.Windows.Forms.Button();
             this.classButonInteriorAdsauSalveaza2 = new BlueSolAsoc.butoane_si_controale.ClassButonInteriorAdsauSalveaza();
             this.classButonInteriorSterge1 = new BlueSolAsoc.butoane_si_controale.ClassButonInteriorSterge();
-            this.classLabel5 = new BlueSolAsoc.butoane_si_controale.ClassLabel();
-            this.classTextBox4 = new BlueSolAsoc.butoane_si_controale.ClassTextBox();
-            this.classLabel6 = new BlueSolAsoc.butoane_si_controale.ClassLabel();
-            this.classTextBox5 = new BlueSolAsoc.butoane_si_controale.ClassTextBox();
-            this.classLabel7 = new BlueSolAsoc.butoane_si_controale.ClassLabel();
-            this.classTextBox6 = new BlueSolAsoc.butoane_si_controale.ClassTextBox();
             this.classTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.classGroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -117,11 +114,39 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.Color.Maroon;
-            this.splitContainer1.Panel2.Controls.Add(this.numericUpDown1);
             this.splitContainer1.Size = new System.Drawing.Size(988, 695);
             this.splitContainer1.SplitterDistance = 328;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 3;
+            // 
+            // classLabel5
+            // 
+            this.classLabel5.AutoSize = true;
+            this.classLabel5.Location = new System.Drawing.Point(105, 336);
+            this.classLabel5.Name = "classLabel5";
+            this.classLabel5.Size = new System.Drawing.Size(144, 30);
+            this.classLabel5.TabIndex = 4;
+            this.classLabel5.Tag = "3";
+            this.classLabel5.Text = "classLabel5";
+            // 
+            // classTextBox6
+            // 
+            this.classTextBox6.Location = new System.Drawing.Point(81, 547);
+            this.classTextBox6.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.classTextBox6.Name = "classTextBox6";
+            this.classTextBox6.Size = new System.Drawing.Size(204, 39);
+            this.classTextBox6.TabIndex = 12;
+            this.classTextBox6.Tag = "5";
+            // 
+            // classLabel7
+            // 
+            this.classLabel7.AutoSize = true;
+            this.classLabel7.Location = new System.Drawing.Point(105, 515);
+            this.classLabel7.Name = "classLabel7";
+            this.classLabel7.Size = new System.Drawing.Size(144, 30);
+            this.classLabel7.TabIndex = 6;
+            this.classLabel7.Tag = "5";
+            this.classLabel7.Text = "classLabel7";
             // 
             // classLabel4
             // 
@@ -129,8 +154,28 @@
             this.classLabel4.Location = new System.Drawing.Point(105, 248);
             this.classLabel4.Name = "classLabel4";
             this.classLabel4.Size = new System.Drawing.Size(144, 30);
-            this.classLabel4.TabIndex = 23;
+            this.classLabel4.TabIndex = 3;
+            this.classLabel4.Tag = "2";
             this.classLabel4.Text = "classLabel4";
+            // 
+            // classLabel6
+            // 
+            this.classLabel6.AutoSize = true;
+            this.classLabel6.Location = new System.Drawing.Point(105, 425);
+            this.classLabel6.Name = "classLabel6";
+            this.classLabel6.Size = new System.Drawing.Size(144, 30);
+            this.classLabel6.TabIndex = 5;
+            this.classLabel6.Tag = "4";
+            this.classLabel6.Text = "classLabel6";
+            // 
+            // classTextBox4
+            // 
+            this.classTextBox4.Location = new System.Drawing.Point(81, 368);
+            this.classTextBox4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.classTextBox4.Name = "classTextBox4";
+            this.classTextBox4.Size = new System.Drawing.Size(204, 39);
+            this.classTextBox4.TabIndex = 10;
+            this.classTextBox4.Tag = "3";
             // 
             // classTextBox3
             // 
@@ -138,7 +183,17 @@
             this.classTextBox3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.classTextBox3.Name = "classTextBox3";
             this.classTextBox3.Size = new System.Drawing.Size(204, 39);
-            this.classTextBox3.TabIndex = 22;
+            this.classTextBox3.TabIndex = 9;
+            this.classTextBox3.Tag = "2";
+            // 
+            // classTextBox5
+            // 
+            this.classTextBox5.Location = new System.Drawing.Point(81, 457);
+            this.classTextBox5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.classTextBox5.Name = "classTextBox5";
+            this.classTextBox5.Size = new System.Drawing.Size(204, 39);
+            this.classTextBox5.TabIndex = 11;
+            this.classTextBox5.Tag = "4";
             // 
             // classLabel3
             // 
@@ -146,7 +201,8 @@
             this.classLabel3.Location = new System.Drawing.Point(105, 164);
             this.classLabel3.Name = "classLabel3";
             this.classLabel3.Size = new System.Drawing.Size(144, 30);
-            this.classLabel3.TabIndex = 20;
+            this.classLabel3.TabIndex = 2;
+            this.classLabel3.Tag = "1";
             this.classLabel3.Text = "classLabel3";
             // 
             // classTextBox2
@@ -155,7 +211,8 @@
             this.classTextBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.classTextBox2.Name = "classTextBox2";
             this.classTextBox2.Size = new System.Drawing.Size(204, 39);
-            this.classTextBox2.TabIndex = 19;
+            this.classTextBox2.TabIndex = 8;
+            this.classTextBox2.Tag = "1";
             // 
             // classLabel2
             // 
@@ -163,7 +220,8 @@
             this.classLabel2.Location = new System.Drawing.Point(105, 77);
             this.classLabel2.Name = "classLabel2";
             this.classLabel2.Size = new System.Drawing.Size(144, 30);
-            this.classLabel2.TabIndex = 18;
+            this.classLabel2.TabIndex = 1;
+            this.classLabel2.Tag = "0";
             this.classLabel2.Text = "classLabel2";
             // 
             // classLabel1
@@ -173,7 +231,8 @@
             this.classLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.classLabel1.Name = "classLabel1";
             this.classLabel1.Size = new System.Drawing.Size(144, 30);
-            this.classLabel1.TabIndex = 17;
+            this.classLabel1.TabIndex = 0;
+            this.classLabel1.Tag = "titlu";
             this.classLabel1.Text = "classLabel1";
             // 
             // classTextBox1
@@ -182,15 +241,8 @@
             this.classTextBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.classTextBox1.Name = "classTextBox1";
             this.classTextBox1.Size = new System.Drawing.Size(204, 39);
-            this.classTextBox1.TabIndex = 13;
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(251, 165);
-            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(147, 39);
-            this.numericUpDown1.TabIndex = 0;
+            this.classTextBox1.TabIndex = 7;
+            this.classTextBox1.Tag = "0";
             // 
             // treeView1
             // 
@@ -280,57 +332,6 @@
             this.classButonInteriorSterge1.Text = "Sterge";
             this.classButonInteriorSterge1.UseVisualStyleBackColor = false;
             // 
-            // classLabel5
-            // 
-            this.classLabel5.AutoSize = true;
-            this.classLabel5.Location = new System.Drawing.Point(105, 336);
-            this.classLabel5.Name = "classLabel5";
-            this.classLabel5.Size = new System.Drawing.Size(144, 30);
-            this.classLabel5.TabIndex = 29;
-            this.classLabel5.Text = "classLabel5";
-            // 
-            // classTextBox4
-            // 
-            this.classTextBox4.Location = new System.Drawing.Point(81, 368);
-            this.classTextBox4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.classTextBox4.Name = "classTextBox4";
-            this.classTextBox4.Size = new System.Drawing.Size(204, 39);
-            this.classTextBox4.TabIndex = 28;
-            // 
-            // classLabel6
-            // 
-            this.classLabel6.AutoSize = true;
-            this.classLabel6.Location = new System.Drawing.Point(105, 425);
-            this.classLabel6.Name = "classLabel6";
-            this.classLabel6.Size = new System.Drawing.Size(144, 30);
-            this.classLabel6.TabIndex = 27;
-            this.classLabel6.Text = "classLabel6";
-            // 
-            // classTextBox5
-            // 
-            this.classTextBox5.Location = new System.Drawing.Point(81, 457);
-            this.classTextBox5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.classTextBox5.Name = "classTextBox5";
-            this.classTextBox5.Size = new System.Drawing.Size(204, 39);
-            this.classTextBox5.TabIndex = 26;
-            // 
-            // classLabel7
-            // 
-            this.classLabel7.AutoSize = true;
-            this.classLabel7.Location = new System.Drawing.Point(105, 515);
-            this.classLabel7.Name = "classLabel7";
-            this.classLabel7.Size = new System.Drawing.Size(144, 30);
-            this.classLabel7.TabIndex = 25;
-            this.classLabel7.Text = "classLabel7";
-            // 
-            // classTextBox6
-            // 
-            this.classTextBox6.Location = new System.Drawing.Point(81, 547);
-            this.classTextBox6.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.classTextBox6.Name = "classTextBox6";
-            this.classTextBox6.Size = new System.Drawing.Size(204, 39);
-            this.classTextBox6.TabIndex = 24;
-            // 
             // AsociatieForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
@@ -347,10 +348,8 @@
             this.tabPage1.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
-            this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.classGroupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -371,8 +370,6 @@
         private butoane_si_controale.ClassLabel classLabel3;
         private butoane_si_controale.ClassLabel classLabel2;
         private butoane_si_controale.ClassTextBox classTextBox1;
-     
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
         
         private butoane_si_controale.ClassGroupBox classGroupBox1;
         private butoane_si_controale.ClassButonModifica classButonModifica1;
