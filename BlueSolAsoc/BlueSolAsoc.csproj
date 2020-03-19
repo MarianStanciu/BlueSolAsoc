@@ -84,6 +84,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="butoane si controale\ClassConexiuneServer.cs" />
+    <Compile Include="butoane si controale\ClassDataSet.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="butoane si controale\ClassGroupBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -144,6 +147,16 @@
     <Compile Include="MeniuForm.Designer.cs">
       <DependentUpon>MeniuForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="proba_transareDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>proba_transareDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="proba_transareDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>proba_transareDataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SelectieAsociatie.cs">
@@ -195,6 +208,28 @@
     <EmbeddedResource Include="SelectieAsociatie.resx">
       <DependentUpon>SelectieAsociatie.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="proba_transareDataSet.xsc">
+      <DependentUpon>proba_transareDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="proba_transareDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>proba_transareDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="proba_transareDataSet.xss">
+      <DependentUpon>proba_transareDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="proba_transareDataSet1.xsc">
+      <DependentUpon>proba_transareDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="proba_transareDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>proba_transareDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="proba_transareDataSet1.xss">
+      <DependentUpon>proba_transareDataSet1.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

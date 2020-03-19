@@ -38,7 +38,7 @@ namespace BlueSolAsoc
 
             //SqlConnection connection = new SqlConnection(@"Data Source = 82.208.137.149\sqlexpress, 8833; Initial Catalog = proba_transare; Persist Security Info = True; User ID = sa; Password = pro");
             SqlConnection connection = ClassConexiuneServer.GetConnection();
-            connection.Open();
+            
             string query = "select id,valoare from dbo.tabela_organizatii where id_tip=1";
             SqlCommand command = new SqlCommand(query, connection);
             
