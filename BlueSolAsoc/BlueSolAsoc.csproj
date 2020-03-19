@@ -105,6 +105,11 @@
     <Compile Include="CreareAsociatie.Designer.cs">
       <DependentUpon>CreareAsociatie.cs</DependentUpon>
     </Compile>
+    <Compile Include="DSProprietati asoctiatie.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSProprietati asoctiatie.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Fom Meniuri\cheltuieli-plati.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -229,6 +234,17 @@
     </None>
     <None Include="proba_transareDataSet1.xss">
       <DependentUpon>proba_transareDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DSProprietati asoctiatie.xsc">
+      <DependentUpon>DSProprietati asoctiatie.xsd</DependentUpon>
+    </None>
+    <None Include="DSProprietati asoctiatie.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSProprietati asoctiatie.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DSProprietati asoctiatie.xss">
+      <DependentUpon>DSProprietati asoctiatie.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

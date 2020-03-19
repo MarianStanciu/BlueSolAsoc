@@ -14,9 +14,10 @@ namespace BlueSolAsoc
 {
     public partial class AsociatieForm : FormBluebit
     {
-        
+        //pt meniul de adauga modifica sterge - cand este selecta unul se ascund celelalte
         private string denumireAsociatie;
         private int idAsociatie;
+        public DataSet infoAsociatie;
         public AsociatieForm(string denumireAsociatie, int idAsociatie)
         {
             InitializeComponent();
@@ -25,10 +26,10 @@ namespace BlueSolAsoc
             try
             {
                 ClassConexiuneServer.ConectareDedicata();
-                classLabel2.Text = denumireAsociatie;
+                
 
                AdaugaRadacinaParinteTreeView();
-               
+                treeView1.SelectedNode = treeView1.Nodes[0];
             }
             catch (Exception)
             {
@@ -54,12 +55,13 @@ namespace BlueSolAsoc
 
         public void AdaugaRadacinaParinteTreeView()
         {
-            
-            //    TreeNode asociatie = new TreeNode(denumireAsociatie);
-            //    treeView1.Nodes.Add(asociatie);
-            //}
-            //else
-                AdRamura(treeView1.Nodes, 0);
+
+            TreeNode asociatie = new TreeNode(denumireAsociatie);
+            asociatie.Tag = idAsociatie;
+            treeView1.Nodes.Add(asociatie);
+           // treeView1.SelectedNode = treeView1.Nodes[0];
+           
+            //  AdRamura(treeView1.Nodes, 0);
         }
 
         
@@ -70,19 +72,66 @@ namespace BlueSolAsoc
             int nId = System.Convert.ToInt16(e.Node.Tag);
             
             AdRamura(e.Node.Nodes, nId);
+            SelecteazaProprietatiNod(nId);
+            int contor = 0; 
+            foreach(var cl in splitContainer1.Panel1.Controls)
+            {
+                if(cl is ClassLabel)
+                {
+                    ClassLabel txtL = (ClassLabel)cl;
+                    txtL.Visible = false;
+                }
+                if (cl is ClassTextBox)
+                {
+                    ClassTextBox txtB = (ClassTextBox)cl;
+                    txtB.Visible = false;
+                }
+            }
+            foreach(DataRow row in infoAsociatie.Tables[0].Rows)
+            {
+                foreach (var cl in splitContainer1.Panel1.Controls) 
+                {
+                    if (cl is ClassLabel)
+                    {
+                  
+                        ClassLabel txtL = (ClassLabel)cl;
+                        if(txtL.Tag.ToString()==contor.ToString())
+                        
+                        {
+                            txtL.Visible = true;
+                            txtL.Text = row["id_tip"].ToString();
+                        }
+                    }
+                    if (cl is ClassTextBox)
+                    {
+                        ClassTextBox txtB = (ClassTextBox)cl;
+                         if(txtB.Tag.ToString()==contor.ToString())
+                        {
+                            txtB.Visible = true;
+                            txtB.Text = row["valoare"].ToString();
+                        }
+
+                    }
+                }                         
+                              
+               
+                contor=contor+1;
+            }
 
         }
         // ADAUGA O RAMURA LA UN NOD
         private void AdRamura(TreeNodeCollection nodes, int nId)
         {
             SqlConnection connection = ClassConexiuneServer.GetConnection();
-            if (connection.State == ConnectionState.Open)
+            // de modificat aici cu conexiunea
+            if (ClassConexiuneServer.DeschideConexiunea())
                 connection.Close();
+            //   
             try
             {
                 
 
-               // nodes.Clear();
+                nodes.Clear();
                 SqlDataReader dr = SqlQueryNoduri(nId);
                 while (dr.Read())
                 {
@@ -152,9 +201,21 @@ namespace BlueSolAsoc
 
 
             }
+             
         }
 
-
+        private DataSet SelecteazaProprietatiNod( int id)
+        {
+            string queryInformatii = "select * from vOrganizatii where id_master=" + id + "and id_tip>1";
+            SqlConnection connection = ClassConexiuneServer.GetConnection();
+            SqlCommand command = new SqlCommand(queryInformatii, connection);
+           // SqlDataReader rdr = ClassConexiuneServer.sqlDataReader(queryInformatii);
+            SqlDataAdapter da= new SqlDataAdapter();
+            infoAsociatie = new DataSet();
+            da.SelectCommand = command;
+            da.Fill(infoAsociatie);
+            return infoAsociatie;
+        }
 
 
 
@@ -163,9 +224,20 @@ namespace BlueSolAsoc
 
         private void classButonInteriorAdsauSalveaza2_Click(object sender, EventArgs e)
         {         
-                     AdaugareEntitati();
+                    // AdaugareEntitati();
+                    foreach(var a in splitContainer1.Panel1.Controls)
+                    
+            {
+                if (a is TextBox)
+                {
+                    TextBox txt = (TextBox)a;
+                    txt.Text = "qwqeq";
+                }
+            }
+                   
+            classLabel1.Text = treeView1.SelectedNode.Text;
         }
-
+        
         private void classButonModifica1_Click(object sender, EventArgs e)
         {
             treeView1.SelectedNode.Text = classTextBox1.Text;
