@@ -86,8 +86,11 @@ namespace BlueSolAsoc
                     ClassTextBox txtB = (ClassTextBox)cl;
                     txtB.Visible = false;
                 }
+
             }
-            foreach(DataRow row in infoAsociatie.Tables[0].Rows)
+          
+
+            foreach (DataRow row in infoAsociatie.Tables[0].Rows)
             {
                 foreach (var cl in splitContainer1.Panel1.Controls) 
                 {
@@ -99,7 +102,7 @@ namespace BlueSolAsoc
                         
                         {
                             txtL.Visible = true;
-                            txtL.Text = row["id_tip"].ToString();
+                            txtL.Text = row["denumire"].ToString();
                         }
                     }
                     if (cl is ClassTextBox)
@@ -117,6 +120,8 @@ namespace BlueSolAsoc
                
                 contor=contor+1;
             }
+            classLabel1.Visible = true;
+            classLabel1.Text = treeView1.SelectedNode.Text;
 
         }
         // ADAUGA O RAMURA LA UN NOD
@@ -126,7 +131,7 @@ namespace BlueSolAsoc
             // de modificat aici cu conexiunea
             if (ClassConexiuneServer.DeschideConexiunea())
                 connection.Close();
-            //   
+            ////   
             try
             {
                 
@@ -162,8 +167,8 @@ namespace BlueSolAsoc
             SqlDataReader dr = null;
             SqlConnection connection = ClassConexiuneServer.GetConnection();
            connection.Open();
-         
-           SqlCommand cmd = new SqlCommand("select * from vOrganizatii where id_master=" + nIdMaster  , connection);
+            
+            SqlCommand cmd = new SqlCommand("select * from vAsocTree where id_master=" + nIdMaster, connection);
             try
             {
                 dr = cmd.ExecuteReader();
@@ -206,7 +211,7 @@ namespace BlueSolAsoc
 
         private DataSet SelecteazaProprietatiNod( int id)
         {
-            string queryInformatii = "select * from vOrganizatii where id_master=" + id + "and id_tip>1";
+            string queryInformatii = "select * from vAfisareDetaliiEntitati where id_master=" + id + "and id_tip>1";
             SqlConnection connection = ClassConexiuneServer.GetConnection();
             SqlCommand command = new SqlCommand(queryInformatii, connection);
            // SqlDataReader rdr = ClassConexiuneServer.sqlDataReader(queryInformatii);
