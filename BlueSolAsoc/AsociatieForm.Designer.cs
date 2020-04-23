@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AsociatieForm));
-            this.classTabControl1 = new BlueSolAsoc.butoane_si_controale.ClassTabControl();
+            this.TabSA = new BlueSolAsoc.butoane_si_controale.ClassTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.classTextBox7 = new BlueSolAsoc.butoane_si_controale.ClassTextBox();
+            this.classLabel8 = new BlueSolAsoc.butoane_si_controale.ClassLabel();
             this.classLabel5 = new BlueSolAsoc.butoane_si_controale.ClassLabel();
             this.classTextBox6 = new BlueSolAsoc.butoane_si_controale.ClassTextBox();
             this.classLabel7 = new BlueSolAsoc.butoane_si_controale.ClassLabel();
@@ -45,34 +46,37 @@
             this.classLabel2 = new BlueSolAsoc.butoane_si_controale.ClassLabel();
             this.classLabel1 = new BlueSolAsoc.butoane_si_controale.ClassLabel();
             this.classTextBox1 = new BlueSolAsoc.butoane_si_controale.ClassTextBox();
+            this.dataGridViewAp = new System.Windows.Forms.DataGridView();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.classGroupBox1 = new BlueSolAsoc.butoane_si_controale.ClassGroupBox();
-            this.classButonModifica1 = new BlueSolAsoc.butoane_si_controale.ClassButonModifica();
+            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.classButonInteriorAdsauSalveaza2 = new BlueSolAsoc.butoane_si_controale.ClassButonInteriorAdsauSalveaza();
             this.classButonInteriorSterge1 = new BlueSolAsoc.butoane_si_controale.ClassButonInteriorSterge();
-            this.classTabControl1.SuspendLayout();
+            this.classButonModifica1 = new BlueSolAsoc.butoane_si_controale.ClassButonModifica();
+            this.TabSA.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAp)).BeginInit();
             this.classGroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // classTabControl1
+            // TabSA
             // 
-            this.classTabControl1.Controls.Add(this.tabPage1);
-            this.classTabControl1.Controls.Add(this.tabPage2);
-            this.classTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.classTabControl1.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.classTabControl1.ItemSize = new System.Drawing.Size(150, 50);
-            this.classTabControl1.Location = new System.Drawing.Point(0, 0);
-            this.classTabControl1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.classTabControl1.Name = "classTabControl1";
-            this.classTabControl1.SelectedIndex = 0;
-            this.classTabControl1.Size = new System.Drawing.Size(1212, 759);
-            this.classTabControl1.TabIndex = 3;
+            this.TabSA.Controls.Add(this.tabPage1);
+            this.TabSA.Controls.Add(this.tabPage2);
+            this.TabSA.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TabSA.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TabSA.ItemSize = new System.Drawing.Size(150, 50);
+            this.TabSA.Location = new System.Drawing.Point(0, 0);
+            this.TabSA.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.TabSA.Name = "TabSA";
+            this.TabSA.SelectedIndex = 0;
+            this.TabSA.Size = new System.Drawing.Size(1212, 759);
+            this.TabSA.TabIndex = 3;
             // 
             // tabPage1
             // 
@@ -97,6 +101,8 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.Gray;
+            this.splitContainer1.Panel1.Controls.Add(this.classTextBox7);
+            this.splitContainer1.Panel1.Controls.Add(this.classLabel8);
             this.splitContainer1.Panel1.Controls.Add(this.classLabel5);
             this.splitContainer1.Panel1.Controls.Add(this.classTextBox6);
             this.splitContainer1.Panel1.Controls.Add(this.classLabel7);
@@ -114,15 +120,35 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.Color.Maroon;
+            this.splitContainer1.Panel2.Controls.Add(this.dataGridViewAp);
             this.splitContainer1.Size = new System.Drawing.Size(988, 695);
             this.splitContainer1.SplitterDistance = 328;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 3;
             // 
+            // classTextBox7
+            // 
+            this.classTextBox7.Location = new System.Drawing.Point(79, 74);
+            this.classTextBox7.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.classTextBox7.Name = "classTextBox7";
+            this.classTextBox7.Size = new System.Drawing.Size(204, 39);
+            this.classTextBox7.TabIndex = 14;
+            this.classTextBox7.Tag = "5";
+            // 
+            // classLabel8
+            // 
+            this.classLabel8.AutoSize = true;
+            this.classLabel8.Location = new System.Drawing.Point(74, 41);
+            this.classLabel8.Name = "classLabel8";
+            this.classLabel8.Size = new System.Drawing.Size(144, 30);
+            this.classLabel8.TabIndex = 13;
+            this.classLabel8.Tag = "5";
+            this.classLabel8.Text = "classLabel8";
+            // 
             // classLabel5
             // 
             this.classLabel5.AutoSize = true;
-            this.classLabel5.Location = new System.Drawing.Point(105, 336);
+            this.classLabel5.Location = new System.Drawing.Point(74, 374);
             this.classLabel5.Name = "classLabel5";
             this.classLabel5.Size = new System.Drawing.Size(144, 30);
             this.classLabel5.TabIndex = 4;
@@ -131,7 +157,7 @@
             // 
             // classTextBox6
             // 
-            this.classTextBox6.Location = new System.Drawing.Point(81, 547);
+            this.classTextBox6.Location = new System.Drawing.Point(79, 586);
             this.classTextBox6.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.classTextBox6.Name = "classTextBox6";
             this.classTextBox6.Size = new System.Drawing.Size(204, 39);
@@ -141,7 +167,7 @@
             // classLabel7
             // 
             this.classLabel7.AutoSize = true;
-            this.classLabel7.Location = new System.Drawing.Point(105, 515);
+            this.classLabel7.Location = new System.Drawing.Point(74, 553);
             this.classLabel7.Name = "classLabel7";
             this.classLabel7.Size = new System.Drawing.Size(144, 30);
             this.classLabel7.TabIndex = 6;
@@ -151,7 +177,7 @@
             // classLabel4
             // 
             this.classLabel4.AutoSize = true;
-            this.classLabel4.Location = new System.Drawing.Point(105, 248);
+            this.classLabel4.Location = new System.Drawing.Point(74, 286);
             this.classLabel4.Name = "classLabel4";
             this.classLabel4.Size = new System.Drawing.Size(144, 30);
             this.classLabel4.TabIndex = 3;
@@ -161,7 +187,7 @@
             // classLabel6
             // 
             this.classLabel6.AutoSize = true;
-            this.classLabel6.Location = new System.Drawing.Point(105, 425);
+            this.classLabel6.Location = new System.Drawing.Point(74, 463);
             this.classLabel6.Name = "classLabel6";
             this.classLabel6.Size = new System.Drawing.Size(144, 30);
             this.classLabel6.TabIndex = 5;
@@ -170,7 +196,7 @@
             // 
             // classTextBox4
             // 
-            this.classTextBox4.Location = new System.Drawing.Point(81, 368);
+            this.classTextBox4.Location = new System.Drawing.Point(79, 407);
             this.classTextBox4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.classTextBox4.Name = "classTextBox4";
             this.classTextBox4.Size = new System.Drawing.Size(204, 39);
@@ -179,7 +205,7 @@
             // 
             // classTextBox3
             // 
-            this.classTextBox3.Location = new System.Drawing.Point(81, 280);
+            this.classTextBox3.Location = new System.Drawing.Point(79, 319);
             this.classTextBox3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.classTextBox3.Name = "classTextBox3";
             this.classTextBox3.Size = new System.Drawing.Size(204, 39);
@@ -188,7 +214,7 @@
             // 
             // classTextBox5
             // 
-            this.classTextBox5.Location = new System.Drawing.Point(81, 457);
+            this.classTextBox5.Location = new System.Drawing.Point(79, 496);
             this.classTextBox5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.classTextBox5.Name = "classTextBox5";
             this.classTextBox5.Size = new System.Drawing.Size(204, 39);
@@ -198,7 +224,7 @@
             // classLabel3
             // 
             this.classLabel3.AutoSize = true;
-            this.classLabel3.Location = new System.Drawing.Point(105, 164);
+            this.classLabel3.Location = new System.Drawing.Point(74, 202);
             this.classLabel3.Name = "classLabel3";
             this.classLabel3.Size = new System.Drawing.Size(144, 30);
             this.classLabel3.TabIndex = 2;
@@ -207,7 +233,7 @@
             // 
             // classTextBox2
             // 
-            this.classTextBox2.Location = new System.Drawing.Point(81, 196);
+            this.classTextBox2.Location = new System.Drawing.Point(79, 235);
             this.classTextBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.classTextBox2.Name = "classTextBox2";
             this.classTextBox2.Size = new System.Drawing.Size(204, 39);
@@ -217,7 +243,7 @@
             // classLabel2
             // 
             this.classLabel2.AutoSize = true;
-            this.classLabel2.Location = new System.Drawing.Point(105, 77);
+            this.classLabel2.Location = new System.Drawing.Point(74, 115);
             this.classLabel2.Name = "classLabel2";
             this.classLabel2.Size = new System.Drawing.Size(144, 30);
             this.classLabel2.TabIndex = 1;
@@ -237,12 +263,23 @@
             // 
             // classTextBox1
             // 
-            this.classTextBox1.Location = new System.Drawing.Point(81, 109);
+            this.classTextBox1.Location = new System.Drawing.Point(79, 148);
             this.classTextBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.classTextBox1.Name = "classTextBox1";
             this.classTextBox1.Size = new System.Drawing.Size(204, 39);
             this.classTextBox1.TabIndex = 7;
             this.classTextBox1.Tag = "0";
+            // 
+            // dataGridViewAp
+            // 
+            this.dataGridViewAp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewAp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewAp.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewAp.Name = "dataGridViewAp";
+            this.dataGridViewAp.RowHeadersWidth = 51;
+            this.dataGridViewAp.RowTemplate.Height = 24;
+            this.dataGridViewAp.Size = new System.Drawing.Size(655, 695);
+            this.dataGridViewAp.TabIndex = 0;
             // 
             // treeView1
             // 
@@ -268,10 +305,10 @@
             // 
             // classGroupBox1
             // 
-            this.classGroupBox1.Controls.Add(this.classButonModifica1);
+            this.classGroupBox1.Controls.Add(this.button2);
             this.classGroupBox1.Controls.Add(this.button1);
-            this.classGroupBox1.Controls.Add(this.classButonInteriorAdsauSalveaza2);
             this.classGroupBox1.Controls.Add(this.classButonInteriorSterge1);
+            this.classGroupBox1.Controls.Add(this.classButonModifica1);
             this.classGroupBox1.Dock = System.Windows.Forms.DockStyle.Right;
             this.classGroupBox1.Location = new System.Drawing.Point(1027, 0);
             this.classGroupBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -282,55 +319,50 @@
             this.classGroupBox1.TabStop = false;
             this.classGroupBox1.Text = "Controale";
             // 
-            // classButonModifica1
+            // button2
             // 
-            this.classButonModifica1.BackColor = System.Drawing.Color.Yellow;
-            this.classButonModifica1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.classButonModifica1.Location = new System.Drawing.Point(20, 186);
-            this.classButonModifica1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.classButonModifica1.Name = "classButonModifica1";
-            this.classButonModifica1.Size = new System.Drawing.Size(153, 45);
-            this.classButonModifica1.TabIndex = 3;
-            this.classButonModifica1.Text = "Modifica";
-            this.classButonModifica1.UseVisualStyleBackColor = false;
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Location = new System.Drawing.Point(23, 676);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(153, 71);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "ANULEAZA";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button1.FlatAppearance.BorderSize = 5;
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(90, 434);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.button1.Location = new System.Drawing.Point(25, 599);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(54, 56);
-            this.button1.TabIndex = 1;
+            this.button1.Size = new System.Drawing.Size(153, 71);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "OK";
             this.button1.UseVisualStyleBackColor = true;
-            // 
-            // classButonInteriorAdsauSalveaza2
-            // 
-            this.classButonInteriorAdsauSalveaza2.BackColor = System.Drawing.Color.Green;
-            this.classButonInteriorAdsauSalveaza2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.classButonInteriorAdsauSalveaza2.Location = new System.Drawing.Point(20, 28);
-            this.classButonInteriorAdsauSalveaza2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.classButonInteriorAdsauSalveaza2.Name = "classButonInteriorAdsauSalveaza2";
-            this.classButonInteriorAdsauSalveaza2.Size = new System.Drawing.Size(153, 45);
-            this.classButonInteriorAdsauSalveaza2.TabIndex = 2;
-            this.classButonInteriorAdsauSalveaza2.Text = "Adauga";
-            this.classButonInteriorAdsauSalveaza2.UseVisualStyleBackColor = false;
             // 
             // classButonInteriorSterge1
             // 
             this.classButonInteriorSterge1.BackColor = System.Drawing.Color.Red;
             this.classButonInteriorSterge1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.classButonInteriorSterge1.Location = new System.Drawing.Point(22, 368);
-            this.classButonInteriorSterge1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.classButonInteriorSterge1.Location = new System.Drawing.Point(20, 259);
             this.classButonInteriorSterge1.Name = "classButonInteriorSterge1";
-            this.classButonInteriorSterge1.Size = new System.Drawing.Size(153, 45);
-            this.classButonInteriorSterge1.TabIndex = 1;
+            this.classButonInteriorSterge1.Size = new System.Drawing.Size(153, 72);
+            this.classButonInteriorSterge1.TabIndex = 4;
             this.classButonInteriorSterge1.Text = "Sterge";
             this.classButonInteriorSterge1.UseVisualStyleBackColor = false;
+            // 
+            // classButonModifica1
+            // 
+            this.classButonModifica1.BackColor = System.Drawing.Color.Yellow;
+            this.classButonModifica1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.classButonModifica1.Location = new System.Drawing.Point(20, 162);
+            this.classButonModifica1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.classButonModifica1.Name = "classButonModifica1";
+            this.classButonModifica1.Size = new System.Drawing.Size(153, 69);
+            this.classButonModifica1.TabIndex = 3;
+            this.classButonModifica1.Text = "Modifica";
+            this.classButonModifica1.UseVisualStyleBackColor = false;
             // 
             // AsociatieForm
             // 
@@ -338,18 +370,20 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1212, 759);
             this.Controls.Add(this.classGroupBox1);
-            this.Controls.Add(this.classTabControl1);
+            this.Controls.Add(this.TabSA);
             this.Location = new System.Drawing.Point(0, 0);
             this.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.Name = "AsociatieForm";
             this.Text = "AsociatieForm1";
             this.Load += new System.EventHandler(this.AsociatieForm_Load);
-            this.classTabControl1.ResumeLayout(false);
+            this.TabSA.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
+            this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAp)).EndInit();
             this.classGroupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -357,7 +391,7 @@
 
 
         #endregion
-        private butoane_si_controale.ClassTabControl classTabControl1;
+        private butoane_si_controale.ClassTabControl TabSA;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.TabPage tabPage2;
@@ -373,14 +407,17 @@
         
         private butoane_si_controale.ClassGroupBox classGroupBox1;
         private butoane_si_controale.ClassButonModifica classButonModifica1;
-        private System.Windows.Forms.Button button1;
-        private butoane_si_controale.ClassButonInteriorAdsauSalveaza classButonInteriorAdsauSalveaza2;
-        private butoane_si_controale.ClassButonInteriorSterge classButonInteriorSterge1;
         private butoane_si_controale.ClassLabel classLabel5;
         private butoane_si_controale.ClassTextBox classTextBox6;
         private butoane_si_controale.ClassLabel classLabel7;
         private butoane_si_controale.ClassLabel classLabel6;
         private butoane_si_controale.ClassTextBox classTextBox4;
         private butoane_si_controale.ClassTextBox classTextBox5;
+        private butoane_si_controale.ClassTextBox classTextBox7;
+        private butoane_si_controale.ClassLabel classLabel8;
+        private System.Windows.Forms.DataGridView dataGridViewAp;
+        private butoane_si_controale.ClassButonInteriorSterge classButonInteriorSterge1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
     }
 }

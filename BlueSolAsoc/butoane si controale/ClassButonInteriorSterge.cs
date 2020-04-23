@@ -16,15 +16,15 @@ namespace BlueSolAsoc.butoane_si_controale
             base.FlatStyle = FlatStyle.Flat;
             this.BackColor = Color.Blue;
         }
-        protected override void OnResize(EventArgs e)
-        {
-            using (var path = new GraphicsPath())
-            {
-                path.AddEllipse(new Rectangle(1, 1, this.Width - 3  ,this.Height - 3));
-                this.Region = new Region(path);
-            }
-            base.OnResize(e);
-        }
+        //protected override void OnResize(EventArgs e)
+        //{
+        //    using (var path = new GraphicsPath())
+        //    {
+        //        //path.AddEllipse(new Rectangle(1, 1, this.Width - 3  ,this.Height - 3));
+        //        //this.Region = new Region(path);
+        //    }
+        //    base.OnResize(e);
+        //}
         protected override void OnBackColorChanged(EventArgs e)
         {
             base.OnBackColorChanged(e);
