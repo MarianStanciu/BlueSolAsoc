@@ -35,6 +35,7 @@
             this.butonsircon = new System.Windows.Forms.Button();
             this.sirconbox = new System.Windows.Forms.TextBox();
             this.button_sircon_ok = new System.Windows.Forms.Button();
+            this.remembermeCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // utilizatorbox
@@ -106,12 +107,23 @@
             this.button_sircon_ok.UseVisualStyleBackColor = true;
             this.button_sircon_ok.Click += new System.EventHandler(this.button_sircon_ok_Click);
             // 
+            // remembermeCheckBox
+            // 
+            this.remembermeCheckBox.AutoSize = true;
+            this.remembermeCheckBox.Location = new System.Drawing.Point(490, 380);
+            this.remembermeCheckBox.Name = "remembermeCheckBox";
+            this.remembermeCheckBox.Size = new System.Drawing.Size(177, 25);
+            this.remembermeCheckBox.TabIndex = 7;
+            this.remembermeCheckBox.Text = "Retine conectarea";
+            this.remembermeCheckBox.UseVisualStyleBackColor = true;
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1100, 591);
             this.ControlBox = true;
+            this.Controls.Add(this.remembermeCheckBox);
             this.Controls.Add(this.button_sircon_ok);
             this.Controls.Add(this.sirconbox);
             this.Controls.Add(this.butonsircon);
@@ -138,5 +150,6 @@
         private System.Windows.Forms.Button butonsircon;
         private System.Windows.Forms.TextBox sirconbox;
         private System.Windows.Forms.Button button_sircon_ok;
+        private System.Windows.Forms.CheckBox remembermeCheckBox;
     }
 }

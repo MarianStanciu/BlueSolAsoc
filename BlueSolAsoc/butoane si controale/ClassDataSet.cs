@@ -15,7 +15,8 @@ namespace BlueSolAsoc.butoane_si_controale
         public void getSetFrom(String sSQL, String sNumeTabel)
         {
             SqlConnection connection = ClassConexiuneServer.GetConnection();
-            connection.Open();
+            ClassConexiuneServer.DeschideConexiunea();
+            //connection.Open();
 
             SqlCommand command = new SqlCommand(sSQL, connection);
             DataTable tabelLucru = new DataTable(sNumeTabel);
@@ -55,7 +56,7 @@ namespace BlueSolAsoc.butoane_si_controale
 
             for (int k = 0; k < adaugate.Length; k++)
             {
-                DataRow r = adaugate[k];
+                DataRow r = (DataRow)adaugate[k];
                 string linie = "";
                 foreach (DataColumn f in dc)
                 {

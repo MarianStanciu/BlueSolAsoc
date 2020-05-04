@@ -39,7 +39,7 @@ namespace BlueSolAsoc
             //SqlConnection connection = new SqlConnection(@"Data Source = 82.208.137.149\sqlexpress, 8833; Initial Catalog = proba_transare; Persist Security Info = True; User ID = sa; Password = pro");
             SqlConnection connection = ClassConexiuneServer.GetConnection();
             
-            string query = "select id,valoare from dbo.tabela_organizatii where id_tip=1";
+            string query = "select id_asociere,valoare from dbo.tabela_organizatii where id_asociere=1";
             SqlCommand command = new SqlCommand(query, connection);
             
             SqlDataAdapter da = new SqlDataAdapter();
@@ -87,7 +87,7 @@ namespace BlueSolAsoc
                 b.Click += ApasareButon;
                 b.Dock = DockStyle.Fill;
                 b.Text = row["valoare"].ToString();
-                b.Tag = row["id"];
+                b.Tag = row["id_asociere"];
                // b.Tag = reader.GetInt16(reader.GetOrdinal("id"));
                 this.TablePanelSelectAsoc.Controls.Add(b);
 
@@ -123,7 +123,7 @@ namespace BlueSolAsoc
                     using (SqlConnection connection = new SqlConnection(@"Data Source = 82.208.137.149\sqlexpress, 8833; Initial Catalog = proba_transare; Persist Security Info = True; User ID = sa; Password = pro"))
                     {
                         connection.Open();
-                        string query = "select id from dbo.tabela_organizatii where valoare='" + b.Text + "'";
+                        string query = "select id_org from dbo.tabela_organizatii where valoare='" + b.Text + "'";
                         //"select id from dbo.tabela_organizatii where valoare='asociatia marmota'"
                         using (SqlCommand command = new SqlCommand(query, connection))
                         {

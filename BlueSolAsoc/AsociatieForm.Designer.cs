@@ -375,7 +375,7 @@
             this.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.Name = "AsociatieForm";
             this.Text = "AsociatieForm1";
-            this.Load += new System.EventHandler(this.AsociatieForm_Load);
+     
             this.TabSA.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
