@@ -17,17 +17,17 @@ namespace BlueSolAsoc
         ClassDataSet asociatieFormDS = new ClassDataSet();
         private string denumireAsociatie;
         private int idAsociatie;
-        
+
 
         public AsociatieForm(string denumireAsociatie, int idAsociatie)
         {
             InitializeComponent();
             this.denumireAsociatie = denumireAsociatie;
             this.idAsociatie = idAsociatie;
-           
+
             try
             {
-                ClassConexiuneServer.ConectareDedicata();               
+                ClassConexiuneServer.ConectareDedicata();
                 AdaugaRadacinaParinteTreeView();
                 treeView1.SelectedNode = treeView1.Nodes[0];
             }
@@ -35,52 +35,63 @@ namespace BlueSolAsoc
             {
                 MessageBox.Show("Eroare", e.Message);
             }
-           
-        }                 
+            btnOK.Hide();
+            btnAnuleaza.Hide();
+        }
 
         public void AdaugaRadacinaParinteTreeView()
         {
             TreeNode asociatie = new TreeNode(denumireAsociatie);
             asociatie.Tag = idAsociatie;
-            treeView1.Nodes.Add(asociatie);                     
+            treeView1.Nodes.Add(asociatie);
         }
 
         //implementare afterselect din tree view care preia id elementului si apelarea metodei care returneaza datasetul cu info despre id
-       
+
         private void TreeView1_AfterSelect(object sender, TreeViewEventArgs e)
-        {            
+        {
             int nId = System.Convert.ToInt16(e.Node.Tag);
-            
-                AdRamura(e.Node.Nodes, nId);
+
+            AdRamura(e.Node.Nodes, nId);
             if (!(asociatieFormDS.Tables["vAfisareDetaliiEntitati"] is null))
             {
                 asociatieFormDS.Tables.Remove("vAfisareDetaliiEntitati");
             }
             asociatieFormDS.getSetFrom("select * from vAfisareDetaliiEntitati  where  id_master =" + nId + " and tip_afisare='edit'", "vAfisareDetaliiEntitati");
-        
-           
-            int contor = 0; 
-            foreach(var cl in splitContainer1.Panel1.Controls)
+
+            // DataRow referintaAsociere = (DataRow)asociatieFormDS.Tables["vAfisareDetaliiEntitati"].Row;
+
+
+            int contor = 0;
+            foreach (var cl in splitContainer1.Panel1.Controls)
             {
-                if(cl is ClassLabel)
+                if (cl is ClassLabel)
                 {
                     ClassLabel txtL = (ClassLabel)cl;
                     txtL.Visible = false;
+
                 }
                 if (cl is ClassTextBox)
                 {
                     ClassTextBox txtB = (ClassTextBox)cl;
                     txtB.Visible = false;
                 }
-            }          
+
+            }
+
             foreach (DataRow row in asociatieFormDS.Tables["vAfisareDetaliiEntitati"].Rows)
             {
-                foreach (var cl in splitContainer1.Panel1.Controls) 
+                foreach (var cl in splitContainer1.Panel1.Controls)
                 {
                     if (cl is ClassLabel)
-                    {                  
+                    {
                         ClassLabel txtL = (ClassLabel)cl;
-                        if(txtL.Tag.ToString()==contor.ToString())                        
+                        if (txtL.Tag.ToString() == "titlu")
+                        {
+                            txtL.Visible = true;
+                            txtL.Text = treeView1.SelectedNode.Text;
+                        }
+                        if (txtL.Tag.ToString() == contor.ToString())
                         {
                             txtL.Visible = true;
                             txtL.Text = row["val_label"].ToString();
@@ -89,19 +100,33 @@ namespace BlueSolAsoc
                     if (cl is ClassTextBox)
                     {
                         ClassTextBox txtB = (ClassTextBox)cl;
-                         if(txtB.Tag.ToString()==contor.ToString())
+                        if (txtB.Tag.ToString() == contor.ToString())
                         {
                             txtB.Visible = true;
                             txtB.Enabled = false;
                             txtB.Text = row["valoare"].ToString();
                         }
                     }
-                }                       
-              
-                contor=contor+1;
+                }
+
+                contor = contor + 1;
+            }
+            for (int i = 0; i < asociatieFormDS.Tables["vAfisareDetaliiEntitati"].Rows.Count; i++)
+            {
+                int referintaAsociere = Convert.ToInt32(asociatieFormDS.Tables["vAfisareDetaliiEntitati"].Rows[i]["id_asociere"]);
+                if (referintaAsociere == 12)
+                {
+                    splitContainer1.Panel1.Hide();
+                    splitContainer1.Panel2.Show();
+                }
+                else
+                {
+                    splitContainer1.Panel2.Hide();
+                    splitContainer1.Panel1.Show();
+                }
             }
 
-           
+            dataGridViewAp.DataSource = asociatieFormDS.Tables["vAfisareDetaliiEntitati"];
 
         }
         public DataColumnCollection StructuraColoane(string sTabelLucru)
@@ -113,19 +138,19 @@ namespace BlueSolAsoc
         private void AdRamura(TreeNodeCollection nodes, int nId)
         {
             SqlConnection connection = ClassConexiuneServer.GetConnection();
-        
+
             if (ClassConexiuneServer.DeschideConexiunea())
                 connection.Close();
             try
-            {              
+            {
                 nodes.Clear();
                 SqlDataReader dr = SqlQueryNoduri(nId);
                 while (dr.Read())
-                {                   
-                        TreeNode node = new TreeNode(dr["valoare"].ToString());
-                        // SALVEZ VALOAREA ID-ULUI IN PROPRIETATEA TAG A NODULUI PENTRU A PUTEA APELA MAI DEPARTE QUERY PENTRU NODURILE ACESTEI RAMURI
-                        node.Tag = dr["id"];
-                        nodes.Add(node);                                   
+                {
+                    TreeNode node = new TreeNode(dr["valoare"].ToString());
+                    // SALVEZ VALOAREA ID-ULUI IN PROPRIETATEA TAG A NODULUI PENTRU A PUTEA APELA MAI DEPARTE QUERY PENTRU NODURILE ACESTEI RAMURI
+                    node.Tag = dr["id_org"];
+                    nodes.Add(node);
                 }
                 dr.Close();
             }
@@ -137,11 +162,11 @@ namespace BlueSolAsoc
         }
 
         private SqlDataReader SqlQueryNoduri(int nIdMaster)
-        {            
+        {
             SqlDataReader dr = null;
             SqlConnection connection = ClassConexiuneServer.GetConnection();
             connection.Open();
-            
+
             SqlCommand cmd = new SqlCommand("select * from vAsocTree where id_master=" + nIdMaster, connection);
             try
             {
@@ -152,11 +177,49 @@ namespace BlueSolAsoc
                 MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
-            
+
             return dr;
-            
+
         }
-    
-        
-    }       
+
+        private void classButonModifica1_Click(object sender, EventArgs e)
+        {
+            classButonInteriorSterge1.Hide();
+            btnAnuleaza.Show();
+            btnOK.Show();
+            foreach (var cl in splitContainer1.Panel1.Controls)
+            {
+                if (cl is ClassTextBox)
+                {
+                    ClassTextBox txtB = (ClassTextBox)cl;
+                    txtB.Enabled = true;
+                }
+                if (cl is ClassLabel)
+                {
+                    ClassLabel txtL = (ClassLabel)cl;
+                    txtL.Enabled = true;
+                }
+            }
+        }
+
+        private void btnAnuleaza_Click(object sender, EventArgs e)
+        {
+            classButonInteriorSterge1.Show();
+            btnAnuleaza.Hide();
+            btnOK.Hide();
+            foreach (var cl in splitContainer1.Panel1.Controls)
+            {
+                if (cl is ClassTextBox)
+                {
+                    ClassTextBox txtB = (ClassTextBox)cl;
+                    txtB.Enabled = false;
+                }
+                if (cl is ClassLabel)
+                {
+                    ClassLabel txtL = (ClassLabel)cl;
+                    txtL.Enabled = false;
+                }
+            }
+        }
+    }
 }

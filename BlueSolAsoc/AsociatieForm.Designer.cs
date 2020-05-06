@@ -50,8 +50,8 @@
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.classGroupBox1 = new BlueSolAsoc.butoane_si_controale.ClassGroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAnuleaza = new System.Windows.Forms.Button();
+            this.btnOK = new System.Windows.Forms.Button();
             this.classButonInteriorSterge1 = new BlueSolAsoc.butoane_si_controale.ClassButonInteriorSterge();
             this.classButonModifica1 = new BlueSolAsoc.butoane_si_controale.ClassButonModifica();
             this.TabSA.SuspendLayout();
@@ -122,13 +122,13 @@
             this.splitContainer1.Panel2.BackColor = System.Drawing.Color.Maroon;
             this.splitContainer1.Panel2.Controls.Add(this.dataGridViewAp);
             this.splitContainer1.Size = new System.Drawing.Size(988, 695);
-            this.splitContainer1.SplitterDistance = 328;
+            this.splitContainer1.SplitterDistance = 222;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 3;
             // 
             // classTextBox7
             // 
-            this.classTextBox7.Location = new System.Drawing.Point(79, 74);
+            this.classTextBox7.Location = new System.Drawing.Point(4, 74);
             this.classTextBox7.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.classTextBox7.Name = "classTextBox7";
             this.classTextBox7.Size = new System.Drawing.Size(204, 39);
@@ -138,7 +138,7 @@
             // classLabel8
             // 
             this.classLabel8.AutoSize = true;
-            this.classLabel8.Location = new System.Drawing.Point(74, 41);
+            this.classLabel8.Location = new System.Drawing.Point(-1, 41);
             this.classLabel8.Name = "classLabel8";
             this.classLabel8.Size = new System.Drawing.Size(144, 30);
             this.classLabel8.TabIndex = 13;
@@ -148,7 +148,7 @@
             // classLabel5
             // 
             this.classLabel5.AutoSize = true;
-            this.classLabel5.Location = new System.Drawing.Point(74, 374);
+            this.classLabel5.Location = new System.Drawing.Point(-1, 374);
             this.classLabel5.Name = "classLabel5";
             this.classLabel5.Size = new System.Drawing.Size(144, 30);
             this.classLabel5.TabIndex = 4;
@@ -157,27 +157,27 @@
             // 
             // classTextBox6
             // 
-            this.classTextBox6.Location = new System.Drawing.Point(79, 586);
+            this.classTextBox6.Location = new System.Drawing.Point(4, 586);
             this.classTextBox6.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.classTextBox6.Name = "classTextBox6";
             this.classTextBox6.Size = new System.Drawing.Size(204, 39);
             this.classTextBox6.TabIndex = 12;
-            this.classTextBox6.Tag = "5";
+            this.classTextBox6.Tag = "6";
             // 
             // classLabel7
             // 
             this.classLabel7.AutoSize = true;
-            this.classLabel7.Location = new System.Drawing.Point(74, 553);
+            this.classLabel7.Location = new System.Drawing.Point(-1, 553);
             this.classLabel7.Name = "classLabel7";
             this.classLabel7.Size = new System.Drawing.Size(144, 30);
             this.classLabel7.TabIndex = 6;
-            this.classLabel7.Tag = "5";
+            this.classLabel7.Tag = "6";
             this.classLabel7.Text = "classLabel7";
             // 
             // classLabel4
             // 
             this.classLabel4.AutoSize = true;
-            this.classLabel4.Location = new System.Drawing.Point(74, 286);
+            this.classLabel4.Location = new System.Drawing.Point(-1, 286);
             this.classLabel4.Name = "classLabel4";
             this.classLabel4.Size = new System.Drawing.Size(144, 30);
             this.classLabel4.TabIndex = 3;
@@ -187,7 +187,7 @@
             // classLabel6
             // 
             this.classLabel6.AutoSize = true;
-            this.classLabel6.Location = new System.Drawing.Point(74, 463);
+            this.classLabel6.Location = new System.Drawing.Point(-1, 463);
             this.classLabel6.Name = "classLabel6";
             this.classLabel6.Size = new System.Drawing.Size(144, 30);
             this.classLabel6.TabIndex = 5;
@@ -196,7 +196,7 @@
             // 
             // classTextBox4
             // 
-            this.classTextBox4.Location = new System.Drawing.Point(79, 407);
+            this.classTextBox4.Location = new System.Drawing.Point(4, 407);
             this.classTextBox4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.classTextBox4.Name = "classTextBox4";
             this.classTextBox4.Size = new System.Drawing.Size(204, 39);
@@ -205,7 +205,7 @@
             // 
             // classTextBox3
             // 
-            this.classTextBox3.Location = new System.Drawing.Point(79, 319);
+            this.classTextBox3.Location = new System.Drawing.Point(4, 319);
             this.classTextBox3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.classTextBox3.Name = "classTextBox3";
             this.classTextBox3.Size = new System.Drawing.Size(204, 39);
@@ -214,7 +214,7 @@
             // 
             // classTextBox5
             // 
-            this.classTextBox5.Location = new System.Drawing.Point(79, 496);
+            this.classTextBox5.Location = new System.Drawing.Point(4, 496);
             this.classTextBox5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.classTextBox5.Name = "classTextBox5";
             this.classTextBox5.Size = new System.Drawing.Size(204, 39);
@@ -224,7 +224,7 @@
             // classLabel3
             // 
             this.classLabel3.AutoSize = true;
-            this.classLabel3.Location = new System.Drawing.Point(74, 202);
+            this.classLabel3.Location = new System.Drawing.Point(-1, 202);
             this.classLabel3.Name = "classLabel3";
             this.classLabel3.Size = new System.Drawing.Size(144, 30);
             this.classLabel3.TabIndex = 2;
@@ -233,7 +233,7 @@
             // 
             // classTextBox2
             // 
-            this.classTextBox2.Location = new System.Drawing.Point(79, 235);
+            this.classTextBox2.Location = new System.Drawing.Point(4, 235);
             this.classTextBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.classTextBox2.Name = "classTextBox2";
             this.classTextBox2.Size = new System.Drawing.Size(204, 39);
@@ -243,7 +243,7 @@
             // classLabel2
             // 
             this.classLabel2.AutoSize = true;
-            this.classLabel2.Location = new System.Drawing.Point(74, 115);
+            this.classLabel2.Location = new System.Drawing.Point(-1, 115);
             this.classLabel2.Name = "classLabel2";
             this.classLabel2.Size = new System.Drawing.Size(144, 30);
             this.classLabel2.TabIndex = 1;
@@ -253,7 +253,7 @@
             // classLabel1
             // 
             this.classLabel1.AutoSize = true;
-            this.classLabel1.Location = new System.Drawing.Point(97, 0);
+            this.classLabel1.Location = new System.Drawing.Point(22, 0);
             this.classLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.classLabel1.Name = "classLabel1";
             this.classLabel1.Size = new System.Drawing.Size(144, 30);
@@ -263,7 +263,7 @@
             // 
             // classTextBox1
             // 
-            this.classTextBox1.Location = new System.Drawing.Point(79, 148);
+            this.classTextBox1.Location = new System.Drawing.Point(4, 148);
             this.classTextBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.classTextBox1.Name = "classTextBox1";
             this.classTextBox1.Size = new System.Drawing.Size(204, 39);
@@ -278,7 +278,7 @@
             this.dataGridViewAp.Name = "dataGridViewAp";
             this.dataGridViewAp.RowHeadersWidth = 51;
             this.dataGridViewAp.RowTemplate.Height = 24;
-            this.dataGridViewAp.Size = new System.Drawing.Size(655, 695);
+            this.dataGridViewAp.Size = new System.Drawing.Size(761, 695);
             this.dataGridViewAp.TabIndex = 0;
             // 
             // treeView1
@@ -305,64 +305,68 @@
             // 
             // classGroupBox1
             // 
-            this.classGroupBox1.Controls.Add(this.button2);
-            this.classGroupBox1.Controls.Add(this.button1);
+            this.classGroupBox1.Controls.Add(this.btnAnuleaza);
+            this.classGroupBox1.Controls.Add(this.btnOK);
             this.classGroupBox1.Controls.Add(this.classButonInteriorSterge1);
             this.classGroupBox1.Controls.Add(this.classButonModifica1);
             this.classGroupBox1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.classGroupBox1.Location = new System.Drawing.Point(1027, 0);
+            this.classGroupBox1.Location = new System.Drawing.Point(1054, 0);
             this.classGroupBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.classGroupBox1.Name = "classGroupBox1";
             this.classGroupBox1.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.classGroupBox1.Size = new System.Drawing.Size(185, 759);
+            this.classGroupBox1.Size = new System.Drawing.Size(158, 759);
             this.classGroupBox1.TabIndex = 4;
             this.classGroupBox1.TabStop = false;
             this.classGroupBox1.Text = "Controale";
             // 
-            // button2
+            // btnAnuleaza
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(23, 676);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(153, 71);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "ANULEAZA";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnAnuleaza.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAnuleaza.BackColor = System.Drawing.Color.Red;
+            this.btnAnuleaza.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAnuleaza.Location = new System.Drawing.Point(0, 569);
+            this.btnAnuleaza.Name = "btnAnuleaza";
+            this.btnAnuleaza.Size = new System.Drawing.Size(158, 180);
+            this.btnAnuleaza.TabIndex = 6;
+            this.btnAnuleaza.Text = "ANULEAZA";
+            this.btnAnuleaza.UseVisualStyleBackColor = false;
+            this.btnAnuleaza.Click += new System.EventHandler(this.btnAnuleaza_Click);
             // 
-            // button1
+            // btnOK
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(25, 599);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(153, 71);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "OK";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOK.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOK.Location = new System.Drawing.Point(0, 409);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(158, 163);
+            this.btnOK.TabIndex = 5;
+            this.btnOK.Text = "OK";
+            this.btnOK.UseVisualStyleBackColor = false;
             // 
             // classButonInteriorSterge1
             // 
             this.classButonInteriorSterge1.BackColor = System.Drawing.Color.Red;
             this.classButonInteriorSterge1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.classButonInteriorSterge1.Location = new System.Drawing.Point(20, 259);
+            this.classButonInteriorSterge1.Location = new System.Drawing.Point(0, 238);
             this.classButonInteriorSterge1.Name = "classButonInteriorSterge1";
-            this.classButonInteriorSterge1.Size = new System.Drawing.Size(153, 72);
+            this.classButonInteriorSterge1.Size = new System.Drawing.Size(158, 177);
             this.classButonInteriorSterge1.TabIndex = 4;
-            this.classButonInteriorSterge1.Text = "Sterge";
+            this.classButonInteriorSterge1.Text = "STERGE";
             this.classButonInteriorSterge1.UseVisualStyleBackColor = false;
             // 
             // classButonModifica1
             // 
             this.classButonModifica1.BackColor = System.Drawing.Color.Yellow;
             this.classButonModifica1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.classButonModifica1.Location = new System.Drawing.Point(20, 162);
+            this.classButonModifica1.Location = new System.Drawing.Point(0, 60);
             this.classButonModifica1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.classButonModifica1.Name = "classButonModifica1";
-            this.classButonModifica1.Size = new System.Drawing.Size(153, 69);
+            this.classButonModifica1.Size = new System.Drawing.Size(158, 181);
             this.classButonModifica1.TabIndex = 3;
-            this.classButonModifica1.Text = "Modifica";
+            this.classButonModifica1.Text = "MODIFICA";
             this.classButonModifica1.UseVisualStyleBackColor = false;
+            this.classButonModifica1.Click += new System.EventHandler(this.classButonModifica1_Click);
             // 
             // AsociatieForm
             // 
@@ -375,7 +379,6 @@
             this.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.Name = "AsociatieForm";
             this.Text = "AsociatieForm1";
-     
             this.TabSA.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -417,7 +420,7 @@
         private butoane_si_controale.ClassLabel classLabel8;
         private System.Windows.Forms.DataGridView dataGridViewAp;
         private butoane_si_controale.ClassButonInteriorSterge classButonInteriorSterge1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAnuleaza;
+        private System.Windows.Forms.Button btnOK;
     }
 }
