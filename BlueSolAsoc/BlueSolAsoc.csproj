@@ -105,6 +105,11 @@
     <Compile Include="CreareAsociatie.Designer.cs">
       <DependentUpon>CreareAsociatie.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataSetVenituriIncasari.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetVenituriIncasari.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DSProprietati asoctiatie.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -213,6 +218,17 @@
     <EmbeddedResource Include="SelectieAsociatie.resx">
       <DependentUpon>SelectieAsociatie.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="DataSetVenituriIncasari.xsc">
+      <DependentUpon>DataSetVenituriIncasari.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetVenituriIncasari.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetVenituriIncasari.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSetVenituriIncasari.xss">
+      <DependentUpon>DataSetVenituriIncasari.xsd</DependentUpon>
+    </None>
     <None Include="proba_transareDataSet.xsc">
       <DependentUpon>proba_transareDataSet.xsd</DependentUpon>
     </None>
@@ -246,6 +262,7 @@
     <None Include="DSProprietati asoctiatie.xss">
       <DependentUpon>DSProprietati asoctiatie.xsd</DependentUpon>
     </None>
+    <None Include="Properties\DataSources\BlueSolAsoc.butoane_si_controale.ClassDataSet.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -277,5 +294,6 @@
   <ItemGroup>
     <None Include="Resources\iconfinder_Artboard_26_3741736.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

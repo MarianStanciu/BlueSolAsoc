@@ -35,8 +35,9 @@ namespace BlueSolAsoc
             {
                 remembermeCheckBox.Checked = true;
                 utilizatorbox.Text = regCheckBox.GetValue("username").ToString();
-                parolabox.Text = regCheckBox.GetValue("password").ToString();
+                parolabox.Text = regCheckBox.GetValue("password").ToString();            
             }
+
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
@@ -77,7 +78,7 @@ namespace BlueSolAsoc
                 }
                 else
                 {
-                   // MessageBox.Show("Te-ai logat");
+                  
 
                     this.Hide();
                     var SelectieAsociatie = new SelectieAsociatie();
@@ -100,8 +101,6 @@ namespace BlueSolAsoc
 
         }
 
-
-
         private void butonsircon_Click(object sender, EventArgs e)
         {
             if (sirconbox.Visible == false)
@@ -120,6 +119,11 @@ namespace BlueSolAsoc
             keyConectare.SetValue("String_Conectare", sirconbox.Text);
             keyConectare.Close();
             Application.Restart();
+        }
+
+        private void remembermeCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+           
         }
     }
 }

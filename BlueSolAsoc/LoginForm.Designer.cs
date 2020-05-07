@@ -42,29 +42,32 @@
             // 
             this.utilizatorbox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.utilizatorbox.Font = new System.Drawing.Font("Mongolian Baiti", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.utilizatorbox.Location = new System.Drawing.Point(228, 166);
+            this.utilizatorbox.Location = new System.Drawing.Point(187, 126);
+            this.utilizatorbox.Margin = new System.Windows.Forms.Padding(2);
             this.utilizatorbox.Multiline = true;
             this.utilizatorbox.Name = "utilizatorbox";
-            this.utilizatorbox.Size = new System.Drawing.Size(693, 65);
+            this.utilizatorbox.Size = new System.Drawing.Size(568, 50);
             this.utilizatorbox.TabIndex = 0;
             // 
             // parolabox
             // 
             this.parolabox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.parolabox.Font = new System.Drawing.Font("Mongolian Baiti", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.parolabox.Location = new System.Drawing.Point(228, 285);
+            this.parolabox.Location = new System.Drawing.Point(187, 217);
+            this.parolabox.Margin = new System.Windows.Forms.Padding(2);
             this.parolabox.Multiline = true;
             this.parolabox.Name = "parolabox";
             this.parolabox.PasswordChar = '*';
-            this.parolabox.Size = new System.Drawing.Size(693, 65);
+            this.parolabox.Size = new System.Drawing.Size(568, 50);
             this.parolabox.TabIndex = 1;
             // 
             // Login
             // 
             this.Login.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Login.Location = new System.Drawing.Point(442, 418);
+            this.Login.Location = new System.Drawing.Point(362, 318);
+            this.Login.Margin = new System.Windows.Forms.Padding(2);
             this.Login.Name = "Login";
-            this.Login.Size = new System.Drawing.Size(223, 64);
+            this.Login.Size = new System.Drawing.Size(182, 49);
             this.Login.TabIndex = 2;
             this.Login.Text = "Login";
             this.Login.UseVisualStyleBackColor = true;
@@ -73,18 +76,20 @@
             // button2
             // 
             this.button2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button2.Location = new System.Drawing.Point(442, 515);
+            this.button2.Location = new System.Drawing.Point(362, 392);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(223, 64);
+            this.button2.Size = new System.Drawing.Size(182, 49);
             this.button2.TabIndex = 3;
             this.button2.Text = "Register";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // butonsircon
             // 
-            this.butonsircon.Location = new System.Drawing.Point(10, 27);
+            this.butonsircon.Location = new System.Drawing.Point(8, 21);
+            this.butonsircon.Margin = new System.Windows.Forms.Padding(2);
             this.butonsircon.Name = "butonsircon";
-            this.butonsircon.Size = new System.Drawing.Size(45, 26);
+            this.butonsircon.Size = new System.Drawing.Size(37, 20);
             this.butonsircon.TabIndex = 4;
             this.butonsircon.Text = "...";
             this.butonsircon.UseVisualStyleBackColor = true;
@@ -92,16 +97,18 @@
             // 
             // sirconbox
             // 
-            this.sirconbox.Location = new System.Drawing.Point(72, 27);
+            this.sirconbox.Location = new System.Drawing.Point(59, 21);
+            this.sirconbox.Margin = new System.Windows.Forms.Padding(2);
             this.sirconbox.Name = "sirconbox";
-            this.sirconbox.Size = new System.Drawing.Size(616, 31);
+            this.sirconbox.Size = new System.Drawing.Size(505, 26);
             this.sirconbox.TabIndex = 5;
             // 
             // button_sircon_ok
             // 
-            this.button_sircon_ok.Location = new System.Drawing.Point(714, 27);
+            this.button_sircon_ok.Location = new System.Drawing.Point(584, 21);
+            this.button_sircon_ok.Margin = new System.Windows.Forms.Padding(2);
             this.button_sircon_ok.Name = "button_sircon_ok";
-            this.button_sircon_ok.Size = new System.Drawing.Size(61, 35);
+            this.button_sircon_ok.Size = new System.Drawing.Size(50, 27);
             this.button_sircon_ok.TabIndex = 6;
             this.button_sircon_ok.Text = "OK";
             this.button_sircon_ok.UseVisualStyleBackColor = true;
@@ -109,19 +116,21 @@
             // 
             // remembermeCheckBox
             // 
+            this.remembermeCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.remembermeCheckBox.AutoSize = true;
-            this.remembermeCheckBox.Location = new System.Drawing.Point(490, 380);
+            this.remembermeCheckBox.Location = new System.Drawing.Point(399, 282);
             this.remembermeCheckBox.Name = "remembermeCheckBox";
-            this.remembermeCheckBox.Size = new System.Drawing.Size(177, 25);
+            this.remembermeCheckBox.Size = new System.Drawing.Size(92, 20);
             this.remembermeCheckBox.TabIndex = 7;
-            this.remembermeCheckBox.Text = "Retine conectarea";
+            this.remembermeCheckBox.Text = "Retine-ma";
             this.remembermeCheckBox.UseVisualStyleBackColor = true;
+            this.remembermeCheckBox.CheckedChanged += new System.EventHandler(this.remembermeCheckBox_CheckedChanged);
             // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1100, 591);
+            this.ClientSize = new System.Drawing.Size(900, 450);
             this.ControlBox = true;
             this.Controls.Add(this.remembermeCheckBox);
             this.Controls.Add(this.button_sircon_ok);
@@ -132,7 +141,7 @@
             this.Controls.Add(this.parolabox);
             this.Controls.Add(this.utilizatorbox);
             this.Location = new System.Drawing.Point(0, 0);
-            this.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
+            this.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.Name = "LoginForm";
             this.Text = "LoginForm";
             this.Load += new System.EventHandler(this.LoginForm_Load);
