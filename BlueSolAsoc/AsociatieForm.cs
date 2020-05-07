@@ -17,9 +17,9 @@ namespace BlueSolAsoc
         ClassDataSet asociatieFormDS = new ClassDataSet();
         private string denumireAsociatie;
         private int idAsociatie;
-        //public DataSet infoAsociatie;
-        //private DataSet infoBazaAsociatie;
-        //private DataSet valoriPredefiniteAsociatie;
+        public DataSet infoAsociatie;
+        private DataSet infoBazaAsociatie;
+        private DataSet valoriPredefiniteAsociatie;
 
         public AsociatieForm(string denumireAsociatie, int idAsociatie)
         {
@@ -241,61 +241,61 @@ namespace BlueSolAsoc
         //        return nr_returnat ;
         //}
         // crearea datasetului pentru id selectat in treeview
-        //private DataSet SelecteazaProprietatiNod( int id)
-        //{
-        //    string queryInformatii = "select * from vAfisareDetaliiEntitati where  id_master=" + id+ " and tip_afisare='edit' ";
-            
-        //    SqlConnection connection = ClassConexiuneServer.GetConnection();
-        //    SqlCommand command = new SqlCommand(queryInformatii, connection);
-        //   // SqlDataReader rdr = ClassConexiuneServer.sqlDataReader(queryInformatii);
-        //    SqlDataAdapter da= new SqlDataAdapter();
-        //    infoAsociatie = new DataSet();
-        //    da.SelectCommand = command;
-        //    da.Fill(infoAsociatie);
-        //    return infoAsociatie;
-        //}   
-        // metoda care selecteaza elementele din viewul afisare elemente pe baza legaturaEntitate
-       // private DataSet SelectieValoriEntitati(int id)
-       // {
-       //     string SQLselectie = "select * from vAfisareDetaliiEntitati where legaturaEntitati = 1 and tip_afisare = 'edit' and id_master =" + id;
-       //     SqlConnection connection = ClassConexiuneServer.GetConnection();
-       //     SqlCommand command = new SqlCommand(SQLselectie, connection);
-       //     SqlDataAdapter da = new SqlDataAdapter();
-       //     infoBazaAsociatie = new DataSet();
-       //     da.SelectCommand = command;
-       //     da.Fill(infoBazaAsociatie);
-          
-       //     //infoBazaAsociatie.Tables.Add()
-       //     return infoBazaAsociatie;
-       // }
-        
-       //private void InserareEntitatiValPredefinite(int a)
-       // {
-       //     string sqlInsert = " insert into Tabela_Organizatii (id_master, id_tip, valoare)  values(" + idAsociatie+","+ valoriPredefiniteAsociatie.Tables[0].Columns["id_tip"]+","+ valoriPredefiniteAsociatie.Tables[0].Columns["val_default"];
-       //     SqlConnection connection = ClassConexiuneServer.GetConnection();
-       //     if (ClassConexiuneServer.DeschideConexiunea() == false)
-       //     {
-       //         connection.Open();
-       //     }
-            
-       //    // SqlCommand command = new SqlCommand(sqlInsert, connection);
-       //     SqlDataAdapter da = new SqlDataAdapter();
-       //     da.InsertCommand = new SqlCommand(sqlInsert, connection);
-       //     da.InsertCommand.ExecuteNonQuery();
-       //     connection.Close();
-       // }
-       // private DataSet ElementePredefinite()
-       // {
-       // string selectie = "select id_tip, val_default from tabela_tipuri where id_master=1";
-       // SqlConnection connection = ClassConexiuneServer.GetConnection();
-       // SqlCommand command = new SqlCommand(selectie, connection);
-       // SqlDataAdapter da = new SqlDataAdapter();
-       // valoriPredefiniteAsociatie = new DataSet();
-       // da.SelectCommand = command;
-       //     da.Fill(valoriPredefiniteAsociatie);
-       //     return valoriPredefiniteAsociatie;
+        private DataSet SelecteazaProprietatiNod(int id)
+        {
+            string queryInformatii = "select * from vAfisareDetaliiEntitati where  id_master=" + id + " and tip_afisare='edit' ";
 
-       // }
-        
-    }       
+            SqlConnection connection = ClassConexiuneServer.GetConnection();
+            SqlCommand command = new SqlCommand(queryInformatii, connection);
+            // SqlDataReader rdr = ClassConexiuneServer.sqlDataReader(queryInformatii);
+            SqlDataAdapter da = new SqlDataAdapter();
+            infoAsociatie = new DataSet();
+            da.SelectCommand = command;
+            da.Fill(infoAsociatie);
+            return infoAsociatie;
+        }
+        // metoda care selecteaza elementele din viewul afisare elemente pe baza legaturaEntitate
+        // private DataSet SelectieValoriEntitati(int id)
+        // {
+        //     string SQLselectie = "select * from vAfisareDetaliiEntitati where legaturaEntitati = 1 and tip_afisare = 'edit' and id_master =" + id;
+        //     SqlConnection connection = ClassConexiuneServer.GetConnection();
+        //     SqlCommand command = new SqlCommand(SQLselectie, connection);
+        //     SqlDataAdapter da = new SqlDataAdapter();
+        //     infoBazaAsociatie = new DataSet();
+        //     da.SelectCommand = command;
+        //     da.Fill(infoBazaAsociatie);
+
+        //     //infoBazaAsociatie.Tables.Add()
+        //     return infoBazaAsociatie;
+        // }
+
+        //private void InserareEntitatiValPredefinite(int a)
+        // {
+        //     string sqlInsert = " insert into Tabela_Organizatii (id_master, id_tip, valoare)  values(" + idAsociatie+","+ valoriPredefiniteAsociatie.Tables[0].Columns["id_tip"]+","+ valoriPredefiniteAsociatie.Tables[0].Columns["val_default"];
+        //     SqlConnection connection = ClassConexiuneServer.GetConnection();
+        //     if (ClassConexiuneServer.DeschideConexiunea() == false)
+        //     {
+        //         connection.Open();
+        //     }
+
+        //    // SqlCommand command = new SqlCommand(sqlInsert, connection);
+        //     SqlDataAdapter da = new SqlDataAdapter();
+        //     da.InsertCommand = new SqlCommand(sqlInsert, connection);
+        //     da.InsertCommand.ExecuteNonQuery();
+        //     connection.Close();
+        // }
+        private DataSet ElementePredefinite()
+        {
+            string selectie = "select id_tip, val_default from tabela_tipuri where id_master=1";
+            SqlConnection connection = ClassConexiuneServer.GetConnection();
+            SqlCommand command = new SqlCommand(selectie, connection);
+            SqlDataAdapter da = new SqlDataAdapter();
+            valoriPredefiniteAsociatie = new DataSet();
+            da.SelectCommand = command;
+            da.Fill(valoriPredefiniteAsociatie);
+            return valoriPredefiniteAsociatie;
+
+        }
+
+    }
 }

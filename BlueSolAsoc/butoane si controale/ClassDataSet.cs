@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +17,9 @@ namespace BlueSolAsoc.butoane_si_controale
         public void getSetFrom(String sSQL, String sNumeTabel)
         {
             SqlConnection connection = ClassConexiuneServer.GetConnection();
-            connection.Open();
+       
+           
+            
 
             SqlCommand command = new SqlCommand(sSQL, connection);
             DataTable tabelLucru = new DataTable(sNumeTabel);
@@ -24,7 +28,7 @@ namespace BlueSolAsoc.butoane_si_controale
             da.Fill(tabelLucru);
             this.Tables.Add(tabelLucru);
 
-
+            
         }
        
 
@@ -35,8 +39,7 @@ namespace BlueSolAsoc.butoane_si_controale
         }
         //metoda pentru inserare
         public int Inserare(string sTabelLucru)
-        {
-
+        {          
             DataRow[] adaugate = this.Tables[sTabelLucru].Select(null, null, DataViewRowState.Added);
             DataColumnCollection dc = this.StructuraColoane(sTabelLucru);
             string inserare = "insert into " + sTabelLucru + " (";
@@ -63,12 +66,18 @@ namespace BlueSolAsoc.butoane_si_controale
                     string valoare = "";
                     switch (f.DataType.ToString())
 
-                    {
+                    {                    
                         case "System.String":
                             valoare = "'" + r[f.ColumnName].ToString() + "'";
                             break;
                         case "System.Int32":
                             valoare = r[f.ColumnName].ToString();
+                            break;
+                        case "System.DateTime":
+                            valoare = "'" + r[f.ColumnName].ToString() + "'";
+                            break;
+                        case "System.Decimal":
+                            valoare = ((System.Decimal)r[f.ColumnName]).ToString();
                             break;
                         default:
                             break;
@@ -94,7 +103,7 @@ namespace BlueSolAsoc.butoane_si_controale
             SqlConnection connection = ClassConexiuneServer.GetConnection();
             connection.Open();
             SqlCommand command = new SqlCommand(inserare, connection);
-            connection.Open();
+           
             command.ExecuteNonQuery();
             return adaugate.Length;
         }
@@ -109,7 +118,7 @@ namespace BlueSolAsoc.butoane_si_controale
             {
                 
                 for (int i = 1; i < dc.Count; i++)
-                {
+                {                 
                     actualizare = actualizare + dc[i].ColumnName + "=";
                   
                 
@@ -127,6 +136,12 @@ namespace BlueSolAsoc.butoane_si_controale
                                 valoare = "'" + r[f.ColumnName].ToString() + "'";
                                 break;
                             case "System.Int32":
+                                valoare = r[f.ColumnName].ToString();
+                                break;
+                            case "System.DateTime":
+                                valoare = "'" + r[f.ColumnName].ToString() + "'";
+                                break;
+                            case "System.Decimal":
                                 valoare = r[f.ColumnName].ToString();
                                 break;
                             default:

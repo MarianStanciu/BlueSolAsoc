@@ -29,6 +29,15 @@ namespace BlueSolAsoc
                 string SirConDinKey = "Data Source=ip\\sqlexpress,8833;Initial Catalog=baza_date;Persist Security Info=True;User ID=sa;Password=pro";
                 keyConectare.SetValue("String_Conectare", SirConDinKey);
             }
+            Registry.CurrentUser.CreateSubKey(@"SOFTWARE\BlueBit");
+            RegistryKey regCheckBox = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\BlueBit", true);
+            if (regCheckBox.GetValue("Checkbox") != null)
+            {
+                remembermeCheckBox.Checked = true;
+                utilizatorbox.Text = regCheckBox.GetValue("username").ToString();
+                parolabox.Text = regCheckBox.GetValue("password").ToString();            
+            }
+
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
@@ -69,7 +78,7 @@ namespace BlueSolAsoc
                 }
                 else
                 {
-                    MessageBox.Show("Te-ai logat");
+                  
 
                     this.Hide();
                     var SelectieAsociatie = new SelectieAsociatie();
@@ -81,6 +90,14 @@ namespace BlueSolAsoc
 
 
             keyConectare.Close();
+            if (remembermeCheckBox.Checked == true)
+            {
+                RegistryKey regCheckBox = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\BlueBit", true);
+                regCheckBox.SetValue("Checkbox", "Bifat");
+                regCheckBox.SetValue("username", utilizatorbox.Text);
+                regCheckBox.SetValue("password", parolabox.Text);
+                regCheckBox.Close();
+            }
 
         }
 
@@ -102,6 +119,11 @@ namespace BlueSolAsoc
             keyConectare.SetValue("String_Conectare", sirconbox.Text);
             keyConectare.Close();
             Application.Restart();
+        }
+
+        private void remembermeCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+           
         }
     }
 }
