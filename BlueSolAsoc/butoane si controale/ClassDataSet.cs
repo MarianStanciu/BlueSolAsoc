@@ -99,8 +99,9 @@ namespace BlueSolAsoc.butoane_si_controale
                     inserare = inserare + " ,(" + linie + " )";
                 }
             }
+            ClassConexiuneServer.DeschideConexiunea();
             SqlConnection connection = ClassConexiuneServer.GetConnection();
-            connection.Open();
+           
             SqlCommand command = new SqlCommand(inserare, connection);
            
             command.ExecuteNonQuery();

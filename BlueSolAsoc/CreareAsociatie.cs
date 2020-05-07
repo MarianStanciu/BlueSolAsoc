@@ -18,7 +18,7 @@ namespace BlueSolAsoc
         public CreareAsociatie()
         {
             InitializeComponent();
-            DataSetCreareAsoc.getSetFrom("select * from tabela_organizatii where 1<>1", "tabela_organizatii");
+            DataSetCreareAsoc.getSetFrom("select id_master,id_asociere,valoare from tabela_organizatii where 1<>1", "tabela_organizatii");
         }
 
         private void classButonInteriorAdsauSalveaza1_Click(object sender, EventArgs e)
@@ -74,26 +74,44 @@ namespace BlueSolAsoc
              var SelectieAsoc = new SelectieAsociatie();
              SelectieAsoc.Show();
              this.Close();*/
+            ClassConexiuneServer.DeschideConexiunea();
+            SqlConnection cnn = ClassConexiuneServer.GetConnection();
             DataTable tabela_organizatii = DataSetCreareAsoc.Tables["tabela_organizatii"];
             SqlCommand command;
             SqlDataAdapter adapter = new SqlDataAdapter();
 
-            string connetionString;
+           /* string connetionString;
             SqlConnection cnn;
             connetionString = @"Data Source=82.208.137.149\sqlexpress,8833;Initial Catalog=proba_transare;Persist Security Info=True;User ID=sa;Password=pro";
             cnn = new SqlConnection(connetionString);
-            cnn.Open();
+            cnn.Open();*/
             //dc[i].ColumnName
 
+            
+            tabela_organizatii.Rows.Add(0,1, DenumireCreareAsocBox.Text);
 
-            tabela_organizatii.Rows.Add(0, 1, DenumireCreareAsocBox.Text);
             DataSetCreareAsoc.Inserare("tabela_organizatii");
+            int id = ReturnareId();
+            tabela_organizatii.Rows.Add(id, 2, DenumireCreareAsocBox.Text);
+            DataSetCreareAsoc.Inserare("tabela_organizatii");
+           
 
-            cnn.Close();
+
             var SelectieAsoc = new SelectieAsociatie();
             SelectieAsoc.Show();
             this.Close();
 
+        }
+        public int ReturnareId()
+        {
+            ClassConexiuneServer.DeschideConexiunea();
+            SqlConnection cnn = ClassConexiuneServer.GetConnection();
+            SqlCommand command;
+            string query = "select id_org from dbo.tabela_organizatii where valoare='" + DenumireCreareAsocBox.Text + "'";
+            command = new SqlCommand(query, cnn);
+            var scalar = command.ExecuteScalar();
+            int id = (int)scalar;
+            return id;
         }
 
         private void ButonAnulareCreareAsoc_Click(object sender, EventArgs e)
