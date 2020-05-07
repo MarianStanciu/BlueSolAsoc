@@ -51,7 +51,7 @@ namespace BlueSolAsoc
         private void TreeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
             int nId = System.Convert.ToInt16(e.Node.Tag);
-
+            asociatieFormDS.ExecutaComenzi("exec mp_VerificaAtribute " + nId);
             AdRamura(e.Node.Nodes, nId);
             if (!(asociatieFormDS.Tables["vAfisareDetaliiEntitati"] is null))
             {
@@ -125,7 +125,12 @@ namespace BlueSolAsoc
                     splitContainer1.Panel1.Show();
                 }
             }
-
+            //if (!(asociatieFormDS.Tables["tabela_organizatii"] is null))
+            //{
+            //    asociatieFormDS.Tables.Remove("tabela_organizatii");
+            //}
+          
+            //asociatieFormDS.getSetFrom("select * from tabela_organizatii  where  id_master =" + nId+" and id_asociere=15", "tabela_organizatii");
             dataGridViewAp.DataSource = asociatieFormDS.Tables["vAfisareDetaliiEntitati"];
 
         }
@@ -193,6 +198,7 @@ namespace BlueSolAsoc
                 {
                     ClassTextBox txtB = (ClassTextBox)cl;
                     txtB.Enabled = true;
+                    
                 }
                 if (cl is ClassLabel)
                 {
@@ -212,13 +218,44 @@ namespace BlueSolAsoc
                 if (cl is ClassTextBox)
                 {
                     ClassTextBox txtB = (ClassTextBox)cl;
+                   //aici trebuie implementata refresh pentru textboxuri
+              
                     txtB.Enabled = false;
+          
                 }
-                if (cl is ClassLabel)
+                
+               
+            }
+        }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            DataTable dataTable = asociatieFormDS.Tables["vAfisareDetaliiEntitati"];
+            string sr = "";
+            for (int contor = 0;contor< dataTable.Rows.Count; contor++)
+            {
+               
+
+                foreach (var cl in splitContainer1.Panel1.Controls)
                 {
-                    ClassLabel txtL = (ClassLabel)cl;
-                    txtL.Enabled = false;
+                    
+                    if (cl is ClassTextBox)
+                    {
+
+
+                        ClassTextBox txtB = (ClassTextBox)cl;
+                        if (txtB.Tag.ToString() == contor.ToString())
+                        {
+                            txtB.Visible = true;
+                            string b = txtB.Text.ToString();
+                            sr = b;
+
+                        }
+                       
+                    }
+                    
                 }
+                dataTable.Rows[contor]["valoare"] = sr;
             }
         }
     }

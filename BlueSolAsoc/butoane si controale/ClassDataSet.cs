@@ -100,6 +100,15 @@ namespace BlueSolAsoc.butoane_si_controale
             return adaugate.Length;
         }
 
+        public int ExecutaComenzi (string sNumeProcedura)
+        {
+            ClassConexiuneServer.DeschideConexiunea();
+            SqlConnection connection = ClassConexiuneServer.GetConnection();
+            SqlCommand command = new SqlCommand(sNumeProcedura, connection);      
+            command.ExecuteNonQuery();
+            return 0;
+        }
+
         //metoda pentru actalizare 
         public int Actualizare(string sTabelLucru)
          {         
