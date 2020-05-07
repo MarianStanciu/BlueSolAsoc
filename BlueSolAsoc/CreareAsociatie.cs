@@ -93,6 +93,8 @@ namespace BlueSolAsoc
             DataSetCreareAsoc.Inserare("tabela_organizatii");
             int id = ReturnareId();
             tabela_organizatii.Rows.Add(id, 2, DenumireCreareAsocBox.Text);
+            //DataSetCreareAsoc.Tables["tabela_organizatii"].Rows[0].Delete();
+            tabela_organizatii.Rows[0].Delete();
             DataSetCreareAsoc.Inserare("tabela_organizatii");
            
 
