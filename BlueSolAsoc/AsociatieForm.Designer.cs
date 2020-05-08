@@ -58,6 +58,7 @@
             this.classButonInteriorSterge1 = new BlueSolAsoc.butoane_si_controale.ClassButonInteriorSterge();
             this.classButonModifica1 = new BlueSolAsoc.butoane_si_controale.ClassButonModifica();
             this.vAfisareDetaliiEntitatiTableAdapter = new BlueSolAsoc.asociatieFormDSTableAdapters.vAfisareDetaliiEntitatiTableAdapter();
+            this.val_label = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.denumireDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valoareDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TabSA.SuspendLayout();
@@ -283,6 +284,7 @@
             this.dataGridViewAp.AutoGenerateColumns = false;
             this.dataGridViewAp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewAp.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.val_label,
             this.denumireDataGridViewTextBoxColumn,
             this.valoareDataGridViewTextBoxColumn});
             this.dataGridViewAp.DataSource = this.vAfisareDetaliiEntitatiBindingSource;
@@ -396,6 +398,15 @@
             // 
             this.vAfisareDetaliiEntitatiTableAdapter.ClearBeforeFill = true;
             // 
+            // val_label
+            // 
+            this.val_label.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.val_label.DataPropertyName = "val_label";
+            this.val_label.HeaderText = "val_label";
+            this.val_label.MinimumWidth = 6;
+            this.val_label.Name = "val_label";
+            this.val_label.Width = 250;
+            // 
             // denumireDataGridViewTextBoxColumn
             // 
             this.denumireDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
@@ -474,6 +485,7 @@
         private asociatieFormDS asociatieFormDS1;
         private System.Windows.Forms.BindingSource vAfisareDetaliiEntitatiBindingSource;
         private asociatieFormDSTableAdapters.vAfisareDetaliiEntitatiTableAdapter vAfisareDetaliiEntitatiTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn val_label;
         private System.Windows.Forms.DataGridViewTextBoxColumn denumireDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn valoareDataGridViewTextBoxColumn;
     }

@@ -54,15 +54,14 @@ namespace BlueSolAsoc
             int nId = System.Convert.ToInt16(e.Node.Tag);
             asociatieFormDS.ExecutaComenzi("exec mp_VerificaAtribute " + nId);
             AdRamura(e.Node.Nodes, nId);
+            //verificam daca exista tabelul in dataset
             if (!(asociatieFormDS.Tables["vAfisareDetaliiEntitati"] is null))
             {
                 asociatieFormDS.Tables.Remove("vAfisareDetaliiEntitati");
             }
             asociatieFormDS.getSetFrom("select * from vAfisareDetaliiEntitati  where  id_master =" + nId + " and tip_afisare='edit'", "vAfisareDetaliiEntitati");
 
-            // DataRow referintaAsociere = (DataRow)asociatieFormDS.Tables["vAfisareDetaliiEntitati"].Row;
-
-
+         // ascundem toate controalele din splitpanel1  
             int contor = 0;
             foreach (var cl in splitContainer1.Panel1.Controls)
             {
@@ -79,13 +78,15 @@ namespace BlueSolAsoc
                 }
 
             }
-
+         // pentru fiecare rand din tabelul de lucru alocam un label si un text box cu acelasi nr pentru tag
             foreach (DataRow row in asociatieFormDS.Tables["vAfisareDetaliiEntitati"].Rows)
             {
                 foreach (var cl in splitContainer1.Panel1.Controls)
                 {
+                    // pentru label
                     if (cl is ClassLabel)
                     {
+                        // labelul care are tagul titlu primeste denumirea nodtreeului selectat
                         ClassLabel txtL = (ClassLabel)cl;
                         if (txtL.Tag.ToString() == "titlu")
                         {
@@ -98,6 +99,7 @@ namespace BlueSolAsoc
                             txtL.Text = row["val_label"].ToString();
                         }
                     }
+                    // pentru text box
                     if (cl is ClassTextBox)
                     {
                         ClassTextBox txtB = (ClassTextBox)cl;
@@ -112,39 +114,27 @@ namespace BlueSolAsoc
 
                 contor = contor + 1;
             }
-
-            //for (int i = 0; i < asociatieFormDS.Tables["vAfisareDetaliiEntitati"].Rows.Count; i++)
-            //{
-            //    int referintaAsociere = Convert.ToInt32(asociatieFormDS.Tables["vAfisareDetaliiEntitati"].Rows[i]["id_asociere"]);
-
+            
+         // verificam daca treenodul selectat este "Scara "
             string a = treeView1.SelectedNode.Text;
             string b = "Scara ";
-
+         //daca este selectata scara ascundem splitpannel1 si activam splitpannel2 cu gridview
                 if (b == a)
                 {
                     splitContainer1.Panel1.Hide();
                     splitContainer1.Panel2.Show();
                 }
+         // daca nu este selectata scara facem operatiunea inversa
                 else
                 {
                     splitContainer1.Panel2.Hide();
                     splitContainer1.Panel1.Show();
                 }
-            //}
-            if (!(asociatieFormDS.Tables["tabela_organizatii"] is null))
-            {
-                asociatieFormDS.Tables.Remove("tabela_organizatii");
-            }
-
-            //asociatieFormDS.getSetFrom("select * from tabela_organizatii  where  id_master =" + nId+" and id_asociere=15", "tabela_organizatii");
+                       
             dataGridViewAp.DataSource = asociatieFormDS.Tables["vAfisareDetaliiEntitati"];
 
         }
-        public DataColumnCollection StructuraColoane(string sTabelLucru)
-        {
-            DataColumnCollection coloane = this.asociatieFormDS.Tables[sTabelLucru].Columns;
-            return coloane;
-        }
+        
         // ADAUGA O RAMURA LA UN NOD
         private void AdRamura(TreeNodeCollection nodes, int nId)
         {
@@ -192,7 +182,7 @@ namespace BlueSolAsoc
             return dr;
 
         }
-
+        // actiune buton modifica
         private void classButonModifica1_Click(object sender, EventArgs e)
         {
             classButonInteriorSterge1.Hide();
@@ -213,7 +203,7 @@ namespace BlueSolAsoc
                 }
             }
         }
-
+        //actiune buton anuleaza
         private void btnAnuleaza_Click(object sender, EventArgs e)
         {
             classButonInteriorSterge1.Show();
@@ -233,7 +223,7 @@ namespace BlueSolAsoc
                
             }
         }
-
+        //actiune buton ok
         private void btnOK_Click(object sender, EventArgs e)
         {
             DataTable dataTable = asociatieFormDS.Tables["vAfisareDetaliiEntitati"];
