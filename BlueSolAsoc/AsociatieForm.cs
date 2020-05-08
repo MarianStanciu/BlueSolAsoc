@@ -256,6 +256,23 @@ namespace BlueSolAsoc
                     
                 }
                 dataTable.Rows[contor]["valoare"] = sr;
+                
+            }
+            classButonInteriorSterge1.Show();
+            btnAnuleaza.Hide();
+            btnOK.Hide();
+            foreach (var cl in splitContainer1.Panel1.Controls)
+            {
+                if (cl is ClassTextBox)
+                {
+                    ClassTextBox txtB = (ClassTextBox)cl;
+                    //aici trebuie implementata refresh pentru textboxuri
+
+                    txtB.Enabled = false;
+
+                }
+
+
             }
         }
     }
