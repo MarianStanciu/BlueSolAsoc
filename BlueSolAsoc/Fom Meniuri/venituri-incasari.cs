@@ -5,17 +5,18 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BlueSolAsoc.Fom_Meniuri
-{
+{   
     public partial class venituri_incasari : FormBluebit
 
     {
-        
+        ClassDataSet DataSetVenituriIncasari = new ClassDataSet();
         private string denumireAsociatie;
         private int idAsociatie;
         public venituri_incasari(string denumireAsociatie, int idAsociatie)
@@ -24,6 +25,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.denumireAsociatie = denumireAsociatie;
             this.idAsociatie = idAsociatie;
             string data = dateTimePicker1.Value.Date.ToString("yyyymmdd");
+            DataSetVenituriIncasari.getSetFrom("select * from vVenituriIncasari where 1<>1", "vVenituriIncasari");
             
             //Insert into dbo.tabela_antet (nr_doc,serie,data,id_partener) values ('1024','GL','20200318','1029')
 
@@ -32,6 +34,8 @@ namespace BlueSolAsoc.Fom_Meniuri
 
         private void venituri_incasari_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dataSetVenituriIncasari1.vVenituriIncasari' table. You can move, or remove it, as needed.
+            this.vVenituriIncasariTableAdapter.Fill(this.dataSetVenituriIncasari1.vVenituriIncasari);
             // TODO: This line of code loads data into the 'proba_transareDataSet1.tabela_pozitii' table. You can move, or remove it, as needed.
             this.tabela_pozitiiTableAdapter.Fill(this.proba_transareDataSet1.tabela_pozitii);
             // TODO: This line of code loads data into the 'proba_transareDataSet1.tabela_antet' table. You can move, or remove it, as needed.
@@ -43,22 +47,23 @@ namespace BlueSolAsoc.Fom_Meniuri
             ClassConexiuneServer.DeschideConexiunea();
 
             //string sql = "Select * from dbo.tabela_organizatii";
+            // AUTOCOMPLETE DE REFACUT!!!!
             SqlCommand sqlcommand = new SqlCommand("dbo.AutoCompletePersoaneFunctional", cnn);
             sqlcommand.CommandType = CommandType.StoredProcedure;
             sqlcommand.Parameters.AddWithValue("@id_asoc", idAsociatie);
-             //SqlCommand sqlcommand = new SqlCommand(sql, cnn);
+            //SqlCommand sqlcommand = new SqlCommand(sql, cnn);
 
             SqlDataReader sdr = sqlcommand.ExecuteReader();
             AutoCompleteStringCollection autoComplete = new AutoCompleteStringCollection();
             while (sdr.Read())
             {
                 autoComplete.Add(sdr.GetString(0));
-                
+
             }
             textBoxApartamente.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             textBoxApartamente.AutoCompleteSource = AutoCompleteSource.CustomSource;
             textBoxApartamente.AutoCompleteCustomSource = autoComplete;
-            
+
             cnn.Close();
         }
 
@@ -95,13 +100,40 @@ namespace BlueSolAsoc.Fom_Meniuri
              command2.ExecuteNonQuery();
              MessageBox.Show("Ai inserat");
              cnn.Close();*/
-            tabelaantetBindingSource.EndEdit();
-            tabela_antetTableAdapter.Update(this.proba_transareDataSet1.tabela_antet);
+            /*tabelaantetBindingSource.EndEdit();
+            tabela_antetTableAdapter.Update(this.proba_transareDataSet1.tabela_antet);*/
+            DataTable TabelaVenituriIncasari = DataSetVenituriIncasari.Tables["vVenituriIncasari"];
+            NumberFormatInfo nfi = new NumberFormatInfo();
+            nfi.NumberDecimalSeparator = ".";
+            string data = dateTimePicker1.Value.Date.ToString("dd/MM/yyy");
+            string[] StringInfo = textBoxApartamente.Text.Split('/');
+            string idProprietar = StringInfo[4].ToString().TrimStart();            
+            int id_antet = 0; // de preluat
+            int id_pozitie = 0; // de preluat
+            string NR_DOC = TextBoxNrDoc.Text;
+            string SERIE = TextBoxSerieDoc.Text;
+            int id_tip = 0;
+            string pret = TextBoxPret.Text.ToString(nfi); // Caseta Pret
+            Decimal cantitate = (Decimal)(Convert.ToDecimal(TextBoxCantitate.Text));
+            string cota_tva = TextBoxCotaTVA.Text;
+            Decimal suma = Convert.ToDecimal(TextBoxSuma.Text);
+
+
+            TabelaVenituriIncasari.Rows.Add(id_antet,NR_DOC,SERIE,data,idProprietar,id_pozitie,id_antet,id_tip,Convert.ToDecimal(pret),cantitate,cota_tva,suma);
+            DataSetVenituriIncasari.Inserare("vVenituriIncasari");
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+            // in tabela antet la col nr_doc se insereaza valoarea din text box-ul din ecran
+            //string nr_doc=TextBoxNrDoc.Text
+            //tabel adauga.rand = ...param anterior
+            //string serie = TextBoxSerie.Text
+            // 
             
+
+           // DataSetVenituriIncasari.Inserare("vVenituriIncasari");
         }
     }
 }
