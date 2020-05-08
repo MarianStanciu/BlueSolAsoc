@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -111,10 +112,15 @@ namespace BlueSolAsoc
 
                 contor = contor + 1;
             }
-            for (int i = 0; i < asociatieFormDS.Tables["vAfisareDetaliiEntitati"].Rows.Count; i++)
-            {
-                int referintaAsociere = Convert.ToInt32(asociatieFormDS.Tables["vAfisareDetaliiEntitati"].Rows[i]["id_asociere"]);
-                if (referintaAsociere == 12)
+
+            //for (int i = 0; i < asociatieFormDS.Tables["vAfisareDetaliiEntitati"].Rows.Count; i++)
+            //{
+            //    int referintaAsociere = Convert.ToInt32(asociatieFormDS.Tables["vAfisareDetaliiEntitati"].Rows[i]["id_asociere"]);
+
+            string a = treeView1.SelectedNode.Text;
+            string b = "Scara ";
+
+                if (b == a)
                 {
                     splitContainer1.Panel1.Hide();
                     splitContainer1.Panel2.Show();
@@ -124,12 +130,12 @@ namespace BlueSolAsoc
                     splitContainer1.Panel2.Hide();
                     splitContainer1.Panel1.Show();
                 }
-            }
-            //if (!(asociatieFormDS.Tables["tabela_organizatii"] is null))
-            //{
-            //    asociatieFormDS.Tables.Remove("tabela_organizatii");
             //}
-          
+            if (!(asociatieFormDS.Tables["tabela_organizatii"] is null))
+            {
+                asociatieFormDS.Tables.Remove("tabela_organizatii");
+            }
+
             //asociatieFormDS.getSetFrom("select * from tabela_organizatii  where  id_master =" + nId+" and id_asociere=15", "tabela_organizatii");
             dataGridViewAp.DataSource = asociatieFormDS.Tables["vAfisareDetaliiEntitati"];
 
@@ -274,6 +280,13 @@ namespace BlueSolAsoc
 
 
             }
+        }
+
+        private void AsociatieForm_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'asociatieFormDS1.vAfisareDetaliiEntitati' table. You can move, or remove it, as needed.
+            this.vAfisareDetaliiEntitatiTableAdapter.Fill(this.asociatieFormDS1.vAfisareDetaliiEntitati);
+
         }
     }
 }

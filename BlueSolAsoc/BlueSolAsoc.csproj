@@ -68,6 +68,11 @@
     <Compile Include="AsociatieForm.Designer.cs">
       <DependentUpon>AsociatieForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="asociatieFormDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>asociatieFormDS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="butoane si controale\ClassButon.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -218,6 +223,17 @@
     <EmbeddedResource Include="SelectieAsociatie.resx">
       <DependentUpon>SelectieAsociatie.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="asociatieFormDS.xsc">
+      <DependentUpon>asociatieFormDS.xsd</DependentUpon>
+    </None>
+    <None Include="asociatieFormDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>asociatieFormDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="asociatieFormDS.xss">
+      <DependentUpon>asociatieFormDS.xsd</DependentUpon>
+    </None>
     <None Include="DataSetVenituriIncasari.xsc">
       <DependentUpon>DataSetVenituriIncasari.xsd</DependentUpon>
     </None>

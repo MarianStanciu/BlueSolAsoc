@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.TabSA = new BlueSolAsoc.butoane_si_controale.ClassTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -47,6 +48,8 @@
             this.classLabel1 = new BlueSolAsoc.butoane_si_controale.ClassLabel();
             this.classTextBox1 = new BlueSolAsoc.butoane_si_controale.ClassTextBox();
             this.dataGridViewAp = new System.Windows.Forms.DataGridView();
+            this.vAfisareDetaliiEntitatiBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.asociatieFormDS1 = new BlueSolAsoc.asociatieFormDS();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.classGroupBox1 = new BlueSolAsoc.butoane_si_controale.ClassGroupBox();
@@ -54,6 +57,9 @@
             this.btnOK = new System.Windows.Forms.Button();
             this.classButonInteriorSterge1 = new BlueSolAsoc.butoane_si_controale.ClassButonInteriorSterge();
             this.classButonModifica1 = new BlueSolAsoc.butoane_si_controale.ClassButonModifica();
+            this.vAfisareDetaliiEntitatiTableAdapter = new BlueSolAsoc.asociatieFormDSTableAdapters.vAfisareDetaliiEntitatiTableAdapter();
+            this.denumireDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valoareDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TabSA.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -61,6 +67,8 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vAfisareDetaliiEntitatiBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.asociatieFormDS1)).BeginInit();
             this.classGroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -272,7 +280,12 @@
             // 
             // dataGridViewAp
             // 
+            this.dataGridViewAp.AutoGenerateColumns = false;
             this.dataGridViewAp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewAp.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.denumireDataGridViewTextBoxColumn,
+            this.valoareDataGridViewTextBoxColumn});
+            this.dataGridViewAp.DataSource = this.vAfisareDetaliiEntitatiBindingSource;
             this.dataGridViewAp.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewAp.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewAp.Name = "dataGridViewAp";
@@ -280,6 +293,16 @@
             this.dataGridViewAp.RowTemplate.Height = 24;
             this.dataGridViewAp.Size = new System.Drawing.Size(761, 695);
             this.dataGridViewAp.TabIndex = 0;
+            // 
+            // vAfisareDetaliiEntitatiBindingSource
+            // 
+            this.vAfisareDetaliiEntitatiBindingSource.DataMember = "vAfisareDetaliiEntitati";
+            this.vAfisareDetaliiEntitatiBindingSource.DataSource = this.asociatieFormDS1;
+            // 
+            // asociatieFormDS1
+            // 
+            this.asociatieFormDS1.DataSetName = "asociatieFormDS";
+            this.asociatieFormDS1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // treeView1
             // 
@@ -369,6 +392,28 @@
             this.classButonModifica1.UseVisualStyleBackColor = false;
             this.classButonModifica1.Click += new System.EventHandler(this.classButonModifica1_Click);
             // 
+            // vAfisareDetaliiEntitatiTableAdapter
+            // 
+            this.vAfisareDetaliiEntitatiTableAdapter.ClearBeforeFill = true;
+            // 
+            // denumireDataGridViewTextBoxColumn
+            // 
+            this.denumireDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.denumireDataGridViewTextBoxColumn.DataPropertyName = "denumire";
+            this.denumireDataGridViewTextBoxColumn.HeaderText = "denumire";
+            this.denumireDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.denumireDataGridViewTextBoxColumn.Name = "denumireDataGridViewTextBoxColumn";
+            this.denumireDataGridViewTextBoxColumn.Width = 250;
+            // 
+            // valoareDataGridViewTextBoxColumn
+            // 
+            this.valoareDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.valoareDataGridViewTextBoxColumn.DataPropertyName = "valoare";
+            this.valoareDataGridViewTextBoxColumn.HeaderText = "valoare";
+            this.valoareDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.valoareDataGridViewTextBoxColumn.Name = "valoareDataGridViewTextBoxColumn";
+            this.valoareDataGridViewTextBoxColumn.Width = 250;
+            // 
             // AsociatieForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
@@ -380,6 +425,7 @@
             this.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.Name = "AsociatieForm";
             this.Text = "AsociatieForm1";
+            this.Load += new System.EventHandler(this.AsociatieForm_Load);
             this.TabSA.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -388,6 +434,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vAfisareDetaliiEntitatiBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.asociatieFormDS1)).EndInit();
             this.classGroupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -423,5 +471,10 @@
         private butoane_si_controale.ClassButonInteriorSterge classButonInteriorSterge1;
         private System.Windows.Forms.Button btnAnuleaza;
         private System.Windows.Forms.Button btnOK;
+        private asociatieFormDS asociatieFormDS1;
+        private System.Windows.Forms.BindingSource vAfisareDetaliiEntitatiBindingSource;
+        private asociatieFormDSTableAdapters.vAfisareDetaliiEntitatiTableAdapter vAfisareDetaliiEntitatiTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn denumireDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valoareDataGridViewTextBoxColumn;
     }
 }
