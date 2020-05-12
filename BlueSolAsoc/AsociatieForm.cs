@@ -55,11 +55,11 @@ namespace BlueSolAsoc
             asociatieFormDS.ExecutaComenzi("exec mp_VerificaAtribute " + nId);
             AdRamura(e.Node.Nodes, nId);
             //verificam daca exista tabelul in dataset
-            if (!(asociatieFormDS.Tables["vAfisareDetaliiEntitati"] is null))
+            if (!(asociatieFormDS.Tables["mv_detaliiOrganizatie"] is null))
             {
-                asociatieFormDS.Tables.Remove("vAfisareDetaliiEntitati");
+                asociatieFormDS.Tables.Remove("mv_detaliiOrganizatie");
             }
-            asociatieFormDS.getSetFrom("select * from vAfisareDetaliiEntitati  where  id_master =" + nId + " and tip_afisare='edit'", "vAfisareDetaliiEntitati");
+            asociatieFormDS.getSetFrom("select * from mv_detaliiOrganizatie  where  org_id_master =" + nId + " and aso_tip_afisare='edit'", "mv_detaliiOrganizatie");
 
          // ascundem toate controalele din splitpanel1  
             int contor = 0;
@@ -79,7 +79,7 @@ namespace BlueSolAsoc
 
             }
          // pentru fiecare rand din tabelul de lucru alocam un label si un text box cu acelasi nr pentru tag
-            foreach (DataRow row in asociatieFormDS.Tables["vAfisareDetaliiEntitati"].Rows)
+            foreach (DataRow row in asociatieFormDS.Tables["mv_detaliiOrganizatie"].Rows)
             {
                 foreach (var cl in splitContainer1.Panel1.Controls)
                 {
@@ -96,7 +96,7 @@ namespace BlueSolAsoc
                         if (txtL.Tag.ToString() == contor.ToString())
                         {
                             txtL.Visible = true;
-                            txtL.Text = row["val_label"].ToString();
+                            txtL.Text = row["aso_val_label"].ToString();
                         }
                     }
                     // pentru text box
@@ -107,7 +107,7 @@ namespace BlueSolAsoc
                         {
                             txtB.Visible = true;
                             txtB.Enabled = false;
-                            txtB.Text = row["valoare"].ToString();
+                            txtB.Text = row["org_valoare"].ToString();
                         }
                     }
                 }
@@ -131,7 +131,7 @@ namespace BlueSolAsoc
                     splitContainer1.Panel1.Show();
                 }
                        
-            dataGridViewAp.DataSource = asociatieFormDS.Tables["vAfisareDetaliiEntitati"];
+            dataGridViewAp.DataSource = asociatieFormDS.Tables["mv_detaliiOrganizatie"];
 
         }
         
@@ -148,9 +148,9 @@ namespace BlueSolAsoc
                 SqlDataReader dr = SqlQueryNoduri(nId);
                 while (dr.Read())
                 {
-                    TreeNode node = new TreeNode(dr["valoare"].ToString());
+                    TreeNode node = new TreeNode(dr["org_valoare"].ToString());
                     // SALVEZ VALOAREA ID-ULUI IN PROPRIETATEA TAG A NODULUI PENTRU A PUTEA APELA MAI DEPARTE QUERY PENTRU NODURILE ACESTEI RAMURI
-                    node.Tag = dr["id_org"];
+                    node.Tag = dr["org_id_org"];
                     nodes.Add(node);
                 }
                 dr.Close();
@@ -168,7 +168,7 @@ namespace BlueSolAsoc
             SqlConnection connection = ClassConexiuneServer.GetConnection();
             connection.Open();
 
-            SqlCommand cmd = new SqlCommand("select * from vAsocTree where id_master=" + nIdMaster, connection);
+            SqlCommand cmd = new SqlCommand("select * from mv_detaliiOrganizatie where org_id_master=" + nIdMaster + " and aso_tip_afisare='tree'", connection);
             try
             {
                 dr = cmd.ExecuteReader();
@@ -226,7 +226,7 @@ namespace BlueSolAsoc
         //actiune buton ok
         private void btnOK_Click(object sender, EventArgs e)
         {
-            DataTable dataTable = asociatieFormDS.Tables["vAfisareDetaliiEntitati"];
+            DataTable dataTable = asociatieFormDS.Tables["mv_detaliiOrganizatie"];
             string sr = "";
             for (int contor = 0;contor< dataTable.Rows.Count; contor++)
             {
@@ -251,7 +251,7 @@ namespace BlueSolAsoc
                     }
                     
                 }
-                dataTable.Rows[contor]["valoare"] = sr;
+                dataTable.Rows[contor]["org_valoare"] = sr;
                 
             }
             classButonInteriorSterge1.Show();
@@ -270,12 +270,16 @@ namespace BlueSolAsoc
 
 
             }
+            asociatieFormDS.Actualizare("mv_detaliiOrganizatie");
         }
 
         private void AsociatieForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'asociatieFormDS1.mv_detaliiOrganizatie' table. You can move, or remove it, as needed.
+            this.mv_detaliiOrganizatieTableAdapter.Fill(this.asociatieFormDS1.mv_detaliiOrganizatie);
             // TODO: This line of code loads data into the 'asociatieFormDS1.vAfisareDetaliiEntitati' table. You can move, or remove it, as needed.
-            this.vAfisareDetaliiEntitatiTableAdapter.Fill(this.asociatieFormDS1.vAfisareDetaliiEntitati);
+
+            // this.vAfisareDetaliiEntitatiTableAdapter.Fill(this.asociatieFormDS1.vAfisareDetaliiEntitati);
 
         }
     }

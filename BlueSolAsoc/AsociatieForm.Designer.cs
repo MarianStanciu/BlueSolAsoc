@@ -48,19 +48,20 @@
             this.classLabel1 = new BlueSolAsoc.butoane_si_controale.ClassLabel();
             this.classTextBox1 = new BlueSolAsoc.butoane_si_controale.ClassTextBox();
             this.dataGridViewAp = new System.Windows.Forms.DataGridView();
-            this.vAfisareDetaliiEntitatiBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.mvdetaliiOrganizatieBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.asociatieFormDS1 = new BlueSolAsoc.asociatieFormDS();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+   
+
             this.classGroupBox1 = new BlueSolAsoc.butoane_si_controale.ClassGroupBox();
             this.btnAnuleaza = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
             this.classButonInteriorSterge1 = new BlueSolAsoc.butoane_si_controale.ClassButonInteriorSterge();
             this.classButonModifica1 = new BlueSolAsoc.butoane_si_controale.ClassButonModifica();
-            this.vAfisareDetaliiEntitatiTableAdapter = new BlueSolAsoc.asociatieFormDSTableAdapters.vAfisareDetaliiEntitatiTableAdapter();
-            this.val_label = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.denumireDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valoareDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mv_detaliiOrganizatieTableAdapter = new BlueSolAsoc.asociatieFormDSTableAdapters.mv_detaliiOrganizatieTableAdapter();
+            this.asovallabelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.org_valoare = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TabSA.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -68,8 +69,10 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAp)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vAfisareDetaliiEntitatiBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mvdetaliiOrganizatieBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.asociatieFormDS1)).BeginInit();
+
+
             this.classGroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -284,10 +287,9 @@
             this.dataGridViewAp.AutoGenerateColumns = false;
             this.dataGridViewAp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewAp.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.val_label,
-            this.denumireDataGridViewTextBoxColumn,
-            this.valoareDataGridViewTextBoxColumn});
-            this.dataGridViewAp.DataSource = this.vAfisareDetaliiEntitatiBindingSource;
+            this.asovallabelDataGridViewTextBoxColumn,
+            this.org_valoare});
+            this.dataGridViewAp.DataSource = this.mvdetaliiOrganizatieBindingSource;
             this.dataGridViewAp.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewAp.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewAp.Name = "dataGridViewAp";
@@ -296,10 +298,10 @@
             this.dataGridViewAp.Size = new System.Drawing.Size(761, 695);
             this.dataGridViewAp.TabIndex = 0;
             // 
-            // vAfisareDetaliiEntitatiBindingSource
+            // mvdetaliiOrganizatieBindingSource
             // 
-            this.vAfisareDetaliiEntitatiBindingSource.DataMember = "vAfisareDetaliiEntitati";
-            this.vAfisareDetaliiEntitatiBindingSource.DataSource = this.asociatieFormDS1;
+            this.mvdetaliiOrganizatieBindingSource.DataMember = "mv_detaliiOrganizatie";
+            this.mvdetaliiOrganizatieBindingSource.DataSource = this.asociatieFormDS1;
             // 
             // asociatieFormDS1
             // 
@@ -327,6 +329,11 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Structura Cheltuieli";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+   
+            // 
+       
+
             // 
             // classGroupBox1
             // 
@@ -394,36 +401,27 @@
             this.classButonModifica1.UseVisualStyleBackColor = false;
             this.classButonModifica1.Click += new System.EventHandler(this.classButonModifica1_Click);
             // 
-            // vAfisareDetaliiEntitatiTableAdapter
+            // mv_detaliiOrganizatieTableAdapter
             // 
-            this.vAfisareDetaliiEntitatiTableAdapter.ClearBeforeFill = true;
+            this.mv_detaliiOrganizatieTableAdapter.ClearBeforeFill = true;
             // 
-            // val_label
+            // asovallabelDataGridViewTextBoxColumn
             // 
-            this.val_label.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.val_label.DataPropertyName = "val_label";
-            this.val_label.HeaderText = "val_label";
-            this.val_label.MinimumWidth = 6;
-            this.val_label.Name = "val_label";
-            this.val_label.Width = 250;
+            this.asovallabelDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.asovallabelDataGridViewTextBoxColumn.DataPropertyName = "aso_val_label";
+            this.asovallabelDataGridViewTextBoxColumn.HeaderText = "Entitate";
+            this.asovallabelDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.asovallabelDataGridViewTextBoxColumn.Name = "asovallabelDataGridViewTextBoxColumn";
+            this.asovallabelDataGridViewTextBoxColumn.Width = 300;
             // 
-            // denumireDataGridViewTextBoxColumn
+            // org_valoare
             // 
-            this.denumireDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.denumireDataGridViewTextBoxColumn.DataPropertyName = "denumire";
-            this.denumireDataGridViewTextBoxColumn.HeaderText = "denumire";
-            this.denumireDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.denumireDataGridViewTextBoxColumn.Name = "denumireDataGridViewTextBoxColumn";
-            this.denumireDataGridViewTextBoxColumn.Width = 250;
-            // 
-            // valoareDataGridViewTextBoxColumn
-            // 
-            this.valoareDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.valoareDataGridViewTextBoxColumn.DataPropertyName = "valoare";
-            this.valoareDataGridViewTextBoxColumn.HeaderText = "valoare";
-            this.valoareDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.valoareDataGridViewTextBoxColumn.Name = "valoareDataGridViewTextBoxColumn";
-            this.valoareDataGridViewTextBoxColumn.Width = 250;
+            this.org_valoare.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.org_valoare.DataPropertyName = "org_valoare";
+            this.org_valoare.HeaderText = "Nume";
+            this.org_valoare.MinimumWidth = 6;
+            this.org_valoare.Name = "org_valoare";
+            this.org_valoare.Width = 200;
             // 
             // AsociatieForm
             // 
@@ -445,8 +443,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAp)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vAfisareDetaliiEntitatiBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mvdetaliiOrganizatieBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.asociatieFormDS1)).EndInit();
+    
+
             this.classGroupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -483,10 +483,11 @@
         private System.Windows.Forms.Button btnAnuleaza;
         private System.Windows.Forms.Button btnOK;
         private asociatieFormDS asociatieFormDS1;
-        private System.Windows.Forms.BindingSource vAfisareDetaliiEntitatiBindingSource;
-        private asociatieFormDSTableAdapters.vAfisareDetaliiEntitatiTableAdapter vAfisareDetaliiEntitatiTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn val_label;
-        private System.Windows.Forms.DataGridViewTextBoxColumn denumireDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valoareDataGridViewTextBoxColumn;
+   
+
+        private System.Windows.Forms.BindingSource mvdetaliiOrganizatieBindingSource;
+        private asociatieFormDSTableAdapters.mv_detaliiOrganizatieTableAdapter mv_detaliiOrganizatieTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn asovallabelDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn org_valoare;
     }
 }

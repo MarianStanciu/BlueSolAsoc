@@ -175,17 +175,16 @@ namespace BlueSolAsoc.butoane_si_controale
                         }
 
                     }
-                actualizare = actualizare + " where id=" + modificate[k][dc[0].ColumnName].ToString();
+                actualizare = actualizare + " where org_id_org=" + modificate[k][dc[0].ColumnName].ToString();
                 if (k < modificate.Length-1)
                 {
                     actualizare = actualizare + " Update  " + sTabelLucru + " set ";
                 }
 
             }
-            SqlConnection connection = ClassConexiuneServer.GetConnection();
-            connection.Open();
-            SqlCommand command = new SqlCommand(actualizare, connection);
-            connection.Open();
+            ClassConexiuneServer.DeschideConexiunea();
+            SqlConnection connection = ClassConexiuneServer.GetConnection();        
+            SqlCommand command = new SqlCommand(actualizare, connection);       
             command.ExecuteNonQuery();
             return actualizare.Length;
           
@@ -208,8 +207,8 @@ namespace BlueSolAsoc.butoane_si_controale
                     stergere = stergere + " delete  from " + sTabelLucru + " where ";
                 }
             }
+            ClassConexiuneServer.DeschideConexiunea();
             SqlConnection connection = ClassConexiuneServer.GetConnection();
-            connection.Open();
             SqlCommand command = new SqlCommand(stergere, connection);
             connection.Open();
             command.ExecuteNonQuery();
