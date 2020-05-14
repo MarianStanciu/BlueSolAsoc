@@ -10,6 +10,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace BlueSolAsoc
 {
@@ -38,6 +39,10 @@ namespace BlueSolAsoc
             }
             btnOK.Hide();
             btnAnuleaza.Hide();
+            if (splitContainer1.Panel1.Focused)
+            {
+                MessageBox.Show("eeeee !");
+            }
         }
 
         public void AdaugaRadacinaParinteTreeView()
@@ -48,20 +53,31 @@ namespace BlueSolAsoc
         }
 
         //implementare afterselect din tree view care preia id elementului si apelarea metodei care returneaza datasetul cu info despre id
-
-        private void TreeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        private void PentruTreeview1AfterSelect(TreeNode Node)
         {
-            int nId = System.Convert.ToInt16(e.Node.Tag);
+            int nId = System.Convert.ToInt16(Node.Tag);
             asociatieFormDS.ExecutaComenzi("exec mp_VerificaAtribute " + nId);
-            AdRamura(e.Node.Nodes, nId);
+            AdRamura(Node.Nodes, nId);
+
+
             //verificam daca exista tabelul in dataset
             if (!(asociatieFormDS.Tables["mv_detaliiOrganizatie"] is null))
             {
                 asociatieFormDS.Tables.Remove("mv_detaliiOrganizatie");
             }
+
+            // adaugare tabela in dataset pt afisarea elementelor din panel1
             asociatieFormDS.getSetFrom("select * from mv_detaliiOrganizatie  where  org_id_master =" + nId + " and aso_tip_afisare='edit'", "mv_detaliiOrganizatie");
 
-         // ascundem toate controalele din splitpanel1  
+            //adaugare tabela in dataset pentru apartamente
+            if (!(asociatieFormDS.Tables["mv_detaliiOrganizatieApartament"] is null))
+            {
+                asociatieFormDS.Tables.Remove("mv_detaliiOrganizatieApartament");
+            }
+            asociatieFormDS.getSetFrom("select * from mv_detaliiOrganizatie  where  org_id_master =" + nId + "  and aso_id_tip=4", "mv_detaliiOrganizatieApartament");
+
+
+            // ascundem toate controalele din splitpanel1  
             int contor = 0;
             foreach (var cl in splitContainer1.Panel1.Controls)
             {
@@ -69,16 +85,14 @@ namespace BlueSolAsoc
                 {
                     ClassLabel txtL = (ClassLabel)cl;
                     txtL.Visible = false;
-
                 }
                 if (cl is ClassTextBox)
                 {
                     ClassTextBox txtB = (ClassTextBox)cl;
                     txtB.Visible = false;
                 }
-
             }
-         // pentru fiecare rand din tabelul de lucru alocam un label si un text box cu acelasi nr pentru tag
+            // pentru fiecare rand din tabelul de lucru alocam un label si un text box cu acelasi nr pentru tag
             foreach (DataRow row in asociatieFormDS.Tables["mv_detaliiOrganizatie"].Rows)
             {
                 foreach (var cl in splitContainer1.Panel1.Controls)
@@ -114,25 +128,31 @@ namespace BlueSolAsoc
 
                 contor = contor + 1;
             }
-            
-         // verificam daca treenodul selectat este "Scara "
-            string a = treeView1.SelectedNode.Text;
-            string b = "Scara ";
-         //daca este selectata scara ascundem splitpannel1 si activam splitpannel2 cu gridview
-                if (b == a)
-                {
-                    splitContainer1.Panel1.Hide();
-                    splitContainer1.Panel2.Show();
-                }
-         // daca nu este selectata scara facem operatiunea inversa
-                else
-                {
-                    splitContainer1.Panel2.Hide();
-                    splitContainer1.Panel1.Show();
-                }
-                       
-            dataGridViewAp.DataSource = asociatieFormDS.Tables["mv_detaliiOrganizatie"];
 
+            int val = (Int32)asociatieFormDS.ReturnareValoare("select aso_id_tip from mv_detaliiOrganizatie where org_id_org=" + nId);
+
+            // verificam daca treenodul selectat este "Scara "
+            if (val == 3)
+            {
+                splitContainer1.Panel1.Show();
+                splitContainer1.Panel2.Show();
+            }
+            // daca nu este selectata scara facem operatiunea inversa
+            else
+            {
+                splitContainer1.Panel2.Hide();
+                splitContainer1.Panel1.Show();
+            }
+
+            dataGridViewAp.DataSource = asociatieFormDS.Tables["mv_detaliiOrganizatieApartament"];
+            dataGridViewAp.Enabled = false;
+
+        }
+
+
+        private void TreeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            PentruTreeview1AfterSelect(e.Node);
         }
         
         // ADAUGA O RAMURA LA UN NOD
@@ -188,6 +208,9 @@ namespace BlueSolAsoc
             classButonInteriorSterge1.Hide();
             btnAnuleaza.Show();
             btnOK.Show();
+            dataGridViewAp.Enabled = true;
+
+
             foreach (var cl in splitContainer1.Panel1.Controls)
             {
                 if (cl is ClassTextBox)
@@ -202,10 +225,13 @@ namespace BlueSolAsoc
                     txtL.Enabled = true;
                 }
             }
+           
         }
+       
         //actiune buton anuleaza
         private void btnAnuleaza_Click(object sender, EventArgs e)
         {
+            dataGridViewAp.Enabled = false;
             classButonInteriorSterge1.Show();
             btnAnuleaza.Hide();
             btnOK.Hide();
@@ -223,10 +249,17 @@ namespace BlueSolAsoc
                
             }
         }
-        //actiune buton ok
-        private void btnOK_Click(object sender, EventArgs e)
+                      //actiune buton ok
+    private void btnOK_Click(object sender, EventArgs e)
         {
+            //creare DATATABLE
+            string id_master = this.treeView1.SelectedNode.Tag.ToString();
             DataTable dataTable = asociatieFormDS.Tables["mv_detaliiOrganizatie"];
+          
+
+          
+            
+            string sl = "";
             string sr = "";
             for (int contor = 0;contor< dataTable.Rows.Count; contor++)
             {
@@ -253,6 +286,7 @@ namespace BlueSolAsoc
                 }
                 dataTable.Rows[contor]["org_valoare"] = sr;
                 
+
             }
             classButonInteriorSterge1.Show();
             btnAnuleaza.Hide();
@@ -267,10 +301,14 @@ namespace BlueSolAsoc
                     txtB.Enabled = false;
 
                 }
-
-
             }
-            asociatieFormDS.Actualizare("mv_detaliiOrganizatie");
+
+
+            asociatieFormDS.TransmiteActualizari("mv_detaliiOrganizatie");
+            asociatieFormDS.TransmiteActualizari("mv_detaliiOrganizatieApartament","mv_detaliiOrganizatie");
+            asociatieFormDS.ExecutaComenzi("exec mp_AdaugaElemente " + id_master);
+
+            PentruTreeview1AfterSelect(this.treeView1.SelectedNode);
         }
 
         private void AsociatieForm_Load(object sender, EventArgs e)
@@ -281,6 +319,17 @@ namespace BlueSolAsoc
 
             // this.vAfisareDetaliiEntitatiTableAdapter.Fill(this.asociatieFormDS1.vAfisareDetaliiEntitati);
 
+        }
+
+        private void splitContainer1_Panel1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Pentru a edita valorile din casete apasa butonul MODIFICA !");
+          
+        }
+
+        private void dataGridViewAp_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Pentru a edita valorile pentru apartamente apasa butonul MODIFICA !");
         }
     }
 }

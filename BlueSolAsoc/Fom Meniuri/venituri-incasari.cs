@@ -120,7 +120,7 @@ namespace BlueSolAsoc.Fom_Meniuri
 
 
             TabelaVenituriIncasari.Rows.Add(id_antet,NR_DOC,SERIE,data,idProprietar,id_pozitie,id_antet,id_tip,Convert.ToDecimal(pret),cantitate,cota_tva,suma);
-            DataSetVenituriIncasari.Inserare("vVenituriIncasari");
+            DataSetVenituriIncasari.TransmiteActualizari("vVenituriIncasari");
         }
 
         private void button1_Click(object sender, EventArgs e)

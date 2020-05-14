@@ -68,6 +68,9 @@
     <Compile Include="AsociatieForm.Designer.cs">
       <DependentUpon>AsociatieForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="asociatieFormDS.cs">
+      <DependentUpon>asociatieFormDS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="asociatieFormDS.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
