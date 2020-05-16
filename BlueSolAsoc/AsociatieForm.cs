@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
@@ -284,8 +285,13 @@ namespace BlueSolAsoc
                     }
                     
                 }
-                dataTable.Rows[contor]["org_valoare"] = sr;
-                
+                //verific daca datele din casetete sunt aceleasi cu cele din tabela
+                if (!(dataTable.Rows[contor]["org_valoare"] == sr))
+                {
+                    dataTable.Rows[contor]["org_valoare"] = sr;
+                }
+               
+                // daca e diferit de sr atunci = sr
 
             }
             classButonInteriorSterge1.Show();
@@ -320,7 +326,10 @@ namespace BlueSolAsoc
             // this.vAfisareDetaliiEntitatiTableAdapter.Fill(this.asociatieFormDS1.vAfisareDetaliiEntitati);
 
         }
+        private void ProceseazaUpdate(DataTable tabel, OleDbDataAdapter adapter)
+        {
 
+        }
         private void splitContainer1_Panel1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Pentru a edita valorile din casete apasa butonul MODIFICA !");
