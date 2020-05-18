@@ -14,23 +14,26 @@ namespace BlueSolAsoc
 {
     public partial class CreareAsociatie : FormBluebit
     {
+        //Definire DataSet din clasa creata DataSet
         ClassDataSet DataSetCreareAsoc = new ClassDataSet();
         public CreareAsociatie()
         {
             InitializeComponent();
-            DataSetCreareAsoc.getSetFrom("select id_master,id_asociere,valoare from tabela_organizatii where 1<>1", "tabela_organizatii");
+            //Aducere structura tabela in DataSet
+            DataSetCreareAsoc.getSetFrom("select org_id_master, org_id_asociere, org_valoare from mv_detaliiOrganizatie where 1<>1", "mv_detaliiOrganizatie");
+            //select org_id_org, org_id_master, org_id_asociere, org_valoare from mv_detaliiOrganizatie
+  
         }
+       
 
         private void classButonInteriorAdsauSalveaza1_Click(object sender, EventArgs e)
         {
            
             SqlCommand command;
             SqlDataAdapter adapter = new SqlDataAdapter();
-
-            string connetionString;
-            SqlConnection cnn;
-            connetionString = @"Data Source=82.208.137.149\sqlexpress,8833;Initial Catalog=proba_transare;Persist Security Info=True;User ID=sa;Password=pro";
-            cnn = new SqlConnection(connetionString);
+            ClassConexiuneServer.DeschideConexiunea();
+            SqlConnection cnn = ClassConexiuneServer.GetConnection();
+            
             cnn.Open();
             string sql = "Insert into Tabela_Organizatii (id_master,id_tip,valoare) values" + " ('" + "0" + "','" + "1'"+",'" + DenumireCreareAsocBox.Text + "')";
             
@@ -46,7 +49,7 @@ namespace BlueSolAsoc
             var SelectieAsoc = new SelectieAsociatie();         
             SelectieAsoc.Show();
             this.Close();
-
+            
         }
 
         private void ButonSalvareAsocCreata_Click(object sender, EventArgs e)
@@ -76,7 +79,7 @@ namespace BlueSolAsoc
              this.Close();*/
             ClassConexiuneServer.DeschideConexiunea();
             SqlConnection cnn = ClassConexiuneServer.GetConnection();
-            DataTable tabela_organizatii = DataSetCreareAsoc.Tables["tabela_organizatii"];
+            DataTable tabela_organizatii = DataSetCreareAsoc.Tables["mv_detaliiOrganizatie"];
             SqlCommand command;
             SqlDataAdapter adapter = new SqlDataAdapter();
 
@@ -90,12 +93,12 @@ namespace BlueSolAsoc
             
             tabela_organizatii.Rows.Add(0,1, DenumireCreareAsocBox.Text);
 
-            DataSetCreareAsoc.Inserare("tabela_organizatii");
+            DataSetCreareAsoc.Inserare("mv_detaliiOrganizatie");
             int id = ReturnareId();
             tabela_organizatii.Rows.Add(id, 2, DenumireCreareAsocBox.Text);
             //DataSetCreareAsoc.Tables["tabela_organizatii"].Rows[0].Delete();
             tabela_organizatii.Rows[0].Delete();
-            DataSetCreareAsoc.Inserare("tabela_organizatii");
+            DataSetCreareAsoc.Inserare("mv_detaliiOrganizatie");
            
 
 
