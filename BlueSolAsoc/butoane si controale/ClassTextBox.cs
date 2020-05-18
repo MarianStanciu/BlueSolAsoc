@@ -7,7 +7,9 @@ using System.Windows.Forms;
 
 namespace BlueSolAsoc.butoane_si_controale
 {
-    class ClassTextBox : TextBox 
+    class ClassTextBox : TextBox
+        
     {
+        
     }
 }
