@@ -58,6 +58,7 @@ namespace BlueSolAsoc
         {
             int nId = System.Convert.ToInt16(Node.Tag);
             asociatieFormDS.ExecutaComenzi("exec mp_VerificaAtribute " + nId);
+            asociatieFormDS.ExecutaComenzi("exec mp_VerificaAtributeSubordonate " + nId);
             AdRamura(Node.Nodes, nId);
 
 
@@ -70,12 +71,7 @@ namespace BlueSolAsoc
             // adaugare tabela in dataset pt afisarea elementelor din panel1
             asociatieFormDS.getSetFrom("select * from mv_detaliiOrganizatie  where  org_id_master =" + nId + " and aso_tip_afisare='edit'", "mv_detaliiOrganizatie");
 
-            //adaugare tabela in dataset pentru apartamente
-            if (!(asociatieFormDS.Tables["mv_detaliiOrganizatieApartament"] is null))
-            {
-                asociatieFormDS.Tables.Remove("mv_detaliiOrganizatieApartament");
-            }
-            asociatieFormDS.getSetFrom("select * from mv_detaliiOrganizatie  where  org_id_master =" + nId + "  and aso_id_tip=4", "mv_detaliiOrganizatieApartament");
+            
 
 
             // ascundem toate controalele din splitpanel1  
@@ -131,6 +127,13 @@ namespace BlueSolAsoc
             }
 
             int val = (Int32)asociatieFormDS.ReturnareValoare("select aso_id_tip from mv_detaliiOrganizatie where org_id_org=" + nId);
+
+            //adaugare tabela in dataset pentru apartamente
+            if (!(asociatieFormDS.Tables["mv_detaliiOrganizatieApartament"] is null))
+            {
+                asociatieFormDS.Tables.Remove("mv_detaliiOrganizatieApartament");
+            }
+            asociatieFormDS.getSetFrom("select * from mv_tabelApartamente  where  id_sc =" + nId, "mv_detaliiOrganizatieApartament");
 
             // verificam daca treenodul selectat este "Scara "
             if (val == 3)
@@ -311,7 +314,7 @@ namespace BlueSolAsoc
 
 
             asociatieFormDS.TransmiteActualizari("mv_detaliiOrganizatie");
-            asociatieFormDS.TransmiteActualizari("mv_detaliiOrganizatieApartament","mv_detaliiOrganizatie");
+            asociatieFormDS.TransmiteActualizari("mv_detaliiOrganizatieApartament", "mv_tabelApartamente");
             asociatieFormDS.ExecutaComenzi("exec mp_AdaugaElemente " + id_master);
 
             PentruTreeview1AfterSelect(this.treeView1.SelectedNode);
@@ -335,10 +338,11 @@ namespace BlueSolAsoc
             MessageBox.Show("Pentru a edita valorile din casete apasa butonul MODIFICA !");
           
         }
-
-        private void dataGridViewAp_Click(object sender, EventArgs e)
+        private void splitContainer1_Panel2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Pentru a edita valorile pentru apartamente apasa butonul MODIFICA !");
+            MessageBox.Show("Pentru a edita valorile din casete apasa butonul MODIFICA !");
+
         }
+
     }
 }

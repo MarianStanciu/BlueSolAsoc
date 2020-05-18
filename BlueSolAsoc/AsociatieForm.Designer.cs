@@ -47,10 +47,11 @@
             this.classLabel2 = new BlueSolAsoc.butoane_si_controale.ClassLabel();
             this.classLabel1 = new BlueSolAsoc.butoane_si_controale.ClassLabel();
             this.classTextBox1 = new BlueSolAsoc.butoane_si_controale.ClassTextBox();
-            this.mvdetaliiOrganizatieApartamentBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.asociatieFormDS1 = new BlueSolAsoc.asociatieFormDS();
+            this.dataGridViewAp = new System.Windows.Forms.DataGridView();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.mvdetaliiOrganizatieApartamentBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.asociatieFormDS1 = new BlueSolAsoc.asociatieFormDS();
             this.mvdetaliiOrganizatieBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.mvdetaliiOrganizatieBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.classGroupBox1 = new BlueSolAsoc.butoane_si_controale.ClassGroupBox();
@@ -60,20 +61,19 @@
             this.classButonModifica1 = new BlueSolAsoc.butoane_si_controale.ClassButonModifica();
             this.mv_detaliiOrganizatieTableAdapter = new BlueSolAsoc.asociatieFormDSTableAdapters.mv_detaliiOrganizatieTableAdapter();
             this.mvdetaliiOrganizatieApartamentBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewAp = new System.Windows.Forms.DataGridView();
             this.TabSA.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvdetaliiOrganizatieApartamentBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.asociatieFormDS1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvdetaliiOrganizatieBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvdetaliiOrganizatieBindingSource)).BeginInit();
             this.classGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mvdetaliiOrganizatieApartamentBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAp)).BeginInit();
             this.SuspendLayout();
             // 
             // TabSA
@@ -134,6 +134,7 @@
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.Color.Maroon;
             this.splitContainer1.Panel2.Controls.Add(this.dataGridViewAp);
+            this.splitContainer1.Panel2.Click += new System.EventHandler(this.splitContainer1_Panel2_Click);
             this.splitContainer1.Size = new System.Drawing.Size(988, 695);
             this.splitContainer1.SplitterDistance = 222;
             this.splitContainer1.SplitterWidth = 5;
@@ -283,15 +284,16 @@
             this.classTextBox1.TabIndex = 7;
             this.classTextBox1.Tag = "0";
             // 
-            // mvdetaliiOrganizatieApartamentBindingSource1
+            // dataGridViewAp
             // 
-            this.mvdetaliiOrganizatieApartamentBindingSource1.DataMember = "mv_detaliiOrganizatieApartament";
-            this.mvdetaliiOrganizatieApartamentBindingSource1.DataSource = this.asociatieFormDS1;
-            // 
-            // asociatieFormDS1
-            // 
-            this.asociatieFormDS1.DataSetName = "asociatieFormDS";
-            this.asociatieFormDS1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.dataGridViewAp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewAp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewAp.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewAp.Name = "dataGridViewAp";
+            this.dataGridViewAp.RowHeadersWidth = 51;
+            this.dataGridViewAp.RowTemplate.Height = 24;
+            this.dataGridViewAp.Size = new System.Drawing.Size(761, 695);
+            this.dataGridViewAp.TabIndex = 0;
             // 
             // treeView1
             // 
@@ -314,6 +316,16 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Structura Cheltuieli";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // mvdetaliiOrganizatieApartamentBindingSource1
+            // 
+            this.mvdetaliiOrganizatieApartamentBindingSource1.DataMember = "mv_detaliiOrganizatieApartament";
+            this.mvdetaliiOrganizatieApartamentBindingSource1.DataSource = this.asociatieFormDS1;
+            // 
+            // asociatieFormDS1
+            // 
+            this.asociatieFormDS1.DataSetName = "asociatieFormDS";
+            this.asociatieFormDS1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // mvdetaliiOrganizatieBindingSource1
             // 
@@ -400,17 +412,6 @@
             this.mvdetaliiOrganizatieApartamentBindingSource.DataMember = "mv_detaliiOrganizatieApartament";
             this.mvdetaliiOrganizatieApartamentBindingSource.DataSource = this.asociatieFormDS1;
             // 
-            // dataGridViewAp
-            // 
-            this.dataGridViewAp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewAp.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewAp.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewAp.Name = "dataGridViewAp";
-            this.dataGridViewAp.RowHeadersWidth = 51;
-            this.dataGridViewAp.RowTemplate.Height = 24;
-            this.dataGridViewAp.Size = new System.Drawing.Size(761, 695);
-            this.dataGridViewAp.TabIndex = 0;
-            // 
             // AsociatieForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
@@ -430,13 +431,13 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvdetaliiOrganizatieApartamentBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.asociatieFormDS1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvdetaliiOrganizatieBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvdetaliiOrganizatieBindingSource)).EndInit();
             this.classGroupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mvdetaliiOrganizatieApartamentBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAp)).EndInit();
             this.ResumeLayout(false);
 
         }
