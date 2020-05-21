@@ -269,10 +269,7 @@ namespace BlueSolAsoc
                 }
                 classButonModifica1.Show();
             }
-            else
-            {
-                
-            }
+            
 
         }
         // metoda pentru colorarea celulor din datagridview
