@@ -131,8 +131,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             //tabel adauga.rand = ...param anterior
             //string serie = TextBoxSerie.Text
             // 
-            
-
+           
            // DataSetVenituriIncasari.Inserare("vVenituriIncasari");
         }
     }
