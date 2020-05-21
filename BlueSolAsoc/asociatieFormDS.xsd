@@ -44,6 +44,30 @@ WHERE (mv_detaliiOrganizatie.id_org = dataTable(id_org))</CommandText>
               </DbSource>
             </Sources>
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="mv_tabelApartamenteTableAdapter" GeneratorDataComponentClassName="mv_tabelApartamenteTableAdapter" Name="mv_tabelApartamente" UserDataComponentName="mv_tabelApartamenteTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="proba_transareConnectionString (Settings)" DbObjectName="proba_transare.dbo.mv_tabelApartamente" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT org_id_org, [Denumire Apartament], Proprietar, Suprafata, Camere, Persoane, [Apometre AR], [Apometre AC], id_sc FROM dbo.mv_tabelApartamente</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="org_id_org" DataSetColumn="org_id_org" />
+              <Mapping SourceColumn="Denumire Apartament" DataSetColumn="Denumire Apartament" />
+              <Mapping SourceColumn="Proprietar" DataSetColumn="Proprietar" />
+              <Mapping SourceColumn="Suprafata" DataSetColumn="Suprafata" />
+              <Mapping SourceColumn="Camere" DataSetColumn="Camere" />
+              <Mapping SourceColumn="Persoane" DataSetColumn="Persoane" />
+              <Mapping SourceColumn="Apometre AR" DataSetColumn="Apometre AR" />
+              <Mapping SourceColumn="Apometre AC" DataSetColumn="Apometre AC" />
+              <Mapping SourceColumn="id_sc" DataSetColumn="id_sc" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -52,7 +76,7 @@ WHERE (mv_detaliiOrganizatie.id_org = dataTable(id_org))</CommandText>
   <xs:element name="asociatieFormDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="asociatieFormDS" msprop:Generator_UserDSName="asociatieFormDS">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="mv_detaliiOrganizatie" msprop:Generator_TableClassName="mv_detaliiOrganizatieDataTable" msprop:Generator_TableVarName="tablemv_detaliiOrganizatie" msprop:Generator_TablePropName="mv_detaliiOrganizatie" msprop:Generator_RowDeletingName="mv_detaliiOrganizatieRowDeleting" msprop:Generator_RowChangingName="mv_detaliiOrganizatieRowChanging" msprop:Generator_RowEvHandlerName="mv_detaliiOrganizatieRowChangeEventHandler" msprop:Generator_RowDeletedName="mv_detaliiOrganizatieRowDeleted" msprop:Generator_UserTableName="mv_detaliiOrganizatie" msprop:Generator_RowChangedName="mv_detaliiOrganizatieRowChanged" msprop:Generator_RowEvArgName="mv_detaliiOrganizatieRowChangeEvent" msprop:Generator_RowClassName="mv_detaliiOrganizatieRow">
+        <xs:element name="mv_detaliiOrganizatie" msprop:Generator_TableClassName="mv_detaliiOrganizatieDataTable" msprop:Generator_TableVarName="tablemv_detaliiOrganizatie" msprop:Generator_RowChangedName="mv_detaliiOrganizatieRowChanged" msprop:Generator_TablePropName="mv_detaliiOrganizatie" msprop:Generator_RowDeletingName="mv_detaliiOrganizatieRowDeleting" msprop:Generator_RowChangingName="mv_detaliiOrganizatieRowChanging" msprop:Generator_RowEvHandlerName="mv_detaliiOrganizatieRowChangeEventHandler" msprop:Generator_RowDeletedName="mv_detaliiOrganizatieRowDeleted" msprop:Generator_RowClassName="mv_detaliiOrganizatieRow" msprop:Generator_UserTableName="mv_detaliiOrganizatie" msprop:Generator_RowEvArgName="mv_detaliiOrganizatieRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="org_id_org" msprop:Generator_ColumnVarNameInTable="columnorg_id_org" msprop:Generator_ColumnPropNameInRow="org_id_org" msprop:Generator_ColumnPropNameInTable="org_id_orgColumn" msprop:Generator_UserColumnName="org_id_org" type="xs:int" />
@@ -102,6 +126,33 @@ WHERE (mv_detaliiOrganizatie.id_org = dataTable(id_org))</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="mv_tabelApartamente" msprop:Generator_TableClassName="mv_tabelApartamenteDataTable" msprop:Generator_TableVarName="tablemv_tabelApartamente" msprop:Generator_TablePropName="mv_tabelApartamente" msprop:Generator_RowDeletingName="mv_tabelApartamenteRowDeleting" msprop:Generator_RowChangingName="mv_tabelApartamenteRowChanging" msprop:Generator_RowEvHandlerName="mv_tabelApartamenteRowChangeEventHandler" msprop:Generator_RowDeletedName="mv_tabelApartamenteRowDeleted" msprop:Generator_UserTableName="mv_tabelApartamente" msprop:Generator_RowChangedName="mv_tabelApartamenteRowChanged" msprop:Generator_RowEvArgName="mv_tabelApartamenteRowChangeEvent" msprop:Generator_RowClassName="mv_tabelApartamenteRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="org_id_org" msprop:Generator_ColumnVarNameInTable="columnorg_id_org" msprop:Generator_ColumnPropNameInRow="org_id_org" msprop:Generator_ColumnPropNameInTable="org_id_orgColumn" msprop:Generator_UserColumnName="org_id_org" type="xs:int" />
+              <xs:element name="Denumire_x0020_Apartament" msprop:Generator_ColumnVarNameInTable="columnDenumire_Apartament" msprop:Generator_ColumnPropNameInRow="Denumire_Apartament" msprop:Generator_ColumnPropNameInTable="Denumire_ApartamentColumn" msprop:Generator_UserColumnName="Denumire Apartament" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Proprietar" msprop:Generator_ColumnVarNameInTable="columnProprietar" msprop:Generator_ColumnPropNameInRow="Proprietar" msprop:Generator_ColumnPropNameInTable="ProprietarColumn" msprop:Generator_UserColumnName="Proprietar" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Suprafata" msprop:Generator_ColumnVarNameInTable="columnSuprafata" msprop:Generator_ColumnPropNameInRow="Suprafata" msprop:Generator_ColumnPropNameInTable="SuprafataColumn" msprop:Generator_UserColumnName="Suprafata" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Camere" msprop:Generator_ColumnVarNameInTable="columnCamere" msprop:Generator_ColumnPropNameInRow="Camere" msprop:Generator_ColumnPropNameInTable="CamereColumn" msprop:Generator_UserColumnName="Camere" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Persoane" msprop:Generator_ColumnVarNameInTable="columnPersoane" msprop:Generator_ColumnPropNameInRow="Persoane" msprop:Generator_ColumnPropNameInTable="PersoaneColumn" msprop:Generator_UserColumnName="Persoane" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Apometre_x0020_AR" msprop:Generator_ColumnVarNameInTable="columnApometre_AR" msprop:Generator_ColumnPropNameInRow="Apometre_AR" msprop:Generator_ColumnPropNameInTable="Apometre_ARColumn" msprop:Generator_UserColumnName="Apometre AR" type="xs:int" minOccurs="0" />
+              <xs:element name="Apometre_x0020_AC" msprop:Generator_ColumnVarNameInTable="columnApometre_AC" msprop:Generator_ColumnPropNameInRow="Apometre_AC" msprop:Generator_ColumnPropNameInTable="Apometre_ACColumn" msprop:Generator_UserColumnName="Apometre AC" type="xs:int" minOccurs="0" />
+              <xs:element name="id_sc" msprop:Generator_ColumnVarNameInTable="columnid_sc" msprop:Generator_ColumnPropNameInRow="id_sc" msprop:Generator_ColumnPropNameInTable="id_scColumn" msprop:Generator_UserColumnName="id_sc" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

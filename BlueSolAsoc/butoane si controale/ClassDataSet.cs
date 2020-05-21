@@ -201,7 +201,7 @@ namespace BlueSolAsoc.butoane_si_controale
                         }
 
                     }
-                    actualizare = actualizare + " where "+"["+dc[0].ColumnName+"]"+ modificate[k][dc[0].ColumnName].ToString();
+                    actualizare = actualizare + " where "+"["+dc[0].ColumnName+"] ="+ modificate[k][dc[0].ColumnName].ToString();
                     if (k < modificate.Length - 1)
                     {
                         actualizare = actualizare + " Update  " + sSursa + " set ";
