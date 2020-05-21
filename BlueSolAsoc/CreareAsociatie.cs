@@ -93,12 +93,12 @@ namespace BlueSolAsoc
             
             tabela_organizatii.Rows.Add(0,1, DenumireCreareAsocBox.Text);
 
-            DataSetCreareAsoc.Inserare("mv_detaliiOrganizatie");
+            DataSetCreareAsoc.TransmiteActualizari("mv_detaliiOrganizatie");
             int id = ReturnareId();
             tabela_organizatii.Rows.Add(id, 2, DenumireCreareAsocBox.Text);
             //DataSetCreareAsoc.Tables["tabela_organizatii"].Rows[0].Delete();
             tabela_organizatii.Rows[0].Delete();
-            DataSetCreareAsoc.Inserare("mv_detaliiOrganizatie");
+            DataSetCreareAsoc.TransmiteActualizari("mv_detaliiOrganizatie");
            
 
 
