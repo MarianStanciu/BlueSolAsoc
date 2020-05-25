@@ -33,7 +33,7 @@ namespace BlueSolAsoc
             
 
 
-            dataGridViewAp.CellBeginEdit += dataGridViewAp_CellBeginEdit;
+         //   dataGridViewAp.CellBeginEdit += dataGridViewAp_CellBeginEdit;
             dataGridViewAp.CellEndEdit += dataGridViewAp_CellEndEdit;
 
             try
@@ -277,15 +277,50 @@ namespace BlueSolAsoc
         
 
         void dataGridViewAp_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dataGridViewAp[e.ColumnIndex, e.RowIndex].Value != previousValue)
+        {            
+            object initial = this.asociatieFormDS.Tables[1].Rows[e.RowIndex][this.asociatieFormDS.Tables[1].Columns[e.ColumnIndex].ColumnName, DataRowVersion.Original];
+            object final = this.asociatieFormDS.Tables[1].Rows[e.RowIndex][e.ColumnIndex];
+            //object tipObiect=final.GetType();
+            
+                switch (Type.GetTypeCode(final.GetType()))
+            {
+                case TypeCode.Decimal:
+                    decimal a = decimal.Parse(final.ToString());
+                    if (a < 0)
+                    {
+                        MessageBox.Show("Introduceti un numar pozitiv","Avertizare", MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                        final = decimal.Parse((initial.ToString()));
+                        dataGridViewAp.CancelEdit();
+                    }
+                   
+                    break;
+
+                case TypeCode.Int32:
+                    int b =int.Parse(final.ToString());
+                    if (b < 0)
+                    {
+                        MessageBox.Show("Introduceti un numar pozitiv", "Avertizare", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        final = int.Parse((initial.ToString()));
+                        dataGridViewAp.CancelEdit();
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+            if ( initial != final)
+            {
                 dataGridViewAp[e.ColumnIndex, e.RowIndex].Style.BackColor = Color.Cyan;
+            }  
+
+            //    if (dataGridViewAp[e.ColumnIndex, e.RowIndex].Value != previousValue)
+            //        dataGridViewAp[e.ColumnIndex, e.RowIndex].Style.BackColor = Color.Cyan;
         }
 
-        void dataGridViewAp_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
-        {
-            previousValue = dataGridViewAp[e.ColumnIndex, e.RowIndex].Value;
-        }
+        //void dataGridViewAp_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        //{
+        //    previousValue = dataGridViewAp[e.ColumnIndex, e.RowIndex].Value;
+        //}
 
 
 
@@ -389,6 +424,5 @@ namespace BlueSolAsoc
             MessageBox.Show("Pentru a edita valorile din casete apasa butonul MODIFICA !");
 
         }
-
     }
 }
