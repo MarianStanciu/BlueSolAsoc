@@ -23,17 +23,18 @@ namespace BlueSolAsoc
         object previousValue;
         string eroareCaseta = "";
         string eroareGridView = "";
-
+      
+       
 
         public AsociatieForm(string denumireAsociatie, int idAsociatie)
         {
             InitializeComponent();
             this.denumireAsociatie = denumireAsociatie;
             this.idAsociatie = idAsociatie;
-            
+            //dataGridViewAp.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkGreen;
 
 
-         //   dataGridViewAp.CellBeginEdit += dataGridViewAp_CellBeginEdit;
+            //   dataGridViewAp.CellBeginEdit += dataGridViewAp_CellBeginEdit;
             dataGridViewAp.CellEndEdit += dataGridViewAp_CellEndEdit;
 
             try
