@@ -88,10 +88,10 @@
             this.mvdetaliiOrganizatieBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.mv_tabelApartamenteTableAdapter = new BlueSolAsoc.asociatieFormDSTableAdapters.mv_tabelApartamenteTableAdapter();
             this.pnlControale = new System.Windows.Forms.Panel();
-            this.classButonModifica1 = new BlueSolAsoc.butoane_si_controale.ClassButonModifica();
-            this.classButonInteriorSterge1 = new BlueSolAsoc.butoane_si_controale.ClassButonInteriorSterge();
-            this.btnOK = new System.Windows.Forms.Button();
             this.btnAnuleaza = new System.Windows.Forms.Button();
+            this.btnOK = new System.Windows.Forms.Button();
+            this.classButonInteriorSterge1 = new BlueSolAsoc.butoane_si_controale.ClassButonInteriorSterge();
+            this.classButonModifica1 = new BlueSolAsoc.butoane_si_controale.ClassButonModifica();
             this.TabSA.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -654,34 +654,20 @@
             this.pnlControale.Size = new System.Drawing.Size(157, 701);
             this.pnlControale.TabIndex = 4;
             // 
-            // classButonModifica1
+            // btnAnuleaza
             // 
-            this.classButonModifica1.BackColor = System.Drawing.Color.Yellow;
-            this.classButonModifica1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.classButonModifica1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.classButonModifica1.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.classButonModifica1.Location = new System.Drawing.Point(0, 0);
-            this.classButonModifica1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.classButonModifica1.Name = "classButonModifica1";
-            this.classButonModifica1.Size = new System.Drawing.Size(157, 200);
-            this.classButonModifica1.TabIndex = 6;
-            this.classButonModifica1.Text = "MODIFICA";
-            this.classButonModifica1.UseVisualStyleBackColor = false;
-            this.classButonModifica1.Click += new System.EventHandler(this.classButonModifica1_Click);
-            // 
-            // classButonInteriorSterge1
-            // 
-            this.classButonInteriorSterge1.BackColor = System.Drawing.Color.Red;
-            this.classButonInteriorSterge1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.classButonInteriorSterge1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.classButonInteriorSterge1.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.classButonInteriorSterge1.Location = new System.Drawing.Point(0, 200);
-            this.classButonInteriorSterge1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.classButonInteriorSterge1.Name = "classButonInteriorSterge1";
-            this.classButonInteriorSterge1.Size = new System.Drawing.Size(157, 200);
-            this.classButonInteriorSterge1.TabIndex = 7;
-            this.classButonInteriorSterge1.Text = "STERGE";
-            this.classButonInteriorSterge1.UseVisualStyleBackColor = false;
+            this.btnAnuleaza.BackColor = System.Drawing.Color.Red;
+            this.btnAnuleaza.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAnuleaza.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAnuleaza.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAnuleaza.Location = new System.Drawing.Point(0, 600);
+            this.btnAnuleaza.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnAnuleaza.Name = "btnAnuleaza";
+            this.btnAnuleaza.Size = new System.Drawing.Size(157, 200);
+            this.btnAnuleaza.TabIndex = 9;
+            this.btnAnuleaza.Text = "ANULEAZA";
+            this.btnAnuleaza.UseVisualStyleBackColor = false;
+            this.btnAnuleaza.Click += new System.EventHandler(this.btnAnuleaza_Click);
             // 
             // btnOK
             // 
@@ -698,20 +684,34 @@
             this.btnOK.UseVisualStyleBackColor = false;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
-            // btnAnuleaza
+            // classButonInteriorSterge1
             // 
-            this.btnAnuleaza.BackColor = System.Drawing.Color.Red;
-            this.btnAnuleaza.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAnuleaza.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAnuleaza.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAnuleaza.Location = new System.Drawing.Point(0, 600);
-            this.btnAnuleaza.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btnAnuleaza.Name = "btnAnuleaza";
-            this.btnAnuleaza.Size = new System.Drawing.Size(157, 200);
-            this.btnAnuleaza.TabIndex = 9;
-            this.btnAnuleaza.Text = "ANULEAZA";
-            this.btnAnuleaza.UseVisualStyleBackColor = false;
-            this.btnAnuleaza.Click += new System.EventHandler(this.btnAnuleaza_Click);
+            this.classButonInteriorSterge1.BackColor = System.Drawing.Color.Red;
+            this.classButonInteriorSterge1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.classButonInteriorSterge1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.classButonInteriorSterge1.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.classButonInteriorSterge1.Location = new System.Drawing.Point(0, 200);
+            this.classButonInteriorSterge1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.classButonInteriorSterge1.Name = "classButonInteriorSterge1";
+            this.classButonInteriorSterge1.Size = new System.Drawing.Size(157, 200);
+            this.classButonInteriorSterge1.TabIndex = 7;
+            this.classButonInteriorSterge1.Text = "STERGE";
+            this.classButonInteriorSterge1.UseVisualStyleBackColor = false;
+            // 
+            // classButonModifica1
+            // 
+            this.classButonModifica1.BackColor = System.Drawing.Color.Yellow;
+            this.classButonModifica1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.classButonModifica1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.classButonModifica1.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.classButonModifica1.Location = new System.Drawing.Point(0, 0);
+            this.classButonModifica1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.classButonModifica1.Name = "classButonModifica1";
+            this.classButonModifica1.Size = new System.Drawing.Size(157, 200);
+            this.classButonModifica1.TabIndex = 6;
+            this.classButonModifica1.Text = "MODIFICA";
+            this.classButonModifica1.UseVisualStyleBackColor = false;
+            this.classButonModifica1.Click += new System.EventHandler(this.classButonModifica1_Click);
             // 
             // AsociatieForm
             // 
@@ -722,6 +722,7 @@
             this.Controls.Add(this.TabSA);
             this.Location = new System.Drawing.Point(0, 0);
             this.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
+            this.MinimizeBox = false;
             this.Name = "AsociatieForm";
             this.Text = "AsociatieForm1";
             this.Load += new System.EventHandler(this.AsociatieForm_Load);

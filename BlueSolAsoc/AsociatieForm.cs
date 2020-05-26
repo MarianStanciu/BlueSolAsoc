@@ -331,6 +331,7 @@ namespace BlueSolAsoc
             string id_master = this.treeView1.SelectedNode.Tag.ToString();
             DataTable dataTable = asociatieFormDS.Tables["mv_detaliiOrganizatie"];   
             string sr = "";
+            string sl = "";
             for (int contor = 0; contor < dataTable.Rows.Count; contor++)
             {
                 foreach (var cl in splitContainer1.Panel1.Controls)
@@ -341,9 +342,19 @@ namespace BlueSolAsoc
                         if (txtB.Tag.ToString() == contor.ToString())
                         {
                             txtB.Visible = true;
-                            sr = txtB.Text.ToString();
+                            sr = txtB.Text.ToString().Trim();
                         }
                     }
+                    if (cl is ClassLabel)
+                    {
+                        ClassLabel txtL = (ClassLabel)cl;
+                        if (txtL.Tag.ToString() == contor.ToString())
+                        {
+                            txtL.Visible = true;
+                            sl = txtL.Text.ToString().Trim();
+                        }
+                    }
+
                 }
                         int numar;                
                         bool result = int.TryParse(sr, out numar);                
@@ -358,9 +369,46 @@ namespace BlueSolAsoc
                         {
                             eroareCaseta = "";
                         }
-              
-          
-               
+
+
+                //if ( sl==(dataTable.Rows[contor]["aso_val_label"]).ToString()  )
+                //{
+                //    MessageBox.Show("Pentru a opera in Asociatie aveti nevoie de cel putin 1 entitate in caseta cu Numar ... " , "Informatie", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                //}
+                
+                string utilizatComparatie;
+                switch (sl)
+                {
+                    case "Numar Bloc(uri)":
+                        utilizatComparatie = "Numar Bloc(uri)";
+                        if ( sl==utilizatComparatie && sr=="0"  )
+                        {
+                            MessageBox.Show("Pentru a opera in Asociatie aveti nevoie de cel putin 1 entitate in caseta cu Numar Blocuri ", "Informatie", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                       
+                        }
+                        break;
+
+                    case "Numar Scari":
+                        utilizatComparatie = "Numar Scari";
+                        if (sl == utilizatComparatie && sr == "0")
+                        {
+                            MessageBox.Show("Pentru a opera in Asociatie aveti nevoie de cel putin 1 entitate in caseta cu Numar Scari ", "Informatie", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        break;
+
+
+                    case "Numar Apartamente":
+                        utilizatComparatie = "Numar Apartamente";
+                        if (sl == utilizatComparatie && sr == "0")
+                        {
+                            MessageBox.Show("Pentru a opera in Asociatie aveti nevoie de cel putin 1 entitate in caseta cu Numar Apartamente ", "Informatie", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        break;
+
+                    default:
+                        break;
+                }
+
                 if (!(eroareCaseta == ""))
                 {
                     MessageBox.Show("NU POTI INTRODUCE VALORI NEGATIVE", "AVERTIZARE", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -370,6 +418,7 @@ namespace BlueSolAsoc
                     //verific daca datele din casetete sunt aceleasi cu cele din tabela
                     if (!(dataTable.Rows[contor]["org_valoare"] == sr))
                     {
+                        
                         dataTable.Rows[contor]["org_valoare"] = sr;
                     }
                 }
@@ -416,12 +465,12 @@ namespace BlueSolAsoc
         }
         private void splitContainer1_Panel1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Pentru a edita valorile din casete apasa butonul MODIFICA !");
+            MessageBox.Show("Pentru a edita valorile din casete apasa butonul MODIFICA !","Informare",MessageBoxButtons.OK, MessageBoxIcon.Information);
           
         }
         private void splitContainer1_Panel2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Pentru a edita valorile din casete apasa butonul MODIFICA !");
+            MessageBox.Show("Pentru a edita valorile din casete apasa butonul MODIFICA !","Informare", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
     }
