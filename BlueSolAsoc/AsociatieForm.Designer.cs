@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TabSA = new BlueSolAsoc.butoane_si_controale.ClassTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -50,7 +50,17 @@
             this.classLabel2 = new BlueSolAsoc.butoane_si_controale.ClassLabel();
             this.classLabel1 = new BlueSolAsoc.butoane_si_controale.ClassLabel();
             this.classTextBox1 = new BlueSolAsoc.butoane_si_controale.ClassTextBox();
-            this.mvtabelApartamenteBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewAp = new BlueSolAsoc.butoane_si_controale.ClassGridView();
+            this.orgidorgDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.denumireApartamentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.proprietarDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.suprafataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.camereDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.persoaneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.apometreARDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.apometreACDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idscDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mvtabelApartamenteBindingSource6 = new System.Windows.Forms.BindingSource(this.components);
             this.asociatieFormDS1 = new BlueSolAsoc.asociatieFormDS();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -66,17 +76,8 @@
             this.idscDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mvtabelApartamenteBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.classGridView1 = new BlueSolAsoc.butoane_si_controale.ClassGridView();
-            this.orgidorgDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.denumireApartamentDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.proprietarDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.suprafataDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.camereDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.persoaneDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.apometreARDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.apometreACDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idscDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mvtabelApartamenteBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
+            this.mvtabelApartamenteBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.mvdetaliiOrganizatieBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.mvtabelApartamenteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mvdetaliiOrganizatieApartamentBindingSource6 = new System.Windows.Forms.BindingSource(this.components);
@@ -98,31 +99,32 @@
             this.classButonModifica1 = new BlueSolAsoc.butoane_si_controale.ClassButonModifica();
             this.mvtabelApartamenteBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.mvtabelApartamenteBindingSource5 = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewAp = new BlueSolAsoc.butoane_si_controale.ClassGridView();
-            this.mvtabelApartamenteBindingSource6 = new System.Windows.Forms.BindingSource(this.components);
-            this.orgidorgDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.denumireApartamentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.proprietarDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.suprafataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.camereDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.persoaneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.apometreARDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.apometreACDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idscDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.classGridView1 = new BlueSolAsoc.butoane_si_controale.ClassGridView();
+            this.mvtabelApartamenteBindingSource7 = new System.Windows.Forms.BindingSource(this.components);
+            this.orgidorgDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.denumireApartamentDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.proprietarDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.suprafataDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.camereDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.persoaneDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.apometreARDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.apometreACDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idscDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TabSA.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mvtabelApartamenteBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mvtabelApartamenteBindingSource6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.asociatieFormDS1)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridTest)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvtabelApartamenteBindingSource2)).BeginInit();
             this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.classGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvtabelApartamenteBindingSource4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mvtabelApartamenteBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvdetaliiOrganizatieBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvtabelApartamenteBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvdetaliiOrganizatieApartamentBindingSource6)).BeginInit();
@@ -138,8 +140,8 @@
             this.pnlControale.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mvtabelApartamenteBindingSource3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvtabelApartamenteBindingSource5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAp)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mvtabelApartamenteBindingSource6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.classGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mvtabelApartamenteBindingSource7)).BeginInit();
             this.SuspendLayout();
             // 
             // TabSA
@@ -360,10 +362,115 @@
             this.classTextBox1.TabIndex = 7;
             this.classTextBox1.Tag = "0";
             // 
-            // mvtabelApartamenteBindingSource1
+            // dataGridViewAp
             // 
-            this.mvtabelApartamenteBindingSource1.DataMember = "mv_tabelApartamente";
-            this.mvtabelApartamenteBindingSource1.DataSource = this.asociatieFormDS1;
+            this.dataGridViewAp.AllowUserToAddRows = false;
+            this.dataGridViewAp.AutoGenerateColumns = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Aquamarine;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewAp.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewAp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewAp.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.orgidorgDataGridViewTextBoxColumn1,
+            this.denumireApartamentDataGridViewTextBoxColumn,
+            this.proprietarDataGridViewTextBoxColumn,
+            this.suprafataDataGridViewTextBoxColumn,
+            this.camereDataGridViewTextBoxColumn,
+            this.persoaneDataGridViewTextBoxColumn,
+            this.apometreARDataGridViewTextBoxColumn,
+            this.apometreACDataGridViewTextBoxColumn,
+            this.idscDataGridViewTextBoxColumn});
+            this.dataGridViewAp.DataSource = this.mvtabelApartamenteBindingSource6;
+            this.dataGridViewAp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewAp.EnableHeadersVisualStyles = false;
+            this.dataGridViewAp.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewAp.Name = "dataGridViewAp";
+            this.dataGridViewAp.RowHeadersWidth = 51;
+            this.dataGridViewAp.RowTemplate.Height = 24;
+            this.dataGridViewAp.Size = new System.Drawing.Size(643, 695);
+            this.dataGridViewAp.TabIndex = 0;
+            // 
+            // orgidorgDataGridViewTextBoxColumn1
+            // 
+            this.orgidorgDataGridViewTextBoxColumn1.DataPropertyName = "org_id_org";
+            this.orgidorgDataGridViewTextBoxColumn1.HeaderText = "org_id_org";
+            this.orgidorgDataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.orgidorgDataGridViewTextBoxColumn1.Name = "orgidorgDataGridViewTextBoxColumn1";
+            this.orgidorgDataGridViewTextBoxColumn1.Width = 125;
+            // 
+            // denumireApartamentDataGridViewTextBoxColumn
+            // 
+            this.denumireApartamentDataGridViewTextBoxColumn.DataPropertyName = "Denumire Apartament";
+            this.denumireApartamentDataGridViewTextBoxColumn.HeaderText = "Denumire Apartament";
+            this.denumireApartamentDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.denumireApartamentDataGridViewTextBoxColumn.Name = "denumireApartamentDataGridViewTextBoxColumn";
+            this.denumireApartamentDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // proprietarDataGridViewTextBoxColumn
+            // 
+            this.proprietarDataGridViewTextBoxColumn.DataPropertyName = "Proprietar";
+            this.proprietarDataGridViewTextBoxColumn.HeaderText = "Proprietar";
+            this.proprietarDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.proprietarDataGridViewTextBoxColumn.Name = "proprietarDataGridViewTextBoxColumn";
+            this.proprietarDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // suprafataDataGridViewTextBoxColumn
+            // 
+            this.suprafataDataGridViewTextBoxColumn.DataPropertyName = "Suprafata";
+            this.suprafataDataGridViewTextBoxColumn.HeaderText = "Suprafata";
+            this.suprafataDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.suprafataDataGridViewTextBoxColumn.Name = "suprafataDataGridViewTextBoxColumn";
+            this.suprafataDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // camereDataGridViewTextBoxColumn
+            // 
+            this.camereDataGridViewTextBoxColumn.DataPropertyName = "Camere";
+            this.camereDataGridViewTextBoxColumn.HeaderText = "Camere";
+            this.camereDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.camereDataGridViewTextBoxColumn.Name = "camereDataGridViewTextBoxColumn";
+            this.camereDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // persoaneDataGridViewTextBoxColumn
+            // 
+            this.persoaneDataGridViewTextBoxColumn.DataPropertyName = "Persoane";
+            this.persoaneDataGridViewTextBoxColumn.HeaderText = "Persoane";
+            this.persoaneDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.persoaneDataGridViewTextBoxColumn.Name = "persoaneDataGridViewTextBoxColumn";
+            this.persoaneDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // apometreARDataGridViewTextBoxColumn
+            // 
+            this.apometreARDataGridViewTextBoxColumn.DataPropertyName = "Apometre AR";
+            this.apometreARDataGridViewTextBoxColumn.HeaderText = "Apometre AR";
+            this.apometreARDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.apometreARDataGridViewTextBoxColumn.Name = "apometreARDataGridViewTextBoxColumn";
+            this.apometreARDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // apometreACDataGridViewTextBoxColumn
+            // 
+            this.apometreACDataGridViewTextBoxColumn.DataPropertyName = "Apometre AC";
+            this.apometreACDataGridViewTextBoxColumn.HeaderText = "Apometre AC";
+            this.apometreACDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.apometreACDataGridViewTextBoxColumn.Name = "apometreACDataGridViewTextBoxColumn";
+            this.apometreACDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // idscDataGridViewTextBoxColumn
+            // 
+            this.idscDataGridViewTextBoxColumn.DataPropertyName = "id_sc";
+            this.idscDataGridViewTextBoxColumn.HeaderText = "id_sc";
+            this.idscDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.idscDataGridViewTextBoxColumn.Name = "idscDataGridViewTextBoxColumn";
+            this.idscDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // mvtabelApartamenteBindingSource6
+            // 
+            this.mvtabelApartamenteBindingSource6.DataMember = "mv_tabelApartamente";
+            this.mvtabelApartamenteBindingSource6.DataSource = this.asociatieFormDS1;
             // 
             // asociatieFormDS1
             // 
@@ -513,114 +620,15 @@
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // classGridView1
-            // 
-            this.classGridView1.AllowUserToAddRows = false;
-            this.classGridView1.AutoGenerateColumns = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Beige;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.classGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.classGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.classGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.orgidorgDataGridViewTextBoxColumn2,
-            this.denumireApartamentDataGridViewTextBoxColumn2,
-            this.proprietarDataGridViewTextBoxColumn2,
-            this.suprafataDataGridViewTextBoxColumn2,
-            this.camereDataGridViewTextBoxColumn2,
-            this.persoaneDataGridViewTextBoxColumn2,
-            this.apometreARDataGridViewTextBoxColumn2,
-            this.apometreACDataGridViewTextBoxColumn2,
-            this.idscDataGridViewTextBoxColumn2});
-            this.classGridView1.DataSource = this.mvtabelApartamenteBindingSource4;
-            this.classGridView1.EnableHeadersVisualStyles = false;
-            this.classGridView1.Location = new System.Drawing.Point(247, 102);
-            this.classGridView1.Name = "classGridView1";
-            this.classGridView1.RowHeadersWidth = 51;
-            this.classGridView1.RowTemplate.Height = 24;
-            this.classGridView1.Size = new System.Drawing.Size(240, 150);
-            this.classGridView1.TabIndex = 0;
-            // 
-            // orgidorgDataGridViewTextBoxColumn2
-            // 
-            this.orgidorgDataGridViewTextBoxColumn2.DataPropertyName = "org_id_org";
-            this.orgidorgDataGridViewTextBoxColumn2.HeaderText = "org_id_org";
-            this.orgidorgDataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.orgidorgDataGridViewTextBoxColumn2.Name = "orgidorgDataGridViewTextBoxColumn2";
-            this.orgidorgDataGridViewTextBoxColumn2.Width = 125;
-            // 
-            // denumireApartamentDataGridViewTextBoxColumn2
-            // 
-            this.denumireApartamentDataGridViewTextBoxColumn2.DataPropertyName = "Denumire Apartament";
-            this.denumireApartamentDataGridViewTextBoxColumn2.HeaderText = "Denumire Apartament";
-            this.denumireApartamentDataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.denumireApartamentDataGridViewTextBoxColumn2.Name = "denumireApartamentDataGridViewTextBoxColumn2";
-            this.denumireApartamentDataGridViewTextBoxColumn2.Width = 125;
-            // 
-            // proprietarDataGridViewTextBoxColumn2
-            // 
-            this.proprietarDataGridViewTextBoxColumn2.DataPropertyName = "Proprietar";
-            this.proprietarDataGridViewTextBoxColumn2.HeaderText = "Proprietar";
-            this.proprietarDataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.proprietarDataGridViewTextBoxColumn2.Name = "proprietarDataGridViewTextBoxColumn2";
-            this.proprietarDataGridViewTextBoxColumn2.Width = 125;
-            // 
-            // suprafataDataGridViewTextBoxColumn2
-            // 
-            this.suprafataDataGridViewTextBoxColumn2.DataPropertyName = "Suprafata";
-            this.suprafataDataGridViewTextBoxColumn2.HeaderText = "Suprafata";
-            this.suprafataDataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.suprafataDataGridViewTextBoxColumn2.Name = "suprafataDataGridViewTextBoxColumn2";
-            this.suprafataDataGridViewTextBoxColumn2.Width = 125;
-            // 
-            // camereDataGridViewTextBoxColumn2
-            // 
-            this.camereDataGridViewTextBoxColumn2.DataPropertyName = "Camere";
-            this.camereDataGridViewTextBoxColumn2.HeaderText = "Camere";
-            this.camereDataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.camereDataGridViewTextBoxColumn2.Name = "camereDataGridViewTextBoxColumn2";
-            this.camereDataGridViewTextBoxColumn2.Width = 125;
-            // 
-            // persoaneDataGridViewTextBoxColumn2
-            // 
-            this.persoaneDataGridViewTextBoxColumn2.DataPropertyName = "Persoane";
-            this.persoaneDataGridViewTextBoxColumn2.HeaderText = "Persoane";
-            this.persoaneDataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.persoaneDataGridViewTextBoxColumn2.Name = "persoaneDataGridViewTextBoxColumn2";
-            this.persoaneDataGridViewTextBoxColumn2.Width = 125;
-            // 
-            // apometreARDataGridViewTextBoxColumn2
-            // 
-            this.apometreARDataGridViewTextBoxColumn2.DataPropertyName = "Apometre AR";
-            this.apometreARDataGridViewTextBoxColumn2.HeaderText = "Apometre AR";
-            this.apometreARDataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.apometreARDataGridViewTextBoxColumn2.Name = "apometreARDataGridViewTextBoxColumn2";
-            this.apometreARDataGridViewTextBoxColumn2.Width = 125;
-            // 
-            // apometreACDataGridViewTextBoxColumn2
-            // 
-            this.apometreACDataGridViewTextBoxColumn2.DataPropertyName = "Apometre AC";
-            this.apometreACDataGridViewTextBoxColumn2.HeaderText = "Apometre AC";
-            this.apometreACDataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.apometreACDataGridViewTextBoxColumn2.Name = "apometreACDataGridViewTextBoxColumn2";
-            this.apometreACDataGridViewTextBoxColumn2.Width = 125;
-            // 
-            // idscDataGridViewTextBoxColumn2
-            // 
-            this.idscDataGridViewTextBoxColumn2.DataPropertyName = "id_sc";
-            this.idscDataGridViewTextBoxColumn2.HeaderText = "id_sc";
-            this.idscDataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.idscDataGridViewTextBoxColumn2.Name = "idscDataGridViewTextBoxColumn2";
-            this.idscDataGridViewTextBoxColumn2.Width = 125;
-            // 
             // mvtabelApartamenteBindingSource4
             // 
             this.mvtabelApartamenteBindingSource4.DataMember = "mv_tabelApartamente";
             this.mvtabelApartamenteBindingSource4.DataSource = this.asociatieFormDS1;
+            // 
+            // mvtabelApartamenteBindingSource1
+            // 
+            this.mvtabelApartamenteBindingSource1.DataMember = "mv_tabelApartamente";
+            this.mvtabelApartamenteBindingSource1.DataSource = this.asociatieFormDS1;
             // 
             // mvdetaliiOrganizatieBindingSource2
             // 
@@ -772,115 +780,115 @@
             this.mvtabelApartamenteBindingSource5.DataMember = "mv_tabelApartamente";
             this.mvtabelApartamenteBindingSource5.DataSource = this.asociatieFormDS1;
             // 
-            // dataGridViewAp
+            // classGridView1
             // 
-            this.dataGridViewAp.AllowUserToAddRows = false;
-            this.dataGridViewAp.AutoGenerateColumns = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Aquamarine;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewAp.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewAp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewAp.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.orgidorgDataGridViewTextBoxColumn1,
-            this.denumireApartamentDataGridViewTextBoxColumn,
-            this.proprietarDataGridViewTextBoxColumn,
-            this.suprafataDataGridViewTextBoxColumn,
-            this.camereDataGridViewTextBoxColumn,
-            this.persoaneDataGridViewTextBoxColumn,
-            this.apometreARDataGridViewTextBoxColumn,
-            this.apometreACDataGridViewTextBoxColumn,
-            this.idscDataGridViewTextBoxColumn});
-            this.dataGridViewAp.DataSource = this.mvtabelApartamenteBindingSource6;
-            this.dataGridViewAp.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewAp.EnableHeadersVisualStyles = false;
-            this.dataGridViewAp.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewAp.Name = "dataGridViewAp";
-            this.dataGridViewAp.RowHeadersWidth = 51;
-            this.dataGridViewAp.RowTemplate.Height = 24;
-            this.dataGridViewAp.Size = new System.Drawing.Size(643, 695);
-            this.dataGridViewAp.TabIndex = 0;
+            this.classGridView1.AllowUserToAddRows = false;
+            this.classGridView1.AutoGenerateColumns = false;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Aquamarine;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.classGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.classGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.classGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.orgidorgDataGridViewTextBoxColumn2,
+            this.denumireApartamentDataGridViewTextBoxColumn2,
+            this.proprietarDataGridViewTextBoxColumn2,
+            this.suprafataDataGridViewTextBoxColumn2,
+            this.camereDataGridViewTextBoxColumn2,
+            this.persoaneDataGridViewTextBoxColumn2,
+            this.apometreARDataGridViewTextBoxColumn2,
+            this.apometreACDataGridViewTextBoxColumn2,
+            this.idscDataGridViewTextBoxColumn2});
+            this.classGridView1.DataSource = this.mvtabelApartamenteBindingSource7;
+            this.classGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.classGridView1.EnableHeadersVisualStyles = false;
+            this.classGridView1.Location = new System.Drawing.Point(3, 3);
+            this.classGridView1.Name = "classGridView1";
+            this.classGridView1.RowHeadersWidth = 51;
+            this.classGridView1.RowTemplate.Height = 24;
+            this.classGridView1.Size = new System.Drawing.Size(1044, 695);
+            this.classGridView1.TabIndex = 0;
             // 
-            // mvtabelApartamenteBindingSource6
+            // mvtabelApartamenteBindingSource7
             // 
-            this.mvtabelApartamenteBindingSource6.DataMember = "mv_tabelApartamente";
-            this.mvtabelApartamenteBindingSource6.DataSource = this.asociatieFormDS1;
+            this.mvtabelApartamenteBindingSource7.DataMember = "mv_tabelApartamente";
+            this.mvtabelApartamenteBindingSource7.DataSource = this.asociatieFormDS1;
             // 
-            // orgidorgDataGridViewTextBoxColumn1
+            // orgidorgDataGridViewTextBoxColumn2
             // 
-            this.orgidorgDataGridViewTextBoxColumn1.DataPropertyName = "org_id_org";
-            this.orgidorgDataGridViewTextBoxColumn1.HeaderText = "org_id_org";
-            this.orgidorgDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.orgidorgDataGridViewTextBoxColumn1.Name = "orgidorgDataGridViewTextBoxColumn1";
-            this.orgidorgDataGridViewTextBoxColumn1.Width = 125;
+            this.orgidorgDataGridViewTextBoxColumn2.DataPropertyName = "org_id_org";
+            this.orgidorgDataGridViewTextBoxColumn2.HeaderText = "org_id_org";
+            this.orgidorgDataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.orgidorgDataGridViewTextBoxColumn2.Name = "orgidorgDataGridViewTextBoxColumn2";
+            this.orgidorgDataGridViewTextBoxColumn2.Width = 125;
             // 
-            // denumireApartamentDataGridViewTextBoxColumn
+            // denumireApartamentDataGridViewTextBoxColumn2
             // 
-            this.denumireApartamentDataGridViewTextBoxColumn.DataPropertyName = "Denumire Apartament";
-            this.denumireApartamentDataGridViewTextBoxColumn.HeaderText = "Denumire Apartament";
-            this.denumireApartamentDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.denumireApartamentDataGridViewTextBoxColumn.Name = "denumireApartamentDataGridViewTextBoxColumn";
-            this.denumireApartamentDataGridViewTextBoxColumn.Width = 125;
+            this.denumireApartamentDataGridViewTextBoxColumn2.DataPropertyName = "Denumire Apartament";
+            this.denumireApartamentDataGridViewTextBoxColumn2.HeaderText = "Denumire Apartament";
+            this.denumireApartamentDataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.denumireApartamentDataGridViewTextBoxColumn2.Name = "denumireApartamentDataGridViewTextBoxColumn2";
+            this.denumireApartamentDataGridViewTextBoxColumn2.Width = 125;
             // 
-            // proprietarDataGridViewTextBoxColumn
+            // proprietarDataGridViewTextBoxColumn2
             // 
-            this.proprietarDataGridViewTextBoxColumn.DataPropertyName = "Proprietar";
-            this.proprietarDataGridViewTextBoxColumn.HeaderText = "Proprietar";
-            this.proprietarDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.proprietarDataGridViewTextBoxColumn.Name = "proprietarDataGridViewTextBoxColumn";
-            this.proprietarDataGridViewTextBoxColumn.Width = 125;
+            this.proprietarDataGridViewTextBoxColumn2.DataPropertyName = "Proprietar";
+            this.proprietarDataGridViewTextBoxColumn2.HeaderText = "Proprietar";
+            this.proprietarDataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.proprietarDataGridViewTextBoxColumn2.Name = "proprietarDataGridViewTextBoxColumn2";
+            this.proprietarDataGridViewTextBoxColumn2.Width = 125;
             // 
-            // suprafataDataGridViewTextBoxColumn
+            // suprafataDataGridViewTextBoxColumn2
             // 
-            this.suprafataDataGridViewTextBoxColumn.DataPropertyName = "Suprafata";
-            this.suprafataDataGridViewTextBoxColumn.HeaderText = "Suprafata";
-            this.suprafataDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.suprafataDataGridViewTextBoxColumn.Name = "suprafataDataGridViewTextBoxColumn";
-            this.suprafataDataGridViewTextBoxColumn.Width = 125;
+            this.suprafataDataGridViewTextBoxColumn2.DataPropertyName = "Suprafata";
+            this.suprafataDataGridViewTextBoxColumn2.HeaderText = "Suprafata";
+            this.suprafataDataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.suprafataDataGridViewTextBoxColumn2.Name = "suprafataDataGridViewTextBoxColumn2";
+            this.suprafataDataGridViewTextBoxColumn2.Width = 125;
             // 
-            // camereDataGridViewTextBoxColumn
+            // camereDataGridViewTextBoxColumn2
             // 
-            this.camereDataGridViewTextBoxColumn.DataPropertyName = "Camere";
-            this.camereDataGridViewTextBoxColumn.HeaderText = "Camere";
-            this.camereDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.camereDataGridViewTextBoxColumn.Name = "camereDataGridViewTextBoxColumn";
-            this.camereDataGridViewTextBoxColumn.Width = 125;
+            this.camereDataGridViewTextBoxColumn2.DataPropertyName = "Camere";
+            this.camereDataGridViewTextBoxColumn2.HeaderText = "Camere";
+            this.camereDataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.camereDataGridViewTextBoxColumn2.Name = "camereDataGridViewTextBoxColumn2";
+            this.camereDataGridViewTextBoxColumn2.Width = 125;
             // 
-            // persoaneDataGridViewTextBoxColumn
+            // persoaneDataGridViewTextBoxColumn2
             // 
-            this.persoaneDataGridViewTextBoxColumn.DataPropertyName = "Persoane";
-            this.persoaneDataGridViewTextBoxColumn.HeaderText = "Persoane";
-            this.persoaneDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.persoaneDataGridViewTextBoxColumn.Name = "persoaneDataGridViewTextBoxColumn";
-            this.persoaneDataGridViewTextBoxColumn.Width = 125;
+            this.persoaneDataGridViewTextBoxColumn2.DataPropertyName = "Persoane";
+            this.persoaneDataGridViewTextBoxColumn2.HeaderText = "Persoane";
+            this.persoaneDataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.persoaneDataGridViewTextBoxColumn2.Name = "persoaneDataGridViewTextBoxColumn2";
+            this.persoaneDataGridViewTextBoxColumn2.Width = 125;
             // 
-            // apometreARDataGridViewTextBoxColumn
+            // apometreARDataGridViewTextBoxColumn2
             // 
-            this.apometreARDataGridViewTextBoxColumn.DataPropertyName = "Apometre AR";
-            this.apometreARDataGridViewTextBoxColumn.HeaderText = "Apometre AR";
-            this.apometreARDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.apometreARDataGridViewTextBoxColumn.Name = "apometreARDataGridViewTextBoxColumn";
-            this.apometreARDataGridViewTextBoxColumn.Width = 125;
+            this.apometreARDataGridViewTextBoxColumn2.DataPropertyName = "Apometre AR";
+            this.apometreARDataGridViewTextBoxColumn2.HeaderText = "Apometre AR";
+            this.apometreARDataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.apometreARDataGridViewTextBoxColumn2.Name = "apometreARDataGridViewTextBoxColumn2";
+            this.apometreARDataGridViewTextBoxColumn2.Width = 125;
             // 
-            // apometreACDataGridViewTextBoxColumn
+            // apometreACDataGridViewTextBoxColumn2
             // 
-            this.apometreACDataGridViewTextBoxColumn.DataPropertyName = "Apometre AC";
-            this.apometreACDataGridViewTextBoxColumn.HeaderText = "Apometre AC";
-            this.apometreACDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.apometreACDataGridViewTextBoxColumn.Name = "apometreACDataGridViewTextBoxColumn";
-            this.apometreACDataGridViewTextBoxColumn.Width = 125;
+            this.apometreACDataGridViewTextBoxColumn2.DataPropertyName = "Apometre AC";
+            this.apometreACDataGridViewTextBoxColumn2.HeaderText = "Apometre AC";
+            this.apometreACDataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.apometreACDataGridViewTextBoxColumn2.Name = "apometreACDataGridViewTextBoxColumn2";
+            this.apometreACDataGridViewTextBoxColumn2.Width = 125;
             // 
-            // idscDataGridViewTextBoxColumn
+            // idscDataGridViewTextBoxColumn2
             // 
-            this.idscDataGridViewTextBoxColumn.DataPropertyName = "id_sc";
-            this.idscDataGridViewTextBoxColumn.HeaderText = "id_sc";
-            this.idscDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.idscDataGridViewTextBoxColumn.Name = "idscDataGridViewTextBoxColumn";
-            this.idscDataGridViewTextBoxColumn.Width = 125;
+            this.idscDataGridViewTextBoxColumn2.DataPropertyName = "id_sc";
+            this.idscDataGridViewTextBoxColumn2.HeaderText = "id_sc";
+            this.idscDataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.idscDataGridViewTextBoxColumn2.Name = "idscDataGridViewTextBoxColumn2";
+            this.idscDataGridViewTextBoxColumn2.Width = 125;
             // 
             // AsociatieForm
             // 
@@ -902,14 +910,15 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.mvtabelApartamenteBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mvtabelApartamenteBindingSource6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.asociatieFormDS1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridTest)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvtabelApartamenteBindingSource2)).EndInit();
             this.tabPage3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.classGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvtabelApartamenteBindingSource4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mvtabelApartamenteBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvdetaliiOrganizatieBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvtabelApartamenteBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvdetaliiOrganizatieApartamentBindingSource6)).EndInit();
@@ -925,8 +934,8 @@
             this.pnlControale.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mvtabelApartamenteBindingSource3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvtabelApartamenteBindingSource5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAp)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mvtabelApartamenteBindingSource6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.classGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mvtabelApartamenteBindingSource7)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -990,16 +999,6 @@
         private System.Windows.Forms.BindingSource mvtabelApartamenteBindingSource2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.BindingSource mvtabelApartamenteBindingSource3;
-        private butoane_si_controale.ClassGridView classGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn orgidorgDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn denumireApartamentDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn proprietarDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn suprafataDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn camereDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn persoaneDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn apometreARDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn apometreACDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idscDataGridViewTextBoxColumn2;
         private System.Windows.Forms.BindingSource mvtabelApartamenteBindingSource4;
         private System.Windows.Forms.BindingSource mvtabelApartamenteBindingSource5;
         private butoane_si_controale.ClassGridView dataGridViewAp;
@@ -1013,5 +1012,16 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn apometreACDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idscDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource mvtabelApartamenteBindingSource6;
+        private butoane_si_controale.ClassGridView classGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn orgidorgDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn denumireApartamentDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn proprietarDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn suprafataDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn camereDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn persoaneDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn apometreARDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn apometreACDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idscDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.BindingSource mvtabelApartamenteBindingSource7;
     }
 }

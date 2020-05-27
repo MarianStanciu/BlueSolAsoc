@@ -11,15 +11,15 @@ namespace BlueSolAsoc.butoane_si_controale
     class ClassGridView : DataGridView
     {
 
-        public ClassGridView(): base()
+        public ClassGridView()
             {
            
             EnableHeadersVisualStyles = false;
-            ColumnHeadersDefaultCellStyle.BackColor = Color.Aquamarine;
-            ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
-         
+            this.ColumnHeadersDefaultCellStyle.BackColor = Color.Aquamarine;
+            this.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            this.ColumnHeadersDefaultCellStyle.Font = new Font("Mongolian Baiti", 16);
             AllowUserToAddRows = false;
-
+            
             }
         
 
