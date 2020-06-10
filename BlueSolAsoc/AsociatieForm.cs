@@ -31,6 +31,9 @@ namespace BlueSolAsoc
             InitializeComponent();
             this.denumireAsociatie = denumireAsociatie;
             this.idAsociatie = idAsociatie;
+
+            this.GridParteneri.AllowUserToAddRows = true;
+            GridParteneri.Enabled = false;
             //dataGridViewAp.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkGreen;
 
 
@@ -163,7 +166,7 @@ namespace BlueSolAsoc
 
         }
 
-
+       
         private void TreeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
             PentruTreeview1AfterSelect(e.Node);
@@ -212,34 +215,45 @@ namespace BlueSolAsoc
                 MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
-
             return dr;
-
         }
-        // actiune buton modifica
-        private void classButonModifica1_Click(object sender, EventArgs e)
+
+    // actiune buton modifica
+    private void classButonModifica1_Click(object sender, EventArgs e)
         {
             classButonModifica1.Hide();
             classButonInteriorSterge1.Hide();
             btnAnuleaza.Show();
             btnOK.Show();
-            dataGridViewAp.Enabled = true;
-
-
-            foreach (var cl in splitContainer1.Panel1.Controls)
+            switch (TabSA.SelectedTab.Text)
             {
-                if (cl is ClassTextBox)
-                {
-                    ClassTextBox txtB = (ClassTextBox)cl;
-                    txtB.Enabled = true;
+                case "Structura Asociatie":
                     
-                }
-                if (cl is ClassLabel)
-                {
-                    ClassLabel txtL = (ClassLabel)cl;
-                    txtL.Enabled = true;
-                }
-            }
+                    dataGridViewAp.Enabled = true;
+                    foreach (var cl in splitContainer1.Panel1.Controls)
+                    {
+                        if (cl is ClassTextBox)
+                        {
+                            ClassTextBox txtB = (ClassTextBox)cl;
+                            txtB.Enabled = true;
+
+                        }
+                        if (cl is ClassLabel)
+                        {
+                            ClassLabel txtL = (ClassLabel)cl;
+                            txtL.Enabled = true;
+                        }
+                    }
+                    break;
+
+                case "Parteneri":
+                    
+                    GridParteneri.Enabled = true;
+                    break;
+                default:
+                    break;
+            }       
+                     
            
         }
        
@@ -248,33 +262,45 @@ namespace BlueSolAsoc
         {
             var result = MessageBox.Show("Vei pierde toate campurile modificate care nu au fost salvate", "Avertizare", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             if (result == DialogResult.OK)
-            {
-                PentruTreeview1AfterSelect(this.treeView1.SelectedNode);
-                dataGridViewAp.Enabled = false;
-                classButonInteriorSterge1.Show();
-                btnAnuleaza.Hide();
-                btnOK.Hide();
-
-                foreach (var cl in splitContainer1.Panel1.Controls)
+            { 
+                switch (TabSA.SelectedTab.Text)
                 {
-                    if (cl is ClassTextBox)
-                    {
-                        ClassTextBox txtB = (ClassTextBox)cl;
-                        //aici trebuie implementata refresh pentru textboxuri
+                    case "Structura Asociatie":
+                        PentruTreeview1AfterSelect(this.treeView1.SelectedNode);
+                        dataGridViewAp.Enabled = false;
+                        classButonInteriorSterge1.Show();
+                        btnAnuleaza.Hide();
+                        btnOK.Hide();
 
-                        txtB.Enabled = false;
+                        foreach (var cl in splitContainer1.Panel1.Controls)
+                        {
+                            if (cl is ClassTextBox)
+                            {
+                                ClassTextBox txtB = (ClassTextBox)cl;
+                                txtB.Enabled = false;
+                            }
+                        }
+                        classButonModifica1.Show();
+                        break;
 
-                    }
+                    case "Parteneri":
+                        GridParteneri.Enabled = false;
+                        classButonModifica1.Show();
+                        classButonInteriorSterge1.Show();
+                        btnAnuleaza.Hide();
+                        btnOK.Hide();
 
-
-                }
-                classButonModifica1.Show();
-            }
-            
+                        break;
+                    default:
+                        break;
+                }           
+                
+            }           
 
         }
-        // metoda pentru colorarea celulor din datagridview
-        
+
+
+        // metoda pentru colorarea celulor din datagridview     
         
 
         void dataGridViewAp_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -328,8 +354,11 @@ namespace BlueSolAsoc
         //actiune buton ok
         private void btnOK_Click(object sender, EventArgs e)
         {
-            //creare DATATABLE
-            string id_master = this.treeView1.SelectedNode.Tag.ToString();
+            switch (TabSA.SelectedTab.Text)
+            {
+                case "Structura Asociatie":
+                    //creare DATATABLE
+                    string id_master = this.treeView1.SelectedNode.Tag.ToString();
             DataTable dataTable = asociatieFormDS.Tables["mv_detaliiOrganizatie"];   
             string sr = "";
             string sl = "";
@@ -369,13 +398,7 @@ namespace BlueSolAsoc
                         else
                         {
                             eroareCaseta = "";
-                        }
-
-
-                //if ( sl==(dataTable.Rows[contor]["aso_val_label"]).ToString()  )
-                //{
-                //    MessageBox.Show("Pentru a opera in Asociatie aveti nevoie de cel putin 1 entitate in caseta cu Numar ... " , "Informatie", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                //}
+                        }              
                 
                 string utilizatComparatie;
                 switch (sl)
@@ -418,16 +441,13 @@ namespace BlueSolAsoc
                 {
                     //verific daca datele din casetete sunt aceleasi cu cele din tabela
                     if (!(dataTable.Rows[contor]["org_valoare"] == sr))
-                    {
-                        
+                    {                        
                         dataTable.Rows[contor]["org_valoare"] = sr;
                     }
                 }
                 // daca e diferit de sr atunci = sr
                 }
-                classButonModifica1.Show();
-
-            
+            classButonModifica1.Show();            
             classButonInteriorSterge1.Show();
             btnAnuleaza.Hide();
             btnOK.Hide();
@@ -435,20 +455,28 @@ namespace BlueSolAsoc
             {
                 if (cl is ClassTextBox)
                 {
-                    ClassTextBox txtB = (ClassTextBox)cl;
-                    //aici trebuie implementata refresh pentru textboxuri
-
+                    ClassTextBox txtB = (ClassTextBox)cl;     
                     txtB.Enabled = false;
-
                 }
             }
-
-
             asociatieFormDS.TransmiteActualizari("mv_detaliiOrganizatie");
             asociatieFormDS.TransmiteActualizari( "mv_tabelApartamente");
             asociatieFormDS.ExecutaComenzi("exec mp_AdaugaElemente " + id_master);
 
             PentruTreeview1AfterSelect(this.treeView1.SelectedNode);
+
+                    break;
+                case "Parteneri":
+                    MessageBox.Show("Inca nu au fost terminate setarile pentru salvare !", "Informare", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    classButonModifica1.Show();
+                    classButonInteriorSterge1.Show();
+                    btnAnuleaza.Hide();
+                    btnOK.Hide();
+                    GridParteneri.Enabled = false;
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void AsociatieForm_Load(object sender, EventArgs e)
@@ -460,10 +488,7 @@ namespace BlueSolAsoc
             // this.vAfisareDetaliiEntitatiTableAdapter.Fill(this.asociatieFormDS1.vAfisareDetaliiEntitati);
 
         }
-        private void ProceseazaUpdate(DataTable tabel, OleDbDataAdapter adapter)
-        {
-
-        }
+        
         private void splitContainer1_Panel1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Pentru a edita valorile din casete apasa butonul MODIFICA !","Informare",MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -473,6 +498,16 @@ namespace BlueSolAsoc
         {
             MessageBox.Show("Pentru a edita valorile din casete apasa butonul MODIFICA !","Informare", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+        }
+
+        private void GridParteneri_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            MessageBox.Show("Pentru a edita valorile din casete apasa butonul MODIFICA !", "Informare", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void tabPage3_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Pentru a edita valorile din casete apasa butonul MODIFICA !", "Informare", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
