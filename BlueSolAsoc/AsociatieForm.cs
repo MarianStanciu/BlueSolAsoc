@@ -34,6 +34,9 @@ namespace BlueSolAsoc
 
             this.GridParteneri.AllowUserToAddRows = true;
             GridParteneri.Enabled = false;
+
+
+           
             //dataGridViewAp.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkGreen;
 
 
@@ -64,6 +67,27 @@ namespace BlueSolAsoc
             TreeNode asociatie = new TreeNode(denumireAsociatie);
             asociatie.Tag = idAsociatie;
             treeView1.Nodes.Add(asociatie);
+            if (!(asociatieFormDS.Tables["mv_tabelParteneri"] is null))
+            {
+                asociatieFormDS.Tables.Remove("mv_tabelParteneri");
+            }
+
+            // adaugare tabela in dataset pt afisarea elementelor din panel1
+            asociatieFormDS.getSetFrom("select * from mv_tabelParteneri  where  org_id_org =" + idAsociatie , "mv_tabelParteneri");
+
+            //creare dataTable in dataset pentru afisarea din lista de cheltuieli
+
+            asociatieFormDS.getSetFrom("select val_label from tabela_asocieri_tipuri where id_tip=15 ", "denumiri_cheltuieli");
+            List<string> scheltuieli = new List<string>(asociatieFormDS.Tables["denumiri_cheltuieli"].Rows.Count);
+            DataRow[] cheltuieli = asociatieFormDS.Tables["denumiri_cheltuieli"].Select(null, null, DataViewRowState.OriginalRows);
+            for (int k = 0; k < cheltuieli.Length; k++)
+            {
+                DataRow r = cheltuieli[k];
+                string valoare = r[0, DataRowVersion.Original].ToString();
+                scheltuieli.Add(valoare);
+            }
+            //atribuirea listei de valori creata ca sursa de date pentru lista de afisare
+            listaCheltuieli.DataSource = scheltuieli;
         }
 
         //implementare afterselect din tree view care preia id elementului si apelarea metodei care returneaza datasetul cu info despre id
@@ -481,6 +505,8 @@ namespace BlueSolAsoc
 
         private void AsociatieForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'asociatieFormDS1.mv_tabelParteneri' table. You can move, or remove it, as needed.
+            this.mv_tabelParteneriTableAdapter.Fill(this.asociatieFormDS1.mv_tabelParteneri);
             // TODO: This line of code loads data into the 'asociatieFormDS1.mv_detaliiOrganizatie' table. You can move, or remove it, as needed.
             this.mv_detaliiOrganizatieTableAdapter.Fill(this.asociatieFormDS1.mv_detaliiOrganizatie);
             // TODO: This line of code loads data into the 'asociatieFormDS1.vAfisareDetaliiEntitati' table. You can move, or remove it, as needed.

@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TabSA = new BlueSolAsoc.butoane_si_controale.ClassTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -64,13 +64,20 @@
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.GridParteneri = new BlueSolAsoc.butoane_si_controale.ClassGridView();
-            this.Denumire = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cod_Fiscal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nr_Reg_Com = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Adresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.denumireDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codFiscalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.atributFiscalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.adresaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nrRegComDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mvtabelParteneriBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pnlControale = new System.Windows.Forms.Panel();
+            this.btnAnuleaza = new System.Windows.Forms.Button();
+            this.btnOK = new System.Windows.Forms.Button();
+            this.classButonInteriorSterge1 = new BlueSolAsoc.butoane_si_controale.ClassButonInteriorSterge();
+            this.classButonModifica1 = new BlueSolAsoc.butoane_si_controale.ClassButonModifica();
+            this.asociatieFormDS1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mvtabelApartamenteBindingSource7 = new System.Windows.Forms.BindingSource(this.components);
             this.mvtabelApartamenteBindingSource9 = new System.Windows.Forms.BindingSource(this.components);
             this.mvtabelApartamenteBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
@@ -90,15 +97,12 @@
             this.mvdetaliiOrganizatieApartamentBindingSource5 = new System.Windows.Forms.BindingSource(this.components);
             this.mvdetaliiOrganizatieBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.mv_tabelApartamenteTableAdapter = new BlueSolAsoc.asociatieFormDSTableAdapters.mv_tabelApartamenteTableAdapter();
-            this.pnlControale = new System.Windows.Forms.Panel();
-            this.btnAnuleaza = new System.Windows.Forms.Button();
-            this.btnOK = new System.Windows.Forms.Button();
-            this.classButonInteriorSterge1 = new BlueSolAsoc.butoane_si_controale.ClassButonInteriorSterge();
-            this.classButonModifica1 = new BlueSolAsoc.butoane_si_controale.ClassButonModifica();
             this.mvtabelApartamenteBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.mvtabelApartamenteBindingSource5 = new System.Windows.Forms.BindingSource(this.components);
             this.mvdetaliiOrganizatieBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
             this.mvtabelApartamenteBindingSource8 = new System.Windows.Forms.BindingSource(this.components);
+            this.mv_tabelParteneriTableAdapter = new BlueSolAsoc.asociatieFormDSTableAdapters.mv_tabelParteneriTableAdapter();
+            this.listaCheltuieli = new BlueSolAsoc.butoane_si_controale.ClassListBox();
             this.TabSA.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -111,6 +115,9 @@
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridParteneri)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mvtabelParteneriBindingSource)).BeginInit();
+            this.pnlControale.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.asociatieFormDS1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvtabelApartamenteBindingSource7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvtabelApartamenteBindingSource9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvtabelApartamenteBindingSource2)).BeginInit();
@@ -128,7 +135,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.mvdetaliiOrganizatieApartamentBindingSource4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvdetaliiOrganizatieApartamentBindingSource5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvdetaliiOrganizatieBindingSource3)).BeginInit();
-            this.pnlControale.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mvtabelApartamenteBindingSource3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvtabelApartamenteBindingSource5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvdetaliiOrganizatieBindingSource4)).BeginInit();
@@ -358,14 +364,14 @@
             this.dataGridViewAp.AllowUserToAddRows = false;
             this.dataGridViewAp.AutoGenerateColumns = false;
             this.dataGridViewAp.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Aquamarine;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewAp.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Aquamarine;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewAp.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewAp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewAp.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.orgidorgDataGridViewTextBoxColumn1,
@@ -482,8 +488,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.listaCheltuieli);
             this.tabPage2.Controls.Add(this.comboBox1);
-            this.tabPage2.Controls.Add(this.listBox1);
             this.tabPage2.Location = new System.Drawing.Point(4, 54);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tabPage2.Name = "tabPage2";
@@ -496,22 +502,10 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(227, 29);
+            this.comboBox1.Location = new System.Drawing.Point(507, 17);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(278, 37);
             this.comboBox1.TabIndex = 1;
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 29;
-            this.listBox1.Items.AddRange(new object[] {
-            "apa rece",
-            "apa calda"});
-            this.listBox1.Location = new System.Drawing.Point(19, 29);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(183, 497);
-            this.listBox1.TabIndex = 0;
             // 
             // tabPage3
             // 
@@ -528,20 +522,23 @@
             // GridParteneri
             // 
             this.GridParteneri.AllowUserToAddRows = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Aquamarine;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridParteneri.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.GridParteneri.AutoGenerateColumns = false;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Aquamarine;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridParteneri.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.GridParteneri.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridParteneri.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Denumire,
-            this.Cod_Fiscal,
-            this.Nr_Reg_Com,
-            this.Adresa});
+            this.denumireDataGridViewTextBoxColumn,
+            this.codFiscalDataGridViewTextBoxColumn,
+            this.atributFiscalDataGridViewTextBoxColumn,
+            this.adresaDataGridViewTextBoxColumn,
+            this.nrRegComDataGridViewTextBoxColumn});
+            this.GridParteneri.DataSource = this.mvtabelParteneriBindingSource;
             this.GridParteneri.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GridParteneri.EnableHeadersVisualStyles = false;
             this.GridParteneri.Location = new System.Drawing.Point(3, 3);
@@ -552,37 +549,127 @@
             this.GridParteneri.TabIndex = 0;
             this.GridParteneri.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridParteneri_CellContentClick);
             // 
-            // Denumire
+            // denumireDataGridViewTextBoxColumn
             // 
-            this.Denumire.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Denumire.HeaderText = "Denumire";
-            this.Denumire.MinimumWidth = 6;
-            this.Denumire.Name = "Denumire";
-            this.Denumire.Width = 250;
+            this.denumireDataGridViewTextBoxColumn.DataPropertyName = "Denumire";
+            this.denumireDataGridViewTextBoxColumn.HeaderText = "Denumire";
+            this.denumireDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.denumireDataGridViewTextBoxColumn.Name = "denumireDataGridViewTextBoxColumn";
+            this.denumireDataGridViewTextBoxColumn.Width = 125;
             // 
-            // Cod_Fiscal
+            // codFiscalDataGridViewTextBoxColumn
             // 
-            this.Cod_Fiscal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Cod_Fiscal.HeaderText = "Cod Fiscal";
-            this.Cod_Fiscal.MinimumWidth = 6;
-            this.Cod_Fiscal.Name = "Cod_Fiscal";
-            this.Cod_Fiscal.Width = 150;
+            this.codFiscalDataGridViewTextBoxColumn.DataPropertyName = "CodFiscal";
+            this.codFiscalDataGridViewTextBoxColumn.HeaderText = "CodFiscal";
+            this.codFiscalDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.codFiscalDataGridViewTextBoxColumn.Name = "codFiscalDataGridViewTextBoxColumn";
+            this.codFiscalDataGridViewTextBoxColumn.Width = 125;
             // 
-            // Nr_Reg_Com
+            // atributFiscalDataGridViewTextBoxColumn
             // 
-            this.Nr_Reg_Com.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Nr_Reg_Com.HeaderText = "Nr Reg Com";
-            this.Nr_Reg_Com.MinimumWidth = 6;
-            this.Nr_Reg_Com.Name = "Nr_Reg_Com";
-            this.Nr_Reg_Com.Width = 150;
+            this.atributFiscalDataGridViewTextBoxColumn.DataPropertyName = "AtributFiscal";
+            this.atributFiscalDataGridViewTextBoxColumn.HeaderText = "AtributFiscal";
+            this.atributFiscalDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.atributFiscalDataGridViewTextBoxColumn.Name = "atributFiscalDataGridViewTextBoxColumn";
+            this.atributFiscalDataGridViewTextBoxColumn.Width = 125;
             // 
-            // Adresa
+            // adresaDataGridViewTextBoxColumn
             // 
-            this.Adresa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Adresa.HeaderText = "Adresa";
-            this.Adresa.MinimumWidth = 6;
-            this.Adresa.Name = "Adresa";
-            this.Adresa.Width = 500;
+            this.adresaDataGridViewTextBoxColumn.DataPropertyName = "Adresa";
+            this.adresaDataGridViewTextBoxColumn.HeaderText = "Adresa";
+            this.adresaDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.adresaDataGridViewTextBoxColumn.Name = "adresaDataGridViewTextBoxColumn";
+            this.adresaDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // nrRegComDataGridViewTextBoxColumn
+            // 
+            this.nrRegComDataGridViewTextBoxColumn.DataPropertyName = "NrRegCom";
+            this.nrRegComDataGridViewTextBoxColumn.HeaderText = "NrRegCom";
+            this.nrRegComDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.nrRegComDataGridViewTextBoxColumn.Name = "nrRegComDataGridViewTextBoxColumn";
+            this.nrRegComDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // mvtabelParteneriBindingSource
+            // 
+            this.mvtabelParteneriBindingSource.DataMember = "mv_tabelParteneri";
+            this.mvtabelParteneriBindingSource.DataSource = this.asociatieFormDS1;
+            // 
+            // pnlControale
+            // 
+            this.pnlControale.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlControale.Controls.Add(this.btnAnuleaza);
+            this.pnlControale.Controls.Add(this.btnOK);
+            this.pnlControale.Controls.Add(this.classButonInteriorSterge1);
+            this.pnlControale.Controls.Add(this.classButonModifica1);
+            this.pnlControale.Location = new System.Drawing.Point(1057, 71);
+            this.pnlControale.Name = "pnlControale";
+            this.pnlControale.Size = new System.Drawing.Size(157, 701);
+            this.pnlControale.TabIndex = 4;
+            // 
+            // btnAnuleaza
+            // 
+            this.btnAnuleaza.BackColor = System.Drawing.Color.Red;
+            this.btnAnuleaza.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAnuleaza.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAnuleaza.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAnuleaza.Location = new System.Drawing.Point(0, 600);
+            this.btnAnuleaza.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnAnuleaza.Name = "btnAnuleaza";
+            this.btnAnuleaza.Size = new System.Drawing.Size(157, 200);
+            this.btnAnuleaza.TabIndex = 9;
+            this.btnAnuleaza.Text = "ANULEAZA";
+            this.btnAnuleaza.UseVisualStyleBackColor = false;
+            this.btnAnuleaza.Click += new System.EventHandler(this.btnAnuleaza_Click);
+            // 
+            // btnOK
+            // 
+            this.btnOK.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnOK.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOK.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOK.Location = new System.Drawing.Point(0, 400);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(157, 200);
+            this.btnOK.TabIndex = 8;
+            this.btnOK.Text = "SALVEAZA";
+            this.btnOK.UseVisualStyleBackColor = false;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            // 
+            // classButonInteriorSterge1
+            // 
+            this.classButonInteriorSterge1.BackColor = System.Drawing.Color.Red;
+            this.classButonInteriorSterge1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.classButonInteriorSterge1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.classButonInteriorSterge1.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.classButonInteriorSterge1.Location = new System.Drawing.Point(0, 200);
+            this.classButonInteriorSterge1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.classButonInteriorSterge1.Name = "classButonInteriorSterge1";
+            this.classButonInteriorSterge1.Size = new System.Drawing.Size(157, 200);
+            this.classButonInteriorSterge1.TabIndex = 7;
+            this.classButonInteriorSterge1.Text = "STERGE";
+            this.classButonInteriorSterge1.UseVisualStyleBackColor = false;
+            // 
+            // classButonModifica1
+            // 
+            this.classButonModifica1.BackColor = System.Drawing.Color.Yellow;
+            this.classButonModifica1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.classButonModifica1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.classButonModifica1.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.classButonModifica1.Location = new System.Drawing.Point(0, 0);
+            this.classButonModifica1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.classButonModifica1.Name = "classButonModifica1";
+            this.classButonModifica1.Size = new System.Drawing.Size(157, 200);
+            this.classButonModifica1.TabIndex = 6;
+            this.classButonModifica1.Text = "MODIFICA";
+            this.classButonModifica1.UseVisualStyleBackColor = false;
+            this.classButonModifica1.Click += new System.EventHandler(this.classButonModifica1_Click);
+            // 
+            // asociatieFormDS1BindingSource
+            // 
+            this.asociatieFormDS1BindingSource.DataSource = this.asociatieFormDS1;
+            this.asociatieFormDS1BindingSource.Position = 0;
             // 
             // mvtabelApartamenteBindingSource7
             // 
@@ -677,78 +764,6 @@
             // 
             this.mv_tabelApartamenteTableAdapter.ClearBeforeFill = true;
             // 
-            // pnlControale
-            // 
-            this.pnlControale.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlControale.Controls.Add(this.btnAnuleaza);
-            this.pnlControale.Controls.Add(this.btnOK);
-            this.pnlControale.Controls.Add(this.classButonInteriorSterge1);
-            this.pnlControale.Controls.Add(this.classButonModifica1);
-            this.pnlControale.Location = new System.Drawing.Point(1057, 71);
-            this.pnlControale.Name = "pnlControale";
-            this.pnlControale.Size = new System.Drawing.Size(157, 701);
-            this.pnlControale.TabIndex = 4;
-            // 
-            // btnAnuleaza
-            // 
-            this.btnAnuleaza.BackColor = System.Drawing.Color.Red;
-            this.btnAnuleaza.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAnuleaza.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAnuleaza.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAnuleaza.Location = new System.Drawing.Point(0, 600);
-            this.btnAnuleaza.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btnAnuleaza.Name = "btnAnuleaza";
-            this.btnAnuleaza.Size = new System.Drawing.Size(157, 200);
-            this.btnAnuleaza.TabIndex = 9;
-            this.btnAnuleaza.Text = "ANULEAZA";
-            this.btnAnuleaza.UseVisualStyleBackColor = false;
-            this.btnAnuleaza.Click += new System.EventHandler(this.btnAnuleaza_Click);
-            // 
-            // btnOK
-            // 
-            this.btnOK.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btnOK.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOK.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOK.Location = new System.Drawing.Point(0, 400);
-            this.btnOK.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(157, 200);
-            this.btnOK.TabIndex = 8;
-            this.btnOK.Text = "SALVEAZA";
-            this.btnOK.UseVisualStyleBackColor = false;
-            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
-            // 
-            // classButonInteriorSterge1
-            // 
-            this.classButonInteriorSterge1.BackColor = System.Drawing.Color.Red;
-            this.classButonInteriorSterge1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.classButonInteriorSterge1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.classButonInteriorSterge1.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.classButonInteriorSterge1.Location = new System.Drawing.Point(0, 200);
-            this.classButonInteriorSterge1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.classButonInteriorSterge1.Name = "classButonInteriorSterge1";
-            this.classButonInteriorSterge1.Size = new System.Drawing.Size(157, 200);
-            this.classButonInteriorSterge1.TabIndex = 7;
-            this.classButonInteriorSterge1.Text = "STERGE";
-            this.classButonInteriorSterge1.UseVisualStyleBackColor = false;
-            // 
-            // classButonModifica1
-            // 
-            this.classButonModifica1.BackColor = System.Drawing.Color.Yellow;
-            this.classButonModifica1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.classButonModifica1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.classButonModifica1.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.classButonModifica1.Location = new System.Drawing.Point(0, 0);
-            this.classButonModifica1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.classButonModifica1.Name = "classButonModifica1";
-            this.classButonModifica1.Size = new System.Drawing.Size(157, 200);
-            this.classButonModifica1.TabIndex = 6;
-            this.classButonModifica1.Text = "MODIFICA";
-            this.classButonModifica1.UseVisualStyleBackColor = false;
-            this.classButonModifica1.Click += new System.EventHandler(this.classButonModifica1_Click);
-            // 
             // mvtabelApartamenteBindingSource3
             // 
             this.mvtabelApartamenteBindingSource3.DataMember = "mv_tabelApartamente";
@@ -768,6 +783,19 @@
             // 
             this.mvtabelApartamenteBindingSource8.DataMember = "mv_tabelApartamente";
             this.mvtabelApartamenteBindingSource8.DataSource = this.asociatieFormDS1;
+            // 
+            // mv_tabelParteneriTableAdapter
+            // 
+            this.mv_tabelParteneriTableAdapter.ClearBeforeFill = true;
+            // 
+            // listaCheltuieli
+            // 
+            this.listaCheltuieli.FormattingEnabled = true;
+            this.listaCheltuieli.ItemHeight = 29;
+            this.listaCheltuieli.Location = new System.Drawing.Point(5, 6);
+            this.listaCheltuieli.Name = "listaCheltuieli";
+            this.listaCheltuieli.Size = new System.Drawing.Size(429, 613);
+            this.listaCheltuieli.TabIndex = 2;
             // 
             // AsociatieForm
             // 
@@ -795,6 +823,9 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GridParteneri)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mvtabelParteneriBindingSource)).EndInit();
+            this.pnlControale.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.asociatieFormDS1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvtabelApartamenteBindingSource7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvtabelApartamenteBindingSource9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvtabelApartamenteBindingSource2)).EndInit();
@@ -812,7 +843,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.mvdetaliiOrganizatieApartamentBindingSource4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvdetaliiOrganizatieApartamentBindingSource5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvdetaliiOrganizatieBindingSource3)).EndInit();
-            this.pnlControale.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mvtabelApartamenteBindingSource3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvtabelApartamenteBindingSource5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvdetaliiOrganizatieBindingSource4)).EndInit();
@@ -888,11 +918,15 @@
         private System.Windows.Forms.BindingSource mvdetaliiOrganizatieBindingSource4;
         private System.Windows.Forms.BindingSource mvtabelApartamenteBindingSource8;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ListBox listBox1;
         private butoane_si_controale.ClassGridView GridParteneri;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Denumire;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cod_Fiscal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nr_Reg_Com;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Adresa;
+        private System.Windows.Forms.BindingSource asociatieFormDS1BindingSource;
+        private System.Windows.Forms.BindingSource mvtabelParteneriBindingSource;
+        private asociatieFormDSTableAdapters.mv_tabelParteneriTableAdapter mv_tabelParteneriTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn denumireDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codFiscalDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn atributFiscalDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn adresaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nrRegComDataGridViewTextBoxColumn;
+        private butoane_si_controale.ClassListBox listaCheltuieli;
     }
 }

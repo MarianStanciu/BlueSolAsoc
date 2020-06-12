@@ -104,6 +104,9 @@
     <Compile Include="butoane si controale\ClassLabel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="butoane si controale\ClassListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="butoane si controale\ClassTabControl.cs">
       <SubType>Component</SubType>
     </Compile>
