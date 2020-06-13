@@ -44,6 +44,118 @@ WHERE (mv_detaliiOrganizatie.id_org = dataTable(id_org))</CommandText>
               </DbSource>
             </Sources>
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="mv_tabelApartamenteTableAdapter" GeneratorDataComponentClassName="mv_tabelApartamenteTableAdapter" Name="mv_tabelApartamente" UserDataComponentName="mv_tabelApartamenteTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="proba_transareConnectionString (Settings)" DbObjectName="proba_transare.dbo.mv_tabelApartamente" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT org_id_org, [Denumire Apartament], Proprietar, Suprafata, Camere, Persoane, [Apometre AR], [Apometre AC], id_sc FROM dbo.mv_tabelApartamente</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="org_id_org" DataSetColumn="org_id_org" />
+              <Mapping SourceColumn="Denumire Apartament" DataSetColumn="Denumire Apartament" />
+              <Mapping SourceColumn="Proprietar" DataSetColumn="Proprietar" />
+              <Mapping SourceColumn="Suprafata" DataSetColumn="Suprafata" />
+              <Mapping SourceColumn="Camere" DataSetColumn="Camere" />
+              <Mapping SourceColumn="Persoane" DataSetColumn="Persoane" />
+              <Mapping SourceColumn="Apometre AR" DataSetColumn="Apometre AR" />
+              <Mapping SourceColumn="Apometre AC" DataSetColumn="Apometre AC" />
+              <Mapping SourceColumn="id_sc" DataSetColumn="id_sc" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="mv_tabelParteneriTableAdapter" GeneratorDataComponentClassName="mv_tabelParteneriTableAdapter" Name="mv_tabelParteneri" UserDataComponentName="mv_tabelParteneriTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="proba_transareConnectionString (Settings)" DbObjectName="proba_transare.dbo.mv_tabelParteneri" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT org_id_org, Denumire, CodFiscal, AtributFiscal, Adresa, NrRegCom FROM dbo.mv_tabelParteneri</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="org_id_org" DataSetColumn="org_id_org" />
+              <Mapping SourceColumn="Denumire" DataSetColumn="Denumire" />
+              <Mapping SourceColumn="CodFiscal" DataSetColumn="CodFiscal" />
+              <Mapping SourceColumn="AtributFiscal" DataSetColumn="AtributFiscal" />
+              <Mapping SourceColumn="Adresa" DataSetColumn="Adresa" />
+              <Mapping SourceColumn="NrRegCom" DataSetColumn="NrRegCom" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="tabela_asocieri_tipuriTableAdapter" GeneratorDataComponentClassName="tabela_asocieri_tipuriTableAdapter" Name="tabela_asocieri_tipuri" UserDataComponentName="tabela_asocieri_tipuriTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="proba_transareConnectionString (Settings)" DbObjectName="proba_transare.dbo.tabela_asocieri_tipuri" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [dbo].[tabela_asocieri_tipuri] WHERE (([id_asociere] = @Original_id_asociere) AND ([id_tip] = @Original_id_tip) AND ([id_master] = @Original_id_master) AND ([val_label] = @Original_val_label) AND ([tip_afisare] = @Original_tip_afisare) AND ([val_default] = @Original_val_default))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_id_asociere" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="id_asociere" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_id_tip" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="id_tip" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_id_master" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="id_master" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_val_label" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="val_label" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_tip_afisare" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="tip_afisare" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_val_default" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="val_default" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [dbo].[tabela_asocieri_tipuri] ([id_tip], [id_master], [val_label], [tip_afisare], [val_default]) VALUES (@id_tip, @id_master, @val_label, @tip_afisare, @val_default);
+SELECT id_asociere, id_tip, id_master, val_label, tip_afisare, val_default FROM tabela_asocieri_tipuri WHERE (id_asociere = SCOPE_IDENTITY())</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@id_tip" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="id_tip" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@id_master" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="id_master" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@val_label" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="val_label" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@tip_afisare" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="tip_afisare" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@val_default" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="val_default" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT id_asociere, id_tip, id_master, val_label, tip_afisare, val_default FROM dbo.tabela_asocieri_tipuri</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [dbo].[tabela_asocieri_tipuri] SET [id_tip] = @id_tip, [id_master] = @id_master, [val_label] = @val_label, [tip_afisare] = @tip_afisare, [val_default] = @val_default WHERE (([id_asociere] = @Original_id_asociere) AND ([id_tip] = @Original_id_tip) AND ([id_master] = @Original_id_master) AND ([val_label] = @Original_val_label) AND ([tip_afisare] = @Original_tip_afisare) AND ([val_default] = @Original_val_default));
+SELECT id_asociere, id_tip, id_master, val_label, tip_afisare, val_default FROM tabela_asocieri_tipuri WHERE (id_asociere = @id_asociere)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@id_tip" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="id_tip" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@id_master" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="id_master" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@val_label" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="val_label" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@tip_afisare" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="tip_afisare" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@val_default" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="val_default" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_id_asociere" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="id_asociere" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_id_tip" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="id_tip" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_id_master" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="id_master" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_val_label" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="val_label" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_tip_afisare" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="tip_afisare" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_val_default" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="val_default" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="id_asociere" ColumnName="id_asociere" DataSourceName="proba_transare.dbo.tabela_asocieri_tipuri" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@id_asociere" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="id_asociere" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id_asociere" DataSetColumn="id_asociere" />
+              <Mapping SourceColumn="id_tip" DataSetColumn="id_tip" />
+              <Mapping SourceColumn="id_master" DataSetColumn="id_master" />
+              <Mapping SourceColumn="val_label" DataSetColumn="val_label" />
+              <Mapping SourceColumn="tip_afisare" DataSetColumn="tip_afisare" />
+              <Mapping SourceColumn="val_default" DataSetColumn="val_default" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -52,7 +164,7 @@ WHERE (mv_detaliiOrganizatie.id_org = dataTable(id_org))</CommandText>
   <xs:element name="asociatieFormDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="asociatieFormDS" msprop:Generator_UserDSName="asociatieFormDS">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="mv_detaliiOrganizatie" msprop:Generator_TableClassName="mv_detaliiOrganizatieDataTable" msprop:Generator_TableVarName="tablemv_detaliiOrganizatie" msprop:Generator_TablePropName="mv_detaliiOrganizatie" msprop:Generator_RowDeletingName="mv_detaliiOrganizatieRowDeleting" msprop:Generator_RowChangingName="mv_detaliiOrganizatieRowChanging" msprop:Generator_RowEvHandlerName="mv_detaliiOrganizatieRowChangeEventHandler" msprop:Generator_RowDeletedName="mv_detaliiOrganizatieRowDeleted" msprop:Generator_UserTableName="mv_detaliiOrganizatie" msprop:Generator_RowChangedName="mv_detaliiOrganizatieRowChanged" msprop:Generator_RowEvArgName="mv_detaliiOrganizatieRowChangeEvent" msprop:Generator_RowClassName="mv_detaliiOrganizatieRow">
+        <xs:element name="mv_detaliiOrganizatie" msprop:Generator_TableClassName="mv_detaliiOrganizatieDataTable" msprop:Generator_TableVarName="tablemv_detaliiOrganizatie" msprop:Generator_RowChangedName="mv_detaliiOrganizatieRowChanged" msprop:Generator_TablePropName="mv_detaliiOrganizatie" msprop:Generator_RowDeletingName="mv_detaliiOrganizatieRowDeleting" msprop:Generator_RowChangingName="mv_detaliiOrganizatieRowChanging" msprop:Generator_RowEvHandlerName="mv_detaliiOrganizatieRowChangeEventHandler" msprop:Generator_RowDeletedName="mv_detaliiOrganizatieRowDeleted" msprop:Generator_RowClassName="mv_detaliiOrganizatieRow" msprop:Generator_UserTableName="mv_detaliiOrganizatie" msprop:Generator_RowEvArgName="mv_detaliiOrganizatieRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="org_id_org" msprop:Generator_ColumnVarNameInTable="columnorg_id_org" msprop:Generator_ColumnPropNameInRow="org_id_org" msprop:Generator_ColumnPropNameInTable="org_id_orgColumn" msprop:Generator_UserColumnName="org_id_org" type="xs:int" />
@@ -105,8 +217,107 @@ WHERE (mv_detaliiOrganizatie.id_org = dataTable(id_org))</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="mv_tabelApartamente" msprop:Generator_TableClassName="mv_tabelApartamenteDataTable" msprop:Generator_TableVarName="tablemv_tabelApartamente" msprop:Generator_TablePropName="mv_tabelApartamente" msprop:Generator_RowDeletingName="mv_tabelApartamenteRowDeleting" msprop:Generator_RowChangingName="mv_tabelApartamenteRowChanging" msprop:Generator_RowEvHandlerName="mv_tabelApartamenteRowChangeEventHandler" msprop:Generator_RowDeletedName="mv_tabelApartamenteRowDeleted" msprop:Generator_UserTableName="mv_tabelApartamente" msprop:Generator_RowChangedName="mv_tabelApartamenteRowChanged" msprop:Generator_RowEvArgName="mv_tabelApartamenteRowChangeEvent" msprop:Generator_RowClassName="mv_tabelApartamenteRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="org_id_org" msprop:Generator_ColumnVarNameInTable="columnorg_id_org" msprop:Generator_ColumnPropNameInRow="org_id_org" msprop:Generator_ColumnPropNameInTable="org_id_orgColumn" msprop:Generator_UserColumnName="org_id_org" type="xs:int" />
+              <xs:element name="Denumire_x0020_Apartament" msprop:Generator_ColumnVarNameInTable="columnDenumire_Apartament" msprop:Generator_ColumnPropNameInRow="Denumire_Apartament" msprop:Generator_ColumnPropNameInTable="Denumire_ApartamentColumn" msprop:Generator_UserColumnName="Denumire Apartament" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Proprietar" msprop:Generator_ColumnVarNameInTable="columnProprietar" msprop:Generator_ColumnPropNameInRow="Proprietar" msprop:Generator_ColumnPropNameInTable="ProprietarColumn" msprop:Generator_UserColumnName="Proprietar" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Suprafata" msprop:Generator_ColumnVarNameInTable="columnSuprafata" msprop:Generator_ColumnPropNameInRow="Suprafata" msprop:Generator_ColumnPropNameInTable="SuprafataColumn" msprop:Generator_UserColumnName="Suprafata" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Camere" msprop:Generator_ColumnVarNameInTable="columnCamere" msprop:Generator_ColumnPropNameInRow="Camere" msprop:Generator_ColumnPropNameInTable="CamereColumn" msprop:Generator_UserColumnName="Camere" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Persoane" msprop:Generator_ColumnVarNameInTable="columnPersoane" msprop:Generator_ColumnPropNameInRow="Persoane" msprop:Generator_ColumnPropNameInTable="PersoaneColumn" msprop:Generator_UserColumnName="Persoane" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Apometre_x0020_AR" msprop:Generator_ColumnVarNameInTable="columnApometre_AR" msprop:Generator_ColumnPropNameInRow="Apometre_AR" msprop:Generator_ColumnPropNameInTable="Apometre_ARColumn" msprop:Generator_UserColumnName="Apometre AR" type="xs:int" minOccurs="0" />
+              <xs:element name="Apometre_x0020_AC" msprop:Generator_ColumnVarNameInTable="columnApometre_AC" msprop:Generator_ColumnPropNameInRow="Apometre_AC" msprop:Generator_ColumnPropNameInTable="Apometre_ACColumn" msprop:Generator_UserColumnName="Apometre AC" type="xs:int" minOccurs="0" />
+              <xs:element name="id_sc" msprop:Generator_ColumnVarNameInTable="columnid_sc" msprop:Generator_ColumnPropNameInRow="id_sc" msprop:Generator_ColumnPropNameInTable="id_scColumn" msprop:Generator_UserColumnName="id_sc" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
         <xs:element name="mv_detaliiOrganizatieApartament" msprop:Generator_TableClassName="mv_detaliiOrganizatieApartamentDataTable" msprop:Generator_TableVarName="tablemv_detaliiOrganizatieApartament" msprop:Generator_TablePropName="mv_detaliiOrganizatieApartament" msprop:Generator_RowDeletingName="mv_detaliiOrganizatieApartamentRowDeleting" msprop:Generator_RowChangingName="mv_detaliiOrganizatieApartamentRowChanging" msprop:Generator_RowEvHandlerName="mv_detaliiOrganizatieApartamentRowChangeEventHandler" msprop:Generator_RowDeletedName="mv_detaliiOrganizatieApartamentRowDeleted" msprop:Generator_UserTableName="mv_detaliiOrganizatieApartament" msprop:Generator_RowChangedName="mv_detaliiOrganizatieApartamentRowChanged" msprop:Generator_RowEvArgName="mv_detaliiOrganizatieApartamentRowChangeEvent" msprop:Generator_RowClassName="mv_detaliiOrganizatieApartamentRow">
           <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="mv_tabelParteneri" msprop:Generator_TableClassName="mv_tabelParteneriDataTable" msprop:Generator_TableVarName="tablemv_tabelParteneri" msprop:Generator_RowChangedName="mv_tabelParteneriRowChanged" msprop:Generator_TablePropName="mv_tabelParteneri" msprop:Generator_RowDeletingName="mv_tabelParteneriRowDeleting" msprop:Generator_RowChangingName="mv_tabelParteneriRowChanging" msprop:Generator_RowEvHandlerName="mv_tabelParteneriRowChangeEventHandler" msprop:Generator_RowDeletedName="mv_tabelParteneriRowDeleted" msprop:Generator_RowClassName="mv_tabelParteneriRow" msprop:Generator_UserTableName="mv_tabelParteneri" msprop:Generator_RowEvArgName="mv_tabelParteneriRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="org_id_org" msprop:Generator_ColumnVarNameInTable="columnorg_id_org" msprop:Generator_ColumnPropNameInRow="org_id_org" msprop:Generator_ColumnPropNameInTable="org_id_orgColumn" msprop:Generator_UserColumnName="org_id_org" type="xs:int" />
+              <xs:element name="Denumire" msprop:Generator_ColumnVarNameInTable="columnDenumire" msprop:Generator_ColumnPropNameInRow="Denumire" msprop:Generator_ColumnPropNameInTable="DenumireColumn" msprop:Generator_UserColumnName="Denumire">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CodFiscal" msprop:Generator_ColumnVarNameInTable="columnCodFiscal" msprop:Generator_ColumnPropNameInRow="CodFiscal" msprop:Generator_ColumnPropNameInTable="CodFiscalColumn" msprop:Generator_UserColumnName="CodFiscal">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AtributFiscal" msprop:Generator_ColumnVarNameInTable="columnAtributFiscal" msprop:Generator_ColumnPropNameInRow="AtributFiscal" msprop:Generator_ColumnPropNameInTable="AtributFiscalColumn" msprop:Generator_UserColumnName="AtributFiscal">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Adresa" msprop:Generator_ColumnVarNameInTable="columnAdresa" msprop:Generator_ColumnPropNameInRow="Adresa" msprop:Generator_ColumnPropNameInTable="AdresaColumn" msprop:Generator_UserColumnName="Adresa">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NrRegCom" msprop:Generator_ColumnVarNameInTable="columnNrRegCom" msprop:Generator_ColumnPropNameInRow="NrRegCom" msprop:Generator_ColumnPropNameInTable="NrRegComColumn" msprop:Generator_UserColumnName="NrRegCom">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="tabela_asocieri_tipuri" msprop:Generator_TableClassName="tabela_asocieri_tipuriDataTable" msprop:Generator_TableVarName="tabletabela_asocieri_tipuri" msprop:Generator_TablePropName="tabela_asocieri_tipuri" msprop:Generator_RowDeletingName="tabela_asocieri_tipuriRowDeleting" msprop:Generator_RowChangingName="tabela_asocieri_tipuriRowChanging" msprop:Generator_RowEvHandlerName="tabela_asocieri_tipuriRowChangeEventHandler" msprop:Generator_RowDeletedName="tabela_asocieri_tipuriRowDeleted" msprop:Generator_UserTableName="tabela_asocieri_tipuri" msprop:Generator_RowChangedName="tabela_asocieri_tipuriRowChanged" msprop:Generator_RowEvArgName="tabela_asocieri_tipuriRowChangeEvent" msprop:Generator_RowClassName="tabela_asocieri_tipuriRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id_asociere" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_asociere" msprop:Generator_ColumnPropNameInRow="id_asociere" msprop:Generator_ColumnPropNameInTable="id_asociereColumn" msprop:Generator_UserColumnName="id_asociere" type="xs:int" />
+              <xs:element name="id_tip" msprop:Generator_ColumnVarNameInTable="columnid_tip" msprop:Generator_ColumnPropNameInRow="id_tip" msprop:Generator_ColumnPropNameInTable="id_tipColumn" msprop:Generator_UserColumnName="id_tip" type="xs:int" />
+              <xs:element name="id_master" msprop:Generator_ColumnVarNameInTable="columnid_master" msprop:Generator_ColumnPropNameInRow="id_master" msprop:Generator_ColumnPropNameInTable="id_masterColumn" msprop:Generator_UserColumnName="id_master" type="xs:int" />
+              <xs:element name="val_label" msprop:Generator_ColumnVarNameInTable="columnval_label" msprop:Generator_ColumnPropNameInRow="val_label" msprop:Generator_ColumnPropNameInTable="val_labelColumn" msprop:Generator_UserColumnName="val_label">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="tip_afisare" msprop:Generator_ColumnVarNameInTable="columntip_afisare" msprop:Generator_ColumnPropNameInRow="tip_afisare" msprop:Generator_ColumnPropNameInTable="tip_afisareColumn" msprop:Generator_UserColumnName="tip_afisare">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="val_default" msprop:Generator_ColumnVarNameInTable="columnval_default" msprop:Generator_ColumnPropNameInRow="val_default" msprop:Generator_ColumnPropNameInTable="val_defaultColumn" msprop:Generator_UserColumnName="val_default">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
           </xs:complexType>
         </xs:element>
       </xs:choice>
@@ -114,6 +325,10 @@ WHERE (mv_detaliiOrganizatie.id_org = dataTable(id_org))</CommandText>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:mv_detaliiOrganizatie" />
       <xs:field xpath="mstns:org_id_org" />
+    </xs:unique>
+    <xs:unique name="tabela_asocieri_tipuri_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:tabela_asocieri_tipuri" />
+      <xs:field xpath="mstns:id_asociere" />
     </xs:unique>
   </xs:element>
 </xs:schema>

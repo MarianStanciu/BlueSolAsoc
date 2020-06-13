@@ -95,10 +95,16 @@
     <Compile Include="butoane si controale\ClassDataSet.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="butoane si controale\ClassGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="butoane si controale\ClassGroupBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="butoane si controale\ClassLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="butoane si controale\ClassListBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="butoane si controale\ClassTabControl.cs">

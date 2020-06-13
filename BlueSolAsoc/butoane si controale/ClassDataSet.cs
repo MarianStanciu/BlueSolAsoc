@@ -69,11 +69,11 @@ namespace BlueSolAsoc.butoane_si_controale
                 {
                     if (i == 0)
                     {
-                        inserare = inserare + dc[i].ColumnName;
+                        inserare = inserare + "["+dc[i].ColumnName+"]";
                     }
                     else
                     {
-                        inserare = inserare + "," + dc[i].ColumnName;
+                        inserare = inserare + "," +"[" + dc[i].ColumnName + "]";
                     }
                 }
                 inserare = inserare + " ) values ";
@@ -162,7 +162,7 @@ namespace BlueSolAsoc.butoane_si_controale
 
                     for (int i = 1; i < dc.Count; i++)
                     {
-                        actualizare = actualizare + dc[i].ColumnName + "=";
+                        actualizare = actualizare + "["+dc[i].ColumnName+"]" + "=";
 
 
                         DataRow r = (DataRow)modificate[k];
@@ -176,10 +176,10 @@ namespace BlueSolAsoc.butoane_si_controale
 
                         {
                             case "System.String":
-                                valoare = "'" + r[f.ColumnName].ToString() + "'";
+                                valoare = "'" + r[f.ColumnName].ToString().Trim() + "'";
                                 break;
                             case "System.Int32":
-                                valoare = r[f.ColumnName].ToString();
+                                valoare = r[f.ColumnName].ToString().Trim();
                                 break;
                             case "System.DateTime":
                                 valoare = "'" + r[f.ColumnName].ToString() + "'";
@@ -209,7 +209,7 @@ namespace BlueSolAsoc.butoane_si_controale
                         }
 
                     }
-                    actualizare = actualizare + " where org_id_org=" + modificate[k][dc[0].ColumnName].ToString();
+                    actualizare = actualizare + " where "+"["+dc[0].ColumnName+"] ="+ modificate[k][dc[0].ColumnName].ToString();
                     if (k < modificate.Length - 1)
                     {
                         actualizare = actualizare + " Update  " + sSursa + " set ";
