@@ -96,10 +96,18 @@ namespace BlueSolAsoc.butoane_si_controale
                                 valoare = r[f.ColumnName].ToString();
                                 break;
                             case "System.DateTime":
-                                valoare = "'" + r[f.ColumnName].ToString() + "'";
+                                DateTime dateTime = (DateTime)r[f.ColumnName];
+                                valoare = "'" + dateTime.ToString("yyyyMMdd") + "'";
                                 break;
                             case "System.Decimal":
-                                valoare = ((System.Decimal)r[f.ColumnName]).ToString();
+                                try
+                                {
+                                    valoare = ((System.Decimal)r[f.ColumnName]).ToString();
+                                }
+                                catch(Exception e)
+                                {
+                                    valoare = "0";
+                                }
                                 break;
                             default:
                                 break;
