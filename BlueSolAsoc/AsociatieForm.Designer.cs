@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TabSA = new BlueSolAsoc.butoane_si_controale.ClassTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -63,14 +63,9 @@
             this.asociatieFormDS1 = new BlueSolAsoc.asociatieFormDS();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.listaCheltuieli = new BlueSolAsoc.butoane_si_controale.ClassListBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.GridParteneri = new BlueSolAsoc.butoane_si_controale.ClassGridView();
-            this.denumireDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codFiscalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.atributFiscalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.adresaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nrRegComDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mvtabelParteneriBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pnlControale = new System.Windows.Forms.Panel();
             this.btnAnuleaza = new System.Windows.Forms.Button();
@@ -102,7 +97,8 @@
             this.mvdetaliiOrganizatieBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
             this.mvtabelApartamenteBindingSource8 = new System.Windows.Forms.BindingSource(this.components);
             this.mv_tabelParteneriTableAdapter = new BlueSolAsoc.asociatieFormDSTableAdapters.mv_tabelParteneriTableAdapter();
-            this.listaCheltuieli = new BlueSolAsoc.butoane_si_controale.ClassListBox();
+            this.GridParteneri = new BlueSolAsoc.butoane_si_controale.ClassGridView();
+            this.mvtabelParteneriBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.TabSA.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -114,7 +110,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.asociatieFormDS1)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GridParteneri)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvtabelParteneriBindingSource)).BeginInit();
             this.pnlControale.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.asociatieFormDS1BindingSource)).BeginInit();
@@ -139,6 +134,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.mvtabelApartamenteBindingSource5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvdetaliiOrganizatieBindingSource4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvtabelApartamenteBindingSource8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridParteneri)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mvtabelParteneriBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // TabSA
@@ -364,14 +361,14 @@
             this.dataGridViewAp.AllowUserToAddRows = false;
             this.dataGridViewAp.AutoGenerateColumns = false;
             this.dataGridViewAp.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Aquamarine;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewAp.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Aquamarine;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewAp.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewAp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewAp.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.orgidorgDataGridViewTextBoxColumn1,
@@ -499,6 +496,15 @@
             this.tabPage2.Text = "Structura Cheltuieli";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // listaCheltuieli
+            // 
+            this.listaCheltuieli.FormattingEnabled = true;
+            this.listaCheltuieli.ItemHeight = 29;
+            this.listaCheltuieli.Location = new System.Drawing.Point(5, 6);
+            this.listaCheltuieli.Name = "listaCheltuieli";
+            this.listaCheltuieli.Size = new System.Drawing.Size(429, 613);
+            this.listaCheltuieli.TabIndex = 2;
+            // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
@@ -518,76 +524,6 @@
             this.tabPage3.Text = "Parteneri";
             this.tabPage3.UseVisualStyleBackColor = true;
             this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
-            // 
-            // GridParteneri
-            // 
-            this.GridParteneri.AllowUserToAddRows = false;
-            this.GridParteneri.AutoGenerateColumns = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Aquamarine;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridParteneri.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.GridParteneri.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GridParteneri.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.denumireDataGridViewTextBoxColumn,
-            this.codFiscalDataGridViewTextBoxColumn,
-            this.atributFiscalDataGridViewTextBoxColumn,
-            this.adresaDataGridViewTextBoxColumn,
-            this.nrRegComDataGridViewTextBoxColumn});
-            this.GridParteneri.DataSource = this.mvtabelParteneriBindingSource;
-            this.GridParteneri.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GridParteneri.EnableHeadersVisualStyles = false;
-            this.GridParteneri.Location = new System.Drawing.Point(3, 3);
-            this.GridParteneri.Name = "GridParteneri";
-            this.GridParteneri.RowHeadersWidth = 51;
-            this.GridParteneri.RowTemplate.Height = 24;
-            this.GridParteneri.Size = new System.Drawing.Size(1044, 695);
-            this.GridParteneri.TabIndex = 0;
-            this.GridParteneri.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridParteneri_CellContentClick);
-            // 
-            // denumireDataGridViewTextBoxColumn
-            // 
-            this.denumireDataGridViewTextBoxColumn.DataPropertyName = "Denumire";
-            this.denumireDataGridViewTextBoxColumn.HeaderText = "Denumire";
-            this.denumireDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.denumireDataGridViewTextBoxColumn.Name = "denumireDataGridViewTextBoxColumn";
-            this.denumireDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // codFiscalDataGridViewTextBoxColumn
-            // 
-            this.codFiscalDataGridViewTextBoxColumn.DataPropertyName = "CodFiscal";
-            this.codFiscalDataGridViewTextBoxColumn.HeaderText = "CodFiscal";
-            this.codFiscalDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.codFiscalDataGridViewTextBoxColumn.Name = "codFiscalDataGridViewTextBoxColumn";
-            this.codFiscalDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // atributFiscalDataGridViewTextBoxColumn
-            // 
-            this.atributFiscalDataGridViewTextBoxColumn.DataPropertyName = "AtributFiscal";
-            this.atributFiscalDataGridViewTextBoxColumn.HeaderText = "AtributFiscal";
-            this.atributFiscalDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.atributFiscalDataGridViewTextBoxColumn.Name = "atributFiscalDataGridViewTextBoxColumn";
-            this.atributFiscalDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // adresaDataGridViewTextBoxColumn
-            // 
-            this.adresaDataGridViewTextBoxColumn.DataPropertyName = "Adresa";
-            this.adresaDataGridViewTextBoxColumn.HeaderText = "Adresa";
-            this.adresaDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.adresaDataGridViewTextBoxColumn.Name = "adresaDataGridViewTextBoxColumn";
-            this.adresaDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // nrRegComDataGridViewTextBoxColumn
-            // 
-            this.nrRegComDataGridViewTextBoxColumn.DataPropertyName = "NrRegCom";
-            this.nrRegComDataGridViewTextBoxColumn.HeaderText = "NrRegCom";
-            this.nrRegComDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.nrRegComDataGridViewTextBoxColumn.Name = "nrRegComDataGridViewTextBoxColumn";
-            this.nrRegComDataGridViewTextBoxColumn.Width = 125;
             // 
             // mvtabelParteneriBindingSource
             // 
@@ -788,14 +724,31 @@
             // 
             this.mv_tabelParteneriTableAdapter.ClearBeforeFill = true;
             // 
-            // listaCheltuieli
+            // GridParteneri
             // 
-            this.listaCheltuieli.FormattingEnabled = true;
-            this.listaCheltuieli.ItemHeight = 29;
-            this.listaCheltuieli.Location = new System.Drawing.Point(5, 6);
-            this.listaCheltuieli.Name = "listaCheltuieli";
-            this.listaCheltuieli.Size = new System.Drawing.Size(429, 613);
-            this.listaCheltuieli.TabIndex = 2;
+            this.GridParteneri.AllowUserToAddRows = false;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Aquamarine;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridParteneri.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.GridParteneri.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GridParteneri.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GridParteneri.EnableHeadersVisualStyles = false;
+            this.GridParteneri.Location = new System.Drawing.Point(3, 3);
+            this.GridParteneri.Name = "GridParteneri";
+            this.GridParteneri.RowHeadersWidth = 51;
+            this.GridParteneri.RowTemplate.Height = 24;
+            this.GridParteneri.Size = new System.Drawing.Size(1044, 695);
+            this.GridParteneri.TabIndex = 0;
+            // 
+            // mvtabelParteneriBindingSource1
+            // 
+            this.mvtabelParteneriBindingSource1.DataMember = "mv_tabelParteneri";
+            this.mvtabelParteneriBindingSource1.DataSource = this.asociatieFormDS1;
             // 
             // AsociatieForm
             // 
@@ -822,7 +775,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.asociatieFormDS1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.GridParteneri)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvtabelParteneriBindingSource)).EndInit();
             this.pnlControale.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.asociatieFormDS1BindingSource)).EndInit();
@@ -847,6 +799,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.mvtabelApartamenteBindingSource5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvdetaliiOrganizatieBindingSource4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvtabelApartamenteBindingSource8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridParteneri)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mvtabelParteneriBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -918,15 +872,11 @@
         private System.Windows.Forms.BindingSource mvdetaliiOrganizatieBindingSource4;
         private System.Windows.Forms.BindingSource mvtabelApartamenteBindingSource8;
         private System.Windows.Forms.ComboBox comboBox1;
-        private butoane_si_controale.ClassGridView GridParteneri;
         private System.Windows.Forms.BindingSource asociatieFormDS1BindingSource;
         private System.Windows.Forms.BindingSource mvtabelParteneriBindingSource;
         private asociatieFormDSTableAdapters.mv_tabelParteneriTableAdapter mv_tabelParteneriTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn denumireDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codFiscalDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn atributFiscalDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn adresaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nrRegComDataGridViewTextBoxColumn;
         private butoane_si_controale.ClassListBox listaCheltuieli;
+        private butoane_si_controale.ClassGridView GridParteneri;
+        private System.Windows.Forms.BindingSource mvtabelParteneriBindingSource1;
     }
 }
