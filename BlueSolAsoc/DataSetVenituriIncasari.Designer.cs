@@ -279,6 +279,12 @@ namespace BlueSolAsoc {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class vVenituriIncasariDataTable : global::System.Data.TypedTableBase<vVenituriIncasariRow> {
             
+            private global::System.Data.DataColumn columnvaloare;
+            
+            private global::System.Data.DataColumn columnid_asociere;
+            
+            private global::System.Data.DataColumn columnval_label;
+            
             private global::System.Data.DataColumn columnid_antet;
             
             private global::System.Data.DataColumn columnnr_doc;
@@ -291,17 +297,11 @@ namespace BlueSolAsoc {
             
             private global::System.Data.DataColumn columnid_pozitie;
             
-            private global::System.Data.DataColumn columntp_id_antet;
-            
-            private global::System.Data.DataColumn columnid_tip;
-            
             private global::System.Data.DataColumn columnpret;
             
             private global::System.Data.DataColumn columncantitate;
             
             private global::System.Data.DataColumn columnid_cota_tva;
-            
-            private global::System.Data.DataColumn columnvaloare;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -334,6 +334,30 @@ namespace BlueSolAsoc {
             protected vVenituriIncasariDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn valoareColumn {
+                get {
+                    return this.columnvaloare;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn id_asociereColumn {
+                get {
+                    return this.columnid_asociere;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn val_labelColumn {
+                get {
+                    return this.columnval_label;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -386,22 +410,6 @@ namespace BlueSolAsoc {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn tp_id_antetColumn {
-                get {
-                    return this.columntp_id_antet;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn id_tipColumn {
-                get {
-                    return this.columnid_tip;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn pretColumn {
                 get {
                     return this.columnpret;
@@ -421,14 +429,6 @@ namespace BlueSolAsoc {
             public global::System.Data.DataColumn id_cota_tvaColumn {
                 get {
                     return this.columnid_cota_tva;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn valoareColumn {
-                get {
-                    return this.columnvaloare;
                 }
             }
             
@@ -469,32 +469,24 @@ namespace BlueSolAsoc {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public vVenituriIncasariRow AddvVenituriIncasariRow(int id_antet, string nr_doc, string serie, System.DateTime data, int id_partener, int id_pozitie, int tp_id_antet, int id_tip, decimal pret, decimal cantitate, int id_cota_tva, decimal valoare) {
+            public vVenituriIncasariRow AddvVenituriIncasariRow(decimal valoare, int id_asociere, string val_label, int id_antet, string nr_doc, string serie, System.DateTime data, int id_partener, int id_pozitie, decimal pret, decimal cantitate, int id_cota_tva) {
                 vVenituriIncasariRow rowvVenituriIncasariRow = ((vVenituriIncasariRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
+                        valoare,
+                        id_asociere,
+                        val_label,
                         id_antet,
                         nr_doc,
                         serie,
                         data,
                         id_partener,
                         id_pozitie,
-                        tp_id_antet,
-                        id_tip,
                         pret,
                         cantitate,
-                        id_cota_tva,
-                        valoare};
+                        id_cota_tva};
                 rowvVenituriIncasariRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowvVenituriIncasariRow);
                 return rowvVenituriIncasariRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public vVenituriIncasariRow FindByid_antetid_pozitie(int id_antet, int id_pozitie) {
-                return ((vVenituriIncasariRow)(this.Rows.Find(new object[] {
-                            id_antet,
-                            id_pozitie})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -514,23 +506,29 @@ namespace BlueSolAsoc {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
+                this.columnvaloare = base.Columns["valoare"];
+                this.columnid_asociere = base.Columns["id_asociere"];
+                this.columnval_label = base.Columns["val_label"];
                 this.columnid_antet = base.Columns["id_antet"];
                 this.columnnr_doc = base.Columns["nr_doc"];
                 this.columnserie = base.Columns["serie"];
                 this.columndata = base.Columns["data"];
                 this.columnid_partener = base.Columns["id_partener"];
                 this.columnid_pozitie = base.Columns["id_pozitie"];
-                this.columntp_id_antet = base.Columns["tp_id_antet"];
-                this.columnid_tip = base.Columns["id_tip"];
                 this.columnpret = base.Columns["pret"];
                 this.columncantitate = base.Columns["cantitate"];
                 this.columnid_cota_tva = base.Columns["id_cota_tva"];
-                this.columnvaloare = base.Columns["valoare"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
+                this.columnvaloare = new global::System.Data.DataColumn("valoare", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnvaloare);
+                this.columnid_asociere = new global::System.Data.DataColumn("id_asociere", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid_asociere);
+                this.columnval_label = new global::System.Data.DataColumn("val_label", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnval_label);
                 this.columnid_antet = new global::System.Data.DataColumn("id_antet", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnid_antet);
                 this.columnnr_doc = new global::System.Data.DataColumn("nr_doc", typeof(string), null, global::System.Data.MappingType.Element);
@@ -543,21 +541,13 @@ namespace BlueSolAsoc {
                 base.Columns.Add(this.columnid_partener);
                 this.columnid_pozitie = new global::System.Data.DataColumn("id_pozitie", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnid_pozitie);
-                this.columntp_id_antet = new global::System.Data.DataColumn("tp_id_antet", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columntp_id_antet);
-                this.columnid_tip = new global::System.Data.DataColumn("id_tip", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnid_tip);
                 this.columnpret = new global::System.Data.DataColumn("pret", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnpret);
                 this.columncantitate = new global::System.Data.DataColumn("cantitate", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncantitate);
                 this.columnid_cota_tva = new global::System.Data.DataColumn("id_cota_tva", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnid_cota_tva);
-                this.columnvaloare = new global::System.Data.DataColumn("valoare", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnvaloare);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnid_antet,
-                                this.columnid_pozitie}, true));
+                this.columnval_label.MaxLength = 100;
                 this.columnid_antet.AllowDBNull = false;
                 this.columnnr_doc.AllowDBNull = false;
                 this.columnnr_doc.MaxLength = 20;
@@ -566,12 +556,9 @@ namespace BlueSolAsoc {
                 this.columndata.AllowDBNull = false;
                 this.columnid_partener.AllowDBNull = false;
                 this.columnid_pozitie.AllowDBNull = false;
-                this.columntp_id_antet.AllowDBNull = false;
-                this.columnid_tip.AllowDBNull = false;
                 this.columnpret.AllowDBNull = false;
                 this.columncantitate.AllowDBNull = false;
                 this.columnid_cota_tva.AllowDBNull = false;
-                this.columnvaloare.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -714,6 +701,54 @@ namespace BlueSolAsoc {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal valoare {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablevVenituriIncasari.valoareColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'valoare\' in table \'vVenituriIncasari\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablevVenituriIncasari.valoareColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int id_asociere {
+                get {
+                    try {
+                        return ((int)(this[this.tablevVenituriIncasari.id_asociereColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'id_asociere\' in table \'vVenituriIncasari\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablevVenituriIncasari.id_asociereColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string val_label {
+                get {
+                    try {
+                        return ((string)(this[this.tablevVenituriIncasari.val_labelColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'val_label\' in table \'vVenituriIncasari\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablevVenituriIncasari.val_labelColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int id_antet {
                 get {
                     return ((int)(this[this.tablevVenituriIncasari.id_antetColumn]));
@@ -780,28 +815,6 @@ namespace BlueSolAsoc {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int tp_id_antet {
-                get {
-                    return ((int)(this[this.tablevVenituriIncasari.tp_id_antetColumn]));
-                }
-                set {
-                    this[this.tablevVenituriIncasari.tp_id_antetColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int id_tip {
-                get {
-                    return ((int)(this[this.tablevVenituriIncasari.id_tipColumn]));
-                }
-                set {
-                    this[this.tablevVenituriIncasari.id_tipColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public decimal pret {
                 get {
                     return ((decimal)(this[this.tablevVenituriIncasari.pretColumn]));
@@ -835,13 +848,38 @@ namespace BlueSolAsoc {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal valoare {
-                get {
-                    return ((decimal)(this[this.tablevVenituriIncasari.valoareColumn]));
-                }
-                set {
-                    this[this.tablevVenituriIncasari.valoareColumn] = value;
-                }
+            public bool IsvaloareNull() {
+                return this.IsNull(this.tablevVenituriIncasari.valoareColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetvaloareNull() {
+                this[this.tablevVenituriIncasari.valoareColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isid_asociereNull() {
+                return this.IsNull(this.tablevVenituriIncasari.id_asociereColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setid_asociereNull() {
+                this[this.tablevVenituriIncasari.id_asociereColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isval_labelNull() {
+                return this.IsNull(this.tablevVenituriIncasari.val_labelColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setval_labelNull() {
+                this[this.tablevVenituriIncasari.val_labelColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1004,18 +1042,18 @@ namespace BlueSolAsoc.DataSetVenituriIncasariTableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "vVenituriIncasari";
+            tableMapping.ColumnMappings.Add("valoare", "valoare");
+            tableMapping.ColumnMappings.Add("id_asociere", "id_asociere");
+            tableMapping.ColumnMappings.Add("val_label", "val_label");
             tableMapping.ColumnMappings.Add("id_antet", "id_antet");
             tableMapping.ColumnMappings.Add("nr_doc", "nr_doc");
             tableMapping.ColumnMappings.Add("serie", "serie");
             tableMapping.ColumnMappings.Add("data", "data");
             tableMapping.ColumnMappings.Add("id_partener", "id_partener");
             tableMapping.ColumnMappings.Add("id_pozitie", "id_pozitie");
-            tableMapping.ColumnMappings.Add("tp_id_antet", "tp_id_antet");
-            tableMapping.ColumnMappings.Add("id_tip", "id_tip");
             tableMapping.ColumnMappings.Add("pret", "pret");
             tableMapping.ColumnMappings.Add("cantitate", "cantitate");
             tableMapping.ColumnMappings.Add("id_cota_tva", "id_cota_tva");
-            tableMapping.ColumnMappings.Add("valoare", "valoare");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -1032,8 +1070,8 @@ namespace BlueSolAsoc.DataSetVenituriIncasariTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT id_antet, nr_doc, serie, data, id_partener, id_pozitie, tp_id_antet, id_ti" +
-                "p, pret, cantitate, id_cota_tva, valoare FROM dbo.vVenituriIncasari";
+            this._commandCollection[0].CommandText = "SELECT val_label, valoare, id_asociere, cantitate, data, id_antet, id_cota_tva, i" +
+                "d_partener, id_pozitie, nr_doc, pret, serie FROM vVenituriIncasari";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
