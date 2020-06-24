@@ -17,22 +17,22 @@ namespace BlueSolAsoc.Fom_Meniuri
     public partial class venituri_incasari : FormBluebit
 
     {
-        ClassDataSet DataSetVenituriIncasari = new ClassDataSet();
-        private string denumireAsociatie;
-        private int idAsociatie;
+        ClassDataSet DataSetVenituriIncasari = new ClassDataSet(); // Utilizare Clasa DataSet pentru creeare tabele
+        private string denumireAsociatie; // preluare denumire asociatie 
+        private int idAsociatie; // preluare id organizatie - respectiv id asociatie
         public venituri_incasari(string denumireAsociatie, int idAsociatie)
         {
             InitializeComponent();
             this.denumireAsociatie = denumireAsociatie;
             this.idAsociatie = idAsociatie;
             dateTimePicker1.Value = System.DateTime.Now;
-            DataSetVenituriIncasari.getSetFrom("select * from vVenituriIncasari where id_antet=0", "vVenituriIncasari");
-            DataTable TabelaVenituriIncasari = DataSetVenituriIncasari.Tables["vVenituriIncasari"];
+            DataSetVenituriIncasari.getSetFrom("select * from vVenituriIncasari where id_antet=0", "vVenituriIncasari"); // Selectare schelet tabela
+            DataTable TabelaVenituriIncasari = DataSetVenituriIncasari.Tables["vVenituriIncasari"]; // Creare Tabel pe baza selectiei anterioare
             //DataTable TabelaLabelValoare = dataSetVenituriIncasari1.Tables[0];
-            DataSetVenituriIncasari.getSetFrom("select id_asociere,val_label from tabela_asocieri_tipuri where id_master=24", "TipuriIncasari");
+            DataSetVenituriIncasari.getSetFrom("select id_asociere,val_label from tabela_asocieri_tipuri where id_master=24", "TipuriIncasari"); // selectare schelet tabela tipuri incasari
             //Pentru fiecare linie din tabela de incasari adaug o linie in view-ul documente cu id_asociere completat conform tipului de incasare
-            // inserare pozitii in documente
-
+            DataSetVenituriIncasari.getSetFrom("select * from mv_IstoricDocumente","mv_IstoricDocumente");
+            DataTable TabelaIstoricDocumente = DataSetVenituriIncasari.Tables["mv_IstoricDocumente"];
             // count de coloane tipuriIncasari
             DataTable TabelaTipuriIncasari = DataSetVenituriIncasari.Tables["TipuriIncasari"];
             //TabelaTipuriIncasari.Columns.Add("Valoare");
@@ -43,7 +43,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             // Parcurgere tabela tipuri si stocare val in string valoareid
             //adaugare rand gol
             //parcurgere randuri goale
-            foreach (DataRow row in TabelaTipuriIncasari.Rows)
+            foreach (DataRow row in TabelaTipuriIncasari.Rows) // parcurgere Tabela Tipuri incasari si inserare tipuri in Venituri Incasari
             {
                 //string valoareid = row["id_asociere"].ToString();
 
@@ -76,6 +76,9 @@ namespace BlueSolAsoc.Fom_Meniuri
 
 
             dataGridView1.DataSource = TabelaVenituriIncasari;
+            dataGridView2.DataSource = TabelaIstoricDocumente;
+
+            classButonInteriorSterge1.Hide();
 
             /* ComboBoxTipIncasare.DataSource = TabelaTipuriIncasari;
              ComboBoxTipIncasare.DisplayMember = "val_label";
@@ -118,11 +121,12 @@ namespace BlueSolAsoc.Fom_Meniuri
             textBoxApartamente.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             textBoxApartamente.AutoCompleteSource = AutoCompleteSource.CustomSource;
             textBoxApartamente.AutoCompleteCustomSource = autoComplete;
+           
 
             cnn.Close();
         }
 
-
+       
 
         /*  private void textBoxApartamente_Leave(object sender, EventArgs e)
           {
@@ -132,7 +136,7 @@ namespace BlueSolAsoc.Fom_Meniuri
 
           }*/
 
-        private void ButtonChitanteOK_Click(object sender, EventArgs e)
+        private void ButtonSalvareOK()
         {
 
 
@@ -146,46 +150,58 @@ namespace BlueSolAsoc.Fom_Meniuri
 
                  }*/
             // int id_asociere = idasoc;
-            foreach (DataRow row in TabelaVenituriIncasari.Rows)
+            string[] StringInfo = textBoxApartamente.Text.Split('/');
+            if (StringInfo.Length < 5)
             {
-                string data = dateTimePicker1.Value.Date.ToString("yyyy/MM/dd");
-                string[] StringInfo = textBoxApartamente.Text.Split('/');
-                string idProprietar = StringInfo[4].ToString().TrimStart();
-                int id_antet = 0; // de preluat
-                int id_pozitie = 0; // de preluat
-                int id_temporar = 0;
-                string NR_DOC = TextBoxNrDoc.Text;
-                string SERIE = TextBoxSerieDoc.Text;
-                //int id_asociere
-                string pret = TextBoxPret.Text;
-                if (TabelaVenituriIncasari.Rows[0]["pret"].ToString() == "")
-                {
-                    pret = TextBoxPret.Text; // Caseta SUMA
-                }
-                else
-                {
-                    pret = "0";
-
-                }
-                int cantitate = 1;
-                int cota_tva = 1;
-                int suma = Convert.ToInt16(pret) * cantitate;
-
-                row["id_antet"] = id_antet;
-                row["nr_doc"] = NR_DOC;
-                row["serie"] = SERIE;
-                row["data"] = data;
-                row["id_pozitie"] = id_pozitie;
-                row["id_partener"] = idProprietar;
-                row["pret"] = pret;
-                row["cantitate"] = cantitate;
-                row["id_cota_tva"] = cota_tva;
-                row["valoare"] = suma;
-                row["id_temporar"] = id_temporar;
+                MessageBox.Show("Verifica proprietar");
             }
+            else
+            {
+                foreach (DataRow row in TabelaVenituriIncasari.Rows)
+                {
+                    string data = dateTimePicker1.Value.Date.ToString("yyyy/MM/dd");
+                    // string[] StringInfo = textBoxApartamente.Text.Split('/');
+                    string idProprietar = StringInfo[4].ToString().TrimStart();
+                    int id_antet = 0; // de preluat
+                    int id_pozitie = 0; // de preluat
+                    int id_temporar = 0;
+                    string NR_DOC = TextBoxNrDoc.Text;
+                    string SERIE = TextBoxSerieDoc.Text;
+                    //int id_asociere
+                    string pret = TextBoxPret.Text;
+                    if (TabelaVenituriIncasari.Rows[0]["pret"].ToString() == "")
+                    {
+                        pret = TextBoxPret.Text; // Caseta SUMA
+                    }
+                    else
+                    {
+                        pret = "0";
+
+                    }
+                    int cantitate = 1;
+                    int cota_tva = 1;
+                    int suma = Convert.ToInt16(pret) * cantitate;
 
 
-            DataSetVenituriIncasari.TransmiteActualizari("vVenituriIncasari");
+                    row["id_antet"] = id_antet;
+                    row["nr_doc"] = NR_DOC;
+                    row["serie"] = SERIE;
+                    row["data"] = data;
+                    row["id_pozitie"] = id_pozitie;
+                    row["id_partener"] = idProprietar;
+                    row["pret"] = pret;
+                    row["cantitate"] = cantitate;
+                    row["id_cota_tva"] = cota_tva;
+                    row["valoare"] = suma;
+                    row["id_temporar"] = id_temporar;
+                    row["id_org"] = idAsociatie;
+                    row["id_asociere"] = 43;
+                }
+
+
+
+                DataSetVenituriIncasari.TransmiteActualizari("vVenituriIncasari");
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -208,6 +224,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                 dataGridView1.Focus();
                 dataGridView1.CurrentCell = dataGridView1.Rows[0].Cells[9];
                 dataGridView1.Rows[0].Cells[9].Value = TextBoxPret.Text;
+                
                 //ButtonChitanteOK_Click(sender, e);
             }
             
@@ -219,9 +236,24 @@ namespace BlueSolAsoc.Fom_Meniuri
             {
                 if (e.KeyChar == (char)Keys.Enter)
                 {
-                    ButtonChitanteOK_Click(sender, e);
+                    ButtonSalvareOK();
                 }
             }
+        }
+
+        private void classButonModifica1_Click(object sender, EventArgs e)
+        {
+            classButonInteriorSterge1.Show();
+        }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            ButtonSalvareOK();
+        }
+
+        private void btnAnuleaza_Click(object sender, EventArgs e)
+        {
+            classButonInteriorSterge1.Hide();
         }
     }
 }
