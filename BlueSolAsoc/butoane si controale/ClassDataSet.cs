@@ -92,23 +92,30 @@ namespace BlueSolAsoc.butoane_si_controale
                             case "System.String":
                                 valoare = "'" + r[f.ColumnName].ToString() + "'";
                                 break;
-                            case "System.Int32":
+                            case "System.Int32":                                                               
                                 valoare = r[f.ColumnName].ToString();
-                                break;
-                            case "System.DateTime":
-                                DateTime dateTime = (DateTime)r[f.ColumnName];
-                                valoare = "'" + dateTime.ToString("yyyyMMdd") + "'";
-                                break;
-                            case "System.Decimal":
-                                try
-                                {
-                                    valoare = ((System.Decimal)r[f.ColumnName]).ToString();
-                                }
-                                catch(Exception e)
+                                if (string.IsNullOrEmpty(valoare))
                                 {
                                     valoare = "0";
                                 }
                                 break;
+
+                            case "System.DateTime":                              
+                                valoare = "'" + r[f.ColumnName].ToString() + "'";
+                                if (string.IsNullOrEmpty(valoare))
+                                {
+                                    valoare = "01011900";
+                                }
+                                break;
+
+                            case "System.Decimal":                       
+                                valoare = ((System.Decimal)r[f.ColumnName]).ToString();
+                                if (string.IsNullOrEmpty(valoare))
+                                {
+                                    valoare = "0";
+                                }
+                                break;
+
                             default:
                                 break;
                         }
