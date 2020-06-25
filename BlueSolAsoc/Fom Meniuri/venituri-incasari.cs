@@ -26,8 +26,8 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.denumireAsociatie = denumireAsociatie;
             this.idAsociatie = idAsociatie;
             dateTimePicker1.Value = System.DateTime.Now;
-            DataSetVenituriIncasari.getSetFrom("select * from vVenituriIncasari where id_antet=0", "vVenituriIncasari"); // Selectare schelet tabela
-            DataTable TabelaVenituriIncasari = DataSetVenituriIncasari.Tables["vVenituriIncasari"]; // Creare Tabel pe baza selectiei anterioare
+            DataSetVenituriIncasari.getSetFrom("select id_antet,nr_doc,serie,data,id_partener,id_pozitie,id_asociere,pret,cantitate,id_cota_tva,valoare,val_label,id_temporar,id_org from mv_Documente where id_antet=0", "mv_Documente"); // Selectare schelet tabela
+            DataTable TabelaVenituriIncasari = DataSetVenituriIncasari.Tables["mv_Documente"]; // Creare Tabel pe baza selectiei anterioare
             //DataTable TabelaLabelValoare = dataSetVenituriIncasari1.Tables[0];
             DataSetVenituriIncasari.getSetFrom("select id_asociere,val_label from tabela_asocieri_tipuri where id_master=24", "TipuriIncasari"); // selectare schelet tabela tipuri incasari
             //Pentru fiecare linie din tabela de incasari adaug o linie in view-ul documente cu id_asociere completat conform tipului de incasare
@@ -36,7 +36,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             // count de coloane tipuriIncasari
             DataTable TabelaTipuriIncasari = DataSetVenituriIncasari.Tables["TipuriIncasari"];
             //TabelaTipuriIncasari.Columns.Add("Valoare");
-
+            //vVenituriIncasari - denumire tabel initial
             //int id_asociere_tabela_tipuri = TabelaTipuriIncasari.Rows[0];
             //int numarcoloane = TabelaTipuriIncasari.Columns.Count;
             /* for (int i = 0; i < TabelaTipuriIncasari.Columns.Count; i++) {*/
@@ -79,11 +79,22 @@ namespace BlueSolAsoc.Fom_Meniuri
             dataGridView2.DataSource = TabelaIstoricDocumente;
 
             classButonInteriorSterge1.Hide();
+            btnAnuleaza.Hide();
 
             /* ComboBoxTipIncasare.DataSource = TabelaTipuriIncasari;
              ComboBoxTipIncasare.DisplayMember = "val_label";
              ComboBoxTipIncasare.AllowDrop = false;
- */
+
+            //Create the new combobox column and set it's DataSource to a DataTable
+            DataGridViewComboBoxColumn col = new DataGridViewComboBoxColumn();
+            col.DataSource = dal.GetMovieTypes(); ; 
+            col.ValueMember = "MovieTypeID";
+            col.DisplayMember = "MovieType";
+            col.DataPropertyName = "MovieTypeID";
+
+            //Add your new combobox column to the gridview
+            gvMovies.Columns.Add(col);
+            */
             //Insert into dbo.tabela_antet (nr_doc,serie,data,id_partener) values ('1024','GL','20200318','1029')
             // adaugare 2 linii in program id tip din asocieri cu denumirile respective 
 
@@ -121,9 +132,16 @@ namespace BlueSolAsoc.Fom_Meniuri
             textBoxApartamente.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             textBoxApartamente.AutoCompleteSource = AutoCompleteSource.CustomSource;
             textBoxApartamente.AutoCompleteCustomSource = autoComplete;
-           
+
+            sdr.Close();
+
+            SqlCommand comandatextbox = new SqlCommand("select top 1 nr_doc from tabela_antet order by id_antet desc", cnn);
+            int numardocument = Convert.ToInt32(comandatextbox.ExecuteScalar())+1;
+            TextBoxNrDoc.Text = numardocument.ToString();
 
             cnn.Close();
+
+
         }
 
        
@@ -142,7 +160,7 @@ namespace BlueSolAsoc.Fom_Meniuri
 
             // Aducere tabela goala in DataSet / simulare false 1!=1 / Completare tabela goala -> upload in baza date
 
-            DataTable TabelaVenituriIncasari = DataSetVenituriIncasari.Tables["vVenituriIncasari"];
+            DataTable TabelaVenituriIncasari = DataSetVenituriIncasari.Tables["mv_Documente"];
 
             /*     for (int i = 0; i <= TabelaVenituriIncasari.Rows.Count; i++)
                  {
@@ -151,9 +169,21 @@ namespace BlueSolAsoc.Fom_Meniuri
                  }*/
             // int id_asociere = idasoc;
             string[] StringInfo = textBoxApartamente.Text.Split('/');
-            if (StringInfo.Length < 5)
+            
+            if (!(textBoxApartamente.AutoCompleteCustomSource.Contains(textBoxApartamente.Text))^(TextBoxNrDoc.Text=="")^(TextBoxSerieDoc.Text==""))
             {
-                MessageBox.Show("Verifica proprietar");
+                if (!(textBoxApartamente.AutoCompleteCustomSource.Contains(textBoxApartamente.Text)))
+                {
+                    MessageBox.Show("Verifica proprietar");
+                }
+                if(TextBoxNrDoc.Text == "")
+                {
+                    MessageBox.Show("Numarul documentului nu a fost introdus");
+                }
+                if (TextBoxSerieDoc.Text == "")
+                {
+                    MessageBox.Show("Seria documentului nu a fost introdusa");
+                }
             }
             else
             {
@@ -196,11 +226,13 @@ namespace BlueSolAsoc.Fom_Meniuri
                     row["id_temporar"] = id_temporar;
                     row["id_org"] = idAsociatie;
                     row["id_asociere"] = 43;
+                    //row["id_TipDocument"] = 0; 
+                    //row["tipDocument"] = 0;
                 }
 
 
 
-                DataSetVenituriIncasari.TransmiteActualizari("vVenituriIncasari");
+                DataSetVenituriIncasari.TransmiteActualizari("mv_Documente");
             }
         }
 
@@ -244,6 +276,8 @@ namespace BlueSolAsoc.Fom_Meniuri
         private void classButonModifica1_Click(object sender, EventArgs e)
         {
             classButonInteriorSterge1.Show();
+            classButonModifica1.Hide();
+            btnAnuleaza.Show();
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -254,6 +288,8 @@ namespace BlueSolAsoc.Fom_Meniuri
         private void btnAnuleaza_Click(object sender, EventArgs e)
         {
             classButonInteriorSterge1.Hide();
+            classButonModifica1.Show();
+            btnAnuleaza.Hide();
         }
     }
 }
