@@ -30,7 +30,7 @@ namespace BlueSolAsoc
             this.denumireAsociatie = denumireAsociatie;
             this.idAsociatie = idAsociatie;           
             dataGridViewAp.CellEndEdit += dataGridViewAp_CellEndEdit;
-            GridParteneri.CellEndEdit += GridParteneri_CellEndEdit;
+           // GridParteneri.CellEndEdit += GridParteneri_CellEndEdit;
 
             
 
@@ -50,20 +50,12 @@ namespace BlueSolAsoc
             {
                 MessageBox.Show("eeeee !");
             }
-            
-        }
-
-        public void AdaugaRadacinaParinteTreeView()
-        {
-            TreeNode asociatie = new TreeNode(denumireAsociatie);
-            asociatie.Tag = idAsociatie;
-            treeView1.Nodes.Add(asociatie);
 
             // adaugare tabela in dataset pt afisarea elementelor tab parteneri si setare datasource pentri gridParteneri
             if (!(asociatieFormDS.Tables["mv_tabelParteneri"] is null))
             {
                 asociatieFormDS.Tables.Remove("mv_tabelParteneri");
-            }            
+            }
             asociatieFormDS.getSetFrom("select * from mv_tabelParteneri  where  id_master =" + idAsociatie, "mv_tabelParteneri");
             GridParteneri.DataSource = asociatieFormDS.Tables["mv_tabelParteneri"];
             this.GridParteneri.AllowUserToAddRows = true;
@@ -71,12 +63,21 @@ namespace BlueSolAsoc
             //GridParteneri.Columns["id_org"].Visible = false;
             //GridParteneri.Columns["Principal"].Visible = false;
             asociatieFormDS.Tables["mv_tabelParteneri"].Columns["id_master"].DefaultValue = idAsociatie;
-            asociatieFormDS.Tables["mv_tabelParteneri"].Columns["Denumire"].DefaultValue = "nume";
-            asociatieFormDS.Tables["mv_tabelParteneri"].Columns["CodFiscal"].DefaultValue = "";
-            asociatieFormDS.Tables["mv_tabelParteneri"].Columns["AtributFiscal"].DefaultValue = "Nu";
-            asociatieFormDS.Tables["mv_tabelParteneri"].Columns["Adresa"].DefaultValue = "";
-            asociatieFormDS.Tables["mv_tabelParteneri"].Columns["NrRegCom"].DefaultValue = "";
+            //asociatieFormDS.Tables["mv_tabelParteneri"].Columns["Denumire"].DefaultValue = "nume";
+            //asociatieFormDS.Tables["mv_tabelParteneri"].Columns["CodFiscal"].DefaultValue = "";
+            //asociatieFormDS.Tables["mv_tabelParteneri"].Columns["AtributFiscal"].DefaultValue = "Nu";
+            //asociatieFormDS.Tables["mv_tabelParteneri"].Columns["Adresa"].DefaultValue = "";
+            //asociatieFormDS.Tables["mv_tabelParteneri"].Columns["NrRegCom"].DefaultValue = "";
             GridParteneri.Enabled = false;
+
+
+        }
+
+        public void AdaugaRadacinaParinteTreeView()
+        {
+            TreeNode asociatie = new TreeNode(denumireAsociatie);
+            asociatie.Tag = idAsociatie;
+            treeView1.Nodes.Add(asociatie);
 
 
             //creare dataTable in dataset pentru afisarea din lista de cheltuieli
@@ -106,6 +107,7 @@ namespace BlueSolAsoc
             asociatieFormDS.getSetFrom("select * from mv_tabelParteneri  where  id_master =" + idAsociatie, "mv_tabelParteneri");
             GridParteneri.DataSource = asociatieFormDS.Tables["mv_tabelParteneri"];
             GridParteneri.Enabled = false;
+            MessageBox.Show("a fost folosita metoda de refresh", "notificare");
         }
 
         //implementare afterselect din tree view care preia id elementului si apelarea metodei care returneaza datasetul cu info despre id
@@ -342,8 +344,8 @@ namespace BlueSolAsoc
         }
 
 
-        // metoda pentru colorarea celulor din datagridview     
-        
+        // metoda pentru colorarea celulor din datagridview   pentru apartamente  
+        //colorare celula editata pe baza valorii initiale comparata cu cea finala
 
         void dataGridViewAp_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
@@ -386,11 +388,11 @@ namespace BlueSolAsoc
           
         }
 
-
+        //colorare celula editata pe baza valorii initiale comparata cu cea finala
         void GridParteneri_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             
-                object initial = this.asociatieFormDS.Tables["mv_tabelParteneri"].Rows[e.RowIndex][this.asociatieFormDS.Tables["mv_tabelParteneri"].Columns[e.ColumnIndex].ColumnName, DataRowVersion.Original];
+                object initial = this.asociatieFormDS.Tables["mv_tabelParteneri"].Rows[e.RowIndex][this.asociatieFormDS.Tables["mv_tabelParteneri"].Columns[e.ColumnIndex].ColumnName, DataRowVersion.Current];
                 object final = this.asociatieFormDS.Tables["mv_tabelParteneri"].Rows[e.RowIndex][e.ColumnIndex];
                 //object tipObiect=final.GetType();
 
@@ -427,7 +429,7 @@ namespace BlueSolAsoc
           
         }
 
-
+        //structura de coloane pentru tabel selectat
 
         public DataColumnCollection StructuraColoane(string sTabelLucru)
         {
@@ -597,9 +599,10 @@ namespace BlueSolAsoc
                         btnAnuleaza.Hide();
                         btnOK.Hide();
                         GridParteneri.Enabled = false;
+                        DupaApasareOk(GridParteneri);
                     }
 
-                    DupaApasareOk(GridParteneri);
+                    
 
                     break;
                 default:

@@ -107,11 +107,19 @@
     <Compile Include="butoane si controale\ClassListBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="butoane si controale\ClassSplitPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="butoane si controale\ClassTabControl.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="butoane si controale\ClassTextBox.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CheltuieliDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CheltuieliDS.xsd</DependentUpon>
     </Compile>
     <Compile Include="CreareAsociatie.cs">
       <SubType>Form</SubType>
@@ -242,6 +250,17 @@
     </None>
     <None Include="asociatieFormDS.xss">
       <DependentUpon>asociatieFormDS.xsd</DependentUpon>
+    </None>
+    <None Include="CheltuieliDS.xsc">
+      <DependentUpon>CheltuieliDS.xsd</DependentUpon>
+    </None>
+    <None Include="CheltuieliDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CheltuieliDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CheltuieliDS.xss">
+      <DependentUpon>CheltuieliDS.xsd</DependentUpon>
     </None>
     <None Include="DataSetVenituriIncasari.xsc">
       <DependentUpon>DataSetVenituriIncasari.xsd</DependentUpon>
