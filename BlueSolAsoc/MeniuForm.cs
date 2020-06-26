@@ -39,11 +39,11 @@ namespace BlueSolAsoc
 
         private void MeniuForm_Load(object sender, EventArgs e)
         {
-            
-           
+            var b = new ClassButon();
+
         }
         // arrayuri pt butoane======================================================================
-        string[] meniuPrincipal = { "Structura Asociatie", "Venituri/incasari", "Cheltuieli/plati", "Inchide Aplicatia" };
+        string[] meniuPrincipal = { "STRUCTURA ASOCIATIE", "VENITURI / INCASARI", "CHELTUIELI / PLATI", "INCHIDE APLICATIA" };
        
 
         
@@ -87,6 +87,7 @@ namespace BlueSolAsoc
                 b.Name = string.Format("b_{0}", i + 1);
                 b.Click += ApasareButon;
                 b.Dock = DockStyle.Fill;
+             
                 this.tableLayoutPanel1.Controls.Add(b);
             }
         }
@@ -99,7 +100,7 @@ namespace BlueSolAsoc
             {
                 switch (b.Text)
                 {
-                    case ("Structura Asociatie"):
+                    case ("STRUCTURA ASOCIATIE"):
                                 if (Application.OpenForms.OfType<AsociatieForm>().Any())
                         {
                             Application.OpenForms.OfType<AsociatieForm>().First().BringToFront();
@@ -112,7 +113,7 @@ namespace BlueSolAsoc
                   //      MessageBox.Show("aaaaaaaaaaaaaaaa");
                         
                         break;
-                    case ("Venituri/incasari"):
+                    case ("VENITURI / INCASARI"):
                         if (Application.OpenForms.OfType<venituri_incasari>().Any())
                         {
                             Application.OpenForms.OfType<venituri_incasari>().First().BringToFront();
@@ -122,7 +123,7 @@ namespace BlueSolAsoc
                             DeschidePanelMama(new venituri_incasari(this.denumireAsociatie, this.idAsociatie));
                    //     PopulareMeniuSecundar(meniuSecundar1);
                         break;
-                    case ("Cheltuieli/plati"):
+                    case ("CHELTUIELI / PLATI"):
                         if (Application.OpenForms.OfType<cheltuieli_plati>().Any())
                         {
                             Application.OpenForms.OfType<cheltuieli_plati>().First().BringToFront();
@@ -132,7 +133,7 @@ namespace BlueSolAsoc
                             DeschidePanelMama(new cheltuieli_plati(this.denumireAsociatie, this.idAsociatie));
                     //    PopulareMeniuSecundar(meniuSecundar2);
                         break;
-                    case ("Inchide Aplicatia"):
+                    case ("INCHIDE APLICATIA"):
                         //       MessageBox.Show("ooooooooooo");
                         //DeschidePanelMama(new cheltuieli_plati());
                         //PopulareMeniuSecundar(meniuSecundar2);
