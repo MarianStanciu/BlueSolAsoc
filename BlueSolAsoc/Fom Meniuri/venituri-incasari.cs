@@ -73,8 +73,8 @@ namespace BlueSolAsoc.Fom_Meniuri
                 }*/
 
 
-
-
+            
+            
             dataGridView1.DataSource = TabelaVenituriIncasari;
             dataGridView2.DataSource = TabelaIstoricDocumente;
 
