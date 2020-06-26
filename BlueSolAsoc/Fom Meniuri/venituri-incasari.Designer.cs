@@ -39,19 +39,22 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.labelIstoric = new System.Windows.Forms.Label();
             this.dataGridView2 = new BlueSolAsoc.butoane_si_controale.ClassGridView();
             this.dataGridView1 = new BlueSolAsoc.butoane_si_controale.ClassGridView();
-            this.valoareDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idasociereDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vallabelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vVenituriIncasariBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
+            this.aidantetDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.anrdocDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.aserieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.adataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.aidpartenerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pidpozitieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pidasociereDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ppretDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pcantitateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pidcotatvaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tatvallabelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.coloana_suma = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.aidtemporarDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.aidorgDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.aidasociereDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mvDocumenteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSetVenituriIncasari1 = new BlueSolAsoc.DataSetVenituriIncasari();
             this.ButtonChitanteOK = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -70,6 +73,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.valoareDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vVenituriIncasariBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSetVenituriIncasari1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.vVenituriIncasariBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.vVenituriIncasariBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tabelapozitiiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.proba_transareDataSet1 = new BlueSolAsoc.proba_transareDataSet1();
@@ -79,23 +83,24 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.tabela_intretinereTableAdapter = new BlueSolAsoc.proba_transareDataSetTableAdapters.tabela_intretinereTableAdapter();
             this.tabela_antetTableAdapter = new BlueSolAsoc.proba_transareDataSet1TableAdapters.tabela_antetTableAdapter();
             this.tabela_pozitiiTableAdapter = new BlueSolAsoc.proba_transareDataSet1TableAdapters.tabela_pozitiiTableAdapter();
-            this.vVenituriIncasariTableAdapter = new BlueSolAsoc.DataSetVenituriIncasariTableAdapters.vVenituriIncasariTableAdapter();
             this.vVenituriIncasariBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.pnlControale = new System.Windows.Forms.Panel();
             this.btnAnuleaza = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
             this.classButonInteriorSterge1 = new BlueSolAsoc.butoane_si_controale.ClassButonInteriorSterge();
             this.classButonModifica1 = new BlueSolAsoc.butoane_si_controale.ClassButonModifica();
+            this.mv_DocumenteTableAdapter = new BlueSolAsoc.DataSetVenituriIncasariTableAdapters.mv_DocumenteTableAdapter();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vVenituriIncasariBindingSource3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mvDocumenteBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetVenituriIncasari1)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDreapta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vVenituriIncasariBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetVenituriIncasari1BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vVenituriIncasariBindingSource3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vVenituriIncasariBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabelapozitiiBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.proba_transareDataSet1)).BeginInit();
@@ -111,9 +116,9 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1373, 27);
+            this.panel1.Size = new System.Drawing.Size(1678, 35);
             this.panel1.TabIndex = 2;
             // 
             // tabControl1
@@ -125,12 +130,12 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.ItemSize = new System.Drawing.Size(150, 50);
-            this.tabControl1.Location = new System.Drawing.Point(0, 27);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
-            this.tabControl1.MinimumSize = new System.Drawing.Size(1024, 720);
+            this.tabControl1.Location = new System.Drawing.Point(0, 35);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.tabControl1.MinimumSize = new System.Drawing.Size(1252, 945);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1136, 1003);
+            this.tabControl1.Size = new System.Drawing.Size(1388, 1316);
             this.tabControl1.TabIndex = 3;
             // 
             // tabPage1
@@ -150,10 +155,10 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.tabPage1.Controls.Add(this.classLabel1);
             this.tabPage1.Controls.Add(this.TextBoxNrDoc);
             this.tabPage1.Location = new System.Drawing.Point(4, 54);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage1.Size = new System.Drawing.Size(1128, 945);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.tabPage1.Size = new System.Drawing.Size(1380, 1258);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "CHITANTE";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -161,9 +166,10 @@ namespace BlueSolAsoc.Fom_Meniuri
             // labelIstoric
             // 
             this.labelIstoric.AutoSize = true;
-            this.labelIstoric.Location = new System.Drawing.Point(786, 11);
+            this.labelIstoric.Location = new System.Drawing.Point(961, 14);
+            this.labelIstoric.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelIstoric.Name = "labelIstoric";
-            this.labelIstoric.Size = new System.Drawing.Size(201, 24);
+            this.labelIstoric.Size = new System.Drawing.Size(261, 30);
             this.labelIstoric.TabIndex = 24;
             this.labelIstoric.Text = "ISTORIC INCASARI";
             // 
@@ -183,9 +189,11 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.EnableHeadersVisualStyles = false;
-            this.dataGridView2.Location = new System.Drawing.Point(574, 40);
+            this.dataGridView2.Location = new System.Drawing.Point(702, 52);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(549, 900);
+            this.dataGridView2.RowHeadersWidth = 51;
+            this.dataGridView2.Size = new System.Drawing.Size(671, 1181);
             this.dataGridView2.TabIndex = 23;
             // 
             // dataGridView1
@@ -202,115 +210,169 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.valoareDataGridViewTextBoxColumn1,
-            this.idasociereDataGridViewTextBoxColumn,
-            this.vallabelDataGridViewTextBoxColumn,
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn8,
-            this.dataGridViewTextBoxColumn9});
-            this.dataGridView1.DataSource = this.vVenituriIncasariBindingSource3;
+            this.aidantetDataGridViewTextBoxColumn,
+            this.anrdocDataGridViewTextBoxColumn,
+            this.aserieDataGridViewTextBoxColumn,
+            this.adataDataGridViewTextBoxColumn,
+            this.aidpartenerDataGridViewTextBoxColumn,
+            this.pidpozitieDataGridViewTextBoxColumn,
+            this.pidasociereDataGridViewTextBoxColumn,
+            this.ppretDataGridViewTextBoxColumn,
+            this.pcantitateDataGridViewTextBoxColumn,
+            this.pidcotatvaDataGridViewTextBoxColumn,
+            this.tatvallabelDataGridViewTextBoxColumn,
+            this.coloana_suma,
+            this.aidtemporarDataGridViewTextBoxColumn,
+            this.aidorgDataGridViewTextBoxColumn,
+            this.aidasociereDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.mvDocumenteBindingSource;
             this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.Location = new System.Drawing.Point(9, 210);
+            this.dataGridView1.Location = new System.Drawing.Point(11, 276);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(556, 135);
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.Size = new System.Drawing.Size(680, 177);
             this.dataGridView1.TabIndex = 22;
             this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress);
             // 
-            // valoareDataGridViewTextBoxColumn1
+            // aidantetDataGridViewTextBoxColumn
             // 
-            this.valoareDataGridViewTextBoxColumn1.DataPropertyName = "valoare";
-            this.valoareDataGridViewTextBoxColumn1.HeaderText = "valoare";
-            this.valoareDataGridViewTextBoxColumn1.Name = "valoareDataGridViewTextBoxColumn1";
-            this.valoareDataGridViewTextBoxColumn1.Visible = false;
+            this.aidantetDataGridViewTextBoxColumn.DataPropertyName = "a_id_antet";
+            this.aidantetDataGridViewTextBoxColumn.HeaderText = "a_id_antet";
+            this.aidantetDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.aidantetDataGridViewTextBoxColumn.Name = "aidantetDataGridViewTextBoxColumn";
+            this.aidantetDataGridViewTextBoxColumn.Visible = false;
+            this.aidantetDataGridViewTextBoxColumn.Width = 125;
             // 
-            // idasociereDataGridViewTextBoxColumn
+            // anrdocDataGridViewTextBoxColumn
             // 
-            this.idasociereDataGridViewTextBoxColumn.DataPropertyName = "id_asociere";
-            this.idasociereDataGridViewTextBoxColumn.HeaderText = "id_asociere";
-            this.idasociereDataGridViewTextBoxColumn.Name = "idasociereDataGridViewTextBoxColumn";
-            this.idasociereDataGridViewTextBoxColumn.Visible = false;
+            this.anrdocDataGridViewTextBoxColumn.DataPropertyName = "a_nr_doc";
+            this.anrdocDataGridViewTextBoxColumn.HeaderText = "a_nr_doc";
+            this.anrdocDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.anrdocDataGridViewTextBoxColumn.Name = "anrdocDataGridViewTextBoxColumn";
+            this.anrdocDataGridViewTextBoxColumn.Visible = false;
+            this.anrdocDataGridViewTextBoxColumn.Width = 125;
             // 
-            // vallabelDataGridViewTextBoxColumn
+            // aserieDataGridViewTextBoxColumn
             // 
-            this.vallabelDataGridViewTextBoxColumn.DataPropertyName = "val_label";
-            this.vallabelDataGridViewTextBoxColumn.HeaderText = "Tip Incasare";
-            this.vallabelDataGridViewTextBoxColumn.Name = "vallabelDataGridViewTextBoxColumn";
-            this.vallabelDataGridViewTextBoxColumn.ReadOnly = true;
-            this.vallabelDataGridViewTextBoxColumn.Width = 300;
+            this.aserieDataGridViewTextBoxColumn.DataPropertyName = "a_serie";
+            this.aserieDataGridViewTextBoxColumn.HeaderText = "a_serie";
+            this.aserieDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.aserieDataGridViewTextBoxColumn.Name = "aserieDataGridViewTextBoxColumn";
+            this.aserieDataGridViewTextBoxColumn.Visible = false;
+            this.aserieDataGridViewTextBoxColumn.Width = 125;
             // 
-            // dataGridViewTextBoxColumn1
+            // adataDataGridViewTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "id_antet";
-            this.dataGridViewTextBoxColumn1.HeaderText = "id_antet";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Visible = false;
+            this.adataDataGridViewTextBoxColumn.DataPropertyName = "a_data";
+            this.adataDataGridViewTextBoxColumn.HeaderText = "a_data";
+            this.adataDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.adataDataGridViewTextBoxColumn.Name = "adataDataGridViewTextBoxColumn";
+            this.adataDataGridViewTextBoxColumn.Visible = false;
+            this.adataDataGridViewTextBoxColumn.Width = 125;
             // 
-            // dataGridViewTextBoxColumn2
+            // aidpartenerDataGridViewTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "nr_doc";
-            this.dataGridViewTextBoxColumn2.HeaderText = "nr_doc";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Visible = false;
+            this.aidpartenerDataGridViewTextBoxColumn.DataPropertyName = "a_id_partener";
+            this.aidpartenerDataGridViewTextBoxColumn.HeaderText = "a_id_partener";
+            this.aidpartenerDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.aidpartenerDataGridViewTextBoxColumn.Name = "aidpartenerDataGridViewTextBoxColumn";
+            this.aidpartenerDataGridViewTextBoxColumn.Visible = false;
+            this.aidpartenerDataGridViewTextBoxColumn.Width = 125;
             // 
-            // dataGridViewTextBoxColumn3
+            // pidpozitieDataGridViewTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "serie";
-            this.dataGridViewTextBoxColumn3.HeaderText = "serie";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Visible = false;
+            this.pidpozitieDataGridViewTextBoxColumn.DataPropertyName = "p_id_pozitie";
+            this.pidpozitieDataGridViewTextBoxColumn.HeaderText = "p_id_pozitie";
+            this.pidpozitieDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.pidpozitieDataGridViewTextBoxColumn.Name = "pidpozitieDataGridViewTextBoxColumn";
+            this.pidpozitieDataGridViewTextBoxColumn.Visible = false;
+            this.pidpozitieDataGridViewTextBoxColumn.Width = 125;
             // 
-            // dataGridViewTextBoxColumn4
+            // pidasociereDataGridViewTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "data";
-            this.dataGridViewTextBoxColumn4.HeaderText = "data";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Visible = false;
+            this.pidasociereDataGridViewTextBoxColumn.DataPropertyName = "p_id_asociere";
+            this.pidasociereDataGridViewTextBoxColumn.HeaderText = "p_id_asociere";
+            this.pidasociereDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.pidasociereDataGridViewTextBoxColumn.Name = "pidasociereDataGridViewTextBoxColumn";
+            this.pidasociereDataGridViewTextBoxColumn.Visible = false;
+            this.pidasociereDataGridViewTextBoxColumn.Width = 125;
             // 
-            // dataGridViewTextBoxColumn5
+            // ppretDataGridViewTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "id_partener";
-            this.dataGridViewTextBoxColumn5.HeaderText = "id_partener";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.Visible = false;
+            this.ppretDataGridViewTextBoxColumn.DataPropertyName = "p_pret";
+            this.ppretDataGridViewTextBoxColumn.HeaderText = "p_pret";
+            this.ppretDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.ppretDataGridViewTextBoxColumn.Name = "ppretDataGridViewTextBoxColumn";
+            this.ppretDataGridViewTextBoxColumn.Visible = false;
+            this.ppretDataGridViewTextBoxColumn.Width = 125;
             // 
-            // dataGridViewTextBoxColumn6
+            // pcantitateDataGridViewTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "id_pozitie";
-            this.dataGridViewTextBoxColumn6.HeaderText = "id_pozitie";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.Visible = false;
+            this.pcantitateDataGridViewTextBoxColumn.DataPropertyName = "p_cantitate";
+            this.pcantitateDataGridViewTextBoxColumn.HeaderText = "p_cantitate";
+            this.pcantitateDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.pcantitateDataGridViewTextBoxColumn.Name = "pcantitateDataGridViewTextBoxColumn";
+            this.pcantitateDataGridViewTextBoxColumn.Visible = false;
+            this.pcantitateDataGridViewTextBoxColumn.Width = 125;
             // 
-            // dataGridViewTextBoxColumn7
+            // pidcotatvaDataGridViewTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "pret";
-            this.dataGridViewTextBoxColumn7.HeaderText = "SUMA";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.pidcotatvaDataGridViewTextBoxColumn.DataPropertyName = "p_id_cota_tva";
+            this.pidcotatvaDataGridViewTextBoxColumn.HeaderText = "p_id_cota_tva";
+            this.pidcotatvaDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.pidcotatvaDataGridViewTextBoxColumn.Name = "pidcotatvaDataGridViewTextBoxColumn";
+            this.pidcotatvaDataGridViewTextBoxColumn.Visible = false;
+            this.pidcotatvaDataGridViewTextBoxColumn.Width = 125;
             // 
-            // dataGridViewTextBoxColumn8
+            // tatvallabelDataGridViewTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "cantitate";
-            this.dataGridViewTextBoxColumn8.HeaderText = "cantitate";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.Visible = false;
+            this.tatvallabelDataGridViewTextBoxColumn.DataPropertyName = "tat_val_label";
+            this.tatvallabelDataGridViewTextBoxColumn.HeaderText = "Tip Incasare";
+            this.tatvallabelDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.tatvallabelDataGridViewTextBoxColumn.Name = "tatvallabelDataGridViewTextBoxColumn";
+            this.tatvallabelDataGridViewTextBoxColumn.Width = 400;
             // 
-            // dataGridViewTextBoxColumn9
+            // coloana_suma
             // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "id_cota_tva";
-            this.dataGridViewTextBoxColumn9.HeaderText = "id_cota_tva";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.Visible = false;
+            this.coloana_suma.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.coloana_suma.DataPropertyName = "p_valoare";
+            this.coloana_suma.HeaderText = "SUMA";
+            this.coloana_suma.MinimumWidth = 6;
+            this.coloana_suma.Name = "coloana_suma";
+            this.coloana_suma.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
-            // vVenituriIncasariBindingSource3
+            // aidtemporarDataGridViewTextBoxColumn
             // 
-            this.vVenituriIncasariBindingSource3.DataMember = "vVenituriIncasari";
-            this.vVenituriIncasariBindingSource3.DataSource = this.dataSetVenituriIncasari1;
+            this.aidtemporarDataGridViewTextBoxColumn.DataPropertyName = "a_id_temporar";
+            this.aidtemporarDataGridViewTextBoxColumn.HeaderText = "a_id_temporar";
+            this.aidtemporarDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.aidtemporarDataGridViewTextBoxColumn.Name = "aidtemporarDataGridViewTextBoxColumn";
+            this.aidtemporarDataGridViewTextBoxColumn.Visible = false;
+            this.aidtemporarDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // aidorgDataGridViewTextBoxColumn
+            // 
+            this.aidorgDataGridViewTextBoxColumn.DataPropertyName = "a_id_org";
+            this.aidorgDataGridViewTextBoxColumn.HeaderText = "a_id_org";
+            this.aidorgDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.aidorgDataGridViewTextBoxColumn.Name = "aidorgDataGridViewTextBoxColumn";
+            this.aidorgDataGridViewTextBoxColumn.Visible = false;
+            this.aidorgDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // aidasociereDataGridViewTextBoxColumn
+            // 
+            this.aidasociereDataGridViewTextBoxColumn.DataPropertyName = "a_id_asociere";
+            this.aidasociereDataGridViewTextBoxColumn.HeaderText = "a_id_asociere";
+            this.aidasociereDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.aidasociereDataGridViewTextBoxColumn.Name = "aidasociereDataGridViewTextBoxColumn";
+            this.aidasociereDataGridViewTextBoxColumn.Visible = false;
+            this.aidasociereDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // mvDocumenteBindingSource
+            // 
+            this.mvDocumenteBindingSource.DataMember = "mv_Documente";
+            this.mvDocumenteBindingSource.DataSource = this.dataSetVenituriIncasari1;
             // 
             // dataSetVenituriIncasari1
             // 
@@ -320,10 +382,10 @@ namespace BlueSolAsoc.Fom_Meniuri
             // ButtonChitanteOK
             // 
             this.ButtonChitanteOK.AutoSize = true;
-            this.ButtonChitanteOK.Location = new System.Drawing.Point(241, 391);
-            this.ButtonChitanteOK.Margin = new System.Windows.Forms.Padding(2);
+            this.ButtonChitanteOK.Location = new System.Drawing.Point(295, 513);
+            this.ButtonChitanteOK.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ButtonChitanteOK.Name = "ButtonChitanteOK";
-            this.ButtonChitanteOK.Size = new System.Drawing.Size(74, 41);
+            this.ButtonChitanteOK.Size = new System.Drawing.Size(90, 54);
             this.ButtonChitanteOK.TabIndex = 15;
             this.ButtonChitanteOK.Text = "OK";
             this.ButtonChitanteOK.UseVisualStyleBackColor = true;
@@ -332,29 +394,29 @@ namespace BlueSolAsoc.Fom_Meniuri
             // 
             this.dateTimePicker1.CustomFormat = "dd/MM/yyy";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(142, 39);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2);
+            this.dateTimePicker1.Location = new System.Drawing.Point(174, 51);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(216, 32);
+            this.dateTimePicker1.Size = new System.Drawing.Size(263, 39);
             this.dateTimePicker1.TabIndex = 14;
             this.dateTimePicker1.Value = new System.DateTime(2020, 3, 12, 0, 0, 0, 0);
             // 
             // classLabel5
             // 
             this.classLabel5.AutoSize = true;
-            this.classLabel5.Location = new System.Drawing.Point(360, 152);
+            this.classLabel5.Location = new System.Drawing.Point(440, 200);
             this.classLabel5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.classLabel5.Name = "classLabel5";
-            this.classLabel5.Size = new System.Drawing.Size(74, 24);
+            this.classLabel5.Size = new System.Drawing.Size(94, 30);
             this.classLabel5.TabIndex = 9;
             this.classLabel5.Text = "SUMA";
             // 
             // TextBoxPret
             // 
-            this.TextBoxPret.Location = new System.Drawing.Point(435, 146);
-            this.TextBoxPret.Margin = new System.Windows.Forms.Padding(2);
+            this.TextBoxPret.Location = new System.Drawing.Point(532, 192);
+            this.TextBoxPret.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.TextBoxPret.Name = "TextBoxPret";
-            this.TextBoxPret.Size = new System.Drawing.Size(129, 32);
+            this.TextBoxPret.Size = new System.Drawing.Size(157, 39);
             this.TextBoxPret.TabIndex = 8;
             this.TextBoxPret.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxPret_KeyPress);
             // 
@@ -362,47 +424,48 @@ namespace BlueSolAsoc.Fom_Meniuri
             // 
             this.classLabel4.AutoSize = true;
             this.classLabel4.Font = new System.Drawing.Font("Mongolian Baiti", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.classLabel4.Location = new System.Drawing.Point(4, 151);
+            this.classLabel4.Location = new System.Drawing.Point(5, 198);
             this.classLabel4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.classLabel4.Name = "classLabel4";
-            this.classLabel4.Size = new System.Drawing.Size(132, 19);
+            this.classLabel4.Size = new System.Drawing.Size(160, 24);
             this.classLabel4.TabIndex = 7;
             this.classLabel4.Text = "APARTAMENT";
             // 
             // textBoxApartamente
             // 
-            this.textBoxApartamente.Location = new System.Drawing.Point(140, 143);
-            this.textBoxApartamente.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxApartamente.Location = new System.Drawing.Point(171, 188);
+            this.textBoxApartamente.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.textBoxApartamente.Name = "textBoxApartamente";
-            this.textBoxApartamente.Size = new System.Drawing.Size(216, 32);
+            this.textBoxApartamente.Size = new System.Drawing.Size(263, 39);
             this.textBoxApartamente.TabIndex = 6;
+            this.textBoxApartamente.Leave += new System.EventHandler(this.textBoxApartamente_Leave);
             // 
             // classLabel3
             // 
             this.classLabel3.AutoSize = true;
-            this.classLabel3.Location = new System.Drawing.Point(7, 45);
+            this.classLabel3.Location = new System.Drawing.Point(9, 59);
             this.classLabel3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.classLabel3.Name = "classLabel3";
-            this.classLabel3.Size = new System.Drawing.Size(71, 24);
+            this.classLabel3.Size = new System.Drawing.Size(90, 30);
             this.classLabel3.TabIndex = 4;
             this.classLabel3.Text = "DATA";
             // 
             // TextBoxSerieDoc
             // 
             this.TextBoxSerieDoc.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextBoxSerieDoc.Location = new System.Drawing.Point(435, 95);
-            this.TextBoxSerieDoc.Margin = new System.Windows.Forms.Padding(2);
+            this.TextBoxSerieDoc.Location = new System.Drawing.Point(532, 125);
+            this.TextBoxSerieDoc.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.TextBoxSerieDoc.Name = "TextBoxSerieDoc";
-            this.TextBoxSerieDoc.Size = new System.Drawing.Size(129, 26);
+            this.TextBoxSerieDoc.Size = new System.Drawing.Size(157, 31);
             this.TextBoxSerieDoc.TabIndex = 3;
             // 
             // classLabel2
             // 
             this.classLabel2.AutoSize = true;
-            this.classLabel2.Location = new System.Drawing.Point(362, 98);
+            this.classLabel2.Location = new System.Drawing.Point(442, 129);
             this.classLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.classLabel2.Name = "classLabel2";
-            this.classLabel2.Size = new System.Drawing.Size(72, 24);
+            this.classLabel2.Size = new System.Drawing.Size(94, 30);
             this.classLabel2.TabIndex = 2;
             this.classLabel2.Text = "SERIA";
             // 
@@ -410,19 +473,19 @@ namespace BlueSolAsoc.Fom_Meniuri
             // 
             this.classLabel1.AutoSize = true;
             this.classLabel1.Font = new System.Drawing.Font("Mongolian Baiti", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.classLabel1.Location = new System.Drawing.Point(7, 98);
+            this.classLabel1.Location = new System.Drawing.Point(9, 129);
             this.classLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.classLabel1.Name = "classLabel1";
-            this.classLabel1.Size = new System.Drawing.Size(131, 19);
+            this.classLabel1.Size = new System.Drawing.Size(158, 24);
             this.classLabel1.TabIndex = 1;
             this.classLabel1.Text = "NR CHITANTA";
             // 
             // TextBoxNrDoc
             // 
-            this.TextBoxNrDoc.Location = new System.Drawing.Point(142, 95);
-            this.TextBoxNrDoc.Margin = new System.Windows.Forms.Padding(2);
+            this.TextBoxNrDoc.Location = new System.Drawing.Point(174, 125);
+            this.TextBoxNrDoc.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.TextBoxNrDoc.Name = "TextBoxNrDoc";
-            this.TextBoxNrDoc.Size = new System.Drawing.Size(216, 32);
+            this.TextBoxNrDoc.Size = new System.Drawing.Size(263, 39);
             this.TextBoxNrDoc.TabIndex = 0;
             // 
             // tabPage2
@@ -430,20 +493,20 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.tabPage2.Controls.Add(this.button1);
             this.tabPage2.Controls.Add(this.dataGridDreapta);
             this.tabPage2.Location = new System.Drawing.Point(4, 54);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage2.Size = new System.Drawing.Size(1128, 945);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.tabPage2.Size = new System.Drawing.Size(1380, 1258);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(587, 335);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Location = new System.Drawing.Point(717, 440);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 31);
+            this.button1.Size = new System.Drawing.Size(115, 41);
             this.button1.TabIndex = 2;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
@@ -456,19 +519,21 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.dataGridDreapta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.valoareDataGridViewTextBoxColumn});
             this.dataGridDreapta.DataSource = this.vVenituriIncasariBindingSource;
-            this.dataGridDreapta.Location = new System.Drawing.Point(7, 26);
-            this.dataGridDreapta.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridDreapta.Location = new System.Drawing.Point(9, 34);
+            this.dataGridDreapta.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.dataGridDreapta.Name = "dataGridDreapta";
             this.dataGridDreapta.RowHeadersWidth = 51;
             this.dataGridDreapta.RowTemplate.Height = 24;
-            this.dataGridDreapta.Size = new System.Drawing.Size(1257, 293);
+            this.dataGridDreapta.Size = new System.Drawing.Size(1536, 385);
             this.dataGridDreapta.TabIndex = 0;
             // 
             // valoareDataGridViewTextBoxColumn
             // 
             this.valoareDataGridViewTextBoxColumn.DataPropertyName = "valoare";
             this.valoareDataGridViewTextBoxColumn.HeaderText = "valoare";
+            this.valoareDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.valoareDataGridViewTextBoxColumn.Name = "valoareDataGridViewTextBoxColumn";
+            this.valoareDataGridViewTextBoxColumn.Width = 125;
             // 
             // vVenituriIncasariBindingSource
             // 
@@ -478,7 +543,11 @@ namespace BlueSolAsoc.Fom_Meniuri
             // dataSetVenituriIncasari1BindingSource
             // 
             this.dataSetVenituriIncasari1BindingSource.DataSource = this.dataSetVenituriIncasari1;
-            this.dataSetVenituriIncasari1BindingSource.Position = 0;
+            // 
+            // vVenituriIncasariBindingSource3
+            // 
+            this.vVenituriIncasariBindingSource3.DataMember = "vVenituriIncasari";
+            this.vVenituriIncasariBindingSource3.DataSource = this.dataSetVenituriIncasari1;
             // 
             // vVenituriIncasariBindingSource1
             // 
@@ -522,10 +591,6 @@ namespace BlueSolAsoc.Fom_Meniuri
             // 
             this.tabela_pozitiiTableAdapter.ClearBeforeFill = true;
             // 
-            // vVenituriIncasariTableAdapter
-            // 
-            this.vVenituriIncasariTableAdapter.ClearBeforeFill = true;
-            // 
             // vVenituriIncasariBindingSource2
             // 
             this.vVenituriIncasariBindingSource2.DataMember = "vVenituriIncasari";
@@ -539,10 +604,10 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.pnlControale.Controls.Add(this.btnOK);
             this.pnlControale.Controls.Add(this.classButonInteriorSterge1);
             this.pnlControale.Controls.Add(this.classButonModifica1);
-            this.pnlControale.Location = new System.Drawing.Point(1140, 81);
-            this.pnlControale.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlControale.Location = new System.Drawing.Point(1393, 106);
+            this.pnlControale.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pnlControale.Name = "pnlControale";
-            this.pnlControale.Size = new System.Drawing.Size(128, 984);
+            this.pnlControale.Size = new System.Drawing.Size(156, 1292);
             this.pnlControale.TabIndex = 5;
             // 
             // btnAnuleaza
@@ -551,10 +616,10 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.btnAnuleaza.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnAnuleaza.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAnuleaza.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAnuleaza.Location = new System.Drawing.Point(0, 456);
-            this.btnAnuleaza.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAnuleaza.Location = new System.Drawing.Point(0, 600);
+            this.btnAnuleaza.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnAnuleaza.Name = "btnAnuleaza";
-            this.btnAnuleaza.Size = new System.Drawing.Size(128, 152);
+            this.btnAnuleaza.Size = new System.Drawing.Size(156, 200);
             this.btnAnuleaza.TabIndex = 9;
             this.btnAnuleaza.Text = "ANULEAZA";
             this.btnAnuleaza.UseVisualStyleBackColor = false;
@@ -566,10 +631,10 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.btnOK.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOK.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOK.Location = new System.Drawing.Point(0, 304);
-            this.btnOK.Margin = new System.Windows.Forms.Padding(2);
+            this.btnOK.Location = new System.Drawing.Point(0, 400);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(128, 152);
+            this.btnOK.Size = new System.Drawing.Size(156, 200);
             this.btnOK.TabIndex = 8;
             this.btnOK.Text = "SALVEAZA";
             this.btnOK.UseVisualStyleBackColor = false;
@@ -581,10 +646,10 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.classButonInteriorSterge1.Dock = System.Windows.Forms.DockStyle.Top;
             this.classButonInteriorSterge1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.classButonInteriorSterge1.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.classButonInteriorSterge1.Location = new System.Drawing.Point(0, 152);
-            this.classButonInteriorSterge1.Margin = new System.Windows.Forms.Padding(2);
+            this.classButonInteriorSterge1.Location = new System.Drawing.Point(0, 200);
+            this.classButonInteriorSterge1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.classButonInteriorSterge1.Name = "classButonInteriorSterge1";
-            this.classButonInteriorSterge1.Size = new System.Drawing.Size(128, 152);
+            this.classButonInteriorSterge1.Size = new System.Drawing.Size(156, 200);
             this.classButonInteriorSterge1.TabIndex = 7;
             this.classButonInteriorSterge1.Text = "STERGE";
             this.classButonInteriorSterge1.UseVisualStyleBackColor = false;
@@ -596,25 +661,29 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.classButonModifica1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.classButonModifica1.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.classButonModifica1.Location = new System.Drawing.Point(0, 0);
-            this.classButonModifica1.Margin = new System.Windows.Forms.Padding(2);
+            this.classButonModifica1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.classButonModifica1.Name = "classButonModifica1";
-            this.classButonModifica1.Size = new System.Drawing.Size(128, 152);
+            this.classButonModifica1.Size = new System.Drawing.Size(156, 200);
             this.classButonModifica1.TabIndex = 6;
             this.classButonModifica1.Text = "MODIFICA";
             this.classButonModifica1.UseVisualStyleBackColor = false;
             this.classButonModifica1.Click += new System.EventHandler(this.classButonModifica1_Click);
             // 
+            // mv_DocumenteTableAdapter
+            // 
+            this.mv_DocumenteTableAdapter.ClearBeforeFill = true;
+            // 
             // venituri_incasari
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1373, 1041);
+            this.ClientSize = new System.Drawing.Size(1678, 1055);
             this.Controls.Add(this.pnlControale);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.panel1);
             this.Location = new System.Drawing.Point(0, 0);
-            this.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
-            this.MinimumSize = new System.Drawing.Size(1024, 720);
+            this.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
+            this.MinimumSize = new System.Drawing.Size(1248, 930);
             this.Name = "venituri_incasari";
             this.Text = "venituri_incasari";
             this.Load += new System.EventHandler(this.venituri_incasari_Load);
@@ -623,19 +692,20 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vVenituriIncasariBindingSource3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mvDocumenteBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetVenituriIncasari1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDreapta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vVenituriIncasariBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetVenituriIncasari1BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vVenituriIncasariBindingSource1)).EndInit();
+           
+            
+            
             ((System.ComponentModel.ISupportInitialize)(this.tabelapozitiiBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.proba_transareDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabelaantetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.proba_transareDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabelaintretinereBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vVenituriIncasariBindingSource2)).EndInit();
+
             this.pnlControale.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -670,7 +740,6 @@ namespace BlueSolAsoc.Fom_Meniuri
         private System.Windows.Forms.BindingSource dataSetVenituriIncasari1BindingSource;
         private DataSetVenituriIncasari dataSetVenituriIncasari1;
         private System.Windows.Forms.BindingSource vVenituriIncasariBindingSource;
-        private DataSetVenituriIncasariTableAdapters.vVenituriIncasariTableAdapter vVenituriIncasariTableAdapter;
 
         private System.Windows.Forms.DataGridViewTextBoxColumn valoareDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource vVenituriIncasariBindingSource1;
@@ -679,22 +748,27 @@ namespace BlueSolAsoc.Fom_Meniuri
         private System.Windows.Forms.BindingSource vVenituriIncasariBindingSource2;
         private System.Windows.Forms.Label labelIstoric;
         private ClassGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valoareDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idasociereDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn vallabelDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.Panel pnlControale;
         private System.Windows.Forms.Button btnAnuleaza;
         private System.Windows.Forms.Button btnOK;
         private ClassButonInteriorSterge classButonInteriorSterge1;
         private ClassButonModifica classButonModifica1;
+        private System.Windows.Forms.BindingSource mvDocumenteBindingSource;
+        private DataSetVenituriIncasariTableAdapters.mv_DocumenteTableAdapter mv_DocumenteTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn aidantetDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn anrdocDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn aserieDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn adataDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn aidpartenerDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pidpozitieDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pidasociereDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ppretDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pcantitateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pidcotatvaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tatvallabelDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn coloana_suma;
+        private System.Windows.Forms.DataGridViewTextBoxColumn aidtemporarDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn aidorgDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn aidasociereDataGridViewTextBoxColumn;
     }
 }

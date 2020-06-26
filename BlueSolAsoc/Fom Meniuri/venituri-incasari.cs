@@ -26,10 +26,10 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.denumireAsociatie = denumireAsociatie;
             this.idAsociatie = idAsociatie;
             dateTimePicker1.Value = System.DateTime.Now;
-            DataSetVenituriIncasari.getSetFrom("select id_antet,nr_doc,serie,data,id_partener,id_pozitie,id_asociere,pret,cantitate,id_cota_tva,valoare,val_label,id_temporar,id_org from mv_Documente where id_antet=0", "mv_Documente"); // Selectare schelet tabela
+            DataSetVenituriIncasari.getSetFrom("select a_id_antet,a_nr_doc,a_serie,a_data,a_id_partener,p_id_pozitie,p_id_asociere,p_pret,p_cantitate,p_id_cota_tva,p_valoare,tat_val_label,a_id_temporar,a_id_org,a_id_asociere from mv_Documente where a_id_antet=0", "mv_Documente"); // Selectare schelet tabela
             DataTable TabelaVenituriIncasari = DataSetVenituriIncasari.Tables["mv_Documente"]; // Creare Tabel pe baza selectiei anterioare
             //DataTable TabelaLabelValoare = dataSetVenituriIncasari1.Tables[0];
-            DataSetVenituriIncasari.getSetFrom("select id_asociere,val_label from tabela_asocieri_tipuri where id_master=24", "TipuriIncasari"); // selectare schelet tabela tipuri incasari
+            DataSetVenituriIncasari.getSetFrom("select id_asociere,val_label from tabela_asocieri_tipuri where id_tip=14", "TipuriIncasari"); // selectare schelet tabela tipuri incasari
             //Pentru fiecare linie din tabela de incasari adaug o linie in view-ul documente cu id_asociere completat conform tipului de incasare
             DataSetVenituriIncasari.getSetFrom("select * from mv_IstoricDocumente","mv_IstoricDocumente");
             DataTable TabelaIstoricDocumente = DataSetVenituriIncasari.Tables["mv_IstoricDocumente"];
@@ -49,8 +49,8 @@ namespace BlueSolAsoc.Fom_Meniuri
 
                 DataRow randta = TabelaVenituriIncasari.Rows.Add();
 
-                randta["id_asociere"] = row["id_asociere"];
-                randta["val_label"] = row["val_label"].ToString().Trim();
+                randta["p_id_asociere"] = row["id_asociere"];
+                randta["tat_val_label"] = row["val_label"].ToString().Trim();
 
             }
 
@@ -103,6 +103,8 @@ namespace BlueSolAsoc.Fom_Meniuri
 
         private void venituri_incasari_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dataSetVenituriIncasari1.mv_Documente' table. You can move, or remove it, as needed.
+            this.mv_DocumenteTableAdapter.Fill(this.dataSetVenituriIncasari1.mv_Documente);
             /*  // TODO: This line of code loads data into the 'dataSetVenituriIncasari1.vVenituriIncasari' table. You can move, or remove it, as needed.
               this.vVenituriIncasariTableAdapter.Fill(this.dataSetVenituriIncasari1.vVenituriIncasari);
               // TODO: This line of code loads data into the 'proba_transareDataSet1.tabela_pozitii' table. You can move, or remove it, as needed.
@@ -141,7 +143,7 @@ namespace BlueSolAsoc.Fom_Meniuri
 
             cnn.Close();
 
-
+            
         }
 
        
@@ -156,7 +158,7 @@ namespace BlueSolAsoc.Fom_Meniuri
 
         private void ButtonSalvareOK()
         {
-
+          
 
             // Aducere tabela goala in DataSet / simulare false 1!=1 / Completare tabela goala -> upload in baza date
 
@@ -172,6 +174,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             
             if (!(textBoxApartamente.AutoCompleteCustomSource.Contains(textBoxApartamente.Text))^(TextBoxNrDoc.Text=="")^(TextBoxSerieDoc.Text==""))
             {
+                //string eroare = "";
                 if (!(textBoxApartamente.AutoCompleteCustomSource.Contains(textBoxApartamente.Text)))
                 {
                     MessageBox.Show("Verifica proprietar");
@@ -199,7 +202,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                     string SERIE = TextBoxSerieDoc.Text;
                     //int id_asociere
                     string pret = TextBoxPret.Text;
-                    if (TabelaVenituriIncasari.Rows[0]["pret"].ToString() == "")
+                    if (TabelaVenituriIncasari.Rows[0]["p_pret"].ToString() == "")
                     {
                         pret = TextBoxPret.Text; // Caseta SUMA
                     }
@@ -213,19 +216,19 @@ namespace BlueSolAsoc.Fom_Meniuri
                     int suma = Convert.ToInt16(pret) * cantitate;
 
 
-                    row["id_antet"] = id_antet;
-                    row["nr_doc"] = NR_DOC;
-                    row["serie"] = SERIE;
-                    row["data"] = data;
-                    row["id_pozitie"] = id_pozitie;
-                    row["id_partener"] = idProprietar;
-                    row["pret"] = pret;
-                    row["cantitate"] = cantitate;
-                    row["id_cota_tva"] = cota_tva;
-                    row["valoare"] = suma;
-                    row["id_temporar"] = id_temporar;
-                    row["id_org"] = idAsociatie;
-                    row["id_asociere"] = 43;
+                    row["a_id_antet"] = id_antet;
+                    row["a_nr_doc"] = NR_DOC;
+                    row["a_serie"] = SERIE;
+                    row["a_data"] = data;
+                    row["p_id_pozitie"] = id_pozitie;
+                    row["a_id_partener"] = idProprietar;
+                    row["p_pret"] = pret;
+                    row["p_cantitate"] = cantitate;
+                    row["p_id_cota_tva"] = cota_tva;
+                    row["p_valoare"] = suma;
+                    row["a_id_temporar"] = id_temporar;
+                    row["a_id_org"] = idAsociatie;
+                    row["a_id_asociere"] = 43;
                     //row["id_TipDocument"] = 0; 
                     //row["tipDocument"] = 0;
                 }
@@ -254,8 +257,8 @@ namespace BlueSolAsoc.Fom_Meniuri
             {
                 // intrare grid pe prima linie in "suma"
                 dataGridView1.Focus();
-                dataGridView1.CurrentCell = dataGridView1.Rows[0].Cells[9];
-                dataGridView1.Rows[0].Cells[9].Value = TextBoxPret.Text;
+                dataGridView1.CurrentCell = dataGridView1.Rows[0].Cells["coloana_suma"];
+                dataGridView1.Rows[0].Cells["coloana_suma"].Value = TextBoxPret.Text;
                 
                 //ButtonChitanteOK_Click(sender, e);
             }
@@ -290,6 +293,16 @@ namespace BlueSolAsoc.Fom_Meniuri
             classButonInteriorSterge1.Hide();
             classButonModifica1.Show();
             btnAnuleaza.Hide();
+        }
+
+        private void textBoxApartamente_Leave(object sender, EventArgs e)
+        {
+            if (textBoxApartamente.AutoCompleteCustomSource.Contains(textBoxApartamente.Text))
+            {
+                // textBoxApartamente.DeselectAll();
+                textBoxApartamente.SelectionStart = 0;
+                textBoxApartamente.SelectionLength = 0;
+            };
         }
     }
 }

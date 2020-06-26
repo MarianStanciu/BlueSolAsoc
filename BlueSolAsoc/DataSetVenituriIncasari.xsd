@@ -7,30 +7,33 @@
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="proba_transareConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="proba_transareConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.BlueSolAsoc.Properties.Settings.GlobalReference.Default.proba_transareConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vVenituriIncasariTableAdapter" GeneratorDataComponentClassName="vVenituriIncasariTableAdapter" Name="vVenituriIncasari" UserDataComponentName="vVenituriIncasariTableAdapter">
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="mv_DocumenteTableAdapter" GeneratorDataComponentClassName="mv_DocumenteTableAdapter" Name="mv_Documente" UserDataComponentName="mv_DocumenteTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="proba_transareConnectionString (Settings)" DbObjectName="proba_transare.dbo.vVenituriIncasari" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="proba_transareConnectionString (Settings)" DbObjectName="proba_transare.dbo.mv_Documente" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT val_label, valoare, id_asociere, cantitate, data, id_antet, id_cota_tva, id_partener, id_pozitie, nr_doc, pret, serie FROM vVenituriIncasari</CommandText>
+                    <CommandText>SELECT a_id_antet, a_nr_doc, a_serie, a_data, a_id_partener, p_id_pozitie, p_id_asociere, p_pret, p_cantitate, p_id_cota_tva, p_valoare, tat_val_label, a_id_temporar, a_id_org, a_id_asociere FROM dbo.mv_Documente</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
             </MainSource>
             <Mappings>
-              <Mapping SourceColumn="valoare" DataSetColumn="valoare" />
-              <Mapping SourceColumn="id_asociere" DataSetColumn="id_asociere" />
-              <Mapping SourceColumn="val_label" DataSetColumn="val_label" />
-              <Mapping SourceColumn="id_antet" DataSetColumn="id_antet" />
-              <Mapping SourceColumn="nr_doc" DataSetColumn="nr_doc" />
-              <Mapping SourceColumn="serie" DataSetColumn="serie" />
-              <Mapping SourceColumn="data" DataSetColumn="data" />
-              <Mapping SourceColumn="id_partener" DataSetColumn="id_partener" />
-              <Mapping SourceColumn="id_pozitie" DataSetColumn="id_pozitie" />
-              <Mapping SourceColumn="pret" DataSetColumn="pret" />
-              <Mapping SourceColumn="cantitate" DataSetColumn="cantitate" />
-              <Mapping SourceColumn="id_cota_tva" DataSetColumn="id_cota_tva" />
+              <Mapping SourceColumn="a_id_antet" DataSetColumn="a_id_antet" />
+              <Mapping SourceColumn="a_nr_doc" DataSetColumn="a_nr_doc" />
+              <Mapping SourceColumn="a_serie" DataSetColumn="a_serie" />
+              <Mapping SourceColumn="a_data" DataSetColumn="a_data" />
+              <Mapping SourceColumn="a_id_partener" DataSetColumn="a_id_partener" />
+              <Mapping SourceColumn="p_id_pozitie" DataSetColumn="p_id_pozitie" />
+              <Mapping SourceColumn="p_id_asociere" DataSetColumn="p_id_asociere" />
+              <Mapping SourceColumn="p_pret" DataSetColumn="p_pret" />
+              <Mapping SourceColumn="p_cantitate" DataSetColumn="p_cantitate" />
+              <Mapping SourceColumn="p_id_cota_tva" DataSetColumn="p_id_cota_tva" />
+              <Mapping SourceColumn="p_valoare" DataSetColumn="p_valoare" />
+              <Mapping SourceColumn="tat_val_label" DataSetColumn="tat_val_label" />
+              <Mapping SourceColumn="a_id_temporar" DataSetColumn="a_id_temporar" />
+              <Mapping SourceColumn="a_id_org" DataSetColumn="a_id_org" />
+              <Mapping SourceColumn="a_id_asociere" DataSetColumn="a_id_asociere" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -42,39 +45,42 @@
   <xs:element name="DataSetVenituriIncasari" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="DataSetVenituriIncasari" msprop:Generator_UserDSName="DataSetVenituriIncasari">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="vVenituriIncasari" msprop:Generator_TableClassName="vVenituriIncasariDataTable" msprop:Generator_TableVarName="tablevVenituriIncasari" msprop:Generator_RowChangedName="vVenituriIncasariRowChanged" msprop:Generator_TablePropName="vVenituriIncasari" msprop:Generator_RowDeletingName="vVenituriIncasariRowDeleting" msprop:Generator_RowChangingName="vVenituriIncasariRowChanging" msprop:Generator_RowEvHandlerName="vVenituriIncasariRowChangeEventHandler" msprop:Generator_RowDeletedName="vVenituriIncasariRowDeleted" msprop:Generator_RowClassName="vVenituriIncasariRow" msprop:Generator_UserTableName="vVenituriIncasari" msprop:Generator_RowEvArgName="vVenituriIncasariRowChangeEvent">
+        <xs:element name="mv_Documente" msprop:Generator_TableClassName="mv_DocumenteDataTable" msprop:Generator_TableVarName="tablemv_Documente" msprop:Generator_TablePropName="mv_Documente" msprop:Generator_RowDeletingName="mv_DocumenteRowDeleting" msprop:Generator_RowChangingName="mv_DocumenteRowChanging" msprop:Generator_RowEvHandlerName="mv_DocumenteRowChangeEventHandler" msprop:Generator_RowDeletedName="mv_DocumenteRowDeleted" msprop:Generator_UserTableName="mv_Documente" msprop:Generator_RowChangedName="mv_DocumenteRowChanged" msprop:Generator_RowEvArgName="mv_DocumenteRowChangeEvent" msprop:Generator_RowClassName="mv_DocumenteRow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="valoare" msprop:Generator_ColumnVarNameInTable="columnvaloare" msprop:Generator_ColumnPropNameInRow="valoare" msprop:Generator_ColumnPropNameInTable="valoareColumn" msprop:Generator_UserColumnName="valoare" type="xs:decimal" minOccurs="0" />
-              <xs:element name="id_asociere" msprop:Generator_ColumnVarNameInTable="columnid_asociere" msprop:Generator_ColumnPropNameInRow="id_asociere" msprop:Generator_ColumnPropNameInTable="id_asociereColumn" msprop:Generator_UserColumnName="id_asociere" type="xs:int" minOccurs="0" />
-              <xs:element name="val_label" msprop:Generator_ColumnVarNameInTable="columnval_label" msprop:Generator_ColumnPropNameInRow="val_label" msprop:Generator_ColumnPropNameInTable="val_labelColumn" msprop:Generator_UserColumnName="val_label" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="100" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="id_antet" msprop:Generator_ColumnVarNameInTable="columnid_antet" msprop:Generator_ColumnPropNameInRow="id_antet" msprop:Generator_ColumnPropNameInTable="id_antetColumn" msprop:Generator_UserColumnName="id_antet" type="xs:int" />
-              <xs:element name="nr_doc" msprop:Generator_ColumnVarNameInTable="columnnr_doc" msprop:Generator_ColumnPropNameInRow="nr_doc" msprop:Generator_ColumnPropNameInTable="nr_docColumn" msprop:Generator_UserColumnName="nr_doc">
+              <xs:element name="a_id_antet" msprop:Generator_ColumnVarNameInTable="columna_id_antet" msprop:Generator_ColumnPropNameInRow="a_id_antet" msprop:Generator_ColumnPropNameInTable="a_id_antetColumn" msprop:Generator_UserColumnName="a_id_antet" type="xs:int" />
+              <xs:element name="a_nr_doc" msprop:Generator_ColumnVarNameInTable="columna_nr_doc" msprop:Generator_ColumnPropNameInRow="a_nr_doc" msprop:Generator_ColumnPropNameInTable="a_nr_docColumn" msprop:Generator_UserColumnName="a_nr_doc">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="20" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="serie" msprop:Generator_ColumnVarNameInTable="columnserie" msprop:Generator_ColumnPropNameInRow="serie" msprop:Generator_ColumnPropNameInTable="serieColumn" msprop:Generator_UserColumnName="serie">
+              <xs:element name="a_serie" msprop:Generator_ColumnVarNameInTable="columna_serie" msprop:Generator_ColumnPropNameInRow="a_serie" msprop:Generator_ColumnPropNameInTable="a_serieColumn" msprop:Generator_UserColumnName="a_serie">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="10" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="data" msprop:Generator_ColumnVarNameInTable="columndata" msprop:Generator_ColumnPropNameInRow="data" msprop:Generator_ColumnPropNameInTable="dataColumn" msprop:Generator_UserColumnName="data" type="xs:dateTime" />
-              <xs:element name="id_partener" msprop:Generator_ColumnVarNameInTable="columnid_partener" msprop:Generator_ColumnPropNameInRow="id_partener" msprop:Generator_ColumnPropNameInTable="id_partenerColumn" msprop:Generator_UserColumnName="id_partener" type="xs:int" />
-              <xs:element name="id_pozitie" msprop:Generator_ColumnVarNameInTable="columnid_pozitie" msprop:Generator_ColumnPropNameInRow="id_pozitie" msprop:Generator_ColumnPropNameInTable="id_pozitieColumn" msprop:Generator_UserColumnName="id_pozitie" type="xs:int" />
-              <xs:element name="pret" msprop:Generator_ColumnVarNameInTable="columnpret" msprop:Generator_ColumnPropNameInRow="pret" msprop:Generator_ColumnPropNameInTable="pretColumn" msprop:Generator_UserColumnName="pret" type="xs:decimal" />
-              <xs:element name="cantitate" msprop:Generator_ColumnVarNameInTable="columncantitate" msprop:Generator_ColumnPropNameInRow="cantitate" msprop:Generator_ColumnPropNameInTable="cantitateColumn" msprop:Generator_UserColumnName="cantitate" type="xs:decimal" />
-              <xs:element name="id_cota_tva" msprop:Generator_ColumnVarNameInTable="columnid_cota_tva" msprop:Generator_ColumnPropNameInRow="id_cota_tva" msprop:Generator_ColumnPropNameInTable="id_cota_tvaColumn" msprop:Generator_UserColumnName="id_cota_tva" type="xs:int" />
+              <xs:element name="a_data" msprop:Generator_ColumnVarNameInTable="columna_data" msprop:Generator_ColumnPropNameInRow="a_data" msprop:Generator_ColumnPropNameInTable="a_dataColumn" msprop:Generator_UserColumnName="a_data" type="xs:dateTime" />
+              <xs:element name="a_id_partener" msprop:Generator_ColumnVarNameInTable="columna_id_partener" msprop:Generator_ColumnPropNameInRow="a_id_partener" msprop:Generator_ColumnPropNameInTable="a_id_partenerColumn" msprop:Generator_UserColumnName="a_id_partener" type="xs:int" />
+              <xs:element name="p_id_pozitie" msprop:Generator_ColumnVarNameInTable="columnp_id_pozitie" msprop:Generator_ColumnPropNameInRow="p_id_pozitie" msprop:Generator_ColumnPropNameInTable="p_id_pozitieColumn" msprop:Generator_UserColumnName="p_id_pozitie" type="xs:int" />
+              <xs:element name="p_id_asociere" msprop:Generator_ColumnVarNameInTable="columnp_id_asociere" msprop:Generator_ColumnPropNameInRow="p_id_asociere" msprop:Generator_ColumnPropNameInTable="p_id_asociereColumn" msprop:Generator_UserColumnName="p_id_asociere" type="xs:int" />
+              <xs:element name="p_pret" msprop:Generator_ColumnVarNameInTable="columnp_pret" msprop:Generator_ColumnPropNameInRow="p_pret" msprop:Generator_ColumnPropNameInTable="p_pretColumn" msprop:Generator_UserColumnName="p_pret" type="xs:decimal" />
+              <xs:element name="p_cantitate" msprop:Generator_ColumnVarNameInTable="columnp_cantitate" msprop:Generator_ColumnPropNameInRow="p_cantitate" msprop:Generator_ColumnPropNameInTable="p_cantitateColumn" msprop:Generator_UserColumnName="p_cantitate" type="xs:decimal" />
+              <xs:element name="p_id_cota_tva" msprop:Generator_ColumnVarNameInTable="columnp_id_cota_tva" msprop:Generator_ColumnPropNameInRow="p_id_cota_tva" msprop:Generator_ColumnPropNameInTable="p_id_cota_tvaColumn" msprop:Generator_UserColumnName="p_id_cota_tva" type="xs:int" />
+              <xs:element name="p_valoare" msprop:Generator_ColumnVarNameInTable="columnp_valoare" msprop:Generator_ColumnPropNameInRow="p_valoare" msprop:Generator_ColumnPropNameInTable="p_valoareColumn" msprop:Generator_UserColumnName="p_valoare" type="xs:decimal" />
+              <xs:element name="tat_val_label" msprop:Generator_ColumnVarNameInTable="columntat_val_label" msprop:Generator_ColumnPropNameInRow="tat_val_label" msprop:Generator_ColumnPropNameInTable="tat_val_labelColumn" msprop:Generator_UserColumnName="tat_val_label">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="a_id_temporar" msprop:Generator_ColumnVarNameInTable="columna_id_temporar" msprop:Generator_ColumnPropNameInRow="a_id_temporar" msprop:Generator_ColumnPropNameInTable="a_id_temporarColumn" msprop:Generator_UserColumnName="a_id_temporar" type="xs:int" />
+              <xs:element name="a_id_org" msprop:Generator_ColumnVarNameInTable="columna_id_org" msprop:Generator_ColumnPropNameInRow="a_id_org" msprop:Generator_ColumnPropNameInTable="a_id_orgColumn" msprop:Generator_UserColumnName="a_id_org" type="xs:int" />
+              <xs:element name="a_id_asociere" msprop:Generator_ColumnVarNameInTable="columna_id_asociere" msprop:Generator_ColumnPropNameInRow="a_id_asociere" msprop:Generator_ColumnPropNameInTable="a_id_asociereColumn" msprop:Generator_UserColumnName="a_id_asociere" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
