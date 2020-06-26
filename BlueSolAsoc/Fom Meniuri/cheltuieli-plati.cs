@@ -33,7 +33,9 @@ namespace BlueSolAsoc.Fom_Meniuri
 
         private void cheltuieli_plati_Load(object sender, EventArgs e)
         {
-           AfisareGridFacturi();
+            // TODO: This line of code loads data into the 'cheltuieliDS1.mv_Documente' table. You can move, or remove it, as needed.
+            this.mv_DocumenteTableAdapter.Fill(this.cheltuieliDS1.mv_Documente);
+            AfisareGridFacturi();
 
         }
         public void AfisareGridFacturi()
@@ -45,8 +47,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                 CheltuieliDS.Tables.Remove("IstoricFacturi");
             }
             CheltuieliDS.getSetFrom("select * from mv_IstoricDocumente where id_asociere=44 and id_org=" + idAsociatie , "IstoricFacturi");
-           // GridFacturi.DataSource = CheltuieliDS.Tables["IstoricFacturi"];
-            // GridFacturi.Enabled = false;
+          
 
             if (!(CheltuieliDS.Tables["mv_tabelParteneri"] is null))
             {
@@ -64,43 +65,47 @@ namespace BlueSolAsoc.Fom_Meniuri
             }
             comboBoxParteneri.DataSource = parteneri;
 
-            //creare dataTable in dataset pentru afisarea din lista de cheltuieli
-
-            CheltuieliDS.getSetFrom("select val_label from tabela_asocieri_tipuri where id_tip=15 ", "denumiri_cheltuieli");
-            //List<string> scheltuieli = new List<string>(CheltuieliDS.Tables["denumiri_cheltuieli"].Rows.Count);
-            //DataRow[] cheltuieli = CheltuieliDS.Tables["denumiri_cheltuieli"].Select(null, null, DataViewRowState.OriginalRows);
-            //for (int k = 0; k < cheltuieli.Length; k++)
-            //{
-            //    DataRow r = cheltuieli[k];
-            //    string valoare = r[0, DataRowVersion.Original].ToString();
-            //    scheltuieli.Add(valoare);
-            //}
-            //atribuirea listei de valori creata ca sursa de date pentru lista de afisare
-           // listaCheltuieli.DataSource = scheltuieli;
-            //creare datatable pentru GridPozitiiFactura
+            //creare tabel pentru afisare grid
             if (!(CheltuieliDS.Tables["TabelDocumente"] is null))
             {
                 CheltuieliDS.Tables.Remove("TabelDocumente");
             }
-            CheltuieliDS.getSetFrom("select * from mv_Documente where id_asociere=44 and id_org=0" , "TabelDocumente");
+            CheltuieliDS.getSetFrom("select * from mv_Documente where a_id_asociere=44 and a_id_org=0", "TabelDocumente");
             GridPozitiiFactura.DataSource = CheltuieliDS.Tables["TabelDocumente"];
-            this.GridPozitiiFactura.AllowUserToAddRows = true;
-            CheltuieliDS.Tables["TabelDocumente"].Columns["id_org"].DefaultValue = idAsociatie;
-            CheltuieliDS.Tables["TabelDocumente"].Columns["id_tipDocument"].DefaultValue = 44;
-            GridPozitiiFactura.Columns["id_antet"].Visible = false;
-            GridPozitiiFactura.Columns["nr_doc"].Visible = false;
-            GridPozitiiFactura.Columns["serie"].Visible = false;
-            GridPozitiiFactura.Columns["data"].Visible = false;
-            GridPozitiiFactura.Columns["id_partener"].Visible = false;
-            GridPozitiiFactura.Columns["id_Pozitie"].Visible = false;
-            DataGridViewComboBoxColumn col = new DataGridViewComboBoxColumn();
-            col.DataSource = CheltuieliDS.Tables["denumiri_cheltuieli"];// se poate selecta orice tabel din dataset sau baza de date
-            col.ValueMember = "val_label"; // coloana din care se face selectia
-            col.DisplayMember = "val_label";// coloana care se afiseaza
-            col.HeaderText="pozitii";       // titlul coloanei afisate
-            col.ReadOnly = false;
-            GridPozitiiFactura.Columns.Add(col);
+            GridPozitiiFactura.AllowUserToAddRows = true;
+            //creare dataTable in dataset pentru afisarea din lista de cheltuieli
+            if (!(CheltuieliDS.Tables["denumiri_cheltuieli"] is null))
+            {
+                CheltuieliDS.Tables.Remove("denumiri_cheltuieli");
+            }
+            CheltuieliDS.getSetFrom("select * from tabela_asocieri_tipuri where id_tip=15 ", "denumiri_cheltuieli");           
+            DataGridViewComboBoxColumn abc = (DataGridViewComboBoxColumn)this.GridPozitiiFactura.Columns["p_id_asociere"];
+            abc.DataSource = CheltuieliDS.Tables["denumiri_cheltuieli"];
+            abc.ValueMember = "id_asociere";
+            abc.DisplayMember = "val_label";
             
+           
+           // GridPozitiiFactura.Columns["p_id_asociere"].DataGridView.DataSource = CheltuieliDS.Tables["denumiri_cheltuieli"];
+
+            //GridPozitiiFactura.Columns["p_id_asociere"].Da
+            //GridPozitiiFactura.DataSource = CheltuieliDS.Tables["TabelDocumente"];
+            //this.GridPozitiiFactura.AllowUserToAddRows = true;
+            //CheltuieliDS.Tables["TabelDocumente"].Columns["id_org"].DefaultValue = idAsociatie;
+            //CheltuieliDS.Tables["TabelDocumente"].Columns["id_tipDocument"].DefaultValue = 44;
+            //GridPozitiiFactura.Columns["id_antet"].Visible = false;
+            //GridPozitiiFactura.Columns["nr_doc"].Visible = false;
+            //GridPozitiiFactura.Columns["serie"].Visible = false;
+            //GridPozitiiFactura.Columns["data"].Visible = false;
+            //GridPozitiiFactura.Columns["id_partener"].Visible = false;
+            //GridPozitiiFactura.Columns["id_Pozitie"].Visible = false;
+            //DataGridViewComboBoxColumn col = new DataGridViewComboBoxColumn();
+            //col.DataSource = CheltuieliDS.Tables["denumiri_cheltuieli"];// se poate selecta orice tabel din dataset sau baza de date
+            //col.ValueMember = "val_label"; // coloana din care se face selectia
+            //col.DisplayMember = "val_label";// coloana care se afiseaza
+            //col.HeaderText="pozitii";       // titlul coloanei afisate
+            //col.ReadOnly = false;
+            //GridPozitiiFactura.Columns.Add(col);
+
         }
 
         
