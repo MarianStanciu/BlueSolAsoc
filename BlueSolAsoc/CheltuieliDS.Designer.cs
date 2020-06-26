@@ -26,6 +26,8 @@ namespace BlueSolAsoc {
         
         private mv_IstoricDocumenteDataTable tablemv_IstoricDocumente;
         
+        private mv_DocumenteDataTable tablemv_Documente;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -57,6 +59,9 @@ namespace BlueSolAsoc {
                 if ((ds.Tables["mv_IstoricDocumente"] != null)) {
                     base.Tables.Add(new mv_IstoricDocumenteDataTable(ds.Tables["mv_IstoricDocumente"]));
                 }
+                if ((ds.Tables["mv_Documente"] != null)) {
+                    base.Tables.Add(new mv_DocumenteDataTable(ds.Tables["mv_Documente"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -82,6 +87,16 @@ namespace BlueSolAsoc {
         public mv_IstoricDocumenteDataTable mv_IstoricDocumente {
             get {
                 return this.tablemv_IstoricDocumente;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public mv_DocumenteDataTable mv_Documente {
+            get {
+                return this.tablemv_Documente;
             }
         }
         
@@ -155,6 +170,9 @@ namespace BlueSolAsoc {
                 if ((ds.Tables["mv_IstoricDocumente"] != null)) {
                     base.Tables.Add(new mv_IstoricDocumenteDataTable(ds.Tables["mv_IstoricDocumente"]));
                 }
+                if ((ds.Tables["mv_Documente"] != null)) {
+                    base.Tables.Add(new mv_DocumenteDataTable(ds.Tables["mv_Documente"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -194,6 +212,12 @@ namespace BlueSolAsoc {
                     this.tablemv_IstoricDocumente.InitVars();
                 }
             }
+            this.tablemv_Documente = ((mv_DocumenteDataTable)(base.Tables["mv_Documente"]));
+            if ((initTable == true)) {
+                if ((this.tablemv_Documente != null)) {
+                    this.tablemv_Documente.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -206,11 +230,19 @@ namespace BlueSolAsoc {
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tablemv_IstoricDocumente = new mv_IstoricDocumenteDataTable();
             base.Tables.Add(this.tablemv_IstoricDocumente);
+            this.tablemv_Documente = new mv_DocumenteDataTable();
+            base.Tables.Add(this.tablemv_Documente);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private bool ShouldSerializemv_IstoricDocumente() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private bool ShouldSerializemv_Documente() {
             return false;
         }
         
@@ -271,6 +303,9 @@ namespace BlueSolAsoc {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void mv_IstoricDocumenteRowChangeEventHandler(object sender, mv_IstoricDocumenteRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public delegate void mv_DocumenteRowChangeEventHandler(object sender, mv_DocumenteRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -652,6 +687,499 @@ namespace BlueSolAsoc {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class mv_DocumenteDataTable : global::System.Data.TypedTableBase<mv_DocumenteRow> {
+            
+            private global::System.Data.DataColumn columnid_antet;
+            
+            private global::System.Data.DataColumn columnnr_doc;
+            
+            private global::System.Data.DataColumn columnserie;
+            
+            private global::System.Data.DataColumn columndata;
+            
+            private global::System.Data.DataColumn columnid_partener;
+            
+            private global::System.Data.DataColumn columnid_pozitie;
+            
+            private global::System.Data.DataColumn columnid_asociere;
+            
+            private global::System.Data.DataColumn columnpret;
+            
+            private global::System.Data.DataColumn columncantitate;
+            
+            private global::System.Data.DataColumn columnid_cota_tva;
+            
+            private global::System.Data.DataColumn columnvaloare;
+            
+            private global::System.Data.DataColumn columnval_label;
+            
+            private global::System.Data.DataColumn columnid_temporar;
+            
+            private global::System.Data.DataColumn columnid_org;
+            
+            private global::System.Data.DataColumn columnid_tipDocument;
+            
+            private global::System.Data.DataColumn columntipDocument;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public mv_DocumenteDataTable() {
+                this.TableName = "mv_Documente";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal mv_DocumenteDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected mv_DocumenteDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn id_antetColumn {
+                get {
+                    return this.columnid_antet;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn nr_docColumn {
+                get {
+                    return this.columnnr_doc;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn serieColumn {
+                get {
+                    return this.columnserie;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn dataColumn {
+                get {
+                    return this.columndata;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn id_partenerColumn {
+                get {
+                    return this.columnid_partener;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn id_pozitieColumn {
+                get {
+                    return this.columnid_pozitie;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn id_asociereColumn {
+                get {
+                    return this.columnid_asociere;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn pretColumn {
+                get {
+                    return this.columnpret;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn cantitateColumn {
+                get {
+                    return this.columncantitate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn id_cota_tvaColumn {
+                get {
+                    return this.columnid_cota_tva;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn valoareColumn {
+                get {
+                    return this.columnvaloare;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn val_labelColumn {
+                get {
+                    return this.columnval_label;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn id_temporarColumn {
+                get {
+                    return this.columnid_temporar;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn id_orgColumn {
+                get {
+                    return this.columnid_org;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn id_tipDocumentColumn {
+                get {
+                    return this.columnid_tipDocument;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn tipDocumentColumn {
+                get {
+                    return this.columntipDocument;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public mv_DocumenteRow this[int index] {
+                get {
+                    return ((mv_DocumenteRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event mv_DocumenteRowChangeEventHandler mv_DocumenteRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event mv_DocumenteRowChangeEventHandler mv_DocumenteRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event mv_DocumenteRowChangeEventHandler mv_DocumenteRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event mv_DocumenteRowChangeEventHandler mv_DocumenteRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Addmv_DocumenteRow(mv_DocumenteRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public mv_DocumenteRow Addmv_DocumenteRow(
+                        int id_antet, 
+                        string nr_doc, 
+                        string serie, 
+                        System.DateTime data, 
+                        int id_partener, 
+                        int id_pozitie, 
+                        int id_asociere, 
+                        decimal pret, 
+                        decimal cantitate, 
+                        int id_cota_tva, 
+                        decimal valoare, 
+                        string val_label, 
+                        int id_temporar, 
+                        int id_org, 
+                        int id_tipDocument, 
+                        string tipDocument) {
+                mv_DocumenteRow rowmv_DocumenteRow = ((mv_DocumenteRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        id_antet,
+                        nr_doc,
+                        serie,
+                        data,
+                        id_partener,
+                        id_pozitie,
+                        id_asociere,
+                        pret,
+                        cantitate,
+                        id_cota_tva,
+                        valoare,
+                        val_label,
+                        id_temporar,
+                        id_org,
+                        id_tipDocument,
+                        tipDocument};
+                rowmv_DocumenteRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowmv_DocumenteRow);
+                return rowmv_DocumenteRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                mv_DocumenteDataTable cln = ((mv_DocumenteDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new mv_DocumenteDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal void InitVars() {
+                this.columnid_antet = base.Columns["id_antet"];
+                this.columnnr_doc = base.Columns["nr_doc"];
+                this.columnserie = base.Columns["serie"];
+                this.columndata = base.Columns["data"];
+                this.columnid_partener = base.Columns["id_partener"];
+                this.columnid_pozitie = base.Columns["id_pozitie"];
+                this.columnid_asociere = base.Columns["id_asociere"];
+                this.columnpret = base.Columns["pret"];
+                this.columncantitate = base.Columns["cantitate"];
+                this.columnid_cota_tva = base.Columns["id_cota_tva"];
+                this.columnvaloare = base.Columns["valoare"];
+                this.columnval_label = base.Columns["val_label"];
+                this.columnid_temporar = base.Columns["id_temporar"];
+                this.columnid_org = base.Columns["id_org"];
+                this.columnid_tipDocument = base.Columns["id_tipDocument"];
+                this.columntipDocument = base.Columns["tipDocument"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            private void InitClass() {
+                this.columnid_antet = new global::System.Data.DataColumn("id_antet", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid_antet);
+                this.columnnr_doc = new global::System.Data.DataColumn("nr_doc", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnr_doc);
+                this.columnserie = new global::System.Data.DataColumn("serie", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnserie);
+                this.columndata = new global::System.Data.DataColumn("data", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndata);
+                this.columnid_partener = new global::System.Data.DataColumn("id_partener", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid_partener);
+                this.columnid_pozitie = new global::System.Data.DataColumn("id_pozitie", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid_pozitie);
+                this.columnid_asociere = new global::System.Data.DataColumn("id_asociere", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid_asociere);
+                this.columnpret = new global::System.Data.DataColumn("pret", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnpret);
+                this.columncantitate = new global::System.Data.DataColumn("cantitate", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncantitate);
+                this.columnid_cota_tva = new global::System.Data.DataColumn("id_cota_tva", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid_cota_tva);
+                this.columnvaloare = new global::System.Data.DataColumn("valoare", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnvaloare);
+                this.columnval_label = new global::System.Data.DataColumn("val_label", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnval_label);
+                this.columnid_temporar = new global::System.Data.DataColumn("id_temporar", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid_temporar);
+                this.columnid_org = new global::System.Data.DataColumn("id_org", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid_org);
+                this.columnid_tipDocument = new global::System.Data.DataColumn("id_tipDocument", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid_tipDocument);
+                this.columntipDocument = new global::System.Data.DataColumn("tipDocument", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntipDocument);
+                this.columnid_antet.AllowDBNull = false;
+                this.columnnr_doc.AllowDBNull = false;
+                this.columnnr_doc.MaxLength = 20;
+                this.columnserie.AllowDBNull = false;
+                this.columnserie.MaxLength = 10;
+                this.columndata.AllowDBNull = false;
+                this.columnid_partener.AllowDBNull = false;
+                this.columnid_pozitie.AllowDBNull = false;
+                this.columnid_asociere.AllowDBNull = false;
+                this.columnpret.AllowDBNull = false;
+                this.columncantitate.AllowDBNull = false;
+                this.columnid_cota_tva.AllowDBNull = false;
+                this.columnvaloare.AllowDBNull = false;
+                this.columnval_label.AllowDBNull = false;
+                this.columnval_label.MaxLength = 100;
+                this.columnid_temporar.AllowDBNull = false;
+                this.columnid_org.AllowDBNull = false;
+                this.columnid_tipDocument.AllowDBNull = false;
+                this.columntipDocument.AllowDBNull = false;
+                this.columntipDocument.MaxLength = 100;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public mv_DocumenteRow Newmv_DocumenteRow() {
+                return ((mv_DocumenteRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new mv_DocumenteRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(mv_DocumenteRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.mv_DocumenteRowChanged != null)) {
+                    this.mv_DocumenteRowChanged(this, new mv_DocumenteRowChangeEvent(((mv_DocumenteRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.mv_DocumenteRowChanging != null)) {
+                    this.mv_DocumenteRowChanging(this, new mv_DocumenteRowChangeEvent(((mv_DocumenteRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.mv_DocumenteRowDeleted != null)) {
+                    this.mv_DocumenteRowDeleted(this, new mv_DocumenteRowChangeEvent(((mv_DocumenteRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.mv_DocumenteRowDeleting != null)) {
+                    this.mv_DocumenteRowDeleting(this, new mv_DocumenteRowChangeEvent(((mv_DocumenteRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Removemv_DocumenteRow(mv_DocumenteRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                CheltuieliDS ds = new CheltuieliDS();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "mv_DocumenteDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class mv_IstoricDocumenteRow : global::System.Data.DataRow {
@@ -783,6 +1311,197 @@ namespace BlueSolAsoc {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class mv_DocumenteRow : global::System.Data.DataRow {
+            
+            private mv_DocumenteDataTable tablemv_Documente;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal mv_DocumenteRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tablemv_Documente = ((mv_DocumenteDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int id_antet {
+                get {
+                    return ((int)(this[this.tablemv_Documente.id_antetColumn]));
+                }
+                set {
+                    this[this.tablemv_Documente.id_antetColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string nr_doc {
+                get {
+                    return ((string)(this[this.tablemv_Documente.nr_docColumn]));
+                }
+                set {
+                    this[this.tablemv_Documente.nr_docColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string serie {
+                get {
+                    return ((string)(this[this.tablemv_Documente.serieColumn]));
+                }
+                set {
+                    this[this.tablemv_Documente.serieColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime data {
+                get {
+                    return ((global::System.DateTime)(this[this.tablemv_Documente.dataColumn]));
+                }
+                set {
+                    this[this.tablemv_Documente.dataColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int id_partener {
+                get {
+                    return ((int)(this[this.tablemv_Documente.id_partenerColumn]));
+                }
+                set {
+                    this[this.tablemv_Documente.id_partenerColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int id_pozitie {
+                get {
+                    return ((int)(this[this.tablemv_Documente.id_pozitieColumn]));
+                }
+                set {
+                    this[this.tablemv_Documente.id_pozitieColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int id_asociere {
+                get {
+                    return ((int)(this[this.tablemv_Documente.id_asociereColumn]));
+                }
+                set {
+                    this[this.tablemv_Documente.id_asociereColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal pret {
+                get {
+                    return ((decimal)(this[this.tablemv_Documente.pretColumn]));
+                }
+                set {
+                    this[this.tablemv_Documente.pretColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal cantitate {
+                get {
+                    return ((decimal)(this[this.tablemv_Documente.cantitateColumn]));
+                }
+                set {
+                    this[this.tablemv_Documente.cantitateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int id_cota_tva {
+                get {
+                    return ((int)(this[this.tablemv_Documente.id_cota_tvaColumn]));
+                }
+                set {
+                    this[this.tablemv_Documente.id_cota_tvaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal valoare {
+                get {
+                    return ((decimal)(this[this.tablemv_Documente.valoareColumn]));
+                }
+                set {
+                    this[this.tablemv_Documente.valoareColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string val_label {
+                get {
+                    return ((string)(this[this.tablemv_Documente.val_labelColumn]));
+                }
+                set {
+                    this[this.tablemv_Documente.val_labelColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int id_temporar {
+                get {
+                    return ((int)(this[this.tablemv_Documente.id_temporarColumn]));
+                }
+                set {
+                    this[this.tablemv_Documente.id_temporarColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int id_org {
+                get {
+                    return ((int)(this[this.tablemv_Documente.id_orgColumn]));
+                }
+                set {
+                    this[this.tablemv_Documente.id_orgColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int id_tipDocument {
+                get {
+                    return ((int)(this[this.tablemv_Documente.id_tipDocumentColumn]));
+                }
+                set {
+                    this[this.tablemv_Documente.id_tipDocumentColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string tipDocument {
+                get {
+                    return ((string)(this[this.tablemv_Documente.tipDocumentColumn]));
+                }
+                set {
+                    this[this.tablemv_Documente.tipDocumentColumn] = value;
+                }
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -802,6 +1521,40 @@ namespace BlueSolAsoc {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public mv_IstoricDocumenteRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public class mv_DocumenteRowChangeEvent : global::System.EventArgs {
+            
+            private mv_DocumenteRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public mv_DocumenteRowChangeEvent(mv_DocumenteRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public mv_DocumenteRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -991,6 +1744,190 @@ namespace BlueSolAsoc.CheltuieliDSTableAdapters {
         public virtual CheltuieliDS.mv_IstoricDocumenteDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             CheltuieliDS.mv_IstoricDocumenteDataTable dataTable = new CheltuieliDS.mv_IstoricDocumenteDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class mv_DocumenteTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public mv_DocumenteTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "mv_Documente";
+            tableMapping.ColumnMappings.Add("id_antet", "id_antet");
+            tableMapping.ColumnMappings.Add("nr_doc", "nr_doc");
+            tableMapping.ColumnMappings.Add("serie", "serie");
+            tableMapping.ColumnMappings.Add("data", "data");
+            tableMapping.ColumnMappings.Add("id_partener", "id_partener");
+            tableMapping.ColumnMappings.Add("id_pozitie", "id_pozitie");
+            tableMapping.ColumnMappings.Add("id_asociere", "id_asociere");
+            tableMapping.ColumnMappings.Add("pret", "pret");
+            tableMapping.ColumnMappings.Add("cantitate", "cantitate");
+            tableMapping.ColumnMappings.Add("id_cota_tva", "id_cota_tva");
+            tableMapping.ColumnMappings.Add("valoare", "valoare");
+            tableMapping.ColumnMappings.Add("val_label", "val_label");
+            tableMapping.ColumnMappings.Add("id_temporar", "id_temporar");
+            tableMapping.ColumnMappings.Add("id_org", "id_org");
+            tableMapping.ColumnMappings.Add("id_tipDocument", "id_tipDocument");
+            tableMapping.ColumnMappings.Add("tipDocument", "tipDocument");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::BlueSolAsoc.Properties.Settings.Default.proba_transareConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT id_antet, nr_doc, serie, data, id_partener, id_pozitie, id_asociere, pret," +
+                " cantitate, id_cota_tva, valoare, val_label, id_temporar, id_org, id_tipDocument" +
+                ", tipDocument FROM dbo.mv_Documente";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(CheltuieliDS.mv_DocumenteDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual CheltuieliDS.mv_DocumenteDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            CheltuieliDS.mv_DocumenteDataTable dataTable = new CheltuieliDS.mv_DocumenteDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
