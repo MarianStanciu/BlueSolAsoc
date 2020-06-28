@@ -9,10 +9,12 @@
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="mv_DocumenteTableAdapter" GeneratorDataComponentClassName="mv_DocumenteTableAdapter" Name="mv_Documente" UserDataComponentName="mv_DocumenteTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="proba_transareConnectionString (Settings)" DbObjectName="proba_transare.dbo.mv_Documente" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="proba_transareConnectionString (Settings)" DbObjectName="proba_transare.dbo.mv_Documente" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT a_id_antet, a_nr_doc, a_serie, a_data, a_id_partener, p_id_pozitie, p_id_asociere, p_pret, p_cantitate, p_id_cota_tva, p_valoare, tat_val_label, a_id_temporar, a_id_org, a_id_asociere FROM dbo.mv_Documente</CommandText>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT a_id_antet, a_nr_doc, a_serie, a_data, a_id_partener, p_id_pozitie, p_id_asociere, p_pret, p_cantitate, p_id_cota_tva, p_valoare, tat_val_label, a_id_temporar, a_id_org, a_id_asociere
+FROM   mv_Documente
+WHERE (1 = 0)</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -69,7 +71,7 @@
   <xs:element name="CheltuieliDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="CheltuieliDS" msprop:Generator_UserDSName="CheltuieliDS">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="mv_Documente" msprop:Generator_TableClassName="mv_DocumenteDataTable" msprop:Generator_TableVarName="tablemv_Documente" msprop:Generator_TablePropName="mv_Documente" msprop:Generator_RowDeletingName="mv_DocumenteRowDeleting" msprop:Generator_RowChangingName="mv_DocumenteRowChanging" msprop:Generator_RowEvHandlerName="mv_DocumenteRowChangeEventHandler" msprop:Generator_RowDeletedName="mv_DocumenteRowDeleted" msprop:Generator_UserTableName="mv_Documente" msprop:Generator_RowChangedName="mv_DocumenteRowChanged" msprop:Generator_RowEvArgName="mv_DocumenteRowChangeEvent" msprop:Generator_RowClassName="mv_DocumenteRow">
+        <xs:element name="mv_Documente" msprop:Generator_TableClassName="mv_DocumenteDataTable" msprop:Generator_TableVarName="tablemv_Documente" msprop:Generator_RowChangedName="mv_DocumenteRowChanged" msprop:Generator_TablePropName="mv_Documente" msprop:Generator_RowDeletingName="mv_DocumenteRowDeleting" msprop:Generator_RowChangingName="mv_DocumenteRowChanging" msprop:Generator_RowEvHandlerName="mv_DocumenteRowChangeEventHandler" msprop:Generator_RowDeletedName="mv_DocumenteRowDeleted" msprop:Generator_RowClassName="mv_DocumenteRow" msprop:Generator_UserTableName="mv_Documente" msprop:Generator_RowEvArgName="mv_DocumenteRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="a_id_antet" msprop:Generator_ColumnVarNameInTable="columna_id_antet" msprop:Generator_ColumnPropNameInRow="a_id_antet" msprop:Generator_ColumnPropNameInTable="a_id_antetColumn" msprop:Generator_UserColumnName="a_id_antet" type="xs:int" />
@@ -108,7 +110,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="mv_IstoricDocumente" msprop:Generator_TableClassName="mv_IstoricDocumenteDataTable" msprop:Generator_TableVarName="tablemv_IstoricDocumente" msprop:Generator_TablePropName="mv_IstoricDocumente" msprop:Generator_RowDeletingName="mv_IstoricDocumenteRowDeleting" msprop:Generator_RowChangingName="mv_IstoricDocumenteRowChanging" msprop:Generator_RowEvHandlerName="mv_IstoricDocumenteRowChangeEventHandler" msprop:Generator_RowDeletedName="mv_IstoricDocumenteRowDeleted" msprop:Generator_UserTableName="mv_IstoricDocumente" msprop:Generator_RowChangedName="mv_IstoricDocumenteRowChanged" msprop:Generator_RowEvArgName="mv_IstoricDocumenteRowChangeEvent" msprop:Generator_RowClassName="mv_IstoricDocumenteRow">
+        <xs:element name="mv_IstoricDocumente" msprop:Generator_TableClassName="mv_IstoricDocumenteDataTable" msprop:Generator_TableVarName="tablemv_IstoricDocumente" msprop:Generator_RowChangedName="mv_IstoricDocumenteRowChanged" msprop:Generator_TablePropName="mv_IstoricDocumente" msprop:Generator_RowDeletingName="mv_IstoricDocumenteRowDeleting" msprop:Generator_RowChangingName="mv_IstoricDocumenteRowChanging" msprop:Generator_RowEvHandlerName="mv_IstoricDocumenteRowChangeEventHandler" msprop:Generator_RowDeletedName="mv_IstoricDocumenteRowDeleted" msprop:Generator_RowClassName="mv_IstoricDocumenteRow" msprop:Generator_UserTableName="mv_IstoricDocumente" msprop:Generator_RowEvArgName="mv_IstoricDocumenteRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id_antet" msprop:Generator_ColumnVarNameInTable="columnid_antet" msprop:Generator_ColumnPropNameInRow="id_antet" msprop:Generator_ColumnPropNameInTable="id_antetColumn" msprop:Generator_UserColumnName="id_antet" type="xs:int" />
