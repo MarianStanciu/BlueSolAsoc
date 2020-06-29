@@ -52,18 +52,12 @@ namespace BlueSolAsoc.Fom_Meniuri
             if (!(CheltuieliDS.Tables["mv_tabelParteneri"] is null))
             {
                 CheltuieliDS.Tables.Remove("mv_tabelParteneri");
-            }
-            CheltuieliDS.getSetFrom("select Denumire from mv_tabelParteneri  where  id_master =" + idAsociatie, "mv_tabelParteneri");
-            List<string> parteneri = new List<string>(CheltuieliDS.Tables["mv_tabelParteneri"].Rows.Count);
-            DataRow[] RowParteneri= CheltuieliDS.Tables["mv_tabelParteneri"].Select(null, null, DataViewRowState.CurrentRows);
+            }            
+            CheltuieliDS.getSetFrom("select * from mv_tabelParteneri  where  id_master =" + idAsociatie, "mv_tabelParteneri");
+            comboBoxParteneri.DataSource = CheltuieliDS.Tables["mv_tabelParteneri"];
+            comboBoxParteneri.ValueMember = "id_org";
+            comboBoxParteneri.DisplayMember = "Denumire";
 
-            for (int k = 0; k < RowParteneri.Length; k++)
-            {
-                DataRow r = RowParteneri[k];
-                string valoare = r[0, DataRowVersion.Original].ToString();
-                parteneri.Add(valoare);
-            }
-            comboBoxParteneri.DataSource = parteneri;
 
             //creare tabel pentru afisare grid
             if (!(CheltuieliDS.Tables["TabelDocumente"] is null))
@@ -78,14 +72,14 @@ namespace BlueSolAsoc.Fom_Meniuri
             {
                 CheltuieliDS.Tables.Remove("denumiri_cheltuieli");
             }
-            CheltuieliDS.getSetFrom("select * from tabela_asocieri_tipuri where id_tip=15 ", "denumiri_cheltuieli");           
+            CheltuieliDS.getSetFrom("select * from tabela_asocieri_tipuri where id_tip=15 ", "denumiri_cheltuieli");
             DataGridViewComboBoxColumn abc = (DataGridViewComboBoxColumn)this.GridPozitiiFactura.Columns["p_id_asociere"];
             abc.DataSource = CheltuieliDS.Tables["denumiri_cheltuieli"];
             abc.ValueMember = "id_asociere";
             abc.DisplayMember = "val_label";
-            
-           
-           // GridPozitiiFactura.Columns["p_id_asociere"].DataGridView.DataSource = CheltuieliDS.Tables["denumiri_cheltuieli"];
+
+
+            // GridPozitiiFactura.Columns["p_id_asociere"].DataGridView.DataSource = CheltuieliDS.Tables["denumiri_cheltuieli"];
 
             //GridPozitiiFactura.Columns["p_id_asociere"].Da
             //GridPozitiiFactura.DataSource = CheltuieliDS.Tables["TabelDocumente"];
