@@ -417,7 +417,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.TextBoxPret.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.TextBoxPret.Name = "TextBoxPret";
             this.TextBoxPret.Size = new System.Drawing.Size(157, 39);
-            this.TextBoxPret.TabIndex = 8;
+            this.TextBoxPret.TabIndex = 3;
             this.TextBoxPret.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxPret_KeyPress);
             // 
             // classLabel4
@@ -437,7 +437,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.textBoxApartamente.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.textBoxApartamente.Name = "textBoxApartamente";
             this.textBoxApartamente.Size = new System.Drawing.Size(263, 39);
-            this.textBoxApartamente.TabIndex = 6;
+            this.textBoxApartamente.TabIndex = 2;
             this.textBoxApartamente.Leave += new System.EventHandler(this.textBoxApartamente_Leave);
             // 
             // classLabel3
@@ -457,7 +457,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.TextBoxSerieDoc.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.TextBoxSerieDoc.Name = "TextBoxSerieDoc";
             this.TextBoxSerieDoc.Size = new System.Drawing.Size(157, 31);
-            this.TextBoxSerieDoc.TabIndex = 3;
+            this.TextBoxSerieDoc.TabIndex = 1;
             // 
             // classLabel2
             // 
@@ -697,7 +697,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDreapta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vVenituriIncasariBindingSource)).EndInit();
-           
+            
             
             
             ((System.ComponentModel.ISupportInitialize)(this.tabelapozitiiBindingSource)).EndInit();
@@ -705,7 +705,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             ((System.ComponentModel.ISupportInitialize)(this.tabelaantetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.proba_transareDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabelaintretinereBindingSource)).EndInit();
-
+           
             this.pnlControale.ResumeLayout(false);
             this.ResumeLayout(false);
 
