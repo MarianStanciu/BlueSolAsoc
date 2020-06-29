@@ -189,7 +189,7 @@ namespace BlueSolAsoc.butoane_si_controale
                                 valoare = r[f.ColumnName].ToString().Trim();
                                 break;
                             case "System.DateTime":
-                                valoare = "'" + r[f.ColumnName].ToString() + "'";
+                                valoare = "'" + ((DateTime) r[f.ColumnName]).ToString("yyyyMMdd") + "'";
                                 break;
                             case "System.Decimal":
                                 valoare = r[f.ColumnName].ToString();
@@ -254,7 +254,7 @@ namespace BlueSolAsoc.butoane_si_controale
                 ClassConexiuneServer.DeschideConexiunea();
                 SqlConnection connection = ClassConexiuneServer.GetConnection();
                 SqlCommand command = new SqlCommand(stergere, connection);
-                connection.Open();
+                //connection.Open();
                 command.ExecuteNonQuery();
             }
             return sterse.Length;
