@@ -36,6 +36,8 @@ namespace BlueSolAsoc.Fom_Meniuri
             // TODO: This line of code loads data into the 'cheltuieliDS1.mv_Documente' table. You can move, or remove it, as needed.
             this.mv_DocumenteTableAdapter.Fill(this.cheltuieliDS1.mv_Documente);
             AfisareGridFacturi();
+            AdaugaRadacinaParinteTreeView();
+        
 
         }
         public void AfisareGridFacturi()
@@ -58,6 +60,16 @@ namespace BlueSolAsoc.Fom_Meniuri
             comboBoxParteneri.ValueMember = "id_org";
             comboBoxParteneri.DisplayMember = "Denumire";
 
+            // verific daca au fost adaugati parteneri
+            if(CheltuieliDS.Tables["mv_tabelParteneri"].Rows.Count==0)
+            {
+                DialogResult result = MessageBox.Show("Nu aveti parteneri definiti pentru asociatia curenta! " , "Notificare", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+                if (result == DialogResult.OK)
+                {
+                    MessageBox.Show("Trebuie sa mergeti la Structura Asociatie, tabul de Parteneri pentru a defini unul!", "notificare", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+           
 
             //creare tabel pentru afisare grid
             if (!(CheltuieliDS.Tables["TabelDocumente"] is null))
@@ -66,6 +78,8 @@ namespace BlueSolAsoc.Fom_Meniuri
             }
             CheltuieliDS.getSetFrom("select * from mv_Documente where a_id_asociere=44 and a_id_org=0", "TabelDocumente");
             GridPozitiiFactura.DataSource = CheltuieliDS.Tables["TabelDocumente"];
+            CheltuieliDS.Tables["TabelDocumente"].Columns["a_id_org"].DefaultValue = idAsociatie;
+            CheltuieliDS.Tables["TabelDocumente"].Columns["a_id_asociere"].DefaultValue = 44;
             GridPozitiiFactura.AllowUserToAddRows = true;
             //creare dataTable in dataset pentru afisarea din lista de cheltuieli
             if (!(CheltuieliDS.Tables["denumiri_cheltuieli"] is null))
@@ -102,7 +116,55 @@ namespace BlueSolAsoc.Fom_Meniuri
 
         }
 
-        
+        public void inserareValoriInGridFactura()
+        {
+            if (CheltuieliDS.Tables["mv_tabelParteneri"].Rows.Count > 0)
+            {
+                foreach (DataRow row in CheltuieliDS.Tables["TabelDocumente"].Rows)
+                {
+                    string data = DataCurenta.Value.Date.ToString("yyyy/MM/dd");
+                    int partener = (int)comboBoxParteneri.SelectedValue; ;
+                    int id_antet = 0; 
+                    int id_pozitie = 0; 
+                    int id_temporar = 0;
+                    string numar = numarFactura.Text;
+                    string serie = seriaFactura.Text;
+                    string suma = sumaFactura.Text;
+                    int cota_tva = 1;
+
+
+                    row["a_id_antet"] = id_antet;
+                    row["a_nr_doc"] = numar;
+                    row["a_serie"] = serie;
+                    row["a_data"] = data;
+                    row["p_id_pozitie"] = id_pozitie;
+                    row["a_id_partener"] = partener;
+                   // row["p_pret"] = pret;
+                    //row["p_cantitate"] = cantitate;
+                    row["p_id_cota_tva"] = cota_tva;
+                    //row["p_valoare"] = suma;
+                    row["a_id_temporar"] = id_temporar;
+                    row["a_id_org"] = idAsociatie;
+                    row["a_id_asociere"] = 43;
+                    //row["id_TipDocument"] = 0; 
+                    //row["tipDocument"] = 0;
+                }
+                MessageBox.Show("uraa", "am inserat");
+            }
+
+        }
+
+        public void AdaugaRadacinaParinteTreeView()
+        {
+            TreeNode asociatie = new TreeNode(denumireAsociatie);
+            asociatie.Tag = idAsociatie;
+            treeView1.Nodes.Add(asociatie);
+           
+
+        }
+
+
+
 
         private void splitContainer1_Panel1_Click(object sender, EventArgs e)
         {
@@ -112,6 +174,40 @@ namespace BlueSolAsoc.Fom_Meniuri
         private void splitContainer1_Panel2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnSalveazaCheltuieli_Click(object sender, EventArgs e)
+        {
+            inserareValoriInGridFactura();
+        }
+
+        private void treeView1_AfterCheck(object sender, TreeViewEventArgs e)
+        {
+            try
+            {
+                e.Node.TreeView.BeginUpdate();
+                if (e.Node.Nodes.Count > 0)
+                {
+                    var parentNode = e.Node;
+                    var nodes = e.Node.Nodes;
+                    CheckedOrUnCheckedNodes(parentNode, nodes);
+                }
+            }
+            finally
+            {
+                e.Node.TreeView.EndUpdate();
+            }
+        }
+        private void CheckedOrUnCheckedNodes(TreeNode parentNode, TreeNodeCollection nodes)
+        {
+            if (nodes.Count > 0)
+            {
+                foreach (TreeNode node in nodes)
+                {
+                    node.Checked = parentNode.Checked;
+                    CheckedOrUnCheckedNodes(parentNode, node.Nodes);
+                }
+            }
         }
     }
 }
