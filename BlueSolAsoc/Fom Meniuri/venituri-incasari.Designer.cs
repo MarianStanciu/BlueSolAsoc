@@ -116,9 +116,9 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1678, 35);
+            this.panel1.Size = new System.Drawing.Size(1373, 27);
             this.panel1.TabIndex = 2;
             // 
             // tabControl1
@@ -130,12 +130,12 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.ItemSize = new System.Drawing.Size(150, 50);
-            this.tabControl1.Location = new System.Drawing.Point(0, 35);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.tabControl1.MinimumSize = new System.Drawing.Size(1252, 945);
+            this.tabControl1.Location = new System.Drawing.Point(0, 27);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl1.MinimumSize = new System.Drawing.Size(1024, 720);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1388, 1316);
+            this.tabControl1.Size = new System.Drawing.Size(1136, 1003);
             this.tabControl1.TabIndex = 3;
             // 
             // tabPage1
@@ -155,10 +155,10 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.tabPage1.Controls.Add(this.classLabel1);
             this.tabPage1.Controls.Add(this.TextBoxNrDoc);
             this.tabPage1.Location = new System.Drawing.Point(4, 54);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.tabPage1.Size = new System.Drawing.Size(1380, 1258);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Size = new System.Drawing.Size(1128, 945);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "CHITANTE";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -166,10 +166,9 @@ namespace BlueSolAsoc.Fom_Meniuri
             // labelIstoric
             // 
             this.labelIstoric.AutoSize = true;
-            this.labelIstoric.Location = new System.Drawing.Point(961, 14);
-            this.labelIstoric.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelIstoric.Location = new System.Drawing.Point(786, 11);
             this.labelIstoric.Name = "labelIstoric";
-            this.labelIstoric.Size = new System.Drawing.Size(261, 30);
+            this.labelIstoric.Size = new System.Drawing.Size(201, 24);
             this.labelIstoric.TabIndex = 24;
             this.labelIstoric.Text = "ISTORIC INCASARI";
             // 
@@ -189,11 +188,10 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.EnableHeadersVisualStyles = false;
-            this.dataGridView2.Location = new System.Drawing.Point(702, 52);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView2.Location = new System.Drawing.Point(574, 40);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.Size = new System.Drawing.Size(671, 1181);
+            this.dataGridView2.Size = new System.Drawing.Size(549, 900);
             this.dataGridView2.TabIndex = 23;
             // 
             // dataGridView1
@@ -227,11 +225,10 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.aidasociereDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.mvDocumenteBindingSource;
             this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.Location = new System.Drawing.Point(11, 276);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView1.Location = new System.Drawing.Point(9, 210);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(680, 177);
+            this.dataGridView1.Size = new System.Drawing.Size(556, 135);
             this.dataGridView1.TabIndex = 22;
             this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress);
             // 
@@ -382,10 +379,10 @@ namespace BlueSolAsoc.Fom_Meniuri
             // ButtonChitanteOK
             // 
             this.ButtonChitanteOK.AutoSize = true;
-            this.ButtonChitanteOK.Location = new System.Drawing.Point(295, 513);
-            this.ButtonChitanteOK.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.ButtonChitanteOK.Location = new System.Drawing.Point(241, 391);
+            this.ButtonChitanteOK.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ButtonChitanteOK.Name = "ButtonChitanteOK";
-            this.ButtonChitanteOK.Size = new System.Drawing.Size(90, 54);
+            this.ButtonChitanteOK.Size = new System.Drawing.Size(74, 41);
             this.ButtonChitanteOK.TabIndex = 15;
             this.ButtonChitanteOK.Text = "OK";
             this.ButtonChitanteOK.UseVisualStyleBackColor = true;
@@ -394,78 +391,78 @@ namespace BlueSolAsoc.Fom_Meniuri
             // 
             this.dateTimePicker1.CustomFormat = "dd/MM/yyy";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(174, 51);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.dateTimePicker1.Location = new System.Drawing.Point(142, 39);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(263, 39);
+            this.dateTimePicker1.Size = new System.Drawing.Size(216, 32);
             this.dateTimePicker1.TabIndex = 14;
             this.dateTimePicker1.Value = new System.DateTime(2020, 3, 12, 0, 0, 0, 0);
             // 
             // classLabel5
             // 
             this.classLabel5.AutoSize = true;
-            this.classLabel5.Location = new System.Drawing.Point(440, 200);
+            this.classLabel5.Location = new System.Drawing.Point(360, 152);
             this.classLabel5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.classLabel5.Name = "classLabel5";
-            this.classLabel5.Size = new System.Drawing.Size(94, 30);
+            this.classLabel5.Size = new System.Drawing.Size(74, 24);
             this.classLabel5.TabIndex = 9;
             this.classLabel5.Text = "SUMA";
             // 
             // TextBoxPret
             // 
-            this.TextBoxPret.Location = new System.Drawing.Point(532, 192);
-            this.TextBoxPret.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.TextBoxPret.Location = new System.Drawing.Point(435, 146);
+            this.TextBoxPret.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.TextBoxPret.Name = "TextBoxPret";
-            this.TextBoxPret.Size = new System.Drawing.Size(157, 39);
-            this.TextBoxPret.TabIndex = 8;
+            this.TextBoxPret.Size = new System.Drawing.Size(129, 32);
+            this.TextBoxPret.TabIndex = 3;
             this.TextBoxPret.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxPret_KeyPress);
             // 
             // classLabel4
             // 
             this.classLabel4.AutoSize = true;
             this.classLabel4.Font = new System.Drawing.Font("Mongolian Baiti", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.classLabel4.Location = new System.Drawing.Point(5, 198);
+            this.classLabel4.Location = new System.Drawing.Point(4, 151);
             this.classLabel4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.classLabel4.Name = "classLabel4";
-            this.classLabel4.Size = new System.Drawing.Size(160, 24);
+            this.classLabel4.Size = new System.Drawing.Size(132, 19);
             this.classLabel4.TabIndex = 7;
             this.classLabel4.Text = "APARTAMENT";
             // 
             // textBoxApartamente
             // 
-            this.textBoxApartamente.Location = new System.Drawing.Point(171, 188);
-            this.textBoxApartamente.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.textBoxApartamente.Location = new System.Drawing.Point(140, 143);
+            this.textBoxApartamente.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxApartamente.Name = "textBoxApartamente";
-            this.textBoxApartamente.Size = new System.Drawing.Size(263, 39);
-            this.textBoxApartamente.TabIndex = 6;
+            this.textBoxApartamente.Size = new System.Drawing.Size(216, 32);
+            this.textBoxApartamente.TabIndex = 2;
             this.textBoxApartamente.Leave += new System.EventHandler(this.textBoxApartamente_Leave);
             // 
             // classLabel3
             // 
             this.classLabel3.AutoSize = true;
-            this.classLabel3.Location = new System.Drawing.Point(9, 59);
+            this.classLabel3.Location = new System.Drawing.Point(7, 45);
             this.classLabel3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.classLabel3.Name = "classLabel3";
-            this.classLabel3.Size = new System.Drawing.Size(90, 30);
+            this.classLabel3.Size = new System.Drawing.Size(71, 24);
             this.classLabel3.TabIndex = 4;
             this.classLabel3.Text = "DATA";
             // 
             // TextBoxSerieDoc
             // 
             this.TextBoxSerieDoc.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextBoxSerieDoc.Location = new System.Drawing.Point(532, 125);
-            this.TextBoxSerieDoc.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.TextBoxSerieDoc.Location = new System.Drawing.Point(435, 95);
+            this.TextBoxSerieDoc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.TextBoxSerieDoc.Name = "TextBoxSerieDoc";
-            this.TextBoxSerieDoc.Size = new System.Drawing.Size(157, 31);
-            this.TextBoxSerieDoc.TabIndex = 3;
+            this.TextBoxSerieDoc.Size = new System.Drawing.Size(129, 26);
+            this.TextBoxSerieDoc.TabIndex = 1;
             // 
             // classLabel2
             // 
             this.classLabel2.AutoSize = true;
-            this.classLabel2.Location = new System.Drawing.Point(442, 129);
+            this.classLabel2.Location = new System.Drawing.Point(362, 98);
             this.classLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.classLabel2.Name = "classLabel2";
-            this.classLabel2.Size = new System.Drawing.Size(94, 30);
+            this.classLabel2.Size = new System.Drawing.Size(72, 24);
             this.classLabel2.TabIndex = 2;
             this.classLabel2.Text = "SERIA";
             // 
@@ -473,19 +470,19 @@ namespace BlueSolAsoc.Fom_Meniuri
             // 
             this.classLabel1.AutoSize = true;
             this.classLabel1.Font = new System.Drawing.Font("Mongolian Baiti", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.classLabel1.Location = new System.Drawing.Point(9, 129);
+            this.classLabel1.Location = new System.Drawing.Point(7, 98);
             this.classLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.classLabel1.Name = "classLabel1";
-            this.classLabel1.Size = new System.Drawing.Size(158, 24);
+            this.classLabel1.Size = new System.Drawing.Size(131, 19);
             this.classLabel1.TabIndex = 1;
             this.classLabel1.Text = "NR CHITANTA";
             // 
             // TextBoxNrDoc
             // 
-            this.TextBoxNrDoc.Location = new System.Drawing.Point(174, 125);
-            this.TextBoxNrDoc.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.TextBoxNrDoc.Location = new System.Drawing.Point(142, 95);
+            this.TextBoxNrDoc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.TextBoxNrDoc.Name = "TextBoxNrDoc";
-            this.TextBoxNrDoc.Size = new System.Drawing.Size(263, 39);
+            this.TextBoxNrDoc.Size = new System.Drawing.Size(216, 32);
             this.TextBoxNrDoc.TabIndex = 0;
             // 
             // tabPage2
@@ -493,20 +490,20 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.tabPage2.Controls.Add(this.button1);
             this.tabPage2.Controls.Add(this.dataGridDreapta);
             this.tabPage2.Location = new System.Drawing.Point(4, 54);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.tabPage2.Size = new System.Drawing.Size(1380, 1258);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Size = new System.Drawing.Size(1128, 945);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(717, 440);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.button1.Location = new System.Drawing.Point(587, 335);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(115, 41);
+            this.button1.Size = new System.Drawing.Size(94, 31);
             this.button1.TabIndex = 2;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
@@ -519,12 +516,12 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.dataGridDreapta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.valoareDataGridViewTextBoxColumn});
             this.dataGridDreapta.DataSource = this.vVenituriIncasariBindingSource;
-            this.dataGridDreapta.Location = new System.Drawing.Point(9, 34);
-            this.dataGridDreapta.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.dataGridDreapta.Location = new System.Drawing.Point(7, 26);
+            this.dataGridDreapta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridDreapta.Name = "dataGridDreapta";
             this.dataGridDreapta.RowHeadersWidth = 51;
             this.dataGridDreapta.RowTemplate.Height = 24;
-            this.dataGridDreapta.Size = new System.Drawing.Size(1536, 385);
+            this.dataGridDreapta.Size = new System.Drawing.Size(1257, 293);
             this.dataGridDreapta.TabIndex = 0;
             // 
             // valoareDataGridViewTextBoxColumn
@@ -604,10 +601,10 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.pnlControale.Controls.Add(this.btnOK);
             this.pnlControale.Controls.Add(this.classButonInteriorSterge1);
             this.pnlControale.Controls.Add(this.classButonModifica1);
-            this.pnlControale.Location = new System.Drawing.Point(1393, 106);
-            this.pnlControale.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.pnlControale.Location = new System.Drawing.Point(1140, 81);
+            this.pnlControale.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlControale.Name = "pnlControale";
-            this.pnlControale.Size = new System.Drawing.Size(156, 1292);
+            this.pnlControale.Size = new System.Drawing.Size(128, 984);
             this.pnlControale.TabIndex = 5;
             // 
             // btnAnuleaza
@@ -616,10 +613,10 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.btnAnuleaza.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnAnuleaza.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAnuleaza.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAnuleaza.Location = new System.Drawing.Point(0, 600);
-            this.btnAnuleaza.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnAnuleaza.Location = new System.Drawing.Point(0, 456);
+            this.btnAnuleaza.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAnuleaza.Name = "btnAnuleaza";
-            this.btnAnuleaza.Size = new System.Drawing.Size(156, 200);
+            this.btnAnuleaza.Size = new System.Drawing.Size(128, 152);
             this.btnAnuleaza.TabIndex = 9;
             this.btnAnuleaza.Text = "ANULEAZA";
             this.btnAnuleaza.UseVisualStyleBackColor = false;
@@ -631,10 +628,10 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.btnOK.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOK.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOK.Location = new System.Drawing.Point(0, 400);
-            this.btnOK.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnOK.Location = new System.Drawing.Point(0, 304);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(156, 200);
+            this.btnOK.Size = new System.Drawing.Size(128, 152);
             this.btnOK.TabIndex = 8;
             this.btnOK.Text = "SALVEAZA";
             this.btnOK.UseVisualStyleBackColor = false;
@@ -646,13 +643,14 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.classButonInteriorSterge1.Dock = System.Windows.Forms.DockStyle.Top;
             this.classButonInteriorSterge1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.classButonInteriorSterge1.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.classButonInteriorSterge1.Location = new System.Drawing.Point(0, 200);
-            this.classButonInteriorSterge1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.classButonInteriorSterge1.Location = new System.Drawing.Point(0, 152);
+            this.classButonInteriorSterge1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.classButonInteriorSterge1.Name = "classButonInteriorSterge1";
-            this.classButonInteriorSterge1.Size = new System.Drawing.Size(156, 200);
+            this.classButonInteriorSterge1.Size = new System.Drawing.Size(128, 152);
             this.classButonInteriorSterge1.TabIndex = 7;
             this.classButonInteriorSterge1.Text = "STERGE";
             this.classButonInteriorSterge1.UseVisualStyleBackColor = false;
+            this.classButonInteriorSterge1.Click += new System.EventHandler(this.classButonInteriorSterge1_Click);
             // 
             // classButonModifica1
             // 
@@ -661,9 +659,9 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.classButonModifica1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.classButonModifica1.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.classButonModifica1.Location = new System.Drawing.Point(0, 0);
-            this.classButonModifica1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.classButonModifica1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.classButonModifica1.Name = "classButonModifica1";
-            this.classButonModifica1.Size = new System.Drawing.Size(156, 200);
+            this.classButonModifica1.Size = new System.Drawing.Size(128, 152);
             this.classButonModifica1.TabIndex = 6;
             this.classButonModifica1.Text = "MODIFICA";
             this.classButonModifica1.UseVisualStyleBackColor = false;
@@ -675,15 +673,15 @@ namespace BlueSolAsoc.Fom_Meniuri
             // 
             // venituri_incasari
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1678, 1055);
+            this.ClientSize = new System.Drawing.Size(1373, 804);
             this.Controls.Add(this.pnlControale);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.panel1);
             this.Location = new System.Drawing.Point(0, 0);
-            this.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
-            this.MinimumSize = new System.Drawing.Size(1248, 930);
+            this.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
+            this.MinimumSize = new System.Drawing.Size(1024, 718);
             this.Name = "venituri_incasari";
             this.Text = "venituri_incasari";
             this.Load += new System.EventHandler(this.venituri_incasari_Load);
@@ -697,7 +695,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDreapta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vVenituriIncasariBindingSource)).EndInit();
-           
+            
             
             
             ((System.ComponentModel.ISupportInitialize)(this.tabelapozitiiBindingSource)).EndInit();
@@ -705,7 +703,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             ((System.ComponentModel.ISupportInitialize)(this.tabelaantetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.proba_transareDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabelaintretinereBindingSource)).EndInit();
-
+            
             this.pnlControale.ResumeLayout(false);
             this.ResumeLayout(false);
 

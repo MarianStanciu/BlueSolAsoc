@@ -232,12 +232,25 @@ namespace BlueSolAsoc.Fom_Meniuri
                     //row["id_TipDocument"] = 0; 
                     //row["tipDocument"] = 0;
                 }
-
+              
 
 
                 DataSetVenituriIncasari.TransmiteActualizari("mv_Documente");
+                textBoxApartamente.Text = "";
+                int numardocumentactual = Convert.ToInt32(TextBoxNrDoc.Text);
+                TextBoxNrDoc.Text = (numardocumentactual + 1).ToString();
+                TextBoxPret.Text = "";
+                dataGridView1.Rows[0].Cells["coloana_suma"].Value = "";
             }
         }
+
+          private void ButonStergere()
+          {
+            foreach (DataGridViewRow row in dataGridView2.SelectedRows)
+            {
+                dataGridView2.Rows.RemoveAt(row.Index);
+            }
+          }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -303,6 +316,29 @@ namespace BlueSolAsoc.Fom_Meniuri
                 textBoxApartamente.SelectionStart = 0;
                 textBoxApartamente.SelectionLength = 0;
             };
+        }
+
+        private void classButonInteriorSterge1_Click(object sender, EventArgs e)
+        {
+            const string message =
+            "Esti sigur?";
+            const string caption = "Stergere";
+            var result = MessageBox.Show(message, caption,
+                                         MessageBoxButtons.YesNo,
+                                         MessageBoxIcon.Question);
+           
+
+            // If the no button was pressed ...
+            if (result == DialogResult.No)
+            {
+                // cancel the closure of the form.
+
+            }
+            else
+            {
+                ButonStergere();
+                DataSetVenituriIncasari.TransmiteActualizari("mv_IstoricDocumente");
+            }
         }
     }
 }
