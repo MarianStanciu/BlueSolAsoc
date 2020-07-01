@@ -25,7 +25,11 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.denumireAsociatie = denumireAsociatie;
             this.idAsociatie = idAsociatie;
             DataCurenta.Value = System.DateTime.Now;
-
+            btnSalveazaCheltuieli.Visible = false;
+            btnAnuleazaCheltuieli.Visible = false;
+            btnModificaCheltuieli.Visible = false;
+            btnStergeCheltuieli.Visible = false;
+            // de adaugat un array
         }
 
        
@@ -93,27 +97,6 @@ namespace BlueSolAsoc.Fom_Meniuri
             abc.DisplayMember = "val_label";
 
 
-            // GridPozitiiFactura.Columns["p_id_asociere"].DataGridView.DataSource = CheltuieliDS.Tables["denumiri_cheltuieli"];
-
-            //GridPozitiiFactura.Columns["p_id_asociere"].Da
-            //GridPozitiiFactura.DataSource = CheltuieliDS.Tables["TabelDocumente"];
-            //this.GridPozitiiFactura.AllowUserToAddRows = true;
-            //CheltuieliDS.Tables["TabelDocumente"].Columns["id_org"].DefaultValue = idAsociatie;
-            //CheltuieliDS.Tables["TabelDocumente"].Columns["id_tipDocument"].DefaultValue = 44;
-            //GridPozitiiFactura.Columns["id_antet"].Visible = false;
-            //GridPozitiiFactura.Columns["nr_doc"].Visible = false;
-            //GridPozitiiFactura.Columns["serie"].Visible = false;
-            //GridPozitiiFactura.Columns["data"].Visible = false;
-            //GridPozitiiFactura.Columns["id_partener"].Visible = false;
-            //GridPozitiiFactura.Columns["id_Pozitie"].Visible = false;
-            //DataGridViewComboBoxColumn col = new DataGridViewComboBoxColumn();
-            //col.DataSource = CheltuieliDS.Tables["denumiri_cheltuieli"];// se poate selecta orice tabel din dataset sau baza de date
-            //col.ValueMember = "val_label"; // coloana din care se face selectia
-            //col.DisplayMember = "val_label";// coloana care se afiseaza
-            //col.HeaderText="pozitii";       // titlul coloanei afisate
-            //col.ReadOnly = false;
-            //GridPozitiiFactura.Columns.Add(col);
-
         }
 
         public void inserareValoriInGridFactura()
@@ -158,10 +141,13 @@ namespace BlueSolAsoc.Fom_Meniuri
         {
             TreeNode asociatie = new TreeNode(denumireAsociatie);
             asociatie.Tag = idAsociatie;
-            treeView1.Nodes.Add(asociatie);
-           
+            treeDistribuieCheltuiala.Nodes.Add(asociatie);
+            treeDistribuieCheltuiala.Visible = false;
+
 
         }
+
+       
 
 
 
@@ -179,6 +165,9 @@ namespace BlueSolAsoc.Fom_Meniuri
         private void btnSalveazaCheltuieli_Click(object sender, EventArgs e)
         {
             inserareValoriInGridFactura();
+            noduriSelectate(treeDistribuieCheltuiala.Nodes);
+            // ApeleazaRecursive(treeDistribuieCheltuiala);
+            CheltuieliDS.TransmiteActualizari("TabelDocumente", "mv_Documente");
         }
 
         private void treeView1_AfterCheck(object sender, TreeViewEventArgs e)
@@ -209,5 +198,71 @@ namespace BlueSolAsoc.Fom_Meniuri
                 }
             }
         }
+
+        private void distribuieCheltuiala_Click(object sender, EventArgs e)
+        {
+            treeDistribuieCheltuiala.Visible = true;
+            btnSalveazaCheltuieli.Visible=true;
+            btnAnuleazaCheltuieli.Visible = true;
+           
+          
+           
+        }
+
+        public void noduriSelectate(TreeNodeCollection nodes)
+        {
+            //int countIndex = 0;
+            
+            string selectedNode = "Noduri selectate : ";
+            foreach (TreeNode myNode in nodes)
+            {
+                // verific daca nodul este selectat
+                if (myNode.Checked)
+                {
+                    // schimb culoarea nodului si il adaug in string
+                    myNode.BackColor = Color.Aquamarine;
+                    //adaugare in arrayul definit in 
+                    selectedNode += myNode.Text + " " + "\r\n";
+                  // countIndex++;
+                }
+                
+                else
+                {
+                    myNode.BackColor = Color.White;
+                }
+                noduriSelectate(myNode.Nodes);
+            }
+
+            //if (countIndex > 0)
+            //    MessageBox.Show(selectedNode);
+            //else
+            //    MessageBox.Show("Nu sunt noduri selectate!");
+        }
+
+        private void AfiseazaRecursive(TreeNode treeNode)
+        {
+            // afisez nodul  
+          //  System.Diagnostics.Debug.WriteLine(treeNode.Text);
+            MessageBox.Show(treeNode.Text);
+            // afisez fiecare nod recursiv  
+            foreach (TreeNode tn in treeNode.Nodes)
+            {
+                AfiseazaRecursive(tn);
+            }
+        }
+
+        // apelez procedura folosind TreeView.  
+        private void ApeleazaRecursive(TreeView treeView)
+        {
+            // Print each node recursively.  
+            TreeNodeCollection nodes = treeView.Nodes;
+            foreach (TreeNode n in nodes)
+            {
+                AfiseazaRecursive(n);
+            }
+        }
+
+
+
     }
 }

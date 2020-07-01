@@ -30,27 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Node1");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Node2");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Node3");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Node4");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Node6");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Node7");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Node8");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Node9");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Node10");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Node5", new System.Windows.Forms.TreeNode[] {
-            treeNode5,
-            treeNode6,
-            treeNode7,
-            treeNode8,
-            treeNode9});
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("tesCheck", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3,
-            treeNode4,
-            treeNode10});
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TabCheltuieliPlati = new BlueSolAsoc.butoane_si_controale.ClassTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -69,8 +48,8 @@
             this.cheltuieliDS1 = new BlueSolAsoc.CheltuieliDS();
             this.classLabel7 = new BlueSolAsoc.butoane_si_controale.ClassLabel();
             this.Panel_TreeDistribuieCheltuiala = new BlueSolAsoc.butoane_si_controale.ClassPanel();
-            this.classButon1 = new BlueSolAsoc.butoane_si_controale.ClassButon();
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.distribuieCheltuiala = new BlueSolAsoc.butoane_si_controale.ClassButon();
+            this.treeDistribuieCheltuiala = new System.Windows.Forms.TreeView();
             this.Panel_FACTURA = new BlueSolAsoc.butoane_si_controale.ClassPanel();
             this.sumaFactura = new BlueSolAsoc.butoane_si_controale.ClassTextBox();
             this.numarFactura = new BlueSolAsoc.butoane_si_controale.ClassTextBox();
@@ -110,8 +89,8 @@
             this.panelButoaneCheltuieli = new System.Windows.Forms.Panel();
             this.btnAnuleazaCheltuieli = new System.Windows.Forms.Button();
             this.btnSalveazaCheltuieli = new System.Windows.Forms.Button();
-            this.classButonInteriorSterge2 = new BlueSolAsoc.butoane_si_controale.ClassButonInteriorSterge();
-            this.classButonModifica2 = new BlueSolAsoc.butoane_si_controale.ClassButonModifica();
+            this.btnStergeCheltuieli = new BlueSolAsoc.butoane_si_controale.ClassButonInteriorSterge();
+            this.btnModificaCheltuieli = new BlueSolAsoc.butoane_si_controale.ClassButonModifica();
             this.mv_IstoricDocumenteTableAdapter = new BlueSolAsoc.CheltuieliDSTableAdapters.mv_IstoricDocumenteTableAdapter();
             this.mvIstoricDocumenteBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.mvDocumenteBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -315,8 +294,8 @@
             // Panel_TreeDistribuieCheltuiala
             // 
             this.Panel_TreeDistribuieCheltuiala.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Panel_TreeDistribuieCheltuiala.Controls.Add(this.classButon1);
-            this.Panel_TreeDistribuieCheltuiala.Controls.Add(this.treeView1);
+            this.Panel_TreeDistribuieCheltuiala.Controls.Add(this.distribuieCheltuiala);
+            this.Panel_TreeDistribuieCheltuiala.Controls.Add(this.treeDistribuieCheltuiala);
             this.Panel_TreeDistribuieCheltuiala.Dock = System.Windows.Forms.DockStyle.Left;
             this.Panel_TreeDistribuieCheltuiala.Location = new System.Drawing.Point(478, 2);
             this.Panel_TreeDistribuieCheltuiala.Margin = new System.Windows.Forms.Padding(2);
@@ -324,55 +303,32 @@
             this.Panel_TreeDistribuieCheltuiala.Size = new System.Drawing.Size(212, 537);
             this.Panel_TreeDistribuieCheltuiala.TabIndex = 63;
             // 
-            // classButon1
+            // distribuieCheltuiala
             // 
-            this.classButon1.BackColor = System.Drawing.Color.Aquamarine;
-            this.classButon1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.classButon1.Location = new System.Drawing.Point(3, 3);
-            this.classButon1.Margin = new System.Windows.Forms.Padding(2);
-            this.classButon1.Name = "classButon1";
-            this.classButon1.Size = new System.Drawing.Size(202, 58);
-            this.classButon1.TabIndex = 8;
-            this.classButon1.Text = "Distribuie Cheltuiala";
-            this.classButon1.UseVisualStyleBackColor = false;
+            this.distribuieCheltuiala.BackColor = System.Drawing.Color.Aquamarine;
+            this.distribuieCheltuiala.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.distribuieCheltuiala.Location = new System.Drawing.Point(3, 3);
+            this.distribuieCheltuiala.Margin = new System.Windows.Forms.Padding(2);
+            this.distribuieCheltuiala.Name = "distribuieCheltuiala";
+            this.distribuieCheltuiala.Size = new System.Drawing.Size(202, 58);
+            this.distribuieCheltuiala.TabIndex = 8;
+            this.distribuieCheltuiala.Text = "Distribuie Cheltuiala";
+            this.distribuieCheltuiala.UseVisualStyleBackColor = false;
+            this.distribuieCheltuiala.Click += new System.EventHandler(this.distribuieCheltuiala_Click);
             // 
-            // treeView1
+            // treeDistribuieCheltuiala
             // 
-            this.treeView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.treeDistribuieCheltuiala.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.treeView1.CheckBoxes = true;
-            this.treeView1.Font = new System.Drawing.Font("Mongolian Baiti", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.treeView1.Location = new System.Drawing.Point(3, 65);
-            this.treeView1.Margin = new System.Windows.Forms.Padding(2);
-            this.treeView1.Name = "treeView1";
-            treeNode1.Name = "Node1";
-            treeNode1.Text = "Node1";
-            treeNode2.Name = "Node2";
-            treeNode2.Text = "Node2";
-            treeNode3.Name = "Node3";
-            treeNode3.Text = "Node3";
-            treeNode4.Name = "Node4";
-            treeNode4.Text = "Node4";
-            treeNode5.Name = "Node6";
-            treeNode5.Text = "Node6";
-            treeNode6.Name = "Node7";
-            treeNode6.Text = "Node7";
-            treeNode7.Name = "Node8";
-            treeNode7.Text = "Node8";
-            treeNode8.Name = "Node9";
-            treeNode8.Text = "Node9";
-            treeNode9.Name = "Node10";
-            treeNode9.Text = "Node10";
-            treeNode10.Name = "Node5";
-            treeNode10.Text = "Node5";
-            treeNode11.Name = "Node0";
-            treeNode11.Text = "tesCheck";
-            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode11});
-            this.treeView1.Size = new System.Drawing.Size(206, 467);
-            this.treeView1.TabIndex = 7;
-            this.treeView1.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterCheck);
+            this.treeDistribuieCheltuiala.CheckBoxes = true;
+            this.treeDistribuieCheltuiala.Font = new System.Drawing.Font("Mongolian Baiti", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.treeDistribuieCheltuiala.Location = new System.Drawing.Point(3, 65);
+            this.treeDistribuieCheltuiala.Margin = new System.Windows.Forms.Padding(2);
+            this.treeDistribuieCheltuiala.Name = "treeDistribuieCheltuiala";
+            this.treeDistribuieCheltuiala.Size = new System.Drawing.Size(206, 467);
+            this.treeDistribuieCheltuiala.TabIndex = 7;
+            this.treeDistribuieCheltuiala.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterCheck);
             // 
             // Panel_FACTURA
             // 
@@ -780,8 +736,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelButoaneCheltuieli.Controls.Add(this.btnAnuleazaCheltuieli);
             this.panelButoaneCheltuieli.Controls.Add(this.btnSalveazaCheltuieli);
-            this.panelButoaneCheltuieli.Controls.Add(this.classButonInteriorSterge2);
-            this.panelButoaneCheltuieli.Controls.Add(this.classButonModifica2);
+            this.panelButoaneCheltuieli.Controls.Add(this.btnStergeCheltuieli);
+            this.panelButoaneCheltuieli.Controls.Add(this.btnModificaCheltuieli);
             this.panelButoaneCheltuieli.Location = new System.Drawing.Point(863, 38);
             this.panelButoaneCheltuieli.Margin = new System.Windows.Forms.Padding(2);
             this.panelButoaneCheltuieli.Name = "panelButoaneCheltuieli";
@@ -817,33 +773,33 @@
             this.btnSalveazaCheltuieli.UseVisualStyleBackColor = false;
             this.btnSalveazaCheltuieli.Click += new System.EventHandler(this.btnSalveazaCheltuieli_Click);
             // 
-            // classButonInteriorSterge2
+            // btnStergeCheltuieli
             // 
-            this.classButonInteriorSterge2.BackColor = System.Drawing.Color.Red;
-            this.classButonInteriorSterge2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.classButonInteriorSterge2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.classButonInteriorSterge2.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.classButonInteriorSterge2.Location = new System.Drawing.Point(0, 152);
-            this.classButonInteriorSterge2.Margin = new System.Windows.Forms.Padding(2);
-            this.classButonInteriorSterge2.Name = "classButonInteriorSterge2";
-            this.classButonInteriorSterge2.Size = new System.Drawing.Size(128, 152);
-            this.classButonInteriorSterge2.TabIndex = 7;
-            this.classButonInteriorSterge2.Text = "STERGE";
-            this.classButonInteriorSterge2.UseVisualStyleBackColor = false;
+            this.btnStergeCheltuieli.BackColor = System.Drawing.Color.Red;
+            this.btnStergeCheltuieli.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnStergeCheltuieli.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStergeCheltuieli.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStergeCheltuieli.Location = new System.Drawing.Point(0, 152);
+            this.btnStergeCheltuieli.Margin = new System.Windows.Forms.Padding(2);
+            this.btnStergeCheltuieli.Name = "btnStergeCheltuieli";
+            this.btnStergeCheltuieli.Size = new System.Drawing.Size(128, 152);
+            this.btnStergeCheltuieli.TabIndex = 7;
+            this.btnStergeCheltuieli.Text = "STERGE";
+            this.btnStergeCheltuieli.UseVisualStyleBackColor = false;
             // 
-            // classButonModifica2
+            // btnModificaCheltuieli
             // 
-            this.classButonModifica2.BackColor = System.Drawing.Color.Yellow;
-            this.classButonModifica2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.classButonModifica2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.classButonModifica2.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.classButonModifica2.Location = new System.Drawing.Point(0, 0);
-            this.classButonModifica2.Margin = new System.Windows.Forms.Padding(2);
-            this.classButonModifica2.Name = "classButonModifica2";
-            this.classButonModifica2.Size = new System.Drawing.Size(128, 152);
-            this.classButonModifica2.TabIndex = 6;
-            this.classButonModifica2.Text = "MODIFICA";
-            this.classButonModifica2.UseVisualStyleBackColor = false;
+            this.btnModificaCheltuieli.BackColor = System.Drawing.Color.Yellow;
+            this.btnModificaCheltuieli.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnModificaCheltuieli.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModificaCheltuieli.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModificaCheltuieli.Location = new System.Drawing.Point(0, 0);
+            this.btnModificaCheltuieli.Margin = new System.Windows.Forms.Padding(2);
+            this.btnModificaCheltuieli.Name = "btnModificaCheltuieli";
+            this.btnModificaCheltuieli.Size = new System.Drawing.Size(128, 152);
+            this.btnModificaCheltuieli.TabIndex = 6;
+            this.btnModificaCheltuieli.Text = "MODIFICA";
+            this.btnModificaCheltuieli.UseVisualStyleBackColor = false;
             // 
             // mv_IstoricDocumenteTableAdapter
             // 
@@ -915,8 +871,8 @@
         private System.Windows.Forms.Panel panelButoaneCheltuieli;
         private System.Windows.Forms.Button btnAnuleazaCheltuieli;
         private System.Windows.Forms.Button btnSalveazaCheltuieli;
-        private butoane_si_controale.ClassButonInteriorSterge classButonInteriorSterge2;
-        private butoane_si_controale.ClassButonModifica classButonModifica2;
+        private butoane_si_controale.ClassButonInteriorSterge btnStergeCheltuieli;
+        private butoane_si_controale.ClassButonModifica btnModificaCheltuieli;
         private System.Windows.Forms.BindingSource mvIstoricDocumenteBindingSource;
         private CheltuieliDSTableAdapters.mv_IstoricDocumenteTableAdapter mv_IstoricDocumenteTableAdapter;
         private butoane_si_controale.ClassLabel classLabel7;
@@ -936,8 +892,8 @@
         private butoane_si_controale.ClassLabel classLabel2;
         private butoane_si_controale.ClassLabel classLabel1;
         private butoane_si_controale.ClassGridView GridFacturi;
-        private butoane_si_controale.ClassButon classButon1;
-        private System.Windows.Forms.TreeView treeView1;
+        private butoane_si_controale.ClassButon distribuieCheltuiala;
+        private System.Windows.Forms.TreeView treeDistribuieCheltuiala;
         private System.Windows.Forms.BindingSource mvIstoricDocumenteBindingSource1;
         private CheltuieliDS cheltuieliDS1;
         private System.Windows.Forms.BindingSource mvDocumenteBindingSource;
