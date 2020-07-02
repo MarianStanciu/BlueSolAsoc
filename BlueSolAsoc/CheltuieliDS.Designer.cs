@@ -28,6 +28,8 @@ namespace BlueSolAsoc {
         
         private mv_IstoricDocumenteDataTable tablemv_IstoricDocumente;
         
+        private mv_detaliiOrganizatieDataTable tablemv_detaliiOrganizatie;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -61,6 +63,9 @@ namespace BlueSolAsoc {
                 }
                 if ((ds.Tables["mv_IstoricDocumente"] != null)) {
                     base.Tables.Add(new mv_IstoricDocumenteDataTable(ds.Tables["mv_IstoricDocumente"]));
+                }
+                if ((ds.Tables["mv_detaliiOrganizatie"] != null)) {
+                    base.Tables.Add(new mv_detaliiOrganizatieDataTable(ds.Tables["mv_detaliiOrganizatie"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -97,6 +102,16 @@ namespace BlueSolAsoc {
         public mv_IstoricDocumenteDataTable mv_IstoricDocumente {
             get {
                 return this.tablemv_IstoricDocumente;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public mv_detaliiOrganizatieDataTable mv_detaliiOrganizatie {
+            get {
+                return this.tablemv_detaliiOrganizatie;
             }
         }
         
@@ -173,6 +188,9 @@ namespace BlueSolAsoc {
                 if ((ds.Tables["mv_IstoricDocumente"] != null)) {
                     base.Tables.Add(new mv_IstoricDocumenteDataTable(ds.Tables["mv_IstoricDocumente"]));
                 }
+                if ((ds.Tables["mv_detaliiOrganizatie"] != null)) {
+                    base.Tables.Add(new mv_detaliiOrganizatieDataTable(ds.Tables["mv_detaliiOrganizatie"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -218,6 +236,12 @@ namespace BlueSolAsoc {
                     this.tablemv_IstoricDocumente.InitVars();
                 }
             }
+            this.tablemv_detaliiOrganizatie = ((mv_detaliiOrganizatieDataTable)(base.Tables["mv_detaliiOrganizatie"]));
+            if ((initTable == true)) {
+                if ((this.tablemv_detaliiOrganizatie != null)) {
+                    this.tablemv_detaliiOrganizatie.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -232,6 +256,8 @@ namespace BlueSolAsoc {
             base.Tables.Add(this.tablemv_Documente);
             this.tablemv_IstoricDocumente = new mv_IstoricDocumenteDataTable();
             base.Tables.Add(this.tablemv_IstoricDocumente);
+            this.tablemv_detaliiOrganizatie = new mv_detaliiOrganizatieDataTable();
+            base.Tables.Add(this.tablemv_detaliiOrganizatie);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -243,6 +269,12 @@ namespace BlueSolAsoc {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private bool ShouldSerializemv_IstoricDocumente() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private bool ShouldSerializemv_detaliiOrganizatie() {
             return false;
         }
         
@@ -306,6 +338,9 @@ namespace BlueSolAsoc {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void mv_IstoricDocumenteRowChangeEventHandler(object sender, mv_IstoricDocumenteRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public delegate void mv_detaliiOrganizatieRowChangeEventHandler(object sender, mv_detaliiOrganizatieRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -1148,6 +1183,420 @@ namespace BlueSolAsoc {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class mv_detaliiOrganizatieDataTable : global::System.Data.TypedTableBase<mv_detaliiOrganizatieRow> {
+            
+            private global::System.Data.DataColumn columnorg_id_org;
+            
+            private global::System.Data.DataColumn columnorg_id_master;
+            
+            private global::System.Data.DataColumn columnorg_id_asociere;
+            
+            private global::System.Data.DataColumn columnaso_id_master;
+            
+            private global::System.Data.DataColumn columnaso_id_tip;
+            
+            private global::System.Data.DataColumn columnorg_valoare;
+            
+            private global::System.Data.DataColumn columnaso_tip_afisare;
+            
+            private global::System.Data.DataColumn columnaso_val_default;
+            
+            private global::System.Data.DataColumn columnaso_val_label;
+            
+            private global::System.Data.DataColumn columntip_tip_valoare;
+            
+            private global::System.Data.DataColumn columntip_denumire;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public mv_detaliiOrganizatieDataTable() {
+                this.TableName = "mv_detaliiOrganizatie";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal mv_detaliiOrganizatieDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected mv_detaliiOrganizatieDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn org_id_orgColumn {
+                get {
+                    return this.columnorg_id_org;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn org_id_masterColumn {
+                get {
+                    return this.columnorg_id_master;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn org_id_asociereColumn {
+                get {
+                    return this.columnorg_id_asociere;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn aso_id_masterColumn {
+                get {
+                    return this.columnaso_id_master;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn aso_id_tipColumn {
+                get {
+                    return this.columnaso_id_tip;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn org_valoareColumn {
+                get {
+                    return this.columnorg_valoare;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn aso_tip_afisareColumn {
+                get {
+                    return this.columnaso_tip_afisare;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn aso_val_defaultColumn {
+                get {
+                    return this.columnaso_val_default;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn aso_val_labelColumn {
+                get {
+                    return this.columnaso_val_label;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn tip_tip_valoareColumn {
+                get {
+                    return this.columntip_tip_valoare;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn tip_denumireColumn {
+                get {
+                    return this.columntip_denumire;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public mv_detaliiOrganizatieRow this[int index] {
+                get {
+                    return ((mv_detaliiOrganizatieRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event mv_detaliiOrganizatieRowChangeEventHandler mv_detaliiOrganizatieRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event mv_detaliiOrganizatieRowChangeEventHandler mv_detaliiOrganizatieRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event mv_detaliiOrganizatieRowChangeEventHandler mv_detaliiOrganizatieRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event mv_detaliiOrganizatieRowChangeEventHandler mv_detaliiOrganizatieRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Addmv_detaliiOrganizatieRow(mv_detaliiOrganizatieRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public mv_detaliiOrganizatieRow Addmv_detaliiOrganizatieRow(int org_id_org, int org_id_master, int org_id_asociere, int aso_id_master, int aso_id_tip, string org_valoare, string aso_tip_afisare, string aso_val_default, string aso_val_label, string tip_tip_valoare, string tip_denumire) {
+                mv_detaliiOrganizatieRow rowmv_detaliiOrganizatieRow = ((mv_detaliiOrganizatieRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        org_id_org,
+                        org_id_master,
+                        org_id_asociere,
+                        aso_id_master,
+                        aso_id_tip,
+                        org_valoare,
+                        aso_tip_afisare,
+                        aso_val_default,
+                        aso_val_label,
+                        tip_tip_valoare,
+                        tip_denumire};
+                rowmv_detaliiOrganizatieRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowmv_detaliiOrganizatieRow);
+                return rowmv_detaliiOrganizatieRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public mv_detaliiOrganizatieRow FindByorg_id_org(int org_id_org) {
+                return ((mv_detaliiOrganizatieRow)(this.Rows.Find(new object[] {
+                            org_id_org})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                mv_detaliiOrganizatieDataTable cln = ((mv_detaliiOrganizatieDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new mv_detaliiOrganizatieDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal void InitVars() {
+                this.columnorg_id_org = base.Columns["org_id_org"];
+                this.columnorg_id_master = base.Columns["org_id_master"];
+                this.columnorg_id_asociere = base.Columns["org_id_asociere"];
+                this.columnaso_id_master = base.Columns["aso_id_master"];
+                this.columnaso_id_tip = base.Columns["aso_id_tip"];
+                this.columnorg_valoare = base.Columns["org_valoare"];
+                this.columnaso_tip_afisare = base.Columns["aso_tip_afisare"];
+                this.columnaso_val_default = base.Columns["aso_val_default"];
+                this.columnaso_val_label = base.Columns["aso_val_label"];
+                this.columntip_tip_valoare = base.Columns["tip_tip_valoare"];
+                this.columntip_denumire = base.Columns["tip_denumire"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            private void InitClass() {
+                this.columnorg_id_org = new global::System.Data.DataColumn("org_id_org", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnorg_id_org);
+                this.columnorg_id_master = new global::System.Data.DataColumn("org_id_master", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnorg_id_master);
+                this.columnorg_id_asociere = new global::System.Data.DataColumn("org_id_asociere", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnorg_id_asociere);
+                this.columnaso_id_master = new global::System.Data.DataColumn("aso_id_master", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnaso_id_master);
+                this.columnaso_id_tip = new global::System.Data.DataColumn("aso_id_tip", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnaso_id_tip);
+                this.columnorg_valoare = new global::System.Data.DataColumn("org_valoare", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnorg_valoare);
+                this.columnaso_tip_afisare = new global::System.Data.DataColumn("aso_tip_afisare", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnaso_tip_afisare);
+                this.columnaso_val_default = new global::System.Data.DataColumn("aso_val_default", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnaso_val_default);
+                this.columnaso_val_label = new global::System.Data.DataColumn("aso_val_label", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnaso_val_label);
+                this.columntip_tip_valoare = new global::System.Data.DataColumn("tip_tip_valoare", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntip_tip_valoare);
+                this.columntip_denumire = new global::System.Data.DataColumn("tip_denumire", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntip_denumire);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnorg_id_org}, true));
+                this.columnorg_id_org.AllowDBNull = false;
+                this.columnorg_id_org.Unique = true;
+                this.columnorg_id_master.AllowDBNull = false;
+                this.columnorg_id_asociere.AllowDBNull = false;
+                this.columnaso_id_master.AllowDBNull = false;
+                this.columnaso_id_tip.AllowDBNull = false;
+                this.columnorg_valoare.AllowDBNull = false;
+                this.columnorg_valoare.MaxLength = 2147483647;
+                this.columnaso_tip_afisare.AllowDBNull = false;
+                this.columnaso_tip_afisare.MaxLength = 10;
+                this.columnaso_val_default.AllowDBNull = false;
+                this.columnaso_val_default.MaxLength = 50;
+                this.columnaso_val_label.AllowDBNull = false;
+                this.columnaso_val_label.MaxLength = 100;
+                this.columntip_tip_valoare.AllowDBNull = false;
+                this.columntip_tip_valoare.MaxLength = 1;
+                this.columntip_denumire.AllowDBNull = false;
+                this.columntip_denumire.MaxLength = 30;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public mv_detaliiOrganizatieRow Newmv_detaliiOrganizatieRow() {
+                return ((mv_detaliiOrganizatieRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new mv_detaliiOrganizatieRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(mv_detaliiOrganizatieRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.mv_detaliiOrganizatieRowChanged != null)) {
+                    this.mv_detaliiOrganizatieRowChanged(this, new mv_detaliiOrganizatieRowChangeEvent(((mv_detaliiOrganizatieRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.mv_detaliiOrganizatieRowChanging != null)) {
+                    this.mv_detaliiOrganizatieRowChanging(this, new mv_detaliiOrganizatieRowChangeEvent(((mv_detaliiOrganizatieRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.mv_detaliiOrganizatieRowDeleted != null)) {
+                    this.mv_detaliiOrganizatieRowDeleted(this, new mv_detaliiOrganizatieRowChangeEvent(((mv_detaliiOrganizatieRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.mv_detaliiOrganizatieRowDeleting != null)) {
+                    this.mv_detaliiOrganizatieRowDeleting(this, new mv_detaliiOrganizatieRowChangeEvent(((mv_detaliiOrganizatieRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Removemv_detaliiOrganizatieRow(mv_detaliiOrganizatieRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                CheltuieliDS ds = new CheltuieliDS();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "mv_detaliiOrganizatieDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class mv_DocumenteRow : global::System.Data.DataRow {
@@ -1459,6 +1908,142 @@ namespace BlueSolAsoc {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class mv_detaliiOrganizatieRow : global::System.Data.DataRow {
+            
+            private mv_detaliiOrganizatieDataTable tablemv_detaliiOrganizatie;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal mv_detaliiOrganizatieRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tablemv_detaliiOrganizatie = ((mv_detaliiOrganizatieDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int org_id_org {
+                get {
+                    return ((int)(this[this.tablemv_detaliiOrganizatie.org_id_orgColumn]));
+                }
+                set {
+                    this[this.tablemv_detaliiOrganizatie.org_id_orgColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int org_id_master {
+                get {
+                    return ((int)(this[this.tablemv_detaliiOrganizatie.org_id_masterColumn]));
+                }
+                set {
+                    this[this.tablemv_detaliiOrganizatie.org_id_masterColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int org_id_asociere {
+                get {
+                    return ((int)(this[this.tablemv_detaliiOrganizatie.org_id_asociereColumn]));
+                }
+                set {
+                    this[this.tablemv_detaliiOrganizatie.org_id_asociereColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int aso_id_master {
+                get {
+                    return ((int)(this[this.tablemv_detaliiOrganizatie.aso_id_masterColumn]));
+                }
+                set {
+                    this[this.tablemv_detaliiOrganizatie.aso_id_masterColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int aso_id_tip {
+                get {
+                    return ((int)(this[this.tablemv_detaliiOrganizatie.aso_id_tipColumn]));
+                }
+                set {
+                    this[this.tablemv_detaliiOrganizatie.aso_id_tipColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string org_valoare {
+                get {
+                    return ((string)(this[this.tablemv_detaliiOrganizatie.org_valoareColumn]));
+                }
+                set {
+                    this[this.tablemv_detaliiOrganizatie.org_valoareColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string aso_tip_afisare {
+                get {
+                    return ((string)(this[this.tablemv_detaliiOrganizatie.aso_tip_afisareColumn]));
+                }
+                set {
+                    this[this.tablemv_detaliiOrganizatie.aso_tip_afisareColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string aso_val_default {
+                get {
+                    return ((string)(this[this.tablemv_detaliiOrganizatie.aso_val_defaultColumn]));
+                }
+                set {
+                    this[this.tablemv_detaliiOrganizatie.aso_val_defaultColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string aso_val_label {
+                get {
+                    return ((string)(this[this.tablemv_detaliiOrganizatie.aso_val_labelColumn]));
+                }
+                set {
+                    this[this.tablemv_detaliiOrganizatie.aso_val_labelColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string tip_tip_valoare {
+                get {
+                    return ((string)(this[this.tablemv_detaliiOrganizatie.tip_tip_valoareColumn]));
+                }
+                set {
+                    this[this.tablemv_detaliiOrganizatie.tip_tip_valoareColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string tip_denumire {
+                get {
+                    return ((string)(this[this.tablemv_detaliiOrganizatie.tip_denumireColumn]));
+                }
+                set {
+                    this[this.tablemv_detaliiOrganizatie.tip_denumireColumn] = value;
+                }
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -1512,6 +2097,40 @@ namespace BlueSolAsoc {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public mv_IstoricDocumenteRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public class mv_detaliiOrganizatieRowChangeEvent : global::System.EventArgs {
+            
+            private mv_detaliiOrganizatieRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public mv_detaliiOrganizatieRowChangeEvent(mv_detaliiOrganizatieRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public mv_detaliiOrganizatieRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -1884,6 +2503,185 @@ namespace BlueSolAsoc.CheltuieliDSTableAdapters {
         public virtual CheltuieliDS.mv_IstoricDocumenteDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             CheltuieliDS.mv_IstoricDocumenteDataTable dataTable = new CheltuieliDS.mv_IstoricDocumenteDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class mv_detaliiOrganizatieTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public mv_detaliiOrganizatieTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "mv_detaliiOrganizatie";
+            tableMapping.ColumnMappings.Add("org_id_org", "org_id_org");
+            tableMapping.ColumnMappings.Add("org_id_master", "org_id_master");
+            tableMapping.ColumnMappings.Add("org_id_asociere", "org_id_asociere");
+            tableMapping.ColumnMappings.Add("aso_id_master", "aso_id_master");
+            tableMapping.ColumnMappings.Add("aso_id_tip", "aso_id_tip");
+            tableMapping.ColumnMappings.Add("org_valoare", "org_valoare");
+            tableMapping.ColumnMappings.Add("aso_tip_afisare", "aso_tip_afisare");
+            tableMapping.ColumnMappings.Add("aso_val_default", "aso_val_default");
+            tableMapping.ColumnMappings.Add("aso_val_label", "aso_val_label");
+            tableMapping.ColumnMappings.Add("tip_tip_valoare", "tip_tip_valoare");
+            tableMapping.ColumnMappings.Add("tip_denumire", "tip_denumire");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::BlueSolAsoc.Properties.Settings.Default.proba_transareConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT org_id_org, org_id_master, org_id_asociere, aso_id_master, aso_id_tip, org" +
+                "_valoare, aso_tip_afisare, aso_val_default, aso_val_label, tip_tip_valoare, tip_" +
+                "denumire FROM dbo.mv_detaliiOrganizatie";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(CheltuieliDS.mv_detaliiOrganizatieDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual CheltuieliDS.mv_detaliiOrganizatieDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            CheltuieliDS.mv_detaliiOrganizatieDataTable dataTable = new CheltuieliDS.mv_detaliiOrganizatieDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
