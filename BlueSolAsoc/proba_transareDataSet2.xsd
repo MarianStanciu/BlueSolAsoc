@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="proba_transareDataSet2" targetNamespace="http://tempuri.org/proba_transareDataSet2.xsd" xmlns:mstns="http://tempuri.org/proba_transareDataSet2.xsd" xmlns="http://tempuri.org/proba_transareDataSet2.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="proba_transareConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="proba_transareConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.BlueSolAsoc.Properties.Settings.GlobalReference.Default.proba_transareConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="mv_IstoricDocumenteTableAdapter" GeneratorDataComponentClassName="mv_IstoricDocumenteTableAdapter" Name="mv_IstoricDocumente" UserDataComponentName="mv_IstoricDocumenteTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="proba_transareConnectionString (Settings)" DbObjectName="proba_transare.dbo.mv_IstoricDocumente" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT id_antet, nr_doc, serie, data, id_partener, id_temporar, id_org, Valoare, id_asociere FROM dbo.mv_IstoricDocumente</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id_antet" DataSetColumn="id_antet" />
+              <Mapping SourceColumn="nr_doc" DataSetColumn="nr_doc" />
+              <Mapping SourceColumn="serie" DataSetColumn="serie" />
+              <Mapping SourceColumn="data" DataSetColumn="data" />
+              <Mapping SourceColumn="id_partener" DataSetColumn="id_partener" />
+              <Mapping SourceColumn="id_temporar" DataSetColumn="id_temporar" />
+              <Mapping SourceColumn="id_org" DataSetColumn="id_org" />
+              <Mapping SourceColumn="Valoare" DataSetColumn="Valoare" />
+              <Mapping SourceColumn="id_asociere" DataSetColumn="id_asociere" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="proba_transareDataSet2" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="proba_transareDataSet2" msprop:Generator_UserDSName="proba_transareDataSet2">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="mv_IstoricDocumente" msprop:Generator_TableClassName="mv_IstoricDocumenteDataTable" msprop:Generator_TableVarName="tablemv_IstoricDocumente" msprop:Generator_TablePropName="mv_IstoricDocumente" msprop:Generator_RowDeletingName="mv_IstoricDocumenteRowDeleting" msprop:Generator_RowChangingName="mv_IstoricDocumenteRowChanging" msprop:Generator_RowEvHandlerName="mv_IstoricDocumenteRowChangeEventHandler" msprop:Generator_RowDeletedName="mv_IstoricDocumenteRowDeleted" msprop:Generator_UserTableName="mv_IstoricDocumente" msprop:Generator_RowChangedName="mv_IstoricDocumenteRowChanged" msprop:Generator_RowEvArgName="mv_IstoricDocumenteRowChangeEvent" msprop:Generator_RowClassName="mv_IstoricDocumenteRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id_antet" msprop:Generator_ColumnVarNameInTable="columnid_antet" msprop:Generator_ColumnPropNameInRow="id_antet" msprop:Generator_ColumnPropNameInTable="id_antetColumn" msprop:Generator_UserColumnName="id_antet" type="xs:int" />
+              <xs:element name="nr_doc" msprop:Generator_ColumnVarNameInTable="columnnr_doc" msprop:Generator_ColumnPropNameInRow="nr_doc" msprop:Generator_ColumnPropNameInTable="nr_docColumn" msprop:Generator_UserColumnName="nr_doc">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="serie" msprop:Generator_ColumnVarNameInTable="columnserie" msprop:Generator_ColumnPropNameInRow="serie" msprop:Generator_ColumnPropNameInTable="serieColumn" msprop:Generator_UserColumnName="serie">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="data" msprop:Generator_ColumnVarNameInTable="columndata" msprop:Generator_ColumnPropNameInRow="data" msprop:Generator_ColumnPropNameInTable="dataColumn" msprop:Generator_UserColumnName="data" type="xs:dateTime" />
+              <xs:element name="id_partener" msprop:Generator_ColumnVarNameInTable="columnid_partener" msprop:Generator_ColumnPropNameInRow="id_partener" msprop:Generator_ColumnPropNameInTable="id_partenerColumn" msprop:Generator_UserColumnName="id_partener" type="xs:int" />
+              <xs:element name="id_temporar" msprop:Generator_ColumnVarNameInTable="columnid_temporar" msprop:Generator_ColumnPropNameInRow="id_temporar" msprop:Generator_ColumnPropNameInTable="id_temporarColumn" msprop:Generator_UserColumnName="id_temporar" type="xs:int" />
+              <xs:element name="id_org" msprop:Generator_ColumnVarNameInTable="columnid_org" msprop:Generator_ColumnPropNameInRow="id_org" msprop:Generator_ColumnPropNameInTable="id_orgColumn" msprop:Generator_UserColumnName="id_org" type="xs:int" />
+              <xs:element name="Valoare" msprop:Generator_ColumnVarNameInTable="columnValoare" msprop:Generator_ColumnPropNameInRow="Valoare" msprop:Generator_ColumnPropNameInTable="ValoareColumn" msprop:Generator_UserColumnName="Valoare" type="xs:decimal" minOccurs="0" />
+              <xs:element name="id_asociere" msprop:Generator_ColumnVarNameInTable="columnid_asociere" msprop:Generator_ColumnPropNameInRow="id_asociere" msprop:Generator_ColumnPropNameInTable="id_asociereColumn" msprop:Generator_UserColumnName="id_asociere" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:mv_IstoricDocumente" />
+      <xs:field xpath="mstns:id_antet" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
