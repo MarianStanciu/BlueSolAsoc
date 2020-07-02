@@ -29,6 +29,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             btnAnuleazaCheltuieli.Visible = false;
             btnModificaCheltuieli.Visible = false;
             btnStergeCheltuieli.Visible = false;
+           
             // de adaugat un array
         }
 
@@ -39,12 +40,13 @@ namespace BlueSolAsoc.Fom_Meniuri
         {
             // TODO: This line of code loads data into the 'cheltuieliDS1.mv_Documente' table. You can move, or remove it, as needed.
             this.mv_DocumenteTableAdapter.Fill(this.cheltuieliDS1.mv_Documente);
-            AfisareGridFacturi();
-            AdaugaRadacinaParinteTreeView();
-        
+            AfisareGridFacturi(0);
+            // AdaugaRadacinaParinteTreeView();
+            // GetTreeviewItems();
+            extrageTabelaTree();
 
         }
-        public void AfisareGridFacturi()
+        public void AfisareGridFacturi(int id_antet)
         {
 
             //creare tabel cu istoric facturi
@@ -80,7 +82,8 @@ namespace BlueSolAsoc.Fom_Meniuri
             {
                 CheltuieliDS.Tables.Remove("TabelDocumente");
             }
-            CheltuieliDS.getSetFrom("select * from mv_Documente where a_id_asociere=44 and a_id_org=0", "TabelDocumente");
+            // variabila pentru a_id_antet
+            CheltuieliDS.getSetFrom("select * from mv_Documente where a_id_asociere=44 and a_id_antet="+ id_antet, "TabelDocumente");
             GridPozitiiFactura.DataSource = CheltuieliDS.Tables["TabelDocumente"];
             CheltuieliDS.Tables["TabelDocumente"].Columns["a_id_org"].DefaultValue = idAsociatie;
             CheltuieliDS.Tables["TabelDocumente"].Columns["a_id_asociere"].DefaultValue = 44;
@@ -121,16 +124,12 @@ namespace BlueSolAsoc.Fom_Meniuri
                     row["a_serie"] = serie;
                     row["a_data"] = data;
                     row["p_id_pozitie"] = id_pozitie;
-                    row["a_id_partener"] = partener;
-                   // row["p_pret"] = pret;
-                    //row["p_cantitate"] = cantitate;
-                    row["p_id_cota_tva"] = cota_tva;
-                    //row["p_valoare"] = suma;
+                    row["a_id_partener"] = partener;                   
+                    row["p_id_cota_tva"] = cota_tva;                   
                     row["a_id_temporar"] = id_temporar;
                     row["a_id_org"] = idAsociatie;
                     row["a_id_asociere"] = 43;
-                    //row["id_TipDocument"] = 0; 
-                    //row["tipDocument"] = 0;
+                   
                 }
                 MessageBox.Show("uraa", "am inserat");
             }
@@ -168,6 +167,8 @@ namespace BlueSolAsoc.Fom_Meniuri
             noduriSelectate(treeDistribuieCheltuiala.Nodes);
             // ApeleazaRecursive(treeDistribuieCheltuiala);
             CheltuieliDS.TransmiteActualizari("TabelDocumente", "mv_Documente");
+            // Noduri(idAsociatie);
+           
         }
 
         private void treeView1_AfterCheck(object sender, TreeViewEventArgs e)
@@ -233,36 +234,78 @@ namespace BlueSolAsoc.Fom_Meniuri
                 noduriSelectate(myNode.Nodes);
             }
 
-            //if (countIndex > 0)
-            //    MessageBox.Show(selectedNode);
-            //else
-            //    MessageBox.Show("Nu sunt noduri selectate!");
+           
         }
 
-        private void AfiseazaRecursive(TreeNode treeNode)
+       
+
+      
+        private void GetTreeviewItems()
         {
-            // afisez nodul  
-          //  System.Diagnostics.Debug.WriteLine(treeNode.Text);
-            MessageBox.Show(treeNode.Text);
-            // afisez fiecare nod recursiv  
-            foreach (TreeNode tn in treeNode.Nodes)
+            if (!(CheltuieliDS.Tables["TabelAfisareTree"] is null))
             {
-                AfiseazaRecursive(tn);
+                CheltuieliDS.Tables.Remove("TabelAfisareTree");
+            }
+            CheltuieliDS.getSetFrom("select * from mv_org_pt_repartizare where org_id_master<>0 and id_asociatie=" + idAsociatie, "TabelAfisareTree");
+           CheltuieliDS.Relations.Add("ChildRows", CheltuieliDS.Tables["TabelAfisareTree"].Columns["org_id_org"], CheltuieliDS.Tables["TabelAfisareTree"].Columns["org_id_master"]);
+           // CheltuieliDS.Relations.Add("testRelatie",)
+
+            foreach (DataRow nivel1 in CheltuieliDS.Tables["TabelAfisareTree"].Rows)
+            {
+                if ((nivel1["org_id_master"].ToString())=="0")
+                {
+                    TreeNode nodeParinte = new TreeNode();
+                    nodeParinte.Text = nivel1["org_valoare"].ToString();                    
+                    treeDistribuieCheltuiala.Nodes.Add(nodeParinte);
+                    GetChildRows(nivel1, nodeParinte);
+                }
+            }           
+        }
+
+        private void GetChildRows (DataRow datarow, TreeNode treenode)
+        {
+            DataRow[] childRows = datarow.GetChildRows("ChildRows");
+            //string expresie = "select * from tabel tabelExtragere where org_id_org = org_id_master";
+            // DataRow[] childRows = CheltuieliDS.Tables["TabelAfisareTree"].Select(expresie);
+            foreach (DataRow childRow in childRows)
+            {
+                TreeNode childTreeNode = new TreeNode();
+                childTreeNode.Text = childRow["org_valoare"].ToString();
+                treenode.Nodes.Add(childTreeNode);
+                if (childRow.GetChildRows("ChildRows").Length > 0)
+                {
+                    GetChildRows(childRow, childTreeNode);
+                }
             }
         }
-
-        // apelez procedura folosind TreeView.  
-        private void ApeleazaRecursive(TreeView treeView)
+        private void extrageTabelaTree()
         {
-            // Print each node recursively.  
-            TreeNodeCollection nodes = treeView.Nodes;
-            foreach (TreeNode n in nodes)
+            if (!(CheltuieliDS.Tables["TabelAfisareTree"] is null))
             {
-                AfiseazaRecursive(n);
+                CheltuieliDS.Tables.Remove("TabelAfisareTree");
             }
+            CheltuieliDS.getSetFrom("select * from mv_org_pt_repartizare where  id_asociatie=" + idAsociatie + " order by org_id_master asc", "TabelAfisareTree");
+           int id_org= (int) CheltuieliDS.Tables["TabelAfisareTree"].Rows[0]["org_id_org"];
+            string valoare = CheltuieliDS.Tables["TabelAfisareTree"].Rows[0]["org_valoare"].ToString();
+            GetTreeItemsNou(id_org, valoare, treeDistribuieCheltuiala.Nodes);
         }
 
+        private void GetTreeItemsNou(int idOrg, string valoare , TreeNodeCollection parinteNod)
+        {
+           TreeNode copil =new TreeNode();
+            copil.Tag = idOrg;
+            copil.Text = valoare;
+            parinteNod.Add(copil);
+            DataRow[] datacopii = CheltuieliDS.Tables["TabelAfisareTree"].Select(" org_id_master = "+ idOrg);
+            foreach (DataRow rand in datacopii)
+            {
+                int idOrgCopil = (int)rand ["org_id_org"];
+                string valoare_copil = rand["org_valoare"].ToString();
+                GetTreeItemsNou(idOrgCopil, valoare_copil, copil.Nodes);
+            }
 
 
+
+        }
     }
 }

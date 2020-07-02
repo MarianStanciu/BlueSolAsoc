@@ -329,6 +329,7 @@
             this.treeDistribuieCheltuiala.Size = new System.Drawing.Size(206, 467);
             this.treeDistribuieCheltuiala.TabIndex = 7;
             this.treeDistribuieCheltuiala.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterCheck);
+         
             // 
             // Panel_FACTURA
             // 

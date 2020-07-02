@@ -63,6 +63,32 @@ WHERE (1 = 0)</CommandText>
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="mv_detaliiOrganizatieTableAdapter" GeneratorDataComponentClassName="mv_detaliiOrganizatieTableAdapter" Name="mv_detaliiOrganizatie" UserDataComponentName="mv_detaliiOrganizatieTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="proba_transareConnectionString (Settings)" DbObjectName="proba_transare.dbo.mv_detaliiOrganizatie" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT org_id_org, org_id_master, org_id_asociere, aso_id_master, aso_id_tip, org_valoare, aso_tip_afisare, aso_val_default, aso_val_label, tip_tip_valoare, tip_denumire FROM dbo.mv_detaliiOrganizatie</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="org_id_org" DataSetColumn="org_id_org" />
+              <Mapping SourceColumn="org_id_master" DataSetColumn="org_id_master" />
+              <Mapping SourceColumn="org_id_asociere" DataSetColumn="org_id_asociere" />
+              <Mapping SourceColumn="aso_id_master" DataSetColumn="aso_id_master" />
+              <Mapping SourceColumn="aso_id_tip" DataSetColumn="aso_id_tip" />
+              <Mapping SourceColumn="org_valoare" DataSetColumn="org_valoare" />
+              <Mapping SourceColumn="aso_tip_afisare" DataSetColumn="aso_tip_afisare" />
+              <Mapping SourceColumn="aso_val_default" DataSetColumn="aso_val_default" />
+              <Mapping SourceColumn="aso_val_label" DataSetColumn="aso_val_label" />
+              <Mapping SourceColumn="tip_tip_valoare" DataSetColumn="tip_tip_valoare" />
+              <Mapping SourceColumn="tip_denumire" DataSetColumn="tip_denumire" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -71,7 +97,7 @@ WHERE (1 = 0)</CommandText>
   <xs:element name="CheltuieliDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="CheltuieliDS" msprop:Generator_UserDSName="CheltuieliDS">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="mv_Documente" msprop:Generator_TableClassName="mv_DocumenteDataTable" msprop:Generator_TableVarName="tablemv_Documente" msprop:Generator_RowChangedName="mv_DocumenteRowChanged" msprop:Generator_TablePropName="mv_Documente" msprop:Generator_RowDeletingName="mv_DocumenteRowDeleting" msprop:Generator_RowChangingName="mv_DocumenteRowChanging" msprop:Generator_RowEvHandlerName="mv_DocumenteRowChangeEventHandler" msprop:Generator_RowDeletedName="mv_DocumenteRowDeleted" msprop:Generator_RowClassName="mv_DocumenteRow" msprop:Generator_UserTableName="mv_Documente" msprop:Generator_RowEvArgName="mv_DocumenteRowChangeEvent">
+        <xs:element name="mv_Documente" msprop:Generator_TableClassName="mv_DocumenteDataTable" msprop:Generator_TableVarName="tablemv_Documente" msprop:Generator_TablePropName="mv_Documente" msprop:Generator_RowDeletingName="mv_DocumenteRowDeleting" msprop:Generator_RowChangingName="mv_DocumenteRowChanging" msprop:Generator_RowEvHandlerName="mv_DocumenteRowChangeEventHandler" msprop:Generator_RowDeletedName="mv_DocumenteRowDeleted" msprop:Generator_UserTableName="mv_Documente" msprop:Generator_RowChangedName="mv_DocumenteRowChanged" msprop:Generator_RowEvArgName="mv_DocumenteRowChangeEvent" msprop:Generator_RowClassName="mv_DocumenteRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="a_id_antet" msprop:Generator_ColumnVarNameInTable="columna_id_antet" msprop:Generator_ColumnPropNameInRow="a_id_antet" msprop:Generator_ColumnPropNameInTable="a_id_antetColumn" msprop:Generator_UserColumnName="a_id_antet" type="xs:int" />
@@ -110,7 +136,7 @@ WHERE (1 = 0)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="mv_IstoricDocumente" msprop:Generator_TableClassName="mv_IstoricDocumenteDataTable" msprop:Generator_TableVarName="tablemv_IstoricDocumente" msprop:Generator_RowChangedName="mv_IstoricDocumenteRowChanged" msprop:Generator_TablePropName="mv_IstoricDocumente" msprop:Generator_RowDeletingName="mv_IstoricDocumenteRowDeleting" msprop:Generator_RowChangingName="mv_IstoricDocumenteRowChanging" msprop:Generator_RowEvHandlerName="mv_IstoricDocumenteRowChangeEventHandler" msprop:Generator_RowDeletedName="mv_IstoricDocumenteRowDeleted" msprop:Generator_RowClassName="mv_IstoricDocumenteRow" msprop:Generator_UserTableName="mv_IstoricDocumente" msprop:Generator_RowEvArgName="mv_IstoricDocumenteRowChangeEvent">
+        <xs:element name="mv_IstoricDocumente" msprop:Generator_TableClassName="mv_IstoricDocumenteDataTable" msprop:Generator_TableVarName="tablemv_IstoricDocumente" msprop:Generator_TablePropName="mv_IstoricDocumente" msprop:Generator_RowDeletingName="mv_IstoricDocumenteRowDeleting" msprop:Generator_RowChangingName="mv_IstoricDocumenteRowChanging" msprop:Generator_RowEvHandlerName="mv_IstoricDocumenteRowChangeEventHandler" msprop:Generator_RowDeletedName="mv_IstoricDocumenteRowDeleted" msprop:Generator_UserTableName="mv_IstoricDocumente" msprop:Generator_RowChangedName="mv_IstoricDocumenteRowChanged" msprop:Generator_RowEvArgName="mv_IstoricDocumenteRowChangeEvent" msprop:Generator_RowClassName="mv_IstoricDocumenteRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id_antet" msprop:Generator_ColumnVarNameInTable="columnid_antet" msprop:Generator_ColumnPropNameInRow="id_antet" msprop:Generator_ColumnPropNameInTable="id_antetColumn" msprop:Generator_UserColumnName="id_antet" type="xs:int" />
@@ -137,11 +163,68 @@ WHERE (1 = 0)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="mv_detaliiOrganizatie" msprop:Generator_TableClassName="mv_detaliiOrganizatieDataTable" msprop:Generator_TableVarName="tablemv_detaliiOrganizatie" msprop:Generator_TablePropName="mv_detaliiOrganizatie" msprop:Generator_RowDeletingName="mv_detaliiOrganizatieRowDeleting" msprop:Generator_RowChangingName="mv_detaliiOrganizatieRowChanging" msprop:Generator_RowEvHandlerName="mv_detaliiOrganizatieRowChangeEventHandler" msprop:Generator_RowDeletedName="mv_detaliiOrganizatieRowDeleted" msprop:Generator_UserTableName="mv_detaliiOrganizatie" msprop:Generator_RowChangedName="mv_detaliiOrganizatieRowChanged" msprop:Generator_RowEvArgName="mv_detaliiOrganizatieRowChangeEvent" msprop:Generator_RowClassName="mv_detaliiOrganizatieRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="org_id_org" msprop:Generator_ColumnVarNameInTable="columnorg_id_org" msprop:Generator_ColumnPropNameInRow="org_id_org" msprop:Generator_ColumnPropNameInTable="org_id_orgColumn" msprop:Generator_UserColumnName="org_id_org" type="xs:int" />
+              <xs:element name="org_id_master" msprop:Generator_ColumnVarNameInTable="columnorg_id_master" msprop:Generator_ColumnPropNameInRow="org_id_master" msprop:Generator_ColumnPropNameInTable="org_id_masterColumn" msprop:Generator_UserColumnName="org_id_master" type="xs:int" />
+              <xs:element name="org_id_asociere" msprop:Generator_ColumnVarNameInTable="columnorg_id_asociere" msprop:Generator_ColumnPropNameInRow="org_id_asociere" msprop:Generator_ColumnPropNameInTable="org_id_asociereColumn" msprop:Generator_UserColumnName="org_id_asociere" type="xs:int" />
+              <xs:element name="aso_id_master" msprop:Generator_ColumnVarNameInTable="columnaso_id_master" msprop:Generator_ColumnPropNameInRow="aso_id_master" msprop:Generator_ColumnPropNameInTable="aso_id_masterColumn" msprop:Generator_UserColumnName="aso_id_master" type="xs:int" />
+              <xs:element name="aso_id_tip" msprop:Generator_ColumnVarNameInTable="columnaso_id_tip" msprop:Generator_ColumnPropNameInRow="aso_id_tip" msprop:Generator_ColumnPropNameInTable="aso_id_tipColumn" msprop:Generator_UserColumnName="aso_id_tip" type="xs:int" />
+              <xs:element name="org_valoare" msprop:Generator_ColumnVarNameInTable="columnorg_valoare" msprop:Generator_ColumnPropNameInRow="org_valoare" msprop:Generator_ColumnPropNameInTable="org_valoareColumn" msprop:Generator_UserColumnName="org_valoare">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="aso_tip_afisare" msprop:Generator_ColumnVarNameInTable="columnaso_tip_afisare" msprop:Generator_ColumnPropNameInRow="aso_tip_afisare" msprop:Generator_ColumnPropNameInTable="aso_tip_afisareColumn" msprop:Generator_UserColumnName="aso_tip_afisare">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="aso_val_default" msprop:Generator_ColumnVarNameInTable="columnaso_val_default" msprop:Generator_ColumnPropNameInRow="aso_val_default" msprop:Generator_ColumnPropNameInTable="aso_val_defaultColumn" msprop:Generator_UserColumnName="aso_val_default">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="aso_val_label" msprop:Generator_ColumnVarNameInTable="columnaso_val_label" msprop:Generator_ColumnPropNameInRow="aso_val_label" msprop:Generator_ColumnPropNameInTable="aso_val_labelColumn" msprop:Generator_UserColumnName="aso_val_label">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="tip_tip_valoare" msprop:Generator_ColumnVarNameInTable="columntip_tip_valoare" msprop:Generator_ColumnPropNameInRow="tip_tip_valoare" msprop:Generator_ColumnPropNameInTable="tip_tip_valoareColumn" msprop:Generator_UserColumnName="tip_tip_valoare">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="tip_denumire" msprop:Generator_ColumnVarNameInTable="columntip_denumire" msprop:Generator_ColumnPropNameInRow="tip_denumire" msprop:Generator_ColumnPropNameInTable="tip_denumireColumn" msprop:Generator_UserColumnName="tip_denumire">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:mv_IstoricDocumente" />
       <xs:field xpath="mstns:id_antet" />
+    </xs:unique>
+    <xs:unique name="mv_detaliiOrganizatie_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:mv_detaliiOrganizatie" />
+      <xs:field xpath="mstns:org_id_org" />
     </xs:unique>
   </xs:element>
 </xs:schema>

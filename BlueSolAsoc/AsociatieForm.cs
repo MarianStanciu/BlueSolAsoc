@@ -637,7 +637,7 @@ namespace BlueSolAsoc
         {
             MessageBox.Show("Pentru a edita valorile din casete apasa butonul MODIFICA !", "Informare", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
        
+
     }
 }
