@@ -120,14 +120,17 @@ namespace BlueSolAsoc.Fom_Meniuri
                 dateTimePicker1.Value = (DateTime)TabelaVenituriIncasari.Rows[0]["a_data"];
             }
             DataTable TabelaTipuriIncasari   = DataSetVenituriIncasari.Tables["TipuriIncasari"];
-            
-            
-            
+
+
+
             foreach (DataRow row in TabelaTipuriIncasari.Rows) // parcurgere Tabela Tipuri incasari si inserare tipuri in Venituri Incasari
             {
                 //string valoareid = row["id_asociere"].ToString();
                 int idAsociere = (int) row["id_asociere"];
-                DataRow[] randuri = TabelaVenituriIncasari.Select("a_id_asociere="+idAsociere);
+                //idAsociere = Convert.ToInt32(TabelaVenituriIncasari.Rows[0]["a_id_asociere"]);
+ 
+                
+                DataRow[] randuri = TabelaVenituriIncasari.Select("p_id_asociere="+idAsociere);
 
                 if (randuri.Length==0)
                 {
@@ -389,7 +392,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                     (row.Cells[3].Value)= dateTimePicker1.Value.ToShortDateString();
                     (row.Cells[7].Value)= TextBoxPret.Text;
                 }id_antet = id_antet;
-                DataSetVenituriIncasari.getSetFrom("select * from mv_Documente where a_id_antet="+id_antet, "mv_Documente2");
+               // DataSetVenituriIncasari.getSetFrom("select * from mv_Documente where a_id_antet="+id_antet, "mv_Documente2");
                 ButtonSalvareOK();
                 //DataSetVenituriIncasari.TransmiteActualizari("mv_Documente");
             }else
@@ -437,6 +440,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                 DataColumnCollection dataColumnCollection = DataSetVenituriIncasari.Tables["mv_IstoricDocumente"].Columns;
                 dataColumnCollection[0].ColumnName = "a_id_antet";
                 DataSetVenituriIncasari.TransmiteActualizari("mv_IstoricDocumente","mv_Documente");
+                dataColumnCollection[0].ColumnName = "id_antet";
             }
         }
 
@@ -447,6 +451,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                 {
                     int id_antet = Convert.ToInt32(row.Cells[0].Value);
                     ExtrageDocument(id_antet);
+                    DataSetVenituriIncasari.TransmiteActualizari("mv_Documente");
                     /*TextBoxNrDoc.Text = (row.Cells[1].Value).ToString();
                     TextBoxSerieDoc.Text = (row.Cells[2].Value).ToString();
                     dateTimePicker1.Value = Convert.ToDateTime(row.Cells[3].Value);
