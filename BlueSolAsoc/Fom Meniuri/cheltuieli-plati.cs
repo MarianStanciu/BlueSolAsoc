@@ -40,11 +40,10 @@ namespace BlueSolAsoc.Fom_Meniuri
         {
             // TODO: This line of code loads data into the 'cheltuieliDS1.mv_Documente' table. You can move, or remove it, as needed.
             this.mv_DocumenteTableAdapter.Fill(this.cheltuieliDS1.mv_Documente);
-            AfisareGridFacturi(0);
-            // AdaugaRadacinaParinteTreeView();
-            // GetTreeviewItems();
+            AfisareGridFacturi(0);            
             extrageTabelaTree();
-
+            treeDistribuieCheltuiala.ExpandAll();
+            noduriSelectate(treeDistribuieCheltuiala.Nodes);
         }
         public void AfisareGridFacturi(int id_antet)
         {
@@ -136,21 +135,7 @@ namespace BlueSolAsoc.Fom_Meniuri
 
         }
 
-        public void AdaugaRadacinaParinteTreeView()
-        {
-            TreeNode asociatie = new TreeNode(denumireAsociatie);
-            asociatie.Tag = idAsociatie;
-            treeDistribuieCheltuiala.Nodes.Add(asociatie);
-            treeDistribuieCheltuiala.Visible = false;
-
-
-        }
-
        
-
-
-
-
         private void splitContainer1_Panel1_Click(object sender, EventArgs e)
         {
 
@@ -163,12 +148,8 @@ namespace BlueSolAsoc.Fom_Meniuri
 
         private void btnSalveazaCheltuieli_Click(object sender, EventArgs e)
         {
-            inserareValoriInGridFactura();
-            noduriSelectate(treeDistribuieCheltuiala.Nodes);
-            // ApeleazaRecursive(treeDistribuieCheltuiala);
-            CheltuieliDS.TransmiteActualizari("TabelDocumente", "mv_Documente");
-            // Noduri(idAsociatie);
-           
+            inserareValoriInGridFactura();          
+            CheltuieliDS.TransmiteActualizari("TabelDocumente", "mv_Documente");           
         }
 
         private void treeView1_AfterCheck(object sender, TreeViewEventArgs e)
