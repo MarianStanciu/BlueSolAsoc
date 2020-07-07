@@ -119,6 +119,9 @@
     <Compile Include="butoane si controale\ClassTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="CheltuieliDS.cs">
+      <DependentUpon>CheltuieliDS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="CheltuieliDS.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -373,6 +376,8 @@
   <ItemGroup>
     <None Include="Resources\iconfinder_Artboard_26_3741736.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\BLUE-BIT-LOGO_FINAL_1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

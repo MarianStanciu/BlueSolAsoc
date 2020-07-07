@@ -2301,9 +2301,10 @@ namespace BlueSolAsoc.CheltuieliDSTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT a_id_antet, a_nr_doc, a_serie, a_data, a_id_partener, p_id_pozitie, p_id_a" +
-                "sociere, p_pret, p_cantitate, p_id_cota_tva, p_valoare, tat_val_label, a_id_temp" +
-                "orar, a_id_org, a_id_asociere\r\nFROM   mv_Documente\r\nWHERE (1 = 0)";
+            this._commandCollection[0].CommandText = "SELECT        a_id_antet, a_nr_doc, a_serie, a_data, a_id_partener, p_id_pozitie," +
+                " p_id_asociere, p_pret, p_cantitate, p_id_cota_tva, p_valoare, tat_val_label, a_" +
+                "id_temporar, a_id_org, a_id_asociere\r\nFROM            mv_Documente\r\nWHERE       " +
+                " (1 = 0)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

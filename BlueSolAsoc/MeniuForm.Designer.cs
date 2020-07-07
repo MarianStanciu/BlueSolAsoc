@@ -33,8 +33,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblNumeFirma = new System.Windows.Forms.Label();
             this.lblCeas = new System.Windows.Forms.Label();
-            this.pnlMama = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.pnlMama = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,7 +45,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -91,20 +91,21 @@
             this.lblCeas.TabIndex = 0;
             this.lblCeas.Text = "label1";
             // 
-            // pnlMama
-            // 
-            this.pnlMama.BackColor = System.Drawing.Color.Transparent;
-            this.pnlMama.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnlMama.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMama.Location = new System.Drawing.Point(0, 112);
-            this.pnlMama.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.pnlMama.Name = "pnlMama";
-            this.pnlMama.Size = new System.Drawing.Size(1008, 617);
-            this.pnlMama.TabIndex = 5;
-            // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // pnlMama
+            // 
+            this.pnlMama.BackColor = System.Drawing.Color.Transparent;
+            this.pnlMama.BackgroundImage = global::BlueSolAsoc.Properties.Resources.BLUE_BIT_LOGO_FINAL_1;
+            this.pnlMama.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pnlMama.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlMama.Location = new System.Drawing.Point(0, 112);
+            this.pnlMama.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlMama.Name = "pnlMama";
+            this.pnlMama.Size = new System.Drawing.Size(1008, 617);
+            this.pnlMama.TabIndex = 5;
             // 
             // MeniuForm
             // 

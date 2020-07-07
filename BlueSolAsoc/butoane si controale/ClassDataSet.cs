@@ -99,7 +99,13 @@ namespace BlueSolAsoc.butoane_si_controale
                                     valoare = "0";
                                 }
                                 break;
-
+                            case "System.Guid":
+                                valoare = r[f.ColumnName].ToString();
+                                if (string.IsNullOrEmpty(valoare))
+                                {
+                                    valoare = "";
+                                }
+                                break;
                             case "System.DateTime":                              
                                 valoare = "'" + ((DateTime) r[f.ColumnName]).ToString("yyyyMMdd") + "'";
                                 if (string.IsNullOrEmpty(valoare))

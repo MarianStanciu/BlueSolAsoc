@@ -18,6 +18,7 @@ namespace BlueSolAsoc.Fom_Meniuri
         ClassDataSet CheltuieliDS = new ClassDataSet();
         private string denumireAsociatie;
         private int idAsociatie;
+       
 
         public cheltuieli_plati(string denumireAsociatie, int idAsociatie)
         {
@@ -25,26 +26,33 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.denumireAsociatie = denumireAsociatie;
             this.idAsociatie = idAsociatie;
             DataCurenta.Value = System.DateTime.Now;
-            btnSalveazaCheltuieli.Visible = false;
-            btnAnuleazaCheltuieli.Visible = false;
-            btnModificaCheltuieli.Visible = false;
-            btnStergeCheltuieli.Visible = false;
+            btnSalveazaCheltuieli.Visible = true;
+            btnAnuleazaCheltuieli.Visible = true;
+            btnModificaCheltuieli.Visible = true;
+            btnStergeCheltuieli.Visible = true;
            
             // de adaugat un array
         }
 
+
        
-     
+
+
+
 
         private void cheltuieli_plati_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'cheltuieliDS1.mv_Documente' table. You can move, or remove it, as needed.
             this.mv_DocumenteTableAdapter.Fill(this.cheltuieliDS1.mv_Documente);
-            AfisareGridFacturi(0);            
+                       
             extrageTabelaTree();
             treeDistribuieCheltuiala.ExpandAll();
-            noduriSelectate(treeDistribuieCheltuiala.Nodes);
+            AfisareGridFacturi(0);//istoric facturi
+            AdaugareFacturi(0);//
+            ClassButon distribuieCheltuiala = new ClassButon(); 
         }
+     
+        // metoda de afisare grid facturi existente  si tabelul din dataset 
         public void AfisareGridFacturi(int id_antet)
         {
 
@@ -53,53 +61,90 @@ namespace BlueSolAsoc.Fom_Meniuri
             {
                 CheltuieliDS.Tables.Remove("IstoricFacturi");
             }
-            CheltuieliDS.getSetFrom("select * from mv_IstoricDocumente where id_asociere=44 and id_org=" + idAsociatie , "IstoricFacturi");
-          
+            CheltuieliDS.getSetFrom("select * from mv_IstoricDocumente where id_asociere=44 and id_org=" + idAsociatie, "IstoricFacturi");
+            GridFacturi.DataSource = CheltuieliDS.Tables["IstoricFacturi"];
 
             if (!(CheltuieliDS.Tables["mv_tabelParteneri"] is null))
             {
                 CheltuieliDS.Tables.Remove("mv_tabelParteneri");
-            }            
+            }
             CheltuieliDS.getSetFrom("select * from mv_tabelParteneri  where  id_master =" + idAsociatie, "mv_tabelParteneri");
             comboBoxParteneri.DataSource = CheltuieliDS.Tables["mv_tabelParteneri"];
             comboBoxParteneri.ValueMember = "id_org";
             comboBoxParteneri.DisplayMember = "Denumire";
 
-            // verific daca au fost adaugati parteneri
-            if(CheltuieliDS.Tables["mv_tabelParteneri"].Rows.Count==0)
+            // verific daca au fost adaugati parteneri pentru a notifica utilizatorul ca trebuie sa introduca mai intai unul
+            if (CheltuieliDS.Tables["mv_tabelParteneri"].Rows.Count == 0)
             {
-                DialogResult result = MessageBox.Show("Nu aveti parteneri definiti pentru asociatia curenta! " , "Notificare", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+                DialogResult result = MessageBox.Show("Nu aveti parteneri definiti pentru asociatia curenta! ", "Notificare", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
                 if (result == DialogResult.OK)
                 {
                     MessageBox.Show("Trebuie sa mergeti la Structura Asociatie, tabul de Parteneri pentru a defini unul!", "notificare", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-           
-
-            //creare tabel pentru afisare grid
-            if (!(CheltuieliDS.Tables["TabelDocumente"] is null))
-            {
-                CheltuieliDS.Tables.Remove("TabelDocumente");
-            }
-            // variabila pentru a_id_antet
-            CheltuieliDS.getSetFrom("select * from mv_Documente where a_id_asociere=44 and a_id_antet="+ id_antet, "TabelDocumente");
-            GridPozitiiFactura.DataSource = CheltuieliDS.Tables["TabelDocumente"];
-            CheltuieliDS.Tables["TabelDocumente"].Columns["a_id_org"].DefaultValue = idAsociatie;
-            CheltuieliDS.Tables["TabelDocumente"].Columns["a_id_asociere"].DefaultValue = 44;
-            GridPozitiiFactura.AllowUserToAddRows = true;
-            //creare dataTable in dataset pentru afisarea din lista de cheltuieli
-            if (!(CheltuieliDS.Tables["denumiri_cheltuieli"] is null))
-            {
-                CheltuieliDS.Tables.Remove("denumiri_cheltuieli");
-            }
-            CheltuieliDS.getSetFrom("select * from tabela_asocieri_tipuri where id_tip=15 ", "denumiri_cheltuieli");
-            DataGridViewComboBoxColumn abc = (DataGridViewComboBoxColumn)this.GridPozitiiFactura.Columns["p_id_asociere"];
-            abc.DataSource = CheltuieliDS.Tables["denumiri_cheltuieli"];
-            abc.ValueMember = "id_asociere";
-            abc.DisplayMember = "val_label";
-
-
         }
+            // metoda afisare elemente din stanga treeview
+            public void AdaugareFacturi(int idAntet)
+            {
+
+                //creare tabel pentru afisare grid
+                if (!(CheltuieliDS.Tables["TabelDocumente"] is null))
+                {
+                    CheltuieliDS.Tables.Remove("TabelDocumente");
+                }
+                // variabila pentru a_id_antet
+                CheltuieliDS.getSetFrom("select * from mv_Documente where a_id_asociere=44 and a_id_antet=" + idAntet, "TabelDocumente");
+                if (!(CheltuieliDS.Tables["TabelRepartizare"] is null))
+                {
+                    CheltuieliDS.Tables.Remove("TabelRepartizare");
+                }
+                CheltuieliDS.getSetFrom("select * from mv_antet_repartizare where id_antet =" + idAntet, "TabelRepartizare");
+            // trebuie eliminate orice urma de doc anterior atat din casete cat si din tree
+
+            //dupa golire verific tabela preluata din repartizari
+            // parcurgere tree din parinte catre ultimul copil si dau check la casetele respective
+
+                GridPozitiiFactura.DataSource = CheltuieliDS.Tables["TabelDocumente"];
+                CheltuieliDS.Tables["TabelDocumente"].Columns["a_id_org"].DefaultValue = idAsociatie;
+                CheltuieliDS.Tables["TabelDocumente"].Columns["a_id_asociere"].DefaultValue = 44;
+                GridPozitiiFactura.AllowUserToAddRows = true;
+                //creare dataTable in dataset pentru afisarea din lista de cheltuieli
+                if (!(CheltuieliDS.Tables["denumiri_cheltuieli"] is null))
+                {
+                    CheltuieliDS.Tables.Remove("denumiri_cheltuieli");
+                }
+                CheltuieliDS.getSetFrom("select * from tabela_asocieri_tipuri where id_tip=15 ", "denumiri_cheltuieli");
+                DataGridViewComboBoxColumn abc = (DataGridViewComboBoxColumn)this.GridPozitiiFactura.Columns["p_id_asociere"];
+                abc.DataSource = CheltuieliDS.Tables["denumiri_cheltuieli"];
+                abc.ValueMember = "id_asociere";
+                abc.DisplayMember = "val_label";
+
+
+            }
+        public void CurataTextBox()
+        {
+           
+            DataCurenta.Value = System.DateTime.Now; //valoarea pntru data
+            // 
+            //if (!(CheltuieliDS.Tables["mv_tabelParteneri"] is null))
+            //{
+            //    CheltuieliDS.Tables.Remove("mv_tabelParteneri");
+            //}
+            //CheltuieliDS.getSetFrom("select * from mv_tabelParteneri  where  id_master =" + idAsociatie, "mv_tabelParteneri");
+            //comboBoxParteneri.DataSource = CheltuieliDS.Tables["mv_tabelParteneri"];
+            //comboBoxParteneri.ValueMember = "id_org";
+            //comboBoxParteneri.DisplayMember = "Denumire";
+          
+            seriaFactura.Text = "";
+            numarFactura.Text = "";
+            sumaFactura.Text = "";
+            treeDistribuieCheltuiala.ExpandAll();
+            AfisareGridFacturi(0);
+            AdaugareFacturi(0);
+            treeDistribuieCheltuiala.Nodes[0].Checked = false;
+        }
+        
+        
 
         public void inserareValoriInGridFactura()
         {
@@ -111,7 +156,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                     int partener = (int)comboBoxParteneri.SelectedValue; ;
                     int id_antet = 0; 
                     int id_pozitie = 0; 
-                    int id_temporar = 0;
+                    Guid id_temporar = Guid.NewGuid();
                     string numar = numarFactura.Text;
                     string serie = seriaFactura.Text;
                     string suma = sumaFactura.Text;
@@ -127,7 +172,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                     row["p_id_cota_tva"] = cota_tva;                   
                     row["a_id_temporar"] = id_temporar;
                     row["a_id_org"] = idAsociatie;
-                    row["a_id_asociere"] = 43;
+                    row["a_id_asociere"] = 44;
                    
                 }
                 MessageBox.Show("uraa", "am inserat");
@@ -145,13 +190,15 @@ namespace BlueSolAsoc.Fom_Meniuri
         {
 
         }
-
+        //salvare doc sau update
         private void btnSalveazaCheltuieli_Click(object sender, EventArgs e)
         {
-            inserareValoriInGridFactura();          
-            CheltuieliDS.TransmiteActualizari("TabelDocumente", "mv_Documente");           
+            
+            
+
         }
 
+        // metoda care verifica nodurile dupa bifarea casutei check
         private void treeView1_AfterCheck(object sender, TreeViewEventArgs e)
         {
             try
@@ -169,6 +216,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                 e.Node.TreeView.EndUpdate();
             }
         }
+        // fiecare copil care tine de un parinte checked este bifat sau debifat in bloc
         private void CheckedOrUnCheckedNodes(TreeNode parentNode, TreeNodeCollection nodes)
         {
             if (nodes.Count > 0)
@@ -181,30 +229,25 @@ namespace BlueSolAsoc.Fom_Meniuri
             }
         }
 
-        private void distribuieCheltuiala_Click(object sender, EventArgs e)
-        {
-            treeDistribuieCheltuiala.Visible = true;
-            btnSalveazaCheltuieli.Visible=true;
-            btnAnuleazaCheltuieli.Visible = true;
-           
-          
-           
-        }
+        
+        List<TreeNode> listaDistribuieCheltuiala = new List<TreeNode>();
 
         public void noduriSelectate(TreeNodeCollection nodes)
         {
             //int countIndex = 0;
             
-            string selectedNode = "Noduri selectate : ";
+           // string selectedNode = "Noduri selectate : ";
             foreach (TreeNode myNode in nodes)
             {
                 // verific daca nodul este selectat
                 if (myNode.Checked)
                 {
+                    listaDistribuieCheltuiala.Add(myNode);
                     // schimb culoarea nodului si il adaug in string
-                    myNode.BackColor = Color.Aquamarine;
-                    //adaugare in arrayul definit in 
-                    selectedNode += myNode.Text + " " + "\r\n";
+                   // myNode.BackColor = Color.Aquamarine;
+                    
+                   //verifica existenta bifarii in view si si asta trebuie sa se intoarca in tree
+                   // selectedNode += myNode.Text + " " + "\r\n";
                   // countIndex++;
                 }
                 
@@ -219,46 +262,7 @@ namespace BlueSolAsoc.Fom_Meniuri
         }
 
        
-
-      
-        private void GetTreeviewItems()
-        {
-            if (!(CheltuieliDS.Tables["TabelAfisareTree"] is null))
-            {
-                CheltuieliDS.Tables.Remove("TabelAfisareTree");
-            }
-            CheltuieliDS.getSetFrom("select * from mv_org_pt_repartizare where org_id_master<>0 and id_asociatie=" + idAsociatie, "TabelAfisareTree");
-           CheltuieliDS.Relations.Add("ChildRows", CheltuieliDS.Tables["TabelAfisareTree"].Columns["org_id_org"], CheltuieliDS.Tables["TabelAfisareTree"].Columns["org_id_master"]);
-           // CheltuieliDS.Relations.Add("testRelatie",)
-
-            foreach (DataRow nivel1 in CheltuieliDS.Tables["TabelAfisareTree"].Rows)
-            {
-                if ((nivel1["org_id_master"].ToString())=="0")
-                {
-                    TreeNode nodeParinte = new TreeNode();
-                    nodeParinte.Text = nivel1["org_valoare"].ToString();                    
-                    treeDistribuieCheltuiala.Nodes.Add(nodeParinte);
-                    GetChildRows(nivel1, nodeParinte);
-                }
-            }           
-        }
-
-        private void GetChildRows (DataRow datarow, TreeNode treenode)
-        {
-            DataRow[] childRows = datarow.GetChildRows("ChildRows");
-            //string expresie = "select * from tabel tabelExtragere where org_id_org = org_id_master";
-            // DataRow[] childRows = CheltuieliDS.Tables["TabelAfisareTree"].Select(expresie);
-            foreach (DataRow childRow in childRows)
-            {
-                TreeNode childTreeNode = new TreeNode();
-                childTreeNode.Text = childRow["org_valoare"].ToString();
-                treenode.Nodes.Add(childTreeNode);
-                if (childRow.GetChildRows("ChildRows").Length > 0)
-                {
-                    GetChildRows(childRow, childTreeNode);
-                }
-            }
-        }
+        // crearea tabelei pentru afisare in tree
         private void extrageTabelaTree()
         {
             if (!(CheltuieliDS.Tables["TabelAfisareTree"] is null))
@@ -270,7 +274,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             string valoare = CheltuieliDS.Tables["TabelAfisareTree"].Rows[0]["org_valoare"].ToString();
             GetTreeItemsNou(id_org, valoare, treeDistribuieCheltuiala.Nodes);
         }
-
+        // metoda care returnea toate elementele copil pentru nodul selectat
         private void GetTreeItemsNou(int idOrg, string valoare , TreeNodeCollection parinteNod)
         {
            TreeNode copil =new TreeNode();
@@ -287,6 +291,96 @@ namespace BlueSolAsoc.Fom_Meniuri
 
 
 
+        }
+        // schimbarea textului de pe butonul distribuie cheltuiala cand treci cu mouseul peste
+        private void distribuieCheltuiala_MouseHover(object sender, EventArgs e)
+        {    
+                distribuieCheltuiala.Text = "Bifeaza cel putin  o casuta !";         
+ 
+        }
+        // afisarea textului de pe butonul distribuie cheltuiala la 
+        private void distribuieCheltuiala_MouseLeave(object sender, EventArgs e)
+        {
+            distribuieCheltuiala.Text = "Distribuie Cheltuiala";
+        }
+
+        private void btnModificaCheltuieli_Click(object sender, EventArgs e)
+        {
+            btnModificaCheltuieli.Visible = false;
+            if (btnModificaCheltuieli.Visible == false)
+            {
+                
+            }else
+                MessageBox.Show("Pentru a modifica selecteaza un rand apoi apasa butonul MODIFICA");
+
+        }
+
+        private void GridFacturi_DoubleClick(object sender, EventArgs e)
+        {
+            if (btnModificaCheltuieli.Visible == false) { 
+
+                foreach (DataGridViewRow row in GridFacturi.SelectedRows)
+                {
+                    int id_antet = Convert.ToInt32(row.Cells[0].Value);
+                    numarFactura.Text = (row.Cells[1].Value).ToString();
+                    seriaFactura.Text = (row.Cells[2].Value).ToString();
+                    DataCurenta.Value = Convert.ToDateTime(row.Cells[3].Value);
+                    int idPartener = int.Parse((row.Cells[4].Value).ToString());
+
+                    if (!(CheltuieliDS.Tables["DenumirePartenerSelectat"] is null))
+                    {
+                        CheltuieliDS.Tables.Remove("DenumirePartenerSelectat");
+                    }
+                    CheltuieliDS.getSetFrom("select id_org,Denumire from mv_tabelParteneri where id_org= " + idPartener, "DenumirePartenerSelectat");
+                    comboBoxParteneri.DataSource = CheltuieliDS.Tables["DenumirePartenerSelectat"];
+                    comboBoxParteneri.ValueMember = "id_org";
+                    comboBoxParteneri.DisplayMember ="Denumire";
+                    //comboBoxParteneri.SelectedItem = CheltuieliDS.Tables["DenumirePartenerSelectat"].Rows[0]["Denumire"];
+                    // comboBoxParteneri.Text = "mARIAN";//CheltuieliDS.Tables["mv_tabelParteneri"].Rows[0]["id_org"].ToString();
+                
+                    sumaFactura.Text = (row.Cells[7].Value).ToString();                        
+                
+                    AdaugareFacturi(id_antet);                   
+                }
+            }
+            else
+                MessageBox.Show("Pentru a modifica apasa butonul MODIFICA");
+        }
+
+        private void btnSalveazaCheltuieli_Click_1(object sender, EventArgs e)
+        {
+            noduriSelectate(treeDistribuieCheltuiala.Nodes);
+            if (seriaFactura.Text == "" || numarFactura.Text == "" || sumaFactura.Text == "")
+            {
+                MessageBox.Show("Nu nu poti salva Cheltuiala fara a trece serie, nr si suma", "Notificare", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                if (listaDistribuieCheltuiala.Count > 0)// verific daca a fost selectat cel putin un element in treeView
+                {
+                    inserareValoriInGridFactura();
+                    CheltuieliDS.TransmiteActualizari("TabelDocumente", "mv_Documente");
+                    // creez var pt id-temporar din mv_documente si o inserez in mv_antet_repartizare
+                    // sa parcurg tot treeul nod cu nod si in tabela de repartizare , pentru ficare nod extrag tagul si fac o cautare in tabela de reparttizare pe id-org
+                    //1 in tabela tag exista - adica am gasit o linie
+                    //1.1 nodul curent sa fie selectat - nu fac nimic
+                    //1.2 nodul curent nu este selectat in tree - linia aia trebuie stearsa din tabela de repartizare
+
+                    //2 in tabela nu exista linie
+                    //2.1 nodul curent sa fie selectat - trebuie sa inserez o linie in tabela cu id_o rg pt ele
+                    //2.2 nodul curent nu este selectat in tree - nu fac nimic
+                    
+                    CheltuieliDS.TransmiteActualizari("mv_antet_repartizare");
+                    listaDistribuieCheltuiala.Clear();
+                    CurataTextBox();
+                }
+                else
+                {
+                    MessageBox.Show("Nu ai selectat nimic din TreeView Distribuie Cheltuiala" + "r\n" + "Trebuie sa alegi cel putin o entitate!", "Notificare", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+
+            btnModificaCheltuieli.Visible = true;
         }
     }
 }

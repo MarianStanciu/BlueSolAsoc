@@ -88,9 +88,9 @@
             this.mvIstoricDocumenteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panelButoaneCheltuieli = new System.Windows.Forms.Panel();
             this.btnAnuleazaCheltuieli = new System.Windows.Forms.Button();
-            this.btnSalveazaCheltuieli = new System.Windows.Forms.Button();
             this.btnStergeCheltuieli = new BlueSolAsoc.butoane_si_controale.ClassButonInteriorSterge();
             this.btnModificaCheltuieli = new BlueSolAsoc.butoane_si_controale.ClassButonModifica();
+            this.btnSalveazaCheltuieli = new System.Windows.Forms.Button();
             this.mv_IstoricDocumenteTableAdapter = new BlueSolAsoc.CheltuieliDSTableAdapters.mv_IstoricDocumenteTableAdapter();
             this.mvIstoricDocumenteBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.mvDocumenteBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -197,6 +197,7 @@
             this.GridFacturi.RowTemplate.Height = 24;
             this.GridFacturi.Size = new System.Drawing.Size(169, 517);
             this.GridFacturi.TabIndex = 62;
+            this.GridFacturi.DoubleClick += new System.EventHandler(this.GridFacturi_DoubleClick);
             // 
             // idantetDataGridViewTextBoxColumn1
             // 
@@ -314,7 +315,8 @@
             this.distribuieCheltuiala.TabIndex = 8;
             this.distribuieCheltuiala.Text = "Distribuie Cheltuiala";
             this.distribuieCheltuiala.UseVisualStyleBackColor = false;
-            this.distribuieCheltuiala.Click += new System.EventHandler(this.distribuieCheltuiala_Click);
+            this.distribuieCheltuiala.MouseLeave += new System.EventHandler(this.distribuieCheltuiala_MouseLeave);
+            this.distribuieCheltuiala.MouseHover += new System.EventHandler(this.distribuieCheltuiala_MouseHover);
             // 
             // treeDistribuieCheltuiala
             // 
@@ -329,7 +331,6 @@
             this.treeDistribuieCheltuiala.Size = new System.Drawing.Size(206, 467);
             this.treeDistribuieCheltuiala.TabIndex = 7;
             this.treeDistribuieCheltuiala.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterCheck);
-         
             // 
             // Panel_FACTURA
             // 
@@ -736,9 +737,9 @@
             this.panelButoaneCheltuieli.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelButoaneCheltuieli.Controls.Add(this.btnAnuleazaCheltuieli);
-            this.panelButoaneCheltuieli.Controls.Add(this.btnSalveazaCheltuieli);
             this.panelButoaneCheltuieli.Controls.Add(this.btnStergeCheltuieli);
             this.panelButoaneCheltuieli.Controls.Add(this.btnModificaCheltuieli);
+            this.panelButoaneCheltuieli.Controls.Add(this.btnSalveazaCheltuieli);
             this.panelButoaneCheltuieli.Location = new System.Drawing.Point(863, 38);
             this.panelButoaneCheltuieli.Margin = new System.Windows.Forms.Padding(2);
             this.panelButoaneCheltuieli.Name = "panelButoaneCheltuieli";
@@ -755,24 +756,9 @@
             this.btnAnuleazaCheltuieli.Margin = new System.Windows.Forms.Padding(2);
             this.btnAnuleazaCheltuieli.Name = "btnAnuleazaCheltuieli";
             this.btnAnuleazaCheltuieli.Size = new System.Drawing.Size(128, 152);
-            this.btnAnuleazaCheltuieli.TabIndex = 9;
+            this.btnAnuleazaCheltuieli.TabIndex = 13;
             this.btnAnuleazaCheltuieli.Text = "ANULEAZA";
             this.btnAnuleazaCheltuieli.UseVisualStyleBackColor = false;
-            // 
-            // btnSalveazaCheltuieli
-            // 
-            this.btnSalveazaCheltuieli.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btnSalveazaCheltuieli.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnSalveazaCheltuieli.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSalveazaCheltuieli.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalveazaCheltuieli.Location = new System.Drawing.Point(0, 304);
-            this.btnSalveazaCheltuieli.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSalveazaCheltuieli.Name = "btnSalveazaCheltuieli";
-            this.btnSalveazaCheltuieli.Size = new System.Drawing.Size(128, 152);
-            this.btnSalveazaCheltuieli.TabIndex = 8;
-            this.btnSalveazaCheltuieli.Text = "SALVEAZA";
-            this.btnSalveazaCheltuieli.UseVisualStyleBackColor = false;
-            this.btnSalveazaCheltuieli.Click += new System.EventHandler(this.btnSalveazaCheltuieli_Click);
             // 
             // btnStergeCheltuieli
             // 
@@ -780,11 +766,11 @@
             this.btnStergeCheltuieli.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnStergeCheltuieli.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStergeCheltuieli.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStergeCheltuieli.Location = new System.Drawing.Point(0, 152);
+            this.btnStergeCheltuieli.Location = new System.Drawing.Point(0, 304);
             this.btnStergeCheltuieli.Margin = new System.Windows.Forms.Padding(2);
             this.btnStergeCheltuieli.Name = "btnStergeCheltuieli";
             this.btnStergeCheltuieli.Size = new System.Drawing.Size(128, 152);
-            this.btnStergeCheltuieli.TabIndex = 7;
+            this.btnStergeCheltuieli.TabIndex = 12;
             this.btnStergeCheltuieli.Text = "STERGE";
             this.btnStergeCheltuieli.UseVisualStyleBackColor = false;
             // 
@@ -794,13 +780,29 @@
             this.btnModificaCheltuieli.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnModificaCheltuieli.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModificaCheltuieli.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificaCheltuieli.Location = new System.Drawing.Point(0, 0);
+            this.btnModificaCheltuieli.Location = new System.Drawing.Point(0, 152);
             this.btnModificaCheltuieli.Margin = new System.Windows.Forms.Padding(2);
             this.btnModificaCheltuieli.Name = "btnModificaCheltuieli";
             this.btnModificaCheltuieli.Size = new System.Drawing.Size(128, 152);
-            this.btnModificaCheltuieli.TabIndex = 6;
+            this.btnModificaCheltuieli.TabIndex = 11;
             this.btnModificaCheltuieli.Text = "MODIFICA";
             this.btnModificaCheltuieli.UseVisualStyleBackColor = false;
+            this.btnModificaCheltuieli.Click += new System.EventHandler(this.btnModificaCheltuieli_Click);
+            // 
+            // btnSalveazaCheltuieli
+            // 
+            this.btnSalveazaCheltuieli.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnSalveazaCheltuieli.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSalveazaCheltuieli.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalveazaCheltuieli.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalveazaCheltuieli.Location = new System.Drawing.Point(0, 0);
+            this.btnSalveazaCheltuieli.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSalveazaCheltuieli.Name = "btnSalveazaCheltuieli";
+            this.btnSalveazaCheltuieli.Size = new System.Drawing.Size(128, 152);
+            this.btnSalveazaCheltuieli.TabIndex = 10;
+            this.btnSalveazaCheltuieli.Text = "SALVEAZA";
+            this.btnSalveazaCheltuieli.UseVisualStyleBackColor = false;
+            this.btnSalveazaCheltuieli.Click += new System.EventHandler(this.btnSalveazaCheltuieli_Click_1);
             // 
             // mv_IstoricDocumenteTableAdapter
             // 
@@ -870,10 +872,6 @@
         private butoane_si_controale.ClassButonInteriorSterge classButonInteriorSterge1;
         private butoane_si_controale.ClassButonModifica classButonModifica1;
         private System.Windows.Forms.Panel panelButoaneCheltuieli;
-        private System.Windows.Forms.Button btnAnuleazaCheltuieli;
-        private System.Windows.Forms.Button btnSalveazaCheltuieli;
-        private butoane_si_controale.ClassButonInteriorSterge btnStergeCheltuieli;
-        private butoane_si_controale.ClassButonModifica btnModificaCheltuieli;
         private System.Windows.Forms.BindingSource mvIstoricDocumenteBindingSource;
         private CheltuieliDSTableAdapters.mv_IstoricDocumenteTableAdapter mv_IstoricDocumenteTableAdapter;
         private butoane_si_controale.ClassLabel classLabel7;
@@ -942,5 +940,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn aidtemporarDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn aidorgDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn aidasociereDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button btnAnuleazaCheltuieli;
+        private butoane_si_controale.ClassButonInteriorSterge btnStergeCheltuieli;
+        private butoane_si_controale.ClassButonModifica btnModificaCheltuieli;
+        private System.Windows.Forms.Button btnSalveazaCheltuieli;
     }
 }
