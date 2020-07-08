@@ -32,40 +32,8 @@ namespace BlueSolAsoc.Fom_Meniuri
             //DataTable TabelaLabelValoare = dataSetVenituriIncasari1.Tables[0];
             
             //Pentru fiecare linie din tabela de incasari adaug o linie in view-ul documente cu id_asociere completat conform tipului de incasare
-            DataSetVenituriIncasari.getSetFrom("select * from mv_IstoricDocumente","mv_IstoricDocumente");
+            DataSetVenituriIncasari.getSetFrom("select * from mv_IstoricDocumente where id_asociere=43","mv_IstoricDocumente");
             DataTable TabelaIstoricDocumente = DataSetVenituriIncasari.Tables["mv_IstoricDocumente"];
-            // count de coloane tipuriIncasari
-           
-            //TabelaTipuriIncasari.Columns.Add("Valoare");
-            //vVenituriIncasari - denumire tabel initial
-            //int id_asociere_tabela_tipuri = TabelaTipuriIncasari.Rows[0];
-            //int numarcoloane = TabelaTipuriIncasari.Columns.Count;
-            /* for (int i = 0; i < TabelaTipuriIncasari.Columns.Count; i++) {*/
-            // Parcurgere tabela tipuri si stocare val in string valoareid
-            //adaugare rand gol
-            //parcurgere randuri goale
-
-            //TabelaLabelValoare.Rows.RemoveAt(TabelaLabelValoare.Rows.Count+1);
-
-
-            // if randvenituri idasoc = gol
-            //}
-
-            /*    foreach (DataRow row in TabelaTipuriIncasari.Rows)
-                {
-                   // string valoareid = row["id_asociere"].ToString();
-                    TabelaVenituriIncasari.Rows.Add();
-
-                }
-                foreach (DataRow randvenituri in TabelaVenituriIncasari.Rows)
-                {
-                string valoareid = row["id_asociere"].ToString();
-                randvenituri["id_asociere"] = valoareid;
-                }*/
-
-
-            
-
            
             dataGridView2.DataSource = TabelaIstoricDocumente;
 
@@ -107,7 +75,11 @@ namespace BlueSolAsoc.Fom_Meniuri
             DataTable TabelaVenituriIncasari = DataSetVenituriIncasari.Tables["mv_Documente"]; // Creare Tabel pe baza selectiei anterioare
             if (TabelaVenituriIncasari.Rows.Count==0) // Daca suntem la inserare se executa
             {
-                DataSetVenituriIncasari.getSetFrom("select top 1 nr_doc from tabela_antet where id_org=" + idAsociatie + " order by id_antet desc", "nrChitanta");
+                if(!(DataSetVenituriIncasari.Tables["nrChitanta"] is null))
+                {
+                    DataSetVenituriIncasari.Tables.Remove("nrChitanta");
+                }
+                DataSetVenituriIncasari.getSetFrom("select top 1 nr_doc from tabela_antet where id_org=" + idAsociatie + " and id_asociere=43 order by id_antet desc", "nrChitanta");
                 DataTable nrChitanta = DataSetVenituriIncasari.Tables["nrChitanta"];
                 
                 if (nrChitanta.Rows.Count != 0)
@@ -166,9 +138,9 @@ namespace BlueSolAsoc.Fom_Meniuri
         private void venituri_incasari_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'proba_transareDataSet3.mv_IstoricDocumente' table. You can move, or remove it, as needed.
-            this.mv_IstoricDocumenteTableAdapter.Fill(this.proba_transareDataSet3.mv_IstoricDocumente);
+            //this.mv_IstoricDocumenteTableAdapter.Fill(this.proba_transareDataSet3.mv_IstoricDocumente);
             // TODO: This line of code loads data into the 'dataSetVenituriIncasari1.mv_Documente' table. You can move, or remove it, as needed.
-            this.mv_DocumenteTableAdapter.Fill(this.dataSetVenituriIncasari1.mv_Documente);
+            //this.mv_DocumenteTableAdapter.Fill(this.dataSetVenituriIncasari1.mv_Documente);
             /*  // TODO: This line of code loads data into the 'dataSetVenituriIncasari1.vVenituriIncasari' table. You can move, or remove it, as needed.
               this.vVenituriIncasariTableAdapter.Fill(this.dataSetVenituriIncasari1.vVenituriIncasari);
               // TODO: This line of code loads data into the 'proba_transareDataSet1.tabela_pozitii' table. You can move, or remove it, as needed.
@@ -201,9 +173,7 @@ namespace BlueSolAsoc.Fom_Meniuri
            
             sdr.Close();
 
-            SqlCommand comandatextbox = new SqlCommand("select top 1 nr_doc from tabela_antet order by id_antet desc", cnn);
-            int numardocument = Convert.ToInt32(comandatextbox.ExecuteScalar())+1;
-            TextBoxNrDoc.Text = numardocument.ToString();
+            
 
             cnn.Close();
 
@@ -222,18 +192,11 @@ namespace BlueSolAsoc.Fom_Meniuri
 
         private void ButtonSalvareOK()
         {
-          
-
-            // Aducere tabela goala in DataSet / simulare false 1!=1 / Completare tabela goala -> upload in baza date
-
             DataTable TabelaVenituriIncasari = DataSetVenituriIncasari.Tables["mv_Documente"];
 
-            /*     for (int i = 0; i <= TabelaVenituriIncasari.Rows.Count; i++)
-                 {
-                     id_asociere = Convert.ToInt32(TabelaVenituriIncasari.Rows[i]["id_asociere"].ToString());
+            Guid id_temporar = Guid.NewGuid();
+            // Aducere tabela goala in DataSet / simulare false 1!=1 / Completare tabela goala -> upload in baza date
 
-                 }*/
-            // int id_asociere = idasoc;
             string[] StringInfo = textBoxApartamente.Text.Split('/');
             
             if (!(textBoxApartamente.AutoCompleteCustomSource.Contains(textBoxApartamente.Text))^(TextBoxNrDoc.Text=="")^(TextBoxSerieDoc.Text==""))
@@ -254,58 +217,115 @@ namespace BlueSolAsoc.Fom_Meniuri
             }
             else
             {
-                foreach (DataRow row in TabelaVenituriIncasari.Rows)
+              //  int i;
+                //for (i = 1; i < dataGridView1.RowCount; i++)
+                //{
+                    foreach (DataRow row in TabelaVenituriIncasari.Rows)
+                    {
+                    
+                        string data = dateTimePicker1.Value.Date.ToString("yyyy/MM/dd");
+                        // string[] StringInfo = textBoxApartamente.Text.Split('/');
+                        string idProprietar = StringInfo[4].ToString().TrimStart();
+                        int id_antet = 0; // de preluat
+                        int id_pozitie = 0; // de preluat
+
+                        //int id_temporar = 0;
+                        string NR_DOC = TextBoxNrDoc.Text;
+                        string SERIE = TextBoxSerieDoc.Text;
+                        //int id_asociere
+                        string pret = TextBoxPret.Text;
+
+
+
+
+                        if (TabelaVenituriIncasari.Rows[0]["p_pret"].ToString() == "")
+                        {
+                            //pret = TextBoxPret.Text; // Caseta SUMA
+                            pret = (dataGridView1.Rows[0].Cells["coloana_suma"].Value).ToString();
+                    }
+                        //else
+                        if(TabelaVenituriIncasari.Rows[0]["p_pret"].ToString() != "")
+                        {
+                            pret = (dataGridView1.Rows[1].Cells["coloana_suma"].Value).ToString();
+
+                        }
+                        if(TabelaVenituriIncasari.Rows[0]["p_pret"].ToString() != "" && TabelaVenituriIncasari.Rows[1]["p_pret"].ToString() != "")
+                        {
+                        pret = (dataGridView1.Rows[2].Cells["coloana_suma"].Value).ToString();
+                        }
+                        int cantitate = 1;
+                        int cota_tva = 1;
+                        Double suma = Convert.ToDouble(pret) * cantitate;
+
+
+                        row["a_id_antet"] = id_antet;
+                        row["a_nr_doc"] = NR_DOC;
+                        row["a_serie"] = SERIE;
+                        row["a_data"] = data;
+                        row["p_id_pozitie"] = id_pozitie;
+                        row["a_id_partener"] = idProprietar;
+                        row["p_pret"] = pret;
+                        row["p_cantitate"] = cantitate;
+                        row["p_id_cota_tva"] = cota_tva;
+                        row["p_valoare"] = suma;
+                        row["a_id_temporar"] = id_temporar;
+                        row["a_id_org"] = idAsociatie;
+                        row["a_id_asociere"] = 43;
+                        //row["id_TipDocument"] = 0; 
+                        //row["tipDocument"] = 0;
+                    }
+                //}
+                int total = Convert.ToInt32(TextBoxPret.Text);
+                int intretinere = Convert.ToInt32(dataGridView1.Rows[0].Cells["coloana_suma"].Value);
+                int penalitati = Convert.ToInt32(dataGridView1.Rows[1].Cells["coloana_suma"].Value);
+                int fond_rulment = Convert.ToInt32(dataGridView1.Rows[2].Cells["coloana_suma"].Value);
+
+                if ((intretinere + penalitati + fond_rulment) != total)
                 {
-                    string data = dateTimePicker1.Value.Date.ToString("yyyy/MM/dd");
-                    // string[] StringInfo = textBoxApartamente.Text.Split('/');
-                    string idProprietar = StringInfo[4].ToString().TrimStart();
-                    int id_antet = 0; // de preluat
-                    int id_pozitie = 0; // de preluat
-                    int id_temporar = 0;
-                    string NR_DOC = TextBoxNrDoc.Text;
-                    string SERIE = TextBoxSerieDoc.Text;
-                    //int id_asociere
-                    string pret = TextBoxPret.Text;
-                    if (TabelaVenituriIncasari.Rows[0]["p_pret"].ToString() == "")
-                    {
-                        pret = TextBoxPret.Text; // Caseta SUMA
-                    }
-                    else
-                    {
-                        pret = "0";
-
-                    }
-                    int cantitate = 1;
-                    int cota_tva = 1;
-                    int suma = Convert.ToInt16(pret) * cantitate;
-
-
-                    row["a_id_antet"] = id_antet;
-                    row["a_nr_doc"] = NR_DOC;
-                    row["a_serie"] = SERIE;
-                    row["a_data"] = data;
-                    row["p_id_pozitie"] = id_pozitie;
-                    row["a_id_partener"] = idProprietar;
-                    row["p_pret"] = pret;
-                    row["p_cantitate"] = cantitate;
-                    row["p_id_cota_tva"] = cota_tva;
-                    row["p_valoare"] = suma;
-                    row["a_id_temporar"] = id_temporar;
-                    row["a_id_org"] = idAsociatie;
-                    row["a_id_asociere"] = 43;
-                    //row["id_TipDocument"] = 0; 
-                    //row["tipDocument"] = 0;
+                    MessageBox.Show("Suma nu corespunde,verifica datele");
                 }
-              
+                else
+                {
+
+                    DataSetVenituriIncasari.TransmiteActualizari("mv_Documente", "mv_Documente");
+                    MetodaCuratare(); //metoda de curatare
+                    MetodaRefreshGridView();
+                }
+                
 
 
-                DataSetVenituriIncasari.TransmiteActualizari("mv_Documente","mv_Documente");
-                textBoxApartamente.Text = "";
-                int numardocumentactual = Convert.ToInt32(TextBoxNrDoc.Text);
-                TextBoxNrDoc.Text = (numardocumentactual + 1).ToString();
-                TextBoxPret.Text = "";
-                dataGridView1.Rows[0].Cells["coloana_suma"].Value = "";
+                //DataSetVenituriIncasari.Tables.Remove("mv_Documente");
+                ExtrageDocument(0);
+                
+                ////refresh
+                ////disrugere + refacere
+                DataTable TabelaIstoricDocumente = DataSetVenituriIncasari.Tables["mv_IstoricDocumente"];
+                dataGridView2.DataSource = TabelaIstoricDocumente;
+                ///
+                //metoda refresh verificare + select nou
+                
+                
             }
+        }
+
+        private void MetodaRefreshGridView()
+        {
+            if (!(DataSetVenituriIncasari.Tables["mv_IstoricDocumente"] is null))
+            {
+                DataSetVenituriIncasari.Tables.Remove("mv_IstoricDocumente");
+            }
+            DataSetVenituriIncasari.getSetFrom("select * from mv_IstoricDocumente where id_asociere=43", "mv_IstoricDocumente");
+            DataTable TabelaIstoricDocumente = DataSetVenituriIncasari.Tables["mv_IstoricDocumente"];
+            dataGridView2.DataSource = TabelaIstoricDocumente;
+        }
+
+        private void MetodaCuratare()
+        {
+            textBoxApartamente.Text = "";
+            int numardocumentactual = Convert.ToInt32(TextBoxNrDoc.Text);
+            TextBoxNrDoc.Text = (numardocumentactual + 1).ToString();
+            TextBoxPret.Text = "";
+            dataGridView1.Rows[0].Cells["coloana_suma"].Value = 0.0;
         }
 
           private void ButonStergere()
@@ -317,17 +337,6 @@ namespace BlueSolAsoc.Fom_Meniuri
             }
           }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-            // in tabela antet la col nr_doc se insereaza valoarea din text box-ul din ecran
-            //string nr_doc=TextBoxNrDoc.Text
-            //tabel adauga.rand = ...param anterior
-            //string serie = TextBoxSerie.Text
-            // 
-
-            // DataSetVenituriIncasari.Inserare("vVenituriIncasari");
-        }
 
         private void TextBoxPret_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -337,7 +346,9 @@ namespace BlueSolAsoc.Fom_Meniuri
                 dataGridView1.Focus();
                 dataGridView1.CurrentCell = dataGridView1.Rows[0].Cells["coloana_suma"];
                 dataGridView1.Rows[0].Cells["coloana_suma"].Value = TextBoxPret.Text;
-                
+                dataGridView1.Rows[1].Cells["coloana_suma"].Value = "0";
+                dataGridView1.Rows[2].Cells["coloana_suma"].Value = "0";
+
                 //ButtonChitanteOK_Click(sender, e);
             }
             
@@ -393,6 +404,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                     (row.Cells[7].Value)= TextBoxPret.Text;
                 }id_antet = id_antet;
                // DataSetVenituriIncasari.getSetFrom("select * from mv_Documente where a_id_antet="+id_antet, "mv_Documente2");
+
                 ButtonSalvareOK();
                 //DataSetVenituriIncasari.TransmiteActualizari("mv_Documente");
             }else

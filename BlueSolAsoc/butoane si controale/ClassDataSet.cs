@@ -100,7 +100,7 @@ namespace BlueSolAsoc.butoane_si_controale
                                 }
                                 break;
                             case "System.Guid":
-                                valoare = r[f.ColumnName].ToString();
+                                valoare = "'"+r[f.ColumnName].ToString()+"'";
                                 if (string.IsNullOrEmpty(valoare))
                                 {
                                     valoare = "";
