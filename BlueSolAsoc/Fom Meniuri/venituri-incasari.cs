@@ -239,9 +239,13 @@ namespace BlueSolAsoc.Fom_Meniuri
 
 
                         if (TabelaVenituriIncasari.Rows[0]["p_pret"].ToString() == "")
-                        {
-                            //pret = TextBoxPret.Text; // Caseta SUMA
+                        {                      
+                            
                             pret = (dataGridView1.Rows[0].Cells["coloana_suma"].Value).ToString();
+                        if (pret == "")
+                        {
+                            pret = TextBoxPret.Text; // Caseta SUMA
+                        }
                     }
                         //else
                         if(TabelaVenituriIncasari.Rows[0]["p_pret"].ToString() != "")
@@ -252,6 +256,10 @@ namespace BlueSolAsoc.Fom_Meniuri
                         if(TabelaVenituriIncasari.Rows[0]["p_pret"].ToString() != "" && TabelaVenituriIncasari.Rows[1]["p_pret"].ToString() != "")
                         {
                         pret = (dataGridView1.Rows[2].Cells["coloana_suma"].Value).ToString();
+                        }
+                        if (pret == "")
+                        {
+                        pret = "0";
                         }
                         int cantitate = 1;
                         int cota_tva = 1;
