@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -33,12 +34,7 @@ namespace BlueSolAsoc.Fom_Meniuri
            
             // de adaugat un array
         }
-
-
-       
-
-
-
+            
 
         private void cheltuieli_plati_Load(object sender, EventArgs e)
         {
@@ -99,11 +95,6 @@ namespace BlueSolAsoc.Fom_Meniuri
                     CheltuieliDS.Tables.Remove("TabelRepartizare");
                 }
                 CheltuieliDS.getSetFrom("select * from mv_antet_repartizare where id_antet =" + idAntet, "TabelRepartizare");
-            // trebuie eliminate orice urma de doc anterior atat din casete cat si din tree
-
-            //dupa golire verific tabela preluata din repartizari
-            // parcurgere tree din parinte catre ultimul copil si dau check la casetele respective
-
                 GridPozitiiFactura.DataSource = CheltuieliDS.Tables["TabelDocumente"];
                 CheltuieliDS.Tables["TabelDocumente"].Columns["a_id_org"].DefaultValue = idAsociatie;
                 CheltuieliDS.Tables["TabelDocumente"].Columns["a_id_asociere"].DefaultValue = 44;
@@ -118,9 +109,14 @@ namespace BlueSolAsoc.Fom_Meniuri
                 abc.DataSource = CheltuieliDS.Tables["denumiri_cheltuieli"];
                 abc.ValueMember = "id_asociere";
                 abc.DisplayMember = "val_label";
-
-
+            if (!(CheltuieliDS.Tables["mv_antet_repartizare"] is null))
+            {
+                CheltuieliDS.Tables.Remove("mv_antet_repartizare");
             }
+            CheltuieliDS.getSetFrom("select * from mv_antet_repartizare ", "mv_antet_repartizare");
+
+        }
+
         public void CurataTextBox()
         {
            
@@ -150,19 +146,21 @@ namespace BlueSolAsoc.Fom_Meniuri
         {
             if (CheltuieliDS.Tables["mv_tabelParteneri"].Rows.Count > 0)
             {
+                Guid id_temporar = Guid.NewGuid();
                 foreach (DataRow row in CheltuieliDS.Tables["TabelDocumente"].Rows)
                 {
                     string data = DataCurenta.Value.Date.ToString("yyyy/MM/dd");
                     int partener = (int)comboBoxParteneri.SelectedValue; ;
                     int id_antet = 0; 
                     int id_pozitie = 0; 
-                    Guid id_temporar = Guid.NewGuid();
+                   
                     string numar = numarFactura.Text;
                     string serie = seriaFactura.Text;
                     string suma = sumaFactura.Text;
                     int cota_tva = 1;
-
-
+                   
+                   
+            
                     row["a_id_antet"] = id_antet;
                     row["a_nr_doc"] = numar;
                     row["a_serie"] = serie;
@@ -173,29 +171,24 @@ namespace BlueSolAsoc.Fom_Meniuri
                     row["a_id_temporar"] = id_temporar;
                     row["a_id_org"] = idAsociatie;
                     row["a_id_asociere"] = 44;
-                   
+                    
                 }
+               
                 MessageBox.Show("uraa", "am inserat");
+                
             }
-
+           
         }
 
-       
-        private void splitContainer1_Panel1_Click(object sender, EventArgs e)
+        public Guid GenereazaCodulGuid()
         {
-
+            Guid deTransmis = (Guid)CheltuieliDS.Tables["TabelDocumente"].Rows[0]["a_id_temporar"];
+            return deTransmis; 
         }
-
-        private void splitContainer1_Panel2_Click(object sender, EventArgs e)
+        public int GenereazaIdAntet()
         {
-
-        }
-        //salvare doc sau update
-        private void btnSalveazaCheltuieli_Click(object sender, EventArgs e)
-        {
-            
-            
-
+            int idAntetDeTransmis = (int)CheltuieliDS.Tables["TabelDocumente"].Rows[0]["a_id_antet"];
+            return idAntetDeTransmis;
         }
 
         // metoda care verifica nodurile dupa bifarea casutei check
@@ -230,8 +223,8 @@ namespace BlueSolAsoc.Fom_Meniuri
         }
 
         
-        List<TreeNode> listaDistribuieCheltuiala = new List<TreeNode>();
-
+        List<TreeNode> listaDistribuieCheltuiala = new List<TreeNode>();// lista prin care verific daca exista elemente selectate in treeview
+        //metoda  care returneaza nodurile selectate
         public void noduriSelectate(TreeNodeCollection nodes)
         {
             //int countIndex = 0;
@@ -242,15 +235,8 @@ namespace BlueSolAsoc.Fom_Meniuri
                 // verific daca nodul este selectat
                 if (myNode.Checked)
                 {
-                    listaDistribuieCheltuiala.Add(myNode);
-                    // schimb culoarea nodului si il adaug in string
-                   // myNode.BackColor = Color.Aquamarine;
-                    
-                   //verifica existenta bifarii in view si si asta trebuie sa se intoarca in tree
-                   // selectedNode += myNode.Text + " " + "\r\n";
-                  // countIndex++;
-                }
-                
+                    listaDistribuieCheltuiala.Add(myNode);                   
+                }                
                 else
                 {
                     myNode.BackColor = Color.White;
@@ -260,8 +246,39 @@ namespace BlueSolAsoc.Fom_Meniuri
 
            
         }
+        //metoda care verifica fiecare nod daca a fost selectat si exista in lista si invers
+        private void ToateNodurileSelectate(TreeNodeCollection nodes)
+        {
+            // sa parcurg tot treeul nod cu nod si in tabela de repartizare , pentru ficare nod extrag tagul si fac o cautare in tabela de reparttizare pe id-org
+            //1 in tabela tag exista - adica am gasit o linie
+            //1.1 nodul curent sa fie selectat - nu fac nimic
+            //1.2 nodul curent nu este selectat in tree - linia aia trebuie stearsa din tabela de repartizare
+            foreach (TreeNode nodbifat in nodes)
+            {                
+                    int idOrg = (int)nodbifat.Tag;
+                   if( (CheltuieliDS.Tables["mv_antet_repartizare"].Select(" id_org =" + idOrg).Length > 0) && (nodbifat.Checked=false))  
+                    {
+                  //  CheltuieliDS.Tables["mv_antet_repartizare"].Rows.Remove(["id_org"] = idOrg);
+                  //sterg rand unde id-antet = var id antet si id_org
+                    }
+                //2 in tabela nu exista linie
+                //2.1 nodul curent sa fie selectat - trebuie sa inserez o linie in tabela cu id_o rg pt ele
+                //2.2 nodul curent nu este selectat in tree - nu fac nimic
+                else if ((CheltuieliDS.Tables["mv_antet_repartizare"].Select(" id_org =" + idOrg).Length == 0) && (nodbifat.Checked = true))
+                    {
+                   
+                    CheltuieliDS.Tables["mv_antet_repartizare"].Rows.Add(0, GenereazaIdAntet(), idOrg, GenereazaCodulGuid());
+                    
+                       
+                    }
+                ToateNodurileSelectate(nodbifat.Nodes);
+             }
 
-       
+
+
+         }         
+   
+
         // crearea tabelei pentru afisare in tree
         private void extrageTabelaTree()
         {
@@ -270,9 +287,9 @@ namespace BlueSolAsoc.Fom_Meniuri
                 CheltuieliDS.Tables.Remove("TabelAfisareTree");
             }
             CheltuieliDS.getSetFrom("select * from mv_org_pt_repartizare where  id_asociatie=" + idAsociatie + " order by org_id_master asc", "TabelAfisareTree");
-           int id_org= (int) CheltuieliDS.Tables["TabelAfisareTree"].Rows[0]["org_id_org"];
+           int idOrg= (int) CheltuieliDS.Tables["TabelAfisareTree"].Rows[0]["org_id_org"];
             string valoare = CheltuieliDS.Tables["TabelAfisareTree"].Rows[0]["org_valoare"].ToString();
-            GetTreeItemsNou(id_org, valoare, treeDistribuieCheltuiala.Nodes);
+            GetTreeItemsNou(idOrg, valoare, treeDistribuieCheltuiala.Nodes);
         }
         // metoda care returnea toate elementele copil pentru nodul selectat
         private void GetTreeItemsNou(int idOrg, string valoare , TreeNodeCollection parinteNod)
@@ -289,7 +306,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                 GetTreeItemsNou(idOrgCopil, valoare_copil, copil.Nodes);
             }
 
-
+        
 
         }
         // schimbarea textului de pe butonul distribuie cheltuiala cand treci cu mouseul peste
@@ -314,7 +331,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                 MessageBox.Show("Pentru a modifica selecteaza un rand apoi apasa butonul MODIFICA");
 
         }
-
+        //modificare factura existenta prin dublu click in grid de istoric facturi dupa apasarea butonului modifica
         private void GridFacturi_DoubleClick(object sender, EventArgs e)
         {
             if (btnModificaCheltuieli.Visible == false) { 
@@ -346,7 +363,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             else
                 MessageBox.Show("Pentru a modifica apasa butonul MODIFICA");
         }
-
+        //buton salvare
         private void btnSalveazaCheltuieli_Click_1(object sender, EventArgs e)
         {
             noduriSelectate(treeDistribuieCheltuiala.Nodes);
@@ -358,18 +375,13 @@ namespace BlueSolAsoc.Fom_Meniuri
             {
                 if (listaDistribuieCheltuiala.Count > 0)// verific daca a fost selectat cel putin un element in treeView
                 {
+                  
                     inserareValoriInGridFactura();
                     CheltuieliDS.TransmiteActualizari("TabelDocumente", "mv_Documente");
+                    ToateNodurileSelectate(treeDistribuieCheltuiala.Nodes);
                     // creez var pt id-temporar din mv_documente si o inserez in mv_antet_repartizare
-                    // sa parcurg tot treeul nod cu nod si in tabela de repartizare , pentru ficare nod extrag tagul si fac o cautare in tabela de reparttizare pe id-org
-                    //1 in tabela tag exista - adica am gasit o linie
-                    //1.1 nodul curent sa fie selectat - nu fac nimic
-                    //1.2 nodul curent nu este selectat in tree - linia aia trebuie stearsa din tabela de repartizare
-
-                    //2 in tabela nu exista linie
-                    //2.1 nodul curent sa fie selectat - trebuie sa inserez o linie in tabela cu id_o rg pt ele
-                    //2.2 nodul curent nu este selectat in tree - nu fac nimic
-                    
+                    GenereazaCodulGuid();                                     
+         
                     CheltuieliDS.TransmiteActualizari("mv_antet_repartizare");
                     listaDistribuieCheltuiala.Clear();
                     CurataTextBox();

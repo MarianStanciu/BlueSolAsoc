@@ -35,15 +35,6 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.Panel_IstoricFacturi = new BlueSolAsoc.butoane_si_controale.ClassPanel();
             this.GridFacturi = new BlueSolAsoc.butoane_si_controale.ClassGridView();
-            this.idantetDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nrdocDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.serieDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idpartenerDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idtemporarDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idorgDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valoareDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idasociereDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mvIstoricDocumenteBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.cheltuieliDS1 = new BlueSolAsoc.CheltuieliDS();
             this.classLabel7 = new BlueSolAsoc.butoane_si_controale.ClassLabel();
@@ -96,6 +87,17 @@
             this.mvDocumenteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mv_DocumenteTableAdapter = new BlueSolAsoc.CheltuieliDSTableAdapters.mv_DocumenteTableAdapter();
             this.mvDocumenteBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.mvIstoricDocumenteBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.denumireDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TabCheltuieliPlati.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.Panel_IstoricFacturi.SuspendLayout();
@@ -112,6 +114,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.mvIstoricDocumenteBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvDocumenteBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvDocumenteBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mvIstoricDocumenteBindingSource3)).BeginInit();
             this.SuspendLayout();
             // 
             // TabCheltuieliPlati
@@ -179,16 +182,17 @@
             this.GridFacturi.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.GridFacturi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridFacturi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idantetDataGridViewTextBoxColumn1,
-            this.nrdocDataGridViewTextBoxColumn1,
-            this.serieDataGridViewTextBoxColumn1,
-            this.dataDataGridViewTextBoxColumn1,
-            this.idpartenerDataGridViewTextBoxColumn1,
-            this.idtemporarDataGridViewTextBoxColumn1,
-            this.idorgDataGridViewTextBoxColumn1,
-            this.valoareDataGridViewTextBoxColumn1,
-            this.idasociereDataGridViewTextBoxColumn1});
-            this.GridFacturi.DataSource = this.mvIstoricDocumenteBindingSource2;
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn9,
+            this.denumireDataGridViewTextBoxColumn});
+            this.GridFacturi.DataSource = this.mvIstoricDocumenteBindingSource3;
             this.GridFacturi.EnableHeadersVisualStyles = false;
             this.GridFacturi.Location = new System.Drawing.Point(-2, 25);
             this.GridFacturi.Margin = new System.Windows.Forms.Padding(2);
@@ -198,78 +202,6 @@
             this.GridFacturi.Size = new System.Drawing.Size(169, 517);
             this.GridFacturi.TabIndex = 62;
             this.GridFacturi.DoubleClick += new System.EventHandler(this.GridFacturi_DoubleClick);
-            // 
-            // idantetDataGridViewTextBoxColumn1
-            // 
-            this.idantetDataGridViewTextBoxColumn1.DataPropertyName = "id_antet";
-            this.idantetDataGridViewTextBoxColumn1.HeaderText = "id_antet";
-            this.idantetDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.idantetDataGridViewTextBoxColumn1.Name = "idantetDataGridViewTextBoxColumn1";
-            this.idantetDataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // nrdocDataGridViewTextBoxColumn1
-            // 
-            this.nrdocDataGridViewTextBoxColumn1.DataPropertyName = "nr_doc";
-            this.nrdocDataGridViewTextBoxColumn1.HeaderText = "nr_doc";
-            this.nrdocDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.nrdocDataGridViewTextBoxColumn1.Name = "nrdocDataGridViewTextBoxColumn1";
-            this.nrdocDataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // serieDataGridViewTextBoxColumn1
-            // 
-            this.serieDataGridViewTextBoxColumn1.DataPropertyName = "serie";
-            this.serieDataGridViewTextBoxColumn1.HeaderText = "serie";
-            this.serieDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.serieDataGridViewTextBoxColumn1.Name = "serieDataGridViewTextBoxColumn1";
-            this.serieDataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // dataDataGridViewTextBoxColumn1
-            // 
-            this.dataDataGridViewTextBoxColumn1.DataPropertyName = "data";
-            this.dataDataGridViewTextBoxColumn1.HeaderText = "data";
-            this.dataDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataDataGridViewTextBoxColumn1.Name = "dataDataGridViewTextBoxColumn1";
-            this.dataDataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // idpartenerDataGridViewTextBoxColumn1
-            // 
-            this.idpartenerDataGridViewTextBoxColumn1.DataPropertyName = "id_partener";
-            this.idpartenerDataGridViewTextBoxColumn1.HeaderText = "id_partener";
-            this.idpartenerDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.idpartenerDataGridViewTextBoxColumn1.Name = "idpartenerDataGridViewTextBoxColumn1";
-            this.idpartenerDataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // idtemporarDataGridViewTextBoxColumn1
-            // 
-            this.idtemporarDataGridViewTextBoxColumn1.DataPropertyName = "id_temporar";
-            this.idtemporarDataGridViewTextBoxColumn1.HeaderText = "id_temporar";
-            this.idtemporarDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.idtemporarDataGridViewTextBoxColumn1.Name = "idtemporarDataGridViewTextBoxColumn1";
-            this.idtemporarDataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // idorgDataGridViewTextBoxColumn1
-            // 
-            this.idorgDataGridViewTextBoxColumn1.DataPropertyName = "id_org";
-            this.idorgDataGridViewTextBoxColumn1.HeaderText = "id_org";
-            this.idorgDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.idorgDataGridViewTextBoxColumn1.Name = "idorgDataGridViewTextBoxColumn1";
-            this.idorgDataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // valoareDataGridViewTextBoxColumn1
-            // 
-            this.valoareDataGridViewTextBoxColumn1.DataPropertyName = "Valoare";
-            this.valoareDataGridViewTextBoxColumn1.HeaderText = "Valoare";
-            this.valoareDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.valoareDataGridViewTextBoxColumn1.Name = "valoareDataGridViewTextBoxColumn1";
-            this.valoareDataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // idasociereDataGridViewTextBoxColumn1
-            // 
-            this.idasociereDataGridViewTextBoxColumn1.DataPropertyName = "id_asociere";
-            this.idasociereDataGridViewTextBoxColumn1.HeaderText = "id_asociere";
-            this.idasociereDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.idasociereDataGridViewTextBoxColumn1.Name = "idasociereDataGridViewTextBoxColumn1";
-            this.idasociereDataGridViewTextBoxColumn1.Width = 125;
             // 
             // mvIstoricDocumenteBindingSource2
             // 
@@ -827,6 +759,76 @@
             this.mvDocumenteBindingSource1.DataMember = "mv_Documente";
             this.mvDocumenteBindingSource1.DataSource = this.cheltuieliDS1;
             // 
+            // mvIstoricDocumenteBindingSource3
+            // 
+            this.mvIstoricDocumenteBindingSource3.DataMember = "mv_IstoricDocumente";
+            this.mvIstoricDocumenteBindingSource3.DataSource = this.cheltuieliDS1;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "id_antet";
+            this.dataGridViewTextBoxColumn1.HeaderText = "id_antet";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "nr_doc";
+            this.dataGridViewTextBoxColumn2.HeaderText = "nr_doc";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "serie";
+            this.dataGridViewTextBoxColumn3.HeaderText = "serie";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "data";
+            this.dataGridViewTextBoxColumn4.HeaderText = "data";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "id_partener";
+            this.dataGridViewTextBoxColumn5.HeaderText = "id_partener";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "id_temporar";
+            this.dataGridViewTextBoxColumn6.HeaderText = "id_temporar";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "id_org";
+            this.dataGridViewTextBoxColumn7.HeaderText = "id_org";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "Valoare";
+            this.dataGridViewTextBoxColumn8.HeaderText = "Valoare";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "id_asociere";
+            this.dataGridViewTextBoxColumn9.HeaderText = "id_asociere";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.Visible = false;
+            // 
+            // denumireDataGridViewTextBoxColumn
+            // 
+            this.denumireDataGridViewTextBoxColumn.DataPropertyName = "Denumire";
+            this.denumireDataGridViewTextBoxColumn.HeaderText = "Denumire";
+            this.denumireDataGridViewTextBoxColumn.Name = "denumireDataGridViewTextBoxColumn";
+            // 
             // cheltuieli_plati
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
@@ -857,6 +859,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.mvIstoricDocumenteBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvDocumenteBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvDocumenteBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mvIstoricDocumenteBindingSource3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -898,15 +901,6 @@
         private System.Windows.Forms.BindingSource mvDocumenteBindingSource;
         private CheltuieliDSTableAdapters.mv_DocumenteTableAdapter mv_DocumenteTableAdapter;
         private System.Windows.Forms.BindingSource mvDocumenteBindingSource1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idantetDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nrdocDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn serieDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idpartenerDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idtemporarDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idorgDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valoareDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idasociereDataGridViewTextBoxColumn1;
         private System.Windows.Forms.BindingSource mvIstoricDocumenteBindingSource2;
         private System.Windows.Forms.DataGridViewTextBoxColumn idantetDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nrdocDataGridViewTextBoxColumn;
@@ -944,5 +938,16 @@
         private butoane_si_controale.ClassButonInteriorSterge btnStergeCheltuieli;
         private butoane_si_controale.ClassButonModifica btnModificaCheltuieli;
         private System.Windows.Forms.Button btnSalveazaCheltuieli;
+        private System.Windows.Forms.BindingSource mvIstoricDocumenteBindingSource3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn denumireDataGridViewTextBoxColumn;
     }
 }
