@@ -96,6 +96,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                 }
                 CheltuieliDS.getSetFrom("select * from mv_antet_repartizare where id_antet =" + idAntet, "TabelRepartizare");
                 GridPozitiiFactura.DataSource = CheltuieliDS.Tables["TabelDocumente"];
+                NoduriDeBifat(treeDistribuieCheltuiala.Nodes);
                 CheltuieliDS.Tables["TabelDocumente"].Columns["a_id_org"].DefaultValue = idAsociatie;
                 CheltuieliDS.Tables["TabelDocumente"].Columns["a_id_asociere"].DefaultValue = 44;
                 GridPozitiiFactura.AllowUserToAddRows = true;
@@ -114,30 +115,21 @@ namespace BlueSolAsoc.Fom_Meniuri
                 CheltuieliDS.Tables.Remove("mv_antet_repartizare");
             }
             CheltuieliDS.getSetFrom("select * from mv_antet_repartizare ", "mv_antet_repartizare");
-
+          //  NoduriDeBifat(treeDistribuieCheltuiala.Nodes);
         }
 
         public void CurataTextBox()
         {
            
-            DataCurenta.Value = System.DateTime.Now; //valoarea pntru data
-            // 
-            //if (!(CheltuieliDS.Tables["mv_tabelParteneri"] is null))
-            //{
-            //    CheltuieliDS.Tables.Remove("mv_tabelParteneri");
-            //}
-            //CheltuieliDS.getSetFrom("select * from mv_tabelParteneri  where  id_master =" + idAsociatie, "mv_tabelParteneri");
-            //comboBoxParteneri.DataSource = CheltuieliDS.Tables["mv_tabelParteneri"];
-            //comboBoxParteneri.ValueMember = "id_org";
-            //comboBoxParteneri.DisplayMember = "Denumire";
-          
+            DataCurenta.Value = System.DateTime.Now; //valoarea pntru data           
             seriaFactura.Text = "";
             numarFactura.Text = "";
             sumaFactura.Text = "";
             treeDistribuieCheltuiala.ExpandAll();
             AfisareGridFacturi(0);
             AdaugareFacturi(0);
-            treeDistribuieCheltuiala.Nodes[0].Checked = false;
+            //debifarea tuturor nodurilor
+           treeDistribuieCheltuiala.Nodes[0].Checked = false;
         }
         
         
@@ -246,7 +238,7 @@ namespace BlueSolAsoc.Fom_Meniuri
 
            
         }
-        //metoda care verifica fiecare nod daca a fost selectat si exista in lista si invers
+        //metoda care verifica fiecare nod daca a fost selectat si exista in lista , apoi invers
         private void ToateNodurileSelectate(TreeNodeCollection nodes)
         {
             // sa parcurg tot treeul nod cu nod si in tabela de repartizare , pentru ficare nod extrag tagul si fac o cautare in tabela de reparttizare pe id-org
@@ -256,28 +248,36 @@ namespace BlueSolAsoc.Fom_Meniuri
             foreach (TreeNode nodbifat in nodes)
             {                
                     int idOrg = (int)nodbifat.Tag;
-                   if( (CheltuieliDS.Tables["mv_antet_repartizare"].Select(" id_org =" + idOrg).Length > 0) && (nodbifat.Checked=false))  
-                    {
-                  //  CheltuieliDS.Tables["mv_antet_repartizare"].Rows.Remove(["id_org"] = idOrg);
+                DataRow[] abb = CheltuieliDS.Tables["TabelRepartizare"].Select(" id_org ="+idOrg);
+                   if ( ((abb).Length>0) && !(nodbifat.Checked))  
+                    {                 
+                    CheltuieliDS.Tables["TabelRepartizare"].Rows.Remove(abb[0]);
+                  
                   //sterg rand unde id-antet = var id antet si id_org
                     }
                 //2 in tabela nu exista linie
                 //2.1 nodul curent sa fie selectat - trebuie sa inserez o linie in tabela cu id_o rg pt ele
                 //2.2 nodul curent nu este selectat in tree - nu fac nimic
-                else if ((CheltuieliDS.Tables["mv_antet_repartizare"].Select(" id_org =" + idOrg).Length == 0) && (nodbifat.Checked = true))
+                else if ((abb).Length == 0 && (nodbifat.Checked ))
                     {
-                   
-                    CheltuieliDS.Tables["mv_antet_repartizare"].Rows.Add(0, GenereazaIdAntet(), idOrg, GenereazaCodulGuid());
-                    
-                       
+                    CheltuieliDS.Tables["TabelRepartizare"].Rows.Add(0, GenereazaIdAntet(), idOrg, GenereazaCodulGuid());                   
                     }
                 ToateNodurileSelectate(nodbifat.Nodes);
              }
-
-
-
          }         
-   
+        private void NoduriDeBifat(TreeNodeCollection nodes)
+        {
+            foreach (TreeNode deBifat in nodes)
+            {
+                int idOrg = (int)deBifat.Tag;
+                if ((CheltuieliDS.Tables["TabelRepartizare"].Select(" id_org =" + idOrg).Length > 0) && !(deBifat.Checked))
+                {
+                    deBifat.Checked =true;
+                }
+                NoduriDeBifat(deBifat.Nodes);
+            }
+            
+        }
 
         // crearea tabelei pentru afisare in tree
         private void extrageTabelaTree()
@@ -331,6 +331,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                 MessageBox.Show("Pentru a modifica selecteaza un rand apoi apasa butonul MODIFICA");
 
         }
+
         //modificare factura existenta prin dublu click in grid de istoric facturi dupa apasarea butonului modifica
         private void GridFacturi_DoubleClick(object sender, EventArgs e)
         {
@@ -351,14 +352,14 @@ namespace BlueSolAsoc.Fom_Meniuri
                     CheltuieliDS.getSetFrom("select id_org,Denumire from mv_tabelParteneri where id_org= " + idPartener, "DenumirePartenerSelectat");
                     comboBoxParteneri.DataSource = CheltuieliDS.Tables["DenumirePartenerSelectat"];
                     comboBoxParteneri.ValueMember = "id_org";
-                    comboBoxParteneri.DisplayMember ="Denumire";
-                    //comboBoxParteneri.SelectedItem = CheltuieliDS.Tables["DenumirePartenerSelectat"].Rows[0]["Denumire"];
-                    // comboBoxParteneri.Text = "mARIAN";//CheltuieliDS.Tables["mv_tabelParteneri"].Rows[0]["id_org"].ToString();
-                
+                    comboBoxParteneri.DisplayMember ="Denumire";                   
                     sumaFactura.Text = (row.Cells[7].Value).ToString();                        
                 
-                    AdaugareFacturi(id_antet);                   
+                    AdaugareFacturi(id_antet);
+                   
                 }
+              
+               
             }
             else
                 MessageBox.Show("Pentru a modifica apasa butonul MODIFICA");
@@ -378,11 +379,8 @@ namespace BlueSolAsoc.Fom_Meniuri
                   
                     inserareValoriInGridFactura();
                     CheltuieliDS.TransmiteActualizari("TabelDocumente", "mv_Documente");
-                    ToateNodurileSelectate(treeDistribuieCheltuiala.Nodes);
-                    // creez var pt id-temporar din mv_documente si o inserez in mv_antet_repartizare
-                    GenereazaCodulGuid();                                     
-         
-                    CheltuieliDS.TransmiteActualizari("mv_antet_repartizare");
+                    ToateNodurileSelectate(treeDistribuieCheltuiala.Nodes);                                                                         
+                    CheltuieliDS.TransmiteActualizari("TabelRepartizare","mv_antet_repartizare");
                     listaDistribuieCheltuiala.Clear();
                     CurataTextBox();
                 }
