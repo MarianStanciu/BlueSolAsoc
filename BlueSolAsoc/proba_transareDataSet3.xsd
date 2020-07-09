@@ -9,10 +9,10 @@
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="mv_IstoricDocumenteTableAdapter" GeneratorDataComponentClassName="mv_IstoricDocumenteTableAdapter" Name="mv_IstoricDocumente" UserDataComponentName="mv_IstoricDocumenteTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="proba_transareConnectionString (Settings)" DbObjectName="proba_transare.dbo.mv_IstoricDocumente" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="proba_transareConnectionString (Settings)" DbObjectName="proba_transare.dbo.mv_IstoricDocumente" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT id_antet, nr_doc, serie, data, id_partener, id_temporar, id_org, Valoare, id_asociere FROM dbo.mv_IstoricDocumente</CommandText>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT id_antet, nr_doc, serie, data, id_partener, id_temporar, id_org, Valoare, id_asociere,Denumire FROM dbo.mv_IstoricDocumente</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -24,10 +24,11 @@
               <Mapping SourceColumn="serie" DataSetColumn="serie" />
               <Mapping SourceColumn="data" DataSetColumn="data" />
               <Mapping SourceColumn="id_partener" DataSetColumn="id_partener" />
-              <Mapping SourceColumn="id_temporar" DataSetColumn="id_temporar" />
               <Mapping SourceColumn="id_org" DataSetColumn="id_org" />
               <Mapping SourceColumn="Valoare" DataSetColumn="Valoare" />
               <Mapping SourceColumn="id_asociere" DataSetColumn="id_asociere" />
+              <Mapping SourceColumn="id_temporar" DataSetColumn="id_temporar1" />
+              <Mapping SourceColumn="Denumire" DataSetColumn="Denumire" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -39,7 +40,7 @@
   <xs:element name="proba_transareDataSet3" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="proba_transareDataSet3" msprop:Generator_UserDSName="proba_transareDataSet3">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="mv_IstoricDocumente" msprop:Generator_TableClassName="mv_IstoricDocumenteDataTable" msprop:Generator_TableVarName="tablemv_IstoricDocumente" msprop:Generator_TablePropName="mv_IstoricDocumente" msprop:Generator_RowDeletingName="mv_IstoricDocumenteRowDeleting" msprop:Generator_RowChangingName="mv_IstoricDocumenteRowChanging" msprop:Generator_RowEvHandlerName="mv_IstoricDocumenteRowChangeEventHandler" msprop:Generator_RowDeletedName="mv_IstoricDocumenteRowDeleted" msprop:Generator_UserTableName="mv_IstoricDocumente" msprop:Generator_RowChangedName="mv_IstoricDocumenteRowChanged" msprop:Generator_RowEvArgName="mv_IstoricDocumenteRowChangeEvent" msprop:Generator_RowClassName="mv_IstoricDocumenteRow">
+        <xs:element name="mv_IstoricDocumente" msprop:Generator_TableClassName="mv_IstoricDocumenteDataTable" msprop:Generator_TableVarName="tablemv_IstoricDocumente" msprop:Generator_RowChangedName="mv_IstoricDocumenteRowChanged" msprop:Generator_TablePropName="mv_IstoricDocumente" msprop:Generator_RowDeletingName="mv_IstoricDocumenteRowDeleting" msprop:Generator_RowChangingName="mv_IstoricDocumenteRowChanging" msprop:Generator_RowEvHandlerName="mv_IstoricDocumenteRowChangeEventHandler" msprop:Generator_RowDeletedName="mv_IstoricDocumenteRowDeleted" msprop:Generator_RowClassName="mv_IstoricDocumenteRow" msprop:Generator_UserTableName="mv_IstoricDocumente" msprop:Generator_RowEvArgName="mv_IstoricDocumenteRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id_antet" msprop:Generator_ColumnVarNameInTable="columnid_antet" msprop:Generator_ColumnPropNameInRow="id_antet" msprop:Generator_ColumnPropNameInTable="id_antetColumn" msprop:Generator_UserColumnName="id_antet" type="xs:int" />
@@ -63,6 +64,14 @@
               <xs:element name="id_org" msprop:Generator_ColumnVarNameInTable="columnid_org" msprop:Generator_ColumnPropNameInRow="id_org" msprop:Generator_ColumnPropNameInTable="id_orgColumn" msprop:Generator_UserColumnName="id_org" type="xs:int" />
               <xs:element name="Valoare" msprop:Generator_ColumnVarNameInTable="columnValoare" msprop:Generator_ColumnPropNameInRow="Valoare" msprop:Generator_ColumnPropNameInTable="ValoareColumn" msprop:Generator_UserColumnName="Valoare" type="xs:decimal" minOccurs="0" />
               <xs:element name="id_asociere" msprop:Generator_ColumnVarNameInTable="columnid_asociere" msprop:Generator_ColumnPropNameInRow="id_asociere" msprop:Generator_ColumnPropNameInTable="id_asociereColumn" msprop:Generator_UserColumnName="id_asociere" type="xs:int" />
+              <xs:element name="id_temporar1" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:Caption="id_temporar" msprop:Generator_ColumnVarNameInTable="columnid_temporar1" msprop:Generator_ColumnPropNameInRow="id_temporar1" msprop:Generator_ColumnPropNameInTable="id_temporar1Column" msprop:Generator_UserColumnName="id_temporar1" type="xs:string" minOccurs="0" />
+              <xs:element name="Denumire" msprop:Generator_ColumnVarNameInTable="columnDenumire" msprop:Generator_ColumnPropNameInRow="Denumire" msprop:Generator_ColumnPropNameInTable="DenumireColumn" msprop:Generator_UserColumnName="Denumire" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
