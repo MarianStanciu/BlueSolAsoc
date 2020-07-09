@@ -187,7 +187,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                 {
                     MessageBox.Show("Seria documentului nu a fost introdusa");
                 }
-
+                //verificare calcul suma
             }
             else
             {
