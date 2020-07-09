@@ -171,12 +171,13 @@ namespace BlueSolAsoc.Fom_Meniuri
             }
            
         }
-
+        // metoda care genereaza codul unic
         public Guid GenereazaCodulGuid()
         {
             Guid deTransmis = (Guid)CheltuieliDS.Tables["TabelDocumente"].Rows[0]["a_id_temporar"];
             return deTransmis; 
         }
+        //metoda generare id_antet
         public int GenereazaIdAntet()
         {
             int idAntetDeTransmis = (int)CheltuieliDS.Tables["TabelDocumente"].Rows[0]["a_id_antet"];
