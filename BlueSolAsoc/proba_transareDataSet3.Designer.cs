@@ -297,6 +297,10 @@ namespace BlueSolAsoc {
             
             private global::System.Data.DataColumn columnid_asociere;
             
+            private global::System.Data.DataColumn columnid_temporar1;
+            
+            private global::System.Data.DataColumn columnDenumire;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public mv_IstoricDocumenteDataTable() {
@@ -404,6 +408,22 @@ namespace BlueSolAsoc {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn id_temporar1Column {
+                get {
+                    return this.columnid_temporar1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn DenumireColumn {
+                get {
+                    return this.columnDenumire;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -439,7 +459,7 @@ namespace BlueSolAsoc {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public mv_IstoricDocumenteRow Addmv_IstoricDocumenteRow(int id_antet, string nr_doc, string serie, System.DateTime data, int id_partener, int id_temporar, int id_org, decimal Valoare, int id_asociere) {
+            public mv_IstoricDocumenteRow Addmv_IstoricDocumenteRow(int id_antet, string nr_doc, string serie, System.DateTime data, int id_partener, int id_temporar, int id_org, decimal Valoare, int id_asociere, System.Guid id_temporar1, string Denumire) {
                 mv_IstoricDocumenteRow rowmv_IstoricDocumenteRow = ((mv_IstoricDocumenteRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         id_antet,
@@ -450,7 +470,9 @@ namespace BlueSolAsoc {
                         id_temporar,
                         id_org,
                         Valoare,
-                        id_asociere};
+                        id_asociere,
+                        id_temporar1,
+                        Denumire};
                 rowmv_IstoricDocumenteRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowmv_IstoricDocumenteRow);
                 return rowmv_IstoricDocumenteRow;
@@ -489,6 +511,8 @@ namespace BlueSolAsoc {
                 this.columnid_org = base.Columns["id_org"];
                 this.columnValoare = base.Columns["Valoare"];
                 this.columnid_asociere = base.Columns["id_asociere"];
+                this.columnid_temporar1 = base.Columns["id_temporar1"];
+                this.columnDenumire = base.Columns["Denumire"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -512,6 +536,10 @@ namespace BlueSolAsoc {
                 base.Columns.Add(this.columnValoare);
                 this.columnid_asociere = new global::System.Data.DataColumn("id_asociere", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnid_asociere);
+                this.columnid_temporar1 = new global::System.Data.DataColumn("id_temporar1", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid_temporar1);
+                this.columnDenumire = new global::System.Data.DataColumn("Denumire", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDenumire);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnid_antet}, true));
                 this.columnid_antet.AllowDBNull = false;
@@ -525,6 +553,8 @@ namespace BlueSolAsoc {
                 this.columnid_temporar.AllowDBNull = false;
                 this.columnid_org.AllowDBNull = false;
                 this.columnid_asociere.AllowDBNull = false;
+                this.columnid_temporar1.Caption = "id_temporar";
+                this.columnDenumire.MaxLength = 2147483647;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -771,6 +801,38 @@ namespace BlueSolAsoc {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.Guid id_temporar1 {
+                get {
+                    try {
+                        return ((global::System.Guid)(this[this.tablemv_IstoricDocumente.id_temporar1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'id_temporar1\' in table \'mv_IstoricDocumente\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemv_IstoricDocumente.id_temporar1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Denumire {
+                get {
+                    try {
+                        return ((string)(this[this.tablemv_IstoricDocumente.DenumireColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Denumire\' in table \'mv_IstoricDocumente\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemv_IstoricDocumente.DenumireColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsValoareNull() {
                 return this.IsNull(this.tablemv_IstoricDocumente.ValoareColumn);
             }
@@ -779,6 +841,30 @@ namespace BlueSolAsoc {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetValoareNull() {
                 this[this.tablemv_IstoricDocumente.ValoareColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isid_temporar1Null() {
+                return this.IsNull(this.tablemv_IstoricDocumente.id_temporar1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setid_temporar1Null() {
+                this[this.tablemv_IstoricDocumente.id_temporar1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsDenumireNull() {
+                return this.IsNull(this.tablemv_IstoricDocumente.DenumireColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetDenumireNull() {
+                this[this.tablemv_IstoricDocumente.DenumireColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -946,10 +1032,11 @@ namespace BlueSolAsoc.proba_transareDataSet3TableAdapters {
             tableMapping.ColumnMappings.Add("serie", "serie");
             tableMapping.ColumnMappings.Add("data", "data");
             tableMapping.ColumnMappings.Add("id_partener", "id_partener");
-            tableMapping.ColumnMappings.Add("id_temporar", "id_temporar");
             tableMapping.ColumnMappings.Add("id_org", "id_org");
             tableMapping.ColumnMappings.Add("Valoare", "Valoare");
             tableMapping.ColumnMappings.Add("id_asociere", "id_asociere");
+            tableMapping.ColumnMappings.Add("id_temporar", "id_temporar1");
+            tableMapping.ColumnMappings.Add("Denumire", "Denumire");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -967,7 +1054,7 @@ namespace BlueSolAsoc.proba_transareDataSet3TableAdapters {
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT id_antet, nr_doc, serie, data, id_partener, id_temporar, id_org, Valoare, " +
-                "id_asociere FROM dbo.mv_IstoricDocumente";
+                "id_asociere,Denumire FROM dbo.mv_IstoricDocumente";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
