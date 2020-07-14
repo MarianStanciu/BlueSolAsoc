@@ -153,8 +153,7 @@ namespace BlueSolAsoc.Fom_Meniuri
 
             
         }
-
-       
+      
 
         /*  private void textBoxApartamente_Leave(object sender, EventArgs e)
           {
@@ -172,6 +171,11 @@ namespace BlueSolAsoc.Fom_Meniuri
             // Aducere tabela goala in DataSet / simulare false 1!=1 / Completare tabela goala -> upload in baza date
 
             string[] StringInfo = textBoxApartamente.Text.Split('/');
+
+            if (dataGridView1.Rows[0].Cells["coloana_suma"].Value == "")
+            {
+                MetodaInserareSuma();
+            }
 
             //dataGridView1.Rows[0].Cells["coloana_suma"].Value = TextBoxPret.Text;
             Decimal total = Convert.ToDecimal(TextBoxPret.Text);
@@ -309,16 +313,21 @@ namespace BlueSolAsoc.Fom_Meniuri
 
             }
         }
+        private void MetodaInserareSuma()
+        {
+            dataGridView1.Focus();
+            dataGridView1.CurrentCell = dataGridView1.Rows[0].Cells["coloana_suma"];
+            dataGridView1.Rows[0].Cells["coloana_suma"].Value = TextBoxPret.Text;
+            dataGridView1.Rows[1].Cells["coloana_suma"].Value = "0";
+            dataGridView1.Rows[2].Cells["coloana_suma"].Value = "0";
+        }
+
         private void MetodaApasareEnter(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
                 // intrare grid pe prima linie in "suma"
-                dataGridView1.Focus();
-                dataGridView1.CurrentCell = dataGridView1.Rows[0].Cells["coloana_suma"];
-                dataGridView1.Rows[0].Cells["coloana_suma"].Value = TextBoxPret.Text;
-                dataGridView1.Rows[1].Cells["coloana_suma"].Value = "0";
-                dataGridView1.Rows[2].Cells["coloana_suma"].Value = "0";
+                MetodaInserareSuma();
 
                 //ButtonChitanteOK_Click(sender, e);
             }
@@ -460,11 +469,10 @@ namespace BlueSolAsoc.Fom_Meniuri
 
         private void TextBoxPret_Leave(object sender, EventArgs e)
         {
-            dataGridView1.Focus();
-            dataGridView1.CurrentCell = dataGridView1.Rows[0].Cells["coloana_suma"];
-            dataGridView1.Rows[0].Cells["coloana_suma"].Value = TextBoxPret.Text;
-            dataGridView1.Rows[1].Cells["coloana_suma"].Value = "0";
-            dataGridView1.Rows[2].Cells["coloana_suma"].Value = "0";
+            if (TextBoxPret.Text != "")
+            {
+                MetodaInserareSuma();
+            }
         }
     }
 }
