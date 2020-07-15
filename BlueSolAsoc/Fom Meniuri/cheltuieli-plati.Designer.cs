@@ -420,6 +420,7 @@
             this.GridPozitiiFactura.Size = new System.Drawing.Size(472, 306);
             this.GridPozitiiFactura.TabIndex = 93;
             this.GridPozitiiFactura.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.CalculeazaSuma);
+            this.GridPozitiiFactura.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.CalculeazaSuma);
             // 
             // aidantetDataGridViewTextBoxColumn
             // 

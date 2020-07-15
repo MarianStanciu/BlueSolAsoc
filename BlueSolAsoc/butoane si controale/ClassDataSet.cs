@@ -107,7 +107,7 @@ namespace BlueSolAsoc.butoane_si_controale
                                 }
                                 break;
                             case "System.DateTime":                              
-                                valoare = "'"+((DateTime)r[f.ColumnName]).ToString("yyyyMMdd")+"'";
+                                valoare = "'" + ((DateTime)r[f.ColumnName]).ToString("yyyyMMdd") + "'";
                                 if (string.IsNullOrEmpty(valoare))
                                 {
                                     valoare = "01011900";
