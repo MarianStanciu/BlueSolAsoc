@@ -25,6 +25,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             InitializeComponent();
             this.denumireAsociatie = denumireAsociatie;
             this.idAsociatie = idAsociatie;
+            //dataGridView2.Column
             DataSetVenituriIncasari.getSetFrom("select id_asociere,val_label from tabela_asocieri_tipuri where id_tip=14", "TipuriIncasari"); // selectare schelet tabela tipuri incasari
             
             ExtrageDocument(0); // Extragere Schelet
@@ -152,8 +153,7 @@ namespace BlueSolAsoc.Fom_Meniuri
 
             
         }
-
-       
+      
 
         /*  private void textBoxApartamente_Leave(object sender, EventArgs e)
           {
@@ -166,15 +166,27 @@ namespace BlueSolAsoc.Fom_Meniuri
         private void ButtonSalvareOK()
         {
             DataTable TabelaVenituriIncasari = DataSetVenituriIncasari.Tables["mv_Documente"];
-
+            
             Guid id_temporar = Guid.NewGuid();
             // Aducere tabela goala in DataSet / simulare false 1!=1 / Completare tabela goala -> upload in baza date
 
             string[] StringInfo = textBoxApartamente.Text.Split('/');
-            
-            if (!(textBoxApartamente.AutoCompleteCustomSource.Contains(textBoxApartamente.Text))^(TextBoxNrDoc.Text=="")^(TextBoxSerieDoc.Text==""))
+
+            if (dataGridView1.Rows[0].Cells["coloana_suma"].Value == "")
+            {
+                MetodaInserareSuma();
+            }
+
+            //dataGridView1.Rows[0].Cells["coloana_suma"].Value = TextBoxPret.Text;
+            Decimal total = Convert.ToDecimal(TextBoxPret.Text);
+            Decimal intretinere = Convert.ToDecimal(dataGridView1.Rows[0].Cells["coloana_suma"].Value);
+            Decimal penalitati = Convert.ToDecimal(dataGridView1.Rows[1].Cells["coloana_suma"].Value);
+            Decimal fond_rulment = Convert.ToDecimal(dataGridView1.Rows[2].Cells["coloana_suma"].Value);
+            bool calcul = ((intretinere + penalitati + fond_rulment) == total) == true;
+            if (!(textBoxApartamente.AutoCompleteCustomSource.Contains(textBoxApartamente.Text))^(TextBoxNrDoc.Text=="")^(TextBoxSerieDoc.Text=="")^calcul==false)
             {
                 //string eroare = "";
+              
                 if (!(textBoxApartamente.AutoCompleteCustomSource.Contains(textBoxApartamente.Text)))
                 {
                     MessageBox.Show("Verifica proprietar");
@@ -187,7 +199,12 @@ namespace BlueSolAsoc.Fom_Meniuri
                 {
                     MessageBox.Show("Seria documentului nu a fost introdusa");
                 }
-                //verificare calcul suma
+
+                if (calcul==false)
+                {
+                    MessageBox.Show("Suma nu corespunde,verifica datele");
+                }
+
             }
             else
             {
@@ -272,36 +289,47 @@ namespace BlueSolAsoc.Fom_Meniuri
 
                     }
                 //}
-                int total = Convert.ToInt32(TextBoxPret.Text);
+             /*   int total = Convert.ToInt32(TextBoxPret.Text);
                 int intretinere = Convert.ToInt32(dataGridView1.Rows[0].Cells["coloana_suma"].Value);
                 int penalitati = Convert.ToInt32(dataGridView1.Rows[1].Cells["coloana_suma"].Value);
-                int fond_rulment = Convert.ToInt32(dataGridView1.Rows[2].Cells["coloana_suma"].Value);
+                int fond_rulment = Convert.ToInt32(dataGridView1.Rows[2].Cells["coloana_suma"].Value);*/
 
-                if ((intretinere + penalitati + fond_rulment) != total)
+/*                if ((intretinere + penalitati + fond_rulment) != total)
                 {
                     MessageBox.Show("Suma nu corespunde,verifica datele");
                 }
                 else
-                {
+                {*/
 
                     DataSetVenituriIncasari.TransmiteActualizari("mv_Documente", "mv_Documente");
                     MetodaCuratare(); //metoda de curatare
                     MetodaRefreshGridView();
-                }
+                //}
                 
 
 
                 //DataSetVenituriIncasari.Tables.Remove("mv_Documente");
                 ExtrageDocument(0);
-                
-                ////refresh
-                ////disrugere + refacere
-               // DataTable TabelaIstoricDocumente = DataSetVenituriIncasari.Tables["mv_IstoricDocumente"];
-                //dataGridView2.DataSource = TabelaIstoricDocumente;
-                ///
-                //metoda refresh verificare + select nou
-                
-                
+
+            }
+        }
+        private void MetodaInserareSuma()
+        {
+            dataGridView1.Focus();
+            dataGridView1.CurrentCell = dataGridView1.Rows[0].Cells["coloana_suma"];
+            dataGridView1.Rows[0].Cells["coloana_suma"].Value = TextBoxPret.Text;
+            dataGridView1.Rows[1].Cells["coloana_suma"].Value = "0";
+            dataGridView1.Rows[2].Cells["coloana_suma"].Value = "0";
+        }
+
+        private void MetodaApasareEnter(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                // intrare grid pe prima linie in "suma"
+                MetodaInserareSuma();
+
+                //ButtonChitanteOK_Click(sender, e);
             }
         }
 
@@ -339,16 +367,8 @@ namespace BlueSolAsoc.Fom_Meniuri
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                // intrare grid pe prima linie in "suma"
-                dataGridView1.Focus();
-                dataGridView1.CurrentCell = dataGridView1.Rows[0].Cells["coloana_suma"];
-                dataGridView1.Rows[0].Cells["coloana_suma"].Value = TextBoxPret.Text;
-                dataGridView1.Rows[1].Cells["coloana_suma"].Value = "0";
-                dataGridView1.Rows[2].Cells["coloana_suma"].Value = "0";
-
-                //ButtonChitanteOK_Click(sender, e);
+                MetodaApasareEnter(sender, e);
             }
-            
         }
 
         private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
@@ -368,46 +388,22 @@ namespace BlueSolAsoc.Fom_Meniuri
             classButonModifica1.Hide();
             btnAnuleaza.Show();
 
-            if (classButonModifica1.Visible == false) // daca butonul modifica nu este visibil atunci se atribuie valorile din cell in textbox
+            if (classButonModifica1.Visible == false)
             {
                 foreach (DataGridViewRow row in dataGridView2.SelectedRows)
                 {
                     int id_antet = Convert.ToInt32(row.Cells[0].Value);
-                    TextBoxNrDoc.Text = (row.Cells[1].Value).ToString();
-                    TextBoxSerieDoc.Text = (row.Cells[2].Value).ToString();
-                    dateTimePicker1.Value = Convert.ToDateTime(row.Cells[3].Value);
-                    textBoxApartamente.Text = (row.Cells[4].Value).ToString();
+                    ExtrageDocument(id_antet);
                     TextBoxPret.Text = (row.Cells[7].Value).ToString();
                 }
             }
             else
-                MessageBox.Show("Pentru a modifica selecteaza un rand apoi apasa butonul MODIFICA");
-        
-    }
+                MessageBox.Show("Pentru a modifica apasa butonul MODIFICA");
+        }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            if (classButonModifica1.Visible == false)
-            {
-                ////////////Actualizare daca butonul modifica nu este vizibil din textbox-uri inapoi in cell-uri
-                int id_antet=0;
-
-                foreach (DataGridViewRow row in dataGridView2.SelectedRows)
-                {
-                    id_antet = Convert.ToInt32(row.Cells[0].Value);
-                    (row.Cells[1].Value)=TextBoxNrDoc.Text;
-                    (row.Cells[2].Value)= TextBoxSerieDoc.Text;
-                    (row.Cells[3].Value)= dateTimePicker1.Value.ToShortDateString();
-                    (row.Cells[7].Value)= TextBoxPret.Text;
-                }id_antet = id_antet;
-               // DataSetVenituriIncasari.getSetFrom("select * from mv_Documente where a_id_antet="+id_antet, "mv_Documente2");
-
-                ButtonSalvareOK();
-                //DataSetVenituriIncasari.TransmiteActualizari("mv_Documente");
-            }else
-                ///Salvare
-            ButtonSalvareOK();
-            
+                ButtonSalvareOK();            
         }
 
         private void btnAnuleaza_Click(object sender, EventArgs e)
@@ -469,6 +465,14 @@ namespace BlueSolAsoc.Fom_Meniuri
                 }               
             }else
             MessageBox.Show("Pentru a modifica apasa butonul MODIFICA");
+        }
+
+        private void TextBoxPret_Leave(object sender, EventArgs e)
+        {
+            if (TextBoxPret.Text != "")
+            {
+                MetodaInserareSuma();
+            }
         }
     }
 }

@@ -115,7 +115,7 @@ namespace BlueSolAsoc.butoane_si_controale
                                 break;
 
                             case "System.Decimal":                       
-                                valoare = ((System.Decimal)r[f.ColumnName]).ToString();
+                                valoare = ((System.Decimal)r[f.ColumnName]).ToString().Replace(",",".");
                                 if (string.IsNullOrEmpty(valoare))
                                 {
                                     valoare = "0";
@@ -198,7 +198,15 @@ namespace BlueSolAsoc.butoane_si_controale
                                 valoare = "'" + ((DateTime) r[f.ColumnName]).ToString("yyyyMMdd") + "'";
                                 break;
                             case "System.Decimal":
-                                valoare = r[f.ColumnName].ToString();
+                                valoare = ((System.Decimal)r[f.ColumnName]).ToString().Replace(",", ".");
+                                //'100,00'
+                                break;
+                            case "System.Guid":
+                                valoare = "'" + r[f.ColumnName].ToString() + "'";
+                                if (string.IsNullOrEmpty(valoare))
+                                {
+                                    valoare = "";
+                                }
                                 break;
                             default:
                                 break;
