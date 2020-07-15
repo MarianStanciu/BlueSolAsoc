@@ -351,28 +351,27 @@ namespace BlueSolAsoc.Fom_Meniuri
         {
             if (btnModificaCheltuieli.Visible == false) {
                 DataGridViewRow row =GridFacturi.CurrentRow;
-                              
-                    int idAntet = Convert.ToInt32(row.Cells[0].Value);
-                //   numarFactura.Text = (row.Cells[1].Value).ToString();
-                DataRow [] randSelectat = CheltuieliDS.Tables["IstoricFacturi"].Select(idAntet+"=id_antet");
-               
-                    numarFactura.Text =(randSelectat[0]["nr_doc"]).ToString();
-                //    seriaFactura.Text = (row.Cells[2].Value).ToString();
-                    seriaFactura.Text= (randSelectat[0]["serie"]).ToString();
-                // DataCurenta.Value = Convert.ToDateTime(row.Cells[3].Value);
-                DataCurenta.Value = Convert.ToDateTime(randSelectat[0]["data"].ToString());
-                //    int idPartener = int.Parse((row.Cells[4].Value).ToString());
-                    int idPartener = int.Parse(randSelectat[0]["id_partener"].ToString());
+                    int idAntet = Convert.ToInt32(row.Cells[0].Value);              
+                DataRow [] randSelectat = CheltuieliDS.Tables["IstoricFacturi"].Select(idAntet+"=id_antet");               
+                    numarFactura.Text =(randSelectat[0]["nr_doc"]).ToString();                
+                    seriaFactura.Text= (randSelectat[0]["serie"]).ToString();               
+                DataCurenta.Value = Convert.ToDateTime(randSelectat[0]["data"].ToString());   
+                
+                //daca nu estrictionez lista de parteneri la cel selectat il afisez pe cel selectat si las lista intreaga
+                int idPartener = int.Parse(randSelectat[0]["id_partener"].ToString());
+                string partener = (randSelectat[0]["Denumire"].ToString());
                 // pe baza id partener sterg tabelul de parteneri si creez unul nou doar cu id selectat
-                    if (!(CheltuieliDS.Tables["DenumirePartenerSelectat"] is null))
-                    {
-                        CheltuieliDS.Tables.Remove("DenumirePartenerSelectat");
-                    }
-                    CheltuieliDS.getSetFrom("select id_org,Denumire from mv_tabelParteneri where id_org= " + idPartener, "DenumirePartenerSelectat");
-                // pun ca sursa de date pt comboboxparteneri doar partenerul selectat
-                    comboBoxParteneri.DataSource = CheltuieliDS.Tables["DenumirePartenerSelectat"];
-                    comboBoxParteneri.ValueMember = "id_org";
-                    comboBoxParteneri.DisplayMember ="Denumire";
+                //    if (!(CheltuieliDS.Tables["DenumirePartenerSelectat"] is null))
+                //    {
+                //        CheltuieliDS.Tables.Remove("DenumirePartenerSelectat");
+                //    }
+                //    CheltuieliDS.getSetFrom("select id_org,Denumire from mv_tabelParteneri where id_org= " + idPartener, "DenumirePartenerSelectat");
+                //// pun ca sursa de date pt comboboxparteneri doar partenerul selectat
+                //    comboBoxParteneri.DataSource = CheltuieliDS.Tables["DenumirePartenerSelectat"];
+                //    comboBoxParteneri.ValueMember = "id_org";
+                //    comboBoxParteneri.DisplayMember ="Denumire";
+                    comboBoxParteneri.Text = partener;
+            
                     sumaFactura.Text = Convert.ToDouble(randSelectat[0]["Valoare"]).ToString();                        
 
 
