@@ -27,7 +27,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.denumireAsociatie = denumireAsociatie;
             this.idAsociatie = idAsociatie;
             DataCurenta.Value = System.DateTime.Now;
-       
+           
           
         }
             
@@ -44,7 +44,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             ClassButon distribuieCheltuiala = new ClassButon(); 
         }
      
-        // metoda de afisare grid facturi existente  si tabelul din dataset 
+        // metoda de AFISARE FACTURI EXISTENTE existente  si tabelul din dataset 
         public void AfisareGridFacturi(int id_antet)
         {
 
@@ -77,7 +77,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                 }
             }
         }
-        // metoda afisare elemente din stanga treeview
+        // metoda ADAUGARE ELEMENTE 
         public void AdaugareFacturi(int idAntet)
         {
             //creare tabel pentru afisare grid
@@ -102,6 +102,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             CheltuieliDS.Tables["TabelDocumente"].Columns["a_id_asociere"].DefaultValue = 44;
             CheltuieliDS.Tables["TabelDocumente"].Columns["p_pret"].DefaultValue = 0;
             CheltuieliDS.Tables["TabelDocumente"].Columns["p_cantitate"].DefaultValue = 0;
+            CheltuieliDS.Tables["TabelDocumente"].Columns["p_valoare"].DefaultValue = 0.00;
             GridPozitiiFactura.AllowUserToAddRows = true;
 
             //creare dataTable in dataset pentru afisarea Denumirilor din lista de cheltuieli
@@ -123,36 +124,11 @@ namespace BlueSolAsoc.Fom_Meniuri
                 CheltuieliDS.Tables.Remove("mv_antet_repartizare");
             }
             CheltuieliDS.getSetFrom("select * from mv_antet_repartizare ", "mv_antet_repartizare");
-           
-            ///inserare valori in grid pozitii factura din casete
-            if (CheltuieliDS.Tables["mv_tabelParteneri"].Rows.Count > 0)
-            {
-                Guid id_temporar = Guid.NewGuid();
-                foreach (DataRow row in CheltuieliDS.Tables["TabelDocumente"].Rows)
-                {
-                    string data = DataCurenta.Value.Date.ToString("yyyy/MM/dd");
-                    int partener = (int)comboBoxParteneri.SelectedValue; ;
-                    int id_antet = 0;
-                    int id_pozitie = 0;
-                    string numar = numarFactura.Text;
-                    string serie = seriaFactura.Text;
-                    string suma = sumaFactura.Text;
-                    int cota_tva = 1;
-                    //atribuirea valorilor pe coloane in tabel
-                    row["a_id_antet"] = id_antet;
-                    row["a_nr_doc"] = numar;
-                    row["a_serie"] = serie;
-                    row["a_data"] = data;
-                    row["p_id_pozitie"] = id_pozitie;
-                    row["a_id_partener"] = partener;
-                    row["p_id_cota_tva"] = cota_tva;
-                    row["a_id_temporar"] = id_temporar;
-                    row["a_id_org"] = idAsociatie;
-                    row["a_id_asociere"] = 44;                 
-                }
-            }
-        }
+            
 
+
+        }
+        // CURATAREA CASETELOR
         public void CurataTextBox()
         {
            
@@ -166,47 +142,47 @@ namespace BlueSolAsoc.Fom_Meniuri
             //debifarea tuturor nodurilor
            treeDistribuieCheltuiala.Nodes[0].Checked = false;
         }
-        
-        
 
-        //public void inserareValoriInGridFactura()
-        //{
-        //    if (CheltuieliDS.Tables["mv_tabelParteneri"].Rows.Count > 0)
-        //    {
-        //        Guid id_temporar = Guid.NewGuid();
-        //        foreach (DataRow row in CheltuieliDS.Tables["TabelDocumente"].Rows)
-        //        {
-        //            string data = DataCurenta.Value.Date.ToString("yyyy/MM/dd");
-        //            int partener = (int)comboBoxParteneri.SelectedValue; ;
-        //            int id_antet = 0; 
-        //            int id_pozitie = 0; 
+
+        // ADAUGAREA VALORILOR DIN TEXTBOXURI IN DATATABLE
+        public void inserareValoriInGridFactura()
+        {
+            if (CheltuieliDS.Tables["mv_tabelParteneri"].Rows.Count > 0)
+            {
+                Guid id_temporar = Guid.NewGuid();
+                foreach (DataRow row in CheltuieliDS.Tables["TabelDocumente"].Rows)
+                {
+                    string data = DataCurenta.Value.Date.ToString("yyyy/MM/dd");
+                    int partener = (int)comboBoxParteneri.SelectedValue; ;
+                    int id_antet = 0;
+                    int id_pozitie = 0;
+
+                    string numar = numarFactura.Text;
+                    string serie = seriaFactura.Text;
+                    string suma = sumaFactura.Text;
+                    int cota_tva = 1;
+
+
+
+                    row["a_id_antet"] = id_antet;
+                    row["a_nr_doc"] = numar;
+                    row["a_serie"] = serie;
+                    row["a_data"] = data;
+                    row["p_id_pozitie"] = id_pozitie;
+                    row["a_id_partener"] = partener;
+                    row["p_id_cota_tva"] = cota_tva;
+                    row["a_id_temporar"] = id_temporar;
+                    row["a_id_org"] = idAsociatie;
+                    row["a_id_asociere"] = 44;
                    
-        //            string numar = numarFactura.Text;
-        //            string serie = seriaFactura.Text;
-        //            string suma = sumaFactura.Text;
-        //            int cota_tva = 1;
-                   
-                   
-            
-        //            row["a_id_antet"] = id_antet;
-        //            row["a_nr_doc"] = numar;
-        //            row["a_serie"] = serie;
-        //            row["a_data"] = data;
-        //            row["p_id_pozitie"] = id_pozitie;
-        //            row["a_id_partener"] = partener;                   
-        //            row["p_id_cota_tva"] = cota_tva;                   
-        //            row["a_id_temporar"] = id_temporar;
-        //            row["a_id_org"] = idAsociatie;
-        //            row["a_id_asociere"] = 44;
-        //           // row["p_valoare"] = Int32.Parse(row["p_cantitate"].ToString()) * Int32.Parse(row["p_pret"].ToString());
-                    
-        //        }
-               
-        //       // MessageBox.Show("uraa", "am inserat");
-                
-        //    }
-           
-        //}
+
+                }
+
+                // MessageBox.Show("uraa", "am inserat");
+
+            }
+
+        }
         // metoda care genereaza codul unic
         public Guid GenereazaCodulGuid()
         {
@@ -251,9 +227,10 @@ namespace BlueSolAsoc.Fom_Meniuri
             }
         }
 
-        
+        // CREAREA UNEI LISTE CE CONTINE IDORG PT FIECARE NOD SELECTAT
         List<TreeNode> listaDistribuieCheltuiala = new List<TreeNode>();// lista prin care verific daca exista elemente selectate in treeview
-        //metoda  care returneaza nodurile selectate
+
+        //metoda  care RETURNEAZA NODURILE SELECTATE
         public void noduriSelectate(TreeNodeCollection nodes)
         {
             //int countIndex = 0;
@@ -275,7 +252,7 @@ namespace BlueSolAsoc.Fom_Meniuri
 
            
         }
-        //metoda care verifica fiecare nod daca a fost selectat si exista in lista , apoi invers
+        // verifica fiecare nod daca a fost selectat si exista in lista , apoi invers
         private void ToateNodurileSelectate(TreeNodeCollection nodes)
         {
             // sa parcurg tot treeul nod cu nod si in tabela de repartizare , pentru ficare nod extrag tagul si fac o cautare in tabela de reparttizare pe id-org
@@ -328,7 +305,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             string valoare = CheltuieliDS.Tables["TabelAfisareTree"].Rows[0]["org_valoare"].ToString();
             GetTreeItemsNou(idOrg, valoare, treeDistribuieCheltuiala.Nodes);
         }
-        // metoda care returnea toate elementele copil pentru nodul selectat
+        // metoda care returneaza toate elementele copil pentru nodul selectat
         private void GetTreeItemsNou(int idOrg, string valoare , TreeNodeCollection parinteNod)
         {
            TreeNode copil =new TreeNode();
@@ -372,32 +349,36 @@ namespace BlueSolAsoc.Fom_Meniuri
         //modificare factura existenta prin dublu click in grid de istoric facturi dupa apasarea butonului modifica
         private void GridFacturi_DoubleClick(object sender, EventArgs e)
         {
-            if (btnModificaCheltuieli.Visible == false) { 
+            if (btnModificaCheltuieli.Visible == false) {
+                DataGridViewRow row =GridFacturi.CurrentRow;
+                              
+                    int idAntet = Convert.ToInt32(row.Cells[0].Value);
+                //   numarFactura.Text = (row.Cells[1].Value).ToString();
+                DataRow [] randSelectat = CheltuieliDS.Tables["IstoricFacturi"].Select(idAntet+"=id_antet");
                
-
-                foreach (DataGridViewRow row in GridFacturi.SelectedRows)
-                {
-                    int id_antet = Convert.ToInt32(row.Cells[0].Value);
-                    numarFactura.Text = (row.Cells[1].Value).ToString();
-                    seriaFactura.Text = (row.Cells[2].Value).ToString();
-                    DataCurenta.Value = Convert.ToDateTime(row.Cells[3].Value);
-                    int idPartener = int.Parse((row.Cells[4].Value).ToString());
-
+                    numarFactura.Text =(randSelectat[0]["nr_doc"]).ToString();
+                //    seriaFactura.Text = (row.Cells[2].Value).ToString();
+                    seriaFactura.Text= (randSelectat[0]["serie"]).ToString();
+                // DataCurenta.Value = Convert.ToDateTime(row.Cells[3].Value);
+                DataCurenta.Value = Convert.ToDateTime(randSelectat[0]["data"].ToString());
+                //    int idPartener = int.Parse((row.Cells[4].Value).ToString());
+                    int idPartener = int.Parse(randSelectat[0]["id_partener"].ToString());
+                // pe baza id partener sterg tabelul de parteneri si creez unul nou doar cu id selectat
                     if (!(CheltuieliDS.Tables["DenumirePartenerSelectat"] is null))
                     {
                         CheltuieliDS.Tables.Remove("DenumirePartenerSelectat");
                     }
                     CheltuieliDS.getSetFrom("select id_org,Denumire from mv_tabelParteneri where id_org= " + idPartener, "DenumirePartenerSelectat");
+                // pun ca sursa de date pt comboboxparteneri doar partenerul selectat
                     comboBoxParteneri.DataSource = CheltuieliDS.Tables["DenumirePartenerSelectat"];
                     comboBoxParteneri.ValueMember = "id_org";
-                    comboBoxParteneri.DisplayMember ="Denumire";                   
-                    sumaFactura.Text = (row.Cells["dataGridViewTextBoxColumn8"].Value).ToString();                        
+                    comboBoxParteneri.DisplayMember ="Denumire";
+                    sumaFactura.Text = Convert.ToDouble(randSelectat[0]["Valoare"]).ToString();                        
 
 
-                    AdaugareFacturi(id_antet);
+                    AdaugareFacturi(idAntet);
                    
-                }
-              
+                
                
             }
             else
@@ -407,9 +388,9 @@ namespace BlueSolAsoc.Fom_Meniuri
         private void btnSalveazaCheltuieli_Click_1(object sender, EventArgs e)
         {
             noduriSelectate(treeDistribuieCheltuiala.Nodes);
-            if (seriaFactura.Text == "" || numarFactura.Text == "" || sumaFactura.Text == "")
+            if (comboBoxParteneri.Text=="" ||  seriaFactura.Text == "" || numarFactura.Text == "" || sumaFactura.Text == "")
             {
-                MessageBox.Show("Nu nu poti salva Cheltuiala fara a trece serie, nr si suma", "Notificare", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Nu poti salva Cheltuiala fara a trece:"+" \n\r"+ "Partener" + " \n\r"+"Serie"+ "\n\r"+ "Numar"+ " \n\r"+"Suma", "Notificare", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -417,13 +398,13 @@ namespace BlueSolAsoc.Fom_Meniuri
                 {
                   
                    
-                    if (!(VerificSumaTotala()) )
+                    if (!(VerificSumaTotala()) )// verific daca valoarea din campul suma este - cu totalul cheltuielilor
                     {
                         MessageBox.Show("Valoarea casutei Suma nu este egala cu totalul elementelor din grid" + "\n\r" + "Verifica toate campurile", "Avartizare", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else
                     {
-                        //inserareValoriInGridFactura();
+                        inserareValoriInGridFactura();
                         CheltuieliDS.TransmiteActualizari("TabelDocumente", "mv_Documente");
                         ToateNodurileSelectate(treeDistribuieCheltuiala.Nodes);
                         CheltuieliDS.TransmiteActualizari("TabelRepartizare", "mv_antet_repartizare");
@@ -448,38 +429,35 @@ namespace BlueSolAsoc.Fom_Meniuri
             CurataTextBox();
             btnModificaCheltuieli.Show();
         }
-
+        // CALCULARE SUMA IN COLOANA VALOARE
         private void CalculeazaSuma(object sender, DataGridViewCellEventArgs e)
 
-        {
-            if (btnModificaCheltuieli.Visible)
-            {
+        {         
+                foreach (DataRow row in CheltuieliDS.Tables["TabelDocumente"].Rows)
+                {               
+                row["p_valoare"] = Convert.ToDouble(row["p_cantitate"]) * Convert.ToDouble(row["p_pret"]);
+                 }
 
-            
-            foreach (DataRow row in CheltuieliDS.Tables["TabelDocumente"].Rows)
-            {
-
-                row["p_valoare"] = Int32.Parse(row["p_cantitate"].ToString()) * Int32.Parse(row["p_pret"].ToString());
-
-            }
-            }
         }
+
+
+        // VERIFICARE DACA EXISTA EGALITATE INTRE TEXTBOX SUMA SI SUMA PE COLOANA VALOARE
         private Boolean VerificSumaTotala()
         {
-            int total=0;
+            double total=0;
             for(int i = 0; i < GridPozitiiFactura.Rows.Count - 1; i++)
             {
-               total += Convert.ToInt32(GridPozitiiFactura.Rows[i].Cells["pvaloareDataGridViewTextBoxColumn"].Value);
+               total += Convert.ToDouble(GridPozitiiFactura.Rows[i].Cells["pvaloareDataGridViewTextBoxColumn"].Value);
             }
-            if (int.Parse(sumaFactura.Text.ToString()) == total)
-            {
+                if (Convert.ToDouble(sumaFactura.Text.ToString()) == total)
+                {
                 return true;
-            }
-            else
-            {                         
+                }
+                else
+                {                         
                 return false;
             
-            }
+                }
         }
     }
 }
