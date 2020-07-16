@@ -121,7 +121,6 @@ namespace BlueSolAsoc.butoane_si_controale
                                     valoare = "0";
                                 }
                                 break;
-
                             default:
                                 break;
                         }

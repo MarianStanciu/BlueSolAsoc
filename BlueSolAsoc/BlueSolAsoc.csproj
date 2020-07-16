@@ -133,6 +133,9 @@
     <Compile Include="CreareAsociatie.Designer.cs">
       <DependentUpon>CreareAsociatie.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataSetVenituriIncasari.cs">
+      <DependentUpon>DataSetVenituriIncasari.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSetVenituriIncasari.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

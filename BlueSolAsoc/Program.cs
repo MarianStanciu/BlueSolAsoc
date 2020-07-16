@@ -18,10 +18,18 @@ namespace BlueSolAsoc
             var culture = CultureInfo.GetCultureInfo("en-US");
 
 
-            CultureInfo.DefaultThreadCurrentCulture = culture;
 
+            CultureInfo.DefaultThreadCurrentCulture = culture;
+            //CultureInfo.DefaultThreadCurrentCulture.DateTimeFormat = CultureInfo.GetCultureInfo("de-DE").DateTimeFormat;
+            CultureInfo cultureclone = (CultureInfo)culture.Clone();
+            cultureclone.DateTimeFormat.ShortDatePattern = "dd/MM/yyyy";
+            CultureInfo.DefaultThreadCurrentCulture = cultureclone;
 
             CultureInfo.DefaultThreadCurrentUICulture = culture;
+
+           
+
+            // setat format data tip european
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
