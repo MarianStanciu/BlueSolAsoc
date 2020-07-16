@@ -102,6 +102,8 @@ namespace BlueSolAsoc.Fom_Meniuri
             CheltuieliDS.Tables["TabelDocumente"].Columns["a_id_asociere"].DefaultValue = 44;
             CheltuieliDS.Tables["TabelDocumente"].Columns["p_pret"].DefaultValue = 0;
             CheltuieliDS.Tables["TabelDocumente"].Columns["p_cantitate"].DefaultValue = 0;
+
+            CheltuieliDS.Tables["TabelDocumente"].Columns["p_valoare"].Expression = "p_cantitate * p_pret";
             CheltuieliDS.Tables["TabelDocumente"].Columns["p_valoare"].DefaultValue = 0.00;
             GridPozitiiFactura.AllowUserToAddRows = true;
 
@@ -174,8 +176,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                     row["a_id_temporar"] = id_temporar;
                     row["a_id_org"] = idAsociatie;
                     row["a_id_asociere"] = 44;
-                   
-
+                    
                 }
 
                 // MessageBox.Show("uraa", "am inserat");
@@ -395,9 +396,9 @@ namespace BlueSolAsoc.Fom_Meniuri
             {
                 if (listaDistribuieCheltuiala.Count > 0)// verific daca a fost selectat cel putin un element in treeView
                 {
-                  
-                   
-                    if (!(VerificSumaTotala()) )// verific daca valoarea din campul suma este - cu totalul cheltuielilor
+
+
+                    if (!(VerificSumaTotala()))// verific daca valoarea din campul suma este - cu totalul cheltuielilor
                     {
                         MessageBox.Show("Valoarea casutei Suma nu este egala cu totalul elementelor din grid" + "\n\r" + "Verifica toate campurile", "Avartizare", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
@@ -410,8 +411,8 @@ namespace BlueSolAsoc.Fom_Meniuri
                         listaDistribuieCheltuiala.Clear();
                         CurataTextBox();
                     }
-                   
-                    
+
+
                 }
                 else
                 {
@@ -431,11 +432,17 @@ namespace BlueSolAsoc.Fom_Meniuri
         // CALCULARE SUMA IN COLOANA VALOARE
         private void CalculeazaSuma(object sender, DataGridViewCellEventArgs e)
 
-        {         
-                foreach (DataRow row in CheltuieliDS.Tables["TabelDocumente"].Rows)
-                {               
-                row["p_valoare"] = Convert.ToDouble(row["p_cantitate"]) * Convert.ToDouble(row["p_pret"]);
-                 }
+        {
+            //DataRow []row = CheltuieliDS.Tables["TabelDocumente"].Select(null, null, DataViewRowState.Added);
+
+            foreach (DataRow row in CheltuieliDS.Tables["TabelDocumente"].Rows)
+            {
+                //row["p_valoare"] = (Decimal)(row["p_cantitate"]) * (Decimal)(row["p_pret"]);
+
+                CheltuieliDS.Tables["TabelDocumente"].Columns["p_valoare"].Expression = "p_cantitate * p_pret";
+
+            }
+
 
         }
 
