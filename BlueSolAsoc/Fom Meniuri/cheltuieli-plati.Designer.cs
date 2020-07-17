@@ -202,7 +202,7 @@
             this.GridFacturi.RowTemplate.Height = 24;
             this.GridFacturi.Size = new System.Drawing.Size(169, 517);
             this.GridFacturi.TabIndex = 62;
-            this.GridFacturi.DoubleClick += new System.EventHandler(this.GridFacturi_DoubleClick);
+           this.GridFacturi.DoubleClick += new System.EventHandler(this.GridFacturi_DoubleClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
