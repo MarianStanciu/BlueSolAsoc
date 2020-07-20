@@ -17,6 +17,9 @@ namespace BlueSolAsoc
     {
         private string denumireAsociatie;
         private int idAsociatie;
+        ClassDataSet DataSetComboBox = new ClassDataSet(); // Utilizare Clasa DataSet pentru creeare tabele
+       
+        
 
         public MeniuForm(string denumireAsociatieString, int id)
         {
@@ -25,8 +28,13 @@ namespace BlueSolAsoc
             PopulareMeniuPrincipal(meniuPrincipal);
             denumireAsociatie = denumireAsociatieString;
             idAsociatie = id;
-         //  lblAsociatie_Selectata.Text = denumireAsociatieString + " "+id;
-            
+            //  lblAsociatie_Selectata.Text = denumireAsociatieString + " "+id;
+            DataSetComboBox.getSetFrom("Select * from tabela_luni", "tabela_luni");
+            AdaugareLunaCurenta();
+           
+            DataTable TabelaLuni = DataSetComboBox.Tables["tabela_luni"];
+            AtribuireDataSourceCombo();
+
         }
         public string GetDenumireAsociatie()
         {
@@ -41,11 +49,35 @@ namespace BlueSolAsoc
         {
             var b = new ClassButon();
 
+           
+            
         }
         // arrayuri pt butoane======================================================================
         string[] meniuPrincipal = { "STRUCTURA ASOCIATIE", "VENITURI / INCASARI", "CHELTUIELI / PLATI", "INCHIDE APLICATIA" };
        
+        private void AdaugareLunaCurenta()
+        {
+            DataTable TabelaLuni = DataSetComboBox.Tables["tabela_luni"];
+            if (TabelaLuni.Rows.Count == 0)
+            {
+                string data = DateTime.Now.Month.ToString();
+                string an = DateTime.Now.Year.ToString();               
+                TabelaLuni.Rows.Add(data,an,1);
+                DataSetComboBox.TransmiteActualizari("tabela_luni");
+            }
+        }
 
+        private void AtribuireDataSourceCombo()
+        {
+            DataTable TabelaLuni = DataSetComboBox.Tables["tabela_luni"];
+            comboBoxLUNA.DataSource = TabelaLuni;
+            comboBoxLUNA.ValueMember = "luna";
+            comboBoxLUNA.DisplayMember = "luna";
+
+            comboBoxAN.DataSource = TabelaLuni;
+            comboBoxAN.ValueMember = "an";
+            comboBoxAN.DisplayMember = "an";
+        }
         
 
 
@@ -175,8 +207,7 @@ namespace BlueSolAsoc
             lblNumeFirma.Text = DateTime.Now.ToString("dd  MMM    HH:mm:ss");
         }
 
-       
-
+        
         // populare meniuri secundare =====================================================================
         /*       public void PopulareMeniuSecundar( String[]meniuSecundar)
                {

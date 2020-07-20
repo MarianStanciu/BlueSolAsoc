@@ -35,7 +35,13 @@
             this.lblCeas = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pnlMama = new System.Windows.Forms.Panel();
+            this.comboBoxLUNA = new System.Windows.Forms.ComboBox();
+            this.comboBoxAN = new System.Windows.Forms.ComboBox();
+            this.classLabel2 = new BlueSolAsoc.butoane_si_controale.ClassLabel();
+            this.classLabel1 = new BlueSolAsoc.butoane_si_controale.ClassLabel();
+            this.classButon1 = new BlueSolAsoc.butoane_si_controale.ClassButon();
             this.panel1.SuspendLayout();
+            this.pnlMama.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -100,12 +106,62 @@
             this.pnlMama.BackColor = System.Drawing.Color.Transparent;
             this.pnlMama.BackgroundImage = global::BlueSolAsoc.Properties.Resources.BLUE_BIT_LOGO_FINAL_1;
             this.pnlMama.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pnlMama.Controls.Add(this.classButon1);
+            this.pnlMama.Controls.Add(this.comboBoxLUNA);
+            this.pnlMama.Controls.Add(this.comboBoxAN);
+            this.pnlMama.Controls.Add(this.classLabel2);
+            this.pnlMama.Controls.Add(this.classLabel1);
             this.pnlMama.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMama.Location = new System.Drawing.Point(0, 112);
             this.pnlMama.Margin = new System.Windows.Forms.Padding(2);
             this.pnlMama.Name = "pnlMama";
             this.pnlMama.Size = new System.Drawing.Size(1008, 617);
             this.pnlMama.TabIndex = 5;
+            // 
+            // comboBoxLUNA
+            // 
+            this.comboBoxLUNA.FormattingEnabled = true;
+            this.comboBoxLUNA.Location = new System.Drawing.Point(47, 155);
+            this.comboBoxLUNA.Name = "comboBoxLUNA";
+            this.comboBoxLUNA.Size = new System.Drawing.Size(108, 24);
+            this.comboBoxLUNA.TabIndex = 3;
+            // 
+            // comboBoxAN
+            // 
+            this.comboBoxAN.FormattingEnabled = true;
+            this.comboBoxAN.Location = new System.Drawing.Point(47, 69);
+            this.comboBoxAN.Name = "comboBoxAN";
+            this.comboBoxAN.Size = new System.Drawing.Size(85, 24);
+            this.comboBoxAN.TabIndex = 2;
+            // 
+            // classLabel2
+            // 
+            this.classLabel2.AutoSize = true;
+            this.classLabel2.Location = new System.Drawing.Point(48, 116);
+            this.classLabel2.Name = "classLabel2";
+            this.classLabel2.Size = new System.Drawing.Size(107, 16);
+            this.classLabel2.TabIndex = 1;
+            this.classLabel2.Text = "Selectie LUNA";
+            // 
+            // classLabel1
+            // 
+            this.classLabel1.AutoSize = true;
+            this.classLabel1.Location = new System.Drawing.Point(48, 37);
+            this.classLabel1.Name = "classLabel1";
+            this.classLabel1.Size = new System.Drawing.Size(85, 16);
+            this.classLabel1.TabIndex = 0;
+            this.classLabel1.Text = "Selectie AN";
+            // 
+            // classButon1
+            // 
+            this.classButon1.BackColor = System.Drawing.Color.Aquamarine;
+            this.classButon1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.classButon1.Location = new System.Drawing.Point(45, 221);
+            this.classButon1.Name = "classButon1";
+            this.classButon1.Size = new System.Drawing.Size(109, 48);
+            this.classButon1.TabIndex = 4;
+            this.classButon1.Text = "Adauga luna curenta";
+            this.classButon1.UseVisualStyleBackColor = false;
             // 
             // MeniuForm
             // 
@@ -123,6 +179,8 @@
             this.Load += new System.EventHandler(this.MeniuForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.pnlMama.ResumeLayout(false);
+            this.pnlMama.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -135,5 +193,10 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lblCeas;
         private System.Windows.Forms.Label lblNumeFirma;
+        private System.Windows.Forms.ComboBox comboBoxLUNA;
+        private System.Windows.Forms.ComboBox comboBoxAN;
+        private butoane_si_controale.ClassLabel classLabel2;
+        private butoane_si_controale.ClassLabel classLabel1;
+        private butoane_si_controale.ClassButon classButon1;
     }
 }
