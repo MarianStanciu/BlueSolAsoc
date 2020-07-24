@@ -91,6 +91,9 @@
     <Compile Include="butoane si controale\ClassButonSelectieAsoc.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="butoane si controale\ClassComboLuni.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="butoane si controale\ClassConexiuneServer.cs" />
     <Compile Include="butoane si controale\ClassDataSet.cs">
       <SubType>Component</SubType>
@@ -221,6 +224,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="butoane si controale\ClassButonSelectieAsoc.resx">
       <DependentUpon>ClassButonSelectieAsoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="butoane si controale\ClassComboLuni.resx">
+      <DependentUpon>ClassComboLuni.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreareAsociatie.resx">
       <DependentUpon>CreareAsociatie.cs</DependentUpon>

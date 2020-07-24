@@ -29,11 +29,13 @@ namespace BlueSolAsoc
             denumireAsociatie = denumireAsociatieString;
             idAsociatie = id;
             //  lblAsociatie_Selectata.Text = denumireAsociatieString + " "+id;
-            DataSetComboBox.getSetFrom("Select * from tabela_luni", "tabela_luni");
+            DataSetComboBox.getSetFrom("Select * from tabela_luni", "tabela_luni");//view pentru tabela + triggeri
             AdaugareLunaCurenta();
            
             DataTable TabelaLuni = DataSetComboBox.Tables["tabela_luni"];
             AtribuireDataSourceCombo();
+
+            gridTabelaLuni.DataSource = TabelaLuni;
 
         }
         public string GetDenumireAsociatie()
@@ -62,21 +64,34 @@ namespace BlueSolAsoc
             {
                 string data = DateTime.Now.Month.ToString();
                 string an = DateTime.Now.Year.ToString();               
-                TabelaLuni.Rows.Add(data,an,1);
-                DataSetComboBox.TransmiteActualizari("tabela_luni");
+                TabelaLuni.Rows.Add(0,data,an,1,idAsociatie,0);
+                //DataSetComboBox.TransmiteActualizari("tabela_luni");
             }
         }
 
         private void AtribuireDataSourceCombo()
         {
             DataTable TabelaLuni = DataSetComboBox.Tables["tabela_luni"];
-            comboBoxLUNA.DataSource = TabelaLuni;
-            comboBoxLUNA.ValueMember = "luna";
+            string[] lunicombobox = { "ianuarie", "februarie", "martie", "aprilie", "mai", "iunie", "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie" };
+            int[] numarlunicombo = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
+            int[] ani= { 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030, 2031};
+            DataTable TabelNumarareLuni = new DataTable();
+            TabelNumarareLuni.Columns.Add("luna");
+            TabelNumarareLuni.Columns.Add("numar_luna");
+            for (int i = 0; i < lunicombobox.Length; i++)
+            { 
+                TabelNumarareLuni.Rows.Add(lunicombobox[i], numarlunicombo[i]);
+            }
+            comboBoxLUNA.DataSource = TabelNumarareLuni;
+            comboBoxLUNA.ValueMember = "numar_luna";
             comboBoxLUNA.DisplayMember = "luna";
 
-            comboBoxAN.DataSource = TabelaLuni;
-            comboBoxAN.ValueMember = "an";
-            comboBoxAN.DisplayMember = "an";
+            comboBoxAN.DataSource = ani;
+            //comboBoxAN.ValueMember = "an";
+            //comboBoxAN.DisplayMember = "an";
+            comboBoxAN.SelectedIndex = -1;
+            comboBoxLUNA.SelectedIndex = -1;
+            
         }
         
 
@@ -127,60 +142,67 @@ namespace BlueSolAsoc
         // metoda comuna pentru click pe butoane ---------------------------------------------------------------------
         public void ApasareButon(object sender, EventArgs e)
         {
-            var b = (ClassButon)sender;
-            if (b != null)
+            if ((comboBoxLUNA.SelectedIndex == -1) || (comboBoxAN.SelectedIndex == -1))
             {
-                switch (b.Text)
+                MessageBox.Show("Alege luna si anul");
+            }else
+            { 
+            var b = (ClassButon)sender;
+                if (b != null)
                 {
-                    case ("STRUCTURA ASOCIATIE"):
-                                if (Application.OpenForms.OfType<AsociatieForm>().Any())
-                        {
-                            Application.OpenForms.OfType<AsociatieForm>().First().BringToFront();
-                        }else
-                 //       AsociatieForm asociatie = new AsociatieForm();
-                 //       asociatie.Show();
-                       DeschidePanelMama(new  AsociatieForm(this.denumireAsociatie, this.idAsociatie));
+                    switch (b.Text)
+                    {
+                        case ("STRUCTURA ASOCIATIE"):
+                            if (Application.OpenForms.OfType<AsociatieForm>().Any())
+                            {
+                                Application.OpenForms.OfType<AsociatieForm>().First().BringToFront();
+                            }
+                            else
+                                //       AsociatieForm asociatie = new AsociatieForm();
+                                //       asociatie.Show();
+                                DeschidePanelMama(new AsociatieForm(this.denumireAsociatie, this.idAsociatie));
 
-                 //       PopulareMeniuSecundar( meniuSecundar);
-                  //      MessageBox.Show("aaaaaaaaaaaaaaaa");
-                        
-                        break;
-                    case ("VENITURI / INCASARI"):
-                        if (Application.OpenForms.OfType<venituri_incasari>().Any())
-                        {
-                            Application.OpenForms.OfType<venituri_incasari>().First().BringToFront();
-                        }
-                        else
-                            //     MessageBox.Show("ooooooooooo");
-                            DeschidePanelMama(new venituri_incasari(this.denumireAsociatie, this.idAsociatie));
-                   //     PopulareMeniuSecundar(meniuSecundar1);
-                        break;
-                    case ("CHELTUIELI / PLATI"):
-                        if (Application.OpenForms.OfType<cheltuieli_plati>().Any())
-                        {
-                            Application.OpenForms.OfType<cheltuieli_plati>().First().BringToFront();
-                        }
-                        else
+                            //       PopulareMeniuSecundar( meniuSecundar);
+                            //      MessageBox.Show("aaaaaaaaaaaaaaaa");
+
+                            break;
+                        case ("VENITURI / INCASARI"):
+                            if (Application.OpenForms.OfType<venituri_incasari>().Any())
+                            {
+                                Application.OpenForms.OfType<venituri_incasari>().First().BringToFront();
+                            }
+                            else
+                                //     MessageBox.Show("ooooooooooo");
+                                DeschidePanelMama(new venituri_incasari(this.denumireAsociatie, this.idAsociatie));
+                            //     PopulareMeniuSecundar(meniuSecundar1);
+                            break;
+                        case ("CHELTUIELI / PLATI"):
+                            if (Application.OpenForms.OfType<cheltuieli_plati>().Any())
+                            {
+                                Application.OpenForms.OfType<cheltuieli_plati>().First().BringToFront();
+                            }
+                            else
+                                //       MessageBox.Show("ooooooooooo");
+                                DeschidePanelMama(new cheltuieli_plati(this.denumireAsociatie, this.idAsociatie));
+                            //    PopulareMeniuSecundar(meniuSecundar2);
+                            break;
+                        case ("INCHIDE APLICATIA"):
                             //       MessageBox.Show("ooooooooooo");
-                            DeschidePanelMama(new cheltuieli_plati(this.denumireAsociatie, this.idAsociatie));
-                    //    PopulareMeniuSecundar(meniuSecundar2);
-                        break;
-                    case ("INCHIDE APLICATIA"):
-                        //       MessageBox.Show("ooooooooooo");
-                        //DeschidePanelMama(new cheltuieli_plati());
-                        //PopulareMeniuSecundar(meniuSecundar2);
-                        this.Close();
-                        break;
-                    case ("structura asociatie"):
-                        //       MessageBox.Show("ooooooooooo");
-                        Form Structura_asociatie_definire  =new Structura_asociatie_definire();
-                        Structura_asociatie_definire.Show();
-                        //PopulareMeniuSecundar(meniuSecundar2);
-                      
-                        break;
-                       
-                        // ...
-                        // ...
+                            //DeschidePanelMama(new cheltuieli_plati());
+                            //PopulareMeniuSecundar(meniuSecundar2);
+                            this.Close();
+                            break;
+                        case ("structura asociatie"):
+                            //       MessageBox.Show("ooooooooooo");
+                            Form Structura_asociatie_definire = new Structura_asociatie_definire();
+                            Structura_asociatie_definire.Show();
+                            //PopulareMeniuSecundar(meniuSecundar2);
+
+                            break;
+
+                            // ...
+                            // ...
+                    }
                 }
             }
 

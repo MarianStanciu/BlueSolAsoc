@@ -29,19 +29,22 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblNumeFirma = new System.Windows.Forms.Label();
             this.lblCeas = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pnlMama = new System.Windows.Forms.Panel();
+            this.gridTabelaLuni = new BlueSolAsoc.butoane_si_controale.ClassGridView();
+            this.classButon1 = new BlueSolAsoc.butoane_si_controale.ClassButon();
             this.comboBoxLUNA = new System.Windows.Forms.ComboBox();
             this.comboBoxAN = new System.Windows.Forms.ComboBox();
             this.classLabel2 = new BlueSolAsoc.butoane_si_controale.ClassLabel();
             this.classLabel1 = new BlueSolAsoc.butoane_si_controale.ClassLabel();
-            this.classButon1 = new BlueSolAsoc.butoane_si_controale.ClassButon();
             this.panel1.SuspendLayout();
             this.pnlMama.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridTabelaLuni)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -56,7 +59,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1008, 82);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1087, 82);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel1
@@ -68,7 +71,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 82);
             this.panel1.Margin = new System.Windows.Forms.Padding(1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1008, 30);
+            this.panel1.Size = new System.Drawing.Size(1087, 30);
             this.panel1.TabIndex = 2;
             // 
             // lblNumeFirma
@@ -77,7 +80,7 @@
             this.lblNumeFirma.AutoSize = true;
             this.lblNumeFirma.Font = new System.Drawing.Font("MS UI Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNumeFirma.ForeColor = System.Drawing.Color.PaleGreen;
-            this.lblNumeFirma.Location = new System.Drawing.Point(798, 4);
+            this.lblNumeFirma.Location = new System.Drawing.Point(877, 4);
             this.lblNumeFirma.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNumeFirma.Name = "lblNumeFirma";
             this.lblNumeFirma.Size = new System.Drawing.Size(189, 22);
@@ -90,7 +93,7 @@
             this.lblCeas.AutoSize = true;
             this.lblCeas.Font = new System.Drawing.Font("MS PGothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCeas.ForeColor = System.Drawing.Color.PaleGreen;
-            this.lblCeas.Location = new System.Drawing.Point(815, 2);
+            this.lblCeas.Location = new System.Drawing.Point(894, 2);
             this.lblCeas.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCeas.Name = "lblCeas";
             this.lblCeas.Size = new System.Drawing.Size(67, 24);
@@ -106,6 +109,7 @@
             this.pnlMama.BackColor = System.Drawing.Color.Transparent;
             this.pnlMama.BackgroundImage = global::BlueSolAsoc.Properties.Resources.BLUE_BIT_LOGO_FINAL_1;
             this.pnlMama.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pnlMama.Controls.Add(this.gridTabelaLuni);
             this.pnlMama.Controls.Add(this.classButon1);
             this.pnlMama.Controls.Add(this.comboBoxLUNA);
             this.pnlMama.Controls.Add(this.comboBoxAN);
@@ -115,8 +119,40 @@
             this.pnlMama.Location = new System.Drawing.Point(0, 112);
             this.pnlMama.Margin = new System.Windows.Forms.Padding(2);
             this.pnlMama.Name = "pnlMama";
-            this.pnlMama.Size = new System.Drawing.Size(1008, 617);
+            this.pnlMama.Size = new System.Drawing.Size(1087, 617);
             this.pnlMama.TabIndex = 5;
+            // 
+            // gridTabelaLuni
+            // 
+            this.gridTabelaLuni.AllowUserToAddRows = false;
+            this.gridTabelaLuni.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Aquamarine;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridTabelaLuni.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.gridTabelaLuni.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridTabelaLuni.EnableHeadersVisualStyles = false;
+            this.gridTabelaLuni.Location = new System.Drawing.Point(856, 16);
+            this.gridTabelaLuni.MinimumSize = new System.Drawing.Size(228, 294);
+            this.gridTabelaLuni.Name = "gridTabelaLuni";
+            this.gridTabelaLuni.Size = new System.Drawing.Size(228, 294);
+            this.gridTabelaLuni.TabIndex = 5;
+            // 
+            // classButon1
+            // 
+            this.classButon1.BackColor = System.Drawing.Color.Aquamarine;
+            this.classButon1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.classButon1.Location = new System.Drawing.Point(45, 221);
+            this.classButon1.Name = "classButon1";
+            this.classButon1.Size = new System.Drawing.Size(109, 48);
+            this.classButon1.TabIndex = 4;
+            this.classButon1.Text = "Adauga luna noua";
+            this.classButon1.UseVisualStyleBackColor = false;
             // 
             // comboBoxLUNA
             // 
@@ -152,22 +188,11 @@
             this.classLabel1.TabIndex = 0;
             this.classLabel1.Text = "Selectie AN";
             // 
-            // classButon1
-            // 
-            this.classButon1.BackColor = System.Drawing.Color.Aquamarine;
-            this.classButon1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.classButon1.Location = new System.Drawing.Point(45, 221);
-            this.classButon1.Name = "classButon1";
-            this.classButon1.Size = new System.Drawing.Size(109, 48);
-            this.classButon1.TabIndex = 4;
-            this.classButon1.Text = "Adauga luna curenta";
-            this.classButon1.UseVisualStyleBackColor = false;
-            // 
             // MeniuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.ClientSize = new System.Drawing.Size(1087, 729);
             this.Controls.Add(this.pnlMama);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -181,6 +206,7 @@
             this.panel1.PerformLayout();
             this.pnlMama.ResumeLayout(false);
             this.pnlMama.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridTabelaLuni)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -198,5 +224,6 @@
         private butoane_si_controale.ClassLabel classLabel2;
         private butoane_si_controale.ClassLabel classLabel1;
         private butoane_si_controale.ClassButon classButon1;
+        private butoane_si_controale.ClassGridView gridTabelaLuni;
     }
 }
