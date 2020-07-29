@@ -229,7 +229,13 @@ namespace BlueSolAsoc
             lblNumeFirma.Text = DateTime.Now.ToString("dd  MMM    HH:mm:ss");
         }
 
-        
+        private void classButon1_Click(object sender, EventArgs e)
+        {
+            DataTable TabelaLuni = DataSetComboBox.Tables["tabela_luni"];
+            TabelaLuni.Rows.Add(0, comboBoxLUNA.SelectedValue, comboBoxAN.Text, 1, idAsociatie, 0);
+        }
+
+
         // populare meniuri secundare =====================================================================
         /*       public void PopulareMeniuSecundar( String[]meniuSecundar)
                {

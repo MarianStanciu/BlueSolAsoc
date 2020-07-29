@@ -153,6 +153,7 @@
             this.classButon1.TabIndex = 4;
             this.classButon1.Text = "Adauga luna noua";
             this.classButon1.UseVisualStyleBackColor = false;
+            this.classButon1.Click += new System.EventHandler(this.classButon1_Click);
             // 
             // comboBoxLUNA
             // 
