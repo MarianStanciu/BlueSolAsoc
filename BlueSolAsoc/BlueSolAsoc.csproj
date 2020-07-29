@@ -149,6 +149,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DSProprietati asoctiatie.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Fom Meniuri\Calcul_intretinere.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fom Meniuri\Calcul_intretinere.Designer.cs">
+      <DependentUpon>Calcul_intretinere.cs</DependentUpon>
+    </Compile>
     <Compile Include="Fom Meniuri\cheltuieli-plati.cs">
       <SubType>Form</SubType>
     </Compile>

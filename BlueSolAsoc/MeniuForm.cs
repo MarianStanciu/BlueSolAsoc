@@ -30,7 +30,7 @@ namespace BlueSolAsoc
             idAsociatie = id;
             //  lblAsociatie_Selectata.Text = denumireAsociatieString + " "+id;
             DataSetComboBox.getSetFrom("Select * from tabela_luni", "tabela_luni");//view pentru tabela + triggeri
-            AdaugareLunaCurenta();
+            //AdaugareLunaCurenta();
            
             DataTable TabelaLuni = DataSetComboBox.Tables["tabela_luni"];
             AtribuireDataSourceCombo();
@@ -55,7 +55,7 @@ namespace BlueSolAsoc
             
         }
         // arrayuri pt butoane======================================================================
-        string[] meniuPrincipal = { "STRUCTURA ASOCIATIE", "VENITURI / INCASARI", "CHELTUIELI / PLATI", "INCHIDE APLICATIA" };
+        string[] meniuPrincipal = { "STRUCTURA ASOCIATIE", "VENITURI / INCASARI", "CHELTUIELI / PLATI","CALCUL INTRETINERE", "INCHIDE APLICATIA" };
        
         private void AdaugareLunaCurenta()
         {
@@ -72,7 +72,7 @@ namespace BlueSolAsoc
         private void AtribuireDataSourceCombo()
         {
             DataTable TabelaLuni = DataSetComboBox.Tables["tabela_luni"];
-            string[] lunicombobox = { "ianuarie", "februarie", "martie", "aprilie", "mai", "iunie", "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie" };
+            string[] lunicombobox = {"ianuarie", "februarie", "martie", "aprilie", "mai", "iunie", "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie" };
             int[] numarlunicombo = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
             int[] ani= { 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030, 2031};
             DataTable TabelNumarareLuni = new DataTable();
@@ -142,11 +142,11 @@ namespace BlueSolAsoc
         // metoda comuna pentru click pe butoane ---------------------------------------------------------------------
         public void ApasareButon(object sender, EventArgs e)
         {
-            if ((comboBoxLUNA.SelectedIndex == -1) || (comboBoxAN.SelectedIndex == -1))
+/*            if ((comboBoxLUNA.SelectedIndex == -1) || (comboBoxAN.SelectedIndex == -1))
             {
                 MessageBox.Show("Alege luna si anul");
             }else
-            { 
+            { */
             var b = (ClassButon)sender;
                 if (b != null)
                 {
@@ -199,12 +199,16 @@ namespace BlueSolAsoc
                             //PopulareMeniuSecundar(meniuSecundar2);
 
                             break;
+                        case ("CALCUL INTRETINERE"):
+                            Form Calcul_intretinere = new Calcul_intretinere();
+                            Calcul_intretinere.Show();
+                            break;
 
                             // ...
                             // ...
                     }
                 }
-            }
+            
 
         }
         // metoda pentru a deschide toate formurile in panelul mama==============================================
