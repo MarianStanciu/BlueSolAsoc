@@ -237,6 +237,9 @@
     <EmbeddedResource Include="CreareAsociatie.resx">
       <DependentUpon>CreareAsociatie.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Fom Meniuri\Calcul_intretinere.resx">
+      <DependentUpon>Calcul_intretinere.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Fom Meniuri\cheltuieli-plati.resx">
       <DependentUpon>cheltuieli-plati.cs</DependentUpon>
     </EmbeddedResource>

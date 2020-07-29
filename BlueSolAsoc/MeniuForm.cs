@@ -142,48 +142,72 @@ namespace BlueSolAsoc
         // metoda comuna pentru click pe butoane ---------------------------------------------------------------------
         public void ApasareButon(object sender, EventArgs e)
         {
-/*            if ((comboBoxLUNA.SelectedIndex == -1) || (comboBoxAN.SelectedIndex == -1))
-            {
-                MessageBox.Show("Alege luna si anul");
-            }else
-            { */
+            DataTable TabelaLuni = DataSetComboBox.Tables["tabela_luni"];
+            /*            if ((comboBoxLUNA.SelectedIndex == -1) || (comboBoxAN.SelectedIndex == -1))
+                        {
+                            MessageBox.Show("Alege luna si anul");
+                        }else
+                        { */
+
+
             var b = (ClassButon)sender;
                 if (b != null)
                 {
                     switch (b.Text)
                     {
                         case ("STRUCTURA ASOCIATIE"):
-                            if (Application.OpenForms.OfType<AsociatieForm>().Any())
-                            {
-                                Application.OpenForms.OfType<AsociatieForm>().First().BringToFront();
-                            }
-                            else
-                                //       AsociatieForm asociatie = new AsociatieForm();
-                                //       asociatie.Show();
-                                DeschidePanelMama(new AsociatieForm(this.denumireAsociatie, this.idAsociatie));
+                        if (Application.OpenForms.OfType<AsociatieForm>().Any())
+                        {
+                            Application.OpenForms.OfType<AsociatieForm>().First().BringToFront();
+                        }
+                        else
+                        if (TabelaLuni.Rows.Count == 0)
+                        {
+                            MessageBox.Show("Alege luna si anul");
+                        }
+                        else
+                        {
+                            //       AsociatieForm asociatie = new AsociatieForm();
+                            //       asociatie.Show();
+                            DeschidePanelMama(new AsociatieForm(this.denumireAsociatie, this.idAsociatie));
+                        }
 
                             //       PopulareMeniuSecundar( meniuSecundar);
                             //      MessageBox.Show("aaaaaaaaaaaaaaaa");
 
                             break;
                         case ("VENITURI / INCASARI"):
-                            if (Application.OpenForms.OfType<venituri_incasari>().Any())
-                            {
-                                Application.OpenForms.OfType<venituri_incasari>().First().BringToFront();
-                            }
-                            else
-                                //     MessageBox.Show("ooooooooooo");
-                                DeschidePanelMama(new venituri_incasari(this.denumireAsociatie, this.idAsociatie));
+                        if (Application.OpenForms.OfType<venituri_incasari>().Any())
+                        {
+                            Application.OpenForms.OfType<venituri_incasari>().First().BringToFront();
+                        }
+                        else
+                         if (TabelaLuni.Rows.Count == 0)
+                        {
+                            MessageBox.Show("Alege luna si anul");
+                        }
+                        else
+                        {
+                            //     MessageBox.Show("ooooooooooo");
+                            DeschidePanelMama(new venituri_incasari(this.denumireAsociatie, this.idAsociatie));
+                        }
                             //     PopulareMeniuSecundar(meniuSecundar1);
                             break;
                         case ("CHELTUIELI / PLATI"):
-                            if (Application.OpenForms.OfType<cheltuieli_plati>().Any())
-                            {
-                                Application.OpenForms.OfType<cheltuieli_plati>().First().BringToFront();
-                            }
-                            else
-                                //       MessageBox.Show("ooooooooooo");
-                                DeschidePanelMama(new cheltuieli_plati(this.denumireAsociatie, this.idAsociatie));
+                        if (Application.OpenForms.OfType<cheltuieli_plati>().Any())
+                        {
+                            Application.OpenForms.OfType<cheltuieli_plati>().First().BringToFront();
+                        }
+                        else
+                         if (TabelaLuni.Rows.Count == 0)
+                        {
+                            MessageBox.Show("Alege luna si anul");
+                        }
+                        else
+                        {
+                            //       MessageBox.Show("ooooooooooo");
+                            DeschidePanelMama(new cheltuieli_plati(this.denumireAsociatie, this.idAsociatie));
+                        }
                             //    PopulareMeniuSecundar(meniuSecundar2);
                             break;
                         case ("INCHIDE APLICATIA"):
@@ -193,15 +217,29 @@ namespace BlueSolAsoc
                             this.Close();
                             break;
                         case ("structura asociatie"):
-                            //       MessageBox.Show("ooooooooooo");
+                        //       MessageBox.Show("ooooooooooo");
+                        if (TabelaLuni.Rows.Count == 0)
+                        {
+                            MessageBox.Show("Alege luna si anul");
+                        }
+                        else
+                        {
                             Form Structura_asociatie_definire = new Structura_asociatie_definire();
                             Structura_asociatie_definire.Show();
+                        }
                             //PopulareMeniuSecundar(meniuSecundar2);
 
                             break;
                         case ("CALCUL INTRETINERE"):
+                        if (TabelaLuni.Rows.Count == 0)
+                        {
+                            MessageBox.Show("Alege luna si anul");
+                        }
+                        else
+                        {
                             Form Calcul_intretinere = new Calcul_intretinere();
                             Calcul_intretinere.Show();
+                        }
                             break;
 
                             // ...
