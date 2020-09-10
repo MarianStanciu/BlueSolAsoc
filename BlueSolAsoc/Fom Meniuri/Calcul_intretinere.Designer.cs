@@ -42,9 +42,10 @@
             // 
             // classTabControl1
             // 
-            this.classTabControl1.Controls.Add(this.tabPage1);
             this.classTabControl1.Controls.Add(this.tabPage2);
+            this.classTabControl1.Controls.Add(this.tabPage1);
             this.classTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.classTabControl1.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.classTabControl1.Location = new System.Drawing.Point(0, 0);
             this.classTabControl1.Name = "classTabControl1";
             this.classTabControl1.SelectedIndex = 0;
@@ -53,10 +54,10 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 30);
+            this.tabPage1.Location = new System.Drawing.Point(4, 38);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(970, 557);
+            this.tabPage1.Size = new System.Drawing.Size(970, 549);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -66,12 +67,12 @@
             this.tabPage2.Controls.Add(this.GenereazaTabel);
             this.tabPage2.Controls.Add(this.GridCalculIntretinere);
             this.tabPage2.Controls.Add(this.treeColoane);
-            this.tabPage2.Location = new System.Drawing.Point(4, 30);
+            this.tabPage2.Location = new System.Drawing.Point(4, 38);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(970, 557);
+            this.tabPage2.Size = new System.Drawing.Size(970, 549);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "Genereaza tabel intretinere";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // GenereazaTabel
@@ -91,7 +92,7 @@
             this.GridCalculIntretinere.AllowUserToAddRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.Aquamarine;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -104,7 +105,7 @@
             this.GridCalculIntretinere.Name = "GridCalculIntretinere";
             this.GridCalculIntretinere.RowHeadersWidth = 51;
             this.GridCalculIntretinere.RowTemplate.Height = 24;
-            this.GridCalculIntretinere.Size = new System.Drawing.Size(691, 551);
+            this.GridCalculIntretinere.Size = new System.Drawing.Size(691, 543);
             this.GridCalculIntretinere.TabIndex = 2;
             // 
             // treeColoane
@@ -113,7 +114,7 @@
             this.treeColoane.Dock = System.Windows.Forms.DockStyle.Left;
             this.treeColoane.Location = new System.Drawing.Point(3, 3);
             this.treeColoane.Name = "treeColoane";
-            this.treeColoane.Size = new System.Drawing.Size(273, 551);
+            this.treeColoane.Size = new System.Drawing.Size(273, 543);
             this.treeColoane.TabIndex = 1;
             // 
             // Calcul_intretinere
