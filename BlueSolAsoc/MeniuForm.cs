@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BlueSolAsoc.Fom_Meniuri.structura_asociatie_formuri;
 using BlueSolAsoc.butoane_si_controale;
+using System.Configuration;
 
 namespace BlueSolAsoc
 {
@@ -38,6 +39,18 @@ namespace BlueSolAsoc
           
            
             gridTabelaLuni.DataSource = TabelaLuni;
+
+            // Incarcare ultima Luna/AN
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            if ((config.AppSettings.Settings.Count) != 0)
+            {
+                var ultimulan = config.AppSettings.Settings["an"].Value;
+                var ultimaluna = config.AppSettings.Settings["luna"].Value;
+                comboBoxAN.Text = ultimulan;
+                comboBoxLUNA.Text = ultimaluna;
+                TabelaLuni = DataSetComboBox.Tables["tabela_luni"];
+                TabelaLuni.Rows.Add(0, comboBoxLUNA.Text, comboBoxAN.Text, 1, idAsociatie, 0);
+            }
 
         }
         public string GetDenumireAsociatie()
@@ -298,8 +311,21 @@ namespace BlueSolAsoc
 
         private void classButon1_Click(object sender, EventArgs e)
         {
-            DataTable TabelaLuni = DataSetComboBox.Tables["tabela_luni"];
-            TabelaLuni.Rows.Add(0, comboBoxLUNA.SelectedValue, comboBoxAN.Text, 1, idAsociatie, 0);
+            if (comboBoxAN.SelectedIndex == -1 || comboBoxLUNA.SelectedIndex == -1)
+            {
+                MessageBox.Show("Alege luna si anul");
+            }
+            else
+            {
+                DataTable TabelaLuni = DataSetComboBox.Tables["tabela_luni"];
+                TabelaLuni.Rows.Add(0, comboBoxLUNA.SelectedValue, comboBoxAN.Text, 1, idAsociatie, 0);
+                Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);               
+                config.AppSettings.Settings.Add("an", comboBoxAN.SelectedValue.ToString());
+                config.AppSettings.Settings.Add("luna",comboBoxLUNA.SelectedValue.ToString());
+                //var asn = config.AppSettings.Settings["an"];
+                //config.Save();
+                config.Save(ConfigurationSaveMode.Full);
+            }
         }
 
 
