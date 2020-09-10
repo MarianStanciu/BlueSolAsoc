@@ -65,7 +65,7 @@ namespace BlueSolAsoc
         private void MeniuForm_Load(object sender, EventArgs e)
         {
             var b = new ClassButon();
-            AfisareNumeFereastraActiva();
+            classLabel3.Text = "Selecteaza un buton din meniu";
 
 
         }
@@ -157,6 +157,7 @@ namespace BlueSolAsoc
         // metoda comuna pentru click pe butoane ---------------------------------------------------------------------
         public void ApasareButon(object sender, EventArgs e)
         {
+           
             DataTable TabelaLuni = DataSetComboBox.Tables["tabela_luni"];
             /*            if ((comboBoxLUNA.SelectedIndex == -1) || (comboBoxAN.SelectedIndex == -1))
                         {
