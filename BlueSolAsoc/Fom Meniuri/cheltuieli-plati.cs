@@ -41,8 +41,10 @@ namespace BlueSolAsoc.Fom_Meniuri
             treeDistribuieCheltuiala.ExpandAll();
             AfisareGridFacturi(0);//istoric facturi
             AdaugareFacturi(0);//adaugare facturi
-            ClassButon distribuieCheltuiala = new ClassButon(); 
+            ClassButon distribuieCheltuiala = new ClassButon();
+            adaugareColoane();
         }
+
      
         // metoda de AFISARE FACTURI EXISTENTE existente  si tabelul din dataset 
         public void AfisareGridFacturi(int id_antet)
@@ -231,7 +233,7 @@ namespace BlueSolAsoc.Fom_Meniuri
         // CREAREA UNEI LISTE CE CONTINE IDORG PT FIECARE NOD SELECTAT
         List<TreeNode> listaDistribuieCheltuiala = new List<TreeNode>();// lista prin care verific daca exista elemente selectate in treeview
 
-        //metoda  care RETURNEAZA NODURILE SELECTATE
+        //metoda  care RETURNEAZA NODURILE SELECTATE si le stocheaza in listaDistribuieCheltuiala
         public void noduriSelectate(TreeNodeCollection nodes)
         {
             //int countIndex = 0;
@@ -447,6 +449,69 @@ namespace BlueSolAsoc.Fom_Meniuri
                 return false;
             
                 }
+        }
+
+        // adaugare coloane in grid pentru calculul intretinerii- se selecteaza din tree elementele de afisat apoi se apasa pe butonul genereaza tabel
+        private void GenereazaTabel_Click(object sender, EventArgs e)
+        {
+            GridCalculIntretinere.Columns.Clear();
+
+            foreach (TreeNode node in treeColoane.Nodes)
+            {
+                string numeColoana = node.Text.Trim();
+                string headerColoana = node.Text.Trim();
+               
+                if (node.Checked)
+                {                  
+                    if (GridCalculIntretinere.Columns[numeColoana] == null)
+                    {
+                        GridCalculIntretinere.Columns.Add(numeColoana, headerColoana);
+                    }                                
+                }
+                
+            }
+                if (GridCalculIntretinere.Columns.Count > 0)
+                {
+                    GridCalculIntretinere.Rows.Add();
+                }
+           
+        }
+
+
+        // creare tree cu cu noduri din denumirile cheltuielilor
+        public void adaugareColoane()
+        {
+            if (!(CheltuieliDS.Tables["denumiri_cheltuieli"] is null))
+            {
+                CheltuieliDS.Tables.Remove("denumiri_cheltuieli");
+            }
+            CheltuieliDS.getSetFrom("select * from tabela_asocieri_tipuri where id_tip=15 ", "denumiri_cheltuieli");
+            foreach (DataRow r in CheltuieliDS.Tables["denumiri_cheltuieli"].Rows)
+            {
+                TreeNode node = new TreeNode(r["val_label"].ToString());
+                treeColoane.Nodes.Add(node);
+
+            }
+
+        }
+        // metoda de bifare parint + copii in tree
+        private void treeColoane_AfterCheck(object sender, TreeViewEventArgs e)
+        {
+            try
+            {
+                e.Node.TreeView.BeginUpdate();
+                if (e.Node.Nodes.Count > 0)
+                {
+                    var parentNode = e.Node;
+                    var nodes = e.Node.Nodes;
+                    CheckedOrUnCheckedNodes(parentNode, nodes);
+                }
+            }
+            finally
+            {
+                e.Node.TreeView.EndUpdate();
+            }
+
         }
     }
 }
