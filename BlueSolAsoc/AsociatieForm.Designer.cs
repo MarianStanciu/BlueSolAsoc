@@ -125,7 +125,7 @@
             this.TabSA.Controls.Add(this.tabPage2);
             this.TabSA.Controls.Add(this.tabPage3);
             this.TabSA.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TabSA.ItemSize = new System.Drawing.Size(150, 37);
+            this.TabSA.ItemSize = new System.Drawing.Size(150, 45);
             this.TabSA.Location = new System.Drawing.Point(-5, 0);
             this.TabSA.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.TabSA.Name = "TabSA";
@@ -137,11 +137,11 @@
             // 
             this.tabPage1.Controls.Add(this.splitContainer1);
             this.tabPage1.Controls.Add(this.treeView1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 41);
+            this.tabPage1.Location = new System.Drawing.Point(4, 49);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.tabPage1.Size = new System.Drawing.Size(1050, 714);
+            this.tabPage1.Size = new System.Drawing.Size(1050, 706);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Structura Asociatie";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -179,7 +179,7 @@
             this.splitContainer1.Panel2.BackColor = System.Drawing.Color.Transparent;
             this.splitContainer1.Panel2.Controls.Add(this.dataGridViewAp);
             this.splitContainer1.Panel2.Click += new System.EventHandler(this.splitContainer1_Panel2_Click);
-            this.splitContainer1.Size = new System.Drawing.Size(834, 708);
+            this.splitContainer1.Size = new System.Drawing.Size(834, 700);
             this.splitContainer1.SplitterDistance = 185;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 3;
@@ -367,7 +367,7 @@
             this.dataGridViewAp.Name = "dataGridViewAp";
             this.dataGridViewAp.RowHeadersWidth = 51;
             this.dataGridViewAp.RowTemplate.Height = 24;
-            this.dataGridViewAp.Size = new System.Drawing.Size(640, 704);
+            this.dataGridViewAp.Size = new System.Drawing.Size(640, 696);
             this.dataGridViewAp.TabIndex = 0;
             // 
             // orgidorgDataGridViewTextBoxColumn
@@ -460,7 +460,7 @@
             this.treeView1.Location = new System.Drawing.Point(2, 3);
             this.treeView1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(212, 708);
+            this.treeView1.Size = new System.Drawing.Size(212, 700);
             this.treeView1.TabIndex = 1;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeView1_AfterSelect);
             // 

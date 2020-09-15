@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.classTabControl1 = new BlueSolAsoc.butoane_si_controale.ClassTabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.GenereazaTabel = new BlueSolAsoc.butoane_si_controale.ClassButon();
@@ -52,6 +52,7 @@
             this.classTabControl1.Controls.Add(this.tabPage1);
             this.classTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.classTabControl1.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.classTabControl1.ItemSize = new System.Drawing.Size(309, 45);
             this.classTabControl1.Location = new System.Drawing.Point(0, 0);
             this.classTabControl1.Name = "classTabControl1";
             this.classTabControl1.SelectedIndex = 0;
@@ -86,14 +87,14 @@
             // GridCalculIntretinere
             // 
             this.GridCalculIntretinere.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Aquamarine;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridCalculIntretinere.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Aquamarine;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridCalculIntretinere.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.GridCalculIntretinere.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridCalculIntretinere.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GridCalculIntretinere.EnableHeadersVisualStyles = false;
@@ -117,10 +118,10 @@
             // 
             this.tabPage1.Controls.Add(this.PanelConsumAapartament);
             this.tabPage1.Controls.Add(this.PanelTreeConsumAp);
-            this.tabPage1.Location = new System.Drawing.Point(4, 41);
+            this.tabPage1.Location = new System.Drawing.Point(4, 49);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1186, 667);
+            this.tabPage1.Size = new System.Drawing.Size(1186, 659);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Adaugare consumuri apartament";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -131,7 +132,7 @@
             this.PanelConsumAapartament.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelConsumAapartament.Location = new System.Drawing.Point(310, 3);
             this.PanelConsumAapartament.Name = "PanelConsumAapartament";
-            this.PanelConsumAapartament.Size = new System.Drawing.Size(873, 661);
+            this.PanelConsumAapartament.Size = new System.Drawing.Size(873, 653);
             this.PanelConsumAapartament.TabIndex = 10;
             // 
             // PanelTreeConsumAp
@@ -141,7 +142,7 @@
             this.PanelTreeConsumAp.Dock = System.Windows.Forms.DockStyle.Left;
             this.PanelTreeConsumAp.Location = new System.Drawing.Point(3, 3);
             this.PanelTreeConsumAp.Name = "PanelTreeConsumAp";
-            this.PanelTreeConsumAp.Size = new System.Drawing.Size(307, 661);
+            this.PanelTreeConsumAp.Size = new System.Drawing.Size(307, 653);
             this.PanelTreeConsumAp.TabIndex = 9;
             // 
             // treeConsumuriApartament
@@ -151,7 +152,7 @@
             this.treeConsumuriApartament.Location = new System.Drawing.Point(0, 0);
             this.treeConsumuriApartament.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.treeConsumuriApartament.Name = "treeConsumuriApartament";
-            this.treeConsumuriApartament.Size = new System.Drawing.Size(303, 657);
+            this.treeConsumuriApartament.Size = new System.Drawing.Size(303, 649);
             this.treeConsumuriApartament.TabIndex = 8;
             // 
             // Calcul_intretinere

@@ -133,6 +133,7 @@
             this.TabCheltuieliPlati.Controls.Add(this.tabPage2);
             this.TabCheltuieliPlati.Controls.Add(this.tabPage3);
             this.TabCheltuieliPlati.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TabCheltuieliPlati.ItemSize = new System.Drawing.Size(187, 45);
             this.TabCheltuieliPlati.Location = new System.Drawing.Point(0, 3);
             this.TabCheltuieliPlati.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.TabCheltuieliPlati.Name = "TabCheltuieliPlati";
@@ -148,11 +149,11 @@
             this.tabPage1.Controls.Add(this.Panel_FACTURA);
             this.tabPage1.Controls.Add(this.pnlControale);
             this.tabPage1.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabPage1.Location = new System.Drawing.Point(4, 41);
+            this.tabPage1.Location = new System.Drawing.Point(4, 49);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.tabPage1.Size = new System.Drawing.Size(1204, 714);
+            this.tabPage1.Size = new System.Drawing.Size(1204, 706);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Adauga Factura";
             // 
@@ -168,7 +169,7 @@
             this.Panel_IstoricFacturi.Location = new System.Drawing.Point(848, 3);
             this.Panel_IstoricFacturi.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Panel_IstoricFacturi.Name = "Panel_IstoricFacturi";
-            this.Panel_IstoricFacturi.Size = new System.Drawing.Size(366, 714);
+            this.Panel_IstoricFacturi.Size = new System.Drawing.Size(366, 706);
             this.Panel_IstoricFacturi.TabIndex = 64;
             // 
             // GridFacturi
@@ -207,7 +208,7 @@
             this.GridFacturi.Name = "GridFacturi";
             this.GridFacturi.RowHeadersWidth = 51;
             this.GridFacturi.RowTemplate.Height = 24;
-            this.GridFacturi.Size = new System.Drawing.Size(207, 676);
+            this.GridFacturi.Size = new System.Drawing.Size(207, 668);
             this.GridFacturi.TabIndex = 62;
             this.GridFacturi.DoubleClick += new System.EventHandler(this.GridFacturi_DoubleClick);
             // 
@@ -316,7 +317,7 @@
             this.Panel_TreeDistribuieCheltuiala.Location = new System.Drawing.Point(583, 3);
             this.Panel_TreeDistribuieCheltuiala.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Panel_TreeDistribuieCheltuiala.Name = "Panel_TreeDistribuieCheltuiala";
-            this.Panel_TreeDistribuieCheltuiala.Size = new System.Drawing.Size(258, 708);
+            this.Panel_TreeDistribuieCheltuiala.Size = new System.Drawing.Size(258, 700);
             this.Panel_TreeDistribuieCheltuiala.TabIndex = 63;
             // 
             // distribuieCheltuiala
@@ -343,7 +344,7 @@
             this.treeDistribuieCheltuiala.Location = new System.Drawing.Point(4, 85);
             this.treeDistribuieCheltuiala.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.treeDistribuieCheltuiala.Name = "treeDistribuieCheltuiala";
-            this.treeDistribuieCheltuiala.Size = new System.Drawing.Size(251, 616);
+            this.treeDistribuieCheltuiala.Size = new System.Drawing.Size(251, 608);
             this.treeDistribuieCheltuiala.TabIndex = 7;
             this.treeDistribuieCheltuiala.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterCheck);
             // 
@@ -365,7 +366,7 @@
             this.Panel_FACTURA.Location = new System.Drawing.Point(2, 3);
             this.Panel_FACTURA.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Panel_FACTURA.Name = "Panel_FACTURA";
-            this.Panel_FACTURA.Size = new System.Drawing.Size(581, 708);
+            this.Panel_FACTURA.Size = new System.Drawing.Size(581, 700);
             this.Panel_FACTURA.TabIndex = 62;
             // 
             // sumaFactura
@@ -434,7 +435,7 @@
             this.GridPozitiiFactura.Name = "GridPozitiiFactura";
             this.GridPozitiiFactura.RowHeadersWidth = 51;
             this.GridPozitiiFactura.RowTemplate.Height = 24;
-            this.GridPozitiiFactura.Size = new System.Drawing.Size(577, 406);
+            this.GridPozitiiFactura.Size = new System.Drawing.Size(577, 398);
             this.GridPozitiiFactura.TabIndex = 93;
             this.GridPozitiiFactura.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.CalculeazaSuma);
             this.GridPozitiiFactura.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.CalculeazaSuma);
@@ -669,7 +670,7 @@
             this.pnlControale.Location = new System.Drawing.Point(1212, 16);
             this.pnlControale.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pnlControale.Name = "pnlControale";
-            this.pnlControale.Size = new System.Drawing.Size(156, 698);
+            this.pnlControale.Size = new System.Drawing.Size(156, 690);
             this.pnlControale.TabIndex = 5;
             // 
             // btnAnuleaza
