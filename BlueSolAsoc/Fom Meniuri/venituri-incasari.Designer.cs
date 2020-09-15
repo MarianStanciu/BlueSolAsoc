@@ -117,11 +117,12 @@ namespace BlueSolAsoc.Fom_Meniuri
             // 
             // tabControl1
             // 
+            this.tabControl1.Appearance = System.Windows.Forms.TabAppearance.Buttons;
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl1.ItemSize = new System.Drawing.Size(150, 50);
+            this.tabControl1.ItemSize = new System.Drawing.Size(150, 45);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tabControl1.MinimumSize = new System.Drawing.Size(1252, 945);
@@ -145,11 +146,11 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.tabPage1.Controls.Add(this.classLabel2);
             this.tabPage1.Controls.Add(this.classLabel1);
             this.tabPage1.Controls.Add(this.TextBoxNrDoc);
-            this.tabPage1.Location = new System.Drawing.Point(4, 54);
+            this.tabPage1.Location = new System.Drawing.Point(4, 49);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.tabPage1.Size = new System.Drawing.Size(1670, 997);
+            this.tabPage1.Size = new System.Drawing.Size(1670, 1002);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "CHITANTE";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -194,11 +195,11 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.dataGridView2.DataSource = this.mvIstoricDocumenteBindingSource;
             this.dataGridView2.EnableHeadersVisualStyles = false;
             this.dataGridView2.Location = new System.Drawing.Point(702, 52);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView2.MinimumSize = new System.Drawing.Size(799, 881);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.Size = new System.Drawing.Size(960, 914);
+            this.dataGridView2.Size = new System.Drawing.Size(960, 919);
             this.dataGridView2.TabIndex = 23;
             this.dataGridView2.DoubleClick += new System.EventHandler(this.dataGridView2_DoubleClick);
             // 
@@ -329,7 +330,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.dataGridView1.DataSource = this.mvDocumenteBindingSource;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Location = new System.Drawing.Point(11, 276);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.Size = new System.Drawing.Size(680, 177);
@@ -585,11 +586,11 @@ namespace BlueSolAsoc.Fom_Meniuri
             // 
             this.tabPage2.Controls.Add(this.button1);
             this.tabPage2.Controls.Add(this.dataGridDreapta);
-            this.tabPage2.Location = new System.Drawing.Point(4, 54);
+            this.tabPage2.Location = new System.Drawing.Point(4, 49);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.tabPage2.Size = new System.Drawing.Size(1509, 964);
+            this.tabPage2.Size = new System.Drawing.Size(1670, 1002);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
