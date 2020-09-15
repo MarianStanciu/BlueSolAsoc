@@ -120,11 +120,12 @@
             this.TabSA.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.TabSA.Appearance = System.Windows.Forms.TabAppearance.Buttons;
             this.TabSA.Controls.Add(this.tabPage1);
             this.TabSA.Controls.Add(this.tabPage2);
             this.TabSA.Controls.Add(this.tabPage3);
             this.TabSA.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TabSA.ItemSize = new System.Drawing.Size(150, 50);
+            this.TabSA.ItemSize = new System.Drawing.Size(150, 37);
             this.TabSA.Location = new System.Drawing.Point(-5, 0);
             this.TabSA.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.TabSA.Name = "TabSA";
@@ -136,11 +137,11 @@
             // 
             this.tabPage1.Controls.Add(this.splitContainer1);
             this.tabPage1.Controls.Add(this.treeView1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 54);
+            this.tabPage1.Location = new System.Drawing.Point(4, 41);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.tabPage1.Size = new System.Drawing.Size(1050, 701);
+            this.tabPage1.Size = new System.Drawing.Size(1050, 714);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Structura Asociatie";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -150,7 +151,7 @@
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(214, 3);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -178,7 +179,7 @@
             this.splitContainer1.Panel2.BackColor = System.Drawing.Color.Transparent;
             this.splitContainer1.Panel2.Controls.Add(this.dataGridViewAp);
             this.splitContainer1.Panel2.Click += new System.EventHandler(this.splitContainer1_Panel2_Click);
-            this.splitContainer1.Size = new System.Drawing.Size(834, 695);
+            this.splitContainer1.Size = new System.Drawing.Size(834, 708);
             this.splitContainer1.SplitterDistance = 185;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 3;
@@ -366,7 +367,7 @@
             this.dataGridViewAp.Name = "dataGridViewAp";
             this.dataGridViewAp.RowHeadersWidth = 51;
             this.dataGridViewAp.RowTemplate.Height = 24;
-            this.dataGridViewAp.Size = new System.Drawing.Size(640, 691);
+            this.dataGridViewAp.Size = new System.Drawing.Size(640, 704);
             this.dataGridViewAp.TabIndex = 0;
             // 
             // orgidorgDataGridViewTextBoxColumn
@@ -459,7 +460,7 @@
             this.treeView1.Location = new System.Drawing.Point(2, 3);
             this.treeView1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(212, 695);
+            this.treeView1.Size = new System.Drawing.Size(212, 708);
             this.treeView1.TabIndex = 1;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeView1_AfterSelect);
             // 
@@ -467,11 +468,11 @@
             // 
             this.tabPage2.Controls.Add(this.listaCheltuieli);
             this.tabPage2.Controls.Add(this.comboBox1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 54);
+            this.tabPage2.Location = new System.Drawing.Point(4, 41);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.tabPage2.Size = new System.Drawing.Size(1050, 701);
+            this.tabPage2.Size = new System.Drawing.Size(1050, 714);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Structura Cheltuieli";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -498,11 +499,11 @@
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.GridParteneri);
-            this.tabPage3.Location = new System.Drawing.Point(4, 54);
+            this.tabPage3.Location = new System.Drawing.Point(4, 41);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.tabPage3.Size = new System.Drawing.Size(1050, 701);
+            this.tabPage3.Size = new System.Drawing.Size(1050, 714);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Parteneri";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -541,7 +542,7 @@
             this.GridParteneri.Name = "GridParteneri";
             this.GridParteneri.RowHeadersWidth = 51;
             this.GridParteneri.RowTemplate.Height = 24;
-            this.GridParteneri.Size = new System.Drawing.Size(1046, 695);
+            this.GridParteneri.Size = new System.Drawing.Size(1046, 708);
             this.GridParteneri.TabIndex = 0;
             // 
             // idorgDataGridViewTextBoxColumn

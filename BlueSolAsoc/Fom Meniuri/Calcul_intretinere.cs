@@ -33,7 +33,10 @@ namespace BlueSolAsoc.Fom_Meniuri
         {
             base.OnLoad(e);
             adaugareColoane();
+            extrageTabelaTree();
+            treeConsumuriApartament.ExpandAll();
         }
+        //GENERARE TABELA CU TOATE DENUMIRILE CHELTUIELILOR
         public void adaugareColoane()
         {
             if (!(Calcul_intretinereDS.Tables["denumiri_cheltuieli"] is null))
@@ -49,6 +52,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             }
 
         }
+        // BUTONUL CARE GENEREAZA GRIDVIEW PE BAZA SELECTIEI DIN TREE
         private void GenereazaTabel_Click(object sender, EventArgs e)
         {
             GridCalculIntretinere.Columns.Clear();
@@ -74,34 +78,39 @@ namespace BlueSolAsoc.Fom_Meniuri
 
         }
 
-        //private void treeColoane_AfterCheck(object sender, TreeViewEventArgs e)
-        //{
-        //    try
-        //    {
-        //        e.Node.TreeView.BeginUpdate();
-        //        if (e.Node.Nodes.Count > 0)
-        //        {
-        //            var parentNode = e.Node;
-        //            var nodes = e.Node.Nodes;
-        //            CheckedOrUnCheckedNodes(parentNode, nodes);
-        //        }
-        //    }
-        //    finally
-        //    {
-        //        e.Node.TreeView.EndUpdate();
-        //    }
 
-        //}
-        //private void CheckedOrUnCheckedNodes(TreeNode parentNode, TreeNodeCollection nodes)
-        //{
-        //    if (nodes.Count > 0)
-        //    {
-        //        foreach (TreeNode node in nodes)
-        //        {
-        //            node.Checked = parentNode.Checked;
-        //            CheckedOrUnCheckedNodes(parentNode, node.Nodes);
-        //        }
-        //    }
-        //}
+        // CREARE TABELA -  TREE PENTRU ADAUGARE INFORMATII PENTRU APARTAMENT
+        private void extrageTabelaTree()
+        {
+            if (!(Calcul_intretinereDS.Tables["TabelAfisareTree"] is null))
+            {
+                Calcul_intretinereDS.Tables.Remove("TabelAfisareTree");
+            }
+            Calcul_intretinereDS.getSetFrom("select * from mv_org_pt_repartizare where  id_asociatie=" + idAsociatie + " order by org_id_master asc", "TabelAfisareTree");
+            int idOrg = (int)Calcul_intretinereDS.Tables["TabelAfisareTree"].Rows[0]["org_id_org"];
+            string valoare = Calcul_intretinereDS.Tables["TabelAfisareTree"].Rows[0]["org_valoare"].ToString();
+            GetTreeItemsNou(idOrg, valoare, treeConsumuriApartament.Nodes);
+        }
+        // metoda care returneaza toate elementele copil pentru nodul selectat
+        private void GetTreeItemsNou(int idOrg, string valoare, TreeNodeCollection parinteNod)
+        {
+            TreeNode copil = new TreeNode();
+            copil.Tag = idOrg;
+            copil.Text = valoare;
+            parinteNod.Add(copil);
+            DataRow[] datacopii = Calcul_intretinereDS.Tables["TabelAfisareTree"].Select(" org_id_master = " + idOrg);
+            foreach (DataRow rand in datacopii)
+            {
+                int idOrgCopil = (int)rand["org_id_org"];
+                string valoare_copil = rand["org_valoare"].ToString();
+                GetTreeItemsNou(idOrgCopil, valoare_copil, copil.Nodes);
+            }
+
+
+
+        }
+
+
+
     }
 }

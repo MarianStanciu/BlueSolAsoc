@@ -38,8 +38,12 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.mv_DocumenteTableAdapter.Fill(this.cheltuieliDS1.mv_Documente);
                        
             extrageTabelaTree();
-            treeDistribuieCheltuiala.ExpandAll();
-            AfisareGridFacturi(0);//istoric facturi
+           
+
+
+
+
+        AfisareGridFacturi(0);//istoric facturi
             AdaugareFacturi(0);//adaugare facturi
             ClassButon distribuieCheltuiala = new ClassButon();
             adaugareColoane();

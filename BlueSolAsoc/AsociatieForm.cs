@@ -51,7 +51,7 @@ namespace BlueSolAsoc
                 MessageBox.Show("eeeee !");
             }
 
-            // adaugare tabela in dataset pt afisarea elementelor tab parteneri si setare datasource pentri gridParteneri
+            // adaugare tabela in dataset pt afisarea elementelor tab parteneri si setare datasource pentri gridParteneri// TABELA DIN VIEW
             if (!(asociatieFormDS.Tables["mv_tabelParteneri"] is null))
             {
                 asociatieFormDS.Tables.Remove("mv_tabelParteneri");
@@ -81,7 +81,7 @@ namespace BlueSolAsoc
 
 
             //creare dataTable in dataset pentru afisarea din lista de cheltuieli
-
+            //TABELUL DENUMIRI CHELTUIELI ESTE CREAT DIN TABELA ASOCIERI PRIN DATASET SI NU DIN VIEW // TABEL DIN TABEL
             asociatieFormDS.getSetFrom("select val_label from tabela_asocieri_tipuri where id_tip=15 ", "denumiri_cheltuieli");
             List<string> scheltuieli = new List<string>(asociatieFormDS.Tables["denumiri_cheltuieli"].Rows.Count);
             DataRow[] cheltuieli = asociatieFormDS.Tables["denumiri_cheltuieli"].Select(null, null, DataViewRowState.OriginalRows);
@@ -103,7 +103,7 @@ namespace BlueSolAsoc
                 asociatieFormDS.Tables.Remove("mv_tabelParteneri");
             }
 
-            // adaugare tabela in dataset pt afisarea elementelor tab parteneri
+            // adaugare tabela in dataset pt afisarea elementelor tab parteneri / TABELA DIN VIEW
             asociatieFormDS.getSetFrom("select * from mv_tabelParteneri  where  id_master =" + idAsociatie, "mv_tabelParteneri");
             GridParteneri.DataSource = asociatieFormDS.Tables["mv_tabelParteneri"];
             GridParteneri.Enabled = false;
@@ -125,7 +125,7 @@ namespace BlueSolAsoc
                 asociatieFormDS.Tables.Remove("mv_detaliiOrganizatie");
             }
 
-            // adaugare tabela in dataset pt afisarea elementelor din panel1
+            // adaugare tabela in dataset pt afisarea elementelor din panel1 // TABELA DIN VIEW
             asociatieFormDS.getSetFrom("select * from mv_detaliiOrganizatie  where  org_id_master =" + nId + " and aso_tip_afisare='edit'", "mv_detaliiOrganizatie");
 
             
@@ -185,7 +185,7 @@ namespace BlueSolAsoc
 
             int val = (Int32)asociatieFormDS.ReturnareValoare("select aso_id_tip from mv_detaliiOrganizatie where org_id_org=" + nId);
 
-            //adaugare tabela in dataset pentru apartamente
+            //adaugare tabela in dataset pentru apartamente  //TABELA DIN VIEW
             if (!(asociatieFormDS.Tables["mv_tabelApartamente"] is null))
             {
                 asociatieFormDS.Tables.Remove("mv_tabelApartamente");

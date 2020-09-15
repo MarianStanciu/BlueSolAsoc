@@ -18,7 +18,7 @@ namespace BlueSolAsoc
     {
         private string denumireAsociatie;
         private int idAsociatie;
-        ClassDataSet DataSetComboBox = new ClassDataSet(); // Utilizare Clasa DataSet pentru creeare tabele
+        ClassDataSet DataSetComboBox = new ClassDataSet(); // Utilizare Clasa DataSet pentru creare tabele
         string sNumeMeniu = "";
 
 
@@ -31,13 +31,13 @@ namespace BlueSolAsoc
             denumireAsociatie = denumireAsociatieString;
             idAsociatie = id;
             //  lblAsociatie_Selectata.Text = denumireAsociatieString + " "+id;
+
             DataSetComboBox.getSetFrom("Select * from tabela_luni", "tabela_luni");//view pentru tabela + triggeri
             //AdaugareLunaCurenta();
            
             DataTable TabelaLuni = DataSetComboBox.Tables["tabela_luni"];
             AtribuireDataSourceCombo();
-          
-           
+                    
             gridTabelaLuni.DataSource = TabelaLuni;
 
             // Incarcare ultima Luna/AN
@@ -228,7 +228,7 @@ namespace BlueSolAsoc
                             //       MessageBox.Show("ooooooooooo");
                             DeschidePanelMama(new cheltuieli_plati(this.denumireAsociatie, this.idAsociatie));
                         }
-                            //    PopulareMeniuSecundar(meniuSecundar2);
+                            
                             break;
                         case ("INCHIDE APLICATIA"):
                             //       MessageBox.Show("ooooooooooo");
@@ -236,21 +236,7 @@ namespace BlueSolAsoc
                             //PopulareMeniuSecundar(meniuSecundar2);
                             this.Close();
                             break;
-                        //case ("structura asociatie"):
-                        ////       MessageBox.Show("ooooooooooo");
-                        //if (TabelaLuni.Rows.Count == 0)
-                        //{
-                        //    MessageBox.Show("Alege luna si anul");
-                        //}
-                        //else
-                        //{
-                        //    DeschidePanelMama(new venituri_incasari(this.denumireAsociatie, this.idAsociatie));
-                        //    Form Structura_asociatie_definire = new Structura_asociatie_definire();
-                        //    Structura_asociatie_definire.Show();
-                        //}
-                            //PopulareMeniuSecundar(meniuSecundar2);
-
-                            //break;
+                       
                         case ("CALCUL INTRETINERE"):
                         classLabel3.Text = "CALCUL INTRETINERE";
                         if (Application.OpenForms.OfType<Calcul_intretinere>().Any())
