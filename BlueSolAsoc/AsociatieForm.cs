@@ -58,7 +58,22 @@ namespace BlueSolAsoc
             }
             asociatieFormDS.getSetFrom("select * from mv_tabelParteneri  where  id_master =" + idAsociatie, "mv_tabelParteneri");
             GridParteneri.DataSource = asociatieFormDS.Tables["mv_tabelParteneri"];
-            this.GridParteneri.AllowUserToAddRows = true;
+            //public int NewRowIndex = 0;
+           
+             //       GridParteneri.Columns["Denumire"].SortMode =
+             //DataGridViewColumnSortMode.Automatic;
+
+           
+            // DataGridViewRow row = new DataGridViewRow();
+            // GridParteneri.Rows.Insert(0, row);
+            //DataGridViewRow tmpRow = new DataGridViewRow();
+            //GridParteneri.Rows.Insert(0, tmpRow);
+            //GridParteneri.AddNewRowPosition = SystemRowPosition.Top;
+
+
+
+
+
             //GridParteneri.Columns["id_master"].Visible = false;
             //GridParteneri.Columns["id_org"].Visible = false;
             //GridParteneri.Columns["Principal"].Visible = false;
@@ -293,6 +308,7 @@ namespace BlueSolAsoc
                 case "Parteneri":
                     
                     GridParteneri.Enabled = true;
+               
                     break;
                 default:
                     break;
@@ -560,9 +576,10 @@ namespace BlueSolAsoc
 /// aici este codul salvare din tabul parteneri
                 
                 case "Parteneri":
+                  
                     DataColumnCollection dc = asociatieFormDS.StructuraColoane("mv_tabelParteneri");
                     string eroare = "";
-                    DataRow[] curente= asociatieFormDS.Tables["mv_tabelParteneri"].Select(null, null, DataViewRowState.CurrentRows);// acesta contine statusurile addaugate si modificate
+                    DataRow[] curente= asociatieFormDS.Tables["mv_tabelParteneri"].Select(null, null, DataViewRowState.CurrentRows);// acesta contine statusurile adaugate si modificate
                     for (int k = 0; k < curente.Length; k++)
                     {
                         
@@ -637,7 +654,5 @@ namespace BlueSolAsoc
         {
             MessageBox.Show("Pentru a edita valorile din casete apasa butonul MODIFICA !", "Informare", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-       
-
     }
 }

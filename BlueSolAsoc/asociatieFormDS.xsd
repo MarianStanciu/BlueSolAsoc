@@ -49,7 +49,7 @@ WHERE (mv_detaliiOrganizatie.id_org = dataTable(id_org))</CommandText>
               <DbSource ConnectionRef="proba_transareConnectionString (Settings)" DbObjectName="proba_transare.dbo.mv_tabelApartamente" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT org_id_org, [Denumire Apartament], Proprietar, Suprafata, Camere, Persoane, [Apometre AR], [Apometre AC], id_sc FROM dbo.mv_tabelApartamente</CommandText>
+                    <CommandText>SELECT org_id_org, [Denumire Apartament], Proprietar, Suprafata, Camere, [Apometre AR], [Apometre AC], id_sc, [Contract Individual] FROM mv_tabelApartamente</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -61,10 +61,10 @@ WHERE (mv_detaliiOrganizatie.id_org = dataTable(id_org))</CommandText>
               <Mapping SourceColumn="Proprietar" DataSetColumn="Proprietar" />
               <Mapping SourceColumn="Suprafata" DataSetColumn="Suprafata" />
               <Mapping SourceColumn="Camere" DataSetColumn="Camere" />
-              <Mapping SourceColumn="Persoane" DataSetColumn="Persoane" />
               <Mapping SourceColumn="Apometre AR" DataSetColumn="Apometre AR" />
               <Mapping SourceColumn="Apometre AC" DataSetColumn="Apometre AC" />
               <Mapping SourceColumn="id_sc" DataSetColumn="id_sc" />
+              <Mapping SourceColumn="Contract Individual" DataSetColumn="Contract Individual" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -140,7 +140,8 @@ SELECT id_asociere, id_tip, id_master, val_label, tip_afisare, val_default FROM 
               <DbSource ConnectionRef="proba_transareConnectionString (Settings)" DbObjectName="proba_transare.dbo.mv_tabelParteneri" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT id_org, id_master, Principal, Denumire, CodFiscal, AtributFiscal, Adresa, NrRegCom FROM dbo.mv_tabelParteneri</CommandText>
+                    <CommandText>SELECT mv_tabelParteneri.*
+FROM   mv_tabelParteneri</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -239,10 +240,10 @@ SELECT id_asociere, id_tip, id_master, val_label, tip_afisare, val_default FROM 
               </xs:element>
               <xs:element name="Suprafata" msprop:Generator_ColumnVarNameInTable="columnSuprafata" msprop:Generator_ColumnPropNameInRow="Suprafata" msprop:Generator_ColumnPropNameInTable="SuprafataColumn" msprop:Generator_UserColumnName="Suprafata" type="xs:decimal" minOccurs="0" />
               <xs:element name="Camere" msprop:Generator_ColumnVarNameInTable="columnCamere" msprop:Generator_ColumnPropNameInRow="Camere" msprop:Generator_ColumnPropNameInTable="CamereColumn" msprop:Generator_UserColumnName="Camere" type="xs:decimal" minOccurs="0" />
-              <xs:element name="Persoane" msprop:Generator_ColumnVarNameInTable="columnPersoane" msprop:Generator_ColumnPropNameInRow="Persoane" msprop:Generator_ColumnPropNameInTable="PersoaneColumn" msprop:Generator_UserColumnName="Persoane" type="xs:decimal" minOccurs="0" />
               <xs:element name="Apometre_x0020_AR" msprop:Generator_ColumnVarNameInTable="columnApometre_AR" msprop:Generator_ColumnPropNameInRow="Apometre_AR" msprop:Generator_ColumnPropNameInTable="Apometre_ARColumn" msprop:Generator_UserColumnName="Apometre AR" type="xs:int" minOccurs="0" />
               <xs:element name="Apometre_x0020_AC" msprop:Generator_ColumnVarNameInTable="columnApometre_AC" msprop:Generator_ColumnPropNameInRow="Apometre_AC" msprop:Generator_ColumnPropNameInTable="Apometre_ACColumn" msprop:Generator_UserColumnName="Apometre AC" type="xs:int" minOccurs="0" />
               <xs:element name="id_sc" msprop:Generator_ColumnVarNameInTable="columnid_sc" msprop:Generator_ColumnPropNameInRow="id_sc" msprop:Generator_ColumnPropNameInTable="id_scColumn" msprop:Generator_UserColumnName="id_sc" type="xs:int" />
+              <xs:element name="Contract_x0020_Individual" msprop:Generator_ColumnVarNameInTable="columnContract_Individual" msprop:Generator_ColumnPropNameInRow="Contract_Individual" msprop:Generator_ColumnPropNameInTable="Contract_IndividualColumn" msprop:Generator_UserColumnName="Contract Individual" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
