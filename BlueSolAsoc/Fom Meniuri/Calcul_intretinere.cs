@@ -82,13 +82,13 @@ namespace BlueSolAsoc.Fom_Meniuri
         // CREARE TABELA -  TREE PENTRU ADAUGARE INFORMATII PENTRU APARTAMENT
         private void extrageTabelaTree()
         {
-            if (!(Calcul_intretinereDS.Tables["TabelAfisareTree"] is null))
+            if (!(Calcul_intretinereDS.Tables["TabelAfisareTreeCalculIntretinere"] is null))
             {
-                Calcul_intretinereDS.Tables.Remove("TabelAfisareTree");
+                Calcul_intretinereDS.Tables.Remove("TabelAfisareTreeCalculIntretinere");
             }
-            Calcul_intretinereDS.getSetFrom("select * from mv_org_pt_repartizare where  id_asociatie=" + idAsociatie + " order by org_id_master asc", "TabelAfisareTree");
-            int idOrg = (int)Calcul_intretinereDS.Tables["TabelAfisareTree"].Rows[0]["org_id_org"];
-            string valoare = Calcul_intretinereDS.Tables["TabelAfisareTree"].Rows[0]["org_valoare"].ToString();
+            Calcul_intretinereDS.getSetFrom("select * from mv_orgAfisareTreeCalculIntretinere where  id_asociatie=" + idAsociatie + " order by org_id_master asc", "TabelAfisareTreeCalculIntretinere");
+            int idOrg = (int)Calcul_intretinereDS.Tables["TabelAfisareTreeCalculIntretinere"].Rows[0]["org_id_org"];
+            string valoare = Calcul_intretinereDS.Tables["TabelAfisareTreeCalculIntretinere"].Rows[0]["org_valoare"].ToString();
             GetTreeItemsNou(idOrg, valoare, treeConsumuriApartament.Nodes);
         }
         // metoda care returneaza toate elementele copil pentru nodul selectat
@@ -98,7 +98,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             copil.Tag = idOrg;
             copil.Text = valoare;
             parinteNod.Add(copil);
-            DataRow[] datacopii = Calcul_intretinereDS.Tables["TabelAfisareTree"].Select(" org_id_master = " + idOrg);
+            DataRow[] datacopii = Calcul_intretinereDS.Tables["TabelAfisareTreeCalculIntretinere"].Select(" org_id_master = " + idOrg);
             foreach (DataRow rand in datacopii)
             {
                 int idOrgCopil = (int)rand["org_id_org"];
