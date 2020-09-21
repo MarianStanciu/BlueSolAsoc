@@ -474,5 +474,26 @@ namespace BlueSolAsoc.Fom_Meniuri
                 MetodaInserareSuma();
             }
         }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.Graphics.DrawImage(bmp, 0, 0);
+        }
+
+        Bitmap bmp;
+
+        private void butonPrintTest_Click(object sender, EventArgs e)
+        {
+            Graphics g = this.CreateGraphics();
+            bmp=new Bitmap(this.Size.Width,this.Size.Height,g);
+            //bmp = new Bitmap(dataGridView2.Size.Width, dataGridView2.Size.Height, g);
+            Graphics mg = Graphics.FromImage(bmp);
+            //mg.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, this.Size);
+            //mg.CopyFromScreen()
+            mg.CopyFromScreen(dataGridView2.Location.X, dataGridView2.Location.Y, 0, 0, dataGridView2.Size);
+            printPreviewDialog1.ShowDialog();
+
+            
+        }
     }
 }
