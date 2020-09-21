@@ -80,7 +80,7 @@ namespace BlueSolAsoc
                 string data = DateTime.Now.Month.ToString();
                 string an = DateTime.Now.Year.ToString();               
                 TabelaLuni.Rows.Add(0,data,an,1,idAsociatie,0);
-                //DataSetComboBox.TransmiteActualizari("tabela_luni");
+                //DataSetComboBox.TransmiteActualizari("tabela_luni");              
             }
         }
         
