@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -34,9 +35,10 @@ namespace BlueSolAsoc.Fom_Meniuri
             base.OnLoad(e);
             adaugareColoane();
             extrageTabelaTree();
-            treeConsumuriApartament.ExpandAll();
+            treeConsumuriApartament.ExpandAll();// afisarea treeului rezultat in format extins pana la nivel de scara
+            PanelConsumAapartament.Hide();// ascunderea panelului ce contine gridul pentru adaugare consumuri pana este selectata o scar din tree
         }
-        //GENERARE TABELA CU TOATE DENUMIRILE CHELTUIELILOR
+        //GENERARE TABELA CU TOATE DENUMIRILE CHELTUIELILOR in tabul Genereaza tabel intretinere
         public void adaugareColoane()
         {
             if (!(Calcul_intretinereDS.Tables["denumiri_cheltuieli"] is null))
@@ -52,7 +54,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             }
 
         }
-        // BUTONUL CARE GENEREAZA GRIDVIEW PE BAZA SELECTIEI DIN TREE
+        // BUTONUL CARE GENEREAZA GRIDVIEW PE BAZA SELECTIEI DIN TREE in tabul Genereaza tabel intretinere
         private void GenereazaTabel_Click(object sender, EventArgs e)
         {
             GridCalculIntretinere.Columns.Clear();
@@ -79,7 +81,7 @@ namespace BlueSolAsoc.Fom_Meniuri
         }
 
 
-        // CREARE TABELA -  TREE PENTRU ADAUGARE INFORMATII PENTRU APARTAMENT
+        // CREARE TABELA -  TREE PENTRU ADAUGARE INFORMATII PENTRU APARTAMENT in tabul adaugare consumuri apartament
         private void extrageTabelaTree()
         {
             if (!(Calcul_intretinereDS.Tables["TabelAfisareTreeCalculIntretinere"] is null))
@@ -91,7 +93,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             string valoare = Calcul_intretinereDS.Tables["TabelAfisareTreeCalculIntretinere"].Rows[0]["org_valoare"].ToString();
             GetTreeItemsNou(idOrg, valoare, treeConsumuriApartament.Nodes);
         }
-        // metoda care returneaza toate elementele copil pentru nodul selectat
+        // metoda care returneaza toate elementele copil pentru nodul selectat in tree din tabul adaugare consumuri apartament
         private void GetTreeItemsNou(int idOrg, string valoare, TreeNodeCollection parinteNod)
         {
             TreeNode copil = new TreeNode();
@@ -106,11 +108,73 @@ namespace BlueSolAsoc.Fom_Meniuri
                 GetTreeItemsNou(idOrgCopil, valoare_copil, copil.Nodes);
             }
 
-
+        // metoda care selecteaza apartamentele asociate unei scari din tree
 
         }
 
+        private void treeConsumuriApartament_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            AfterSelect_treeAdaugareConsumuri(e.Node);
+        }
+        public object ReturnareValoare(string query)
+        {
+            ClassConexiuneServer.DeschideConexiunea();
+            SqlConnection cnn = ClassConexiuneServer.GetConnection();
+            SqlCommand command;
+            command = new SqlCommand(query, cnn);
+            var scalar = command.ExecuteScalar();
+            return scalar;
+        }
+        private void AfterSelect_treeAdaugareConsumuri(TreeNode Node)
+        {
+            int nId = System.Convert.ToInt16(Node.Tag);
+            int val = (Int32)Calcul_intretinereDS.ReturnareValoare("select aso_id_tip from mv_detaliiOrganizatie where org_id_org=" + nId);
 
+            //adaugare tabela in dataset pentru apartamente  //TABELA DIN VIEW
+            if (!(Calcul_intretinereDS.Tables["mv_tabelApartamente"] is null))
+            {
+                Calcul_intretinereDS.Tables.Remove("mv_tabelApartamente");
+            }
+            Calcul_intretinereDS.getSetFrom("select * from mv_tabelApartamente  where  id_sc =" + nId, "mv_tabelApartamente");
+            //CreareAsociatie tabelului pentru consumuri
+            if (!(Calcul_intretinereDS.Tables["mv_tabelConsumuriApartamente"] is null))
+            {
+                Calcul_intretinereDS.Tables.Remove("mv_tabelConsumuriApartamente");
+            }
+            Calcul_intretinereDS.getSetFrom("select * from mv_ConsumApartamente  where  id_sc =" + nId, "mv_tabelConsumuriApartamente");
+            gridAfisareConsumuri.DataSource = Calcul_intretinereDS.Tables["mv_tabelConsumuriApartamente"];
+            // verificam daca treenodul selectat este "Scara "
+            if (val == 3)
+            {
+                PanelConsumAapartament.Show();
+               
+            }
+            else
+            {
+                PanelConsumAapartament.Hide();
+            }
+        }
 
+        private void btnAnuleaza_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void classButonModifica1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Calcul_intretinere_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'calcul_intretinereDS1.mv_ConsumApartamente' table. You can move, or remove it, as needed.
+            this.mv_ConsumApartamenteTableAdapter.Fill(this.calcul_intretinereDS1.mv_ConsumApartamente);
+
+        }
     }
 }

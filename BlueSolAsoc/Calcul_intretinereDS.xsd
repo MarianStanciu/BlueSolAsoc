@@ -33,6 +33,28 @@
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="mv_ConsumApartamenteTableAdapter" GeneratorDataComponentClassName="mv_ConsumApartamenteTableAdapter" Name="mv_ConsumApartamente" UserDataComponentName="mv_ConsumApartamenteTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="proba_transareConnectionString (Settings)" DbObjectName="proba_transare.dbo.mv_ConsumApartamente" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT id_sc, [Denumire Apartament], Proprietar, numar_persoane, consum_apa_rece, consum_apa_calda, id_consumuri_apartamente FROM dbo.mv_ConsumApartamente</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id_sc" DataSetColumn="id_sc" />
+              <Mapping SourceColumn="Denumire Apartament" DataSetColumn="Denumire Apartament" />
+              <Mapping SourceColumn="Proprietar" DataSetColumn="Proprietar" />
+              <Mapping SourceColumn="numar_persoane" DataSetColumn="numar_persoane" />
+              <Mapping SourceColumn="consum_apa_rece" DataSetColumn="consum_apa_rece" />
+              <Mapping SourceColumn="consum_apa_calda" DataSetColumn="consum_apa_calda" />
+              <Mapping SourceColumn="id_consumuri_apartamente" DataSetColumn="id_consumuri_apartamente" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -41,7 +63,7 @@
   <xs:element name="Calcul_intretinereDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="Calcul_intretinereDS" msprop:Generator_UserDSName="Calcul_intretinereDS">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="mv_detaliiOrganizatie" msprop:Generator_TableClassName="mv_detaliiOrganizatieDataTable" msprop:Generator_TableVarName="tablemv_detaliiOrganizatie" msprop:Generator_TablePropName="mv_detaliiOrganizatie" msprop:Generator_RowDeletingName="mv_detaliiOrganizatieRowDeleting" msprop:Generator_RowChangingName="mv_detaliiOrganizatieRowChanging" msprop:Generator_RowEvHandlerName="mv_detaliiOrganizatieRowChangeEventHandler" msprop:Generator_RowDeletedName="mv_detaliiOrganizatieRowDeleted" msprop:Generator_UserTableName="mv_detaliiOrganizatie" msprop:Generator_RowChangedName="mv_detaliiOrganizatieRowChanged" msprop:Generator_RowEvArgName="mv_detaliiOrganizatieRowChangeEvent" msprop:Generator_RowClassName="mv_detaliiOrganizatieRow">
+        <xs:element name="mv_detaliiOrganizatie" msprop:Generator_TableClassName="mv_detaliiOrganizatieDataTable" msprop:Generator_TableVarName="tablemv_detaliiOrganizatie" msprop:Generator_RowChangedName="mv_detaliiOrganizatieRowChanged" msprop:Generator_TablePropName="mv_detaliiOrganizatie" msprop:Generator_RowDeletingName="mv_detaliiOrganizatieRowDeleting" msprop:Generator_RowChangingName="mv_detaliiOrganizatieRowChanging" msprop:Generator_RowEvHandlerName="mv_detaliiOrganizatieRowChangeEventHandler" msprop:Generator_RowDeletedName="mv_detaliiOrganizatieRowDeleted" msprop:Generator_RowClassName="mv_detaliiOrganizatieRow" msprop:Generator_UserTableName="mv_detaliiOrganizatie" msprop:Generator_RowEvArgName="mv_detaliiOrganizatieRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="org_id_org" msprop:Generator_ColumnVarNameInTable="columnorg_id_org" msprop:Generator_ColumnPropNameInRow="org_id_org" msprop:Generator_ColumnPropNameInTable="org_id_orgColumn" msprop:Generator_UserColumnName="org_id_org" type="xs:int" />
@@ -91,6 +113,31 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="mv_ConsumApartamente" msprop:Generator_TableClassName="mv_ConsumApartamenteDataTable" msprop:Generator_TableVarName="tablemv_ConsumApartamente" msprop:Generator_TablePropName="mv_ConsumApartamente" msprop:Generator_RowDeletingName="mv_ConsumApartamenteRowDeleting" msprop:Generator_RowChangingName="mv_ConsumApartamenteRowChanging" msprop:Generator_RowEvHandlerName="mv_ConsumApartamenteRowChangeEventHandler" msprop:Generator_RowDeletedName="mv_ConsumApartamenteRowDeleted" msprop:Generator_UserTableName="mv_ConsumApartamente" msprop:Generator_RowChangedName="mv_ConsumApartamenteRowChanged" msprop:Generator_RowEvArgName="mv_ConsumApartamenteRowChangeEvent" msprop:Generator_RowClassName="mv_ConsumApartamenteRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id_sc" msprop:Generator_ColumnVarNameInTable="columnid_sc" msprop:Generator_ColumnPropNameInRow="id_sc" msprop:Generator_ColumnPropNameInTable="id_scColumn" msprop:Generator_UserColumnName="id_sc" type="xs:int" />
+              <xs:element name="Denumire_x0020_Apartament" msprop:Generator_ColumnVarNameInTable="columnDenumire_Apartament" msprop:Generator_ColumnPropNameInRow="Denumire_Apartament" msprop:Generator_ColumnPropNameInTable="Denumire_ApartamentColumn" msprop:Generator_UserColumnName="Denumire Apartament" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Proprietar" msprop:Generator_ColumnVarNameInTable="columnProprietar" msprop:Generator_ColumnPropNameInRow="Proprietar" msprop:Generator_ColumnPropNameInTable="ProprietarColumn" msprop:Generator_UserColumnName="Proprietar" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="numar_persoane" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnnumar_persoane" msprop:Generator_ColumnPropNameInRow="numar_persoane" msprop:Generator_ColumnPropNameInTable="numar_persoaneColumn" msprop:Generator_UserColumnName="numar_persoane" type="xs:int" minOccurs="0" />
+              <xs:element name="consum_apa_rece" msprop:Generator_ColumnVarNameInTable="columnconsum_apa_rece" msprop:Generator_ColumnPropNameInRow="consum_apa_rece" msprop:Generator_ColumnPropNameInTable="consum_apa_receColumn" msprop:Generator_UserColumnName="consum_apa_rece" type="xs:decimal" minOccurs="0" />
+              <xs:element name="consum_apa_calda" msprop:Generator_ColumnVarNameInTable="columnconsum_apa_calda" msprop:Generator_ColumnPropNameInRow="consum_apa_calda" msprop:Generator_ColumnPropNameInTable="consum_apa_caldaColumn" msprop:Generator_UserColumnName="consum_apa_calda" type="xs:decimal" minOccurs="0" />
+              <xs:element name="id_consumuri_apartamente" msprop:Generator_ColumnVarNameInTable="columnid_consumuri_apartamente" msprop:Generator_ColumnPropNameInRow="id_consumuri_apartamente" msprop:Generator_ColumnPropNameInTable="id_consumuri_apartamenteColumn" msprop:Generator_UserColumnName="id_consumuri_apartamente" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

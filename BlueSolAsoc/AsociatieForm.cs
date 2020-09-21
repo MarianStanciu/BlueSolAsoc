@@ -58,32 +58,14 @@ namespace BlueSolAsoc
             }
             asociatieFormDS.getSetFrom("select * from mv_tabelParteneri  where  id_master =" + idAsociatie, "mv_tabelParteneri");
             GridParteneri.DataSource = asociatieFormDS.Tables["mv_tabelParteneri"];
-            //public int NewRowIndex = 0;
-           
-             //       GridParteneri.Columns["Denumire"].SortMode =
-             //DataGridViewColumnSortMode.Automatic;
-
-           
-            // DataGridViewRow row = new DataGridViewRow();
-            // GridParteneri.Rows.Insert(0, row);
-            //DataGridViewRow tmpRow = new DataGridViewRow();
-            //GridParteneri.Rows.Insert(0, tmpRow);
-            //GridParteneri.AddNewRowPosition = SystemRowPosition.Top;
-
-
-
+            
 
 
             //GridParteneri.Columns["id_master"].Visible = false;
             //GridParteneri.Columns["id_org"].Visible = false;
             //GridParteneri.Columns["Principal"].Visible = false;
             asociatieFormDS.Tables["mv_tabelParteneri"].Columns["id_master"].DefaultValue = idAsociatie;
-            //asociatieFormDS.Tables["mv_tabelParteneri"].Columns["Denumire"].DefaultValue = "nume";
-            //asociatieFormDS.Tables["mv_tabelParteneri"].Columns["CodFiscal"].DefaultValue = "";
-            //asociatieFormDS.Tables["mv_tabelParteneri"].Columns["AtributFiscal"].DefaultValue = "Nu";
-            //asociatieFormDS.Tables["mv_tabelParteneri"].Columns["Adresa"].DefaultValue = "";
-            //asociatieFormDS.Tables["mv_tabelParteneri"].Columns["NrRegCom"].DefaultValue = "";
-            GridParteneri.Enabled = false;
+            
 
 
         }
@@ -626,6 +608,66 @@ namespace BlueSolAsoc
                     break;
             }
         }
+        // adaugarea valorilor din textboxuri in tabel pentru tab PARTENERI
+        public void inserareValoriTabelParteneri()
+        {
+            string sdenumire = TextBoxDenumire.Text;
+            string scodFiscal = TextBoxCodFiscal.Text;
+            string satributFiscal = TextBoxAtributFiscal.Text;
+            string sadresa = TextBoxAdresa.Text;
+            string snrRegCom = TextBoxNrRegComert.Text;
+            //asociatieFormDS.Tables["mv_tabelParteneri"].Columns["Denumire"].DefaultValue = "nume";
+            //asociatieFormDS.Tables["mv_tabelParteneri"].Columns["CodFiscal"].DefaultValue = "";
+            //asociatieFormDS.Tables["mv_tabelParteneri"].Columns["AtributFiscal"].DefaultValue = "Nu";
+            //asociatieFormDS.Tables["mv_tabelParteneri"].Columns["Adresa"].DefaultValue = "";
+            //asociatieFormDS.Tables["mv_tabelParteneri"].Columns["NrRegCom"].DefaultValue = "";
+            GridParteneri.Enabled = false;
+            string seroareCasetePartener = "";
+            if (sdenumire.Equals("") ||scodFiscal.Equals("") || satributFiscal.Equals("") || sadresa.Equals(""))
+            {
+                MessageBox.Show("Nu poti lasa campuri necompletate pentru partener", "Avertisment");
+            }
+            else
+            {
+                asociatieFormDS.Tables["mv_tabelParteneri"].Rows.Add();
+              
+
+            }
+            DataRow[] adaugate = asociatieFormDS.Tables["mv_tabelParteneri"].Select(null, null, DataViewRowState.Added);
+            //if ( adaugate.Length>0 )
+            //{
+                //asociatieFormDS.Tables["mv_tabelParteneri"].Columns["Denumire"].DefaultValue = sdenumire;
+                //asociatieFormDS.Tables["mv_tabelParteneri"].Columns["CodFiscal"].DefaultValue = scodFiscal;
+                //asociatieFormDS.Tables["mv_tabelParteneri"].Columns["AtributFiscal"].DefaultValue = satributFiscal;
+                //asociatieFormDS.Tables["mv_tabelParteneri"].Columns["Adresa"].DefaultValue = sadresa;
+                //asociatieFormDS.Tables["mv_tabelParteneri"].Columns["NrRegCom"].DefaultValue = snrRegCom;
+                //adaugate["Denumire"].Field =int(sdenumire);
+                //row["CodFiscal"] = scodFiscal;
+                //row["AtributFiscal"] = satributFiscal;
+                //row["Adresa"] = sadresa;
+                //row["NrRegCom"] = snrRegCom;
+            //}
+            foreach( DataRow row in adaugate)
+            {
+                row["Denumire"] = sdenumire;
+                row["CodFiscal"] = scodFiscal;
+                row["AtributFiscal"] = satributFiscal;
+                row["Adresa"] = sadresa;
+                row["NrRegCom"] = snrRegCom;
+            }
+            asociatieFormDS.TransmiteActualizari("mv_tabelParteneri");
+            DupaApasareOk(GridParteneri);
+            CurataTextbox();
+        }
+        public void CurataTextbox()
+        {
+            TextBoxDenumire.Text="";
+            TextBoxCodFiscal.Text = "";
+            TextBoxAtributFiscal.Text = "";
+            TextBoxAdresa.Text = "";
+            TextBoxNrRegComert.Text = "";
+
+        }
 
         private void AsociatieForm_Load(object sender, EventArgs e)
         {
@@ -653,6 +695,11 @@ namespace BlueSolAsoc
         private void tabPage3_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Pentru a edita valorile din casete apasa butonul MODIFICA !", "Informare", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void ButonAdaugarePartener_Click(object sender, EventArgs e)
+        {
+            inserareValoriTabelParteneri();
         }
     }
 }
