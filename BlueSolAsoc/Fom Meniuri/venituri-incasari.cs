@@ -477,7 +477,10 @@ namespace BlueSolAsoc.Fom_Meniuri
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            e.Graphics.DrawImage(bmp, 0, 0);
+            //e.Graphics.DrawImage(bmp, 0, 0);
+            Bitmap bm = new Bitmap(this.dataGridView2.Width, this.dataGridView2.Height);
+            dataGridView2.DrawToBitmap(bm, new Rectangle(0, 0, this.dataGridView2.Width, this.dataGridView2.Height));
+            e.Graphics.DrawImage(bm, 0, 0);
         }
 
         Bitmap bmp;
