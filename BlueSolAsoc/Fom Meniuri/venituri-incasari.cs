@@ -478,22 +478,23 @@ namespace BlueSolAsoc.Fom_Meniuri
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             //e.Graphics.DrawImage(bmp, 0, 0);
+           /* DataTable TabelaVenituriIncasari = DataSetVenituriIncasari.Tables["mv_Documente"];*/
             Bitmap bm = new Bitmap(this.dataGridView2.Width, this.dataGridView2.Height);
             dataGridView2.DrawToBitmap(bm, new Rectangle(0, 0, this.dataGridView2.Width, this.dataGridView2.Height));
             e.Graphics.DrawImage(bm, 0, 0);
         }
 
-        Bitmap bmp;
+        //Bitmap bmp;
 
         private void butonPrintTest_Click(object sender, EventArgs e)
         {
-            Graphics g = this.CreateGraphics();
-            bmp=new Bitmap(this.Size.Width,this.Size.Height,g);
+            //Graphics g = this.CreateGraphics();
+            //bmp=new Bitmap(this.Size.Width,this.Size.Height,g);
             //bmp = new Bitmap(dataGridView2.Size.Width, dataGridView2.Size.Height, g);
-            Graphics mg = Graphics.FromImage(bmp);
+            //Graphics mg = Graphics.FromImage(bmp);
             //mg.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, this.Size);
             //mg.CopyFromScreen()
-            mg.CopyFromScreen(dataGridView2.Location.X, dataGridView2.Location.Y, 0, 0, dataGridView2.Size);
+            //mg.CopyFromScreen(dataGridView2.Location.X, dataGridView2.Location.Y, 0, 0, dataGridView2.Size);
             printPreviewDialog1.ShowDialog();
 
             
