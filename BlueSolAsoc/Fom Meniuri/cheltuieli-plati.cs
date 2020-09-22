@@ -150,9 +150,9 @@ namespace BlueSolAsoc.Fom_Meniuri
             //debifarea tuturor nodurilor
            treeDistribuieCheltuiala.Nodes[0].Checked = false;
         }
+        
 
-
-        // ADAUGAREA VALORILOR DIN TEXTBOXURI IN DATATABLE
+        // ADAUGAREA VALORILOR DIN TEXTBOXURI IN DATATABLE pentru tab adauga cheltuiala
         public void inserareValoriInGridFactura()
         {
             if (CheltuieliDS.Tables["mv_tabelParteneri"].Rows.Count > 0)

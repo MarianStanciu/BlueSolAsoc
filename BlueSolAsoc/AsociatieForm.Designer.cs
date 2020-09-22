@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TabSA = new BlueSolAsoc.butoane_si_controale.ClassTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new BlueSolAsoc.butoane_si_controale.ClassSplitPanel();
@@ -79,6 +79,12 @@
             this.mvtabelParteneriBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.classLabel15 = new BlueSolAsoc.butoane_si_controale.ClassLabel();
             this.panelAdaugaParteneri = new BlueSolAsoc.butoane_si_controale.ClassPanel();
+            this.ButonAdaugarePartener = new BlueSolAsoc.butoane_si_controale.ClassButon();
+            this.TextBoxNrRegComert = new BlueSolAsoc.butoane_si_controale.ClassTextBox();
+            this.TextBoxAdresa = new BlueSolAsoc.butoane_si_controale.ClassTextBox();
+            this.TextBoxAtributFiscal = new BlueSolAsoc.butoane_si_controale.ClassTextBox();
+            this.TextBoxCodFiscal = new BlueSolAsoc.butoane_si_controale.ClassTextBox();
+            this.TextBoxDenumire = new BlueSolAsoc.butoane_si_controale.ClassTextBox();
             this.classLabel14 = new BlueSolAsoc.butoane_si_controale.ClassLabel();
             this.classLabel13 = new BlueSolAsoc.butoane_si_controale.ClassLabel();
             this.classLabel12 = new BlueSolAsoc.butoane_si_controale.ClassLabel();
@@ -102,12 +108,6 @@
             this.mvtabelParteneriBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.mv_tabelApartamenteTableAdapter = new BlueSolAsoc.asociatieFormDSTableAdapters.mv_tabelApartamenteTableAdapter();
             this.orgidorgDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.classTextBox8 = new BlueSolAsoc.butoane_si_controale.ClassTextBox();
-            this.classTextBox9 = new BlueSolAsoc.butoane_si_controale.ClassTextBox();
-            this.classTextBox10 = new BlueSolAsoc.butoane_si_controale.ClassTextBox();
-            this.classTextBox11 = new BlueSolAsoc.butoane_si_controale.ClassTextBox();
-            this.classTextBox12 = new BlueSolAsoc.butoane_si_controale.ClassTextBox();
-            this.classButon1 = new BlueSolAsoc.butoane_si_controale.ClassButon();
             this.TabSA.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -146,11 +146,11 @@
             this.TabSA.Controls.Add(this.tabPage3);
             this.TabSA.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TabSA.ItemSize = new System.Drawing.Size(150, 45);
-            this.TabSA.Location = new System.Drawing.Point(-5, 0);
-            this.TabSA.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.TabSA.Location = new System.Drawing.Point(-4, 0);
+            this.TabSA.Margin = new System.Windows.Forms.Padding(2);
             this.TabSA.Name = "TabSA";
             this.TabSA.SelectedIndex = 0;
-            this.TabSA.Size = new System.Drawing.Size(1058, 759);
+            this.TabSA.Size = new System.Drawing.Size(866, 578);
             this.TabSA.TabIndex = 3;
             // 
             // tabPage1
@@ -158,10 +158,10 @@
             this.tabPage1.Controls.Add(this.splitContainer1);
             this.tabPage1.Controls.Add(this.treeView1);
             this.tabPage1.Location = new System.Drawing.Point(4, 49);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.tabPage1.Size = new System.Drawing.Size(1050, 706);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage1.Size = new System.Drawing.Size(858, 525);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Structura Asociatie";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -170,8 +170,7 @@
             // 
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(214, 3);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4);
+            this.splitContainer1.Location = new System.Drawing.Point(176, 2);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -199,27 +198,26 @@
             this.splitContainer1.Panel2.BackColor = System.Drawing.Color.Transparent;
             this.splitContainer1.Panel2.Controls.Add(this.dataGridViewAp);
             this.splitContainer1.Panel2.Click += new System.EventHandler(this.splitContainer1_Panel2_Click);
-            this.splitContainer1.Size = new System.Drawing.Size(834, 700);
-            this.splitContainer1.SplitterDistance = 185;
-            this.splitContainer1.SplitterWidth = 5;
+            this.splitContainer1.Size = new System.Drawing.Size(680, 521);
+            this.splitContainer1.SplitterDistance = 150;
             this.splitContainer1.TabIndex = 3;
             // 
             // classTextBox7
             // 
-            this.classTextBox7.Location = new System.Drawing.Point(4, 74);
-            this.classTextBox7.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.classTextBox7.Location = new System.Drawing.Point(3, 56);
+            this.classTextBox7.Margin = new System.Windows.Forms.Padding(2);
             this.classTextBox7.Name = "classTextBox7";
-            this.classTextBox7.Size = new System.Drawing.Size(204, 39);
+            this.classTextBox7.Size = new System.Drawing.Size(168, 32);
             this.classTextBox7.TabIndex = 14;
             this.classTextBox7.Tag = "5";
             // 
             // classLabel8
             // 
             this.classLabel8.AutoSize = true;
-            this.classLabel8.Location = new System.Drawing.Point(-1, 41);
+            this.classLabel8.Location = new System.Drawing.Point(-1, 31);
             this.classLabel8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.classLabel8.Name = "classLabel8";
-            this.classLabel8.Size = new System.Drawing.Size(144, 30);
+            this.classLabel8.Size = new System.Drawing.Size(115, 24);
             this.classLabel8.TabIndex = 13;
             this.classLabel8.Tag = "5";
             this.classLabel8.Text = "classLabel8";
@@ -227,30 +225,30 @@
             // classLabel5
             // 
             this.classLabel5.AutoSize = true;
-            this.classLabel5.Location = new System.Drawing.Point(-1, 374);
+            this.classLabel5.Location = new System.Drawing.Point(-1, 285);
             this.classLabel5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.classLabel5.Name = "classLabel5";
-            this.classLabel5.Size = new System.Drawing.Size(144, 30);
+            this.classLabel5.Size = new System.Drawing.Size(115, 24);
             this.classLabel5.TabIndex = 4;
             this.classLabel5.Tag = "3";
             this.classLabel5.Text = "classLabel5";
             // 
             // classTextBox6
             // 
-            this.classTextBox6.Location = new System.Drawing.Point(4, 585);
-            this.classTextBox6.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.classTextBox6.Location = new System.Drawing.Point(3, 446);
+            this.classTextBox6.Margin = new System.Windows.Forms.Padding(2);
             this.classTextBox6.Name = "classTextBox6";
-            this.classTextBox6.Size = new System.Drawing.Size(204, 39);
+            this.classTextBox6.Size = new System.Drawing.Size(168, 32);
             this.classTextBox6.TabIndex = 12;
             this.classTextBox6.Tag = "6";
             // 
             // classLabel7
             // 
             this.classLabel7.AutoSize = true;
-            this.classLabel7.Location = new System.Drawing.Point(-1, 553);
+            this.classLabel7.Location = new System.Drawing.Point(-1, 421);
             this.classLabel7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.classLabel7.Name = "classLabel7";
-            this.classLabel7.Size = new System.Drawing.Size(144, 30);
+            this.classLabel7.Size = new System.Drawing.Size(115, 24);
             this.classLabel7.TabIndex = 6;
             this.classLabel7.Tag = "6";
             this.classLabel7.Text = "classLabel7";
@@ -258,10 +256,10 @@
             // classLabel4
             // 
             this.classLabel4.AutoSize = true;
-            this.classLabel4.Location = new System.Drawing.Point(-1, 286);
+            this.classLabel4.Location = new System.Drawing.Point(-1, 218);
             this.classLabel4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.classLabel4.Name = "classLabel4";
-            this.classLabel4.Size = new System.Drawing.Size(144, 30);
+            this.classLabel4.Size = new System.Drawing.Size(115, 24);
             this.classLabel4.TabIndex = 3;
             this.classLabel4.Tag = "2";
             this.classLabel4.Text = "classLabel4";
@@ -269,68 +267,68 @@
             // classLabel6
             // 
             this.classLabel6.AutoSize = true;
-            this.classLabel6.Location = new System.Drawing.Point(-1, 463);
+            this.classLabel6.Location = new System.Drawing.Point(-1, 353);
             this.classLabel6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.classLabel6.Name = "classLabel6";
-            this.classLabel6.Size = new System.Drawing.Size(144, 30);
+            this.classLabel6.Size = new System.Drawing.Size(115, 24);
             this.classLabel6.TabIndex = 5;
             this.classLabel6.Tag = "4";
             this.classLabel6.Text = "classLabel6";
             // 
             // classTextBox4
             // 
-            this.classTextBox4.Location = new System.Drawing.Point(4, 407);
-            this.classTextBox4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.classTextBox4.Location = new System.Drawing.Point(3, 310);
+            this.classTextBox4.Margin = new System.Windows.Forms.Padding(2);
             this.classTextBox4.Name = "classTextBox4";
-            this.classTextBox4.Size = new System.Drawing.Size(204, 39);
+            this.classTextBox4.Size = new System.Drawing.Size(168, 32);
             this.classTextBox4.TabIndex = 10;
             this.classTextBox4.Tag = "3";
             // 
             // classTextBox3
             // 
-            this.classTextBox3.Location = new System.Drawing.Point(4, 319);
-            this.classTextBox3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.classTextBox3.Location = new System.Drawing.Point(3, 243);
+            this.classTextBox3.Margin = new System.Windows.Forms.Padding(2);
             this.classTextBox3.Name = "classTextBox3";
-            this.classTextBox3.Size = new System.Drawing.Size(204, 39);
+            this.classTextBox3.Size = new System.Drawing.Size(168, 32);
             this.classTextBox3.TabIndex = 9;
             this.classTextBox3.Tag = "2";
             // 
             // classTextBox5
             // 
-            this.classTextBox5.Location = new System.Drawing.Point(4, 496);
-            this.classTextBox5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.classTextBox5.Location = new System.Drawing.Point(3, 378);
+            this.classTextBox5.Margin = new System.Windows.Forms.Padding(2);
             this.classTextBox5.Name = "classTextBox5";
-            this.classTextBox5.Size = new System.Drawing.Size(204, 39);
+            this.classTextBox5.Size = new System.Drawing.Size(168, 32);
             this.classTextBox5.TabIndex = 11;
             this.classTextBox5.Tag = "4";
             // 
             // classLabel3
             // 
             this.classLabel3.AutoSize = true;
-            this.classLabel3.Location = new System.Drawing.Point(-1, 202);
+            this.classLabel3.Location = new System.Drawing.Point(-1, 154);
             this.classLabel3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.classLabel3.Name = "classLabel3";
-            this.classLabel3.Size = new System.Drawing.Size(144, 30);
+            this.classLabel3.Size = new System.Drawing.Size(115, 24);
             this.classLabel3.TabIndex = 2;
             this.classLabel3.Tag = "1";
             this.classLabel3.Text = "classLabel3";
             // 
             // classTextBox2
             // 
-            this.classTextBox2.Location = new System.Drawing.Point(4, 235);
-            this.classTextBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.classTextBox2.Location = new System.Drawing.Point(3, 179);
+            this.classTextBox2.Margin = new System.Windows.Forms.Padding(2);
             this.classTextBox2.Name = "classTextBox2";
-            this.classTextBox2.Size = new System.Drawing.Size(204, 39);
+            this.classTextBox2.Size = new System.Drawing.Size(168, 32);
             this.classTextBox2.TabIndex = 8;
             this.classTextBox2.Tag = "1";
             // 
             // classLabel2
             // 
             this.classLabel2.AutoSize = true;
-            this.classLabel2.Location = new System.Drawing.Point(-1, 116);
+            this.classLabel2.Location = new System.Drawing.Point(-1, 88);
             this.classLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.classLabel2.Name = "classLabel2";
-            this.classLabel2.Size = new System.Drawing.Size(144, 30);
+            this.classLabel2.Size = new System.Drawing.Size(115, 24);
             this.classLabel2.TabIndex = 1;
             this.classLabel2.Tag = "0";
             this.classLabel2.Text = "classLabel2";
@@ -338,20 +336,20 @@
             // classLabel1
             // 
             this.classLabel1.AutoSize = true;
-            this.classLabel1.Location = new System.Drawing.Point(22, 0);
+            this.classLabel1.Location = new System.Drawing.Point(18, 0);
             this.classLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.classLabel1.Name = "classLabel1";
-            this.classLabel1.Size = new System.Drawing.Size(144, 30);
+            this.classLabel1.Size = new System.Drawing.Size(115, 24);
             this.classLabel1.TabIndex = 0;
             this.classLabel1.Tag = "titlu";
             this.classLabel1.Text = "classLabel1";
             // 
             // classTextBox1
             // 
-            this.classTextBox1.Location = new System.Drawing.Point(4, 148);
-            this.classTextBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.classTextBox1.Location = new System.Drawing.Point(3, 113);
+            this.classTextBox1.Margin = new System.Windows.Forms.Padding(2);
             this.classTextBox1.Name = "classTextBox1";
-            this.classTextBox1.Size = new System.Drawing.Size(204, 39);
+            this.classTextBox1.Size = new System.Drawing.Size(168, 32);
             this.classTextBox1.TabIndex = 7;
             this.classTextBox1.Tag = "0";
             // 
@@ -360,14 +358,14 @@
             this.dataGridViewAp.AllowUserToAddRows = false;
             this.dataGridViewAp.AutoGenerateColumns = false;
             this.dataGridViewAp.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.Aquamarine;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewAp.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Aquamarine;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewAp.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewAp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewAp.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.orgidorgDataGridViewTextBoxColumn1,
@@ -383,11 +381,11 @@
             this.dataGridViewAp.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewAp.EnableHeadersVisualStyles = false;
             this.dataGridViewAp.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewAp.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.dataGridViewAp.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewAp.Name = "dataGridViewAp";
             this.dataGridViewAp.RowHeadersWidth = 51;
             this.dataGridViewAp.RowTemplate.Height = 24;
-            this.dataGridViewAp.Size = new System.Drawing.Size(640, 696);
+            this.dataGridViewAp.Size = new System.Drawing.Size(522, 517);
             this.dataGridViewAp.TabIndex = 0;
             // 
             // orgidorgDataGridViewTextBoxColumn1
@@ -480,10 +478,10 @@
             // 
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Left;
             this.treeView1.Font = new System.Drawing.Font("Mongolian Baiti", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.treeView1.Location = new System.Drawing.Point(2, 3);
-            this.treeView1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.treeView1.Location = new System.Drawing.Point(2, 2);
+            this.treeView1.Margin = new System.Windows.Forms.Padding(2);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(212, 700);
+            this.treeView1.Size = new System.Drawing.Size(174, 521);
             this.treeView1.TabIndex = 1;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeView1_AfterSelect);
             // 
@@ -492,10 +490,10 @@
             this.tabPage2.Controls.Add(this.listaCheltuieli);
             this.tabPage2.Controls.Add(this.comboBox1);
             this.tabPage2.Location = new System.Drawing.Point(4, 49);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.tabPage2.Size = new System.Drawing.Size(1050, 706);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage2.Size = new System.Drawing.Size(858, 525);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Structura Cheltuieli";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -503,20 +501,20 @@
             // listaCheltuieli
             // 
             this.listaCheltuieli.FormattingEnabled = true;
-            this.listaCheltuieli.ItemHeight = 29;
-            this.listaCheltuieli.Location = new System.Drawing.Point(5, 7);
-            this.listaCheltuieli.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.listaCheltuieli.ItemHeight = 24;
+            this.listaCheltuieli.Location = new System.Drawing.Point(4, 5);
+            this.listaCheltuieli.Margin = new System.Windows.Forms.Padding(2);
             this.listaCheltuieli.Name = "listaCheltuieli";
-            this.listaCheltuieli.Size = new System.Drawing.Size(429, 584);
+            this.listaCheltuieli.Size = new System.Drawing.Size(352, 436);
             this.listaCheltuieli.TabIndex = 2;
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(507, 17);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.comboBox1.Location = new System.Drawing.Point(415, 13);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(278, 37);
+            this.comboBox1.Size = new System.Drawing.Size(228, 32);
             this.comboBox1.TabIndex = 1;
             // 
             // tabPage3
@@ -524,10 +522,10 @@
             this.tabPage3.Controls.Add(this.panelAfisareParteneri);
             this.tabPage3.Controls.Add(this.panelAdaugaParteneri);
             this.tabPage3.Location = new System.Drawing.Point(4, 49);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.tabPage3.Size = new System.Drawing.Size(1050, 706);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage3.Size = new System.Drawing.Size(858, 525);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Parteneri";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -539,9 +537,10 @@
             this.panelAfisareParteneri.Controls.Add(this.GridParteneri);
             this.panelAfisareParteneri.Controls.Add(this.classLabel15);
             this.panelAfisareParteneri.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelAfisareParteneri.Location = new System.Drawing.Point(752, 3);
+            this.panelAfisareParteneri.Location = new System.Drawing.Point(616, 2);
+            this.panelAfisareParteneri.Margin = new System.Windows.Forms.Padding(2);
             this.panelAfisareParteneri.Name = "panelAfisareParteneri";
-            this.panelAfisareParteneri.Size = new System.Drawing.Size(296, 700);
+            this.panelAfisareParteneri.Size = new System.Drawing.Size(240, 521);
             this.panelAfisareParteneri.TabIndex = 2;
             // 
             // GridParteneri
@@ -552,14 +551,14 @@
             this.GridParteneri.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             this.GridParteneri.BackgroundColor = System.Drawing.SystemColors.Control;
             this.GridParteneri.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.Aquamarine;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridParteneri.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Aquamarine;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridParteneri.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.GridParteneri.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridParteneri.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idorgDataGridViewTextBoxColumn,
@@ -573,12 +572,12 @@
             this.GridParteneri.DataSource = this.mvtabelParteneriBindingSource3;
             this.GridParteneri.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GridParteneri.EnableHeadersVisualStyles = false;
-            this.GridParteneri.Location = new System.Drawing.Point(0, 30);
-            this.GridParteneri.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.GridParteneri.Location = new System.Drawing.Point(0, 24);
+            this.GridParteneri.Margin = new System.Windows.Forms.Padding(2);
             this.GridParteneri.Name = "GridParteneri";
             this.GridParteneri.RowHeadersWidth = 51;
             this.GridParteneri.RowTemplate.Height = 24;
-            this.GridParteneri.Size = new System.Drawing.Size(292, 666);
+            this.GridParteneri.Size = new System.Drawing.Size(236, 493);
             this.GridParteneri.TabIndex = 0;
             // 
             // idorgDataGridViewTextBoxColumn
@@ -651,8 +650,9 @@
             this.classLabel15.Dock = System.Windows.Forms.DockStyle.Top;
             this.classLabel15.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.classLabel15.Location = new System.Drawing.Point(0, 0);
+            this.classLabel15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.classLabel15.Name = "classLabel15";
-            this.classLabel15.Size = new System.Drawing.Size(323, 30);
+            this.classLabel15.Size = new System.Drawing.Size(248, 24);
             this.classLabel15.TabIndex = 1;
             this.classLabel15.Text = " PARTENERI EXISTENTI";
             this.classLabel15.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -660,12 +660,12 @@
             // panelAdaugaParteneri
             // 
             this.panelAdaugaParteneri.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panelAdaugaParteneri.Controls.Add(this.classButon1);
-            this.panelAdaugaParteneri.Controls.Add(this.classTextBox12);
-            this.panelAdaugaParteneri.Controls.Add(this.classTextBox11);
-            this.panelAdaugaParteneri.Controls.Add(this.classTextBox10);
-            this.panelAdaugaParteneri.Controls.Add(this.classTextBox9);
-            this.panelAdaugaParteneri.Controls.Add(this.classTextBox8);
+            this.panelAdaugaParteneri.Controls.Add(this.ButonAdaugarePartener);
+            this.panelAdaugaParteneri.Controls.Add(this.TextBoxNrRegComert);
+            this.panelAdaugaParteneri.Controls.Add(this.TextBoxAdresa);
+            this.panelAdaugaParteneri.Controls.Add(this.TextBoxAtributFiscal);
+            this.panelAdaugaParteneri.Controls.Add(this.TextBoxCodFiscal);
+            this.panelAdaugaParteneri.Controls.Add(this.TextBoxDenumire);
             this.panelAdaugaParteneri.Controls.Add(this.classLabel14);
             this.panelAdaugaParteneri.Controls.Add(this.classLabel13);
             this.panelAdaugaParteneri.Controls.Add(this.classLabel12);
@@ -673,53 +673,112 @@
             this.panelAdaugaParteneri.Controls.Add(this.classLabel10);
             this.panelAdaugaParteneri.Controls.Add(this.classLabel9);
             this.panelAdaugaParteneri.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelAdaugaParteneri.Location = new System.Drawing.Point(2, 3);
+            this.panelAdaugaParteneri.Location = new System.Drawing.Point(2, 2);
+            this.panelAdaugaParteneri.Margin = new System.Windows.Forms.Padding(2);
             this.panelAdaugaParteneri.Name = "panelAdaugaParteneri";
-            this.panelAdaugaParteneri.Size = new System.Drawing.Size(750, 700);
+            this.panelAdaugaParteneri.Size = new System.Drawing.Size(614, 521);
             this.panelAdaugaParteneri.TabIndex = 1;
+            // 
+            // ButonAdaugarePartener
+            // 
+            this.ButonAdaugarePartener.BackColor = System.Drawing.Color.Aquamarine;
+            this.ButonAdaugarePartener.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButonAdaugarePartener.Location = new System.Drawing.Point(237, 349);
+            this.ButonAdaugarePartener.Margin = new System.Windows.Forms.Padding(2);
+            this.ButonAdaugarePartener.Name = "ButonAdaugarePartener";
+            this.ButonAdaugarePartener.Size = new System.Drawing.Size(335, 36);
+            this.ButonAdaugarePartener.TabIndex = 11;
+            this.ButonAdaugarePartener.Text = "Adaugare";
+            this.ButonAdaugarePartener.UseVisualStyleBackColor = false;
+            this.ButonAdaugarePartener.Click += new System.EventHandler(this.ButonAdaugarePartener_Click);
+            // 
+            // TextBoxNrRegComert
+            // 
+            this.TextBoxNrRegComert.Location = new System.Drawing.Point(237, 286);
+            this.TextBoxNrRegComert.Margin = new System.Windows.Forms.Padding(2);
+            this.TextBoxNrRegComert.Name = "TextBoxNrRegComert";
+            this.TextBoxNrRegComert.Size = new System.Drawing.Size(336, 32);
+            this.TextBoxNrRegComert.TabIndex = 10;
+            // 
+            // TextBoxAdresa
+            // 
+            this.TextBoxAdresa.Location = new System.Drawing.Point(237, 220);
+            this.TextBoxAdresa.Margin = new System.Windows.Forms.Padding(2);
+            this.TextBoxAdresa.Name = "TextBoxAdresa";
+            this.TextBoxAdresa.Size = new System.Drawing.Size(336, 32);
+            this.TextBoxAdresa.TabIndex = 9;
+            // 
+            // TextBoxAtributFiscal
+            // 
+            this.TextBoxAtributFiscal.Location = new System.Drawing.Point(237, 161);
+            this.TextBoxAtributFiscal.Margin = new System.Windows.Forms.Padding(2);
+            this.TextBoxAtributFiscal.Name = "TextBoxAtributFiscal";
+            this.TextBoxAtributFiscal.Size = new System.Drawing.Size(336, 32);
+            this.TextBoxAtributFiscal.TabIndex = 8;
+            // 
+            // TextBoxCodFiscal
+            // 
+            this.TextBoxCodFiscal.Location = new System.Drawing.Point(237, 101);
+            this.TextBoxCodFiscal.Margin = new System.Windows.Forms.Padding(2);
+            this.TextBoxCodFiscal.Name = "TextBoxCodFiscal";
+            this.TextBoxCodFiscal.Size = new System.Drawing.Size(336, 32);
+            this.TextBoxCodFiscal.TabIndex = 7;
+            // 
+            // TextBoxDenumire
+            // 
+            this.TextBoxDenumire.Location = new System.Drawing.Point(237, 46);
+            this.TextBoxDenumire.Margin = new System.Windows.Forms.Padding(2);
+            this.TextBoxDenumire.Name = "TextBoxDenumire";
+            this.TextBoxDenumire.Size = new System.Drawing.Size(336, 32);
+            this.TextBoxDenumire.TabIndex = 6;
             // 
             // classLabel14
             // 
             this.classLabel14.AutoSize = true;
-            this.classLabel14.Location = new System.Drawing.Point(24, 384);
+            this.classLabel14.Location = new System.Drawing.Point(20, 293);
+            this.classLabel14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.classLabel14.Name = "classLabel14";
-            this.classLabel14.Size = new System.Drawing.Size(185, 30);
+            this.classLabel14.Size = new System.Drawing.Size(147, 24);
             this.classLabel14.TabIndex = 5;
             this.classLabel14.Text = "Nr Reg Comert";
             // 
             // classLabel13
             // 
             this.classLabel13.AutoSize = true;
-            this.classLabel13.Location = new System.Drawing.Point(24, 298);
+            this.classLabel13.Location = new System.Drawing.Point(20, 227);
+            this.classLabel13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.classLabel13.Name = "classLabel13";
-            this.classLabel13.Size = new System.Drawing.Size(91, 30);
+            this.classLabel13.Size = new System.Drawing.Size(73, 24);
             this.classLabel13.TabIndex = 4;
             this.classLabel13.Text = "Adresa";
             // 
             // classLabel12
             // 
             this.classLabel12.AutoSize = true;
-            this.classLabel12.Location = new System.Drawing.Point(24, 220);
+            this.classLabel12.Location = new System.Drawing.Point(20, 168);
+            this.classLabel12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.classLabel12.Name = "classLabel12";
-            this.classLabel12.Size = new System.Drawing.Size(168, 30);
+            this.classLabel12.Size = new System.Drawing.Size(132, 24);
             this.classLabel12.TabIndex = 3;
             this.classLabel12.Text = "Atribut Fiscal";
             // 
             // classLabel11
             // 
             this.classLabel11.AutoSize = true;
-            this.classLabel11.Location = new System.Drawing.Point(24, 142);
+            this.classLabel11.Location = new System.Drawing.Point(20, 108);
+            this.classLabel11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.classLabel11.Name = "classLabel11";
-            this.classLabel11.Size = new System.Drawing.Size(134, 30);
+            this.classLabel11.Size = new System.Drawing.Size(106, 24);
             this.classLabel11.TabIndex = 2;
             this.classLabel11.Text = "Cod Fiscal";
             // 
             // classLabel10
             // 
             this.classLabel10.AutoSize = true;
-            this.classLabel10.Location = new System.Drawing.Point(24, 70);
+            this.classLabel10.Location = new System.Drawing.Point(20, 53);
+            this.classLabel10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.classLabel10.Name = "classLabel10";
-            this.classLabel10.Size = new System.Drawing.Size(124, 30);
+            this.classLabel10.Size = new System.Drawing.Size(98, 24);
             this.classLabel10.TabIndex = 1;
             this.classLabel10.Text = "Denumire";
             // 
@@ -730,8 +789,9 @@
             this.classLabel9.AutoSize = true;
             this.classLabel9.Font = new System.Drawing.Font("Mongolian Baiti", 13.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.classLabel9.Location = new System.Drawing.Point(0, 0);
+            this.classLabel9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.classLabel9.Name = "classLabel9";
-            this.classLabel9.Size = new System.Drawing.Size(284, 25);
+            this.classLabel9.Size = new System.Drawing.Size(232, 20);
             this.classLabel9.TabIndex = 0;
             this.classLabel9.Text = "ADAUGA UN PARTENER";
             this.classLabel9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -759,10 +819,10 @@
             this.pnlControale.Controls.Add(this.btnOK);
             this.pnlControale.Controls.Add(this.classButonInteriorSterge1);
             this.pnlControale.Controls.Add(this.classButonModifica1);
-            this.pnlControale.Location = new System.Drawing.Point(1058, 71);
-            this.pnlControale.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.pnlControale.Location = new System.Drawing.Point(866, 54);
+            this.pnlControale.Margin = new System.Windows.Forms.Padding(2);
             this.pnlControale.Name = "pnlControale";
-            this.pnlControale.Size = new System.Drawing.Size(156, 701);
+            this.pnlControale.Size = new System.Drawing.Size(128, 534);
             this.pnlControale.TabIndex = 4;
             // 
             // btnAnuleaza
@@ -771,10 +831,10 @@
             this.btnAnuleaza.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnAnuleaza.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAnuleaza.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAnuleaza.Location = new System.Drawing.Point(0, 600);
-            this.btnAnuleaza.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnAnuleaza.Location = new System.Drawing.Point(0, 456);
+            this.btnAnuleaza.Margin = new System.Windows.Forms.Padding(2);
             this.btnAnuleaza.Name = "btnAnuleaza";
-            this.btnAnuleaza.Size = new System.Drawing.Size(156, 200);
+            this.btnAnuleaza.Size = new System.Drawing.Size(128, 152);
             this.btnAnuleaza.TabIndex = 9;
             this.btnAnuleaza.Text = "ANULEAZA";
             this.btnAnuleaza.UseVisualStyleBackColor = false;
@@ -786,10 +846,10 @@
             this.btnOK.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOK.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOK.Location = new System.Drawing.Point(0, 400);
-            this.btnOK.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnOK.Location = new System.Drawing.Point(0, 304);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(2);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(156, 200);
+            this.btnOK.Size = new System.Drawing.Size(128, 152);
             this.btnOK.TabIndex = 8;
             this.btnOK.Text = "SALVEAZA";
             this.btnOK.UseVisualStyleBackColor = false;
@@ -801,10 +861,10 @@
             this.classButonInteriorSterge1.Dock = System.Windows.Forms.DockStyle.Top;
             this.classButonInteriorSterge1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.classButonInteriorSterge1.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.classButonInteriorSterge1.Location = new System.Drawing.Point(0, 200);
-            this.classButonInteriorSterge1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.classButonInteriorSterge1.Location = new System.Drawing.Point(0, 152);
+            this.classButonInteriorSterge1.Margin = new System.Windows.Forms.Padding(2);
             this.classButonInteriorSterge1.Name = "classButonInteriorSterge1";
-            this.classButonInteriorSterge1.Size = new System.Drawing.Size(156, 200);
+            this.classButonInteriorSterge1.Size = new System.Drawing.Size(128, 152);
             this.classButonInteriorSterge1.TabIndex = 7;
             this.classButonInteriorSterge1.Text = "STERGE";
             this.classButonInteriorSterge1.UseVisualStyleBackColor = false;
@@ -816,9 +876,9 @@
             this.classButonModifica1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.classButonModifica1.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.classButonModifica1.Location = new System.Drawing.Point(0, 0);
-            this.classButonModifica1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.classButonModifica1.Margin = new System.Windows.Forms.Padding(2);
             this.classButonModifica1.Name = "classButonModifica1";
-            this.classButonModifica1.Size = new System.Drawing.Size(156, 200);
+            this.classButonModifica1.Size = new System.Drawing.Size(128, 152);
             this.classButonModifica1.TabIndex = 6;
             this.classButonModifica1.Text = "MODIFICA";
             this.classButonModifica1.UseVisualStyleBackColor = false;
@@ -871,61 +931,15 @@
             this.orgidorgDataGridViewTextBoxColumn.Visible = false;
             this.orgidorgDataGridViewTextBoxColumn.Width = 125;
             // 
-            // classTextBox8
-            // 
-            this.classTextBox8.Location = new System.Drawing.Point(290, 61);
-            this.classTextBox8.Name = "classTextBox8";
-            this.classTextBox8.Size = new System.Drawing.Size(410, 39);
-            this.classTextBox8.TabIndex = 6;
-            // 
-            // classTextBox9
-            // 
-            this.classTextBox9.Location = new System.Drawing.Point(290, 133);
-            this.classTextBox9.Name = "classTextBox9";
-            this.classTextBox9.Size = new System.Drawing.Size(410, 39);
-            this.classTextBox9.TabIndex = 7;
-            // 
-            // classTextBox10
-            // 
-            this.classTextBox10.Location = new System.Drawing.Point(290, 211);
-            this.classTextBox10.Name = "classTextBox10";
-            this.classTextBox10.Size = new System.Drawing.Size(410, 39);
-            this.classTextBox10.TabIndex = 8;
-            // 
-            // classTextBox11
-            // 
-            this.classTextBox11.Location = new System.Drawing.Point(290, 289);
-            this.classTextBox11.Name = "classTextBox11";
-            this.classTextBox11.Size = new System.Drawing.Size(410, 39);
-            this.classTextBox11.TabIndex = 9;
-            // 
-            // classTextBox12
-            // 
-            this.classTextBox12.Location = new System.Drawing.Point(290, 375);
-            this.classTextBox12.Name = "classTextBox12";
-            this.classTextBox12.Size = new System.Drawing.Size(410, 39);
-            this.classTextBox12.TabIndex = 10;
-            // 
-            // classButon1
-            // 
-            this.classButon1.BackColor = System.Drawing.Color.Aquamarine;
-            this.classButon1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.classButon1.Location = new System.Drawing.Point(290, 458);
-            this.classButon1.Name = "classButon1";
-            this.classButon1.Size = new System.Drawing.Size(410, 47);
-            this.classButon1.TabIndex = 11;
-            this.classButon1.Text = "Adaugare";
-            this.classButon1.UseVisualStyleBackColor = false;
-            // 
             // AsociatieForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1212, 759);
+            this.ClientSize = new System.Drawing.Size(992, 578);
             this.Controls.Add(this.pnlControale);
             this.Controls.Add(this.TabSA);
             this.Location = new System.Drawing.Point(0, 0);
-            this.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
+            this.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.MinimizeBox = false;
             this.Name = "AsociatieForm";
             this.Text = "AsociatieForm1";
@@ -1036,11 +1050,11 @@
         private butoane_si_controale.ClassLabel classLabel9;
         private butoane_si_controale.ClassLabel classLabel14;
         private butoane_si_controale.ClassLabel classLabel15;
-        private butoane_si_controale.ClassTextBox classTextBox12;
-        private butoane_si_controale.ClassTextBox classTextBox11;
-        private butoane_si_controale.ClassTextBox classTextBox10;
-        private butoane_si_controale.ClassTextBox classTextBox9;
-        private butoane_si_controale.ClassTextBox classTextBox8;
-        private butoane_si_controale.ClassButon classButon1;
+        private butoane_si_controale.ClassTextBox TextBoxNrRegComert;
+        private butoane_si_controale.ClassTextBox TextBoxAdresa;
+        private butoane_si_controale.ClassTextBox TextBoxAtributFiscal;
+        private butoane_si_controale.ClassTextBox TextBoxCodFiscal;
+        private butoane_si_controale.ClassTextBox TextBoxDenumire;
+        private butoane_si_controale.ClassButon ButonAdaugarePartener;
     }
 }
