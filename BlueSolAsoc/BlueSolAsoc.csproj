@@ -149,6 +149,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetVenituriIncasari.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DGVPrinter.cs" />
     <Compile Include="DSProprietati asoctiatie.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
