@@ -871,7 +871,7 @@ namespace BlueSolAsoc.Fom_Meniuri
         private System.Windows.Forms.DataGridViewTextBoxColumn idasociereDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Denumire;
         private ClassButon butonPrintTest;
-        private System.Drawing.Printing.PrintDocument printDocument1;
-        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
+        //private System.Drawing.Printing.PrintDocument printDocument1;
+        //private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
     }
 }

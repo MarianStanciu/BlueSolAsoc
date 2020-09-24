@@ -37,19 +37,19 @@
             this.lblCeas = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pnlMama = new System.Windows.Forms.Panel();
-            this.gridTabelaLuni = new BlueSolAsoc.butoane_si_controale.ClassGridView();
+            this.panelSelectareLuni = new BlueSolAsoc.butoane_si_controale.ClassPanel();
             this.classButon1 = new BlueSolAsoc.butoane_si_controale.ClassButon();
             this.comboBoxLUNA = new System.Windows.Forms.ComboBox();
             this.comboBoxAN = new System.Windows.Forms.ComboBox();
             this.classLabel2 = new BlueSolAsoc.butoane_si_controale.ClassLabel();
             this.classLabel1 = new BlueSolAsoc.butoane_si_controale.ClassLabel();
             this.panelTabelLuni = new BlueSolAsoc.butoane_si_controale.ClassPanel();
-            this.panelSelectareLuni = new BlueSolAsoc.butoane_si_controale.ClassPanel();
+            this.gridTabelaLuni = new BlueSolAsoc.butoane_si_controale.ClassGridView();
             this.panel1.SuspendLayout();
             this.pnlMama.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridTabelaLuni)).BeginInit();
-            this.panelTabelLuni.SuspendLayout();
             this.panelSelectareLuni.SuspendLayout();
+            this.panelTabelLuni.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridTabelaLuni)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -136,6 +136,78 @@
             this.pnlMama.Size = new System.Drawing.Size(1904, 929);
             this.pnlMama.TabIndex = 5;
             // 
+            // panelSelectareLuni
+            // 
+            this.panelSelectareLuni.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelSelectareLuni.Controls.Add(this.classButon1);
+            this.panelSelectareLuni.Controls.Add(this.comboBoxLUNA);
+            this.panelSelectareLuni.Controls.Add(this.comboBoxAN);
+            this.panelSelectareLuni.Controls.Add(this.classLabel2);
+            this.panelSelectareLuni.Controls.Add(this.classLabel1);
+            this.panelSelectareLuni.Location = new System.Drawing.Point(4, 4);
+            this.panelSelectareLuni.Name = "panelSelectareLuni";
+            this.panelSelectareLuni.Size = new System.Drawing.Size(480, 922);
+            this.panelSelectareLuni.TabIndex = 7;
+            // 
+            // classButon1
+            // 
+            this.classButon1.BackColor = System.Drawing.Color.Aquamarine;
+            this.classButon1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.classButon1.Location = new System.Drawing.Point(115, 170);
+            this.classButon1.Name = "classButon1";
+            this.classButon1.Size = new System.Drawing.Size(146, 48);
+            this.classButon1.TabIndex = 4;
+            this.classButon1.Text = "Adauga luna noua";
+            this.classButon1.UseVisualStyleBackColor = false;
+            this.classButon1.Click += new System.EventHandler(this.classButon1_Click);
+            // 
+            // comboBoxLUNA
+            // 
+            this.comboBoxLUNA.FormattingEnabled = true;
+            this.comboBoxLUNA.Location = new System.Drawing.Point(169, 110);
+            this.comboBoxLUNA.Name = "comboBoxLUNA";
+            this.comboBoxLUNA.Size = new System.Drawing.Size(108, 24);
+            this.comboBoxLUNA.TabIndex = 3;
+            // 
+            // comboBoxAN
+            // 
+            this.comboBoxAN.FormattingEnabled = true;
+            this.comboBoxAN.Location = new System.Drawing.Point(169, 66);
+            this.comboBoxAN.Name = "comboBoxAN";
+            this.comboBoxAN.Size = new System.Drawing.Size(108, 24);
+            this.comboBoxAN.TabIndex = 2;
+            // 
+            // classLabel2
+            // 
+            this.classLabel2.AutoSize = true;
+            this.classLabel2.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F);
+            this.classLabel2.Location = new System.Drawing.Point(4, 110);
+            this.classLabel2.Name = "classLabel2";
+            this.classLabel2.Size = new System.Drawing.Size(147, 24);
+            this.classLabel2.TabIndex = 1;
+            this.classLabel2.Text = "Selectie LUNA";
+            // 
+            // classLabel1
+            // 
+            this.classLabel1.AutoSize = true;
+            this.classLabel1.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F);
+            this.classLabel1.Location = new System.Drawing.Point(33, 63);
+            this.classLabel1.Name = "classLabel1";
+            this.classLabel1.Size = new System.Drawing.Size(118, 24);
+            this.classLabel1.TabIndex = 0;
+            this.classLabel1.Text = "Selectie AN";
+            // 
+            // panelTabelLuni
+            // 
+            this.panelTabelLuni.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelTabelLuni.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelTabelLuni.Controls.Add(this.gridTabelaLuni);
+            this.panelTabelLuni.Location = new System.Drawing.Point(1418, 4);
+            this.panelTabelLuni.Name = "panelTabelLuni";
+            this.panelTabelLuni.Size = new System.Drawing.Size(483, 922);
+            this.panelTabelLuni.TabIndex = 6;
+            // 
             // gridTabelaLuni
             // 
             this.gridTabelaLuni.AllowUserToAddRows = false;
@@ -158,76 +230,6 @@
             this.gridTabelaLuni.Size = new System.Drawing.Size(483, 917);
             this.gridTabelaLuni.TabIndex = 5;
             // 
-            // classButon1
-            // 
-            this.classButon1.BackColor = System.Drawing.Color.Aquamarine;
-            this.classButon1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.classButon1.Location = new System.Drawing.Point(47, 214);
-            this.classButon1.Name = "classButon1";
-            this.classButon1.Size = new System.Drawing.Size(109, 48);
-            this.classButon1.TabIndex = 4;
-            this.classButon1.Text = "Adauga luna noua";
-            this.classButon1.UseVisualStyleBackColor = false;
-            this.classButon1.Click += new System.EventHandler(this.classButon1_Click);
-            // 
-            // comboBoxLUNA
-            // 
-            this.comboBoxLUNA.FormattingEnabled = true;
-            this.comboBoxLUNA.Location = new System.Drawing.Point(43, 148);
-            this.comboBoxLUNA.Name = "comboBoxLUNA";
-            this.comboBoxLUNA.Size = new System.Drawing.Size(108, 24);
-            this.comboBoxLUNA.TabIndex = 3;
-            // 
-            // comboBoxAN
-            // 
-            this.comboBoxAN.FormattingEnabled = true;
-            this.comboBoxAN.Location = new System.Drawing.Point(47, 63);
-            this.comboBoxAN.Name = "comboBoxAN";
-            this.comboBoxAN.Size = new System.Drawing.Size(85, 24);
-            this.comboBoxAN.TabIndex = 2;
-            // 
-            // classLabel2
-            // 
-            this.classLabel2.AutoSize = true;
-            this.classLabel2.Location = new System.Drawing.Point(44, 109);
-            this.classLabel2.Name = "classLabel2";
-            this.classLabel2.Size = new System.Drawing.Size(107, 16);
-            this.classLabel2.TabIndex = 1;
-            this.classLabel2.Text = "Selectie LUNA";
-            // 
-            // classLabel1
-            // 
-            this.classLabel1.AutoSize = true;
-            this.classLabel1.Location = new System.Drawing.Point(47, 30);
-            this.classLabel1.Name = "classLabel1";
-            this.classLabel1.Size = new System.Drawing.Size(85, 16);
-            this.classLabel1.TabIndex = 0;
-            this.classLabel1.Text = "Selectie AN";
-            // 
-            // panelTabelLuni
-            // 
-            this.panelTabelLuni.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelTabelLuni.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panelTabelLuni.Controls.Add(this.gridTabelaLuni);
-            this.panelTabelLuni.Location = new System.Drawing.Point(1418, 4);
-            this.panelTabelLuni.Name = "panelTabelLuni";
-            this.panelTabelLuni.Size = new System.Drawing.Size(483, 922);
-            this.panelTabelLuni.TabIndex = 6;
-            // 
-            // panelSelectareLuni
-            // 
-            this.panelSelectareLuni.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panelSelectareLuni.Controls.Add(this.classButon1);
-            this.panelSelectareLuni.Controls.Add(this.comboBoxLUNA);
-            this.panelSelectareLuni.Controls.Add(this.comboBoxAN);
-            this.panelSelectareLuni.Controls.Add(this.classLabel2);
-            this.panelSelectareLuni.Controls.Add(this.classLabel1);
-            this.panelSelectareLuni.Location = new System.Drawing.Point(4, 4);
-            this.panelSelectareLuni.Name = "panelSelectareLuni";
-            this.panelSelectareLuni.Size = new System.Drawing.Size(480, 922);
-            this.panelSelectareLuni.TabIndex = 7;
-            // 
             // MeniuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
@@ -245,10 +247,10 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.pnlMama.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridTabelaLuni)).EndInit();
-            this.panelTabelLuni.ResumeLayout(false);
             this.panelSelectareLuni.ResumeLayout(false);
             this.panelSelectareLuni.PerformLayout();
+            this.panelTabelLuni.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridTabelaLuni)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -1,4 +1,5 @@
 ﻿using BlueSolAsoc.butoane_si_controale;
+using DGVPrinterHelper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,7 +7,9 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Printing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +23,17 @@ namespace BlueSolAsoc.Fom_Meniuri
         ClassDataSet DataSetVenituriIncasari = new ClassDataSet(); // Utilizare Clasa DataSet pentru creeare tabele
         private string denumireAsociatie; // preluare denumire asociatie 
         private int idAsociatie; // preluare id organizatie - respectiv id asociatie
+
+        private PrintPreviewDialog printPreviewDialog1 = new PrintPreviewDialog();
+        private PrintDocument printDocument1 = new PrintDocument();
+
+        // Declare a string to hold the entire document contents.
+        private string documentContents;
+
+        // Declare a variable to hold the portion of the document that
+        // is not printed.
+        private string stringToPrint;
+
         public venituri_incasari(string denumireAsociatie, int idAsociatie)
         {
             InitializeComponent();
@@ -475,25 +489,76 @@ namespace BlueSolAsoc.Fom_Meniuri
             }
         }
 
-        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        private void ReadDocument()
         {
-            e.Graphics.DrawImage(bmp, 0, 0);
+            string docName = "testPage.txt";
+            string docPath = @"D:\";
+            printDocument1.DocumentName = docName;
+            using (FileStream stream = new FileStream(docPath + docName, FileMode.Open))
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                documentContents = reader.ReadToEnd();
+            }
+            stringToPrint = documentContents;
         }
 
-        Bitmap bmp;
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            //e.Graphics.DrawImage(bmp, 0, 0);
+            /* DataTable TabelaVenituriIncasari = DataSetVenituriIncasari.Tables["mv_Documente"];*/
+            /*Bitmap bm = new Bitmap(this.dataGridView2.Width, this.dataGridView2.Height);
+            dataGridView2.DrawToBitmap(bm, new Rectangle(0, 0, this.dataGridView2.Width, this.dataGridView2.Height));
+            e.Graphics.DrawImage(bm, 0, 0);*/
+
+            int charactersOnPage = 0;
+            int linesPerPage = 0;
+
+            // Sets the value of charactersOnPage to the number of characters
+            // of stringToPrint that will fit within the bounds of the page.
+            e.Graphics.MeasureString(stringToPrint, this.Font,
+                e.MarginBounds.Size, StringFormat.GenericTypographic,
+                out charactersOnPage, out linesPerPage);
+
+            // Draws the string within the bounds of the page.
+            e.Graphics.DrawString(stringToPrint, this.Font, Brushes.Black,
+            e.MarginBounds, StringFormat.GenericTypographic);
+
+            // Remove the portion of the string that has been printed.
+            stringToPrint = stringToPrint.Substring(charactersOnPage);
+
+            // Check to see if more pages are to be printed.
+            e.HasMorePages = (stringToPrint.Length > 0);
+
+            // If there are no more pages, reset the string to be printed.
+            if (!e.HasMorePages)
+                stringToPrint = documentContents;
+
+            printPreviewDialog1.Document = printDocument1;
+
+        }
+
+        //Bitmap bmp;
 
         private void butonPrintTest_Click(object sender, EventArgs e)
         {
-            Graphics g = this.CreateGraphics();
-            bmp=new Bitmap(this.Size.Width,this.Size.Height,g);
-            //bmp = new Bitmap(dataGridView2.Size.Width, dataGridView2.Size.Height, g);
-            Graphics mg = Graphics.FromImage(bmp);
-            //mg.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, this.Size);
-            //mg.CopyFromScreen()
-            mg.CopyFromScreen(dataGridView2.Location.X, dataGridView2.Location.Y, 0, 0, dataGridView2.Size);
-            printPreviewDialog1.ShowDialog();
 
-            
+/*            //printPreviewDialog1.ShowDialog();
+            ReadDocument();
+            printPreviewDialog1.Document = printDocument1;
+            printPreviewDialog1.ShowDialog();*/
+
+            DGVPrinter printer = new DGVPrinter();
+            printer.Title = "Titlu de test"; //header
+            printer.SubTitle = "Subtitlu"; // footer
+            printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
+            printer.PageNumbers = true;
+            printer.PageNumberInHeader = false;
+            printer.PorportionalColumns = true;
+            printer.HeaderCellAlignment = StringAlignment.Near;
+            printer.Footer = "BlueBitData";// Footer
+            printer.PrintDataGridView(dataGridView2);
+
         }
     }
 }
