@@ -57,15 +57,9 @@ namespace BlueSolAsoc
                 asociatieFormDS.Tables.Remove("mv_tabelParteneri");
             }
             asociatieFormDS.getSetFrom("select * from mv_tabelParteneri  where  id_master =" + idAsociatie, "mv_tabelParteneri");
-            GridParteneri.DataSource = asociatieFormDS.Tables["mv_tabelParteneri"];
-            
-
-
-            //GridParteneri.Columns["id_master"].Visible = false;
-            //GridParteneri.Columns["id_org"].Visible = false;
-            //GridParteneri.Columns["Principal"].Visible = false;
+            GridParteneri.DataSource = asociatieFormDS.Tables["mv_tabelParteneri"];         
             asociatieFormDS.Tables["mv_tabelParteneri"].Columns["id_master"].DefaultValue = idAsociatie;
-            
+            GridParteneri.Enabled = false;
 
 
         }
@@ -104,7 +98,7 @@ namespace BlueSolAsoc
             asociatieFormDS.getSetFrom("select * from mv_tabelParteneri  where  id_master =" + idAsociatie, "mv_tabelParteneri");
             GridParteneri.DataSource = asociatieFormDS.Tables["mv_tabelParteneri"];
             GridParteneri.Enabled = false;
-            MessageBox.Show("a fost folosita metoda de refresh", "notificare");
+            //MessageBox.Show("a fost folosita metoda de refresh", "notificare");
         }
 
         //implementare afterselect din tree view care preia id elementului si apelarea metodei care returneaza datasetul cu info despre id
@@ -290,6 +284,7 @@ namespace BlueSolAsoc
                 case "Parteneri":
                     
                     GridParteneri.Enabled = true;
+                    panelAdaugaParteneri.Enabled = false;
                
                     break;
                 default:
@@ -546,7 +541,7 @@ namespace BlueSolAsoc
                             txtB.Enabled = false;
                         }
                     }
-                    asociatieFormDS.TransmiteActualizari("mv_detaliiOrganizatie");
+                 //   asociatieFormDS.TransmiteActualizari("mv_detaliiOrganizatie");
                     asociatieFormDS.TransmiteActualizari("mv_tabelApartamente");
 
                     asociatieFormDS.ExecutaComenzi("exec mp_AdaugaElemente " + id_master);
@@ -588,7 +583,7 @@ namespace BlueSolAsoc
 
                     if (eroare != "")
                     {
-                        MessageBox.Show("Nu poti adauga sau modifica un partener  nou fara Campurile: " + "\r\n" + eroare, "Informare", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Nu poti  modifica un partener fara Campurile: " + "\r\n" + eroare, "Informare", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
@@ -599,6 +594,7 @@ namespace BlueSolAsoc
                         btnOK.Hide();
                         GridParteneri.Enabled = false;
                         DupaApasareOk(GridParteneri);
+                        panelAdaugaParteneri.Enabled = true;
                     }
 
                     
@@ -654,6 +650,7 @@ namespace BlueSolAsoc
                 row["AtributFiscal"] = satributFiscal;
                 row["Adresa"] = sadresa;
                 row["NrRegCom"] = snrRegCom;
+                row["id_master"] = idAsociatie;
             }
             asociatieFormDS.TransmiteActualizari("mv_tabelParteneri");
             DupaApasareOk(GridParteneri);
@@ -687,19 +684,20 @@ namespace BlueSolAsoc
 
         }
 
-        private void GridParteneri_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            MessageBox.Show("Pentru a edita valorile din casete apasa butonul MODIFICA !", "Informare", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void tabPage3_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Pentru a edita valorile din casete apasa butonul MODIFICA !", "Informare", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
+      
+       
 
         private void ButonAdaugarePartener_Click(object sender, EventArgs e)
         {
             inserareValoriTabelParteneri();
         }
+
+      
+
+        //private void GridParteneri_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    MessageBox.Show("Pentru a edita valorile din Tabelul Parteneri Existenti apasa butonul MODIFICA !", "Informare", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //}
     }
-}
+    }
+

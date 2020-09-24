@@ -192,6 +192,10 @@ namespace BlueSolAsoc.butoane_si_controale
                                 break;
                             case "System.Int32":
                                 valoare = r[f.ColumnName].ToString().Trim();
+                                if (string.IsNullOrEmpty(valoare))
+                                {
+                                    valoare = "0";
+                                }
                                 break;
                             case "System.DateTime":
                                 valoare = "'" + ((DateTime) r[f.ColumnName]).ToString("yyyyMMdd") + "'";
@@ -200,6 +204,7 @@ namespace BlueSolAsoc.butoane_si_controale
                                 valoare = ((System.Decimal)r[f.ColumnName]).ToString().Replace(",", ".");
                                 //'100,00'
                                 break;
+                               
                             case "System.Guid":
                                 valoare = "'" + r[f.ColumnName].ToString() + "'";
                                 if (string.IsNullOrEmpty(valoare))

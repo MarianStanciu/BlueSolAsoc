@@ -27,7 +27,8 @@ namespace BlueSolAsoc.Fom_Meniuri
         {
             InitializeComponent();
             this.denumireAsociatie = denumireAsociatie;
-            this.idAsociatie = idAsociatie;         
+            this.idAsociatie = idAsociatie;
+            gridAfisareConsumuri.CellEndEdit += gridAfisareConsumuri_CellEndEdit;
         }
 
         protected override void OnLoad(EventArgs e)
@@ -131,23 +132,32 @@ namespace BlueSolAsoc.Fom_Meniuri
             int val = (Int32)Calcul_intretinereDS.ReturnareValoare("select aso_id_tip from mv_detaliiOrganizatie where org_id_org=" + nId);
 
             //adaugare tabela in dataset pentru apartamente  //TABELA DIN VIEW
-            if (!(Calcul_intretinereDS.Tables["mv_tabelApartamente"] is null))
+            if (!(Calcul_intretinereDS.Tables["mv_ConsumApartamente"] is null))
             {
-                Calcul_intretinereDS.Tables.Remove("mv_tabelApartamente");
+                Calcul_intretinereDS.Tables.Remove("mv_ConsumApartamente");
             }
-            Calcul_intretinereDS.getSetFrom("select * from mv_tabelApartamente  where  id_sc =" + nId, "mv_tabelApartamente");
+            Calcul_intretinereDS.getSetFrom("select * from mv_ConsumApartamente  where  id_sc =" + nId, "mv_ConsumApartamente");
             //CreareAsociatie tabelului pentru consumuri
-            if (!(Calcul_intretinereDS.Tables["mv_tabelConsumuriApartamente"] is null))
-            {
-                Calcul_intretinereDS.Tables.Remove("mv_tabelConsumuriApartamente");
-            }
-            Calcul_intretinereDS.getSetFrom("select * from mv_ConsumApartamente  where  id_sc =" + nId, "mv_tabelConsumuriApartamente");
-            gridAfisareConsumuri.DataSource = Calcul_intretinereDS.Tables["mv_tabelConsumuriApartamente"];
+            //if (!(Calcul_intretinereDS.Tables["mv_tabelConsumuriApartamente"] is null))
+            //{
+            //    Calcul_intretinereDS.Tables.Remove("mv_tabelConsumuriApartamente");
+            //}
+            //Calcul_intretinereDS.getSetFrom("select * from mv_ConsumApartamente  where  id_sc =" + nId, "mv_tabelConsumuriApartamente");
+            gridAfisareConsumuri.DataSource = Calcul_intretinereDS.Tables["mv_ConsumApartamente"];
+            gridAfisareConsumuri.Columns["id_sc"].Visible = false;
+            gridAfisareConsumuri.Columns["id_consumuri_apartamente"].Visible = false;
+            gridAfisareConsumuri.Columns["Denumire Apartament"].HeaderText = "Apartament";
+            gridAfisareConsumuri.Columns["consum_apa_rece"].HeaderText="MC Apa Rece";
+            gridAfisareConsumuri.Columns["consum_apa_calda"].HeaderText = "MC Apa Calda";
+            gridAfisareConsumuri.Columns["numar_persoane"].HeaderText = "Numar Persoane";
+            //gridAfisareConsumuri.Columns["numar_persoane"].DisplayIndex = 4;
+            gridAfisareConsumuri.Columns["Proprietar"].HeaderText = "Nume proprietar";
+            gridAfisareConsumuri.Columns["Proprietar"].DisplayIndex = 5;
+            gridAfisareConsumuri.Columns["Denumire Apartament"].Width = 200;
             // verificam daca treenodul selectat este "Scara "
             if (val == 3)
             {
-                PanelConsumAapartament.Show();
-               
+                PanelConsumAapartament.Show();               
             }
             else
             {
@@ -169,9 +179,51 @@ namespace BlueSolAsoc.Fom_Meniuri
         {
 
         }
+        //colorare celula editata pe baza valorii initiale comparata cu cea finala
+        void gridAfisareConsumuri_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+
+            object initial = this.Calcul_intretinereDS.Tables["mv_ConsumApartamente"].Rows[e.RowIndex][this.Calcul_intretinereDS.Tables["mv_ConsumApartamente"].Columns[e.ColumnIndex].ColumnName, DataRowVersion.Current];
+            object final = this.Calcul_intretinereDS.Tables["mv_ConsumApartamente"].Rows[e.RowIndex][e.ColumnIndex];
+            object tipObiect = final.GetType();
+
+            switch (Type.GetTypeCode(final.GetType()))
+            {
+                case TypeCode.Decimal:
+                    decimal a = decimal.Parse(final.ToString());
+                    if (a < 0)
+                    {
+                        MessageBox.Show("Introduceti un numar pozitiv", "Avertizare", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        final = decimal.Parse((initial.ToString()));
+                        gridAfisareConsumuri.CancelEdit();
+                    }
+
+                    break;
+
+                case TypeCode.Int32:
+                    int b = int.Parse(final.ToString());
+                    if (b < 0)
+                    {
+                        MessageBox.Show("Introduceti un numar pozitiv", "Avertizare", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        final = int.Parse((initial.ToString()));
+                        gridAfisareConsumuri.CancelEdit();
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+            if (initial != final)
+            {
+                gridAfisareConsumuri[e.ColumnIndex, e.RowIndex].Style.BackColor = Color.Cyan;
+            }
+
+        }
 
         private void Calcul_intretinere_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'calcul_intretinereDS1.mv_ConsumApartamente' table. You can move, or remove it, as needed.
+            this.mv_ConsumApartamenteTableAdapter.Fill(this.calcul_intretinereDS1.mv_ConsumApartamente);
             // TODO: This line of code loads data into the 'calcul_intretinereDS1.mv_ConsumApartamente' table. You can move, or remove it, as needed.
             this.mv_ConsumApartamenteTableAdapter.Fill(this.calcul_intretinereDS1.mv_ConsumApartamente);
 
