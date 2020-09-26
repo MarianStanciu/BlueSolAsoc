@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +30,9 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.denumireAsociatie = denumireAsociatie;
             this.idAsociatie = idAsociatie;
             gridAfisareConsumuri.CellEndEdit += gridAfisareConsumuri_CellEndEdit;
+            PanelConsumAapartament.Show();
+            lblMesajSelecteazScara.Show();
+            lblMesajSelecteazScara.BringToFront();
         }
 
         protected override void OnLoad(EventArgs e)
@@ -146,22 +150,26 @@ namespace BlueSolAsoc.Fom_Meniuri
             gridAfisareConsumuri.DataSource = Calcul_intretinereDS.Tables["mv_ConsumApartamente"];
             gridAfisareConsumuri.Columns["id_sc"].Visible = false;
             gridAfisareConsumuri.Columns["id_consumuri_apartamente"].Visible = false;
+            gridAfisareConsumuri.Columns["id_apartament"].Visible = false;
+            gridAfisareConsumuri.Columns["id_tabela_luni"].Visible = false;
             gridAfisareConsumuri.Columns["Denumire Apartament"].HeaderText = "Apartament";
             gridAfisareConsumuri.Columns["consum_apa_rece"].HeaderText="MC Apa Rece";
             gridAfisareConsumuri.Columns["consum_apa_calda"].HeaderText = "MC Apa Calda";
             gridAfisareConsumuri.Columns["numar_persoane"].HeaderText = "Numar Persoane";
-            //gridAfisareConsumuri.Columns["numar_persoane"].DisplayIndex = 4;
             gridAfisareConsumuri.Columns["Proprietar"].HeaderText = "Nume proprietar";
             gridAfisareConsumuri.Columns["Proprietar"].DisplayIndex = 5;
-            gridAfisareConsumuri.Columns["Denumire Apartament"].Width = 200;
-            // verificam daca treenodul selectat este "Scara "
+            gridAfisareConsumuri.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;      
+         
             if (val == 3)
             {
-                PanelConsumAapartament.Show();               
+                PanelConsumAapartament.Show();
+                gridAfisareConsumuri.Show();
+                lblMesajSelecteazScara.Hide();
             }
             else
             {
                 PanelConsumAapartament.Hide();
+                lblMesajSelecteazScara.Show();
             }
         }
 

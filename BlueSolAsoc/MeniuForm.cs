@@ -37,7 +37,9 @@ namespace BlueSolAsoc
            
             DataTable TabelaLuni = DataSetComboBox.Tables["tabela_luni"];
             AtribuireDataSourceCombo();
-                    
+            lblNumeAsociatie.Text = "Asociatia activa: " + GetDenumireAsociatie();
+
+
             gridTabelaLuni.DataSource = TabelaLuni;
 
             // Incarcare ultima Luna/AN
@@ -50,6 +52,7 @@ namespace BlueSolAsoc
                 comboBoxLUNA.Text = ultimaluna;
                 TabelaLuni = DataSetComboBox.Tables["tabela_luni"];
                 TabelaLuni.Rows.Add(0, comboBoxLUNA.Text, comboBoxAN.Text, 1, idAsociatie, 0);
+                lblLunaCurenta.Text = "Luna activa :"+ ultimaluna;
             }
 
         }
@@ -65,7 +68,7 @@ namespace BlueSolAsoc
         private void MeniuForm_Load(object sender, EventArgs e)
         {
             var b = new ClassButon();
-            classLabel3.Text = "Selecteaza un buton din meniu";
+            classLabel3.Text =  " - Selecteaza un buton din meniu - ";
 
 
         }
@@ -172,7 +175,7 @@ namespace BlueSolAsoc
                     switch (b.Text)
                     {
                         case ("STRUCTURA ASOCIATIE"):
-                        classLabel3.Text = "STRUCTURA ASOCIATIE";
+                        classLabel3.Text = " - STRUCTURA ASOCIATIE - " ;
                         if (Application.OpenForms.OfType<AsociatieForm>().Any())
                         {
                             Application.OpenForms.OfType<AsociatieForm>().First().BringToFront();
@@ -194,7 +197,7 @@ namespace BlueSolAsoc
 
                             break;
                         case ("VENITURI / INCASARI"):
-                        classLabel3.Text = "VENITURI / INCASARI";
+                        classLabel3.Text =  " - VENITURI / INCASARI -";
                         if (Application.OpenForms.OfType<venituri_incasari>().Any())
                         {
                             Application.OpenForms.OfType<venituri_incasari>().First().BringToFront();
@@ -213,7 +216,7 @@ namespace BlueSolAsoc
                             break;
 
                         case ("CHELTUIELI / PLATI"):
-                        classLabel3.Text = "CHELTUIELI / PLATI";
+                        classLabel3.Text =  " - CHELTUIELI / PLATI -";
                         if (Application.OpenForms.OfType<cheltuieli_plati>().Any())
                         {
                             Application.OpenForms.OfType<cheltuieli_plati>().First().BringToFront();
@@ -238,7 +241,7 @@ namespace BlueSolAsoc
                             break;
                        
                         case ("CALCUL INTRETINERE"):
-                        classLabel3.Text = "CALCUL INTRETINERE";
+                        classLabel3.Text =  " - CALCUL INTRETINERE - ";
                         if (Application.OpenForms.OfType<Calcul_intretinere>().Any())
                         {
                             Application.OpenForms.OfType<Calcul_intretinere>().First().BringToFront();
