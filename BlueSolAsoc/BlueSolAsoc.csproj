@@ -141,6 +141,11 @@
     <Compile Include="CreareAsociatie.Designer.cs">
       <DependentUpon>CreareAsociatie.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataSetComboBox.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetComboBox.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSetVenituriIncasari.cs">
       <DependentUpon>DataSetVenituriIncasari.xsd</DependentUpon>
     </Compile>
@@ -312,6 +317,17 @@
     </None>
     <None Include="CheltuieliDS.xss">
       <DependentUpon>CheltuieliDS.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetComboBox.xsc">
+      <DependentUpon>DataSetComboBox.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetComboBox.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetComboBox.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSetComboBox.xss">
+      <DependentUpon>DataSetComboBox.xsd</DependentUpon>
     </None>
     <None Include="DataSetVenituriIncasari.xsc">
       <DependentUpon>DataSetVenituriIncasari.xsd</DependentUpon>

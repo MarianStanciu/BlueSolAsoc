@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSetComboBox" targetNamespace="http://tempuri.org/DataSetComboBox.xsd" xmlns:mstns="http://tempuri.org/DataSetComboBox.xsd" xmlns="http://tempuri.org/DataSetComboBox.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="proba_transareConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="proba_transareConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.BlueSolAsoc.Properties.Settings.GlobalReference.Default.proba_transareConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="mv_tabela_luniTableAdapter" GeneratorDataComponentClassName="mv_tabela_luniTableAdapter" Name="mv_tabela_luni" UserDataComponentName="mv_tabela_luniTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="proba_transareConnectionString (Settings)" DbObjectName="proba_transare.dbo.mv_tabela_luni" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT id_tabela_luni, luna, an, activ, id_org, luna_incheiata, data_afisare FROM dbo.mv_tabela_luni</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id_tabela_luni" DataSetColumn="id_tabela_luni" />
+              <Mapping SourceColumn="luna" DataSetColumn="luna" />
+              <Mapping SourceColumn="an" DataSetColumn="an" />
+              <Mapping SourceColumn="activ" DataSetColumn="activ" />
+              <Mapping SourceColumn="id_org" DataSetColumn="id_org" />
+              <Mapping SourceColumn="luna_incheiata" DataSetColumn="luna_incheiata" />
+              <Mapping SourceColumn="data_afisare" DataSetColumn="data_afisare" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSetComboBox" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="DataSetComboBox" msprop:Generator_UserDSName="DataSetComboBox">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="mv_tabela_luni" msprop:Generator_TableClassName="mv_tabela_luniDataTable" msprop:Generator_TableVarName="tablemv_tabela_luni" msprop:Generator_TablePropName="mv_tabela_luni" msprop:Generator_RowDeletingName="mv_tabela_luniRowDeleting" msprop:Generator_RowChangingName="mv_tabela_luniRowChanging" msprop:Generator_RowEvHandlerName="mv_tabela_luniRowChangeEventHandler" msprop:Generator_RowDeletedName="mv_tabela_luniRowDeleted" msprop:Generator_UserTableName="mv_tabela_luni" msprop:Generator_RowChangedName="mv_tabela_luniRowChanged" msprop:Generator_RowEvArgName="mv_tabela_luniRowChangeEvent" msprop:Generator_RowClassName="mv_tabela_luniRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id_tabela_luni" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_tabela_luni" msprop:Generator_ColumnPropNameInRow="id_tabela_luni" msprop:Generator_ColumnPropNameInTable="id_tabela_luniColumn" msprop:Generator_UserColumnName="id_tabela_luni" type="xs:int" />
+              <xs:element name="luna" msprop:Generator_ColumnVarNameInTable="columnluna" msprop:Generator_ColumnPropNameInRow="luna" msprop:Generator_ColumnPropNameInTable="lunaColumn" msprop:Generator_UserColumnName="luna" type="xs:int" />
+              <xs:element name="an" msprop:Generator_ColumnVarNameInTable="columnan" msprop:Generator_ColumnPropNameInRow="an" msprop:Generator_ColumnPropNameInTable="anColumn" msprop:Generator_UserColumnName="an">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="activ" msprop:Generator_ColumnVarNameInTable="columnactiv" msprop:Generator_ColumnPropNameInRow="activ" msprop:Generator_ColumnPropNameInTable="activColumn" msprop:Generator_UserColumnName="activ" type="xs:int" />
+              <xs:element name="id_org" msprop:Generator_ColumnVarNameInTable="columnid_org" msprop:Generator_ColumnPropNameInRow="id_org" msprop:Generator_ColumnPropNameInTable="id_orgColumn" msprop:Generator_UserColumnName="id_org" type="xs:int" />
+              <xs:element name="luna_incheiata" msprop:Generator_ColumnVarNameInTable="columnluna_incheiata" msprop:Generator_ColumnPropNameInRow="luna_incheiata" msprop:Generator_ColumnPropNameInTable="luna_incheiataColumn" msprop:Generator_UserColumnName="luna_incheiata" type="xs:int" />
+              <xs:element name="data_afisare" msprop:Generator_ColumnVarNameInTable="columndata_afisare" msprop:Generator_ColumnPropNameInRow="data_afisare" msprop:Generator_ColumnPropNameInTable="data_afisareColumn" msprop:Generator_UserColumnName="data_afisare" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:mv_tabela_luni" />
+      <xs:field xpath="mstns:id_tabela_luni" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
