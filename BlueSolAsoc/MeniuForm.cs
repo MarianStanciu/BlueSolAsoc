@@ -26,14 +26,14 @@ namespace BlueSolAsoc
         {
             InitializeComponent();
             timer1.Start();
-            
+
             PopulareMeniuPrincipal(meniuPrincipal);
             denumireAsociatie = denumireAsociatieString;
             idAsociatie = id;
             //  lblAsociatie_Selectata.Text = denumireAsociatieString + " "+id;
 
-            DataSetComboBox.getSetFrom("Select * from mv_tabela_luni", "mv_tabela_luni");//view pentru tabela + triggeri
-            DataSetComboBox.getSetFrom("Select top 1 * from mv_tabela_luni ORDER BY id_tabela_luni DESC","tabel_ultima_luna");
+            DataSetComboBox.getSetFrom("Select * from mv_tabela_luni where id_org=" + id, "mv_tabela_luni"); ;//view pentru tabela + triggeri
+            DataSetComboBox.getSetFrom("Select top 1 * from mv_tabela_luni where id_org=" + id + " ORDER BY id_tabela_luni DESC","tabel_ultima_luna");
             
             //AdaugareLunaCurenta();
            
@@ -331,8 +331,10 @@ namespace BlueSolAsoc
                                 //config.Save();
                                 config.Save(ConfigurationSaveMode.Full);*/
                 TabelaLuni.Rows.Add();
-                foreach (DataRow row in TabelaLuni.Rows)
+                DataRow[] randuri = TabelaLuni.Select(null,null, DataViewRowState.Added);
+                foreach (DataRow row in randuri)
                 {
+                   
                     row["luna"] = comboBoxLUNA.SelectedValue.ToString();
                     row["an"]= comboBoxAN.SelectedValue.ToString();
                     row["activ"] = 1;
