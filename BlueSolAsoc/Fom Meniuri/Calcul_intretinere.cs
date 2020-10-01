@@ -33,6 +33,9 @@ namespace BlueSolAsoc.Fom_Meniuri
             PanelConsumAapartament.Show();
             lblMesajSelecteazScara.Show();
             lblMesajSelecteazScara.BringToFront();
+            btnSalveaza.Hide();
+            btnSterge.Hide();
+            gridAfisareConsumuri.Enabled = false;
         }
 
         protected override void OnLoad(EventArgs e)
@@ -141,12 +144,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                 Calcul_intretinereDS.Tables.Remove("mv_ConsumApartamente");
             }
             Calcul_intretinereDS.getSetFrom("select * from mv_ConsumApartamente  where  id_sc =" + nId, "mv_ConsumApartamente");
-            //CreareAsociatie tabelului pentru consumuri
-            //if (!(Calcul_intretinereDS.Tables["mv_tabelConsumuriApartamente"] is null))
-            //{
-            //    Calcul_intretinereDS.Tables.Remove("mv_tabelConsumuriApartamente");
-            //}
-            //Calcul_intretinereDS.getSetFrom("select * from mv_ConsumApartamente  where  id_sc =" + nId, "mv_tabelConsumuriApartamente");
+            
             gridAfisareConsumuri.DataSource = Calcul_intretinereDS.Tables["mv_ConsumApartamente"];
             gridAfisareConsumuri.Columns["id_sc"].Visible = false;
             gridAfisareConsumuri.Columns["id_consumuri_apartamente"].Visible = false;
@@ -154,10 +152,11 @@ namespace BlueSolAsoc.Fom_Meniuri
             gridAfisareConsumuri.Columns["id_tabela_luni"].Visible = false;
             gridAfisareConsumuri.Columns["Denumire Apartament"].HeaderText = "Apartament";
             gridAfisareConsumuri.Columns["consum_apa_rece"].HeaderText="MC Apa Rece";
+        //    gridAfisareConsumuri.Sort(gridAfisareConsumuri.Columns["Denumire Apartament"], ListSortDirection.Descending);
             gridAfisareConsumuri.Columns["consum_apa_calda"].HeaderText = "MC Apa Calda";
             gridAfisareConsumuri.Columns["numar_persoane"].HeaderText = "Numar Persoane";
             gridAfisareConsumuri.Columns["Proprietar"].HeaderText = "Nume proprietar";
-            gridAfisareConsumuri.Columns["Proprietar"].DisplayIndex = 5;
+            gridAfisareConsumuri.Columns["Proprietar"].DisplayIndex = 6;
             gridAfisareConsumuri.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;      
          
             if (val == 3)
@@ -171,6 +170,11 @@ namespace BlueSolAsoc.Fom_Meniuri
                 PanelConsumAapartament.Hide();
                 lblMesajSelecteazScara.Show();
             }
+        }
+        public void reimprospateazaGridConsumuri()
+        {
+            gridAfisareConsumuri.DataSource = Calcul_intretinereDS.Tables["mv_ConsumApartamente"];
+            gridAfisareConsumuri.Refresh();
         }
 
         private void btnAnuleaza_Click(object sender, EventArgs e)
@@ -232,8 +236,83 @@ namespace BlueSolAsoc.Fom_Meniuri
         {
             // TODO: This line of code loads data into the 'calcul_intretinereDS1.mv_ConsumApartamente' table. You can move, or remove it, as needed.
             this.mv_ConsumApartamenteTableAdapter.Fill(this.calcul_intretinereDS1.mv_ConsumApartamente);
-            // TODO: This line of code loads data into the 'calcul_intretinereDS1.mv_ConsumApartamente' table. You can move, or remove it, as needed.
-            this.mv_ConsumApartamenteTableAdapter.Fill(this.calcul_intretinereDS1.mv_ConsumApartamente);
+          
+
+        }
+
+        private void btnModifica_Click(object sender, EventArgs e)
+        {
+            switch (TabCalculIntretinere.SelectedTab.Text)
+            {
+                case "Adaugare consumuri apartament":
+                    treeConsumuriApartament.Enabled = false;
+                    btnModifica.Hide();
+                    btnSalveaza.Show();
+                    btnAnuleaza.Show();
+                    gridAfisareConsumuri.Enabled = true;
+
+                        break;
+
+                case "Genereaza tabel intretinere":
+
+                    break;
+
+
+                default:
+                    break;
+            }
+        }
+
+        private void btnSalveaza_Click(object sender, EventArgs e)
+        {
+            treeConsumuriApartament.Enabled = true;
+            btnModifica.Show();
+            btnSalveaza.Hide();
+            btnAnuleaza.Show();
+            Calcul_intretinereDS.TransmiteActualizari("mv_ConsumApartamente");
+            gridAfisareConsumuri.Enabled = false;
+        }
+
+        private void btnAnuleaza_Click_1(object sender, EventArgs e)
+        {
+            DataRow[] randuriModificate = Calcul_intretinereDS.Tables["mv_ConsumApartamente"].Select(null, null, DataViewRowState.ModifiedCurrent);
+            if (randuriModificate.Length > 0)
+            {
+              
+                MessageBox.Show("Campurile care au fost editate se vor pierde daca nu sunt salvate !", "Informare", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                
+                if (DialogResult == DialogResult.OK)
+                {
+                    treeConsumuriApartament.Enabled = true;
+                    btnModifica.Show();
+                    btnSalveaza.Hide();
+                    btnAnuleaza.Show();
+                    gridAfisareConsumuri.CancelEdit();
+                    gridAfisareConsumuri.Enabled = false;
+                }
+            }
+            else
+            {
+                treeConsumuriApartament.Enabled = true;
+                btnModifica.Show();
+                btnSalveaza.Hide();
+                btnAnuleaza.Show();
+                gridAfisareConsumuri.CancelEdit();
+                gridAfisareConsumuri.Enabled = false;
+            }
+
+        }
+
+
+
+        
+
+        private void PanelConsumAapartament_Paint(object sender, PaintEventArgs e)
+        {
+            if (gridAfisareConsumuri.Enabled == false)
+            {
+                MessageBox.Show("Pentru a edita valorile din tabel apasa butonul MODIFICA !", "Informare", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
         }
     }

@@ -541,7 +541,7 @@ namespace BlueSolAsoc
                             txtB.Enabled = false;
                         }
                     }
-                 //   asociatieFormDS.TransmiteActualizari("mv_detaliiOrganizatie");
+                    asociatieFormDS.TransmiteActualizari("mv_detaliiOrganizatie");
                     asociatieFormDS.TransmiteActualizari("mv_tabelApartamente");
 
                     asociatieFormDS.ExecutaComenzi("exec mp_AdaugaElemente " + id_master);
