@@ -26,34 +26,47 @@ namespace BlueSolAsoc
         {
             InitializeComponent();
             timer1.Start();
-            
+
             PopulareMeniuPrincipal(meniuPrincipal);
             denumireAsociatie = denumireAsociatieString;
             idAsociatie = id;
             //  lblAsociatie_Selectata.Text = denumireAsociatieString + " "+id;
 
-            DataSetComboBox.getSetFrom("Select * from tabela_luni", "tabela_luni");//view pentru tabela + triggeri
+            DataSetComboBox.getSetFrom("Select * from mv_tabela_luni where id_org=" + id, "mv_tabela_luni"); ;//view pentru tabela + triggeri
+            DataSetComboBox.getSetFrom("Select top 1 * from mv_tabela_luni where id_org=" + id + " ORDER BY id_tabela_luni DESC","tabel_ultima_luna");
+            
             //AdaugareLunaCurenta();
            
-            DataTable TabelaLuni = DataSetComboBox.Tables["tabela_luni"];
+            DataTable TabelaLuni = DataSetComboBox.Tables["mv_tabela_luni"];
+            DataTable TabelUltimaLuna = DataSetComboBox.Tables["tabel_ultima_luna"]; // tabel utilizat pentru combobox-uri
             AtribuireDataSourceCombo();
             lblNumeAsociatie.Text = "Asociatia activa: " + GetDenumireAsociatie();
 
-
+            
             gridTabelaLuni.DataSource = TabelaLuni;
 
+            if ((TabelUltimaLuna.Rows.Count)!= 0){
+
+                var ultimulan = TabelUltimaLuna.Rows[0]["an"];
+                var ultimaluna = TabelUltimaLuna.Rows[0]["luna"];
+                int ultimalunaselect = Convert.ToInt32(ultimaluna);
+                comboBoxAN.Text = ultimulan.ToString();
+                //comboBoxLUNA.Text = ultimaluna.ToString();
+                comboBoxLUNA.SelectedIndex = ultimalunaselect-1; // problema??
+            }
+
             // Incarcare ultima Luna/AN
-            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+/*            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             if ((config.AppSettings.Settings.Count) != 0)
             {
                 var ultimulan = config.AppSettings.Settings["an"].Value;
                 var ultimaluna = config.AppSettings.Settings["luna"].Value;
                 comboBoxAN.Text = ultimulan;
                 comboBoxLUNA.Text = ultimaluna;
-                TabelaLuni = DataSetComboBox.Tables["tabela_luni"];
+                TabelaLuni = DataSetComboBox.Tables["mv_tabela_luni"];
                 TabelaLuni.Rows.Add(0, comboBoxLUNA.Text, comboBoxAN.Text, 1, idAsociatie, 0);
                 lblLunaCurenta.Text = "Luna activa :"+ ultimaluna;
-            }
+            }*/
 
         }
         public string GetDenumireAsociatie()
@@ -67,6 +80,8 @@ namespace BlueSolAsoc
 
         private void MeniuForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dataSetComboBox1.mv_tabela_luni' table. You can move, or remove it, as needed.
+            this.mv_tabela_luniTableAdapter.Fill(this.dataSetComboBox1.mv_tabela_luni);
             var b = new ClassButon();
             classLabel3.Text =  " - Selecteaza un buton din meniu - ";
 
@@ -161,7 +176,7 @@ namespace BlueSolAsoc
         public void ApasareButon(object sender, EventArgs e)
         {
            
-            DataTable TabelaLuni = DataSetComboBox.Tables["tabela_luni"];
+            DataTable TabelaLuni = DataSetComboBox.Tables["mv_tabela_luni"];
             /*            if ((comboBoxLUNA.SelectedIndex == -1) || (comboBoxAN.SelectedIndex == -1))
                         {
                             MessageBox.Show("Alege luna si anul");
@@ -307,14 +322,27 @@ namespace BlueSolAsoc
             }
             else
             {
-                DataTable TabelaLuni = DataSetComboBox.Tables["tabela_luni"];
-                TabelaLuni.Rows.Add(0, comboBoxLUNA.SelectedValue, comboBoxAN.Text, 1, idAsociatie, 0);
-                Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);               
-                config.AppSettings.Settings.Add("an", comboBoxAN.SelectedValue.ToString());
-                config.AppSettings.Settings.Add("luna",comboBoxLUNA.SelectedValue.ToString());
-                //var asn = config.AppSettings.Settings["an"];
-                //config.Save();
-                config.Save(ConfigurationSaveMode.Full);
+                DataTable TabelaLuni = DataSetComboBox.Tables["mv_tabela_luni"];
+                /*                TabelaLuni.Rows.Add(0, comboBoxLUNA.SelectedValue, comboBoxAN.Text, 1, idAsociatie, 0);
+                                Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                                config.AppSettings.Settings.Add("an", comboBoxAN.SelectedValue.ToString());
+                                config.AppSettings.Settings.Add("luna", comboBoxLUNA.SelectedValue.ToString());
+                                //var asn = config.AppSettings.Settings["an"];
+                                //config.Save();
+                                config.Save(ConfigurationSaveMode.Full);*/
+                TabelaLuni.Rows.Add();
+                DataRow[] randuri = TabelaLuni.Select(null,null, DataViewRowState.Added);
+                foreach (DataRow row in randuri)
+                {
+                   
+                    row["luna"] = comboBoxLUNA.SelectedValue.ToString();
+                    row["an"]= comboBoxAN.SelectedValue.ToString();
+                    row["activ"] = 1;
+                    row["data_afisare"] = System.DateTime.Now.Date;
+                    row["id_org"] = idAsociatie;
+
+                }
+                DataSetComboBox.TransmiteActualizari("mv_tabela_luni");
             }
         }
 

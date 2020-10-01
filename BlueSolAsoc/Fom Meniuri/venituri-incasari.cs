@@ -543,10 +543,10 @@ namespace BlueSolAsoc.Fom_Meniuri
         private void butonPrintTest_Click(object sender, EventArgs e)
         {
 
-/*            //printPreviewDialog1.ShowDialog();
-            ReadDocument();
-            printPreviewDialog1.Document = printDocument1;
-            printPreviewDialog1.ShowDialog();*/
+            /*            //printPreviewDialog1.ShowDialog();
+                        ReadDocument();
+                        printPreviewDialog1.Document = printDocument1;
+                        printPreviewDialog1.ShowDialog();*/
 
             DGVPrinter printer = new DGVPrinter();
             printer.Title = "Titlu de test"; //header
@@ -554,9 +554,15 @@ namespace BlueSolAsoc.Fom_Meniuri
             printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
             printer.PageNumbers = true;
             printer.PageNumberInHeader = false;
-            printer.PorportionalColumns = true;
+            //printer.PorportionalColumns = true;
+            printer.ColumnWidth = DGVPrinter.ColumnWidthSetting.Porportional;
             printer.HeaderCellAlignment = StringAlignment.Near;
-            printer.Footer = "BlueBitData";// Footer
+            printer.ColumnWidths.Add(dataGridView2.Columns[9].Name, 90); // formatare latime colaoana 9 [denumire]
+            printer.Footer = "BlueBitData"+ "\n" +"altceva";// Footer
+            //printer.HideColumns.Add(dataGridView2.Columns[9].Name); // Ascundere coloana
+            printer.FooterFormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
+            //printer.FooterFormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.DirectionVertical | StringFormatFlags.NoClip;
+            printer.FooterColor = Color.Red;
             printer.PrintDataGridView(dataGridView2);
 
         }

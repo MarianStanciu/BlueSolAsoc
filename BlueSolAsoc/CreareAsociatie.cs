@@ -22,7 +22,6 @@ namespace BlueSolAsoc
             //Aducere structura tabela in DataSet
             DataSetCreareAsoc.getSetFrom("select org_id_master, org_id_asociere, org_valoare from mv_detaliiOrganizatie where 1<>1", "mv_detaliiOrganizatie");
             //select org_id_org, org_id_master, org_id_asociere, org_valoare from mv_detaliiOrganizatie
-  
         }
        
 
