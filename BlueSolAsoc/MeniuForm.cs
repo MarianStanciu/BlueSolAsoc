@@ -33,15 +33,27 @@ namespace BlueSolAsoc
             //  lblAsociatie_Selectata.Text = denumireAsociatieString + " "+id;
 
             DataSetComboBox.getSetFrom("Select * from mv_tabela_luni", "mv_tabela_luni");//view pentru tabela + triggeri
+            DataSetComboBox.getSetFrom("Select top 1 * from mv_tabela_luni ORDER BY id_tabela_luni DESC","tabel_ultima_luna");
             
             //AdaugareLunaCurenta();
            
             DataTable TabelaLuni = DataSetComboBox.Tables["mv_tabela_luni"];
+            DataTable TabelUltimaLuna = DataSetComboBox.Tables["tabel_ultima_luna"]; // tabel utilizat pentru combobox-uri
             AtribuireDataSourceCombo();
             lblNumeAsociatie.Text = "Asociatia activa: " + GetDenumireAsociatie();
 
-
+            
             gridTabelaLuni.DataSource = TabelaLuni;
+
+            if ((TabelUltimaLuna.Rows.Count)!= 0){
+
+                var ultimulan = TabelUltimaLuna.Rows[0]["an"];
+                var ultimaluna = TabelUltimaLuna.Rows[0]["luna"];
+                int ultimalunaselect = Convert.ToInt32(ultimaluna);
+                comboBoxAN.Text = ultimulan.ToString();
+                //comboBoxLUNA.Text = ultimaluna.ToString();
+                comboBoxLUNA.SelectedIndex = ultimalunaselect-1; // problema??
+            }
 
             // Incarcare ultima Luna/AN
 /*            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
