@@ -336,8 +336,8 @@ namespace BlueSolAsoc
 
                 foreach (DataRow row in TabelUltimaLuna.Rows)
                 {
-                     ultimaluna = Convert.ToInt32(row["luna"]);
-                     ultimulan = Convert.ToInt32(row["an"]);
+                    ultimaluna = Convert.ToInt32(row["luna"]);
+                    ultimulan = Convert.ToInt32(row["an"]);
                     if (ultimaluna == 12)
                     {
                         ultimaluna = 1;
@@ -353,12 +353,12 @@ namespace BlueSolAsoc
                         row["an"] = ultimulan;
                     }
                 }
-                
+
                 TabelUltimaLuna.Rows.Add(0, ultimaluna, ultimulan, 1, idAsociatie, 1, System.DateTime.Now.Date);
-                
-                DataSetComboBox.TransmiteActualizari("tabel_ultima_luna", "mv_tabela_luni");
+
+                //DataSetComboBox.TransmiteActualizari("tabel_ultima_luna", "mv_tabela_luni");
             }
-                if (comboBoxAN.SelectedIndex == -1 || comboBoxLUNA.SelectedIndex == -1)
+            if ((comboBoxAN.SelectedIndex == -1 || comboBoxLUNA.SelectedIndex == -1) && comboBoxAN.Visible == true)
                 {
 
                     MessageBox.Show("Alege luna si anul");
