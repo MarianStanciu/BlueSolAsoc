@@ -31,17 +31,18 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.classTabControl1 = new BlueSolAsoc.butoane_si_controale.ClassTabControl();
+            this.TabCalculIntretinere = new BlueSolAsoc.butoane_si_controale.ClassTabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.GenereazaTabel = new BlueSolAsoc.butoane_si_controale.ClassButon();
             this.GridCalculIntretinere = new BlueSolAsoc.butoane_si_controale.ClassGridView();
             this.treeColoane = new System.Windows.Forms.TreeView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.lblMesajSelecteazScara = new BlueSolAsoc.butoane_si_controale.ClassLabel();
             this.pnlControale = new System.Windows.Forms.Panel();
             this.btnAnuleaza = new System.Windows.Forms.Button();
-            this.btnOK = new System.Windows.Forms.Button();
-            this.classButonInteriorSterge1 = new BlueSolAsoc.butoane_si_controale.ClassButonInteriorSterge();
-            this.classButonModifica1 = new BlueSolAsoc.butoane_si_controale.ClassButonModifica();
+            this.btnSalveaza = new System.Windows.Forms.Button();
+            this.btnSterge = new BlueSolAsoc.butoane_si_controale.ClassButonInteriorSterge();
+            this.btnModifica = new BlueSolAsoc.butoane_si_controale.ClassButonModifica();
             this.PanelConsumAapartament = new BlueSolAsoc.butoane_si_controale.ClassPanel();
             this.gridAfisareConsumuri = new BlueSolAsoc.butoane_si_controale.ClassGridView();
             this.PanelTreeConsumAp = new BlueSolAsoc.butoane_si_controale.ClassPanel();
@@ -49,8 +50,7 @@
             this.calcul_intretinereDS1 = new BlueSolAsoc.Calcul_intretinereDS();
             this.mvConsumApartamenteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mv_ConsumApartamenteTableAdapter = new BlueSolAsoc.Calcul_intretinereDSTableAdapters.mv_ConsumApartamenteTableAdapter();
-            this.lblMesajSelecteazScara = new BlueSolAsoc.butoane_si_controale.ClassLabel();
-            this.classTabControl1.SuspendLayout();
+            this.TabCalculIntretinere.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridCalculIntretinere)).BeginInit();
             this.tabPage1.SuspendLayout();
@@ -62,20 +62,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.mvConsumApartamenteBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // classTabControl1
+            // TabCalculIntretinere
             // 
-            this.classTabControl1.Appearance = System.Windows.Forms.TabAppearance.Buttons;
-            this.classTabControl1.Controls.Add(this.tabPage2);
-            this.classTabControl1.Controls.Add(this.tabPage1);
-            this.classTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.classTabControl1.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.classTabControl1.ItemSize = new System.Drawing.Size(309, 45);
-            this.classTabControl1.Location = new System.Drawing.Point(0, 0);
-            this.classTabControl1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.classTabControl1.Name = "classTabControl1";
-            this.classTabControl1.SelectedIndex = 0;
-            this.classTabControl1.Size = new System.Drawing.Size(1194, 711);
-            this.classTabControl1.TabIndex = 0;
+            this.TabCalculIntretinere.Appearance = System.Windows.Forms.TabAppearance.Buttons;
+            this.TabCalculIntretinere.Controls.Add(this.tabPage2);
+            this.TabCalculIntretinere.Controls.Add(this.tabPage1);
+            this.TabCalculIntretinere.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TabCalculIntretinere.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TabCalculIntretinere.ItemSize = new System.Drawing.Size(309, 45);
+            this.TabCalculIntretinere.Location = new System.Drawing.Point(0, 0);
+            this.TabCalculIntretinere.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.TabCalculIntretinere.Name = "TabCalculIntretinere";
+            this.TabCalculIntretinere.SelectedIndex = 0;
+            this.TabCalculIntretinere.Size = new System.Drawing.Size(1194, 711);
+            this.TabCalculIntretinere.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -151,13 +151,22 @@
             this.tabPage1.Text = "Adaugare consumuri apartament";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // lblMesajSelecteazScara
+            // 
+            this.lblMesajSelecteazScara.AutoSize = true;
+            this.lblMesajSelecteazScara.Location = new System.Drawing.Point(344, 306);
+            this.lblMesajSelecteazScara.Name = "lblMesajSelecteazScara";
+            this.lblMesajSelecteazScara.Size = new System.Drawing.Size(742, 30);
+            this.lblMesajSelecteazScara.TabIndex = 2;
+            this.lblMesajSelecteazScara.Text = "Pentru a introduce/modifica consumuri selecteaza o scara din tree";
+            // 
             // pnlControale
             // 
             this.pnlControale.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlControale.Controls.Add(this.btnAnuleaza);
-            this.pnlControale.Controls.Add(this.btnOK);
-            this.pnlControale.Controls.Add(this.classButonInteriorSterge1);
-            this.pnlControale.Controls.Add(this.classButonModifica1);
+            this.pnlControale.Controls.Add(this.btnSalveaza);
+            this.pnlControale.Controls.Add(this.btnSterge);
+            this.pnlControale.Controls.Add(this.btnModifica);
             this.pnlControale.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnlControale.Location = new System.Drawing.Point(1028, 3);
             this.pnlControale.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -178,48 +187,51 @@
             this.btnAnuleaza.TabIndex = 9;
             this.btnAnuleaza.Text = "ANULEAZA";
             this.btnAnuleaza.UseVisualStyleBackColor = false;
+            this.btnAnuleaza.Click += new System.EventHandler(this.btnAnuleaza_Click_1);
             // 
-            // btnOK
+            // btnSalveaza
             // 
-            this.btnOK.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btnOK.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOK.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOK.Location = new System.Drawing.Point(0, 400);
-            this.btnOK.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(152, 200);
-            this.btnOK.TabIndex = 8;
-            this.btnOK.Text = "SALVEAZA";
-            this.btnOK.UseVisualStyleBackColor = false;
+            this.btnSalveaza.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnSalveaza.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSalveaza.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalveaza.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalveaza.Location = new System.Drawing.Point(0, 400);
+            this.btnSalveaza.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnSalveaza.Name = "btnSalveaza";
+            this.btnSalveaza.Size = new System.Drawing.Size(152, 200);
+            this.btnSalveaza.TabIndex = 8;
+            this.btnSalveaza.Text = "SALVEAZA";
+            this.btnSalveaza.UseVisualStyleBackColor = false;
+            this.btnSalveaza.Click += new System.EventHandler(this.btnSalveaza_Click);
             // 
-            // classButonInteriorSterge1
+            // btnSterge
             // 
-            this.classButonInteriorSterge1.BackColor = System.Drawing.Color.Red;
-            this.classButonInteriorSterge1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.classButonInteriorSterge1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.classButonInteriorSterge1.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.classButonInteriorSterge1.Location = new System.Drawing.Point(0, 200);
-            this.classButonInteriorSterge1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.classButonInteriorSterge1.Name = "classButonInteriorSterge1";
-            this.classButonInteriorSterge1.Size = new System.Drawing.Size(152, 200);
-            this.classButonInteriorSterge1.TabIndex = 7;
-            this.classButonInteriorSterge1.Text = "STERGE";
-            this.classButonInteriorSterge1.UseVisualStyleBackColor = false;
+            this.btnSterge.BackColor = System.Drawing.Color.Red;
+            this.btnSterge.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSterge.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSterge.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSterge.Location = new System.Drawing.Point(0, 200);
+            this.btnSterge.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnSterge.Name = "btnSterge";
+            this.btnSterge.Size = new System.Drawing.Size(152, 200);
+            this.btnSterge.TabIndex = 7;
+            this.btnSterge.Text = "STERGE";
+            this.btnSterge.UseVisualStyleBackColor = false;
             // 
-            // classButonModifica1
+            // btnModifica
             // 
-            this.classButonModifica1.BackColor = System.Drawing.Color.Yellow;
-            this.classButonModifica1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.classButonModifica1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.classButonModifica1.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.classButonModifica1.Location = new System.Drawing.Point(0, 0);
-            this.classButonModifica1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.classButonModifica1.Name = "classButonModifica1";
-            this.classButonModifica1.Size = new System.Drawing.Size(152, 200);
-            this.classButonModifica1.TabIndex = 6;
-            this.classButonModifica1.Text = "MODIFICA";
-            this.classButonModifica1.UseVisualStyleBackColor = false;
+            this.btnModifica.BackColor = System.Drawing.Color.Yellow;
+            this.btnModifica.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnModifica.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModifica.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModifica.Location = new System.Drawing.Point(0, 0);
+            this.btnModifica.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnModifica.Name = "btnModifica";
+            this.btnModifica.Size = new System.Drawing.Size(152, 200);
+            this.btnModifica.TabIndex = 6;
+            this.btnModifica.Text = "MODIFICA";
+            this.btnModifica.UseVisualStyleBackColor = false;
+            this.btnModifica.Click += new System.EventHandler(this.btnModifica_Click);
             // 
             // PanelConsumAapartament
             // 
@@ -230,8 +242,9 @@
             this.PanelConsumAapartament.Location = new System.Drawing.Point(310, 3);
             this.PanelConsumAapartament.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.PanelConsumAapartament.Name = "PanelConsumAapartament";
-            this.PanelConsumAapartament.Size = new System.Drawing.Size(709, 644);
+            this.PanelConsumAapartament.Size = new System.Drawing.Size(709, 825);
             this.PanelConsumAapartament.TabIndex = 10;
+            this.PanelConsumAapartament.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelConsumAapartament_Paint);
             // 
             // gridAfisareConsumuri
             // 
@@ -246,15 +259,14 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.gridAfisareConsumuri.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.gridAfisareConsumuri.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridAfisareConsumuri.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridAfisareConsumuri.EnableHeadersVisualStyles = false;
-            this.gridAfisareConsumuri.Location = new System.Drawing.Point(0, 0);
+            this.gridAfisareConsumuri.Location = new System.Drawing.Point(0, 92);
             this.gridAfisareConsumuri.Margin = new System.Windows.Forms.Padding(4);
             this.gridAfisareConsumuri.Name = "gridAfisareConsumuri";
             this.gridAfisareConsumuri.RowHeadersWidth = 51;
-            this.gridAfisareConsumuri.Size = new System.Drawing.Size(705, 640);
+            this.gridAfisareConsumuri.Size = new System.Drawing.Size(705, 729);
             this.gridAfisareConsumuri.TabIndex = 0;
-            // 
+           
             // PanelTreeConsumAp
             // 
             this.PanelTreeConsumAp.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -291,27 +303,17 @@
             // 
             this.mv_ConsumApartamenteTableAdapter.ClearBeforeFill = true;
             // 
-            // lblMesajSelecteazScara
-            // 
-            this.lblMesajSelecteazScara.AutoSize = true;
-            this.lblMesajSelecteazScara.Location = new System.Drawing.Point(344, 306);
-            this.lblMesajSelecteazScara.Name = "lblMesajSelecteazScara";
-            this.lblMesajSelecteazScara.Size = new System.Drawing.Size(635, 30);
-            this.lblMesajSelecteazScara.TabIndex = 2;
-            this.lblMesajSelecteazScara.Text = "Pentru a introduce consumuri selecteaza o scara din tree";
-            // 
             // Calcul_intretinere
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1194, 711);
-            this.Controls.Add(this.classTabControl1);
+            this.Controls.Add(this.TabCalculIntretinere);
             this.Location = new System.Drawing.Point(0, 0);
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "Calcul_intretinere";
             this.Text = "Calcul_intretinere";
-            this.Load += new System.EventHandler(this.Calcul_intretinere_Load);
-            this.classTabControl1.ResumeLayout(false);
+            this.TabCalculIntretinere.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GridCalculIntretinere)).EndInit();
             this.tabPage1.ResumeLayout(false);
@@ -328,7 +330,7 @@
 
         #endregion
 
-        private butoane_si_controale.ClassTabControl classTabControl1;
+        private butoane_si_controale.ClassTabControl TabCalculIntretinere;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TreeView treeColoane;
@@ -340,9 +342,9 @@
         private butoane_si_controale.ClassGridView gridAfisareConsumuri;
         private System.Windows.Forms.Panel pnlControale;
         private System.Windows.Forms.Button btnAnuleaza;
-        private System.Windows.Forms.Button btnOK;
-        private butoane_si_controale.ClassButonInteriorSterge classButonInteriorSterge1;
-        private butoane_si_controale.ClassButonModifica classButonModifica1;
+        private System.Windows.Forms.Button btnSalveaza;
+        private butoane_si_controale.ClassButonInteriorSterge btnSterge;
+        private butoane_si_controale.ClassButonModifica btnModifica;
         private Calcul_intretinereDS calcul_intretinereDS1;
         private System.Windows.Forms.BindingSource mvConsumApartamenteBindingSource;
         private Calcul_intretinereDSTableAdapters.mv_ConsumApartamenteTableAdapter mv_ConsumApartamenteTableAdapter;
