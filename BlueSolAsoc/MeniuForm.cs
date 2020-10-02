@@ -20,6 +20,8 @@ namespace BlueSolAsoc
         private int idAsociatie;
         ClassDataSet DataSetComboBox = new ClassDataSet(); // Utilizare Clasa DataSet pentru creare tabele
         string sNumeMeniu = "";
+        int ultimaluna;
+        int ultimulan;
 
 
         public MeniuForm(string denumireAsociatieString, int id)
@@ -34,11 +36,13 @@ namespace BlueSolAsoc
 
             DataSetComboBox.getSetFrom("Select * from mv_tabela_luni where id_org=" + id, "mv_tabela_luni"); ;//view pentru tabela + triggeri
             DataSetComboBox.getSetFrom("Select top 1 * from mv_tabela_luni where id_org=" + id + " ORDER BY id_tabela_luni DESC", "tabel_ultima_luna");
+            DataSetComboBox.getSetFrom("select * from mv_tabela_luni where 1<1", "tabela_ajutatoare");
 
             //AdaugareLunaCurenta();
 
             DataTable TabelaLuni = DataSetComboBox.Tables["mv_tabela_luni"];
             DataTable TabelUltimaLuna = DataSetComboBox.Tables["tabel_ultima_luna"]; // tabel utilizat pentru combobox-uri
+            DataTable TabelAjutator = DataSetComboBox.Tables["tabela_ajutatoare"];
             AtribuireDataSourceCombo();
             lblNumeAsociatie.Text = "Asociatia activa: " + GetDenumireAsociatie();
 
@@ -324,19 +328,23 @@ namespace BlueSolAsoc
         private void classButon1_Click(object sender, EventArgs e)
         {
             DataTable TabelUltimaLuna = DataSetComboBox.Tables["tabel_ultima_luna"];
+            DataTable TabelAjutator = DataSetComboBox.Tables["tabela_ajutatoare"];
+
             if (comboBoxLUNA.Visible == false || comboBoxAN.Visible == false)
             {
                 //MessageBox.Show("Alt mesaj");
+
                 foreach (DataRow row in TabelUltimaLuna.Rows)
                 {
-                    int ultimaluna = Convert.ToInt32(row["luna"]);
-                    int ultimulan = Convert.ToInt32(row["an"]);
+                     ultimaluna = Convert.ToInt32(row["luna"]);
+                     ultimulan = Convert.ToInt32(row["an"]);
                     if (ultimaluna == 12)
                     {
                         ultimaluna = 1;
                         ultimulan = ultimulan + 1;
-                        row["luna"] = ultimaluna;
-                        row["an"] = ultimulan;
+                        //row["luna"] = ultimaluna;
+                        //row["an"] = ultimulan;
+                        //TabelAjutator.ImportRow(row);
                     }
                     else
                     {
@@ -345,6 +353,10 @@ namespace BlueSolAsoc
                         row["an"] = ultimulan;
                     }
                 }
+                
+                TabelUltimaLuna.Rows.Add(0, ultimaluna, ultimulan, 1, idAsociatie, 1, System.DateTime.Now.Date);
+                
+                DataSetComboBox.TransmiteActualizari("tabel_ultima_luna", "mv_tabela_luni");
             }
                 if (comboBoxAN.SelectedIndex == -1 || comboBoxLUNA.SelectedIndex == -1)
                 {
