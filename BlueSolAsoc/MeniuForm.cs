@@ -324,11 +324,22 @@ namespace BlueSolAsoc
         {
             lblNumeFirma.Text = DateTime.Now.ToString("dd  MMM    HH:mm:ss");
         }
+        private void MetodaRefreshGridView()
+        {
+            if (!(DataSetComboBox.Tables["mv_tabela_luni"] is null))
+            {
+                DataSetComboBox.Tables.Remove("mv_tabela_luni");
+            }
+            DataSetComboBox.getSetFrom("Select * from mv_tabela_luni where id_org=" + idAsociatie, "mv_tabela_luni");
+            DataTable TabelLuni = DataSetComboBox.Tables["mv_tabela_luni"];
+            gridTabelaLuni.DataSource = TabelLuni;
+        }
 
         private void classButon1_Click(object sender, EventArgs e)
         {
             DataTable TabelUltimaLuna = DataSetComboBox.Tables["tabel_ultima_luna"];
             DataTable TabelAjutator = DataSetComboBox.Tables["tabela_ajutatoare"];
+            DataTable TabelaLuni = DataSetComboBox.Tables["mv_tabela_luni"];
 
             if (comboBoxLUNA.Visible == false || comboBoxAN.Visible == false)
             {
@@ -356,16 +367,18 @@ namespace BlueSolAsoc
 
                 TabelUltimaLuna.Rows.Add(0, ultimaluna, ultimulan, 1, idAsociatie, 1, System.DateTime.Now.Date);
 
-                //DataSetComboBox.TransmiteActualizari("tabel_ultima_luna", "mv_tabela_luni");
+                DataSetComboBox.TransmiteActualizari("tabel_ultima_luna", "mv_tabela_luni");
+                MetodaRefreshGridView();
+                
             }
             if ((comboBoxAN.SelectedIndex == -1 || comboBoxLUNA.SelectedIndex == -1) && comboBoxAN.Visible == true)
                 {
 
                     MessageBox.Show("Alege luna si anul");
                 }
-                else
+                if(comboBoxAN.Visible == true)
                 {
-                    DataTable TabelaLuni = DataSetComboBox.Tables["mv_tabela_luni"];
+                    //DataTable TabelaLuni = DataSetComboBox.Tables["mv_tabela_luni"];
                     /*                TabelaLuni.Rows.Add(0, comboBoxLUNA.SelectedValue, comboBoxAN.Text, 1, idAsociatie, 0);
                                     Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
                                     config.AppSettings.Settings.Add("an", comboBoxAN.SelectedValue.ToString());
