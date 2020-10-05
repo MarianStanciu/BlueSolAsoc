@@ -53,6 +53,8 @@ namespace BlueSolAsoc
                 comboBoxAN.Text = ultimulan.ToString();
                 //comboBoxLUNA.Text = ultimaluna.ToString();
                 comboBoxLUNA.SelectedIndex = ultimalunaselect-1; // problema??
+                
+                lblLunaCurenta.Text = "Luna activa :" + ultimalunaselect;
             }
 
             // Incarcare ultima Luna/AN

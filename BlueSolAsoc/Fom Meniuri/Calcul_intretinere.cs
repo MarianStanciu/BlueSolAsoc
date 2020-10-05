@@ -35,6 +35,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             lblMesajSelecteazScara.BringToFront();
             btnSalveaza.Hide();
             btnSterge.Hide();
+            btnAnuleaza.Hide();
             gridAfisareConsumuri.Enabled = false;
         }
 
@@ -287,6 +288,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                     btnModifica.Show();
                     btnSalveaza.Hide();
                     btnAnuleaza.Show();
+                   
                     gridAfisareConsumuri.CancelEdit();
                     gridAfisareConsumuri.Enabled = false;
                 }
@@ -296,7 +298,8 @@ namespace BlueSolAsoc.Fom_Meniuri
                 treeConsumuriApartament.Enabled = true;
                 btnModifica.Show();
                 btnSalveaza.Hide();
-                btnAnuleaza.Show();
+               
+                btnAnuleaza.Hide();
                 gridAfisareConsumuri.CancelEdit();
                 gridAfisareConsumuri.Enabled = false;
             }
@@ -315,5 +318,29 @@ namespace BlueSolAsoc.Fom_Meniuri
             }
 
         }
+
+       // verificarea introducere date in grid view
+        //private void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        //{
+        //    //e.FormattedValue  will return current cell value and 
+        //    //e.ColumnIndex & e.RowIndex will rerurn current cell position
+
+        //    // If you want to validate particular cell data must be numeric then check e.FormattedValue is all numeric 
+        //    // if not then just set  e.Cancel = true and show some message 
+        //    //Like this 
+
+        //    if (e.ColumnIndex == 1)
+        //    {
+        //        if (!IsNumeric(e.FormattedValue))  // IsNumeric will be your method where you will check for numebrs 
+        //        {
+        //            MessageBox.Show("Enter valid numeric data");
+        //            gridAfisareConsumuri.CurrentCell.Value = null;
+        //            e.Cancel = true;
+
+        //        }
+
+        //    }
+
+        //}
     }
 }

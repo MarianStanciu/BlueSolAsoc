@@ -259,14 +259,15 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.gridAfisareConsumuri.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.gridAfisareConsumuri.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridAfisareConsumuri.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridAfisareConsumuri.EnableHeadersVisualStyles = false;
-            this.gridAfisareConsumuri.Location = new System.Drawing.Point(0, 92);
+            this.gridAfisareConsumuri.Location = new System.Drawing.Point(0, 0);
             this.gridAfisareConsumuri.Margin = new System.Windows.Forms.Padding(4);
             this.gridAfisareConsumuri.Name = "gridAfisareConsumuri";
             this.gridAfisareConsumuri.RowHeadersWidth = 51;
-            this.gridAfisareConsumuri.Size = new System.Drawing.Size(705, 729);
+            this.gridAfisareConsumuri.Size = new System.Drawing.Size(705, 821);
             this.gridAfisareConsumuri.TabIndex = 0;
-           
+            // 
             // PanelTreeConsumAp
             // 
             this.PanelTreeConsumAp.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;

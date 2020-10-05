@@ -199,9 +199,26 @@ namespace BlueSolAsoc.butoane_si_controale
                                 break;
                             case "System.DateTime":
                                 valoare = "'" + ((DateTime) r[f.ColumnName]).ToString("yyyyMMdd") + "'";
+                                if (string.IsNullOrEmpty(valoare))
+                                {
+                                    valoare = "01011900";
+                                }
                                 break;
                             case "System.Decimal":
-                                valoare = ((System.Decimal)r[f.ColumnName]).ToString().Replace(",", ".");
+                                try
+                                {
+                                    valoare = ((System.Decimal)r[f.ColumnName]).ToString().Replace(",", ".");
+                                }
+                                catch (Exception)
+                                {
+
+                                    valoare = "0";
+                                }
+                               
+                                if (string.IsNullOrEmpty(valoare))
+                                {
+                                    valoare = "0";
+                                }
                                 //'100,00'
                                 break;
                                
