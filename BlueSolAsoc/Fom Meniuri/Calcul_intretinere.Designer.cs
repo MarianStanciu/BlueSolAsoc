@@ -44,7 +44,7 @@
             this.btnSterge = new BlueSolAsoc.butoane_si_controale.ClassButonInteriorSterge();
             this.btnModifica = new BlueSolAsoc.butoane_si_controale.ClassButonModifica();
             this.PanelConsumAapartament = new BlueSolAsoc.butoane_si_controale.ClassPanel();
-            this.gridAfisareConsumuri = new BlueSolAsoc.butoane_si_controale.ClassGridView();
+            this.GridAfisareConsumuri = new BlueSolAsoc.butoane_si_controale.ClassGridView();
             this.PanelTreeConsumAp = new BlueSolAsoc.butoane_si_controale.ClassPanel();
             this.treeConsumuriApartament = new System.Windows.Forms.TreeView();
             this.calcul_intretinereDS1 = new BlueSolAsoc.Calcul_intretinereDS();
@@ -56,7 +56,7 @@
             this.tabPage1.SuspendLayout();
             this.pnlControale.SuspendLayout();
             this.PanelConsumAapartament.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridAfisareConsumuri)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridAfisareConsumuri)).BeginInit();
             this.PanelTreeConsumAp.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.calcul_intretinereDS1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvConsumApartamenteBindingSource)).BeginInit();
@@ -238,7 +238,7 @@
             this.PanelConsumAapartament.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PanelConsumAapartament.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.PanelConsumAapartament.Controls.Add(this.gridAfisareConsumuri);
+            this.PanelConsumAapartament.Controls.Add(this.GridAfisareConsumuri);
             this.PanelConsumAapartament.Location = new System.Drawing.Point(310, 3);
             this.PanelConsumAapartament.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.PanelConsumAapartament.Name = "PanelConsumAapartament";
@@ -246,10 +246,10 @@
             this.PanelConsumAapartament.TabIndex = 10;
             this.PanelConsumAapartament.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelConsumAapartament_Paint);
             // 
-            // gridAfisareConsumuri
+            // GridAfisareConsumuri
             // 
-            this.gridAfisareConsumuri.AllowUserToAddRows = false;
-            this.gridAfisareConsumuri.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.GridAfisareConsumuri.AllowUserToAddRows = false;
+            this.GridAfisareConsumuri.BackgroundColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Aquamarine;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -257,16 +257,17 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridAfisareConsumuri.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.gridAfisareConsumuri.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridAfisareConsumuri.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridAfisareConsumuri.EnableHeadersVisualStyles = false;
-            this.gridAfisareConsumuri.Location = new System.Drawing.Point(0, 0);
-            this.gridAfisareConsumuri.Margin = new System.Windows.Forms.Padding(4);
-            this.gridAfisareConsumuri.Name = "gridAfisareConsumuri";
-            this.gridAfisareConsumuri.RowHeadersWidth = 51;
-            this.gridAfisareConsumuri.Size = new System.Drawing.Size(705, 821);
-            this.gridAfisareConsumuri.TabIndex = 0;
+            this.GridAfisareConsumuri.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.GridAfisareConsumuri.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GridAfisareConsumuri.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GridAfisareConsumuri.EnableHeadersVisualStyles = false;
+            this.GridAfisareConsumuri.Location = new System.Drawing.Point(0, 0);
+            this.GridAfisareConsumuri.Margin = new System.Windows.Forms.Padding(4);
+            this.GridAfisareConsumuri.Name = "GridAfisareConsumuri";
+            this.GridAfisareConsumuri.RowHeadersWidth = 51;
+            this.GridAfisareConsumuri.Size = new System.Drawing.Size(705, 821);
+            this.GridAfisareConsumuri.TabIndex = 0;
+            this.GridAfisareConsumuri.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.GridAfisareConsumuri_CellValidating);
             // 
             // PanelTreeConsumAp
             // 
@@ -321,7 +322,7 @@
             this.tabPage1.PerformLayout();
             this.pnlControale.ResumeLayout(false);
             this.PanelConsumAapartament.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridAfisareConsumuri)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridAfisareConsumuri)).EndInit();
             this.PanelTreeConsumAp.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.calcul_intretinereDS1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvConsumApartamenteBindingSource)).EndInit();
@@ -340,7 +341,7 @@
         private System.Windows.Forms.TreeView treeConsumuriApartament;
         private butoane_si_controale.ClassPanel PanelTreeConsumAp;
         private butoane_si_controale.ClassPanel PanelConsumAapartament;
-        private butoane_si_controale.ClassGridView gridAfisareConsumuri;
+        private butoane_si_controale.ClassGridView GridAfisareConsumuri;
         private System.Windows.Forms.Panel pnlControale;
         private System.Windows.Forms.Button btnAnuleaza;
         private System.Windows.Forms.Button btnSalveaza;

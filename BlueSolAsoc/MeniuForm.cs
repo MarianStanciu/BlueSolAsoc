@@ -70,6 +70,7 @@ namespace BlueSolAsoc
                 comboBoxLUNA.Hide();
                 lblSelectieAn.Hide();
                 lblSelectieLuna.Hide();
+                lblLunaCurenta.Text = "Luna activa :" + ultimaluna;
             }
             
             //gridTabelaLuni[0, 0].Style.BackColor = Color.Cyan;

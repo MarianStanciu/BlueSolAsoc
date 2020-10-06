@@ -29,15 +29,19 @@ namespace BlueSolAsoc.Fom_Meniuri
             InitializeComponent();
             this.denumireAsociatie = denumireAsociatie;
             this.idAsociatie = idAsociatie;
-            gridAfisareConsumuri.CellEndEdit += gridAfisareConsumuri_CellEndEdit;
+            GridAfisareConsumuri.CellEndEdit += gridAfisareConsumuri_CellEndEdit;
             PanelConsumAapartament.Show();
             lblMesajSelecteazScara.Show();
             lblMesajSelecteazScara.BringToFront();
             btnSalveaza.Hide();
             btnSterge.Hide();
             btnAnuleaza.Hide();
-            gridAfisareConsumuri.Enabled = false;
+            GridAfisareConsumuri.Enabled = false;
+            GridAfisareConsumuri.CellValidating += GridAfisareConsumuri_CellValidating;
+           
         }
+
+       
 
         protected override void OnLoad(EventArgs e)
         {
@@ -146,24 +150,24 @@ namespace BlueSolAsoc.Fom_Meniuri
             }
             Calcul_intretinereDS.getSetFrom("select * from mv_ConsumApartamente  where  id_sc =" + nId, "mv_ConsumApartamente");
             
-            gridAfisareConsumuri.DataSource = Calcul_intretinereDS.Tables["mv_ConsumApartamente"];
-            gridAfisareConsumuri.Columns["id_sc"].Visible = false;
-            gridAfisareConsumuri.Columns["id_consumuri_apartamente"].Visible = false;
-            gridAfisareConsumuri.Columns["id_apartament"].Visible = false;
-            gridAfisareConsumuri.Columns["id_tabela_luni"].Visible = false;
-            gridAfisareConsumuri.Columns["Denumire Apartament"].HeaderText = "Apartament";
-            gridAfisareConsumuri.Columns["consum_apa_rece"].HeaderText="MC Apa Rece";
+            GridAfisareConsumuri.DataSource = Calcul_intretinereDS.Tables["mv_ConsumApartamente"];
+            GridAfisareConsumuri.Columns["id_sc"].Visible = false;
+            GridAfisareConsumuri.Columns["id_consumuri_apartamente"].Visible = false;
+            GridAfisareConsumuri.Columns["id_apartament"].Visible = false;
+            GridAfisareConsumuri.Columns["id_tabela_luni"].Visible = false;
+            GridAfisareConsumuri.Columns["Denumire Apartament"].HeaderText = "Apartament";
+            GridAfisareConsumuri.Columns["consum_apa_rece"].HeaderText="MC Apa Rece";
         //    gridAfisareConsumuri.Sort(gridAfisareConsumuri.Columns["Denumire Apartament"], ListSortDirection.Descending);
-            gridAfisareConsumuri.Columns["consum_apa_calda"].HeaderText = "MC Apa Calda";
-            gridAfisareConsumuri.Columns["numar_persoane"].HeaderText = "Numar Persoane";
-            gridAfisareConsumuri.Columns["Proprietar"].HeaderText = "Nume proprietar";
-            gridAfisareConsumuri.Columns["Proprietar"].DisplayIndex = 6;
-            gridAfisareConsumuri.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;      
+            GridAfisareConsumuri.Columns["consum_apa_calda"].HeaderText = "MC Apa Calda";
+            GridAfisareConsumuri.Columns["numar_persoane"].HeaderText = "Numar Persoane";
+            GridAfisareConsumuri.Columns["Proprietar"].HeaderText = "Nume proprietar";
+            GridAfisareConsumuri.Columns["Proprietar"].DisplayIndex = 6;
+            GridAfisareConsumuri.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;      
          
             if (val == 3)
             {
                 PanelConsumAapartament.Show();
-                gridAfisareConsumuri.Show();
+                GridAfisareConsumuri.Show();
                 lblMesajSelecteazScara.Hide();
             }
             else
@@ -174,8 +178,8 @@ namespace BlueSolAsoc.Fom_Meniuri
         }
         public void reimprospateazaGridConsumuri()
         {
-            gridAfisareConsumuri.DataSource = Calcul_intretinereDS.Tables["mv_ConsumApartamente"];
-            gridAfisareConsumuri.Refresh();
+            GridAfisareConsumuri.DataSource = Calcul_intretinereDS.Tables["mv_ConsumApartamente"];
+            GridAfisareConsumuri.Refresh();
         }
 
         private void btnAnuleaza_Click(object sender, EventArgs e)
@@ -208,7 +212,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                     {
                         MessageBox.Show("Introduceti un numar pozitiv", "Avertizare", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         final = decimal.Parse((initial.ToString()));
-                        gridAfisareConsumuri.CancelEdit();
+                        GridAfisareConsumuri.CancelEdit();
                     }
 
                     break;
@@ -219,7 +223,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                     {
                         MessageBox.Show("Introduceti un numar pozitiv", "Avertizare", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         final = int.Parse((initial.ToString()));
-                        gridAfisareConsumuri.CancelEdit();
+                        GridAfisareConsumuri.CancelEdit();
                     }
                     break;
                 default:
@@ -228,7 +232,7 @@ namespace BlueSolAsoc.Fom_Meniuri
 
             if (initial != final)
             {
-                gridAfisareConsumuri[e.ColumnIndex, e.RowIndex].Style.BackColor = Color.Cyan;
+                GridAfisareConsumuri[e.ColumnIndex, e.RowIndex].Style.BackColor = Color.Cyan;
             }
 
         }
@@ -250,7 +254,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                     btnModifica.Hide();
                     btnSalveaza.Show();
                     btnAnuleaza.Show();
-                    gridAfisareConsumuri.Enabled = true;
+                    GridAfisareConsumuri.Enabled = true;
 
                         break;
 
@@ -271,7 +275,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             btnSalveaza.Hide();
             btnAnuleaza.Show();
             Calcul_intretinereDS.TransmiteActualizari("mv_ConsumApartamente");
-            gridAfisareConsumuri.Enabled = false;
+            GridAfisareConsumuri.Enabled = false;
         }
 
         private void btnAnuleaza_Click_1(object sender, EventArgs e)
@@ -289,8 +293,8 @@ namespace BlueSolAsoc.Fom_Meniuri
                     btnSalveaza.Hide();
                     btnAnuleaza.Show();
                    
-                    gridAfisareConsumuri.CancelEdit();
-                    gridAfisareConsumuri.Enabled = false;
+                    GridAfisareConsumuri.CancelEdit();
+                    GridAfisareConsumuri.Enabled = false;
                 }
             }
             else
@@ -300,8 +304,8 @@ namespace BlueSolAsoc.Fom_Meniuri
                 btnSalveaza.Hide();
                
                 btnAnuleaza.Hide();
-                gridAfisareConsumuri.CancelEdit();
-                gridAfisareConsumuri.Enabled = false;
+                GridAfisareConsumuri.CancelEdit();
+                GridAfisareConsumuri.Enabled = false;
             }
 
         }
@@ -312,7 +316,7 @@ namespace BlueSolAsoc.Fom_Meniuri
 
         private void PanelConsumAapartament_Paint(object sender, PaintEventArgs e)
         {
-            if (gridAfisareConsumuri.Enabled == false)
+            if (GridAfisareConsumuri.Enabled == false)
             {
                 MessageBox.Show("Pentru a edita valorile din tabel apasa butonul MODIFICA !", "Informare", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -320,27 +324,68 @@ namespace BlueSolAsoc.Fom_Meniuri
         }
 
        // verificarea introducere date in grid view
-        //private void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        private void GridAfisareConsumuri_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            //e.FormattedValue  will return current cell value and 
+            //e.ColumnIndex & e.RowIndex will rerurn current cell position
+
+            // If you want to validate particular cell data must be numeric then check e.FormattedValue is all numeric 
+            // if not then just set  e.Cancel = true and show some message 
+            //Like this 
+            ClassGridView grid = (ClassGridView)sender;
+
+            if (grid.Columns[e.ColumnIndex].Name== "consum_apa_rece" || grid.Columns[e.ColumnIndex].Name == "numar_persoane"|| grid.Columns[e.ColumnIndex].Name == "consum_apa_calda")
+            {
+                if (!IsNumeric(e.FormattedValue.ToString()))  // IsNumeric will be your method where you will check for numebrs 
+                {
+                    MessageBox.Show("Pot fi introduse doar numere!");
+                 //   GridAfisareConsumuri.CurrentCell.Value = null;
+                    GridAfisareConsumuri.CancelEdit();
+
+                }
+
+            }
+
+        }
+        //public bool IsNumeric(string value)
         //{
-        //    //e.FormattedValue  will return current cell value and 
-        //    //e.ColumnIndex & e.RowIndex will rerurn current cell position
-
-        //    // If you want to validate particular cell data must be numeric then check e.FormattedValue is all numeric 
-        //    // if not then just set  e.Cancel = true and show some message 
-        //    //Like this 
-
-        //    if (e.ColumnIndex == 1)
+        //    bool isNumeric = true;
+        //    char[] digits = "0123456789".ToCharArray();
+        //    char[] letters = value.ToCharArray();
+        //    for (int k = 0; k < letters.Length; k++)
         //    {
-        //        if (!IsNumeric(e.FormattedValue))  // IsNumeric will be your method where you will check for numebrs 
+        //        for (int i = 0; i < digits.Length; i++)
         //        {
-        //            MessageBox.Show("Enter valid numeric data");
-        //            gridAfisareConsumuri.CurrentCell.Value = null;
-        //            e.Cancel = true;
-
+        //            if (letters[k] != digits[i])
+        //            {
+        //                isNumeric = false;
+        //                break;
+        //            }
         //        }
-
         //    }
-
+        //    return isNumeric;
         //}
+
+
+        public static System.Boolean IsNumeric(System.Object Expression)
+        {
+            if (Expression == null || Expression is DateTime)
+                return false;
+
+            if (Expression is Int16 || Expression is Int32 || Expression is Int64 || Expression is Decimal || Expression is Single || Expression is Double || Expression is Boolean)
+                return true;
+
+            try
+            {
+                if (Expression is string)
+                    Double.Parse(Expression as string);
+                else
+                    Double.Parse(Expression.ToString());
+                return true;
+            }
+            catch { } // just dismiss errors but return false
+            return false;
+        }
     }
 }
+
