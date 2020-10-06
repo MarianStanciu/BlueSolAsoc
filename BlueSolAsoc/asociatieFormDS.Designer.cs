@@ -851,6 +851,8 @@ namespace BlueSolAsoc {
             
             private global::System.Data.DataColumn columnContract_Individual;
             
+            private global::System.Data.DataColumn columnCota_Indiviza;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public mv_tabelApartamenteDataTable() {
@@ -958,6 +960,14 @@ namespace BlueSolAsoc {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn Cota_IndivizaColumn {
+                get {
+                    return this.columnCota_Indiviza;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -993,7 +1003,7 @@ namespace BlueSolAsoc {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public mv_tabelApartamenteRow Addmv_tabelApartamenteRow(int org_id_org, string Denumire_Apartament, string Proprietar, decimal Suprafata, decimal Camere, int Apometre_AR, int Apometre_AC, int id_sc, decimal Contract_Individual) {
+            public mv_tabelApartamenteRow Addmv_tabelApartamenteRow(int org_id_org, string Denumire_Apartament, string Proprietar, decimal Suprafata, decimal Camere, int Apometre_AR, int Apometre_AC, int id_sc, decimal Contract_Individual, decimal Cota_Indiviza) {
                 mv_tabelApartamenteRow rowmv_tabelApartamenteRow = ((mv_tabelApartamenteRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         org_id_org,
@@ -1004,7 +1014,8 @@ namespace BlueSolAsoc {
                         Apometre_AR,
                         Apometre_AC,
                         id_sc,
-                        Contract_Individual};
+                        Contract_Individual,
+                        Cota_Indiviza};
                 rowmv_tabelApartamenteRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowmv_tabelApartamenteRow);
                 return rowmv_tabelApartamenteRow;
@@ -1036,6 +1047,7 @@ namespace BlueSolAsoc {
                 this.columnApometre_AC = base.Columns["Apometre AC"];
                 this.columnid_sc = base.Columns["id_sc"];
                 this.columnContract_Individual = base.Columns["Contract Individual"];
+                this.columnCota_Indiviza = base.Columns["Cota Indiviza"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1059,6 +1071,8 @@ namespace BlueSolAsoc {
                 base.Columns.Add(this.columnid_sc);
                 this.columnContract_Individual = new global::System.Data.DataColumn("Contract Individual", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnContract_Individual);
+                this.columnCota_Indiviza = new global::System.Data.DataColumn("Cota Indiviza", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCota_Indiviza);
                 this.columnorg_id_org.AllowDBNull = false;
                 this.columnDenumire_Apartament.MaxLength = 2147483647;
                 this.columnProprietar.MaxLength = 2147483647;
@@ -2409,6 +2423,22 @@ namespace BlueSolAsoc {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal Cota_Indiviza {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablemv_tabelApartamente.Cota_IndivizaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Cota Indiviza\' in table \'mv_tabelApartamente\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemv_tabelApartamente.Cota_IndivizaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsDenumire_ApartamentNull() {
                 return this.IsNull(this.tablemv_tabelApartamente.Denumire_ApartamentColumn);
             }
@@ -2489,6 +2519,18 @@ namespace BlueSolAsoc {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetContract_IndividualNull() {
                 this[this.tablemv_tabelApartamente.Contract_IndividualColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsCota_IndivizaNull() {
+                return this.IsNull(this.tablemv_tabelApartamente.Cota_IndivizaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetCota_IndivizaNull() {
+                this[this.tablemv_tabelApartamente.Cota_IndivizaColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -3202,6 +3244,7 @@ namespace BlueSolAsoc.asociatieFormDSTableAdapters {
             tableMapping.ColumnMappings.Add("Apometre AC", "Apometre AC");
             tableMapping.ColumnMappings.Add("id_sc", "id_sc");
             tableMapping.ColumnMappings.Add("Contract Individual", "Contract Individual");
+            tableMapping.ColumnMappings.Add("Cota Indiviza", "Cota Indiviza");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -3219,7 +3262,8 @@ namespace BlueSolAsoc.asociatieFormDSTableAdapters {
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT org_id_org, [Denumire Apartament], Proprietar, Suprafata, Camere, [Apometr" +
-                "e AR], [Apometre AC], id_sc, [Contract Individual] FROM mv_tabelApartamente";
+                "e AR], [Apometre AC], id_sc, [Contract Individual], [Cota Indiviza] FROM mv_tabe" +
+                "lApartamente";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

@@ -334,7 +334,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             //Like this 
             ClassGridView grid = (ClassGridView)sender;
 
-            if (grid.Columns[e.ColumnIndex].Name== "consum_apa_rece")
+            if (grid.Columns[e.ColumnIndex].Name== "consum_apa_rece" || grid.Columns[e.ColumnIndex].Name == "numar_persoane"|| grid.Columns[e.ColumnIndex].Name == "consum_apa_calda")
             {
                 if (!IsNumeric(e.FormattedValue.ToString()))  // IsNumeric will be your method where you will check for numebrs 
                 {

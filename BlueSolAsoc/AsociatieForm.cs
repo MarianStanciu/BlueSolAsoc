@@ -668,6 +668,8 @@ namespace BlueSolAsoc
 
         private void AsociatieForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'asociatieFormDS2.mv_tabelApartamente' table. You can move, or remove it, as needed.
+            this.mv_tabelApartamenteTableAdapter.Fill(this.asociatieFormDS2.mv_tabelApartamente);
             // TODO: This line of code loads data into the 'asociatieFormDS1.mv_tabelApartamente' table. You can move, or remove it, as needed.
             this.mv_tabelApartamenteTableAdapter.Fill(this.asociatieFormDS1.mv_tabelApartamente);
 
