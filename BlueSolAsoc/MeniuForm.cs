@@ -49,7 +49,10 @@ namespace BlueSolAsoc
 
 
             gridTabelaLuni.DataSource = TabelaLuni;
-            gridTabelaLuni.Sort(this.gridTabelaLuni.Columns["anDataGridViewTextBoxColumn"], ListSortDirection.Descending);
+            //gridTabelaLuni.Sort(this.gridTabelaLuni.Columns["anDataGridViewTextBoxColumn"], ListSortDirection.Descending);
+            DataView view = TabelaLuni.DefaultView;
+            view.Sort = "an DESC, luna DESC"; // sortare
+            //gridTabelaLuni.Sort(this.gridTabelaLuni.Columns["lunaDataGridViewTextBoxColumn"], ListSortDirection.Descending);
 
             if (comboBoxLUNA.Visible == false || comboBoxAN.Visible == false)
             {
