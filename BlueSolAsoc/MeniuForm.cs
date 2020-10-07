@@ -373,8 +373,10 @@ namespace BlueSolAsoc
                         else
                         {
 
-                            row["luna"] = ultimaluna + 1;
-                            row["an"] = ultimulan;
+                            /* row["luna"] = ultimaluna + 1;
+                             row["an"] = ultimulan;*/
+                            ultimaluna = ultimaluna + 1;
+                            ultimulan = ultimulan;
                         }
                     }
 
@@ -383,6 +385,12 @@ namespace BlueSolAsoc
                     DataSetComboBox.TransmiteActualizari("tabel_ultima_luna", "mv_tabela_luni");
                     
                     MetodaRefreshGridView();
+                    
+                    if (!(DataSetComboBox.Tables["tabel_ultima_luna"] is null))
+                    {
+                        DataSetComboBox.Tables.Remove("tabel_ultima_luna");
+                    }
+                    DataSetComboBox.getSetFrom("Select top 1 * from mv_tabela_luni where id_org=" + idAsociatie + " ORDER BY id_tabela_luni DESC", "tabel_ultima_luna");
                 }
                 else if (dialogResult == DialogResult.No)
                 {
