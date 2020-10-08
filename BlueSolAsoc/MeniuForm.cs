@@ -346,6 +346,8 @@ namespace BlueSolAsoc
             gridTabelaLuni.DataSource = TabelLuni;
             gridTabelaLuni.Sort(this.gridTabelaLuni.Columns["anDataGridViewTextBoxColumn"], ListSortDirection.Descending);
             //gridTabelaLuni[0,0].Style.BackColor = Color.Cyan;
+            DataView view = TabelLuni.DefaultView;
+            view.Sort = "an DESC, luna DESC"; // sortare
         }
 
         private void classButon1_Click(object sender, EventArgs e)
