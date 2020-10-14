@@ -36,7 +36,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             btnSalveaza.Hide();
             btnSterge.Hide();
             btnAnuleaza.Hide();
-            GridAfisareConsumuri.Enabled = false;
+           // GridAfisareConsumuri.Enabled = false;
          //   GridAfisareConsumuri.CellValidating += GridAfisareConsumuri_CellValidating;
            
         }
@@ -248,7 +248,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                     btnModifica.Hide();
                     btnSalveaza.Show();
                     btnAnuleaza.Show();
-                    lblApasaModifica.Hide();
+                  
                     GridAfisareConsumuri.Enabled = true;
 
                         break;
@@ -270,7 +270,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             btnSalveaza.Hide();
             btnAnuleaza.Show();
             Calcul_intretinereDS.TransmiteActualizari("mv_ConsumApartamente");
-            GridAfisareConsumuri.Enabled = false;
+           // GridAfisareConsumuri.Enabled = false;
         }
 
         private void btnAnuleaza_Click_1(object sender, EventArgs e)
@@ -287,11 +287,11 @@ namespace BlueSolAsoc.Fom_Meniuri
                     btnModifica.Show();
                     btnSalveaza.Hide();
                     btnAnuleaza.Show();
-                    lblApasaModifica.Show();
+                
                    
                     GridAfisareConsumuri.CancelEdit();
-                    GridAfisareConsumuri.Enabled = false;
-                    lblApasaModifica.Show();
+                   // GridAfisareConsumuri.Enabled = false;
+                 
                 }
             }
             else
@@ -303,7 +303,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                 btnAnuleaza.Hide();
                
                 GridAfisareConsumuri.CancelEdit();
-                GridAfisareConsumuri.Enabled = false;
+               // GridAfisareConsumuri.Enabled = false;
             }
 
         }

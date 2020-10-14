@@ -27,7 +27,8 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.denumireAsociatie = denumireAsociatie;
             this.idAsociatie = idAsociatie;
             DataCurenta.Value = System.DateTime.Now;
-           
+            
+          
           
         }
             
@@ -38,17 +39,36 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.mv_DocumenteTableAdapter.Fill(this.cheltuieliDS1.mv_Documente);
                        
             extrageTabelaTree();
-           
+            InitializeazaGrupBox();
+            //afisare desfasurata a treeului pt repartizarea cheltuielilor
+            treeDistribuieCheltuiala.ExpandAll();
+            
 
 
 
-
-        AfisareGridFacturi(0);//istoric facturi
+            AfisareGridFacturi(0);//istoric facturi
             AdaugareFacturi(0);//adaugare facturi
             ClassButon distribuieCheltuiala = new ClassButon();
             adaugareColoane();
         }
+        private void InitializeazaGrupBox()
+        {
+            RadioButton indiviza = new RadioButton();
+            indiviza.Text = "Pausal";
+            indiviza.Location = new Point(5, 30);
+            GroupBoxRepartitie.Controls.Add(indiviza);
+            RadioButton asociatie = new RadioButton();
+            asociatie.Text = "Indiviz";
+            asociatie.Location = new Point(5, 50);
+            GroupBoxRepartitie.Controls.Add(asociatie);
 
+            RadioButton bloc = new RadioButton();
+            bloc.Text = "Bloc";
+            bloc.Location = new Point(5, 70);
+            GroupBoxRepartitie.Controls.Add(bloc);
+            GroupBoxRepartitie.Text = "Factura Repartizata:";
+          
+        }
      
         // metoda de AFISARE FACTURI EXISTENTE existente  si tabelul din dataset 
         public void AfisareGridFacturi(int id_antet)
