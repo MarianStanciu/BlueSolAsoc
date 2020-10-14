@@ -29,6 +29,7 @@ namespace BlueSolAsoc
             InitializeComponent();
             timer1.Start();
 
+
             PopulareMeniuPrincipal(meniuPrincipal);
             denumireAsociatie = denumireAsociatieString;
             idAsociatie = id;
@@ -37,7 +38,7 @@ namespace BlueSolAsoc
             DataSetComboBox.getSetFrom("Select * from mv_tabela_luni where id_org=" + id, "mv_tabela_luni"); ;//view pentru tabela + triggeri
             DataSetComboBox.getSetFrom("Select top 1 * from mv_tabela_luni where id_org=" + id + " ORDER BY id_tabela_luni DESC", "tabel_ultima_luna");
             DataSetComboBox.getSetFrom("select * from mv_tabela_luni where 1<1", "tabela_ajutatoare");
-
+           
             //AdaugareLunaCurenta();
 
             DataTable TabelaLuni = DataSetComboBox.Tables["mv_tabela_luni"];
@@ -48,6 +49,15 @@ namespace BlueSolAsoc
 
 
             gridTabelaLuni.DataSource = TabelaLuni;
+            //gridTabelaLuni.Sort(this.gridTabelaLuni.Columns["anDataGridViewTextBoxColumn"], ListSortDirection.Descending);
+            DataView view = TabelaLuni.DefaultView;
+            view.Sort = "an DESC, luna DESC"; // sortare
+            //gridTabelaLuni.Sort(this.gridTabelaLuni.Columns["lunaDataGridViewTextBoxColumn"], ListSortDirection.Descending);
+
+            if (comboBoxLUNA.Visible == false || comboBoxAN.Visible == false)
+            {
+                classButon1.Text = "Schimba luna";
+            }
 
             if ((TabelUltimaLuna.Rows.Count) != 0)
             {
@@ -65,7 +75,8 @@ namespace BlueSolAsoc
                 lblSelectieLuna.Hide();
                 lblLunaCurenta.Text = "Luna activa :" + ultimaluna;
             }
-
+            
+            //gridTabelaLuni[0, 0].Style.BackColor = Color.Cyan;
 
             // Incarcare ultima Luna/AN
             /*            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
@@ -136,8 +147,7 @@ namespace BlueSolAsoc
             //comboBoxAN.ValueMember = "an";
             //comboBoxAN.DisplayMember = "an";
             comboBoxAN.SelectedIndex = -1;
-            comboBoxLUNA.SelectedIndex = -1;
-
+            comboBoxLUNA.SelectedIndex = -1;           
         }
 
 
@@ -334,6 +344,10 @@ namespace BlueSolAsoc
             DataSetComboBox.getSetFrom("Select * from mv_tabela_luni where id_org=" + idAsociatie, "mv_tabela_luni");
             DataTable TabelLuni = DataSetComboBox.Tables["mv_tabela_luni"];
             gridTabelaLuni.DataSource = TabelLuni;
+            gridTabelaLuni.Sort(this.gridTabelaLuni.Columns["anDataGridViewTextBoxColumn"], ListSortDirection.Descending);
+            //gridTabelaLuni[0,0].Style.BackColor = Color.Cyan;
+            DataView view = TabelLuni.DefaultView;
+            view.Sort = "an DESC, luna DESC"; // sortare
         }
 
         private void classButon1_Click(object sender, EventArgs e)
@@ -344,33 +358,49 @@ namespace BlueSolAsoc
 
             if (comboBoxLUNA.Visible == false || comboBoxAN.Visible == false)
             {
-                //MessageBox.Show("Alt mesaj");
-
-                foreach (DataRow row in TabelUltimaLuna.Rows)
+                DialogResult dialogResult =  MessageBox.Show("Esti sigur ca vrei sa schimbi luna?", "Schimbare luna", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    ultimaluna = Convert.ToInt32(row["luna"]);
-                    ultimulan = Convert.ToInt32(row["an"]);
-                    if (ultimaluna == 12)
-                    {
-                        ultimaluna = 1;
-                        ultimulan = ultimulan + 1;
-                        //row["luna"] = ultimaluna;
-                        //row["an"] = ultimulan;
-                        //TabelAjutator.ImportRow(row);
-                    }
-                    else
-                    {
 
-                        row["luna"] = ultimaluna + 1;
-                        row["an"] = ultimulan;
+
+                    foreach (DataRow row in TabelUltimaLuna.Rows)
+                    {
+                        ultimaluna = Convert.ToInt32(row["luna"]);
+                        ultimulan = Convert.ToInt32(row["an"]);
+                        if (ultimaluna == 12)
+                        {
+                            ultimaluna = 1;
+                            ultimulan = ultimulan + 1;
+                            //row["luna"] = ultimaluna;
+                            //row["an"] = ultimulan;
+                            //TabelAjutator.ImportRow(row);
+                        }
+                        else
+                        {
+
+                            /* row["luna"] = ultimaluna + 1;
+                             row["an"] = ultimulan;*/
+                            ultimaluna = ultimaluna + 1;
+                            ultimulan = ultimulan;
+                        }
                     }
+
+                    TabelUltimaLuna.Rows.Add(0, ultimaluna, ultimulan, 1, idAsociatie, 1, System.DateTime.Now.Date);
+
+                    DataSetComboBox.TransmiteActualizari("tabel_ultima_luna", "mv_tabela_luni");
+                    
+                    MetodaRefreshGridView();
+                    
+                    if (!(DataSetComboBox.Tables["tabel_ultima_luna"] is null))
+                    {
+                        DataSetComboBox.Tables.Remove("tabel_ultima_luna");
+                    }
+                    DataSetComboBox.getSetFrom("Select top 1 * from mv_tabela_luni where id_org=" + idAsociatie + " ORDER BY id_tabela_luni DESC", "tabel_ultima_luna");
                 }
-
-                TabelUltimaLuna.Rows.Add(0, ultimaluna, ultimulan, 1, idAsociatie, 1, System.DateTime.Now.Date);
-
-                DataSetComboBox.TransmiteActualizari("tabel_ultima_luna", "mv_tabela_luni");
-                MetodaRefreshGridView();
-                
+                else if (dialogResult == DialogResult.No)
+                {
+                    
+                }
             }
             if ((comboBoxAN.SelectedIndex == -1 || comboBoxLUNA.SelectedIndex == -1) && comboBoxAN.Visible == true)
                 {
