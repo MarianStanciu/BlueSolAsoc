@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TabCheltuieliPlati = new BlueSolAsoc.butoane_si_controale.ClassTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.Panel_IstoricFacturi = new BlueSolAsoc.butoane_si_controale.ClassPanel();
@@ -135,7 +135,7 @@
             this.TabCheltuieliPlati.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TabCheltuieliPlati.ItemSize = new System.Drawing.Size(187, 45);
             this.TabCheltuieliPlati.Location = new System.Drawing.Point(0, 2);
-            this.TabCheltuieliPlati.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TabCheltuieliPlati.Margin = new System.Windows.Forms.Padding(2);
             this.TabCheltuieliPlati.Name = "TabCheltuieliPlati";
             this.TabCheltuieliPlati.SelectedIndex = 0;
             this.TabCheltuieliPlati.Size = new System.Drawing.Size(992, 578);
@@ -150,9 +150,9 @@
             this.tabPage1.Controls.Add(this.pnlControale);
             this.tabPage1.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPage1.Location = new System.Drawing.Point(4, 49);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage1.Size = new System.Drawing.Size(984, 525);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Adauga Factura";
@@ -167,7 +167,7 @@
             this.Panel_IstoricFacturi.Controls.Add(this.GridFacturi);
             this.Panel_IstoricFacturi.Controls.Add(this.classLabel7);
             this.Panel_IstoricFacturi.Location = new System.Drawing.Point(694, 2);
-            this.Panel_IstoricFacturi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Panel_IstoricFacturi.Margin = new System.Windows.Forms.Padding(2);
             this.Panel_IstoricFacturi.Name = "Panel_IstoricFacturi";
             this.Panel_IstoricFacturi.Size = new System.Drawing.Size(300, 539);
             this.Panel_IstoricFacturi.TabIndex = 64;
@@ -181,14 +181,14 @@
             this.GridFacturi.AutoGenerateColumns = false;
             this.GridFacturi.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.GridFacturi.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Aquamarine;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridFacturi.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Aquamarine;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridFacturi.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.GridFacturi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridFacturi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -204,7 +204,7 @@
             this.GridFacturi.DataSource = this.mvIstoricDocumenteBindingSource3;
             this.GridFacturi.EnableHeadersVisualStyles = false;
             this.GridFacturi.Location = new System.Drawing.Point(-2, 25);
-            this.GridFacturi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.GridFacturi.Margin = new System.Windows.Forms.Padding(2);
             this.GridFacturi.Name = "GridFacturi";
             this.GridFacturi.RowHeadersWidth = 51;
             this.GridFacturi.RowTemplate.Height = 24;
@@ -315,7 +315,7 @@
             this.Panel_TreeDistribuieCheltuiala.Controls.Add(this.treeDistribuieCheltuiala);
             this.Panel_TreeDistribuieCheltuiala.Dock = System.Windows.Forms.DockStyle.Left;
             this.Panel_TreeDistribuieCheltuiala.Location = new System.Drawing.Point(478, 2);
-            this.Panel_TreeDistribuieCheltuiala.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Panel_TreeDistribuieCheltuiala.Margin = new System.Windows.Forms.Padding(2);
             this.Panel_TreeDistribuieCheltuiala.Name = "Panel_TreeDistribuieCheltuiala";
             this.Panel_TreeDistribuieCheltuiala.Size = new System.Drawing.Size(212, 521);
             this.Panel_TreeDistribuieCheltuiala.TabIndex = 63;
@@ -324,11 +324,11 @@
             // 
             this.GroupBoxRepartitie.BackColor = System.Drawing.Color.White;
             this.GroupBoxRepartitie.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.GroupBoxRepartitie.Location = new System.Drawing.Point(0, 0);
-            this.GroupBoxRepartitie.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.GroupBoxRepartitie.Location = new System.Drawing.Point(3, 0);
+            this.GroupBoxRepartitie.Margin = new System.Windows.Forms.Padding(2);
             this.GroupBoxRepartitie.Name = "GroupBoxRepartitie";
-            this.GroupBoxRepartitie.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.GroupBoxRepartitie.Size = new System.Drawing.Size(208, 144);
+            this.GroupBoxRepartitie.Padding = new System.Windows.Forms.Padding(2);
+            this.GroupBoxRepartitie.Size = new System.Drawing.Size(205, 144);
             this.GroupBoxRepartitie.TabIndex = 8;
             this.GroupBoxRepartitie.TabStop = false;
             this.GroupBoxRepartitie.Text = "calcul repartitie";
@@ -341,7 +341,7 @@
             this.treeDistribuieCheltuiala.CheckBoxes = true;
             this.treeDistribuieCheltuiala.Font = new System.Drawing.Font("Mongolian Baiti", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.treeDistribuieCheltuiala.Location = new System.Drawing.Point(3, 149);
-            this.treeDistribuieCheltuiala.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.treeDistribuieCheltuiala.Margin = new System.Windows.Forms.Padding(2);
             this.treeDistribuieCheltuiala.Name = "treeDistribuieCheltuiala";
             this.treeDistribuieCheltuiala.Size = new System.Drawing.Size(206, 367);
             this.treeDistribuieCheltuiala.TabIndex = 7;
@@ -363,7 +363,7 @@
             this.Panel_FACTURA.Controls.Add(this.classLabel1);
             this.Panel_FACTURA.Dock = System.Windows.Forms.DockStyle.Left;
             this.Panel_FACTURA.Location = new System.Drawing.Point(2, 2);
-            this.Panel_FACTURA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Panel_FACTURA.Margin = new System.Windows.Forms.Padding(2);
             this.Panel_FACTURA.Name = "Panel_FACTURA";
             this.Panel_FACTURA.Size = new System.Drawing.Size(476, 521);
             this.Panel_FACTURA.TabIndex = 62;
@@ -372,7 +372,7 @@
             // 
             this.sumaFactura.Font = new System.Drawing.Font("Mongolian Baiti", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sumaFactura.Location = new System.Drawing.Point(120, 149);
-            this.sumaFactura.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.sumaFactura.Margin = new System.Windows.Forms.Padding(2);
             this.sumaFactura.Name = "sumaFactura";
             this.sumaFactura.Size = new System.Drawing.Size(335, 31);
             this.sumaFactura.TabIndex = 89;
@@ -381,7 +381,7 @@
             // 
             this.numarFactura.Font = new System.Drawing.Font("Mongolian Baiti", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numarFactura.Location = new System.Drawing.Point(120, 113);
-            this.numarFactura.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numarFactura.Margin = new System.Windows.Forms.Padding(2);
             this.numarFactura.Name = "numarFactura";
             this.numarFactura.Size = new System.Drawing.Size(335, 31);
             this.numarFactura.TabIndex = 88;
@@ -390,7 +390,7 @@
             // 
             this.seriaFactura.Font = new System.Drawing.Font("Mongolian Baiti", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.seriaFactura.Location = new System.Drawing.Point(120, 80);
-            this.seriaFactura.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.seriaFactura.Margin = new System.Windows.Forms.Padding(2);
             this.seriaFactura.Name = "seriaFactura";
             this.seriaFactura.Size = new System.Drawing.Size(335, 31);
             this.seriaFactura.TabIndex = 87;
@@ -402,14 +402,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.GridPozitiiFactura.AutoGenerateColumns = false;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Aquamarine;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridPozitiiFactura.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Aquamarine;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridPozitiiFactura.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.GridPozitiiFactura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridPozitiiFactura.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.aidantetDataGridViewTextBoxColumn,
@@ -430,7 +430,7 @@
             this.GridPozitiiFactura.DataSource = this.mvDocumenteBindingSource2;
             this.GridPozitiiFactura.EnableHeadersVisualStyles = false;
             this.GridPozitiiFactura.Location = new System.Drawing.Point(0, 226);
-            this.GridPozitiiFactura.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.GridPozitiiFactura.Margin = new System.Windows.Forms.Padding(2);
             this.GridPozitiiFactura.Name = "GridPozitiiFactura";
             this.GridPozitiiFactura.RowHeadersWidth = 51;
             this.GridPozitiiFactura.RowTemplate.Height = 24;
@@ -586,7 +586,7 @@
             this.comboBoxParteneri.Font = new System.Drawing.Font("Mongolian Baiti", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxParteneri.FormattingEnabled = true;
             this.comboBoxParteneri.Location = new System.Drawing.Point(120, 46);
-            this.comboBoxParteneri.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxParteneri.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxParteneri.Name = "comboBoxParteneri";
             this.comboBoxParteneri.Size = new System.Drawing.Size(335, 29);
             this.comboBoxParteneri.TabIndex = 92;
@@ -597,7 +597,7 @@
             this.DataCurenta.Font = new System.Drawing.Font("Mongolian Baiti", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DataCurenta.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DataCurenta.Location = new System.Drawing.Point(120, 12);
-            this.DataCurenta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DataCurenta.Margin = new System.Windows.Forms.Padding(2);
             this.DataCurenta.Name = "DataCurenta";
             this.DataCurenta.Size = new System.Drawing.Size(335, 31);
             this.DataCurenta.TabIndex = 91;
@@ -667,7 +667,7 @@
             this.pnlControale.Controls.Add(this.classButonInteriorSterge1);
             this.pnlControale.Controls.Add(this.classButonModifica1);
             this.pnlControale.Location = new System.Drawing.Point(992, 12);
-            this.pnlControale.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlControale.Margin = new System.Windows.Forms.Padding(2);
             this.pnlControale.Name = "pnlControale";
             this.pnlControale.Size = new System.Drawing.Size(128, 526);
             this.pnlControale.TabIndex = 5;
@@ -679,7 +679,7 @@
             this.btnAnuleaza.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAnuleaza.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAnuleaza.Location = new System.Drawing.Point(0, 456);
-            this.btnAnuleaza.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAnuleaza.Margin = new System.Windows.Forms.Padding(2);
             this.btnAnuleaza.Name = "btnAnuleaza";
             this.btnAnuleaza.Size = new System.Drawing.Size(128, 152);
             this.btnAnuleaza.TabIndex = 9;
@@ -693,7 +693,7 @@
             this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOK.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOK.Location = new System.Drawing.Point(0, 304);
-            this.btnOK.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(2);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(128, 152);
             this.btnOK.TabIndex = 8;
@@ -707,7 +707,7 @@
             this.classButonInteriorSterge1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.classButonInteriorSterge1.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.classButonInteriorSterge1.Location = new System.Drawing.Point(0, 152);
-            this.classButonInteriorSterge1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.classButonInteriorSterge1.Margin = new System.Windows.Forms.Padding(2);
             this.classButonInteriorSterge1.Name = "classButonInteriorSterge1";
             this.classButonInteriorSterge1.Size = new System.Drawing.Size(128, 152);
             this.classButonInteriorSterge1.TabIndex = 7;
@@ -721,7 +721,7 @@
             this.classButonModifica1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.classButonModifica1.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.classButonModifica1.Location = new System.Drawing.Point(0, 0);
-            this.classButonModifica1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.classButonModifica1.Margin = new System.Windows.Forms.Padding(2);
             this.classButonModifica1.Name = "classButonModifica1";
             this.classButonModifica1.Size = new System.Drawing.Size(128, 152);
             this.classButonModifica1.TabIndex = 6;
@@ -731,9 +731,9 @@
             // tabPage2
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 49);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage2.Size = new System.Drawing.Size(984, 525);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Pagina2";
@@ -745,9 +745,9 @@
             this.tabPage3.Controls.Add(this.GridCalculIntretinere);
             this.tabPage3.Controls.Add(this.treeColoane);
             this.tabPage3.Location = new System.Drawing.Point(4, 49);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage3.Size = new System.Drawing.Size(984, 525);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "tabPage3";
@@ -758,7 +758,7 @@
             this.GenereazaTabel.BackColor = System.Drawing.Color.Aquamarine;
             this.GenereazaTabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.GenereazaTabel.Location = new System.Drawing.Point(7, 507);
-            this.GenereazaTabel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.GenereazaTabel.Margin = new System.Windows.Forms.Padding(2);
             this.GenereazaTabel.Name = "GenereazaTabel";
             this.GenereazaTabel.Size = new System.Drawing.Size(200, 30);
             this.GenereazaTabel.TabIndex = 2;
@@ -769,19 +769,19 @@
             // GridCalculIntretinere
             // 
             this.GridCalculIntretinere.AllowUserToAddRows = false;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Aquamarine;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridCalculIntretinere.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Aquamarine;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridCalculIntretinere.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.GridCalculIntretinere.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridCalculIntretinere.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GridCalculIntretinere.EnableHeadersVisualStyles = false;
             this.GridCalculIntretinere.Location = new System.Drawing.Point(226, 2);
-            this.GridCalculIntretinere.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.GridCalculIntretinere.Margin = new System.Windows.Forms.Padding(2);
             this.GridCalculIntretinere.Name = "GridCalculIntretinere";
             this.GridCalculIntretinere.RowHeadersWidth = 51;
             this.GridCalculIntretinere.RowTemplate.Height = 24;
@@ -793,7 +793,7 @@
             this.treeColoane.CheckBoxes = true;
             this.treeColoane.Dock = System.Windows.Forms.DockStyle.Left;
             this.treeColoane.Location = new System.Drawing.Point(2, 2);
-            this.treeColoane.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.treeColoane.Margin = new System.Windows.Forms.Padding(2);
             this.treeColoane.Name = "treeColoane";
             this.treeColoane.Size = new System.Drawing.Size(224, 521);
             this.treeColoane.TabIndex = 0;
@@ -813,7 +813,7 @@
             this.panelButoaneCheltuieli.Controls.Add(this.btnModificaCheltuieli);
             this.panelButoaneCheltuieli.Controls.Add(this.btnSalveazaCheltuieli);
             this.panelButoaneCheltuieli.Location = new System.Drawing.Point(864, 56);
-            this.panelButoaneCheltuieli.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelButoaneCheltuieli.Margin = new System.Windows.Forms.Padding(2);
             this.panelButoaneCheltuieli.Name = "panelButoaneCheltuieli";
             this.panelButoaneCheltuieli.Size = new System.Drawing.Size(128, 534);
             this.panelButoaneCheltuieli.TabIndex = 5;
@@ -825,7 +825,7 @@
             this.btnAnuleazaCheltuieli.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAnuleazaCheltuieli.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAnuleazaCheltuieli.Location = new System.Drawing.Point(0, 456);
-            this.btnAnuleazaCheltuieli.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAnuleazaCheltuieli.Margin = new System.Windows.Forms.Padding(2);
             this.btnAnuleazaCheltuieli.Name = "btnAnuleazaCheltuieli";
             this.btnAnuleazaCheltuieli.Size = new System.Drawing.Size(128, 152);
             this.btnAnuleazaCheltuieli.TabIndex = 13;
@@ -840,7 +840,7 @@
             this.btnStergeCheltuieli.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStergeCheltuieli.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStergeCheltuieli.Location = new System.Drawing.Point(0, 304);
-            this.btnStergeCheltuieli.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnStergeCheltuieli.Margin = new System.Windows.Forms.Padding(2);
             this.btnStergeCheltuieli.Name = "btnStergeCheltuieli";
             this.btnStergeCheltuieli.Size = new System.Drawing.Size(128, 152);
             this.btnStergeCheltuieli.TabIndex = 12;
@@ -854,7 +854,7 @@
             this.btnModificaCheltuieli.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModificaCheltuieli.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModificaCheltuieli.Location = new System.Drawing.Point(0, 152);
-            this.btnModificaCheltuieli.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnModificaCheltuieli.Margin = new System.Windows.Forms.Padding(2);
             this.btnModificaCheltuieli.Name = "btnModificaCheltuieli";
             this.btnModificaCheltuieli.Size = new System.Drawing.Size(128, 152);
             this.btnModificaCheltuieli.TabIndex = 11;
@@ -869,7 +869,7 @@
             this.btnSalveazaCheltuieli.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalveazaCheltuieli.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalveazaCheltuieli.Location = new System.Drawing.Point(0, 0);
-            this.btnSalveazaCheltuieli.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSalveazaCheltuieli.Margin = new System.Windows.Forms.Padding(2);
             this.btnSalveazaCheltuieli.Name = "btnSalveazaCheltuieli";
             this.btnSalveazaCheltuieli.Size = new System.Drawing.Size(128, 152);
             this.btnSalveazaCheltuieli.TabIndex = 10;
