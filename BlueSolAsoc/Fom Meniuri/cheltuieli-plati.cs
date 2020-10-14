@@ -331,16 +331,16 @@ namespace BlueSolAsoc.Fom_Meniuri
 
         }
         // schimbarea textului de pe butonul distribuie cheltuiala cand treci cu mouseul peste
-        private void distribuieCheltuiala_MouseHover(object sender, EventArgs e)
-        {    
-                distribuieCheltuiala.Text = "Bifeaza cel putin  o casuta !";         
+        //private void distribuieCheltuiala_MouseHover(object sender, EventArgs e)
+        //{    
+        //        distribuieCheltuiala.Text = "Bifeaza cel putin  o casuta !";         
  
-        }
+        //}
         // afisarea textului de pe butonul distribuie cheltuiala la 
-        private void distribuieCheltuiala_MouseLeave(object sender, EventArgs e)
-        {
-            distribuieCheltuiala.Text = "Distribuie Cheltuiala";
-        }
+        //private void distribuieCheltuiala_MouseLeave(object sender, EventArgs e)
+        //{
+        //    distribuieCheltuiala.Text = "Distribuie Cheltuiala";
+        //}
 
         private void btnModificaCheltuieli_Click(object sender, EventArgs e)
         {

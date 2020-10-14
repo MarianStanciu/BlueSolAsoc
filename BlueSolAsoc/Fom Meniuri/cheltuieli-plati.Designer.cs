@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TabCheltuieliPlati = new BlueSolAsoc.butoane_si_controale.ClassTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.Panel_IstoricFacturi = new BlueSolAsoc.butoane_si_controale.ClassPanel();
@@ -50,7 +50,6 @@
             this.cheltuieliDS1 = new BlueSolAsoc.CheltuieliDS();
             this.classLabel7 = new BlueSolAsoc.butoane_si_controale.ClassLabel();
             this.Panel_TreeDistribuieCheltuiala = new BlueSolAsoc.butoane_si_controale.ClassPanel();
-            this.distribuieCheltuiala = new BlueSolAsoc.butoane_si_controale.ClassButon();
             this.treeDistribuieCheltuiala = new System.Windows.Forms.TreeView();
             this.Panel_FACTURA = new BlueSolAsoc.butoane_si_controale.ClassPanel();
             this.sumaFactura = new BlueSolAsoc.butoane_si_controale.ClassTextBox();
@@ -102,6 +101,7 @@
             this.mvDocumenteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mv_DocumenteTableAdapter = new BlueSolAsoc.CheltuieliDSTableAdapters.mv_DocumenteTableAdapter();
             this.mvDocumenteBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.GroupBoxRepartitie = new BlueSolAsoc.butoane_si_controale.ClassGroupBox();
             this.TabCheltuieliPlati.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.Panel_IstoricFacturi.SuspendLayout();
@@ -181,14 +181,14 @@
             this.GridFacturi.AutoGenerateColumns = false;
             this.GridFacturi.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.GridFacturi.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.Aquamarine;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridFacturi.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Aquamarine;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridFacturi.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.GridFacturi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridFacturi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -311,7 +311,7 @@
             // Panel_TreeDistribuieCheltuiala
             // 
             this.Panel_TreeDistribuieCheltuiala.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Panel_TreeDistribuieCheltuiala.Controls.Add(this.distribuieCheltuiala);
+            this.Panel_TreeDistribuieCheltuiala.Controls.Add(this.GroupBoxRepartitie);
             this.Panel_TreeDistribuieCheltuiala.Controls.Add(this.treeDistribuieCheltuiala);
             this.Panel_TreeDistribuieCheltuiala.Dock = System.Windows.Forms.DockStyle.Left;
             this.Panel_TreeDistribuieCheltuiala.Location = new System.Drawing.Point(583, 3);
@@ -320,20 +320,6 @@
             this.Panel_TreeDistribuieCheltuiala.Size = new System.Drawing.Size(258, 700);
             this.Panel_TreeDistribuieCheltuiala.TabIndex = 63;
             // 
-            // distribuieCheltuiala
-            // 
-            this.distribuieCheltuiala.BackColor = System.Drawing.Color.Aquamarine;
-            this.distribuieCheltuiala.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.distribuieCheltuiala.Location = new System.Drawing.Point(4, 4);
-            this.distribuieCheltuiala.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.distribuieCheltuiala.Name = "distribuieCheltuiala";
-            this.distribuieCheltuiala.Size = new System.Drawing.Size(247, 76);
-            this.distribuieCheltuiala.TabIndex = 8;
-            this.distribuieCheltuiala.Text = "Distribuie Cheltuiala";
-            this.distribuieCheltuiala.UseVisualStyleBackColor = false;
-            this.distribuieCheltuiala.MouseLeave += new System.EventHandler(this.distribuieCheltuiala_MouseLeave);
-            this.distribuieCheltuiala.MouseHover += new System.EventHandler(this.distribuieCheltuiala_MouseHover);
-            // 
             // treeDistribuieCheltuiala
             // 
             this.treeDistribuieCheltuiala.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -341,10 +327,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.treeDistribuieCheltuiala.CheckBoxes = true;
             this.treeDistribuieCheltuiala.Font = new System.Drawing.Font("Mongolian Baiti", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.treeDistribuieCheltuiala.Location = new System.Drawing.Point(4, 85);
+            this.treeDistribuieCheltuiala.Location = new System.Drawing.Point(4, 196);
             this.treeDistribuieCheltuiala.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.treeDistribuieCheltuiala.Name = "treeDistribuieCheltuiala";
-            this.treeDistribuieCheltuiala.Size = new System.Drawing.Size(251, 608);
+            this.treeDistribuieCheltuiala.Size = new System.Drawing.Size(251, 497);
             this.treeDistribuieCheltuiala.TabIndex = 7;
             this.treeDistribuieCheltuiala.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterCheck);
             // 
@@ -403,14 +389,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.GridPozitiiFactura.AutoGenerateColumns = false;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.Aquamarine;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridPozitiiFactura.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Aquamarine;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridPozitiiFactura.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.GridPozitiiFactura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridPozitiiFactura.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.aidantetDataGridViewTextBoxColumn,
@@ -769,14 +755,14 @@
             // GridCalculIntretinere
             // 
             this.GridCalculIntretinere.AllowUserToAddRows = false;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.Aquamarine;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridCalculIntretinere.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Aquamarine;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridCalculIntretinere.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.GridCalculIntretinere.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridCalculIntretinere.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GridCalculIntretinere.EnableHeadersVisualStyles = false;
@@ -898,6 +884,16 @@
             this.mvDocumenteBindingSource1.DataMember = "mv_Documente";
             this.mvDocumenteBindingSource1.DataSource = this.cheltuieliDS1;
             // 
+            // GroupBoxRepartitie
+            // 
+            this.GroupBoxRepartitie.Dock = System.Windows.Forms.DockStyle.Top;
+            this.GroupBoxRepartitie.Location = new System.Drawing.Point(0, 0);
+            this.GroupBoxRepartitie.Name = "GroupBoxRepartitie";
+            this.GroupBoxRepartitie.Size = new System.Drawing.Size(254, 189);
+            this.GroupBoxRepartitie.TabIndex = 8;
+            this.GroupBoxRepartitie.TabStop = false;
+            this.GroupBoxRepartitie.Text = "calcul repartitie";
+            // 
             // cheltuieli_plati
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
@@ -965,7 +961,6 @@
         private butoane_si_controale.ClassLabel classLabel2;
         private butoane_si_controale.ClassLabel classLabel1;
         private butoane_si_controale.ClassGridView GridFacturi;
-        private butoane_si_controale.ClassButon distribuieCheltuiala;
         private System.Windows.Forms.BindingSource mvIstoricDocumenteBindingSource1;
         private CheltuieliDS cheltuieliDS1;
         private System.Windows.Forms.BindingSource mvDocumenteBindingSource;
@@ -1023,5 +1018,6 @@
         private butoane_si_controale.ClassGridView GridCalculIntretinere;
         private butoane_si_controale.ClassButon GenereazaTabel;
         private System.Windows.Forms.TreeView treeDistribuieCheltuiala;
+        private butoane_si_controale.ClassGroupBox GroupBoxRepartitie;
     }
 }

@@ -50,6 +50,7 @@
             this.calcul_intretinereDS1 = new BlueSolAsoc.Calcul_intretinereDS();
             this.mvConsumApartamenteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mv_ConsumApartamenteTableAdapter = new BlueSolAsoc.Calcul_intretinereDSTableAdapters.mv_ConsumApartamenteTableAdapter();
+            this.lblApasaModifica = new BlueSolAsoc.butoane_si_controale.ClassLabel();
             this.TabCalculIntretinere.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridCalculIntretinere)).BeginInit();
@@ -238,13 +239,13 @@
             this.PanelConsumAapartament.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PanelConsumAapartament.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PanelConsumAapartament.Controls.Add(this.lblApasaModifica);
             this.PanelConsumAapartament.Controls.Add(this.GridAfisareConsumuri);
             this.PanelConsumAapartament.Location = new System.Drawing.Point(310, 3);
             this.PanelConsumAapartament.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.PanelConsumAapartament.Name = "PanelConsumAapartament";
             this.PanelConsumAapartament.Size = new System.Drawing.Size(709, 825);
             this.PanelConsumAapartament.TabIndex = 10;
-            this.PanelConsumAapartament.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelConsumAapartament_Paint);
             // 
             // GridAfisareConsumuri
             // 
@@ -268,6 +269,7 @@
             this.GridAfisareConsumuri.Size = new System.Drawing.Size(705, 821);
             this.GridAfisareConsumuri.TabIndex = 0;
             this.GridAfisareConsumuri.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.GridAfisareConsumuri_CellValidating);
+            this.GridAfisareConsumuri.Click += new System.EventHandler(this.GridAfisareConsumuri_Click);
             // 
             // PanelTreeConsumAp
             // 
@@ -305,6 +307,15 @@
             // 
             this.mv_ConsumApartamenteTableAdapter.ClearBeforeFill = true;
             // 
+            // lblApasaModifica
+            // 
+            this.lblApasaModifica.AutoSize = true;
+            this.lblApasaModifica.Location = new System.Drawing.Point(56, 261);
+            this.lblApasaModifica.Name = "lblApasaModifica";
+            this.lblApasaModifica.Size = new System.Drawing.Size(626, 30);
+            this.lblApasaModifica.TabIndex = 3;
+            this.lblApasaModifica.Text = "Pentru a introduce/modifica consumuri apasa Modifica";
+            // 
             // Calcul_intretinere
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
@@ -322,6 +333,7 @@
             this.tabPage1.PerformLayout();
             this.pnlControale.ResumeLayout(false);
             this.PanelConsumAapartament.ResumeLayout(false);
+            this.PanelConsumAapartament.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridAfisareConsumuri)).EndInit();
             this.PanelTreeConsumAp.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.calcul_intretinereDS1)).EndInit();
@@ -351,5 +363,6 @@
         private System.Windows.Forms.BindingSource mvConsumApartamenteBindingSource;
         private Calcul_intretinereDSTableAdapters.mv_ConsumApartamenteTableAdapter mv_ConsumApartamenteTableAdapter;
         private butoane_si_controale.ClassLabel lblMesajSelecteazScara;
+        private butoane_si_controale.ClassLabel lblApasaModifica;
     }
 }

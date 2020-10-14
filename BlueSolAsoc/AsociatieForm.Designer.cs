@@ -925,12 +925,13 @@
             this.orgidorgDataGridViewTextBoxColumn1.HeaderText = "org_id_org";
             this.orgidorgDataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.orgidorgDataGridViewTextBoxColumn1.Name = "orgidorgDataGridViewTextBoxColumn1";
+            this.orgidorgDataGridViewTextBoxColumn1.Visible = false;
             this.orgidorgDataGridViewTextBoxColumn1.Width = 125;
             // 
             // denumireApartamentDataGridViewTextBoxColumn
             // 
             this.denumireApartamentDataGridViewTextBoxColumn.DataPropertyName = "Denumire Apartament";
-            this.denumireApartamentDataGridViewTextBoxColumn.HeaderText = "Denumire Apartament";
+            this.denumireApartamentDataGridViewTextBoxColumn.HeaderText = "Apartament";
             this.denumireApartamentDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.denumireApartamentDataGridViewTextBoxColumn.Name = "denumireApartamentDataGridViewTextBoxColumn";
             this.denumireApartamentDataGridViewTextBoxColumn.Width = 125;
@@ -938,7 +939,7 @@
             // proprietarDataGridViewTextBoxColumn
             // 
             this.proprietarDataGridViewTextBoxColumn.DataPropertyName = "Proprietar";
-            this.proprietarDataGridViewTextBoxColumn.HeaderText = "Proprietar";
+            this.proprietarDataGridViewTextBoxColumn.HeaderText = "Nume Proprietar";
             this.proprietarDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.proprietarDataGridViewTextBoxColumn.Name = "proprietarDataGridViewTextBoxColumn";
             this.proprietarDataGridViewTextBoxColumn.Width = 125;
@@ -954,7 +955,7 @@
             // camereDataGridViewTextBoxColumn1
             // 
             this.camereDataGridViewTextBoxColumn1.DataPropertyName = "Camere";
-            this.camereDataGridViewTextBoxColumn1.HeaderText = "Camere";
+            this.camereDataGridViewTextBoxColumn1.HeaderText = "Nr Camere";
             this.camereDataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.camereDataGridViewTextBoxColumn1.Name = "camereDataGridViewTextBoxColumn1";
             this.camereDataGridViewTextBoxColumn1.Width = 125;
@@ -962,7 +963,7 @@
             // apometreARDataGridViewTextBoxColumn
             // 
             this.apometreARDataGridViewTextBoxColumn.DataPropertyName = "Apometre AR";
-            this.apometreARDataGridViewTextBoxColumn.HeaderText = "Apometre AR";
+            this.apometreARDataGridViewTextBoxColumn.HeaderText = "Nr apometre AR";
             this.apometreARDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.apometreARDataGridViewTextBoxColumn.Name = "apometreARDataGridViewTextBoxColumn";
             this.apometreARDataGridViewTextBoxColumn.Width = 125;
@@ -970,7 +971,7 @@
             // apometreACDataGridViewTextBoxColumn
             // 
             this.apometreACDataGridViewTextBoxColumn.DataPropertyName = "Apometre AC";
-            this.apometreACDataGridViewTextBoxColumn.HeaderText = "Apometre AC";
+            this.apometreACDataGridViewTextBoxColumn.HeaderText = "Nr apoetre AC";
             this.apometreACDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.apometreACDataGridViewTextBoxColumn.Name = "apometreACDataGridViewTextBoxColumn";
             this.apometreACDataGridViewTextBoxColumn.Width = 125;
@@ -981,6 +982,7 @@
             this.idscDataGridViewTextBoxColumn.HeaderText = "id_sc";
             this.idscDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.idscDataGridViewTextBoxColumn.Name = "idscDataGridViewTextBoxColumn";
+            this.idscDataGridViewTextBoxColumn.Visible = false;
             this.idscDataGridViewTextBoxColumn.Width = 125;
             // 
             // contractIndividualDataGridViewTextBoxColumn

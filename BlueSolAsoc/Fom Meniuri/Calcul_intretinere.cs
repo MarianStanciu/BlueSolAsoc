@@ -37,7 +37,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             btnSterge.Hide();
             btnAnuleaza.Hide();
             GridAfisareConsumuri.Enabled = false;
-            GridAfisareConsumuri.CellValidating += GridAfisareConsumuri_CellValidating;
+         //   GridAfisareConsumuri.CellValidating += GridAfisareConsumuri_CellValidating;
            
         }
 
@@ -155,13 +155,20 @@ namespace BlueSolAsoc.Fom_Meniuri
             GridAfisareConsumuri.Columns["id_consumuri_apartamente"].Visible = false;
             GridAfisareConsumuri.Columns["id_apartament"].Visible = false;
             GridAfisareConsumuri.Columns["id_tabela_luni"].Visible = false;
+            GridAfisareConsumuri.Columns["id_asociatie"].Visible = false;
             GridAfisareConsumuri.Columns["Denumire Apartament"].HeaderText = "Apartament";
             GridAfisareConsumuri.Columns["consum_apa_rece"].HeaderText="MC Apa Rece";
         //    gridAfisareConsumuri.Sort(gridAfisareConsumuri.Columns["Denumire Apartament"], ListSortDirection.Descending);
             GridAfisareConsumuri.Columns["consum_apa_calda"].HeaderText = "MC Apa Calda";
             GridAfisareConsumuri.Columns["numar_persoane"].HeaderText = "Numar Persoane";
             GridAfisareConsumuri.Columns["Proprietar"].HeaderText = "Nume proprietar";
-            GridAfisareConsumuri.Columns["Proprietar"].DisplayIndex = 6;
+            GridAfisareConsumuri.Columns["Proprietar"].ReadOnly=true;
+            GridAfisareConsumuri.Columns["Denumire Apartament"].ReadOnly = true;
+            GridAfisareConsumuri.Columns["Denumire Apartament"].DisplayIndex = 1;
+            GridAfisareConsumuri.Columns["numar_persoane"].DisplayIndex = 2;
+            GridAfisareConsumuri.Columns["consum_apa_rece"].DisplayIndex = 3;
+            GridAfisareConsumuri.Columns["consum_apa_calda"].DisplayIndex = 4;
+            GridAfisareConsumuri.Columns["Proprietar"].DisplayIndex = 5;
             GridAfisareConsumuri.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;      
          
             if (val == 3)
@@ -182,20 +189,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             GridAfisareConsumuri.Refresh();
         }
 
-        private void btnAnuleaza_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnOK_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void classButonModifica1_Click(object sender, EventArgs e)
-        {
-
-        }
+       
         //colorare celula editata pe baza valorii initiale comparata cu cea finala
         void gridAfisareConsumuri_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
@@ -254,6 +248,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                     btnModifica.Hide();
                     btnSalveaza.Show();
                     btnAnuleaza.Show();
+                    lblApasaModifica.Hide();
                     GridAfisareConsumuri.Enabled = true;
 
                         break;
@@ -292,9 +287,11 @@ namespace BlueSolAsoc.Fom_Meniuri
                     btnModifica.Show();
                     btnSalveaza.Hide();
                     btnAnuleaza.Show();
+                    lblApasaModifica.Show();
                    
                     GridAfisareConsumuri.CancelEdit();
                     GridAfisareConsumuri.Enabled = false;
+                    lblApasaModifica.Show();
                 }
             }
             else
@@ -304,6 +301,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                 btnSalveaza.Hide();
                
                 btnAnuleaza.Hide();
+               
                 GridAfisareConsumuri.CancelEdit();
                 GridAfisareConsumuri.Enabled = false;
             }
@@ -314,12 +312,12 @@ namespace BlueSolAsoc.Fom_Meniuri
 
         
 
-        private void PanelConsumAapartament_Paint(object sender, PaintEventArgs e)
+        private void PanelConsumAapartament_Click(object sender, PaintEventArgs e)
         {
-            if (GridAfisareConsumuri.Enabled == false)
-            {
+            //if (GridAfisareConsumuri.Enabled == false)
+            //{
                 MessageBox.Show("Pentru a edita valorile din tabel apasa butonul MODIFICA !", "Informare", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //}
 
         }
 
@@ -347,24 +345,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             }
 
         }
-        //public bool IsNumeric(string value)
-        //{
-        //    bool isNumeric = true;
-        //    char[] digits = "0123456789".ToCharArray();
-        //    char[] letters = value.ToCharArray();
-        //    for (int k = 0; k < letters.Length; k++)
-        //    {
-        //        for (int i = 0; i < digits.Length; i++)
-        //        {
-        //            if (letters[k] != digits[i])
-        //            {
-        //                isNumeric = false;
-        //                break;
-        //            }
-        //        }
-        //    }
-        //    return isNumeric;
-        //}
+       
 
 
         public static System.Boolean IsNumeric(System.Object Expression)
@@ -385,6 +366,20 @@ namespace BlueSolAsoc.Fom_Meniuri
             }
             catch { } // just dismiss errors but return false
             return false;
+        }
+
+        private void GridAfisareConsumuri_Click(object sender, EventArgs e)
+        {
+            
+            if (btnModifica.Visible==true)
+            {
+
+                MessageBox.Show("Pentru a edita valorile din tabel apasa butonul MODIFICA !", "Informare", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            //else
+            //{
+            //    MessageBox.Show("Pentru a edita valorile din tabel apasa butonul MODIFICA !", "Informare", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
     }
 }
