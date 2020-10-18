@@ -557,14 +557,15 @@ namespace BlueSolAsoc.Fom_Meniuri
             //printer.PorportionalColumns = true;
             printer.ColumnWidth = DGVPrinter.ColumnWidthSetting.Porportional;
             printer.HeaderCellAlignment = StringAlignment.Near;
-            printer.ColumnWidths.Add(dataGridView2.Columns[9].Name, 90); // formatare latime colaoana 9 [denumire]
+            printer.ColumnWidths.Add(dataGridView2.Columns[9].Name, 130); // formatare latime colaoana 9 [denumire]
             printer.Footer = "BlueBitData"+ "\n" +"altceva";// Footer
             //printer.HideColumns.Add(dataGridView2.Columns[9].Name); // Ascundere coloana
             printer.FooterFormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
             //printer.FooterFormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.DirectionVertical | StringFormatFlags.NoClip;
             printer.FooterColor = Color.Red;
+            printer.printDocument.DefaultPageSettings.Landscape = true;
             printer.PrintDataGridView(dataGridView2);
-
+            
         }
     }
 }
