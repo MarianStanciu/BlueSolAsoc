@@ -11,10 +11,8 @@
             <MainSource>
               <DbSource ConnectionRef="proba_transareConnectionString (Settings)" DbObjectName="proba_transare.dbo.mv_Documente" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        a_id_antet, a_nr_doc, a_serie, a_data, a_id_partener, p_id_pozitie, p_id_asociere, p_pret, p_cantitate, p_id_cota_tva, p_valoare, tat_val_label, a_id_temporar, a_id_org, a_id_asociere
-FROM            mv_Documente
-WHERE        (1 = 0)</CommandText>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT a_id_antet, a_nr_doc, a_serie, a_data, a_id_partener, p_id_pozitie, p_id_asociere, p_pret, p_cantitate, p_id_cota_tva, p_valoare, tat_val_label, a_id_temporar, a_id_org, a_id_asociere, p_id_tip_repartizare FROM mv_Documente WHERE (1 = 0)</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -36,6 +34,7 @@ WHERE        (1 = 0)</CommandText>
               <Mapping SourceColumn="a_id_temporar" DataSetColumn="a_id_temporar" />
               <Mapping SourceColumn="a_id_org" DataSetColumn="a_id_org" />
               <Mapping SourceColumn="a_id_asociere" DataSetColumn="a_id_asociere" />
+              <Mapping SourceColumn="p_id_tip_repartizare" DataSetColumn="p_id_tip_repartizare" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -98,7 +97,7 @@ WHERE        (1 = 0)</CommandText>
   <xs:element name="CheltuieliDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="CheltuieliDS" msprop:Generator_UserDSName="CheltuieliDS">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="mv_Documente" msprop:Generator_TableClassName="mv_DocumenteDataTable" msprop:Generator_TableVarName="tablemv_Documente" msprop:Generator_TablePropName="mv_Documente" msprop:Generator_RowDeletingName="mv_DocumenteRowDeleting" msprop:Generator_RowChangingName="mv_DocumenteRowChanging" msprop:Generator_RowEvHandlerName="mv_DocumenteRowChangeEventHandler" msprop:Generator_RowDeletedName="mv_DocumenteRowDeleted" msprop:Generator_UserTableName="mv_Documente" msprop:Generator_RowChangedName="mv_DocumenteRowChanged" msprop:Generator_RowEvArgName="mv_DocumenteRowChangeEvent" msprop:Generator_RowClassName="mv_DocumenteRow">
+        <xs:element name="mv_Documente" msprop:Generator_TableClassName="mv_DocumenteDataTable" msprop:Generator_TableVarName="tablemv_Documente" msprop:Generator_RowChangedName="mv_DocumenteRowChanged" msprop:Generator_TablePropName="mv_Documente" msprop:Generator_RowDeletingName="mv_DocumenteRowDeleting" msprop:Generator_RowChangingName="mv_DocumenteRowChanging" msprop:Generator_RowEvHandlerName="mv_DocumenteRowChangeEventHandler" msprop:Generator_RowDeletedName="mv_DocumenteRowDeleted" msprop:Generator_RowClassName="mv_DocumenteRow" msprop:Generator_UserTableName="mv_Documente" msprop:Generator_RowEvArgName="mv_DocumenteRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="a_id_antet" msprop:Generator_ColumnVarNameInTable="columna_id_antet" msprop:Generator_ColumnPropNameInRow="a_id_antet" msprop:Generator_ColumnPropNameInTable="a_id_antetColumn" msprop:Generator_UserColumnName="a_id_antet" type="xs:int" />
@@ -134,10 +133,11 @@ WHERE        (1 = 0)</CommandText>
               <xs:element name="a_id_temporar" msprop:Generator_ColumnVarNameInTable="columna_id_temporar" msprop:Generator_ColumnPropNameInRow="a_id_temporar" msprop:Generator_ColumnPropNameInTable="a_id_temporarColumn" msprop:Generator_UserColumnName="a_id_temporar" type="xs:int" />
               <xs:element name="a_id_org" msprop:Generator_ColumnVarNameInTable="columna_id_org" msprop:Generator_ColumnPropNameInRow="a_id_org" msprop:Generator_ColumnPropNameInTable="a_id_orgColumn" msprop:Generator_UserColumnName="a_id_org" type="xs:int" />
               <xs:element name="a_id_asociere" msprop:Generator_ColumnVarNameInTable="columna_id_asociere" msprop:Generator_ColumnPropNameInRow="a_id_asociere" msprop:Generator_ColumnPropNameInTable="a_id_asociereColumn" msprop:Generator_UserColumnName="a_id_asociere" type="xs:int" />
+              <xs:element name="p_id_tip_repartizare" msprop:Generator_ColumnVarNameInTable="columnp_id_tip_repartizare" msprop:Generator_ColumnPropNameInRow="p_id_tip_repartizare" msprop:Generator_ColumnPropNameInTable="p_id_tip_repartizareColumn" msprop:Generator_UserColumnName="p_id_tip_repartizare" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="mv_detaliiOrganizatie" msprop:Generator_TableClassName="mv_detaliiOrganizatieDataTable" msprop:Generator_TableVarName="tablemv_detaliiOrganizatie" msprop:Generator_TablePropName="mv_detaliiOrganizatie" msprop:Generator_RowDeletingName="mv_detaliiOrganizatieRowDeleting" msprop:Generator_RowChangingName="mv_detaliiOrganizatieRowChanging" msprop:Generator_RowEvHandlerName="mv_detaliiOrganizatieRowChangeEventHandler" msprop:Generator_RowDeletedName="mv_detaliiOrganizatieRowDeleted" msprop:Generator_UserTableName="mv_detaliiOrganizatie" msprop:Generator_RowChangedName="mv_detaliiOrganizatieRowChanged" msprop:Generator_RowEvArgName="mv_detaliiOrganizatieRowChangeEvent" msprop:Generator_RowClassName="mv_detaliiOrganizatieRow">
+        <xs:element name="mv_detaliiOrganizatie" msprop:Generator_TableClassName="mv_detaliiOrganizatieDataTable" msprop:Generator_TableVarName="tablemv_detaliiOrganizatie" msprop:Generator_RowChangedName="mv_detaliiOrganizatieRowChanged" msprop:Generator_TablePropName="mv_detaliiOrganizatie" msprop:Generator_RowDeletingName="mv_detaliiOrganizatieRowDeleting" msprop:Generator_RowChangingName="mv_detaliiOrganizatieRowChanging" msprop:Generator_RowEvHandlerName="mv_detaliiOrganizatieRowChangeEventHandler" msprop:Generator_RowDeletedName="mv_detaliiOrganizatieRowDeleted" msprop:Generator_RowClassName="mv_detaliiOrganizatieRow" msprop:Generator_UserTableName="mv_detaliiOrganizatie" msprop:Generator_RowEvArgName="mv_detaliiOrganizatieRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="org_id_org" msprop:Generator_ColumnVarNameInTable="columnorg_id_org" msprop:Generator_ColumnPropNameInRow="org_id_org" msprop:Generator_ColumnPropNameInTable="org_id_orgColumn" msprop:Generator_UserColumnName="org_id_org" type="xs:int" />
@@ -190,7 +190,7 @@ WHERE        (1 = 0)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="mv_IstoricDocumente" msprop:Generator_TableClassName="mv_IstoricDocumenteDataTable" msprop:Generator_TableVarName="tablemv_IstoricDocumente" msprop:Generator_TablePropName="mv_IstoricDocumente" msprop:Generator_RowDeletingName="mv_IstoricDocumenteRowDeleting" msprop:Generator_RowChangingName="mv_IstoricDocumenteRowChanging" msprop:Generator_RowEvHandlerName="mv_IstoricDocumenteRowChangeEventHandler" msprop:Generator_RowDeletedName="mv_IstoricDocumenteRowDeleted" msprop:Generator_UserTableName="mv_IstoricDocumente" msprop:Generator_RowChangedName="mv_IstoricDocumenteRowChanged" msprop:Generator_RowEvArgName="mv_IstoricDocumenteRowChangeEvent" msprop:Generator_RowClassName="mv_IstoricDocumenteRow">
+        <xs:element name="mv_IstoricDocumente" msprop:Generator_TableClassName="mv_IstoricDocumenteDataTable" msprop:Generator_TableVarName="tablemv_IstoricDocumente" msprop:Generator_RowChangedName="mv_IstoricDocumenteRowChanged" msprop:Generator_TablePropName="mv_IstoricDocumente" msprop:Generator_RowDeletingName="mv_IstoricDocumenteRowDeleting" msprop:Generator_RowChangingName="mv_IstoricDocumenteRowChanging" msprop:Generator_RowEvHandlerName="mv_IstoricDocumenteRowChangeEventHandler" msprop:Generator_RowDeletedName="mv_IstoricDocumenteRowDeleted" msprop:Generator_RowClassName="mv_IstoricDocumenteRow" msprop:Generator_UserTableName="mv_IstoricDocumente" msprop:Generator_RowEvArgName="mv_IstoricDocumenteRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id_antet" msprop:Generator_ColumnVarNameInTable="columnid_antet" msprop:Generator_ColumnPropNameInRow="id_antet" msprop:Generator_ColumnPropNameInTable="id_antetColumn" msprop:Generator_UserColumnName="id_antet" type="xs:int" />

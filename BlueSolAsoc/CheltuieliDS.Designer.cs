@@ -379,6 +379,8 @@ namespace BlueSolAsoc {
             
             private global::System.Data.DataColumn columna_id_asociere;
             
+            private global::System.Data.DataColumn columnp_id_tip_repartizare;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public mv_DocumenteDataTable() {
@@ -534,6 +536,14 @@ namespace BlueSolAsoc {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn p_id_tip_repartizareColumn {
+                get {
+                    return this.columnp_id_tip_repartizare;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -569,7 +579,23 @@ namespace BlueSolAsoc {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public mv_DocumenteRow Addmv_DocumenteRow(int a_id_antet, string a_nr_doc, string a_serie, System.DateTime a_data, int a_id_partener, int p_id_pozitie, int p_id_asociere, decimal p_pret, decimal p_cantitate, int p_id_cota_tva, decimal p_valoare, string tat_val_label, int a_id_temporar, int a_id_org, int a_id_asociere) {
+            public mv_DocumenteRow Addmv_DocumenteRow(
+                        int a_id_antet, 
+                        string a_nr_doc, 
+                        string a_serie, 
+                        System.DateTime a_data, 
+                        int a_id_partener, 
+                        int p_id_pozitie, 
+                        int p_id_asociere, 
+                        decimal p_pret, 
+                        decimal p_cantitate, 
+                        int p_id_cota_tva, 
+                        decimal p_valoare, 
+                        string tat_val_label, 
+                        int a_id_temporar, 
+                        int a_id_org, 
+                        int a_id_asociere, 
+                        int p_id_tip_repartizare) {
                 mv_DocumenteRow rowmv_DocumenteRow = ((mv_DocumenteRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         a_id_antet,
@@ -586,7 +612,8 @@ namespace BlueSolAsoc {
                         tat_val_label,
                         a_id_temporar,
                         a_id_org,
-                        a_id_asociere};
+                        a_id_asociere,
+                        p_id_tip_repartizare};
                 rowmv_DocumenteRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowmv_DocumenteRow);
                 return rowmv_DocumenteRow;
@@ -624,6 +651,7 @@ namespace BlueSolAsoc {
                 this.columna_id_temporar = base.Columns["a_id_temporar"];
                 this.columna_id_org = base.Columns["a_id_org"];
                 this.columna_id_asociere = base.Columns["a_id_asociere"];
+                this.columnp_id_tip_repartizare = base.Columns["p_id_tip_repartizare"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -659,6 +687,8 @@ namespace BlueSolAsoc {
                 base.Columns.Add(this.columna_id_org);
                 this.columna_id_asociere = new global::System.Data.DataColumn("a_id_asociere", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columna_id_asociere);
+                this.columnp_id_tip_repartizare = new global::System.Data.DataColumn("p_id_tip_repartizare", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnp_id_tip_repartizare);
                 this.columna_id_antet.AllowDBNull = false;
                 this.columna_nr_doc.AllowDBNull = false;
                 this.columna_nr_doc.MaxLength = 20;
@@ -677,6 +707,7 @@ namespace BlueSolAsoc {
                 this.columna_id_temporar.AllowDBNull = false;
                 this.columna_id_org.AllowDBNull = false;
                 this.columna_id_asociere.AllowDBNull = false;
+                this.columnp_id_tip_repartizare.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1789,6 +1820,17 @@ namespace BlueSolAsoc {
                     this[this.tablemv_Documente.a_id_asociereColumn] = value;
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int p_id_tip_repartizare {
+                get {
+                    return ((int)(this[this.tablemv_Documente.p_id_tip_repartizareColumn]));
+                }
+                set {
+                    this[this.tablemv_Documente.p_id_tip_repartizareColumn] = value;
+                }
+            }
         }
         
         /// <summary>
@@ -2328,6 +2370,7 @@ namespace BlueSolAsoc.CheltuieliDSTableAdapters {
             tableMapping.ColumnMappings.Add("a_id_temporar", "a_id_temporar");
             tableMapping.ColumnMappings.Add("a_id_org", "a_id_org");
             tableMapping.ColumnMappings.Add("a_id_asociere", "a_id_asociere");
+            tableMapping.ColumnMappings.Add("p_id_tip_repartizare", "p_id_tip_repartizare");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -2344,10 +2387,10 @@ namespace BlueSolAsoc.CheltuieliDSTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        a_id_antet, a_nr_doc, a_serie, a_data, a_id_partener, p_id_pozitie," +
-                " p_id_asociere, p_pret, p_cantitate, p_id_cota_tva, p_valoare, tat_val_label, a_" +
-                "id_temporar, a_id_org, a_id_asociere\r\nFROM            mv_Documente\r\nWHERE       " +
-                " (1 = 0)";
+            this._commandCollection[0].CommandText = "SELECT a_id_antet, a_nr_doc, a_serie, a_data, a_id_partener, p_id_pozitie, p_id_a" +
+                "sociere, p_pret, p_cantitate, p_id_cota_tva, p_valoare, tat_val_label, a_id_temp" +
+                "orar, a_id_org, a_id_asociere, p_id_tip_repartizare FROM mv_Documente WHERE (1 =" +
+                " 0)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

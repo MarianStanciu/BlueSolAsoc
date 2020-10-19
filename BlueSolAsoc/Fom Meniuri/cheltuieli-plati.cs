@@ -39,7 +39,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.mv_DocumenteTableAdapter.Fill(this.cheltuieliDS1.mv_Documente);
                        
             extrageTabelaTree();
-            InitializeazaGrupBox();
+           // InitializeazaGrupBox();
             //afisare desfasurata a treeului pt repartizarea cheltuielilor
             treeDistribuieCheltuiala.ExpandAll();
             
@@ -132,6 +132,21 @@ namespace BlueSolAsoc.Fom_Meniuri
             CheltuieliDS.Tables["TabelDocumente"].Columns["p_valoare"].Expression = "p_cantitate * p_pret";
             CheltuieliDS.Tables["TabelDocumente"].Columns["p_valoare"].DefaultValue = 0.00;
             GridPozitiiFactura.AllowUserToAddRows = true;
+
+            //creare dataTable in dataset pentru afisarea tipului de Repartizare 
+            if (!(CheltuieliDS.Tables["Tip_Repartizare"] is null))
+            {
+                CheltuieliDS.Tables.Remove("Tip_Repartizare");
+            }
+            CheltuieliDS.getSetFrom("select * from tabela_asocieri_tipuri where id_tip=20 ", "Tip_Repartizare");
+
+            //creare datasource pt combotextbox din grid pozitii factura pentru tip_repartizare
+            DataGridViewComboBoxColumn bbc = (DataGridViewComboBoxColumn)this.GridPozitiiFactura.Columns["p_id_tip_repartizare"];
+            bbc.DataSource = CheltuieliDS.Tables["Tip_Repartizare"];
+            bbc.ValueMember = "id_asociere";
+            bbc.DisplayMember = "val_label";
+
+
 
             //creare dataTable in dataset pentru afisarea Denumirilor din lista de cheltuieli
             if (!(CheltuieliDS.Tables["denumiri_cheltuieli"] is null))
