@@ -46,15 +46,15 @@
             this.lblSelectieAn = new BlueSolAsoc.butoane_si_controale.ClassLabel();
             this.panelTabelLuni = new BlueSolAsoc.butoane_si_controale.ClassPanel();
             this.gridTabelaLuni = new BlueSolAsoc.butoane_si_controale.ClassGridView();
-            this.mvtabelaluniBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSetComboBox1 = new BlueSolAsoc.DataSetComboBox();
-            this.mv_tabela_luniTableAdapter = new BlueSolAsoc.DataSetComboBoxTableAdapters.mv_tabela_luniTableAdapter();
             this.lunaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.anDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.activDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.idorgDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lunaincheiataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataafisareDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mvtabelaluniBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSetComboBox1 = new BlueSolAsoc.DataSetComboBox();
+            this.mv_tabela_luniTableAdapter = new BlueSolAsoc.DataSetComboBoxTableAdapters.mv_tabela_luniTableAdapter();
             this.panel1.SuspendLayout();
             this.pnlMama.SuspendLayout();
             this.panelSelectareLuni.SuspendLayout();
@@ -173,7 +173,7 @@
             this.panelSelectareLuni.Location = new System.Drawing.Point(5, 5);
             this.panelSelectareLuni.Margin = new System.Windows.Forms.Padding(4);
             this.panelSelectareLuni.Name = "panelSelectareLuni";
-            this.panelSelectareLuni.Size = new System.Drawing.Size(553, 891);
+            this.panelSelectareLuni.Size = new System.Drawing.Size(499, 891);
             this.panelSelectareLuni.TabIndex = 7;
             // 
             // classButon1
@@ -273,20 +273,6 @@
             this.gridTabelaLuni.Size = new System.Drawing.Size(590, 892);
             this.gridTabelaLuni.TabIndex = 5;
             // 
-            // mvtabelaluniBindingSource
-            // 
-            this.mvtabelaluniBindingSource.DataMember = "mv_tabela_luni";
-            this.mvtabelaluniBindingSource.DataSource = this.dataSetComboBox1;
-            // 
-            // dataSetComboBox1
-            // 
-            this.dataSetComboBox1.DataSetName = "DataSetComboBox";
-            this.dataSetComboBox1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // mv_tabela_luniTableAdapter
-            // 
-            this.mv_tabela_luniTableAdapter.ClearBeforeFill = true;
-            // 
             // lunaDataGridViewTextBoxColumn
             // 
             this.lunaDataGridViewTextBoxColumn.DataPropertyName = "luna";
@@ -340,6 +326,20 @@
             this.dataafisareDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.dataafisareDataGridViewTextBoxColumn.Name = "dataafisareDataGridViewTextBoxColumn";
             this.dataafisareDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // mvtabelaluniBindingSource
+            // 
+            this.mvtabelaluniBindingSource.DataMember = "mv_tabela_luni";
+            this.mvtabelaluniBindingSource.DataSource = this.dataSetComboBox1;
+            // 
+            // dataSetComboBox1
+            // 
+            this.dataSetComboBox1.DataSetName = "DataSetComboBox";
+            this.dataSetComboBox1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // mv_tabela_luniTableAdapter
+            // 
+            this.mv_tabela_luniTableAdapter.ClearBeforeFill = true;
             // 
             // MeniuForm
             // 

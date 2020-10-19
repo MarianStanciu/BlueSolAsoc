@@ -537,6 +537,13 @@ namespace BlueSolAsoc.Fom_Meniuri
             printPreviewDialog1.Document = printDocument1;
 
         }
+        private void copyAlltoClipboard()
+        {
+            dataGridView2.SelectAll();
+            DataObject dataObj = dataGridView2.GetClipboardContent();
+            if (dataObj != null)
+                Clipboard.SetDataObject(dataObj);
+        }
 
         //Bitmap bmp;
 
@@ -557,14 +564,32 @@ namespace BlueSolAsoc.Fom_Meniuri
             //printer.PorportionalColumns = true;
             printer.ColumnWidth = DGVPrinter.ColumnWidthSetting.Porportional;
             printer.HeaderCellAlignment = StringAlignment.Near;
-            printer.ColumnWidths.Add(dataGridView2.Columns[9].Name, 90); // formatare latime colaoana 9 [denumire]
+            printer.ColumnWidths.Add(dataGridView2.Columns[9].Name, 130); // formatare latime colaoana 9 [denumire]
             printer.Footer = "BlueBitData"+ "\n" +"altceva";// Footer
             //printer.HideColumns.Add(dataGridView2.Columns[9].Name); // Ascundere coloana
             printer.FooterFormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
             //printer.FooterFormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.DirectionVertical | StringFormatFlags.NoClip;
             printer.FooterColor = Color.Red;
+            printer.printDocument.DefaultPageSettings.Landscape = true;
             printer.PrintDataGridView(dataGridView2);
+            
+        }
 
+
+        private void exportBtn_Click(object sender, EventArgs e)
+        {
+            copyAlltoClipboard();
+            Microsoft.Office.Interop.Excel.Application xlexcel;
+            Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
+            Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
+            object misValue = System.Reflection.Missing.Value;
+            xlexcel = new Microsoft.Office.Interop.Excel.Application();
+            xlexcel.Visible = true;
+            xlWorkBook = xlexcel.Workbooks.Add(misValue);
+            xlWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+            Microsoft.Office.Interop.Excel.Range CR = (Microsoft.Office.Interop.Excel.Range)xlWorkSheet.Cells[1, 1];
+            CR.Select();
+            xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
         }
     }
 }
