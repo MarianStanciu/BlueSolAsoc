@@ -197,6 +197,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                 {
                     string data = DataCurenta.Value.Date.ToString("yyyy/MM/dd");
                     int partener = (int)comboBoxParteneri.SelectedValue; ;
+                  
                     int id_antet = 0;
                     int id_pozitie = 0;
 
