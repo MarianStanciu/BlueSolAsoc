@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DGVPrinterHelper;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace BlueSolAsoc.butoane_si_controale
             AllowUserToAddRows = false;
             
             }
-        
 
+        public DGVPrinter.ColumnWidthSetting ColumnWidth { get; internal set; }
     }
 }

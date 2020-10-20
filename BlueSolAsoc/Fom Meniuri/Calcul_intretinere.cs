@@ -1,4 +1,5 @@
 ﻿using BlueSolAsoc.butoane_si_controale;
+using DGVPrinterHelper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace BlueSolAsoc.Fom_Meniuri
 {
@@ -380,6 +382,46 @@ namespace BlueSolAsoc.Fom_Meniuri
             //{
             //    MessageBox.Show("Pentru a edita valorile din tabel apasa butonul MODIFICA !", "Informare", MessageBoxButtons.OK, MessageBoxIcon.Information);
             //}
+        }
+
+        private void MetodaDGVPrinter (ClassGridView gridView)
+        {
+            DGVPrinter printer = new DGVPrinter();
+            //printer.OwnerDraw += new CellOwnerDrawEventHandler(OwnerDraw);
+            //printer.RowHeight = DGVPrinter.RowHeightSetting.CellHeight;
+
+
+
+            // dataGridView2.CellPainting += new DataGridViewCellPaintingEventHandler(dataGridView2_CellPainting);
+
+
+            printer.Title = "Titlu de test"; //header
+            printer.SubTitle = "Subtitlu"; // footer
+            printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
+            printer.PageNumbers = true;
+            printer.PageNumberInHeader = false;
+           
+            printer.PorportionalColumns = false;
+            gridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+           
+            printer.ColumnWidth = DGVPrinter.ColumnWidthSetting.DataWidth;
+            printer.HeaderCellAlignment = StringAlignment.Near;
+            printer.ColumnWidths.Add(gridView.Columns[0].Name, 10); // formatare latime colaoana 9 [denumire]
+            printer.Footer = "BlueBitData" + "\n" + "altceva";// Footer
+            //printer.GetRowHeaderCellFormat
+            printer.HeaderCellFormatFlags = StringFormatFlags.DirectionVertical | StringFormatFlags.DirectionRightToLeft;
+            //printer.HeaderCellFormatFlags =  RotateFlipType.Rotate180FlipXY;
+            //printer.HideColumns.Add(dataGridView2.Columns[9].Name); // Ascundere coloana
+            printer.FooterFormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
+            //printer.FooterFormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.DirectionVertical | StringFormatFlags.NoClip;
+            printer.FooterColor = Color.Red;
+            printer.printDocument.DefaultPageSettings.Landscape = true;
+            printer.PrintDataGridView(gridView);
+        }
+
+        private void btnImprima_Click(object sender, EventArgs e)
+        {
+            MetodaDGVPrinter(GridAfisareConsumuri);
         }
     }
 }
