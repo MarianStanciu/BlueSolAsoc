@@ -36,6 +36,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(venituri_incasari));
             this.tabControl1 = new BlueSolAsoc.butoane_si_controale.ClassTabControl();
             this.tabPageChitante = new System.Windows.Forms.TabPage();
+            this.exportBtn = new BlueSolAsoc.butoane_si_controale.ClassButon();
             this.butonPrintTest = new BlueSolAsoc.butoane_si_controale.ClassButon();
             this.labelIstoric = new System.Windows.Forms.Label();
             this.dataGridView2 = new BlueSolAsoc.butoane_si_controale.ClassGridView();
@@ -100,7 +101,6 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.mv_IstoricDocumenteTableAdapter = new BlueSolAsoc.proba_transareDataSet3TableAdapters.mv_IstoricDocumenteTableAdapter();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.exportBtn = new BlueSolAsoc.butoane_si_controale.ClassButon();
             this.tabControl1.SuspendLayout();
             this.tabPageChitante.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -163,12 +163,24 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.tabPageChitante.Text = "CHITANTE";
             this.tabPageChitante.UseVisualStyleBackColor = true;
             // 
+            // exportBtn
+            // 
+            this.exportBtn.BackColor = System.Drawing.Color.Aquamarine;
+            this.exportBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.exportBtn.Location = new System.Drawing.Point(259, 607);
+            this.exportBtn.Name = "exportBtn";
+            this.exportBtn.Size = new System.Drawing.Size(137, 49);
+            this.exportBtn.TabIndex = 26;
+            this.exportBtn.Text = "Export";
+            this.exportBtn.UseVisualStyleBackColor = false;
+            this.exportBtn.Click += new System.EventHandler(this.exportBtn_Click);
+            // 
             // butonPrintTest
             // 
             this.butonPrintTest.BackColor = System.Drawing.Color.Aquamarine;
             this.butonPrintTest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.butonPrintTest.Location = new System.Drawing.Point(259, 522);
-            this.butonPrintTest.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.butonPrintTest.Margin = new System.Windows.Forms.Padding(4);
             this.butonPrintTest.Name = "butonPrintTest";
             this.butonPrintTest.Size = new System.Drawing.Size(137, 50);
             this.butonPrintTest.TabIndex = 25;
@@ -201,7 +213,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.ColumnHeadersHeight = 250;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.nrdocDataGridViewTextBoxColumn,
@@ -216,12 +228,15 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.dataGridView2.DataSource = this.mvIstoricDocumenteBindingSource;
             this.dataGridView2.EnableHeadersVisualStyles = false;
             this.dataGridView2.Location = new System.Drawing.Point(702, 52);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView2.MinimumSize = new System.Drawing.Size(799, 881);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.Size = new System.Drawing.Size(955, 914);
             this.dataGridView2.TabIndex = 23;
+            this.dataGridView2.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView2_CellPainting);
+            this.dataGridView2.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dataGridView2_ColumnWidthChanged);
+            this.dataGridView2.Paint += new System.Windows.Forms.PaintEventHandler(this.dataGridView2_Paint);
             this.dataGridView2.DoubleClick += new System.EventHandler(this.dataGridView2_DoubleClick);
             // 
             // dataGridViewTextBoxColumn1
@@ -351,7 +366,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.dataGridView1.DataSource = this.mvDocumenteBindingSource;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Location = new System.Drawing.Point(11, 276);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.Size = new System.Drawing.Size(680, 177);
@@ -775,18 +790,6 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
-            // 
-            // exportBtn
-            // 
-            this.exportBtn.BackColor = System.Drawing.Color.Aquamarine;
-            this.exportBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.exportBtn.Location = new System.Drawing.Point(259, 607);
-            this.exportBtn.Name = "exportBtn";
-            this.exportBtn.Size = new System.Drawing.Size(137, 49);
-            this.exportBtn.TabIndex = 26;
-            this.exportBtn.Text = "Export";
-            this.exportBtn.UseVisualStyleBackColor = false;
-            this.exportBtn.Click += new System.EventHandler(this.exportBtn_Click);
             // 
             // venituri_incasari
             // 

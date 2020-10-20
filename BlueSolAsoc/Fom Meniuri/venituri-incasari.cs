@@ -165,19 +165,67 @@ namespace BlueSolAsoc.Fom_Meniuri
 
             cnn.Close();
 
-            
+            ////load datagrid paint
+            dataGridView2.ColumnHeadersHeight = dataGridView2.ColumnHeadersHeight * 2;
+            dataGridView2.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomCenter;
+            dataGridView2.CellPainting += new DataGridViewCellPaintingEventHandler(dataGridView2_CellPainting);
+            dataGridView2.Paint += new PaintEventHandler(dataGridView2_Paint);
+            dataGridView2.Scroll += new ScrollEventHandler(dataGridView2_Scroll);
+            dataGridView2.ColumnWidthChanged += new DataGridViewColumnEventHandler(dataGridView2_ColumnWidthChanged);
+
+            //folosim subtitluri drept header peste header
         }
-      
+        private void dataGridView2_Paint(object sender, PaintEventArgs e)
+        {
+            Rectangle r1 = dataGridView2.GetCellDisplayRectangle(1, -1, true);
+            int w2 = dataGridView2.GetCellDisplayRectangle(-2, -1, true).Width;
+            r1.X += 1;
+            r1.Y += 1;
+            r1.Width = r1.Width + w2 - 2;
+            r1.Height = r1.Height / 2 - 2;
+            e.Graphics.FillRectangle(new SolidBrush(dataGridView2.ColumnHeadersDefaultCellStyle.BackColor), r1);
 
-        /*  private void textBoxApartamente_Leave(object sender, EventArgs e)
-          {
-              string[] StringInfo = textBoxApartamente.Text.Split('/');
-              string idProprietar = StringInfo[4].ToString().TrimStart();
+            StringFormat format = new StringFormat();
+            format.Alignment = StringAlignment.Center;
+            format.LineAlignment = StringAlignment.Center;
+            e.Graphics.DrawString("Header principal",dataGridView2.ColumnHeadersDefaultCellStyle.Font,new SolidBrush(dataGridView2.ColumnHeadersDefaultCellStyle.ForeColor),r1,format);
+
+        }
+
+        private void dataGridView2_ColumnWidthChanged(object sender,DataGridViewColumnEventArgs e)
+        {
+            Rectangle rtHeader = dataGridView2.DisplayRectangle;
+            rtHeader.Height = dataGridView2.ColumnHeadersHeight / 2;
+            dataGridView2.Invalidate(rtHeader);
+        }
+        private void dataGridView2_Scroll(object sender,ScrollEventArgs e)
+        {
+            Rectangle rtHeader = dataGridView2.DisplayRectangle;
+            rtHeader.Height = dataGridView2.ColumnHeadersHeight / 2;
+            dataGridView2.Invalidate(rtHeader);
+        }
+        private void dataGridView2_CellPainting(object sender,DataGridViewCellPaintingEventArgs e)
+        {
+            if(e.RowIndex == -1 && e.ColumnIndex > -1)
+            {
+                Rectangle r2 = e.CellBounds;
+                r2.Y += e.CellBounds.Height/2;
+                r2.Height = e.CellBounds.Height / 2;
+                e.PaintBackground(r2, true);
+                e.PaintContent(r2);
+                e.Handled = true;
+            }
+        }
+
+            /*  private void textBoxApartamente_Leave(object sender, EventArgs e)
+              {
+                  string[] StringInfo = textBoxApartamente.Text.Split('/');
+                  string idProprietar = StringInfo[4].ToString().TrimStart();
 
 
-          }*/
+              }*/
 
-        private void ButtonSalvareOK()
+            private void ButtonSalvareOK()
         {
             DataTable TabelaVenituriIncasari = DataSetVenituriIncasari.Tables["mv_Documente"];
             
@@ -546,7 +594,34 @@ namespace BlueSolAsoc.Fom_Meniuri
         }
 
         //Bitmap bmp;
-
+        public void OwnerDraw(object sender, DGVCellDrawingEventArgs e)
+        {
+            if (e.row == -1)
+            {
+                DataGridViewHeaderCell cell = dataGridView2.Columns[e.column].HeaderCell;
+                String printvalue = dataGridView2.Columns[e.column].HeaderText;
+                // allow the user to do whatever
+                // draw background
+               // e.g.FillRectangle(new SolidBrush(e.CellStyle.BackColor), e.DrawingBounds);
+                // Draw column header text upside down and backwards
+                e.g.TranslateTransform(e.DrawingBounds.X - 125 + e.DrawingBounds.Width,
+                e.DrawingBounds.Y + e.DrawingBounds.Height);
+                // e.g.TranslateTransform(e.DrawingBounds.X - ((1/2)*e.DrawingBounds.Width),
+                //e.DrawingBounds.Y + e.DrawingBounds.Height + e.DrawingBounds.Width);
+                e.g.RotateTransform(270);
+                e.g.DrawString(printvalue, e.CellStyle.Font,
+                new SolidBrush(e.CellStyle.ForeColor), e.CellStyle.Padding.Left, -
+               cell.InheritedStyle.Padding.Bottom);
+                // undo the backwards upside down transform
+                e.g.ResetTransform();
+                // draw grid
+                if (dataGridView2.CellBorderStyle != DataGridViewCellBorderStyle.None)
+                    e.g.DrawRectangle(new Pen(dataGridView2.GridColor), e.DrawingBounds.X,
+                   e.DrawingBounds.Y,
+                    e.DrawingBounds.Width, e.DrawingBounds.Height);
+                e.Handled = true;
+            }
+        }
         private void butonPrintTest_Click(object sender, EventArgs e)
         {
 
@@ -554,8 +629,15 @@ namespace BlueSolAsoc.Fom_Meniuri
                         ReadDocument();
                         printPreviewDialog1.Document = printDocument1;
                         printPreviewDialog1.ShowDialog();*/
-
             DGVPrinter printer = new DGVPrinter();
+           printer.OwnerDraw += new CellOwnerDrawEventHandler(OwnerDraw);
+           //printer.RowHeight = DGVPrinter.RowHeightSetting.CellHeight;
+
+
+
+           // dataGridView2.CellPainting += new DataGridViewCellPaintingEventHandler(dataGridView2_CellPainting);
+
+            
             printer.Title = "Titlu de test"; //header
             printer.SubTitle = "Subtitlu"; // footer
             printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
@@ -565,7 +647,10 @@ namespace BlueSolAsoc.Fom_Meniuri
             printer.ColumnWidth = DGVPrinter.ColumnWidthSetting.Porportional;
             printer.HeaderCellAlignment = StringAlignment.Near;
             printer.ColumnWidths.Add(dataGridView2.Columns[9].Name, 130); // formatare latime colaoana 9 [denumire]
-            printer.Footer = "BlueBitData"+ "\n" +"altceva";// Footer
+            printer.Footer = "BlueBitData" + "\n" + "altceva";// Footer
+            //printer.GetRowHeaderCellFormat
+            printer.HeaderCellFormatFlags = StringFormatFlags.DirectionVertical | StringFormatFlags.DirectionRightToLeft;
+            //printer.HeaderCellFormatFlags =  RotateFlipType.Rotate180FlipXY;
             //printer.HideColumns.Add(dataGridView2.Columns[9].Name); // Ascundere coloana
             printer.FooterFormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
             //printer.FooterFormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.DirectionVertical | StringFormatFlags.NoClip;
@@ -591,5 +676,21 @@ namespace BlueSolAsoc.Fom_Meniuri
             CR.Select();
             xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
         }
+
+       /* private void dataGridView2_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            // Vertical text from column 0, or adjust below, if first column(s) to be skipped
+            if (e.RowIndex == -1 && e.ColumnIndex >= 0)
+            {
+                e.PaintBackground(e.CellBounds, true);
+                e.Graphics.TranslateTransform(e.CellBounds.Left, e.CellBounds.Bottom);
+                e.Graphics.RotateTransform(270);
+                e.Graphics.DrawString(e.FormattedValue.ToString(), e.CellStyle.Font, Brushes.Black, 5, 5);
+                e.Graphics.ResetTransform();
+                e.Handled = true;
+            }
+            }*/
+        // Draw column headers upside down and backwards
+
     }
-}
+    }
