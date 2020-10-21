@@ -145,43 +145,45 @@ namespace BlueSolAsoc.Fom_Meniuri
             int nId = System.Convert.ToInt16(Node.Tag);
             int val = (Int32)Calcul_intretinereDS.ReturnareValoare("select aso_id_tip from mv_detaliiOrganizatie where org_id_org=" + nId);
 
-            //adaugare tabela in dataset pentru apartamente  //TABELA DIN VIEW
-            if (!(Calcul_intretinereDS.Tables["mv_ConsumApartamente"] is null))
-            {
-                Calcul_intretinereDS.Tables.Remove("mv_ConsumApartamente");
-            }
-            Calcul_intretinereDS.getSetFrom("select * from mv_ConsumApartamente  where  id_sc =" + nId, "mv_ConsumApartamente");
             
-            GridAfisareConsumuri.DataSource = Calcul_intretinereDS.Tables["mv_ConsumApartamente"];
-            GridAfisareConsumuri.Columns["id_sc"].Visible = false;
-            GridAfisareConsumuri.Columns["id_consumuri_apartamente"].Visible = false;
-            GridAfisareConsumuri.Columns["id_apartament"].Visible = false;
-            GridAfisareConsumuri.Columns["id_tabela_luni"].Visible = false;
-            GridAfisareConsumuri.Columns["id_asociatie"].Visible = false;
-            GridAfisareConsumuri.Columns["Denumire Apartament"].HeaderText = "Apartament";
-            GridAfisareConsumuri.Columns["consum_apa_rece"].HeaderText="MC Apa Rece";
-        //    gridAfisareConsumuri.Sort(gridAfisareConsumuri.Columns["Denumire Apartament"], ListSortDirection.Descending);
-            GridAfisareConsumuri.Columns["consum_apa_calda"].HeaderText = "MC Apa Calda";
-            GridAfisareConsumuri.Columns["numar_persoane"].HeaderText = "Numar Persoane";
-            GridAfisareConsumuri.Columns["Proprietar"].HeaderText = "Nume proprietar";
-            GridAfisareConsumuri.Columns["Proprietar"].ReadOnly=true;
-            GridAfisareConsumuri.Columns["Denumire Apartament"].ReadOnly = true;
-            GridAfisareConsumuri.Columns["Denumire Apartament"].DisplayIndex = 1;
-            GridAfisareConsumuri.Columns["numar_persoane"].DisplayIndex = 2;
-            GridAfisareConsumuri.Columns["consum_apa_rece"].DisplayIndex = 3;
-            GridAfisareConsumuri.Columns["consum_apa_calda"].DisplayIndex = 4;
-            GridAfisareConsumuri.Columns["Proprietar"].DisplayIndex = 5;
-            GridAfisareConsumuri.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;      
-         
             if (val == 3)
-            {
+            {  //adaugare tabela in dataset pentru apartamente  //TABELA DIN VIEW
+                if (!(Calcul_intretinereDS.Tables["mv_ConsumApartamente"] is null))
+                {
+                    Calcul_intretinereDS.Tables.Remove("mv_ConsumApartamente");
+                }
+                Calcul_intretinereDS.getSetFrom("select * from mv_ConsumApartamente  where  id_sc =" + nId, "mv_ConsumApartamente");
+
+                GridAfisareConsumuri.DataSource = Calcul_intretinereDS.Tables["mv_ConsumApartamente"];
+                GridAfisareConsumuri.Columns["id_sc"].Visible = false;
+                GridAfisareConsumuri.Columns["id_consumuri_apartamente"].Visible = false;
+                GridAfisareConsumuri.Columns["id_apartament"].Visible = false;
+                GridAfisareConsumuri.Columns["id_tabela_luni"].Visible = false;
+                GridAfisareConsumuri.Columns["id_asociatie"].Visible = false;
+                GridAfisareConsumuri.Columns["Denumire Apartament"].HeaderText = "Apartament";
+                GridAfisareConsumuri.Columns["consum_apa_rece"].HeaderText = "MC Apa Rece";
+                //    gridAfisareConsumuri.Sort(gridAfisareConsumuri.Columns["Denumire Apartament"], ListSortDirection.Descending);
+                GridAfisareConsumuri.Columns["consum_apa_calda"].HeaderText = "MC Apa Calda";
+                GridAfisareConsumuri.Columns["numar_persoane"].HeaderText = "Numar Persoane";
+                GridAfisareConsumuri.Columns["Proprietar"].HeaderText = "Nume proprietar";
+                GridAfisareConsumuri.Columns["Proprietar"].ReadOnly = true;
+                GridAfisareConsumuri.Columns["Denumire Apartament"].ReadOnly = true;
+                GridAfisareConsumuri.Columns["Denumire Apartament"].DisplayIndex = 1;
+                GridAfisareConsumuri.Columns["numar_persoane"].DisplayIndex = 2;
+                GridAfisareConsumuri.Columns["consum_apa_rece"].DisplayIndex = 3;
+                GridAfisareConsumuri.Columns["consum_apa_calda"].DisplayIndex = 4;
+                GridAfisareConsumuri.Columns["Proprietar"].DisplayIndex = 5;
+                GridAfisareConsumuri.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
                 PanelConsumAapartament.Show();
+                GridAfisareConsumuri.Visible = true;
                 GridAfisareConsumuri.Show();
                 lblMesajSelecteazScara.Hide();
             }
             else
             {
                 PanelConsumAapartament.Hide();
+                GridAfisareConsumuri.Visible=false;
                 lblMesajSelecteazScara.Show();
             }
         }
@@ -384,9 +386,9 @@ namespace BlueSolAsoc.Fom_Meniuri
             //}
         }
 
-        private void MetodaDGVPrinter (ClassGridView gridView)
+        private void MetodaDGVPrinter(ClassGridView gridView)
         {
-            if (gridView.Columns.Count!=0)
+            if (gridView.Columns.Count != 0 | gridView.Visible==false)
             {
                 DGVPrinter printer = new DGVPrinter();
                 printer.TitleSpacing = 5;
@@ -456,15 +458,24 @@ namespace BlueSolAsoc.Fom_Meniuri
                 prompt.CancelButton = anulare;
                 prompt.StartPosition = FormStartPosition.CenterScreen;
                 prompt.ShowDialog();
-                if (DialogResult.OK==DialogResult.OK)
+                if (cmbx.SelectedItem != null || textBox.Text.Length == 0)
                 {
-                    return string.Format("{0};{1}", textBox.Text, cmbx.SelectedItem.ToString());
+                    return string.Format("{0};{1}", "fara data", "nimic selectat");
+                    // return string.Format("{0};{1}", textBox.Text, cmbx.SelectedItem.ToString());
                 }
                 else
                 {
-                    return string.Format("{0};{1}", "fara data", "nimic selectat");
+                    return string.Format("{0};{1}", textBox.Text, cmbx.SelectedItem.ToString());
                 }
-                    
+                //if (DialogResult.OK==DialogResult.OK)
+                //{
+                //    return string.Format("{0};{1}", textBox.Text, cmbx.SelectedItem.ToString());
+                //}
+                //else
+                //{
+                //    return string.Format("{0};{1}", "fara data", "nimic selectat");
+                //}
+
             }
         }
     }
