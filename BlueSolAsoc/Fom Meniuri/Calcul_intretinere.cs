@@ -386,42 +386,86 @@ namespace BlueSolAsoc.Fom_Meniuri
 
         private void MetodaDGVPrinter (ClassGridView gridView)
         {
-            DGVPrinter printer = new DGVPrinter();
-            //printer.OwnerDraw += new CellOwnerDrawEventHandler(OwnerDraw);
-            //printer.RowHeight = DGVPrinter.RowHeightSetting.CellHeight;
+            if (gridView.Columns.Count!=0)
+            {
+                DGVPrinter printer = new DGVPrinter();
+                printer.TitleSpacing = 5;
+                printer.SubTitleSpacing = 5;
+                //printer.OwnerDraw += new CellOwnerDrawEventHandler(OwnerDraw);
+                //printer.RowHeight = DGVPrinter.RowHeightSetting.CellHeight;
+
+                printer.Title = "LISTA INTRETINERE, ASOCIATIA:" + denumireAsociatie; //header
+
+                printer.SubTitle = "LUNA AFISATA:     /"+"DATA AFISARII:" + PromptForTextAndSelection.ShowDialog("BLUEBITDATA", "DATA AFISARE?", "TIP AFISARE");
+                printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
+                printer.PageNumbers = true;
+                printer.PageNumberInHeader = false;
+                printer.PorportionalColumns = false;
+                gridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+                printer.ColumnWidth = DGVPrinter.ColumnWidthSetting.DataWidth;
+                printer.HeaderCellAlignment = StringAlignment.Near;
+                printer.ColumnWidths.Add(gridView.Columns[0].Name, 10); // formatare latime colaoana 9 [denumire]
+                printer.Footer = "BlueBitData" + "\n" + "Compamie de software";// Footer   
+                printer.HeaderCellFormatFlags = StringFormatFlags.DirectionVertical | StringFormatFlags.DirectionRightToLeft;
+                printer.FooterFormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
+                printer.FooterColor = Color.Red;
+                printer.printDocument.DefaultPageSettings.Landscape = true;
+
+                printer.PrintPreviewDataGridView(gridView);// print preview           
+                                                           //printer.PrintDataGridView(gridView);// print direct
+            }
+            else
+                MessageBox.Show("NIMIC DE IMPRIMAT");
 
 
-
-            // dataGridView2.CellPainting += new DataGridViewCellPaintingEventHandler(dataGridView2_CellPainting);
-
-
-            printer.Title = "Titlu de test"; //header
-            printer.SubTitle = "Subtitlu"; // footer
-            printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
-            printer.PageNumbers = true;
-            printer.PageNumberInHeader = false;
-           
-            printer.PorportionalColumns = false;
-            gridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
-           
-            printer.ColumnWidth = DGVPrinter.ColumnWidthSetting.DataWidth;
-            printer.HeaderCellAlignment = StringAlignment.Near;
-            printer.ColumnWidths.Add(gridView.Columns[0].Name, 10); // formatare latime colaoana 9 [denumire]
-            printer.Footer = "BlueBitData" + "\n" + "altceva";// Footer
-            //printer.GetRowHeaderCellFormat
-            printer.HeaderCellFormatFlags = StringFormatFlags.DirectionVertical | StringFormatFlags.DirectionRightToLeft;
-            //printer.HeaderCellFormatFlags =  RotateFlipType.Rotate180FlipXY;
-            //printer.HideColumns.Add(dataGridView2.Columns[9].Name); // Ascundere coloana
-            printer.FooterFormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
-            //printer.FooterFormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.DirectionVertical | StringFormatFlags.NoClip;
-            printer.FooterColor = Color.Red;
-            printer.printDocument.DefaultPageSettings.Landscape = true;
-            printer.PrintDataGridView(gridView);
         }
 
         private void btnImprima_Click(object sender, EventArgs e)
         {
-            MetodaDGVPrinter(GridAfisareConsumuri);
+            MetodaDGVPrinter(GridAfisareConsumuri);        
+           
+        }
+
+        public static class PromptForTextAndSelection
+        {
+            public static string ShowDialog(string caption, string text, string selStr)
+            {
+                Form prompt = new Form();
+                prompt.ControlBox = false;
+                prompt.Width = 400;
+                prompt.Height = 360;
+                prompt.Text = caption;
+                Label textLabel = new Label() { Left = 16, Top = 20, Width = 240, Text = text };
+                TextBox textBox = new TextBox() { Left = 16, Top = 40, Width = 240, TabIndex = 0, TabStop = true };
+                Label selLabel = new Label() { Left = 16, Top = 66, Width = 88, Text = selStr };
+                ComboBox cmbx = new ComboBox() { Left = 112, Top = 64, Width = 144 };
+                cmbx.Items.Add("Verificare");
+                cmbx.Items.Add("Afisare Definitiva");
+                cmbx.Items.Add("Imprimare Test");
+                Button confirmare = new Button() { Text = "Validez selectia!", Left = 16, Width = 80, Top = 150, TabIndex = 1, TabStop = true };
+                Button anulare= new Button() { Text = "Anulez!", Left = 16, Width = 80, Top = 98, TabIndex = 1, TabStop = true };
+                confirmare.Click += (sender, e) => { prompt.Close(); };
+                prompt.Controls.Add(textLabel);
+                prompt.Controls.Add(textBox);
+                prompt.Controls.Add(selLabel);
+                prompt.Controls.Add(cmbx);
+                prompt.Controls.Add(confirmare);
+                prompt.Controls.Add(anulare);
+            
+                prompt.AcceptButton = confirmare;
+                prompt.CancelButton = anulare;
+                prompt.StartPosition = FormStartPosition.CenterScreen;
+                prompt.ShowDialog();
+                if (DialogResult.OK==DialogResult.OK)
+                {
+                    return string.Format("{0};{1}", textBox.Text, cmbx.SelectedItem.ToString());
+                }
+                else
+                {
+                    return string.Format("{0};{1}", "fara data", "nimic selectat");
+                }
+                    
+            }
         }
     }
 }
