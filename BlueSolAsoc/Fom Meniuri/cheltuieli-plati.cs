@@ -340,6 +340,7 @@ namespace BlueSolAsoc.Fom_Meniuri
         private void extrageTabelaTree()
         {
             if (!(CheltuieliDS.Tables["TabelAfisareTree"] is null))
+           
             {
                 CheltuieliDS.Tables.Remove("TabelAfisareTree");
             }
