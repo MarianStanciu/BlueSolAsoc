@@ -38,6 +38,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             btnSalveaza.Hide();
             btnSterge.Hide();
             btnAnuleaza.Hide();
+            btnImprima.Visible = false;
            // GridAfisareConsumuri.Enabled = false;
          //   GridAfisareConsumuri.CellValidating += GridAfisareConsumuri_CellValidating;
            
@@ -179,12 +180,14 @@ namespace BlueSolAsoc.Fom_Meniuri
                 GridAfisareConsumuri.Visible = true;
                 GridAfisareConsumuri.Show();
                 lblMesajSelecteazScara.Hide();
+                btnImprima.Visible = true;
             }
             else
             {
                 PanelConsumAapartament.Hide();
                 GridAfisareConsumuri.Visible=false;
                 lblMesajSelecteazScara.Show();
+                btnImprima.Visible = false;
             }
         }
         public void reimprospateazaGridConsumuri()
@@ -393,11 +396,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                 DGVPrinter printer = new DGVPrinter();
                 printer.TitleSpacing = 5;
                 printer.SubTitleSpacing = 5;
-                //printer.OwnerDraw += new CellOwnerDrawEventHandler(OwnerDraw);
-                //printer.RowHeight = DGVPrinter.RowHeightSetting.CellHeight;
-
                 printer.Title = "LISTA INTRETINERE, ASOCIATIA:" + denumireAsociatie; //header
-
                 printer.SubTitle = "LUNA AFISATA:     /"+"DATA AFISARII:" + PromptForTextAndSelection.ShowDialog("BLUEBITDATA", "DATA AFISARE?", "TIP AFISARE");
                 printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
                 printer.PageNumbers = true;
@@ -448,6 +447,8 @@ namespace BlueSolAsoc.Fom_Meniuri
                 Button anulare= new Button() { Text = "Anulez!", Left = 16, Width = 80, Top = 98, TabIndex = 1, TabStop = true };
                 confirmare.Click += (sender, e) => { prompt.Close(); };
                 prompt.AcceptButton = confirmare;
+                prompt.AcceptButton.DialogResult = DialogResult.Yes;
+                
                 prompt.CancelButton = anulare;
                 prompt.Controls.Add(textLabel);
                 prompt.Controls.Add(textBox);
@@ -455,19 +456,41 @@ namespace BlueSolAsoc.Fom_Meniuri
                 prompt.Controls.Add(cmbx);
                 prompt.Controls.Add(confirmare);
                 prompt.Controls.Add(anulare);
+             
+                
             
                
                 prompt.StartPosition = FormStartPosition.CenterScreen;
                 
                 DialogResult res= prompt.ShowDialog();
-                if (res==DialogResult.Cancel &&   cmbx.SelectedItem != null || textBox.Text.Length == 0)
+                
+                if (res==DialogResult.Yes )
                 {
-                    return string.Format("{0};{1}", textBox.Text, cmbx.SelectedItem.ToString());                   
-                   
+                    string tipAfisare;
+                    string data = textBox.Text;
+                    if (textBox.Text.Length == 0)
+                    {
+                        data = "19.09.1900";
+                    }
+                    
+                    if (cmbx.SelectedItem == null)
+                    {
+                        tipAfisare = "Verificare fara data";
+                    }
+                    else  tipAfisare = cmbx.SelectedItem.ToString();
+
+
+                    return string.Format("{0};{1}", data, tipAfisare);
+
+                    
+
+
+
                 }
                 else
                 {
                     return string.Format("{0};{1}", "fara data", "nimic selectat");
+
                 }
                 
 
