@@ -38,7 +38,6 @@ namespace BlueSolAsoc.Fom_Meniuri
             btnSalveaza.Hide();
             btnSterge.Hide();
             btnAnuleaza.Hide();
-            btnImprima.Hide();
            // GridAfisareConsumuri.Enabled = false;
          //   GridAfisareConsumuri.CellValidating += GridAfisareConsumuri_CellValidating;
            
@@ -180,14 +179,12 @@ namespace BlueSolAsoc.Fom_Meniuri
                 GridAfisareConsumuri.Visible = true;
                 GridAfisareConsumuri.Show();
                 lblMesajSelecteazScara.Hide();
-                btnImprima.Visible = true;
             }
             else
             {
                 PanelConsumAapartament.Hide();
                 GridAfisareConsumuri.Visible=false;
                 lblMesajSelecteazScara.Show();
-                btnImprima.Visible = false;
             }
         }
         public void reimprospateazaGridConsumuri()
@@ -450,34 +447,29 @@ namespace BlueSolAsoc.Fom_Meniuri
                 Button confirmare = new Button() { Text = "Validez selectia!", Left = 16, Width = 80, Top = 150, TabIndex = 1, TabStop = true };
                 Button anulare= new Button() { Text = "Anulez!", Left = 16, Width = 80, Top = 98, TabIndex = 1, TabStop = true };
                 confirmare.Click += (sender, e) => { prompt.Close(); };
+                prompt.AcceptButton = confirmare;
+                prompt.CancelButton = anulare;
                 prompt.Controls.Add(textLabel);
                 prompt.Controls.Add(textBox);
                 prompt.Controls.Add(selLabel);
                 prompt.Controls.Add(cmbx);
-                
-                prompt.Controls.Add(anulare);
                 prompt.Controls.Add(confirmare);
-                prompt.AcceptButton = confirmare;
-                prompt.CancelButton = anulare;
+                prompt.Controls.Add(anulare);
+            
+               
                 prompt.StartPosition = FormStartPosition.CenterScreen;
-                prompt.ShowDialog();
-                //if (cmbx.SelectedItem != null || textBox.Text.Length == 0)
-                //{
-                //    return string.Format("{0};{1}", "fara data", "nimic selectat");
-                //    // return string.Format("{0};{1}", textBox.Text, cmbx.SelectedItem.ToString());
-                //}
-                //else
-                //{
-                //    return string.Format("{0};{1}", textBox.Text, cmbx.SelectedItem.ToString());
-                //
-                if (prompt.DialogResult == DialogResult.Cancel)
+                
+                DialogResult res= prompt.ShowDialog();
+                if (res==DialogResult.Cancel &&   cmbx.SelectedItem != null || textBox.Text.Length == 0)
                 {
-                    return string.Format("{0};{1}", textBox.Text, cmbx.SelectedItem.ToString());
+                    return string.Format("{0};{1}", textBox.Text, cmbx.SelectedItem.ToString());                   
+                   
                 }
                 else
                 {
                     return string.Format("{0};{1}", "fara data", "nimic selectat");
                 }
+                
 
             }
         }
