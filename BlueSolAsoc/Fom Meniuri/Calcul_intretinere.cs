@@ -447,6 +447,8 @@ namespace BlueSolAsoc.Fom_Meniuri
                 Button confirmare = new Button() { Text = "Validez selectia!", Left = 16, Width = 80, Top = 150, TabIndex = 1, TabStop = true };
                 Button anulare= new Button() { Text = "Anulez!", Left = 16, Width = 80, Top = 98, TabIndex = 1, TabStop = true };
                 confirmare.Click += (sender, e) => { prompt.Close(); };
+                prompt.AcceptButton = confirmare;
+                prompt.CancelButton = anulare;
                 prompt.Controls.Add(textLabel);
                 prompt.Controls.Add(textBox);
                 prompt.Controls.Add(selLabel);
@@ -454,27 +456,20 @@ namespace BlueSolAsoc.Fom_Meniuri
                 prompt.Controls.Add(confirmare);
                 prompt.Controls.Add(anulare);
             
-                prompt.AcceptButton = confirmare;
-                prompt.CancelButton = anulare;
+               
                 prompt.StartPosition = FormStartPosition.CenterScreen;
-                prompt.ShowDialog();
-                if (cmbx.SelectedItem != null || textBox.Text.Length == 0)
+                
+                DialogResult res= prompt.ShowDialog();
+                if (res==DialogResult.Cancel &&   cmbx.SelectedItem != null || textBox.Text.Length == 0)
                 {
-                    return string.Format("{0};{1}", "fara data", "nimic selectat");
-                    // return string.Format("{0};{1}", textBox.Text, cmbx.SelectedItem.ToString());
+                    return string.Format("{0};{1}", textBox.Text, cmbx.SelectedItem.ToString());                   
+                   
                 }
                 else
                 {
-                    return string.Format("{0};{1}", textBox.Text, cmbx.SelectedItem.ToString());
+                    return string.Format("{0};{1}", "fara data", "nimic selectat");
                 }
-                //if (DialogResult.OK==DialogResult.OK)
-                //{
-                //    return string.Format("{0};{1}", textBox.Text, cmbx.SelectedItem.ToString());
-                //}
-                //else
-                //{
-                //    return string.Format("{0};{1}", "fara data", "nimic selectat");
-                //}
+                
 
             }
         }
