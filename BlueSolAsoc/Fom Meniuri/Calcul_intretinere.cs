@@ -1,4 +1,5 @@
 ﻿using BlueSolAsoc.butoane_si_controale;
+using CasetaDialogTag;
 using DGVPrinterHelper;
 using System;
 using System.Collections.Generic;
@@ -53,6 +54,16 @@ namespace BlueSolAsoc.Fom_Meniuri
             extrageTabelaTree();
             treeConsumuriApartament.ExpandAll();// afisarea treeului rezultat in format extins pana la nivel de scara
             PanelConsumAapartament.Hide();// ascunderea panelului ce contine gridul pentru adaugare consumuri pana este selectata o scar din tree
+                       
+           CasetaDialog.AfiseazaMesaj("afisare test", "Bluebitdata te saluta",
+                CasetaDialog.ButonMesaj.Ok,
+                CasetaDialog.ButonMesaj.Nimic,
+                CasetaDialog.ButonMesaj.Nu,
+                CasetaDialog.IconitaMesaj.Informare);
+            //if (a == DialogResult.OK)
+            //{
+            //    MessageBox.Show("te salut si eu");
+            //}
         }
         //GENERARE TABELA CU TOATE DENUMIRILE CHELTUIELILOR in tabul Genereaza tabel intretinere
         public void adaugareColoane()
@@ -450,6 +461,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                 prompt.AcceptButton.DialogResult = DialogResult.Yes;
                 
                 prompt.CancelButton = anulare;
+                prompt.CancelButton.DialogResult = DialogResult.No;
                 prompt.Controls.Add(textLabel);
                 prompt.Controls.Add(textBox);
                 prompt.Controls.Add(selLabel);
