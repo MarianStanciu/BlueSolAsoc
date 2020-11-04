@@ -549,7 +549,9 @@ namespace BlueSolAsoc.Fom_Meniuri
 
         private void butonPrintTest_Click(object sender, EventArgs e)
         {
-
+            dataGridView2.Columns[1].HeaderText = "NUMAR" + "\n" + "DOCUMENT";
+            //dataGridView2.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.BottomCenter;
+            //dataGridView2.Columns[1].HeaderCell.
             /*            //printPreviewDialog1.ShowDialog();
                         ReadDocument();
                         printPreviewDialog1.Document = printDocument1;
@@ -570,7 +572,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             printer.FooterFormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
             //printer.FooterFormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.DirectionVertical | StringFormatFlags.NoClip;
             printer.FooterColor = Color.Red;
-            printer.printDocument.DefaultPageSettings.Landscape = true;
+            printer.printDocument.DefaultPageSettings.Landscape = true;            
             printer.PrintDataGridView(dataGridView2);
             
         }
