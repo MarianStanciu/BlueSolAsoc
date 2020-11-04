@@ -131,6 +131,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Calcul_intretinereDS.xsd</DependentUpon>
     </Compile>
+    <Compile Include="CasetaDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CasetaDialog.designer.cs">
+      <DependentUpon>CasetaDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="CheltuieliDS.cs">
       <DependentUpon>CheltuieliDS.xsd</DependentUpon>
     </Compile>
@@ -248,6 +254,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="butoane si controale\ClassComboLuni.resx">
       <DependentUpon>ClassComboLuni.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CasetaDialog.resx">
+      <DependentUpon>CasetaDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreareAsociatie.resx">
       <DependentUpon>CreareAsociatie.cs</DependentUpon>
@@ -434,6 +443,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\BLUE-BIT-LOGO_FINAL_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\avertizare.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eroare.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\informare.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\intrebare.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

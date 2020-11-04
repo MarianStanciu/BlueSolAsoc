@@ -1,4 +1,6 @@
 ﻿using BlueSolAsoc.butoane_si_controale;
+using CasetaDialogTag;
+using DGVPrinterHelper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace BlueSolAsoc.Fom_Meniuri
 {
@@ -36,6 +39,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             btnSalveaza.Hide();
             btnSterge.Hide();
             btnAnuleaza.Hide();
+            btnImprima.Visible = false;
            // GridAfisareConsumuri.Enabled = false;
          //   GridAfisareConsumuri.CellValidating += GridAfisareConsumuri_CellValidating;
            
@@ -50,6 +54,16 @@ namespace BlueSolAsoc.Fom_Meniuri
             extrageTabelaTree();
             treeConsumuriApartament.ExpandAll();// afisarea treeului rezultat in format extins pana la nivel de scara
             PanelConsumAapartament.Hide();// ascunderea panelului ce contine gridul pentru adaugare consumuri pana este selectata o scar din tree
+                       
+           CasetaDialog.AfiseazaMesaj("afisare test", "Bluebitdata te saluta",
+                CasetaDialog.ButonMesaj.Ok,
+                CasetaDialog.ButonMesaj.Nimic,
+                CasetaDialog.ButonMesaj.Nu,
+                CasetaDialog.IconitaMesaj.Informare);
+            //if (a == DialogResult.OK)
+            //{
+            //    MessageBox.Show("te salut si eu");
+            //}
         }
         //GENERARE TABELA CU TOATE DENUMIRILE CHELTUIELILOR in tabul Genereaza tabel intretinere
         public void adaugareColoane()
@@ -143,44 +157,48 @@ namespace BlueSolAsoc.Fom_Meniuri
             int nId = System.Convert.ToInt16(Node.Tag);
             int val = (Int32)Calcul_intretinereDS.ReturnareValoare("select aso_id_tip from mv_detaliiOrganizatie where org_id_org=" + nId);
 
-            //adaugare tabela in dataset pentru apartamente  //TABELA DIN VIEW
-            if (!(Calcul_intretinereDS.Tables["mv_ConsumApartamente"] is null))
-            {
-                Calcul_intretinereDS.Tables.Remove("mv_ConsumApartamente");
-            }
-            Calcul_intretinereDS.getSetFrom("select * from mv_ConsumApartamente  where  id_sc =" + nId, "mv_ConsumApartamente");
             
-            GridAfisareConsumuri.DataSource = Calcul_intretinereDS.Tables["mv_ConsumApartamente"];
-            GridAfisareConsumuri.Columns["id_sc"].Visible = false;
-            GridAfisareConsumuri.Columns["id_consumuri_apartamente"].Visible = false;
-            GridAfisareConsumuri.Columns["id_apartament"].Visible = false;
-            GridAfisareConsumuri.Columns["id_tabela_luni"].Visible = false;
-            GridAfisareConsumuri.Columns["id_asociatie"].Visible = false;
-            GridAfisareConsumuri.Columns["Denumire Apartament"].HeaderText = "Apartament";
-            GridAfisareConsumuri.Columns["consum_apa_rece"].HeaderText="MC Apa Rece";
-        //    gridAfisareConsumuri.Sort(gridAfisareConsumuri.Columns["Denumire Apartament"], ListSortDirection.Descending);
-            GridAfisareConsumuri.Columns["consum_apa_calda"].HeaderText = "MC Apa Calda";
-            GridAfisareConsumuri.Columns["numar_persoane"].HeaderText = "Numar Persoane";
-            GridAfisareConsumuri.Columns["Proprietar"].HeaderText = "Nume proprietar";
-            GridAfisareConsumuri.Columns["Proprietar"].ReadOnly=true;
-            GridAfisareConsumuri.Columns["Denumire Apartament"].ReadOnly = true;
-            GridAfisareConsumuri.Columns["Denumire Apartament"].DisplayIndex = 1;
-            GridAfisareConsumuri.Columns["numar_persoane"].DisplayIndex = 2;
-            GridAfisareConsumuri.Columns["consum_apa_rece"].DisplayIndex = 3;
-            GridAfisareConsumuri.Columns["consum_apa_calda"].DisplayIndex = 4;
-            GridAfisareConsumuri.Columns["Proprietar"].DisplayIndex = 5;
-            GridAfisareConsumuri.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;      
-         
             if (val == 3)
-            {
+            {  //adaugare tabela in dataset pentru apartamente  //TABELA DIN VIEW
+                if (!(Calcul_intretinereDS.Tables["mv_ConsumApartamente"] is null))
+                {
+                    Calcul_intretinereDS.Tables.Remove("mv_ConsumApartamente");
+                }
+                Calcul_intretinereDS.getSetFrom("select * from mv_ConsumApartamente  where  id_sc =" + nId, "mv_ConsumApartamente");
+
+                GridAfisareConsumuri.DataSource = Calcul_intretinereDS.Tables["mv_ConsumApartamente"];
+                GridAfisareConsumuri.Columns["id_sc"].Visible = false;
+                GridAfisareConsumuri.Columns["id_consumuri_apartamente"].Visible = false;
+                GridAfisareConsumuri.Columns["id_apartament"].Visible = false;
+                GridAfisareConsumuri.Columns["id_tabela_luni"].Visible = false;
+                GridAfisareConsumuri.Columns["id_asociatie"].Visible = false;
+                GridAfisareConsumuri.Columns["Denumire Apartament"].HeaderText = "Apartament";
+                GridAfisareConsumuri.Columns["consum_apa_rece"].HeaderText = "MC Apa Rece";
+                //    gridAfisareConsumuri.Sort(gridAfisareConsumuri.Columns["Denumire Apartament"], ListSortDirection.Descending);
+                GridAfisareConsumuri.Columns["consum_apa_calda"].HeaderText = "MC Apa Calda";
+                GridAfisareConsumuri.Columns["numar_persoane"].HeaderText = "Numar Persoane";
+                GridAfisareConsumuri.Columns["Proprietar"].HeaderText = "Nume proprietar";
+                GridAfisareConsumuri.Columns["Proprietar"].ReadOnly = true;
+                GridAfisareConsumuri.Columns["Denumire Apartament"].ReadOnly = true;
+                GridAfisareConsumuri.Columns["Denumire Apartament"].DisplayIndex = 1;
+                GridAfisareConsumuri.Columns["numar_persoane"].DisplayIndex = 2;
+                GridAfisareConsumuri.Columns["consum_apa_rece"].DisplayIndex = 3;
+                GridAfisareConsumuri.Columns["consum_apa_calda"].DisplayIndex = 4;
+                GridAfisareConsumuri.Columns["Proprietar"].DisplayIndex = 5;
+                GridAfisareConsumuri.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
                 PanelConsumAapartament.Show();
+                GridAfisareConsumuri.Visible = true;
                 GridAfisareConsumuri.Show();
                 lblMesajSelecteazScara.Hide();
+                btnImprima.Visible = true;
             }
             else
             {
                 PanelConsumAapartament.Hide();
+                GridAfisareConsumuri.Visible=false;
                 lblMesajSelecteazScara.Show();
+                btnImprima.Visible = false;
             }
         }
         public void reimprospateazaGridConsumuri()
@@ -380,6 +398,115 @@ namespace BlueSolAsoc.Fom_Meniuri
             //{
             //    MessageBox.Show("Pentru a edita valorile din tabel apasa butonul MODIFICA !", "Informare", MessageBoxButtons.OK, MessageBoxIcon.Information);
             //}
+        }
+
+        private void MetodaDGVPrinter(ClassGridView gridView)
+        {
+            if (gridView.Columns.Count != 0 | gridView.Visible==false)
+            {
+                DGVPrinter printer = new DGVPrinter();
+                printer.TitleSpacing = 5;
+                printer.SubTitleSpacing = 5;
+                printer.Title = "LISTA INTRETINERE, ASOCIATIA:" + denumireAsociatie; //header
+                printer.SubTitle = "LUNA AFISATA:     /"+"DATA AFISARII:" + PromptForTextAndSelection.ShowDialog("BLUEBITDATA", "DATA AFISARE?", "TIP AFISARE");
+                printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
+                printer.PageNumbers = true;
+                printer.PageNumberInHeader = false;
+                printer.PorportionalColumns = false;
+                gridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+                printer.ColumnWidth = DGVPrinter.ColumnWidthSetting.DataWidth;
+                printer.HeaderCellAlignment = StringAlignment.Near;
+                printer.ColumnWidths.Add(gridView.Columns[0].Name, 10); // formatare latime colaoana 9 [denumire]
+                printer.Footer = "BlueBitData" + "\n" + "Compamie de software";// Footer   
+                printer.HeaderCellFormatFlags = StringFormatFlags.DirectionVertical | StringFormatFlags.DirectionRightToLeft;
+                printer.FooterFormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
+                printer.FooterColor = Color.Red;
+                printer.printDocument.DefaultPageSettings.Landscape = true;
+
+                printer.PrintPreviewDataGridView(gridView);// print preview           
+                                                           //printer.PrintDataGridView(gridView);// print direct
+            }
+            else
+                MessageBox.Show("NIMIC DE IMPRIMAT");
+
+
+        }
+
+        private void btnImprima_Click(object sender, EventArgs e)
+        {
+            MetodaDGVPrinter(GridAfisareConsumuri);        
+           
+        }
+
+        public static class PromptForTextAndSelection
+        {
+            public static string ShowDialog(string caption, string text, string selStr)
+            {
+                Form prompt = new Form();
+                prompt.ControlBox = false;
+                prompt.Width = 400;
+                prompt.Height = 360;
+                prompt.Text = caption;
+                Label textLabel = new Label() { Left = 16, Top = 20, Width = 240, Text = text };
+                TextBox textBox = new TextBox() { Left = 16, Top = 40, Width = 240, TabIndex = 0, TabStop = true };
+                Label selLabel = new Label() { Left = 16, Top = 66, Width = 88, Text = selStr };
+                ComboBox cmbx = new ComboBox() { Left = 112, Top = 64, Width = 144 };
+                cmbx.Items.Add("Verificare");
+                cmbx.Items.Add("Afisare Definitiva");
+                cmbx.Items.Add("Imprimare Test");
+                Button confirmare = new Button() { Text = "Validez selectia!", Left = 16, Width = 80, Top = 150, TabIndex = 1, TabStop = true };
+                Button anulare= new Button() { Text = "Anulez!", Left = 16, Width = 80, Top = 98, TabIndex = 1, TabStop = true };
+                confirmare.Click += (sender, e) => { prompt.Close(); };
+                prompt.AcceptButton = confirmare;
+                prompt.AcceptButton.DialogResult = DialogResult.Yes;
+                
+                prompt.CancelButton = anulare;
+                prompt.CancelButton.DialogResult = DialogResult.No;
+                prompt.Controls.Add(textLabel);
+                prompt.Controls.Add(textBox);
+                prompt.Controls.Add(selLabel);
+                prompt.Controls.Add(cmbx);
+                prompt.Controls.Add(confirmare);
+                prompt.Controls.Add(anulare);
+             
+                
+            
+               
+                prompt.StartPosition = FormStartPosition.CenterScreen;
+                
+                DialogResult res= prompt.ShowDialog();
+                
+                if (res==DialogResult.Yes )
+                {
+                    string tipAfisare;
+                    string data = textBox.Text;
+                    if (textBox.Text.Length == 0)
+                    {
+                        data = "19.09.1900";
+                    }
+                    
+                    if (cmbx.SelectedItem == null)
+                    {
+                        tipAfisare = "Verificare fara data";
+                    }
+                    else  tipAfisare = cmbx.SelectedItem.ToString();
+
+
+                    return string.Format("{0};{1}", data, tipAfisare);
+
+                    
+
+
+
+                }
+                else
+                {
+                    return string.Format("{0};{1}", "fara data", "nimic selectat");
+
+                }
+                
+
+            }
         }
     }
 }

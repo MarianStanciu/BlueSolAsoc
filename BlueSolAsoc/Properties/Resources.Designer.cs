@@ -63,6 +63,16 @@ namespace BlueSolAsoc.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap avertizare {
+            get {
+                object obj = ResourceManager.GetObject("avertizare", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BLUE_BIT_LOGO_FINAL_1 {
             get {
                 object obj = ResourceManager.GetObject("BLUE-BIT-LOGO_FINAL_1", resourceCulture);
@@ -73,9 +83,39 @@ namespace BlueSolAsoc.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap eroare {
+            get {
+                object obj = ResourceManager.GetObject("eroare", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconfinder_Artboard_26_3741736 {
             get {
                 object obj = ResourceManager.GetObject("iconfinder_Artboard_26_3741736", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap informare {
+            get {
+                object obj = ResourceManager.GetObject("informare", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap intrebare {
+            get {
+                object obj = ResourceManager.GetObject("intrebare", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
