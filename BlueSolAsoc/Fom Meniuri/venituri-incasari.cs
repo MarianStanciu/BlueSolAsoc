@@ -177,18 +177,18 @@ namespace BlueSolAsoc.Fom_Meniuri
         }
         private void dataGridView2_Paint(object sender, PaintEventArgs e)
         {
-            Rectangle r1 = dataGridView2.GetCellDisplayRectangle(1, -1, true);
-            int w2 = dataGridView2.GetCellDisplayRectangle(-2, -1, true).Width;
-            r1.X += 1;
-            r1.Y += 1;
-            r1.Width = r1.Width + w2 - 2;
-            r1.Height = r1.Height / 2 - 2;
-            e.Graphics.FillRectangle(new SolidBrush(dataGridView2.ColumnHeadersDefaultCellStyle.BackColor), r1);
+            //Rectangle r1 = dataGridView2.GetCellDisplayRectangle(1, -1, true);
+            //int w2 = dataGridView2.GetCellDisplayRectangle(-2, -1, true).Width;
+            //r1.X += 1;
+            //r1.Y += 1;
+            //r1.Width = r1.Width + w2 - 2;
+            //r1.Height = r1.Height / 2 - 2;
+            //e.Graphics.FillRectangle(new SolidBrush(dataGridView2.ColumnHeadersDefaultCellStyle.BackColor), r1);
 
-            StringFormat format = new StringFormat();
-            format.Alignment = StringAlignment.Center;
-            format.LineAlignment = StringAlignment.Center;
-            e.Graphics.DrawString("Header principal",dataGridView2.ColumnHeadersDefaultCellStyle.Font,new SolidBrush(dataGridView2.ColumnHeadersDefaultCellStyle.ForeColor),r1,format);
+            //StringFormat format = new StringFormat();
+            //format.Alignment = StringAlignment.Center;
+            //format.LineAlignment = StringAlignment.Center;
+            //e.Graphics.DrawString("Header principal",dataGridView2.ColumnHeadersDefaultCellStyle.Font,new SolidBrush(dataGridView2.ColumnHeadersDefaultCellStyle.ForeColor),r1,format);
 
         }
 
