@@ -417,7 +417,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                 printer.ColumnWidth = DGVPrinter.ColumnWidthSetting.DataWidth;
                 printer.HeaderCellAlignment = StringAlignment.Near;
                 printer.ColumnWidths.Add(gridView.Columns[0].Name, 10); // formatare latime colaoana 9 [denumire]
-                printer.Footer = "BlueBitData" + "\n" + "Compamie de software";// Footer   
+                printer.Footer = "BlueBitData" + "\n" + "Companie de software";// Footer   
                 printer.HeaderCellFormatFlags = StringFormatFlags.DirectionVertical | StringFormatFlags.DirectionRightToLeft;
                 printer.FooterFormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
                 printer.FooterColor = Color.Red;
@@ -438,7 +438,7 @@ namespace BlueSolAsoc.Fom_Meniuri
 
             if (verificare== "fara data;nimic selectat")
             {
-                MessageBox.Show("anulare imprimare");
+                MessageBox.Show("Imprimare anulata!");
             }
             else
             {
