@@ -1094,7 +1094,7 @@ namespace BlueSolAsoc.DataSetVenituriIncasariTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::BlueSolAsoc.Properties.Settings.Default.proba_transareConnectionString;
+            this._connection.ConnectionString = global::BlueSolAsoc.Properties.Settings.Default.colectie_asocConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

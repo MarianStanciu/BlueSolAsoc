@@ -41,7 +41,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.labelIstoric = new System.Windows.Forms.Label();
             this.dataGridView2 = new BlueSolAsoc.butoane_si_controale.ClassGridView();
             this.mvIstoricDocumenteBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.proba_transareDataSet3 = new BlueSolAsoc.proba_transareDataSet3();
+            this.colectie_asocDataSet3 = new BlueSolAsoc.colectie_asocDataSet3();
             this.dataGridView1 = new BlueSolAsoc.butoane_si_controale.ClassGridView();
             this.aidantetDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.anrdocDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,20 +75,20 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.dataGridDreapta = new System.Windows.Forms.DataGridView();
             this.dataSetVenituriIncasari1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabelapozitiiBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.proba_transareDataSet1 = new BlueSolAsoc.proba_transareDataSet1();
+            this.colectie_asocDataSet1 = new BlueSolAsoc.colectie_asocDataSet1();
             this.tabelaantetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.proba_transareDataSet = new BlueSolAsoc.proba_transareDataSet();
+            this.colectie_asocDataSet = new BlueSolAsoc.colectie_asocDataSet();
             this.tabelaintretinereBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tabela_intretinereTableAdapter = new BlueSolAsoc.proba_transareDataSetTableAdapters.tabela_intretinereTableAdapter();
-            this.tabela_antetTableAdapter = new BlueSolAsoc.proba_transareDataSet1TableAdapters.tabela_antetTableAdapter();
-            this.tabela_pozitiiTableAdapter = new BlueSolAsoc.proba_transareDataSet1TableAdapters.tabela_pozitiiTableAdapter();
+            this.tabela_intretinereTableAdapter = new BlueSolAsoc.colectie_asocDataSetTableAdapters.tabela_intretinereTableAdapter();
+            this.tabela_antetTableAdapter = new BlueSolAsoc.colectie_asocDataSet1TableAdapters.tabela_antetTableAdapter();
+            this.tabela_pozitiiTableAdapter = new BlueSolAsoc.colectie_asocDataSet1TableAdapters.tabela_pozitiiTableAdapter();
             this.pnlControale = new System.Windows.Forms.Panel();
             this.btnAnuleaza = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
             this.classButonInteriorSterge1 = new BlueSolAsoc.butoane_si_controale.ClassButonInteriorSterge();
             this.classButonModifica1 = new BlueSolAsoc.butoane_si_controale.ClassButonModifica();
             this.mv_DocumenteTableAdapter = new BlueSolAsoc.DataSetVenituriIncasariTableAdapters.mv_DocumenteTableAdapter();
-            this.mv_IstoricDocumenteTableAdapter = new BlueSolAsoc.proba_transareDataSet3TableAdapters.mv_IstoricDocumenteTableAdapter();
+            this.mv_IstoricDocumenteTableAdapter = new BlueSolAsoc.colectie_asocDataSet3TableAdapters.mv_IstoricDocumenteTableAdapter();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -105,7 +105,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.tabPageChitante.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvIstoricDocumenteBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.proba_transareDataSet3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colectie_asocDataSet3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvDocumenteBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetVenituriIncasari1)).BeginInit();
@@ -113,9 +113,9 @@ namespace BlueSolAsoc.Fom_Meniuri
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDreapta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetVenituriIncasari1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabelapozitiiBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.proba_transareDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colectie_asocDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabelaantetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.proba_transareDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colectie_asocDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabelaintretinereBindingSource)).BeginInit();
             this.pnlControale.SuspendLayout();
             this.SuspendLayout();
@@ -237,12 +237,12 @@ namespace BlueSolAsoc.Fom_Meniuri
             // mvIstoricDocumenteBindingSource
             // 
             this.mvIstoricDocumenteBindingSource.DataMember = "mv_IstoricDocumente";
-            this.mvIstoricDocumenteBindingSource.DataSource = this.proba_transareDataSet3;
+            this.mvIstoricDocumenteBindingSource.DataSource = this.colectie_asocDataSet3;
             // 
-            // proba_transareDataSet3
+            // colectie_asocDataSet3
             // 
-            this.proba_transareDataSet3.DataSetName = "proba_transareDataSet3";
-            this.proba_transareDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.colectie_asocDataSet3.DataSetName = "colectie_asocDataSet3";
+            this.colectie_asocDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // dataGridView1
             // 
@@ -569,27 +569,27 @@ namespace BlueSolAsoc.Fom_Meniuri
             // tabelapozitiiBindingSource
             // 
             this.tabelapozitiiBindingSource.DataMember = "tabela_pozitii";
-            this.tabelapozitiiBindingSource.DataSource = this.proba_transareDataSet1;
+            this.tabelapozitiiBindingSource.DataSource = this.colectie_asocDataSet1;
             // 
-            // proba_transareDataSet1
+            // colectie_asocDataSet1
             // 
-            this.proba_transareDataSet1.DataSetName = "proba_transareDataSet1";
-            this.proba_transareDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.colectie_asocDataSet1.DataSetName = "colectie_asocDataSet1";
+            this.colectie_asocDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // tabelaantetBindingSource
             // 
             this.tabelaantetBindingSource.DataMember = "tabela_antet";
-            this.tabelaantetBindingSource.DataSource = this.proba_transareDataSet1;
+            this.tabelaantetBindingSource.DataSource = this.colectie_asocDataSet1;
             // 
-            // proba_transareDataSet
+            // colectie_asocDataSet
             // 
-            this.proba_transareDataSet.DataSetName = "proba_transareDataSet";
-            this.proba_transareDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.colectie_asocDataSet.DataSetName = "colectie_asocDataSet";
+            this.colectie_asocDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // tabelaintretinereBindingSource
             // 
             this.tabelaintretinereBindingSource.DataMember = "tabela_intretinere";
-            this.tabelaintretinereBindingSource.DataSource = this.proba_transareDataSet;
+            this.tabelaintretinereBindingSource.DataSource = this.colectie_asocDataSet;
             // 
             // tabela_intretinereTableAdapter
             // 
@@ -803,7 +803,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.tabPageChitante.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvIstoricDocumenteBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.proba_transareDataSet3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colectie_asocDataSet3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvDocumenteBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetVenituriIncasari1)).EndInit();
@@ -811,9 +811,9 @@ namespace BlueSolAsoc.Fom_Meniuri
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDreapta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetVenituriIncasari1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabelapozitiiBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.proba_transareDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colectie_asocDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabelaantetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.proba_transareDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colectie_asocDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabelaintretinereBindingSource)).EndInit();
             this.pnlControale.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -834,15 +834,15 @@ namespace BlueSolAsoc.Fom_Meniuri
         private System.Windows.Forms.TextBox textBoxApartamente;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DataGridView dataGridDreapta;
-        private proba_transareDataSet proba_transareDataSet;
+        private colectie_asocDataSet colectie_asocDataSet;
         private System.Windows.Forms.BindingSource tabelaintretinereBindingSource;
-        private proba_transareDataSetTableAdapters.tabela_intretinereTableAdapter tabela_intretinereTableAdapter;
+        private colectie_asocDataSetTableAdapters.tabela_intretinereTableAdapter tabela_intretinereTableAdapter;
         private System.Windows.Forms.Button button1;
-        private proba_transareDataSet1 proba_transareDataSet1;
+        private colectie_asocDataSet1 colectie_asocDataSet1;
         private System.Windows.Forms.BindingSource tabelaantetBindingSource;
-        private proba_transareDataSet1TableAdapters.tabela_antetTableAdapter tabela_antetTableAdapter;
+        private colectie_asocDataSet1TableAdapters.tabela_antetTableAdapter tabela_antetTableAdapter;
         private System.Windows.Forms.BindingSource tabelapozitiiBindingSource;
-        private proba_transareDataSet1TableAdapters.tabela_pozitiiTableAdapter tabela_pozitiiTableAdapter;
+        private colectie_asocDataSet1TableAdapters.tabela_pozitiiTableAdapter tabela_pozitiiTableAdapter;
         private System.Windows.Forms.TextBox TextBoxPret;
         private System.Windows.Forms.BindingSource dataSetVenituriIncasari1BindingSource;
         private DataSetVenituriIncasari dataSetVenituriIncasari1;
@@ -871,9 +871,9 @@ namespace BlueSolAsoc.Fom_Meniuri
         private System.Windows.Forms.DataGridViewTextBoxColumn aidtemporarDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn aidorgDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn aidasociereDataGridViewTextBoxColumn;
-        private proba_transareDataSet3 proba_transareDataSet3;
+        private colectie_asocDataSet3 colectie_asocDataSet3;
         private System.Windows.Forms.BindingSource mvIstoricDocumenteBindingSource;
-        private proba_transareDataSet3TableAdapters.mv_IstoricDocumenteTableAdapter mv_IstoricDocumenteTableAdapter;
+        private colectie_asocDataSet3TableAdapters.mv_IstoricDocumenteTableAdapter mv_IstoricDocumenteTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn idantetDataGridViewTextBoxColumn;
         private ClassButon butonPrintTest;
         private ClassButon exportBtn;
