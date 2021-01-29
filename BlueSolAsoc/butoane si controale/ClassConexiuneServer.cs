@@ -14,8 +14,8 @@ namespace BlueSolAsoc.butoane_si_controale
 
     {
         private static SqlConnection con = null;
-        private static string sirConectare;
-       // private static string sirConectare = @"Data Source = 82.208.137.149\sqlexpress, 8833; Initial Catalog = colectie_asoc; Persist Security Info = True; User ID = sa; Password = pro";
+       // private static string sirConectare;
+        private static string sirConectare = @"Data Source = 82.208.137.149\sqlexpress, 8833; Initial Catalog = colectie_asoc; Persist Security Info = True; User ID = sa; Password = pro";
 
         public static void ConectareDedicata()
         {

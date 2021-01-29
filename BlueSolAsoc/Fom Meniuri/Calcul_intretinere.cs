@@ -19,6 +19,7 @@ namespace BlueSolAsoc.Fom_Meniuri
     public partial class Calcul_intretinere : FormBluebit
     {
         ClassDataSet Calcul_intretinereDS = new ClassDataSet();
+        ClassDataSet Calcul_intretinere_finalDS = new ClassDataSet();
         private string denumireAsociatie;
         private int idAsociatie;
 
@@ -68,17 +69,37 @@ namespace BlueSolAsoc.Fom_Meniuri
         //GENERARE TABELA CU TOATE DENUMIRILE CHELTUIELILOR in tabul Genereaza tabel intretinere
         public void adaugareColoane()
         {
-            if (!(Calcul_intretinereDS.Tables["denumiri_cheltuieli"] is null))
+            if (!(Calcul_intretinere_finalDS.Tables["denumiri_cheltuieli"] is null))
             {
-                Calcul_intretinereDS.Tables.Remove("denumiri_cheltuieli");
+                Calcul_intretinere_finalDS.Tables.Remove("denumiri_cheltuieli");
             }
-            Calcul_intretinereDS.getSetFrom("select * from tabela_asocieri_tipuri where id_tip=15 ", "denumiri_cheltuieli");
-            foreach (DataRow r in Calcul_intretinereDS.Tables["denumiri_cheltuieli"].Rows)
+
+            Calcul_intretinere_finalDS.getSetFrom("exec mp_getCalculIntretinere " + idAsociatie, "denumiri_cheltuieli");
+            foreach (DataRow r in Calcul_intretinere_finalDS.Tables["denumiri_cheltuieli"].Rows)
             {
                 TreeNode node = new TreeNode(r["val_label"].ToString());
                 treeColoane.Nodes.Add(node);
 
             }
+
+
+            /* if (!(Calcul_intretinereDS.Tables["denumiri_cheltuieli"] is null))
+             {
+                 Calcul_intretinereDS.Tables.Remove("denumiri_cheltuieli");
+             }
+             // Calcul_intretinereDS.getSetFrom("select * from tabela_asocieri_tipuri where id_tip=15 ", "denumiri_cheltuieli");
+             Calcul_intretinereDS.getSetFrom("exec mp_getCalculIntretinere, "+idAsociatie, "denumiri_cheltuieli");
+             foreach (DataRow r in Calcul_intretinereDS.Tables["denumiri_cheltuieli"].Rows)
+             {
+                 TreeNode node = new TreeNode(r["val_label"].ToString());
+                 treeColoane.Nodes.Add(node);
+
+             }   */
+
+
+
+
+
 
         }
         // BUTONUL CARE GENEREAZA GRIDVIEW PE BAZA SELECTIEI DIN TREE in tabul Genereaza tabel intretinere
