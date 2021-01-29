@@ -75,6 +75,7 @@ namespace BlueSolAsoc.Fom_Meniuri
         //GENERARE TABELA CU TOATE DENUMIRILE CHELTUIELILOR in tabul Genereaza tabel intretinere
         public void adaugareColoane()
         {
+
             if (!(Calcul_intretinereDS.Tables["denumiri_cheltuieli1"] is null))
             {
                 Calcul_intretinereDS.Tables.Remove("denumiri_cheltuieli1");
@@ -110,7 +111,34 @@ namespace BlueSolAsoc.Fom_Meniuri
         // BUTONUL CARE GENEREAZA GRIDVIEW PE BAZA SELECTIEI DIN TREE in tabul Genereaza tabel intretinere
         private void GenereazaTabel_Click(object sender, EventArgs e)
         {
-            GridCalculIntretinere.Columns.Clear();
+            //GridCalculIntretinere.Columns.Clear();
+            DataColumnCollection col = this.StructuraColoane("denumiri_cheltuieli1");
+            GridCalculIntretinere.DataSource=Calcul_intretinereDS.Tables["denumiri_cheltuieli1"];
+            for (int i=0; i< Calcul_intretinereDS.Tables["denumiri_cheltuieli1"].Columns.Count; i++)
+            {
+                string NumeColoanaGrid = col[i].ColumnName;
+                foreach (TreeNode node in treeColoane.Nodes)
+                {
+                    //TreeNode tn = treeColoane.SelectedNode;
+                    string numeColoana = node.Text.Trim();
+                    string headerColoana = node.Text.Trim();
+                    //if (tn && NumeColoanaGrid==numeColoana)
+                    if (node.Checked && NumeColoanaGrid==numeColoana)
+                    {
+                        GridCalculIntretinere.Columns[i].Visible=false;
+                      
+                    }
+                    if (!(node.Checked) && NumeColoanaGrid==numeColoana)
+                    {
+                        GridCalculIntretinere.Columns[i].Visible = true;
+                    }
+                }
+            }
+
+
+            /* GridCalculIntretinere.Columns.Clear();
+             
+              GridCalculIntretinere.Columns.Clear();
 
             foreach (TreeNode node in treeColoane.Nodes)
             {
@@ -131,6 +159,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                 GridCalculIntretinere.Rows.Add();
             }
 
+             */
         }
 
 
