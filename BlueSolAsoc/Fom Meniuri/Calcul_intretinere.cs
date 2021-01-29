@@ -69,13 +69,13 @@ namespace BlueSolAsoc.Fom_Meniuri
         //GENERARE TABELA CU TOATE DENUMIRILE CHELTUIELILOR in tabul Genereaza tabel intretinere
         public void adaugareColoane()
         {
-            if (!(Calcul_intretinere_finalDS.Tables["denumiri_cheltuieli"] is null))
+            if (!(Calcul_intretinereDS.Tables["denumiri_cheltuieli1"] is null))
             {
-                Calcul_intretinere_finalDS.Tables.Remove("denumiri_cheltuieli");
+                Calcul_intretinereDS.Tables.Remove("denumiri_cheltuieli1");
             }
-
-            Calcul_intretinere_finalDS.getSetFrom("exec mp_getCalculIntretinere " + idAsociatie, "denumiri_cheltuieli");
-            foreach (DataRow r in Calcul_intretinere_finalDS.Tables["denumiri_cheltuieli"].Rows)
+            // Calcul_intretinereDS.getSetFrom("select * from tabela_asocieri_tipuri where id_tip=15 ", "denumiri_cheltuieli1");
+            Calcul_intretinereDS.getSetFrom("exec mp_getCalculIntretinere " + idAsociatie, "denumiri_cheltuieli1");
+            foreach (DataRow r in Calcul_intretinereDS.Tables["denumiri_cheltuieli1"].Rows)
             {
                 TreeNode node = new TreeNode(r["val_label"].ToString());
                 treeColoane.Nodes.Add(node);
@@ -83,25 +83,11 @@ namespace BlueSolAsoc.Fom_Meniuri
             }
 
 
-            /* if (!(Calcul_intretinereDS.Tables["denumiri_cheltuieli"] is null))
-             {
-                 Calcul_intretinereDS.Tables.Remove("denumiri_cheltuieli");
-             }
-             // Calcul_intretinereDS.getSetFrom("select * from tabela_asocieri_tipuri where id_tip=15 ", "denumiri_cheltuieli");
-             Calcul_intretinereDS.getSetFrom("exec mp_getCalculIntretinere, "+idAsociatie, "denumiri_cheltuieli");
-             foreach (DataRow r in Calcul_intretinereDS.Tables["denumiri_cheltuieli"].Rows)
-             {
-                 TreeNode node = new TreeNode(r["val_label"].ToString());
-                 treeColoane.Nodes.Add(node);
-
-             }   */
-
-
-
-
-
-
         }
+
+
+
+        
         // BUTONUL CARE GENEREAZA GRIDVIEW PE BAZA SELECTIEI DIN TREE in tabul Genereaza tabel intretinere
         private void GenereazaTabel_Click(object sender, EventArgs e)
         {
