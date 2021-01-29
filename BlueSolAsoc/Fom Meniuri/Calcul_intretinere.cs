@@ -19,7 +19,7 @@ namespace BlueSolAsoc.Fom_Meniuri
     public partial class Calcul_intretinere : FormBluebit
     {
         ClassDataSet Calcul_intretinereDS = new ClassDataSet();
-        ClassDataSet Calcul_intretinere_finalDS = new ClassDataSet();
+       
         private string denumireAsociatie;
         private int idAsociatie;
 
@@ -66,6 +66,12 @@ namespace BlueSolAsoc.Fom_Meniuri
             //    MessageBox.Show("te salut si eu");
             //}
         }
+
+        public DataColumnCollection StructuraColoane(string sTabelLucru)
+        {
+            DataColumnCollection coloane = Calcul_intretinereDS.Tables[sTabelLucru].Columns;
+            return coloane;
+        }
         //GENERARE TABELA CU TOATE DENUMIRILE CHELTUIELILOR in tabul Genereaza tabel intretinere
         public void adaugareColoane()
         {
@@ -75,9 +81,10 @@ namespace BlueSolAsoc.Fom_Meniuri
             }
             // Calcul_intretinereDS.getSetFrom("select * from tabela_asocieri_tipuri where id_tip=15 ", "denumiri_cheltuieli1");
             Calcul_intretinereDS.getSetFrom("exec mp_getCalculIntretinere " + idAsociatie, "denumiri_cheltuieli1");
-            foreach (DataRow r in Calcul_intretinereDS.Tables["denumiri_cheltuieli1"].Rows)
+            DataColumnCollection col = this.StructuraColoane("denumiri_cheltuieli1");
+            for (int i = 0; i < col.Count; i++)
             {
-                TreeNode node = new TreeNode(r["Canalizare"].ToString());
+                TreeNode node = new TreeNode(col[i].ToString());
                 treeColoane.Nodes.Add(node);
 
             }
