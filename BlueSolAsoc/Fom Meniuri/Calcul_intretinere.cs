@@ -40,7 +40,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             btnSalveaza.Hide();
             btnSterge.Hide();
             btnAnuleaza.Hide();
-            btnImprima.Visible = false;
+            btnImprima.Visible = true;
            // GridAfisareConsumuri.Enabled = false;
          //   GridAfisareConsumuri.CellValidating += GridAfisareConsumuri_CellValidating;
            
@@ -246,14 +246,14 @@ namespace BlueSolAsoc.Fom_Meniuri
                 GridAfisareConsumuri.Visible = true;
                 GridAfisareConsumuri.Show();
                 lblMesajSelecteazScara.Hide();
-                btnImprima.Visible = true;
+                //btnImprima.Visible = true;
             }
             else
             {
                 PanelConsumAapartament.Hide();
                 GridAfisareConsumuri.Visible=false;
                 lblMesajSelecteazScara.Show();
-                btnImprima.Visible = false;
+               // btnImprima.Visible = false;
             }
         }
         public void reimprospateazaGridConsumuri()
@@ -471,7 +471,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                 gridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                 printer.ColumnWidth = DGVPrinter.ColumnWidthSetting.DataWidth;
                 printer.HeaderCellAlignment = StringAlignment.Near;
-                printer.ColumnWidths.Add(gridView.Columns[0].Name, 10); // formatare latime colaoana 9 [denumire]
+                printer.ColumnWidths.Add(gridView.Columns[0].Name, 30); // formatare latime colaoana 9 [denumire]
                 printer.Footer = "BlueBitData" + "\n" + "Companie de software";// Footer   
                 printer.HeaderCellFormatFlags = StringFormatFlags.DirectionVertical | StringFormatFlags.DirectionRightToLeft;
                 printer.FooterFormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
@@ -497,7 +497,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             }
             else
             {
-                MetodaDGVPrinter(GridAfisareConsumuri, verificare);
+                MetodaDGVPrinter(GridCalculIntretinere, verificare);
                 
             }
         }
