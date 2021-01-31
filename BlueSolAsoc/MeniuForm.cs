@@ -22,13 +22,14 @@ namespace BlueSolAsoc
         string sNumeMeniu = "";
         int ultimaluna;
         int ultimulan;
-
+        readonly string sLunaActivaMF;
 
         public MeniuForm(string denumireAsociatieString, int id)
         {
             InitializeComponent();
             timer1.Start();
 
+            sLunaActivaMF = lblLunaCurenta.Text;
 
             PopulareMeniuPrincipal(meniuPrincipal);
             denumireAsociatie = denumireAsociatieString;
@@ -135,6 +136,13 @@ namespace BlueSolAsoc
                         }*/
 
         }
+        
+            
+        public string GetLunaCurenta()
+        {
+            return lblLunaCurenta.Text;
+        }
+        
         public string GetDenumireAsociatie()
         {
             return this.denumireAsociatie;
@@ -332,7 +340,7 @@ namespace BlueSolAsoc
                         }
                         else
                         {
-                            DeschidePanelMama(new Calcul_intretinere(this.denumireAsociatie, this.idAsociatie));
+                            DeschidePanelMama(new Calcul_intretinere(this.denumireAsociatie, this.idAsociatie, GetLunaCurenta() ));
                             //Form Calcul_intretinere = new Calcul_intretinere();
                             //Calcul_intretinere.Show();
                         }

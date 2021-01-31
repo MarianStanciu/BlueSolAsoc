@@ -20,17 +20,18 @@ namespace BlueSolAsoc.Fom_Meniuri
     {
         ClassDataSet Calcul_intretinereDS = new ClassDataSet();
        
-        private string denumireAsociatie;
+        private string denumireAsociatie ;
         private int idAsociatie;
-
+        public string sLunaActiva;
         public Calcul_intretinere()        
         {
             InitializeComponent();
         }
        
-            public Calcul_intretinere(string denumireAsociatie, int idAsociatie)
+            public Calcul_intretinere(string denumireAsociatie, int idAsociatie, string lunaActiva)
         {
             InitializeComponent();
+            this.sLunaActiva = lunaActiva;
             this.denumireAsociatie = denumireAsociatie;
             this.idAsociatie = idAsociatie;
             GridAfisareConsumuri.CellEndEdit += gridAfisareConsumuri_CellEndEdit;
@@ -365,6 +366,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             }            
         }
 
+
         private void MetodaDGVPrinter(ClassGridView gridView, string sDataTip)
         {
             if (gridView.Columns.Count != 0 | gridView.Visible==false)
@@ -373,7 +375,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                 printer.TitleSpacing = 5;
                 printer.SubTitleSpacing = 5;
                 printer.Title = "LISTA INTRETINERE, ASOCIATIA:" + denumireAsociatie; //header
-                printer.SubTitle = "LUNA AFISATA:     /"+"DATA AFISARII:" +sDataTip;
+                printer.SubTitle = "LUNA AFISATA: "+ sLunaActiva +  "| DATA AFISARII: " +sDataTip;
                 printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
                 printer.PageNumbers = true;
                 printer.PageNumberInHeader = false;
