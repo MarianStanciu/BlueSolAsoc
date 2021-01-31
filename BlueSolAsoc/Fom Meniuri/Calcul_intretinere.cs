@@ -41,12 +41,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             btnSterge.Hide();
             btnAnuleaza.Hide();
             btnImprima.Visible = true;
-           // GridAfisareConsumuri.Enabled = false;
-         //   GridAfisareConsumuri.CellValidating += GridAfisareConsumuri_CellValidating;
-           
-        }
-
-       
+        }      
 
         protected override void OnLoad(EventArgs e)
         {
@@ -61,10 +56,6 @@ namespace BlueSolAsoc.Fom_Meniuri
                 CasetaDialog.ButonMesaj.Nimic,
                 CasetaDialog.ButonMesaj.Nu,
                 CasetaDialog.IconitaMesaj.Informare);
-            //if (a == DialogResult.OK)
-            //{
-            //    MessageBox.Show("te salut si eu");
-            //}
         }
 
         public DataColumnCollection StructuraColoane(string sTabelLucru)
@@ -72,7 +63,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             DataColumnCollection coloane = Calcul_intretinereDS.Tables[sTabelLucru].Columns;
             return coloane;
         }
-        //GENERARE TABELA CU TOATE DENUMIRILE CHELTUIELILOR in tabul Genereaza tabel intretinere
+        //GENERARE TABELA CU TOATE DENUMIRILE CHELTUIELILOR SI ADAUGAREA LOR IN TREE  in tabul Genereaza tabel intretinere
         public void adaugareColoane()
         {
 
@@ -87,46 +78,24 @@ namespace BlueSolAsoc.Fom_Meniuri
             {
                 TreeNode node = new TreeNode(col[i].ToString());
                 treeColoane.Nodes.Add(node);
-
-            }
-            /*
-              if (!(Calcul_intretinereDS.Tables["denumiri_cheltuieli1"] is null))
-            {
-                Calcul_intretinereDS.Tables.Remove("denumiri_cheltuieli1");
-            }
-            // Calcul_intretinereDS.getSetFrom("select * from tabela_asocieri_tipuri where id_tip=15 ", "denumiri_cheltuieli1");
-            Calcul_intretinereDS.getSetFrom("exec mp_getCalculIntretinere " + idAsociatie, "denumiri_cheltuieli1");
-            foreach (DataRow r in Calcul_intretinereDS.Tables["denumiri_cheltuieli1"].Rows)
-            {
-                TreeNode node = new TreeNode(r["val_label"].ToString());
-                treeColoane.Nodes.Add(node);
-
-            }
-            */
+            }           
         }
 
-
-
-
-        // BUTONUL CARE GENEREAZA GRIDVIEW PE BAZA SELECTIEI DIN TREE in tabul Genereaza tabel intretinere
+        // METODA CARE GENEREAZA GRIDVIEW PE BAZA SELECTIEI DIN TREE in tabul Genereaza tabel intretinere
         private void GenereazaTabel_Click(object sender, EventArgs e)
         {
-            //GridCalculIntretinere.Columns.Clear();
             DataColumnCollection col = this.StructuraColoane("denumiri_cheltuieli1");
             GridCalculIntretinere.DataSource=Calcul_intretinereDS.Tables["denumiri_cheltuieli1"];
             for (int i=0; i< Calcul_intretinereDS.Tables["denumiri_cheltuieli1"].Columns.Count; i++)
             {
                 string NumeColoanaGrid = col[i].ColumnName;
                 foreach (TreeNode node in treeColoane.Nodes)
-                {
-                    //TreeNode tn = treeColoane.SelectedNode;
+                {               
                     string numeColoana = node.Text.Trim();
                     string headerColoana = node.Text.Trim();
-                    //if (tn && NumeColoanaGrid==numeColoana)
                     if (node.Checked && NumeColoanaGrid==numeColoana)
                     {
-                        GridCalculIntretinere.Columns[i].Visible=false;
-                      
+                        GridCalculIntretinere.Columns[i].Visible=false;                      
                     }
                     if (!(node.Checked) && NumeColoanaGrid==numeColoana)
                     {
@@ -134,34 +103,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                     }
                 }
             }
-
-
-            /* GridCalculIntretinere.Columns.Clear();
-             
-              GridCalculIntretinere.Columns.Clear();
-
-            foreach (TreeNode node in treeColoane.Nodes)
-            {
-                string numeColoana = node.Text.Trim();
-                string headerColoana = node.Text.Trim();
-
-                if (node.Checked)
-                {
-                    if (GridCalculIntretinere.Columns[numeColoana] == null)
-                    {
-                        GridCalculIntretinere.Columns.Add(numeColoana, headerColoana);
-                    }
-                }
-
-            }
-            if (GridCalculIntretinere.Columns.Count > 0)
-            {
-                GridCalculIntretinere.Rows.Add();
-            }
-
-             */
         }
-
 
         // CREARE TABELA -  TREE PENTRU ADAUGARE INFORMATII PENTRU APARTAMENT in tabul adaugare consumuri apartament
         private void extrageTabelaTree()
@@ -188,10 +130,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                 int idOrgCopil = (int)rand["org_id_org"];
                 string valoare_copil = rand["org_valoare"].ToString();
                 GetTreeItemsNou(idOrgCopil, valoare_copil, copil.Nodes);
-            }
-
-        // metoda care selecteaza apartamentele asociate unei scari din tree
-
+            }                   
         }
 
         private void treeConsumuriApartament_AfterSelect(object sender, TreeViewEventArgs e)
@@ -307,9 +246,7 @@ namespace BlueSolAsoc.Fom_Meniuri
         private void Calcul_intretinere_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'calcul_intretinereDS1.mv_ConsumApartamente' table. You can move, or remove it, as needed.
-            this.mv_ConsumApartamenteTableAdapter.Fill(this.calcul_intretinereDS1.mv_ConsumApartamente);
-          
-
+            this.mv_ConsumApartamenteTableAdapter.Fill(this.calcul_intretinereDS1.mv_ConsumApartamente);        
         }
 
         private void btnModifica_Click(object sender, EventArgs e)
@@ -320,18 +257,14 @@ namespace BlueSolAsoc.Fom_Meniuri
                     treeConsumuriApartament.Enabled = false;
                     btnModifica.Hide();
                     btnSalveaza.Show();
-                    btnAnuleaza.Show();
-                  
+                    btnAnuleaza.Show();                  
                     GridAfisareConsumuri.Enabled = true;
-
                         break;
-
                 case "Genereaza tabel intretinere":
 
                     break;
-
-
                 default:
+
                     break;
             }
         }
@@ -359,31 +292,20 @@ namespace BlueSolAsoc.Fom_Meniuri
                     treeConsumuriApartament.Enabled = true;
                     btnModifica.Show();
                     btnSalveaza.Hide();
-                    btnAnuleaza.Show();
-                
-                   
-                    GridAfisareConsumuri.CancelEdit();
-                   // GridAfisareConsumuri.Enabled = false;
-                 
+                    btnAnuleaza.Show();              
+                    GridAfisareConsumuri.CancelEdit();                                  
                 }
             }
             else
             {
                 treeConsumuriApartament.Enabled = true;
                 btnModifica.Show();
-                btnSalveaza.Hide();
-               
-                btnAnuleaza.Hide();
-               
+                btnSalveaza.Hide();               
+                btnAnuleaza.Hide();               
                 GridAfisareConsumuri.CancelEdit();
-               // GridAfisareConsumuri.Enabled = false;
             }
 
-        }
-
-
-
-        
+        }       
 
         private void PanelConsumAapartament_Click(object sender, PaintEventArgs e)
         {
@@ -410,17 +332,11 @@ namespace BlueSolAsoc.Fom_Meniuri
                 if (!IsNumeric(e.FormattedValue.ToString()))  // IsNumeric will be your method where you will check for numebrs 
                 {
                     MessageBox.Show("Pot fi introduse doar numere!");
-                 //   GridAfisareConsumuri.CurrentCell.Value = null;
                     GridAfisareConsumuri.CancelEdit();
-
                 }
-
             }
-
         }
        
-
-
         public static System.Boolean IsNumeric(System.Object Expression)
         {
             if (Expression == null || Expression is DateTime)
@@ -428,7 +344,6 @@ namespace BlueSolAsoc.Fom_Meniuri
 
             if (Expression is Int16 || Expression is Int32 || Expression is Int64 || Expression is Decimal || Expression is Single || Expression is Double || Expression is Boolean)
                 return true;
-
             try
             {
                 if (Expression is string)
@@ -446,13 +361,8 @@ namespace BlueSolAsoc.Fom_Meniuri
             
             if (btnModifica.Visible==true)
             {
-
                 MessageBox.Show("Pentru a edita valorile din tabel apasa butonul MODIFICA !", "Informare", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            //else
-            //{
-            //    MessageBox.Show("Pentru a edita valorile din tabel apasa butonul MODIFICA !", "Informare", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
+            }            
         }
 
         private void MetodaDGVPrinter(ClassGridView gridView, string sDataTip)
@@ -531,15 +441,9 @@ namespace BlueSolAsoc.Fom_Meniuri
                 prompt.Controls.Add(selLabel);
                 prompt.Controls.Add(cmbx);
                 prompt.Controls.Add(confirmare);
-                prompt.Controls.Add(anulare);
-             
-                
-            
-               
-                prompt.StartPosition = FormStartPosition.CenterScreen;
-                
-                DialogResult res= prompt.ShowDialog();
-                
+                prompt.Controls.Add(anulare);                        
+                prompt.StartPosition = FormStartPosition.CenterScreen;                
+                DialogResult res= prompt.ShowDialog();                
                 if (res==DialogResult.Yes )
                 {
                     string tipAfisare;
@@ -547,28 +451,18 @@ namespace BlueSolAsoc.Fom_Meniuri
                     if (textBox.Text.Length == 0)
                     {
                         data = "19.09.1900";
-                    }
-                    
+                    }                    
                     if (cmbx.SelectedItem == null)
                     {
                         tipAfisare = "Verificare fara data";
                     }
                     else  tipAfisare = cmbx.SelectedItem.ToString();
-
-
-                    return string.Format("{0};{1}", data, tipAfisare);
-
-                    
-            
-
-
+                    return string.Format("{0};{1}", data, tipAfisare);                
                 }
                 else
                 {
                     return string.Format("{0};{1}", "fara data", "nimic selectat");
-
-                }
-                
+                }              
 
             }
           

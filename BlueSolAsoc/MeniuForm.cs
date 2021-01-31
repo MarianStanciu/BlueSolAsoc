@@ -73,9 +73,52 @@ namespace BlueSolAsoc
                 comboBoxLUNA.Hide();
                 lblSelectieAn.Hide();
                 lblSelectieLuna.Hide();
-                lblLunaCurenta.Text = "Luna activa :" + ultimaluna;
+
+                //    lblLunaCurenta.Text = "Luna activa :" + ultimaluna;
+                //}
+                switch (ultimaluna)
+                {
+                    case 1:
+                        lblLunaCurenta.Text = "Ianuarie";
+                        break;
+                    case 2:
+                        lblLunaCurenta.Text = "Februarie";
+                        break;
+                    case 3:
+                        lblLunaCurenta.Text = "Martie";
+                        break;
+                    case 4:
+                        lblLunaCurenta.Text = "Aprilie";
+                        break;
+                    case 5:
+                        lblLunaCurenta.Text = "Mai";
+                        break;
+                    case 6:
+                        lblLunaCurenta.Text = "Iunie";
+                        break;
+                    case 7:
+                        lblLunaCurenta.Text = "Iulie";
+                        break;
+                    case 8:
+                        lblLunaCurenta.Text = "August";
+                        break;
+                    case 9:
+                        lblLunaCurenta.Text = "Septembrie";
+                        break;
+                    case 10:
+                        lblLunaCurenta.Text = "Octombrie";
+                        break;
+                    case 11:
+                        lblLunaCurenta.Text = "Noiembrie";
+                        break;
+                    case 12:
+                        lblLunaCurenta.Text = "Decembrie";
+                        break;
+                    default:
+                        lblLunaCurenta.Text = "Neselectata";
+                        break;
+                }
             }
-            
             //gridTabelaLuni[0, 0].Style.BackColor = Color.Cyan;
 
             // Incarcare ultima Luna/AN

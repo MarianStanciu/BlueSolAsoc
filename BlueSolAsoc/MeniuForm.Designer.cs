@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblNumeFirma = new BlueSolAsoc.butoane_si_controale.ClassLabel();
@@ -55,6 +55,7 @@
             this.mvtabelaluniBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSetComboBox1 = new BlueSolAsoc.DataSetComboBox();
             this.mv_tabela_luniTableAdapter = new BlueSolAsoc.DataSetComboBoxTableAdapters.mv_tabela_luniTableAdapter();
+            this.classLabel1 = new BlueSolAsoc.butoane_si_controale.ClassLabel();
             this.panel1.SuspendLayout();
             this.pnlMama.SuspendLayout();
             this.panelSelectareLuni.SuspendLayout();
@@ -82,6 +83,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
+            this.panel1.Controls.Add(this.classLabel1);
             this.panel1.Controls.Add(this.lblNumeFirma);
             this.panel1.Controls.Add(this.lblLunaCurenta);
             this.panel1.Controls.Add(this.classLabel3);
@@ -110,7 +112,7 @@
             this.lblLunaCurenta.AutoSize = true;
             this.lblLunaCurenta.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLunaCurenta.ForeColor = System.Drawing.Color.PaleGreen;
-            this.lblLunaCurenta.Location = new System.Drawing.Point(500, 7);
+            this.lblLunaCurenta.Location = new System.Drawing.Point(666, 7);
             this.lblLunaCurenta.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblLunaCurenta.Name = "lblLunaCurenta";
             this.lblLunaCurenta.Size = new System.Drawing.Size(149, 30);
@@ -122,7 +124,7 @@
             this.classLabel3.AutoSize = true;
             this.classLabel3.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.classLabel3.ForeColor = System.Drawing.Color.PaleGreen;
-            this.classLabel3.Location = new System.Drawing.Point(841, 7);
+            this.classLabel3.Location = new System.Drawing.Point(975, 7);
             this.classLabel3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.classLabel3.Name = "classLabel3";
             this.classLabel3.Size = new System.Drawing.Size(223, 30);
@@ -247,14 +249,14 @@
             this.gridTabelaLuni.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridTabelaLuni.AutoGenerateColumns = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Aquamarine;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridTabelaLuni.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Aquamarine;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridTabelaLuni.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.gridTabelaLuni.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridTabelaLuni.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.lunaDataGridViewTextBoxColumn,
@@ -341,6 +343,18 @@
             // 
             this.mv_tabela_luniTableAdapter.ClearBeforeFill = true;
             // 
+            // classLabel1
+            // 
+            this.classLabel1.AutoSize = true;
+            this.classLabel1.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.classLabel1.ForeColor = System.Drawing.Color.PaleGreen;
+            this.classLabel1.Location = new System.Drawing.Point(503, 7);
+            this.classLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.classLabel1.Name = "classLabel1";
+            this.classLabel1.Size = new System.Drawing.Size(159, 30);
+            this.classLabel1.TabIndex = 9;
+            this.classLabel1.Text = "Luna Activa:";
+            // 
             // MeniuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
@@ -395,5 +409,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idorgDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn lunaincheiataDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataafisareDataGridViewTextBoxColumn;
+        private butoane_si_controale.ClassLabel classLabel1;
     }
 }
