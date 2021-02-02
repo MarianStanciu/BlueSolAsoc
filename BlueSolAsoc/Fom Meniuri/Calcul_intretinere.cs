@@ -390,7 +390,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                 printer.HeaderCellAlignment = StringAlignment.Near;
                 printer.ColumnWidths.Add(gridView.Columns[0].Name, 30); // formatare latime colaoana 9 [denumire]
                 printer.Footer = "BlueBitData" + "\n" + "Companie de software";// Footer   
-                printer.HeaderCellFormatFlags = StringFormatFlags.DirectionVertical | StringFormatFlags.DirectionRightToLeft;
+              //  printer.HeaderCellFormatFlags = StringFormatFlags.DirectionVertical | StringFormatFlags.DirectionRightToLeft;
                 printer.FooterFormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
                 printer.FooterColor = Color.Red;
                 printer.printDocument.DefaultPageSettings.Landscape = true;
