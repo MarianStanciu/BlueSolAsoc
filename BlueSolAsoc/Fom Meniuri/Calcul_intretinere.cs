@@ -104,6 +104,9 @@ namespace BlueSolAsoc.Fom_Meniuri
                     }
                 }
             }
+            // aici este pus un print preview pentru test
+         //   DGVPrinter printer = new DGVPrinter();      
+         //   printer.PrintPreviewDataGridView(GridCalculIntretinere);
         }
 
         // CREARE TABELA -  TREE PENTRU ADAUGARE INFORMATII PENTRU APARTAMENT in tabul adaugare consumuri apartament
@@ -371,11 +374,13 @@ namespace BlueSolAsoc.Fom_Meniuri
         {
             if (gridView.Columns.Count != 0 | gridView.Visible==false)
             {
-                DGVPrinter printer = new DGVPrinter();
+               //PrintPreviewDialog
+                DGVPrinter printer = new DGVPrinter();           
                 printer.TitleSpacing = 5;
                 printer.SubTitleSpacing = 5;
                 printer.Title = "LISTA INTRETINERE, ASOCIATIA:" + denumireAsociatie; //header               
                 printer.SubTitle = "LUNA AFISATA: "+ sLunaActiva +  "| DATA AFISARII: " +sDataTip;
+              
                 printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
                 printer.PageNumbers = true;
                 printer.PageNumberInHeader = false;
