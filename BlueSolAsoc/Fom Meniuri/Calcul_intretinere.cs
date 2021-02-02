@@ -42,6 +42,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             btnSterge.Hide();
             btnAnuleaza.Hide();
             btnImprima.Visible = true;
+           // GridCalculIntretinere.CellPainting += new Gridview_CellPainting;
         }      
 
         protected override void OnLoad(EventArgs e)
@@ -104,6 +105,8 @@ namespace BlueSolAsoc.Fom_Meniuri
                     }
                 }
             }
+            GridCalculIntretinere.Enabled = false;
+
             // aici este pus un print preview pentru test
          //   DGVPrinter printer = new DGVPrinter();      
          //   printer.PrintPreviewDataGridView(GridCalculIntretinere);
@@ -390,7 +393,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                 printer.HeaderCellAlignment = StringAlignment.Near;
                 printer.ColumnWidths.Add(gridView.Columns[0].Name, 30); // formatare latime colaoana 9 [denumire]
                 printer.Footer = "BlueBitData" + "\n" + "Companie de software";// Footer   
-                printer.HeaderCellFormatFlags = StringFormatFlags.DirectionVertical | StringFormatFlags.DirectionRightToLeft;
+               // printer.HeaderCellFormatFlags = StringFormatFlags.DirectionVertical | StringFormatFlags.DirectionRightToLeft;
                 printer.FooterFormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
                 printer.FooterColor = Color.Red;
                 printer.printDocument.DefaultPageSettings.Landscape = true;
@@ -474,6 +477,21 @@ namespace BlueSolAsoc.Fom_Meniuri
             }
           
         }
+        // incercare marian 
+        //private void Gridview_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        //{
+        //    // Vertical text from column 0, or adjust below, if first column(s) to be skipped
+        //    if (e.RowIndex == -1 && e.ColumnIndex >= 0)
+        //    {
+        //        e.PaintBackground(e.CellBounds, true);
+        //        e.Graphics.TranslateTransform(e.CellBounds.Left, e.CellBounds.Bottom);
+        //        e.Graphics.RotateTransform(270);
+        //        e.Graphics.DrawString(e.FormattedValue.ToString(), e.CellStyle.Font, Brushes.Black, 5, 5);
+        //        e.Graphics.ResetTransform();
+        //        e.Handled = true;
+        //    }
+        //}
+
     }
 }
 
