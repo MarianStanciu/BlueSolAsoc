@@ -8,6 +8,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,7 +43,8 @@ namespace BlueSolAsoc.Fom_Meniuri
             btnSterge.Hide();
             btnAnuleaza.Hide();
             btnImprima.Visible = true;
-           // GridCalculIntretinere.CellPainting += new Gridview_CellPainting;
+            GridCalculIntretinere.CellPainting += DataGridView1_CellPainting;
+           
         }      
 
         protected override void OnLoad(EventArgs e)
@@ -59,7 +61,23 @@ namespace BlueSolAsoc.Fom_Meniuri
                 CasetaDialog.ButonMesaj.Nu,
                 CasetaDialog.IconitaMesaj.Informare);
         }
+      
+        private void DataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            // Vertical text from column 0, or adjust below, if first column(s) to be skipped
+            if (e.RowIndex == -1 && e.ColumnIndex >= 0)
+            {
+                e.PaintBackground(e.CellBounds, true);
+                e.Graphics.TranslateTransform(e.CellBounds.Left, e.CellBounds.Bottom);
+                e.Graphics.RotateTransform(270);
+                e.Graphics.DrawString(e.FormattedValue.ToString(), e.CellStyle.Font, Brushes.Black, 5, 5);
+                e.Graphics.ResetTransform();
+                e.Handled = true;
+            }
 
+
+        }
+        // aici genezez structura de coloane a unui tabel
         public DataColumnCollection StructuraColoane(string sTabelLucru)
         {
             DataColumnCollection coloane = Calcul_intretinereDS.Tables[sTabelLucru].Columns;
@@ -102,6 +120,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                     if (!(node.Checked) && NumeColoanaGrid==numeColoana)
                     {
                         GridCalculIntretinere.Columns[i].Visible = true;
+                        GridCalculIntretinere.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                     }
                 }
             }
@@ -388,18 +407,30 @@ namespace BlueSolAsoc.Fom_Meniuri
                 printer.PageNumbers = true;
                 printer.PageNumberInHeader = false;
                 printer.PorportionalColumns = false;
+               
                 gridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                 printer.ColumnWidth = DGVPrinter.ColumnWidthSetting.DataWidth;
-                printer.HeaderCellAlignment = StringAlignment.Near;
-                printer.ColumnWidths.Add(gridView.Columns[0].Name, 30); // formatare latime colaoana 9 [denumire]
+                printer.HeaderCellAlignment = StringAlignment.Far;
+              
                 printer.Footer = "BlueBitData" + "\n" + "Companie de software";// Footer   
-               // printer.HeaderCellFormatFlags = StringFormatFlags.DirectionVertical | StringFormatFlags.DirectionRightToLeft;
+                //  printer.HeaderCellFormatFlags = StringFormatFlags.DirectionVertical ;
+                //printer.HeaderCellFormatFlags = StringFormatFlags.DirectionVertical | StringFormatFlags.DirectionRightToLeft
+                // printer.HeaderCellFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoWrap| StringFormatFlags.DirectionVertical| StringFormatFlags.FitBlackBox ;
+
+                System.Drawing.StringFormat drawFormat = new System.Drawing.StringFormat();
+                drawFormat.FormatFlags = StringFormatFlags.FitBlackBox;
+               // drawFormat.FormatFlags = StringFormatFlags.DirectionVertical;
+                printer.HeaderCellFormatFlags = drawFormat.FormatFlags;
+                // g is a Graphics object. The text "hello" will be drawn in vertical orientation
+               // g.DrawString("hello", this.Font, Brushes.Orange, new PointF(0, 0), drawFormat);
+                //// printer.GetRowHeaderCellFormat(GridCalculIntretinere);
+
                 printer.FooterFormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
                 printer.FooterColor = Color.Red;
                 printer.printDocument.DefaultPageSettings.Landscape = true;
 
                 printer.PrintPreviewDataGridView(gridView);// print preview           
-                                                           //printer.PrintDataGridView(gridView);// print direct
+                                                           
             }
             else
                 MessageBox.Show("NIMIC DE IMPRIMAT");
@@ -477,20 +508,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             }
           
         }
-        // incercare marian 
-        //private void Gridview_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
-        //{
-        //    // Vertical text from column 0, or adjust below, if first column(s) to be skipped
-        //    if (e.RowIndex == -1 && e.ColumnIndex >= 0)
-        //    {
-        //        e.PaintBackground(e.CellBounds, true);
-        //        e.Graphics.TranslateTransform(e.CellBounds.Left, e.CellBounds.Bottom);
-        //        e.Graphics.RotateTransform(270);
-        //        e.Graphics.DrawString(e.FormattedValue.ToString(), e.CellStyle.Font, Brushes.Black, 5, 5);
-        //        e.Graphics.ResetTransform();
-        //        e.Handled = true;
-        //    }
-        //}
+       
 
     }
 }
