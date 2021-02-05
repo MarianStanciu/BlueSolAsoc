@@ -436,8 +436,8 @@ namespace BlueSolAsoc.Fom_Meniuri
                
                 printer.TitleSpacing = 5;
                 printer.SubTitleSpacing = 5;
-                printer.Title = "LISTA INTRETINERE, ASOCIATIA:" + denumireAsociatie; //header               
-                printer.SubTitle = "LUNA AFISATA: "+ sLunaActiva +  "| DATA AFISARII: " +sDataTip;
+                printer.Title = "Lista calculului intretinerii, Asociatia de proprietari:" + denumireAsociatie; //header               
+                printer.SubTitle = "Luna calculata: "+ sLunaActiva +  "| DATA AFISARII: " +sDataTip;
               
                 printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
                 printer.PageNumbers = true;
