@@ -24,6 +24,8 @@ namespace BlueSolAsoc.Fom_Meniuri
         private string denumireAsociatie ;
         private int idAsociatie;
         public string sLunaActiva;
+
+    
         public Calcul_intretinere()        
         {
             InitializeComponent();
@@ -43,8 +45,8 @@ namespace BlueSolAsoc.Fom_Meniuri
             btnSterge.Hide();
             btnAnuleaza.Hide();
             btnImprima.Visible = true;
-            GridCalculIntretinere.CellPainting += DataGridView1_CellPainting;
-           
+            //GridCalculIntretinere.CellPainting += DataGridView1_CellPainting;
+           // GridCalculIntretinere.CellPainting += DataGridView11_CellPainting;
         }      
 
         protected override void OnLoad(EventArgs e)
@@ -55,11 +57,11 @@ namespace BlueSolAsoc.Fom_Meniuri
             treeConsumuriApartament.ExpandAll();// afisarea treeului rezultat in format extins pana la nivel de scara
             PanelConsumAapartament.Hide();// ascunderea panelului ce contine gridul pentru adaugare consumuri pana este selectata o scar din tree
                        
-           CasetaDialog.AfiseazaMesaj("afisare test", "Bluebitdata te saluta",
-                CasetaDialog.ButonMesaj.Ok,
-                CasetaDialog.ButonMesaj.Nimic,
-                CasetaDialog.ButonMesaj.Nu,
-                CasetaDialog.IconitaMesaj.Informare);
+          // CasetaDialog.AfiseazaMesaj("afisare test", "Bluebitdata te saluta",
+                //CasetaDialog.ButonMesaj.Ok,
+                //CasetaDialog.ButonMesaj.Nimic,
+                //CasetaDialog.ButonMesaj.Nu,
+                //CasetaDialog.IconitaMesaj.Informare);
         }
       
         private void DataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -74,9 +76,13 @@ namespace BlueSolAsoc.Fom_Meniuri
                 e.Graphics.ResetTransform();
                 e.Handled = true;
             }
-
-
         }
+
+       
+
+
+
+
         // aici genezez structura de coloane a unui tabel
         public DataColumnCollection StructuraColoane(string sTabelLucru)
         {
@@ -390,14 +396,44 @@ namespace BlueSolAsoc.Fom_Meniuri
                 MessageBox.Show("Pentru a edita valorile din tabel apasa butonul MODIFICA !", "Informare", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }            
         }
+        public void OwnerDraw(object sender, DGVCellDrawingEventArgs e)
+        {
+            if (e.row == -1)
+            {
+                DataGridViewHeaderCell cell = GridCalculIntretinere.Columns[e.column].HeaderCell;
+                String printvalue = GridCalculIntretinere.Columns[e.column].HeaderText;
 
+
+                //e.g.FillRectangle(new SolidBrush(e.CellStyle.BackColor), e.DrawingBounds);
+               
+                // Draw column header text upside down and backwards
+              //  e.g.TranslateTransform(e.DrawingBounds.X+ e.DrawingBounds.Height, e.DrawingBounds.Y+ e.DrawingBounds.Width);
+             //   e.g.TranslateTransform(e.DrawingBounds.X + e.DrawingBounds.Width, e.DrawingBounds.Y + e.DrawingBounds.Height);
+                e.g.TranslateTransform(e.DrawingBounds.X + e.DrawingBounds.Width-30, e.DrawingBounds.Y + e.DrawingBounds.Height);
+                e.g.RotateTransform(-90);
+               // e.g.DrawString(printvalue, e.CellStyle.Font,new SolidBrush(e.CellStyle.ForeColor), e.CellStyle.Padding.Left, -cell.InheritedStyle.Padding.Bottom);
+               // e.g.DrawString(printvalue, e.CellStyle.Font, new SolidBrush(e.CellStyle.ForeColor), e.CellStyle.Padding.Left, -e.CellStyle.Padding.Bottom);
+                e.g.DrawString(printvalue, e.CellStyle.Font, new SolidBrush(e.CellStyle.ForeColor), 0, 0);
+                // undo the backwards upside down transform
+                e.g.ResetTransform();
+                // draw grid
+                if (GridCalculIntretinere.CellBorderStyle != DataGridViewCellBorderStyle.None)
+                    e.g.DrawRectangle(new Pen(GridCalculIntretinere.GridColor), e.DrawingBounds.X, e.DrawingBounds.Y,
+                    e.DrawingBounds.Width, e.DrawingBounds.Height);
+                e.Handled = true;
+            }
+        }
 
         private void MetodaDGVPrinter(ClassGridView gridView, string sDataTip)
         {
             if (gridView.Columns.Count != 0 | gridView.Visible==false)
             {
-               //PrintPreviewDialog
-                DGVPrinter printer = new DGVPrinter();           
+               
+                DGVPrinter printer = new DGVPrinter();
+                       
+                
+
+               
                 printer.TitleSpacing = 5;
                 printer.SubTitleSpacing = 5;
                 printer.Title = "LISTA INTRETINERE, ASOCIATIA:" + denumireAsociatie; //header               
@@ -407,30 +443,25 @@ namespace BlueSolAsoc.Fom_Meniuri
                 printer.PageNumbers = true;
                 printer.PageNumberInHeader = false;
                 printer.PorportionalColumns = false;
-               
-                gridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                 printer.ColumnWidth = DGVPrinter.ColumnWidthSetting.DataWidth;
-                printer.HeaderCellAlignment = StringAlignment.Far;
-              
+                gridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+
+                // printer.HeaderCellFormatFlags = StringFormatFlags.DirectionVertical;
+                printer.HeaderCellFormatFlags = StringFormatFlags.DirectionVertical;
+                printer.OwnerDraw += new CellOwnerDrawEventHandler(OwnerDraw);
+                //printer.HeaderCellFormatFlags = StringFormatFlags.DirectionVertical;
                 printer.Footer = "BlueBitData" + "\n" + "Companie de software";// Footer   
-                //  printer.HeaderCellFormatFlags = StringFormatFlags.DirectionVertical ;
+          
                 //printer.HeaderCellFormatFlags = StringFormatFlags.DirectionVertical | StringFormatFlags.DirectionRightToLeft
                 // printer.HeaderCellFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoWrap| StringFormatFlags.DirectionVertical| StringFormatFlags.FitBlackBox ;
-
-                System.Drawing.StringFormat drawFormat = new System.Drawing.StringFormat();
-                drawFormat.FormatFlags = StringFormatFlags.FitBlackBox;
-               // drawFormat.FormatFlags = StringFormatFlags.DirectionVertical;
-                printer.HeaderCellFormatFlags = drawFormat.FormatFlags;
-                // g is a Graphics object. The text "hello" will be drawn in vertical orientation
-               // g.DrawString("hello", this.Font, Brushes.Orange, new PointF(0, 0), drawFormat);
-                //// printer.GetRowHeaderCellFormat(GridCalculIntretinere);
+                             
 
                 printer.FooterFormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
                 printer.FooterColor = Color.Red;
                 printer.printDocument.DefaultPageSettings.Landscape = true;
 
-                printer.PrintPreviewDataGridView(gridView);// print preview           
-                                                           
+                printer.PrintPreviewDataGridView(gridView);// print preview   
+
             }
             else
                 MessageBox.Show("NIMIC DE IMPRIMAT");
@@ -508,7 +539,33 @@ namespace BlueSolAsoc.Fom_Meniuri
             }
           
         }
-       
+
+
+      
+        //private void button1_Click(object sender, EventArgs e)
+        //{
+        //    myPrintDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(myPrintDocument_PrintPage);
+        //    myPrintDocument.Print();
+        //}
+        //System.Drawing.Printing.PrintDocument myPrintDocument = new System.Drawing.Printing.PrintDocument();
+        //private void myPrintDocument_PrintPage(System.Object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        //{
+        //    int myWidth = 0;
+        //    int myHeight = 0;
+        //    myHeight = Convert.ToInt32(GridCalculIntretinere.Rows[0].Height * (GridCalculIntretinere.Rows.Count));
+
+        //    for (int i = 0; i < GridCalculIntretinere.Columns.Count; i++)
+        //    {
+        //        myWidth += GridCalculIntretinere.Columns[i].Width;
+        //    }
+
+        //    Bitmap myBitmap = new Bitmap(myWidth, myHeight);
+        //    GridCalculIntretinere.DrawToBitmap(myBitmap, new Rectangle(30, 50, myWidth, myHeight));
+        //    e.Graphics.DrawImage(myBitmap, 0, 0);
+
+        //    string text1 = "Draw text in a rectangle by passing a RectF to the DrawString method.";
+        //    e.Graphics.DrawString(text1, new Font("Arial", 12), Brushes.Blue, new RectangleF(0, 0, myWidth, 200));
+        //}
 
     }
 }
