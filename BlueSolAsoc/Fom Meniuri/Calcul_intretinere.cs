@@ -429,37 +429,31 @@ namespace BlueSolAsoc.Fom_Meniuri
             if (gridView.Columns.Count != 0 | gridView.Visible==false)
             {
                
-                DGVPrinter printer = new DGVPrinter();
-                       
-                
-
-               
+                DGVPrinter printer = new DGVPrinter();                   
+                //titlul documentului
                 printer.TitleSpacing = 5;
                 printer.SubTitleSpacing = 5;
-                printer.Title = "Lista calculului intretinerii, Asociatia de proprietari:" + denumireAsociatie; //header               
-                printer.SubTitle = "Luna calculata: "+ sLunaActiva +  "| DATA AFISARII: " +sDataTip;
-              
+                printer.Title = "Lista costurilor intretinerii, Asociatia de proprietari:" + denumireAsociatie; //header      
+                //subtitlul compus din luna activa pentru calcul + elementele ce vin din caseta de dialog la imprimare
+                printer.SubTitle = "Luna calculata:" + sLunaActiva+" | " + sDataTip;                    
                 printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
+                //setari privind afisari pe pagina - nr pagini ...
                 printer.PageNumbers = true;
                 printer.PageNumberInHeader = false;
                 printer.PorportionalColumns = false;
-                printer.ColumnWidth = DGVPrinter.ColumnWidthSetting.DataWidth;
+
+                printer.ColumnWidth = DGVPrinter.ColumnWidthSetting.DataWidth;// setatrea latimii coloanelor la continut
                 gridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
-
-                // printer.HeaderCellFormatFlags = StringFormatFlags.DirectionVertical;
+                //orientarea pe verticala a numelor de coloana
                 printer.HeaderCellFormatFlags = StringFormatFlags.DirectionVertical;
+                //rotirea numelor de coloana pe verticala de jos in sus si de la stanga la dreapta
                 printer.OwnerDraw += new CellOwnerDrawEventHandler(OwnerDraw);
-                //printer.HeaderCellFormatFlags = StringFormatFlags.DirectionVertical;
-                printer.Footer = "BlueBitData" + "\n" + "Companie de software";// Footer   
-          
-                //printer.HeaderCellFormatFlags = StringFormatFlags.DirectionVertical | StringFormatFlags.DirectionRightToLeft
-                // printer.HeaderCellFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoWrap| StringFormatFlags.DirectionVertical| StringFormatFlags.FitBlackBox ;
-                             
-
+             
+                printer.Footer = "BlueBitData" + "\n" + "Companie de software";// Footer             
                 printer.FooterFormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
                 printer.FooterColor = Color.Red;
                 printer.printDocument.DefaultPageSettings.Landscape = true;
-
+                //initializarea print preview
                 printer.PrintPreviewDataGridView(gridView);// print preview   
 
             }
@@ -471,9 +465,9 @@ namespace BlueSolAsoc.Fom_Meniuri
 
         private void btnImprima_Click(object sender, EventArgs e)
         {
-           string verificare = PromptForTextAndSelection.ShowDialog("BluebitData", "Data Afisare", "Tip Afisare");
+           string verificare = PromptForTextAndSelection.ShowDialog("BluebitData", "Data Afisare", "Tip Afisare","Data Scadentei");
 
-            if (verificare== "fara data;nimic selectat")
+            if (verificare== "fara data;nimic selectat;nu are scadenta")
             {
                 MessageBox.Show("Imprimare anulata!");
             }
@@ -486,22 +480,36 @@ namespace BlueSolAsoc.Fom_Meniuri
 
         public static class PromptForTextAndSelection
         {
-            public static string ShowDialog(string caption, string text, string selStr)
+         
+         
+             public static string ShowDialog(string caption, string text, string selStr, string dataScadenta)
             {
+               
                 Form prompt = new Form();
                 prompt.ControlBox = false;
-                prompt.Width = 400;
+                prompt.BackColor = Color.Aquamarine;
+                prompt.ForeColor = Color.Black;
+                
+                prompt.Width = 300;
                 prompt.Height = 360;
                 prompt.Text = caption;
+                //eticheta + box pentru data afisarii
                 Label textLabel = new Label() { Left = 16, Top = 20, Width = 240, Text = text };
                 TextBox textBox = new TextBox() { Left = 16, Top = 40, Width = 240, TabIndex = 0, TabStop = true };
-                Label selLabel = new Label() { Left = 16, Top = 66, Width = 88, Text = selStr };
-                ComboBox cmbx = new ComboBox() { Left = 112, Top = 64, Width = 144 };
-                cmbx.Items.Add("Verificare");
-                cmbx.Items.Add("Afisare Definitiva");
-                cmbx.Items.Add("Imprimare Test");
-                Button confirmare = new Button() { Text = "Validez selectia!", Left = 16, Width = 80, Top = 150, TabIndex = 1, TabStop = true };
-                Button anulare= new Button() { Text = "Anulez!", Left = 16, Width = 80, Top = 98, TabIndex = 1, TabStop = true };
+                //eticheta + box pentru data scadenta
+                Label dataScad = new Label() { Left = 16, Top = 65, Width = 240, Text = dataScadenta };
+                TextBox dataScadTB = new TextBox() { Left = 16, Top = 90, Width = 240, TabIndex = 1, TabStop = true };
+                // eticheta + combobox - tip afisare
+                Label selLabel = new Label() { Left = 16, Top = 130, Width = 88, Text = selStr };
+                ComboBox cmbx = new ComboBox() { Left = 112, Top = 130, Width = 144, TabStop = true };
+
+                Button confirmare = new Button() { Text = "Validez selectia!", Left = 150, Width = 100, Top = 200, TabIndex = 1, TabStop = true };
+                Button anulare = new Button() { Text = "Anulez!", Left = 150, Width = 100, Top = 250, TabIndex = 1, TabStop = true };
+
+                cmbx.Items.Add("VERIFICARE");
+                cmbx.Items.Add("VALIDATA");
+                cmbx.Items.Add("TEST");
+                
                 confirmare.Click += (sender, e) => { prompt.Close(); };
                 prompt.AcceptButton = confirmare;
                 prompt.AcceptButton.DialogResult = DialogResult.Yes;
@@ -510,6 +518,8 @@ namespace BlueSolAsoc.Fom_Meniuri
                 prompt.CancelButton.DialogResult = DialogResult.No;
                 prompt.Controls.Add(textLabel);
                 prompt.Controls.Add(textBox);
+                prompt.Controls.Add(dataScad);
+                prompt.Controls.Add(dataScadTB);
                 prompt.Controls.Add(selLabel);
                 prompt.Controls.Add(cmbx);
                 prompt.Controls.Add(confirmare);
@@ -518,54 +528,40 @@ namespace BlueSolAsoc.Fom_Meniuri
                 DialogResult res= prompt.ShowDialog();                
                 if (res==DialogResult.Yes )
                 {
-                    string tipAfisare;
+                    string tipAfisare=""  ;
+                  
                     string data = textBox.Text;
+                    string sDataScadenta = dataScadTB.Text;
                     if (textBox.Text.Length == 0)
                     {
-                        data = "19.09.1900";
-                    }                    
+                        data = "12.12.2222";
+                    }
                     if (cmbx.SelectedItem == null)
                     {
                         tipAfisare = "Verificare fara data";
                     }
-                    else  tipAfisare = cmbx.SelectedItem.ToString();
-                    return string.Format("{0};{1}", data, tipAfisare);                
+                    else tipAfisare = cmbx.SelectedItem.ToString();
+
+                    if (dataScadTB.Text.Length == 0)
+                    {
+                        sDataScadenta = "15.15.5555";
+                    }
+                   
+                    
+
+                    return string.Format("Data afisarii:{0}|Tip afisare:{1}|Data scadenta:{2}", data, tipAfisare, sDataScadenta) ;
+                 
                 }
                 else
                 {
-                    return string.Format("{0};{1}", "fara data", "nimic selectat");
-                }              
+                    return string.Format("Data afisarii:{0}|Tip afisare:{1}|Data scadenta:{2}", "fara data", "nimic selectat", "nu are scadenta");
+                }
+
 
             }
-          
+
         }
 
-
-      
-        //private void button1_Click(object sender, EventArgs e)
-        //{
-        //    myPrintDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(myPrintDocument_PrintPage);
-        //    myPrintDocument.Print();
-        //}
-        //System.Drawing.Printing.PrintDocument myPrintDocument = new System.Drawing.Printing.PrintDocument();
-        //private void myPrintDocument_PrintPage(System.Object sender, System.Drawing.Printing.PrintPageEventArgs e)
-        //{
-        //    int myWidth = 0;
-        //    int myHeight = 0;
-        //    myHeight = Convert.ToInt32(GridCalculIntretinere.Rows[0].Height * (GridCalculIntretinere.Rows.Count));
-
-        //    for (int i = 0; i < GridCalculIntretinere.Columns.Count; i++)
-        //    {
-        //        myWidth += GridCalculIntretinere.Columns[i].Width;
-        //    }
-
-        //    Bitmap myBitmap = new Bitmap(myWidth, myHeight);
-        //    GridCalculIntretinere.DrawToBitmap(myBitmap, new Rectangle(30, 50, myWidth, myHeight));
-        //    e.Graphics.DrawImage(myBitmap, 0, 0);
-
-        //    string text1 = "Draw text in a rectangle by passing a RectF to the DrawString method.";
-        //    e.Graphics.DrawString(text1, new Font("Arial", 12), Brushes.Blue, new RectangleF(0, 0, myWidth, 200));
-        //}
 
     }
 }
