@@ -549,12 +549,12 @@ namespace BlueSolAsoc.Fom_Meniuri
                    
                     
 
-                    return string.Format("Data afisarii:{0}|Tip afisare:{1}|Data scadenta:{2}", data, tipAfisare, sDataScadenta) ;
+                    return string.Format("Data afisarii:{0}|Data scadenta:{1}|Tip afisare:{2}", data,  sDataScadenta, tipAfisare) ;
                  
                 }
                 else
                 {
-                    return string.Format("Data afisarii:{0}|Tip afisare:{1}|Data scadenta:{2}", "fara data", "nimic selectat", "nu are scadenta");
+                    return string.Format("Data afisarii:{0}|Data scadenta:{1}|Tip afisare:{2}", "fara data", "nu are scadenta", "nimic selectat");
                 }
 
 
