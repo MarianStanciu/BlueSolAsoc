@@ -495,31 +495,37 @@ namespace BlueSolAsoc.Fom_Meniuri
                 prompt.Text = caption;
                 //eticheta + box pentru data afisarii
                 Label textLabel = new Label() { Left = 16, Top = 20, Width = 240, Text = text };
-                TextBox textBox = new TextBox() { Left = 16, Top = 40, Width = 240, TabIndex = 0, TabStop = true };
+                DateTimePicker dtbAfisare = new DateTimePicker() { Left = 16, Top = 40, Width = 240, TabIndex = 0, TabStop = true };
+                dtbAfisare.Format = DateTimePickerFormat.Custom;
+                dtbAfisare.CustomFormat = "d-MMM-yyyy";
+                
+                //TextBox textBox = new TextBox() { Left = 16, Top = 40, Width = 240, TabIndex = 0, TabStop = true };
                 //eticheta + box pentru data scadenta
                 Label dataScad = new Label() { Left = 16, Top = 65, Width = 240, Text = dataScadenta };
+
+
                 TextBox dataScadTB = new TextBox() { Left = 16, Top = 90, Width = 240, TabIndex = 1, TabStop = true };
                 // eticheta + combobox - tip afisare
                 Label selLabel = new Label() { Left = 16, Top = 130, Width = 88, Text = selStr };
                 ComboBox cmbx = new ComboBox() { Left = 112, Top = 130, Width = 144, TabStop = true };
-
+                // cele 2 butoane - validare /anulare
                 Button confirmare = new Button() { Text = "Validez selectia!", Left = 150, Width = 100, Top = 200, TabIndex = 1, TabStop = true };
                 Button anulare = new Button() { Text = "Anulez!", Left = 150, Width = 100, Top = 250, TabIndex = 1, TabStop = true };
-
+                //itemurile din combobox
                 cmbx.Items.Add("VERIFICARE");
                 cmbx.Items.Add("VALIDATA");
                 cmbx.Items.Add("TEST");
                 
                 confirmare.Click += (sender, e) => { prompt.Close(); };
                 prompt.AcceptButton = confirmare;
-                prompt.AcceptButton.DialogResult = DialogResult.Yes;
-                
+                prompt.AcceptButton.DialogResult = DialogResult.Yes;                
                 prompt.CancelButton = anulare;
                 prompt.CancelButton.DialogResult = DialogResult.No;
                 prompt.Controls.Add(textLabel);
-                prompt.Controls.Add(textBox);
-                prompt.Controls.Add(dataScad);
-                prompt.Controls.Add(dataScadTB);
+                prompt.Controls.Add(dtbAfisare);
+                //prompt.Controls.Add(textBox);
+                //prompt.Controls.Add(dataScad);
+                //prompt.Controls.Add(dataScadTB);
                 prompt.Controls.Add(selLabel);
                 prompt.Controls.Add(cmbx);
                 prompt.Controls.Add(confirmare);
@@ -530,9 +536,9 @@ namespace BlueSolAsoc.Fom_Meniuri
                 {
                     string tipAfisare=""  ;
                   
-                    string data = textBox.Text;
+                    string data = dtbAfisare.Value.ToString("d-MMM-yyyy");
                     string sDataScadenta = dataScadTB.Text;
-                    if (textBox.Text.Length == 0)
+                    if (dtbAfisare.Text.Length == 0)
                     {
                         data = "12.12.2222";
                     }
@@ -542,14 +548,19 @@ namespace BlueSolAsoc.Fom_Meniuri
                     }
                     else tipAfisare = cmbx.SelectedItem.ToString();
 
-                    if (dataScadTB.Text.Length == 0)
+                    if ((dtbAfisare.Value.ToString()) != null)
                     {
-                        sDataScadenta = "15.15.5555";
+                        sDataScadenta = dtbAfisare.Value.AddDays(30).ToString("d-MMM-yyyy");
                     }
-                   
-                    
 
-                    return string.Format("Data afisarii:{0}|Data scadenta:{1}|Tip afisare:{2}", data,  sDataScadenta, tipAfisare) ;
+                    //if (dataScadTB.Text.Length == 0)
+                    //{
+                    //    sDataScadenta = "15.15.5555";
+                    //}
+
+
+
+                    return string.Format("Data afisarii:{0} | Data scadenta:{1} | Tip afisare:{2}", data,  sDataScadenta, tipAfisare) ;
                  
                 }
                 else

@@ -33,7 +33,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TabCalculIntretinere = new BlueSolAsoc.butoane_si_controale.ClassTabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
             this.btnImprima = new BlueSolAsoc.butoane_si_controale.ClassButon();
             this.GenereazaTabel = new BlueSolAsoc.butoane_si_controale.ClassButon();
             this.GridCalculIntretinere = new BlueSolAsoc.butoane_si_controale.ClassGridView();
@@ -82,7 +81,6 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.button1);
             this.tabPage2.Controls.Add(this.btnImprima);
             this.tabPage2.Controls.Add(this.GenereazaTabel);
             this.tabPage2.Controls.Add(this.GridCalculIntretinere);
@@ -95,17 +93,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Genereaza tabel intretinere";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.Location = new System.Drawing.Point(6, 313);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(200, 31);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Imprimanta";
-            this.button1.UseVisualStyleBackColor = true;
-       
             // 
             // btnImprima
             // 
@@ -335,10 +322,6 @@
             // 
             this.mv_ConsumApartamenteTableAdapter.ClearBeforeFill = true;
             // 
-            // printDocument1
-            // 
-     
-            // 
             // Calcul_intretinere
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
@@ -386,6 +369,5 @@
         private butoane_si_controale.ClassLabel lblMesajSelecteazScara;
         private butoane_si_controale.ClassButon btnImprima;
         private System.Drawing.Printing.PrintDocument printDocument1;
-        private System.Windows.Forms.Button button1;
     }
 }
