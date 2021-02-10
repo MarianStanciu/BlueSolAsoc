@@ -112,8 +112,11 @@ namespace BlueSolAsoc.Fom_Meniuri
         {
             DataColumnCollection col = this.StructuraColoane("denumiri_cheltuieli1");
             GridCalculIntretinere.DataSource=Calcul_intretinereDS.Tables["denumiri_cheltuieli1"];
+            GridCalculIntretinere.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+         
             for (int i=0; i< Calcul_intretinereDS.Tables["denumiri_cheltuieli1"].Columns.Count; i++)
             {
+                //GridCalculIntretinere.Columns[i].Width = 80;
                 string NumeColoanaGrid = col[i].ColumnName;
                 foreach (TreeNode node in treeColoane.Nodes)
                 {               
@@ -121,20 +124,19 @@ namespace BlueSolAsoc.Fom_Meniuri
                     string headerColoana = node.Text.Trim();
                     if (node.Checked && NumeColoanaGrid==numeColoana)
                     {
-                        GridCalculIntretinere.Columns[i].Visible=false;                      
+                        GridCalculIntretinere.Columns[i].Visible=false;
+                        
                     }
                     if (!(node.Checked) && NumeColoanaGrid==numeColoana)
                     {
                         GridCalculIntretinere.Columns[i].Visible = true;
                         GridCalculIntretinere.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                       
                     }
                 }
             }
             GridCalculIntretinere.Enabled = false;
-
-            // aici este pus un print preview pentru test
-         //   DGVPrinter printer = new DGVPrinter();      
-         //   printer.PrintPreviewDataGridView(GridCalculIntretinere);
+           
         }
 
         // CREARE TABELA -  TREE PENTRU ADAUGARE INFORMATII PENTRU APARTAMENT in tabul adaugare consumuri apartament
