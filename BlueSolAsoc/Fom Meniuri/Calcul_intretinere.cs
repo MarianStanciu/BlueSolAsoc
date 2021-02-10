@@ -400,7 +400,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             //}
         }
 
-        private void MetodaDGVPrinter(ClassGridView gridView)
+        private void MetodaDGVPrinter(ClassGridView gridView, string sDataTip)
         {
             if (gridView.Columns.Count != 0 | gridView.Visible==false)
             {
@@ -408,7 +408,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                 printer.TitleSpacing = 5;
                 printer.SubTitleSpacing = 5;
                 printer.Title = "LISTA INTRETINERE, ASOCIATIA:" + denumireAsociatie; //header
-                printer.SubTitle = "LUNA AFISATA:     /"+"DATA AFISARII:" + PromptForTextAndSelection.ShowDialog("BLUEBITDATA", "DATA AFISARE?", "TIP AFISARE");
+                printer.SubTitle = "LUNA AFISATA:     /"+"DATA AFISARII:" +sDataTip;
                 printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
                 printer.PageNumbers = true;
                 printer.PageNumberInHeader = false;
@@ -417,7 +417,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                 printer.ColumnWidth = DGVPrinter.ColumnWidthSetting.DataWidth;
                 printer.HeaderCellAlignment = StringAlignment.Near;
                 printer.ColumnWidths.Add(gridView.Columns[0].Name, 10); // formatare latime colaoana 9 [denumire]
-                printer.Footer = "BlueBitData" + "\n" + "Compamie de software";// Footer   
+                printer.Footer = "BlueBitData" + "\n" + "Companie de software";// Footer   
                 printer.HeaderCellFormatFlags = StringFormatFlags.DirectionVertical | StringFormatFlags.DirectionRightToLeft;
                 printer.FooterFormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
                 printer.FooterColor = Color.Red;
@@ -434,8 +434,17 @@ namespace BlueSolAsoc.Fom_Meniuri
 
         private void btnImprima_Click(object sender, EventArgs e)
         {
-            MetodaDGVPrinter(GridAfisareConsumuri);        
-           
+           string verificare = PromptForTextAndSelection.ShowDialog("BluebitData", "Data Afisare", "Tip Afisare");
+
+            if (verificare== "fara data;nimic selectat")
+            {
+                MessageBox.Show("Imprimare anulata!");
+            }
+            else
+            {
+                MetodaDGVPrinter(GridAfisareConsumuri, verificare);
+                
+            }
         }
 
         public static class PromptForTextAndSelection
@@ -495,7 +504,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                     return string.Format("{0};{1}", data, tipAfisare);
 
                     
-
+            
 
 
                 }
@@ -507,6 +516,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                 
 
             }
+          
         }
     }
 }
