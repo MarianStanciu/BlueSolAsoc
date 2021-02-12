@@ -98,7 +98,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                 Calcul_intretinereDS.Tables.Remove("denumiri_cheltuieli1");
             }
             // Calcul_intretinereDS.getSetFrom("select * from tabela_asocieri_tipuri where id_tip=15 ", "denumiri_cheltuieli1");
-            Calcul_intretinereDS.getSetFrom("exec mp_getCalculIntretinere " + idAsociatie, "denumiri_cheltuieli1");
+            Calcul_intretinereDS.getSetFrom("exec mp_getCalculIntretinere " + idAsociatie, "denumiri_cheltuieli1");// aici vom adauga parametrul prin care verificam daca este sau nu validata lista intretinerii
             DataColumnCollection col = this.StructuraColoane("denumiri_cheltuieli1");
             for (int i = 0; i < col.Count; i++)
             {
@@ -469,7 +469,7 @@ namespace BlueSolAsoc.Fom_Meniuri
         {
            string verificare = PromptForTextAndSelection.ShowDialog("BluebitData", "Data Afisare", "Tip Afisare","Data Scadentei");
 
-            if (verificare== "fara data;nimic selectat;nu are scadenta")
+            if (verificare== "NU")
             {
                 MessageBox.Show("Imprimare anulata!");
             }
@@ -515,9 +515,17 @@ namespace BlueSolAsoc.Fom_Meniuri
                 Button anulare = new Button() { Text = "Anulez!", Left = 150, Width = 100, Top = 250, TabIndex = 1, TabStop = true };
                 //itemurile din combobox
                 cmbx.Items.Add("VERIFICARE");
-                cmbx.Items.Add("VALIDATA");
-                cmbx.Items.Add("TEST");
-                
+                cmbx.Items.Add("VALIDARE");
+                cmbx.SelectedItem= "VERIFICARE";
+                // aici primesc parametrul care imi permite sa afisez in combobox de selectia doar valoarea VERIFICARE sau VALIDARE si VERIFICARE - pt true - doar verificare
+                bool validat =true;
+                if (validat)
+                {
+                    cmbx.Items.Remove("VALIDARE");
+                }
+
+                // cmbx.Items.Add("TEST");
+
                 confirmare.Click += (sender, e) => { prompt.Close(); };
                 prompt.AcceptButton = confirmare;
                 prompt.AcceptButton.DialogResult = DialogResult.Yes;                
@@ -546,28 +554,60 @@ namespace BlueSolAsoc.Fom_Meniuri
                     }
                     if (cmbx.SelectedItem == null)
                     {
-                        tipAfisare = "Verificare fara data";
+                        MessageBox.Show("Selecteaza Tip Afisare");
+                        
+                        tipAfisare = "Afisare Neselectata";
                     }
-                    else tipAfisare = cmbx.SelectedItem.ToString();
+                    switch (cmbx.SelectedItem)
+                    {
+                        case "VALIDARE":
+
+                            tipAfisare = "VALIDARE";
+                            DialogResult raspuns = MessageBox.Show(" Butonul VALIDARE", "Blocheaza toate calculele pentru luna activa!", MessageBoxButtons.YesNo);
+                            if (raspuns == DialogResult.Yes)
+                            {
+                                MessageBox.Show("Luna curenta a fost VALIDATA si blocata!");
+                                //aici trimit codul catre baza de date cu blocarea lunii pentru calcul
+                            }
+                            if (raspuns == DialogResult.No)
+                            {
+                                tipAfisare = "VERIFICARE";
+                                MessageBox.Show("Schimb tipul imprimarii in VERIFICARE");
+                            }
+
+                            // tipAfisare = "VALIDARE";
+                            //DialogResult dr=( CasetaDialog.AfiseazaMesaj("Selectarea Butonului VALIDARE ", "Blocheaza toate calculele pentru luna activa!",
+                            // CasetaDialog.ButonMesaj.Da,
+                            // CasetaDialog.ButonMesaj.Nimic,
+                            // CasetaDialog.ButonMesaj.Nu,
+                            // CasetaDialog.IconitaMesaj.Informare));
+                            // DialogResult blocareLuna = CasetaDialog.AfiseazaMesaj();
+                            // if(dr==DialogResult.)
+
+                            break;
+
+                        case "VERIFICARE":
+                            tipAfisare= "VERIFICARE";
+                            break;
+                        default :
+
+                            break;
+                    }                                       
 
                     if ((dtbAfisare.Value.ToString()) != null)
                     {
                         sDataScadenta = dtbAfisare.Value.AddDays(30).ToString("d-MMM-yyyy");
-                    }
+                    }                   
 
-                    //if (dataScadTB.Text.Length == 0)
-                    //{
-                    //    sDataScadenta = "15.15.5555";
-                    //}
-
-
-
-                    return string.Format("Data afisarii:{0} | Data scadenta:{1} | Tip afisare:{2}", data,  sDataScadenta, tipAfisare) ;
+                    return string.Format("Data afisare:{0} | Data scadenta:{1} | Tip afisare:{2}", data,  sDataScadenta, tipAfisare) ;
                  
                 }
                 else
                 {
-                    return string.Format("Data afisarii:{0}|Data scadenta:{1}|Tip afisare:{2}", "fara data", "nu are scadenta", "nimic selectat");
+
+
+                    //return string.Format("Data afisarii:{0}|Data scadenta:{1}|Tip afisare:{2}", "fara data", "nu are scadenta", "nimic selectat");
+                    return string.Format("{0}","NU");
                 }
 
 
