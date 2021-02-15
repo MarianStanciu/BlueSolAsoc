@@ -471,27 +471,23 @@ namespace BlueSolAsoc.Fom_Meniuri
 
             if (verificare== "NU")
             {
-                MessageBox.Show("Imprimare anulata!");
+                MessageBox.Show("Imprimare anulata!","Anulat de utilizator",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
             else
             {
-                MetodaDGVPrinter(GridCalculIntretinere, verificare);
-                
+                MetodaDGVPrinter(GridCalculIntretinere, verificare);                
             }
         }
 
         public static class PromptForTextAndSelection
-        {
-         
-         
+        {       
              public static string ShowDialog(string caption, string text, string selStr, string dataScadenta)
-            {
-               
+            {               
                 Form prompt = new Form();
                 prompt.ControlBox = false;
                 prompt.BackColor = Color.Aquamarine;
                 prompt.ForeColor = Color.Black;
-                
+                prompt.FormBorderStyle = FormBorderStyle.Fixed3D;
                 prompt.Width = 300;
                 prompt.Height = 360;
                 prompt.Text = caption;
@@ -505,7 +501,6 @@ namespace BlueSolAsoc.Fom_Meniuri
                 //eticheta + box pentru data scadenta
                 Label dataScad = new Label() { Left = 16, Top = 65, Width = 240, Text = dataScadenta };
 
-
                 TextBox dataScadTB = new TextBox() { Left = 16, Top = 90, Width = 240, TabIndex = 1, TabStop = true };
                 // eticheta + combobox - tip afisare
                 Label selLabel = new Label() { Left = 16, Top = 130, Width = 88, Text = selStr };
@@ -518,14 +513,14 @@ namespace BlueSolAsoc.Fom_Meniuri
                 cmbx.Items.Add("VALIDARE");
                 cmbx.SelectedItem= "VERIFICARE";
                 // aici primesc parametrul care imi permite sa afisez in combobox de selectia doar valoarea VERIFICARE sau VALIDARE si VERIFICARE - pt true - doar verificare
-                bool validat =true;
+              //  bool validat =true;
+                bool validat = false;
+
                 if (validat)
                 {
                     cmbx.Items.Remove("VALIDARE");
                 }
-
                 // cmbx.Items.Add("TEST");
-
                 confirmare.Click += (sender, e) => { prompt.Close(); };
                 prompt.AcceptButton = confirmare;
                 prompt.AcceptButton.DialogResult = DialogResult.Yes;                
@@ -543,9 +538,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                 prompt.StartPosition = FormStartPosition.CenterScreen;                
                 DialogResult res= prompt.ShowDialog();                
                 if (res==DialogResult.Yes )
-                {
-                    string tipAfisare=""  ;
-                  
+                {   string tipAfisare=""  ;                  
                     string data = dtbAfisare.Value.ToString("d-MMM-yyyy");
                     string sDataScadenta = dataScadTB.Text;
                     if (dtbAfisare.Text.Length == 0)
@@ -554,16 +547,14 @@ namespace BlueSolAsoc.Fom_Meniuri
                     }
                     if (cmbx.SelectedItem == null)
                     {
-                        MessageBox.Show("Selecteaza Tip Afisare");
-                        
+                        MessageBox.Show("Selecteaza Tip Afisare");                        
                         tipAfisare = "Afisare Neselectata";
                     }
                     switch (cmbx.SelectedItem)
                     {
                         case "VALIDARE":
-
                             tipAfisare = "VALIDARE";
-                            DialogResult raspuns = MessageBox.Show(" Butonul VALIDARE", "Blocheaza toate calculele pentru luna activa!", MessageBoxButtons.YesNo);
+                            DialogResult raspuns = MessageBox.Show("Blocheaza toate calculele pentru luna activa!"," Butonul VALIDARE", MessageBoxButtons.YesNo,MessageBoxIcon.Information);
                             if (raspuns == DialogResult.Yes)
                             {
                                 MessageBox.Show("Luna curenta a fost VALIDATA si blocata!");
@@ -572,20 +563,9 @@ namespace BlueSolAsoc.Fom_Meniuri
                             if (raspuns == DialogResult.No)
                             {
                                 tipAfisare = "VERIFICARE";
-                                MessageBox.Show("Schimb tipul imprimarii in VERIFICARE");
-                            }
-
-                            // tipAfisare = "VALIDARE";
-                            //DialogResult dr=( CasetaDialog.AfiseazaMesaj("Selectarea Butonului VALIDARE ", "Blocheaza toate calculele pentru luna activa!",
-                            // CasetaDialog.ButonMesaj.Da,
-                            // CasetaDialog.ButonMesaj.Nimic,
-                            // CasetaDialog.ButonMesaj.Nu,
-                            // CasetaDialog.IconitaMesaj.Informare));
-                            // DialogResult blocareLuna = CasetaDialog.AfiseazaMesaj();
-                            // if(dr==DialogResult.)
-
+                                MessageBox.Show("Schimb tipul imprimarii in VERIFICARE","Schimbare tip afisare", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                            }                                                 
                             break;
-
                         case "VERIFICARE":
                             tipAfisare= "VERIFICARE";
                             break;
@@ -599,23 +579,14 @@ namespace BlueSolAsoc.Fom_Meniuri
                         sDataScadenta = dtbAfisare.Value.AddDays(30).ToString("d-MMM-yyyy");
                     }                   
 
-                    return string.Format("Data afisare:{0} | Data scadenta:{1} | Tip afisare:{2}", data,  sDataScadenta, tipAfisare) ;
-                 
+                    return string.Format("Data afisare:{0} | Data scadenta:{1} | Tip afisare:{2}", data,  sDataScadenta, tipAfisare) ;                 
                 }
                 else
-                {
-
-
-                    //return string.Format("Data afisarii:{0}|Data scadenta:{1}|Tip afisare:{2}", "fara data", "nu are scadenta", "nimic selectat");
+                { //return string.Format("Data afisarii:{0}|Data scadenta:{1}|Tip afisare:{2}", "fara data", "nu are scadenta", "nimic selectat");
                     return string.Format("{0}","NU");
                 }
-
-
             }
-
         }
-
-
     }
 }
 
