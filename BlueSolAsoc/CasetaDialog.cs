@@ -214,6 +214,16 @@ namespace CasetaDialogTag
             iconitaMesaj = Iconita_Mesaj;
         }
 
+        public static System.Windows.Forms.DialogResult AfiseazaMesaj()
+        {
+            using (CasetaDialog casetaDialog = new CasetaDialog( ))
+            {
+                casetaDialog.ShowDialog();
+                return casetaDialog.DialogResult;
+            }
+
+        }
+
         public static System.Windows.Forms.DialogResult AfiseazaMesaj(string DialogTitlu )
         {
             using (CasetaDialog casetaDialog = new CasetaDialog(DialogTitlu,  ButonMesaj.Ok, IconitaMesaj.Niciuna))
