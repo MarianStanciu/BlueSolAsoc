@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using BlueSolAsoc.Fom_Meniuri.structura_asociatie_formuri;
+
 using BlueSolAsoc.butoane_si_controale;
 using System.Configuration;
 
@@ -334,6 +334,7 @@ namespace BlueSolAsoc
                         {
                             Application.OpenForms.OfType<Calcul_intretinere>().First().BringToFront();
                         }
+                        else
                         if (TabelaLuni.Rows.Count == 0)
                         {
                             MessageBox.Show("Alege luna si anul");

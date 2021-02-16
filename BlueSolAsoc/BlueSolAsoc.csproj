@@ -67,10 +67,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AsociatieForm.cs">
+    <Compile Include="Fom Meniuri\AsociatieForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AsociatieForm.Designer.cs">
+    <Compile Include="Fom Meniuri\AsociatieForm.Designer.cs">
       <DependentUpon>AsociatieForm.cs</DependentUpon>
     </Compile>
     <Compile Include="asociatieFormDS.cs">
@@ -188,18 +188,6 @@
     <Compile Include="Fom Meniuri\cheltuieli-plati.Designer.cs">
       <DependentUpon>cheltuieli-plati.cs</DependentUpon>
     </Compile>
-    <Compile Include="Fom Meniuri\structura-asociatie-formuri\Structura-asociatie-definire .cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Fom Meniuri\structura-asociatie-formuri\Structura-asociatie-definire .Designer.cs">
-      <DependentUpon>Structura-asociatie-definire .cs</DependentUpon>
-    </Compile>
-    <Compile Include="Fom Meniuri\structura-asociatie.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Fom Meniuri\structura-asociatie.Designer.cs">
-      <DependentUpon>structura-asociatie.cs</DependentUpon>
-    </Compile>
     <Compile Include="Fom Meniuri\venituri-incasari.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -253,7 +241,7 @@
       <DependentUpon>SelectieAsociatie.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
-    <EmbeddedResource Include="AsociatieForm.resx">
+    <EmbeddedResource Include="Fom Meniuri\AsociatieForm.resx">
       <DependentUpon>AsociatieForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="butoane si controale\ClassButonSelectieAsoc.resx">
@@ -273,12 +261,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Fom Meniuri\cheltuieli-plati.resx">
       <DependentUpon>cheltuieli-plati.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Fom Meniuri\structura-asociatie-formuri\Structura-asociatie-definire .resx">
-      <DependentUpon>Structura-asociatie-definire .cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Fom Meniuri\structura-asociatie.resx">
-      <DependentUpon>structura-asociatie.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fom Meniuri\venituri-incasari.resx">
       <DependentUpon>venituri-incasari.cs</DependentUpon>
