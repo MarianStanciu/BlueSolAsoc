@@ -482,6 +482,9 @@ namespace BlueSolAsoc.Fom_Meniuri
                 // Cursor de la inceput dupa autocomplete
                 textBoxApartamente.SelectionStart = 0;
                 textBoxApartamente.SelectionLength = 0;
+                string[] StringInfo = textBoxApartamente.Text.Split('/');
+                string idProprietar = StringInfo[4].ToString().TrimStart();
+                dataGridViewIstoricProprietar.Rows.Add("Ianuarie","30","100","50","180");
             };
         }
 
