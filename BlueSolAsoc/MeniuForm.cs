@@ -206,6 +206,13 @@ namespace BlueSolAsoc
             comboLuniLucrate.DataSource = TabelaLuniIncheiate;
             comboLuniLucrate.ValueMember = "id_tabela_luni";
             comboLuniLucrate.DisplayMember = "luna";
+            int idselectat = (int)comboLuniLucrate.SelectedValue;
+            //string item = comboLuniLucrate.SelectedIndex.ToString();
+            DataRow rand= TabelaLuniIncheiate.Select("id_tabela_luni="+idselectat).FirstOrDefault();
+            if (comboLuniLucrate.Text == "10")
+            {
+                comboLuniLucrate.DisplayMember = "Octombrie";
+            }
             //comboLuniLucrate.DisplayMember = "numar_luna";
         }
 
