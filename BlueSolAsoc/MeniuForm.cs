@@ -436,7 +436,7 @@ namespace BlueSolAsoc
                         }
                     }
 
-                    TabelUltimaLuna.Rows.Add(0, ultimaluna, ultimulan, 1, idAsociatie, 1, System.DateTime.Now.Date);
+                    TabelUltimaLuna.Rows.Add(0, ultimaluna, ultimulan, 1, idAsociatie, 0, System.DateTime.Now.Date);
 
                     DataSetComboBox.TransmiteActualizari("tabel_ultima_luna", "mv_tabela_luni");
                     
@@ -478,6 +478,7 @@ namespace BlueSolAsoc
                         row["activ"] = 1;
                         row["data_afisare"] = System.DateTime.Now.Date;
                         row["id_org"] = idAsociatie;
+                        row["luna_incheiata"] = 0;
 
                     }
                     DataSetComboBox.TransmiteActualizari("mv_tabela_luni");
