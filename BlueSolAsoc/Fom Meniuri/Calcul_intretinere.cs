@@ -78,7 +78,7 @@ namespace BlueSolAsoc.Fom_Meniuri
         }
 
         // METODA CARE GENEREAZA GRIDVIEW PE BAZA SELECTIEI DIN TREE in tabul Genereaza tabel intretinere
-        private void GenereazaTabel_Click(object sender, EventArgs e)
+        public void GenereazaTabel_Click(object sender, EventArgs e)
         {
             DataColumnCollection col = this.StructuraColoane("denumiri_cheltuieli1");
             GridCalculIntretinere.DataSource = Calcul_intretinereDS.Tables["denumiri_cheltuieli1"];
@@ -108,7 +108,7 @@ namespace BlueSolAsoc.Fom_Meniuri
         }
 
         // CREARE TABELA -  TREE PENTRU ADAUGARE INFORMATII PENTRU APARTAMENT in tabul adaugare consumuri apartament
-        private void extrageTabelaTree()
+        public void extrageTabelaTree()
         {
             if (!(Calcul_intretinereDS.Tables["TabelAfisareTreeCalculIntretinere"] is null))
             {
@@ -120,7 +120,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             GetTreeItemsNou(idOrg, valoare, treeConsumuriApartament.Nodes);
         }
         // metoda care returneaza toate elementele copil pentru nodul selectat in tree din tabul adaugare consumuri apartament
-        private void GetTreeItemsNou(int idOrg, string valoare, TreeNodeCollection parinteNod)
+        public void GetTreeItemsNou(int idOrg, string valoare, TreeNodeCollection parinteNod)
         {
             TreeNode copil = new TreeNode();
             copil.Tag = idOrg;
@@ -135,12 +135,12 @@ namespace BlueSolAsoc.Fom_Meniuri
             }
         }
 
-        private void treeConsumuriApartament_AfterSelect(object sender, TreeViewEventArgs e)
+        public void treeConsumuriApartament_AfterSelect(object sender, TreeViewEventArgs e)
         {
             AfterSelect_treeAdaugareConsumuri(e.Node);
         }
 
-        private void AfterSelect_treeAdaugareConsumuri(TreeNode Node)
+        public void AfterSelect_treeAdaugareConsumuri(TreeNode Node)
         {
             int nId = System.Convert.ToInt16(Node.Tag);
             int val = (Int32)Calcul_intretinereDS.ReturnareValoare("select aso_id_tip from mv_detaliiOrganizatie where org_id_org=" + nId);
@@ -235,7 +235,7 @@ namespace BlueSolAsoc.Fom_Meniuri
         }
 
 
-        private void btnModifica_Click(object sender, EventArgs e)
+        public void btnModifica_Click(object sender, EventArgs e)
         {
             switch (TabCalculIntretinere.SelectedTab.Text)
             {
@@ -255,7 +255,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             }
         }
 
-        private void btnSalveaza_Click(object sender, EventArgs e)
+        public void btnSalveaza_Click(object sender, EventArgs e)
         {
             treeConsumuriApartament.Enabled = true;
             btnModifica.Show();
@@ -295,7 +295,7 @@ namespace BlueSolAsoc.Fom_Meniuri
 
         }
 
-        private void PanelConsumAapartament_Click(object sender, PaintEventArgs e)
+        public void PanelConsumAapartament_Click(object sender, PaintEventArgs e)
         {
             //if (GridAfisareConsumuri.Enabled == false)
             //{
@@ -305,7 +305,7 @@ namespace BlueSolAsoc.Fom_Meniuri
         }
 
         // verificarea introducere date in grid view
-        private void GridAfisareConsumuri_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        public void GridAfisareConsumuri_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
             ClassGridView grid = (ClassGridView)sender;
             if (grid.Columns[e.ColumnIndex].Name == "consum_apa_rece" || grid.Columns[e.ColumnIndex].Name == "numar_persoane" || grid.Columns[e.ColumnIndex].Name == "consum_apa_calda")
@@ -362,7 +362,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             }
         }
 
-        public void MetodaDGVPrinter(ClassGridView gridView, string sDataTip)
+        void MetodaDGVPrinter(ClassGridView gridView, string sDataTip)
         {
             if (gridView.Columns.Count != 0 | gridView.Visible == false)
             {
@@ -402,8 +402,8 @@ namespace BlueSolAsoc.Fom_Meniuri
 
         public void btnImprima_Click(object sender, EventArgs e)
         {
-            PromptForTextAndSelection imprimareIntretinere = new PromptForTextAndSelection();
-            string verificare = imprimareIntretinere.ShowDialog("BluebitData", "Data Afisare", "Tip Afisare", "Data Scadentei");
+
+            string verificare = ShowDialogA("BluebitData", "Data Afisare", "Tip Afisare", "Data Scadentei");
 
             if (verificare == "NU")
             {
@@ -430,34 +430,47 @@ namespace BlueSolAsoc.Fom_Meniuri
                 {
                     Form frmDeschis = Application.OpenForms[i];
 
-                    if (frmDeschis.Text == "Calcul_intretinere")
+                    
+                  if (frmDeschis.Text == "venituri_incasari")
                     {
-                        if (verificButonAnuleaza() == true)
-                        {
-                            MessageBox.Show("Exista elemente nesalvate in pagina " + frmDeschis.Text);
-                            frmDeschis.Close();
-                        }
-                        if (frmDeschis.Text == "venituri-incasari")
-                        {
-                            MessageBox.Show("Exista elemente nesalvate in pagina " + frmDeschis.Text);
-                            frmDeschis.Close();
-                        }
-
-                        if (frmDeschis.Text == "structura-asociatie")
-                        {
-                            MessageBox.Show("Exista elemente nesalvate in pagina " + frmDeschis.Text);
-                            frmDeschis.Close();
-                        }
+                        MessageBox.Show("Exista elemente nesalvate in pagina " + frmDeschis.Text);
+                         frmDeschis.Close();
+                    }  
+                    else
+                    if (frmDeschis.Text == "cheltuieli_plati")
+                    {
+                        MessageBox.Show("Exista elemente nesalvate in pagina " + frmDeschis.Text);
+                         frmDeschis.Close();
+                    }
+                    else
+                    if (frmDeschis.Text == "AsociatieForm1")
+                    {
+                        MessageBox.Show("Exista elemente nesalvate in pagina " + frmDeschis.Text);
+                        frmDeschis.Close();
 
                     }
+                  else
+                    if (frmDeschis.Text == "Calcul_intretinere")
+                    {
+                        MessageBox.Show("Exista elemente nesalvate in pagina " + frmDeschis.Text);
+                        frmDeschis.Close();
 
+                    }
+                  else
+                    if (frmDeschis.Text == "MeniuForm")
+                    {
+                        MessageBox.Show("Exista elemente nesalvate in pagina " + frmDeschis.Text);
+                        frmDeschis.Close();
+
+                    }
+                    this.Close();
+                    
                 }
             }
+            else MessageBox.Show("Nu sunt Formuri deschise");
         }
 
-        public  class PromptForTextAndSelection
-        {
-            public  string ShowDialog(string caption, string text, string selStr, string dataScadenta)
+            public string ShowDialogA(string caption, string text, string selStr, string dataScadenta)
             {
                 Form prompt = new Form();
                 prompt.ControlBox = false;
@@ -536,7 +549,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                             {
                                 int z = Application.OpenForms.Count;
                                 // aici codul de transmis
-                           
+
                                 ValidareLunaActiva();
 
 
@@ -571,8 +584,9 @@ namespace BlueSolAsoc.Fom_Meniuri
                     return string.Format("{0}", "NU");
                 }
             }
-        }
+        
 
     }
+
 }
 
