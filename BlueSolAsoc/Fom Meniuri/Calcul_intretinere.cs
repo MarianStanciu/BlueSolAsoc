@@ -337,7 +337,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             return false;
         }
 
-        private void GridAfisareConsumuri_Click(object sender, EventArgs e)
+        public void GridAfisareConsumuri_Click(object sender, EventArgs e)
         {
 
             if (btnModifica.Visible == true)
@@ -362,7 +362,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             }
         }
 
-        private void MetodaDGVPrinter(ClassGridView gridView, string sDataTip)
+        public void MetodaDGVPrinter(ClassGridView gridView, string sDataTip)
         {
             if (gridView.Columns.Count != 0 | gridView.Visible == false)
             {
@@ -400,9 +400,10 @@ namespace BlueSolAsoc.Fom_Meniuri
         }
 
 
-        private void btnImprima_Click(object sender, EventArgs e)
+        public void btnImprima_Click(object sender, EventArgs e)
         {
-            string verificare = PromptForTextAndSelection.ShowDialog("BluebitData", "Data Afisare", "Tip Afisare", "Data Scadentei");
+            PromptForTextAndSelection imprimareIntretinere = new PromptForTextAndSelection();
+            string verificare = imprimareIntretinere.ShowDialog("BluebitData", "Data Afisare", "Tip Afisare", "Data Scadentei");
 
             if (verificare == "NU")
             {
@@ -413,10 +414,50 @@ namespace BlueSolAsoc.Fom_Meniuri
                 MetodaDGVPrinter(GridCalculIntretinere, verificare);
             }
         }
-
-        public class PromptForTextAndSelection
+        public bool verificButonAnuleaza()
         {
-            public static string ShowDialog(string caption, string text, string selStr, string dataScadenta)
+            if (tabPage1.Controls.Contains(btnAnuleaza) == Visible)//btnAnuleaza.Visible)
+            {
+                return true;
+            }
+            else return false;
+        }
+        public void ValidareLunaActiva()
+        {
+            if (Application.OpenForms.Count > 0)
+            {
+                for (int i = 0; i < Application.OpenForms.Count; i++)
+                {
+                    Form frmDeschis = Application.OpenForms[i];
+
+                    if (frmDeschis.Text == "Calcul_intretinere")
+                    {
+                        if (verificButonAnuleaza() == true)
+                        {
+                            MessageBox.Show("Exista elemente nesalvate in pagina " + frmDeschis.Text);
+                            frmDeschis.Close();
+                        }
+                        if (frmDeschis.Text == "venituri-incasari")
+                        {
+                            MessageBox.Show("Exista elemente nesalvate in pagina " + frmDeschis.Text);
+                            frmDeschis.Close();
+                        }
+
+                        if (frmDeschis.Text == "structura-asociatie")
+                        {
+                            MessageBox.Show("Exista elemente nesalvate in pagina " + frmDeschis.Text);
+                            frmDeschis.Close();
+                        }
+
+                    }
+
+                }
+            }
+        }
+
+        public  class PromptForTextAndSelection
+        {
+            public  string ShowDialog(string caption, string text, string selStr, string dataScadenta)
             {
                 Form prompt = new Form();
                 prompt.ControlBox = false;
@@ -495,8 +536,10 @@ namespace BlueSolAsoc.Fom_Meniuri
                             {
                                 int z = Application.OpenForms.Count;
                                 // aici codul de transmis
-                                //Calcul_intretinere calcul_ = new Calcul_intretinere();
-                                //ValidareLunaActiva();
+                           
+                                ValidareLunaActiva();
+
+
 
 
                                 MessageBox.Show("Luna curenta a fost VALIDATA si blocata!");
@@ -529,44 +572,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                 }
             }
         }
-        public bool verificButonAnuleaza()
-        {
-            if (tabPage1.Controls.Contains(btnAnuleaza) == Visible)//btnAnuleaza.Visible)
-            {
-                return true;
-            }
-            else return false;
-        }
-        public void ValidareLunaActiva()
-        {
-            if (Application.OpenForms.Count > 0)
-            {
-                for (int i = 0; i < Application.OpenForms.Count; i++)
-                {
-                    Form frmDeschis = Application.OpenForms[i];
 
-                    if (frmDeschis.Text == "Calcul_intretinere")
-                    {
-                        if (verificButonAnuleaza() == true)
-                        {
-                            MessageBox.Show("Exista elemente nesalvate in pagina " + frmDeschis.Text);
-                            frmDeschis.Close();
-                        }
-                        if (frmDeschis.Text == "venituri-incasari")
-                        {
-                            MessageBox.Show("Exista elemente nesalvate in pagina " + frmDeschis.Text);
-                        }
-
-                        if (frmDeschis.Text == "structura-asociatie")
-                        {
-                            MessageBox.Show("Exista elemente nesalvate in pagina " + frmDeschis.Text);
-                        }
-
-                    }
-
-                }
-            }
-        }
     }
 }
 
