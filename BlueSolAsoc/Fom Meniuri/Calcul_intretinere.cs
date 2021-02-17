@@ -238,10 +238,11 @@ namespace BlueSolAsoc.Fom_Meniuri
 
         public void btnModifica_Click(object sender, EventArgs e)
         {
+            verificare.SetDocActiv(true);
             switch (TabCalculIntretinere.SelectedTab.Text)
             {
                 case "Adaugare consumuri apartament":
-                    verificare.SetDocActiv(true);
+                  
                     treeConsumuriApartament.Enabled = false;
                     btnModifica.Hide();
                     btnSalveaza.Visible = true;
@@ -408,7 +409,7 @@ namespace BlueSolAsoc.Fom_Meniuri
         public void btnImprima_Click(object sender, EventArgs e)
         {
             string verificare = ShowDialogA("BluebitData", "Data Afisare", "Tip Afisare", "Data Scadentei");
-            if (verificCalculIntretinereEditare()  )
+            if (verificCalculIntretinereEditare())
             {
                 MessageBox.Show("Imprimare anulata!", "Exista un document in editare", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
