@@ -17,8 +17,23 @@ namespace BlueSolAsoc
         public FormBluebit()
         {
             InitializeComponent();
+            
         }
 
-      
+        public  class VerificDoc
+        {
+            public bool documentActiv;
+
+            public bool GetDocActiv()
+            {
+                return documentActiv;
+            }
+            public bool SetDocActiv(bool a)
+            {
+                return documentActiv = a;
+            }
+        }
+        
+
     }
 }

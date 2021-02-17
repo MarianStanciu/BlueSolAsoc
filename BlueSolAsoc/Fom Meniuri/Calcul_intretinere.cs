@@ -19,7 +19,7 @@ namespace BlueSolAsoc.Fom_Meniuri
         private string denumireAsociatie;
         private int idAsociatie;
         public string sLunaActiva;
-
+        VerificDoc verificare = new VerificDoc();
 
         public Calcul_intretinere()
         {
@@ -40,7 +40,8 @@ namespace BlueSolAsoc.Fom_Meniuri
             btnSterge.Hide();
             btnAnuleaza.Visible = false;
             btnImprima.Visible = true;
-
+            btnModifica.Hide();
+            verificare.SetDocActiv(false);
         }
 
         protected override void OnLoad(EventArgs e)
@@ -177,14 +178,14 @@ namespace BlueSolAsoc.Fom_Meniuri
                 GridAfisareConsumuri.Visible = true;
                 GridAfisareConsumuri.Show();
                 lblMesajSelecteazScara.Hide();
-
+                btnModifica.Show();
             }
             else
             {
                 PanelConsumAapartament.Hide();
                 GridAfisareConsumuri.Visible = false;
                 lblMesajSelecteazScara.Show();
-
+                btnModifica.Hide();
             }
         }
         public void reimprospateazaGridConsumuri()
@@ -240,6 +241,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             switch (TabCalculIntretinere.SelectedTab.Text)
             {
                 case "Adaugare consumuri apartament":
+                    verificare.SetDocActiv(true);
                     treeConsumuriApartament.Enabled = false;
                     btnModifica.Hide();
                     btnSalveaza.Visible = true;
@@ -262,6 +264,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             btnSalveaza.Hide();
             btnAnuleaza.Hide();
             Calcul_intretinereDS.TransmiteActualizari("mv_ConsumApartamente");
+            verificare.SetDocActiv(false);
             // GridAfisareConsumuri.Enabled = false;
         }
 
@@ -282,6 +285,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                     GridAfisareConsumuri.CancelEdit();
                     GridAfisareConsumuri.DataSource = Calcul_intretinereDS.Tables["mv_ConsumApartamente"];
                     treeConsumuriApartament.Enabled = true;
+                    verificare.SetDocActiv(false);
                 }
             }
             else
@@ -291,6 +295,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                 btnSalveaza.Hide();
                 btnAnuleaza.Hide();
                 GridAfisareConsumuri.CancelEdit();
+                verificare.SetDocActiv(false);
             }
 
         }
@@ -402,25 +407,26 @@ namespace BlueSolAsoc.Fom_Meniuri
 
         public void btnImprima_Click(object sender, EventArgs e)
         {
-
             string verificare = ShowDialogA("BluebitData", "Data Afisare", "Tip Afisare", "Data Scadentei");
-
-            if (verificare == "NU")
+            if (verificCalculIntretinereEditare()  )
+            {
+                MessageBox.Show("Imprimare anulata!", "Exista un document in editare", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (verificare == "NU")
             {
                 MessageBox.Show("Imprimare anulata!", "Anulat de utilizator", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
-            {
-                MetodaDGVPrinter(GridCalculIntretinere, verificare);
-            }
+            {           
+                MetodaDGVPrinter(GridCalculIntretinere, verificare);                
+             }
         }
-        public bool verificButonAnuleaza()
+        // de creat o metoda care verifica daca sunt elemente de salvat in formurile vizate
+       
+        public bool verificCalculIntretinereEditare()
         {
-            if (tabPage1.Controls.Contains(btnAnuleaza) == Visible)//btnAnuleaza.Visible)
-            {
-                return true;
-            }
-            else return false;
+            return verificare.GetDocActiv();
+            
         }
         public void ValidareLunaActiva()
         {
@@ -431,46 +437,69 @@ namespace BlueSolAsoc.Fom_Meniuri
                     Form frmDeschis = Application.OpenForms[i];
 
                     
-                  if (frmDeschis.Text == "venituri_incasari")
+                  if (frmDeschis.Text == "AsociatieForm1" )
                     {
-                        MessageBox.Show("Exista elemente nesalvate in pagina " + frmDeschis.Text);
-                         frmDeschis.Close();
+                        frmDeschis.BringToFront();
+                        DialogResult asoc = MessageBox.Show("Exista elemente nesalvate in pagina " + frmDeschis.Text, "Notificare", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        if (asoc == DialogResult.Yes)
+                        {
+                          
+                            frmDeschis.Activate();
+                           
+                        }
+                        else
+                        {
+                            frmDeschis.Close();
+                        }
                     }  
-                    else
-                    if (frmDeschis.Text == "cheltuieli_plati")
-                    {
-                        MessageBox.Show("Exista elemente nesalvate in pagina " + frmDeschis.Text);
-                         frmDeschis.Close();
-                    }
-                    else
-                    if (frmDeschis.Text == "AsociatieForm1")
-                    {
-                        MessageBox.Show("Exista elemente nesalvate in pagina " + frmDeschis.Text);
-                        frmDeschis.Close();
+                    //else
+                    //if (frmDeschis.Text == "venituri_incasari" )
+                    //{
+                    //    frmDeschis.BringToFront();
+                    //    MessageBox.Show("Exista elemente nesalvate in pagina " + frmDeschis.Text);
+                      
+                    //    frmDeschis.Activate();
+                    //    //frmDeschis.Close();
+                    //}
+                    //else
+                    //if (frmDeschis.Text == "cheltuieli_plati")
+                    //{
+                    //    frmDeschis.BringToFront();
+                    //    DialogResult asoc= MessageBox.Show("Pagina activa, Ai ceva de salvat? " + frmDeschis.Text,"Notificare", MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+                    //    if (asoc == DialogResult.Yes)
+                    //    {
+                         
+                    //        frmDeschis.Activate();
 
-                    }
+                    //    }
+                    //    else
+                    //    frmDeschis.Close();
+
+                    //}
                   else
                     if (frmDeschis.Text == "Calcul_intretinere")
                     {
-                        MessageBox.Show("Exista elemente nesalvate in pagina " + frmDeschis.Text);
-                        frmDeschis.Close();
-
+                        frmDeschis.BringToFront();
+                        //MessageBox.Show("Exista elemente nesalvate in pagina " + frmDeschis.Text);
+                        //  frmDeschis.Close();
+                       
+                        frmDeschis.Activate();
                     }
-                  else
-                    if (frmDeschis.Text == "MeniuForm")
-                    {
-                        MessageBox.Show("Exista elemente nesalvate in pagina " + frmDeschis.Text);
-                        frmDeschis.Close();
+                  //else
+                  //  if (frmDeschis.Text == "MeniuForm")
+                  //  {
+                  //      MessageBox.Show("Exista elemente nesalvate in pagina " + frmDeschis.Text);
+                  //      frmDeschis.Close();
 
-                    }
-                    this.Close();
+                  //  }
+                   // this.Close();
                     
                 }
             }
             else MessageBox.Show("Nu sunt Formuri deschise");
         }
 
-            public string ShowDialogA(string caption, string text, string selStr, string dataScadenta)
+         public string ShowDialogA(string caption, string text, string selStr, string dataScadenta)
             {
                 Form prompt = new Form();
                 prompt.ControlBox = false;
@@ -548,9 +577,9 @@ namespace BlueSolAsoc.Fom_Meniuri
                             if (raspuns == DialogResult.Yes)
                             {
                                 int z = Application.OpenForms.Count;
-                                // aici codul de transmis
-
-                                ValidareLunaActiva();
+                            // aici codul de transmis
+                         
+                                //ValidareLunaActiva();
 
 
 
