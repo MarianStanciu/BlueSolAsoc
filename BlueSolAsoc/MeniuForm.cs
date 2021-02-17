@@ -76,6 +76,9 @@ namespace BlueSolAsoc
                 comboBoxLUNA.Hide();
                 lblSelectieAn.Hide();
                 lblSelectieLuna.Hide();
+                gridTabelaLuni.Hide();
+                panelTabelLuni.Hide();
+                comboLuniLucrate.Hide();
 
                 //    lblLunaCurenta.Text = "Luna activa :" + ultimaluna;
                 //}
@@ -185,6 +188,8 @@ namespace BlueSolAsoc
             DataTable TabelaLuniIncheiate = DataSetComboBox.Tables["tabela_luni_incheiate"];
             string[] lunicombobox = { "ianuarie", "februarie", "martie", "aprilie", "mai", "iunie", "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie" };
             int[] numarlunicombo = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
+            string stringan = System.DateTime.Now.Year.ToString();
+            int anactual = Convert.ToInt32(stringan);
             int[] ani = { 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030, 2031 };
             DataTable TabelNumarareLuni = new DataTable();
             TabelNumarareLuni.Columns.Add("luna");
@@ -205,14 +210,14 @@ namespace BlueSolAsoc
 
             comboLuniLucrate.DataSource = TabelaLuniIncheiate;
             comboLuniLucrate.ValueMember = "id_tabela_luni";
-            comboLuniLucrate.DisplayMember = "luna";
-            int idselectat = (int)comboLuniLucrate.SelectedValue;
+            comboLuniLucrate.DisplayMember = "den_luna_an";
+            //int idselectat = (int)comboLuniLucrate.SelectedValue;
             //string item = comboLuniLucrate.SelectedIndex.ToString();
-            DataRow rand= TabelaLuniIncheiate.Select("id_tabela_luni="+idselectat).FirstOrDefault();
-            if (comboLuniLucrate.Text == "10")
+            //DataRow rand= TabelaLuniIncheiate.Select("id_tabela_luni="+idselectat).FirstOrDefault();
+           /* if (comboLuniLucrate.Text == "10")
             {
                 comboLuniLucrate.DisplayMember = "Octombrie";
-            }
+            }*/
             //comboLuniLucrate.DisplayMember = "numar_luna";
         }
 
@@ -502,11 +507,16 @@ namespace BlueSolAsoc
 
         private void ModifLunaIncheiata_Click(object sender, EventArgs e)
         {
+            if (ModifLunaIncheiata.Text=="Selectare luna anterioara")
+            {
+                comboLuniLucrate.Show();
+                ModifLunaIncheiata.Text = "Confirma";
+            }
             DataTable TabelaLuni = DataSetComboBox.Tables["mv_tabela_luni"];
             DataTable TabelaLuniIncheiate = DataSetComboBox.Tables["tabela_luni_incheiate"];
             comboLuniLucrate.DataSource = TabelaLuniIncheiate;
             comboLuniLucrate.ValueMember = "id_tabela_luni";
-            comboLuniLucrate.DisplayMember = "luna";
+            comboLuniLucrate.DisplayMember = "den_luna_an";
             //MessageBox.Show("Ai selectat" + comboLuniLucrate.SelectedValue);
             int id_luna_de_activat = Convert.ToInt32(comboLuniLucrate.SelectedValue);
             /* foreach (DataRow dr in TabelaLuni.Rows) // cautam in tabel
