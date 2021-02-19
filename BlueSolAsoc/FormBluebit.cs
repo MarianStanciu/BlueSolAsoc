@@ -13,27 +13,25 @@ namespace BlueSolAsoc
 {
     public partial class FormBluebit : Form
     {
-        
+        public bool documentActiv;
+
+        public bool GetDocActiv()
+        {
+            return documentActiv;
+        }
+        public bool SetDocActiv(bool a)
+        {
+            return documentActiv = a;
+        }
+
         public FormBluebit()
         {
-            InitializeComponent();
-            
+            InitializeComponent();           
+
         }
 
-        public  class VerificDoc
-        {
-            public bool documentActiv;
 
-            public bool GetDocActiv()
-            {
-                return documentActiv;
-            }
-            public bool SetDocActiv(bool a)
-            {
-                return documentActiv = a;
-            }
-        }
-        
 
-    }
+
+}
 }

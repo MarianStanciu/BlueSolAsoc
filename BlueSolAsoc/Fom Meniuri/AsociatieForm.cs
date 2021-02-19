@@ -21,7 +21,7 @@ namespace BlueSolAsoc
         private string denumireAsociatie;
         private int idAsociatie;      
         string eroareCaseta = "";
-        VerificDoc verificare = new VerificDoc();
+        
 
 
         public AsociatieForm(string denumireAsociatie, int idAsociatie)
@@ -31,7 +31,7 @@ namespace BlueSolAsoc
             this.idAsociatie = idAsociatie;           
             dataGridViewAp.CellEndEdit += dataGridViewAp_CellEndEdit;
             GridParteneri.CellEndEdit += GridParteneri_CellEndEdit;
-            verificare.SetDocActiv(false);
+            SetDocActiv(false);
 
 
             try
@@ -256,7 +256,7 @@ namespace BlueSolAsoc
     // actiune buton modifica
     private void classButonModifica1_Click(object sender, EventArgs e)
         {
-            verificare.SetDocActiv(true);
+            SetDocActiv(true);
             classButonModifica1.Hide();
             classButonInteriorSterge1.Hide();
             btnAnuleaza.Show();
@@ -298,7 +298,7 @@ namespace BlueSolAsoc
         //actiune buton anuleaza
         private void btnAnuleaza_Click(object sender, EventArgs e)
         {
-            verificare.SetDocActiv(false);
+           SetDocActiv(false);
         
                 switch (TabSA.SelectedTab.Text)
                 {
@@ -467,7 +467,7 @@ namespace BlueSolAsoc
         //actiune buton ok
         private void btnOK_Click(object sender, EventArgs e)
         {
-            verificare.SetDocActiv(false);
+           SetDocActiv(false);
             switch (TabSA.SelectedTab.Text)
             {
                 case "Structura Asociatie":
@@ -739,9 +739,9 @@ namespace BlueSolAsoc
                 DupaApasareOk(GridParteneri);
             }
         }
-        public bool verificCalculIntretinereEditare()
+        public  bool verificCalculIntretinereEditare()
         {
-            return verificare.GetDocActiv();
+            return GetDocActiv();
 
         }
 
