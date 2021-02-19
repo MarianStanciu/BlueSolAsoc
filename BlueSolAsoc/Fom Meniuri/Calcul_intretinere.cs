@@ -434,24 +434,49 @@ namespace BlueSolAsoc.Fom_Meniuri
         {
             if (Application.OpenForms.Count > 0)
             {
+                //foreach (FormBluebit frmDeschis in Application.OpenForms)
+                //{
+                //    string ferDeschisa = "";
+                //    if (frmDeschis.GetDocActiv())
+                //    {
+                //        ferDeschisa = ferDeschisa + frmDeschis.Text;
+                //        MessageBox.Show(" Fereastra sau ferestrele" + ferDeschisa + "su doc in editare");
+                //        frmDeschis.BringToFront();
+                //    }
+
+                //}
+
                 for (int i = 0; i < Application.OpenForms.Count; i++)
                 {
-                    FormBluebit frmDeschis =(FormBluebit) Application.OpenForms[i];
-                    frmDeschis.GetDocActiv();
-                    //referinta
-                    if (frmDeschis.Text == "AsociatieForm1" && frmDeschis.GetDocActiv() )
+                    FormBluebit frmDeschis = (FormBluebit)Application.OpenForms[i];
+
+                    //if (frmDeschis.GetDocActiv())
+                    //{
+                    //    MessageBox.Show(" Fereastra" + frmDeschis.Text + " deschisa");
+                    //    frmDeschis.BringToFront();
+                    //}
+                    if (frmDeschis.Text == "AsociatieForm1" && frmDeschis.GetDocActiv())
                     {
                         MessageBox.Show(" Fereastra deschisa");
                         frmDeschis.BringToFront();
                         frmDeschis.Activate();
-                        
-
+                    }
+                    if (frmDeschis.Text == "cheltuieli_plati" && frmDeschis.GetDocActiv())
+                    {
+                        MessageBox.Show(" Fereastra deschisa");
+                        frmDeschis.BringToFront();
+                        frmDeschis.Activate();
+                    }
+                    if (frmDeschis.Text == "venituri_incasari" && frmDeschis.GetDocActiv())
+                    {
+                        MessageBox.Show(" Fereastra deschisa");
+                        frmDeschis.BringToFront();
+                        frmDeschis.Activate();
                     }
 
                 }
-           
+
             }
-            else MessageBox.Show("Nu sunt Formuri deschise");
         }
 
          public string ShowDialogA(string caption, string text, string selStr, string dataScadenta)

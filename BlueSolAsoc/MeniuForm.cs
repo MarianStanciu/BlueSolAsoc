@@ -322,10 +322,25 @@ namespace BlueSolAsoc
 
                         break;
                     case ("INCHIDE APLICATIA"):
-                        //       MessageBox.Show("ooooooooooo");
-                        //DeschidePanelMama(new cheltuieli_plati());
-                        //PopulareMeniuSecundar(meniuSecundar2);
-                        this.Close();
+                        
+                       for (int i = 0; i < Application.OpenForms.Count; i++)
+                        {
+                            FormBluebit frmDeschis = (FormBluebit)Application.OpenForms[i];
+                            if (frmDeschis.GetDocActiv())
+                            {
+                                MessageBox.Show(" Exista un document in editare, Termina editarea si apoi poti inchide");
+                                frmDeschis.BringToFront();
+                                break;
+                            }
+                            if (i == Application.OpenForms.Count-1)
+                            {
+                                this.Close();
+                            }
+                           
+                        }
+                     
+                 
+
                         break;
 
                     case ("CALCUL INTRETINERE"):
