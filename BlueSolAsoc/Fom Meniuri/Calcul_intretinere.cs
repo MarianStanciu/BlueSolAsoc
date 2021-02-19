@@ -408,75 +408,55 @@ namespace BlueSolAsoc.Fom_Meniuri
 
         public void btnImprima_Click(object sender, EventArgs e)
         {
-            ValidareLunaActiva();
-            //string verificare = ShowDialogA("BluebitData", "Data Afisare", "Tip Afisare", "Data Scadentei");
-            //if (verificCalculIntretinereEditare())
-            //{
-            //    MessageBox.Show("Imprimare anulata!", "Exista un document in editare", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
-            //else if (verificare == "NU")
-            //{
-            //    MessageBox.Show("Imprimare anulata!", "Anulat de utilizator", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
-            //else
-            //{           
-            //    MetodaDGVPrinter(GridCalculIntretinere, verificare);                
-            // }
-        }
-        // de creat o metoda care verifica daca sunt elemente de salvat in formurile vizate
-       
-        public bool verificCalculIntretinereEditare()
-        {
-            return GetDocActiv();
             
-        }
-        public void ValidareLunaActiva()
-        {
-            if (Application.OpenForms.Count > 0)
-            {
-                //foreach (FormBluebit frmDeschis in Application.OpenForms)
-                //{
-                //    string ferDeschisa = "";
-                //    if (frmDeschis.GetDocActiv())
-                //    {
-                //        ferDeschisa = ferDeschisa + frmDeschis.Text;
-                //        MessageBox.Show(" Fereastra sau ferestrele" + ferDeschisa + "su doc in editare");
-                //        frmDeschis.BringToFront();
-                //    }
+         
+            string verificare = ShowDialogA("BluebitData", "Data Afisare", "Tip Afisare", "Data Scadentei");
+           
+                if (verificare.Contains("VALIDARE"))
+                {
+                    MetodaDGVPrinter(GridCalculIntretinere, verificare);
 
-                //}
+                }
+                else if (verificare == "NU")
+                {
+                    MessageBox.Show("Imprimare anulata!", "Anulat de utilizator", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }              
+        }
+       
+      
+        public void ValidareLunaActiva()
+        {                       
 
                 for (int i = 0; i < Application.OpenForms.Count; i++)
                 {
                     FormBluebit frmDeschis = (FormBluebit)Application.OpenForms[i];
+                    if (frmDeschis.GetDocActiv())
+                    {
+                        MessageBox.Show(" Exista un document in editare, Termina editarea si apoi poti reveni la imprimare");
+                        frmDeschis.BringToFront();
+                        frmDeschis.Activate();
+                        break;                        
+                    }              
+                 }      
 
-                    //if (frmDeschis.GetDocActiv())
-                    //{
-                    //    MessageBox.Show(" Fereastra" + frmDeschis.Text + " deschisa");
-                    //    frmDeschis.BringToFront();
-                    //}
-                    if (frmDeschis.Text == "AsociatieForm1" && frmDeschis.GetDocActiv())
-                    {
-                        MessageBox.Show(" Fereastra deschisa");
-                        frmDeschis.BringToFront();
-                        frmDeschis.Activate();
-                    }
-                    if (frmDeschis.Text == "cheltuieli_plati" && frmDeschis.GetDocActiv())
-                    {
-                        MessageBox.Show(" Fereastra deschisa");
-                        frmDeschis.BringToFront();
-                        frmDeschis.Activate();
-                    }
-                    if (frmDeschis.Text == "venituri_incasari" && frmDeschis.GetDocActiv())
-                    {
-                        MessageBox.Show(" Fereastra deschisa");
-                        frmDeschis.BringToFront();
-                        frmDeschis.Activate();
-                    }
-
-                }
+        }
+      
+        public bool MST()
+        {
+            bool z = true;
+           
+            for (int i = 0; i < Application.OpenForms.Count; i++)
+            {
+                FormBluebit frmDeschis = (FormBluebit)Application.OpenForms[i];
+                if (z == frmDeschis.GetDocActiv())
+                    return true;
+               
 
             }
+            return false;
+           
+          
+            
         }
 
          public string ShowDialogA(string caption, string text, string selStr, string dataScadenta)
@@ -552,18 +532,17 @@ namespace BlueSolAsoc.Fom_Meniuri
                     switch (cmbx.SelectedItem)
                     {
                         case "VALIDARE":
+                        if (MST())
+                        {
+                            ValidareLunaActiva();
+                        }
+                        else
+                        {
+
                             tipAfisare = "VALIDARE";
                             DialogResult raspuns = MessageBox.Show("Blocheaza toate calculele pentru luna activa!", " Butonul VALIDARE", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                             if (raspuns == DialogResult.Yes)
                             {
-                                int z = Application.OpenForms.Count;
-                            // aici codul de transmis
-                         
-                                //ValidareLunaActiva();
-
-
-
-
                                 MessageBox.Show("Luna curenta a fost VALIDATA si blocata!");
 
                             }
@@ -572,7 +551,10 @@ namespace BlueSolAsoc.Fom_Meniuri
                                 tipAfisare = "VERIFICARE";
                                 MessageBox.Show("Schimb tipul imprimarii in VERIFICARE", "Schimbare tip afisare", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
-                            break;
+                        }     
+                        
+                        break;
+                       
                         case "VERIFICARE":
                             tipAfisare = "VERIFICARE";
                             break;
