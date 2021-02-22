@@ -47,7 +47,7 @@ namespace BlueSolAsoc.Fom_Meniuri
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            adaugareColoane();
+            GenerareListaIntretinere();
             extrageTabelaTree();
             treeConsumuriApartament.ExpandAll();// afisarea treeului rezultat in format extins pana la nivel de scara
             PanelConsumAapartament.Hide();// ascunderea panelului ce contine gridul pentru adaugare consumuri pana este selectata o scar din tree                      
@@ -60,8 +60,8 @@ namespace BlueSolAsoc.Fom_Meniuri
             DataColumnCollection coloane = Calcul_intretinereDS.Tables[sTabelLucru].Columns;
             return coloane;
         }
-        //GENERARE TABELA CU TOATE DENUMIRILE CHELTUIELILOR SI ADAUGAREA LOR IN TREE  in tabul Genereaza tabel intretinere
-        public void adaugareColoane()
+        //GENERARE TABELA CU TOATE DENUMIRILE CHELTUIELILOR SI ADAUGAREA LOR IN TREE  in tabul Genereaza tabel intretinere//  Generea tabelul cu cheltuielile de intretinere
+        public void GenerareListaIntretinere()
         {
             //creare tabel cu calculul intretinerii
             if (!(Calcul_intretinereDS.Tables["denumiri_cheltuieli1"] is null))
@@ -84,25 +84,11 @@ namespace BlueSolAsoc.Fom_Meniuri
             sqlcommand.CommandType = CommandType.StoredProcedure;
             sqlcommand.Parameters.AddWithValue("@nIdAsociatie", idAsociatie);
             sqlcommand.Parameters.AddWithValue("@nValidare", 0);
-            sqlcommand.Parameters.AddWithValue("@dDataAfisare", "11.11.1111");
-            sqlcommand.Parameters.AddWithValue("@dDataScadenta", "22.11.2222");
+            sqlcommand.Parameters.AddWithValue("@dDataAfisare", "1111.11.21");
+            sqlcommand.Parameters.AddWithValue("@dDataScadenta", "2222.12.30");
             cnn.Close();
         }
-        //public void TransmiteParametriCalculIntretinere(int idAsociatie,int  Validare, string dDataAfisare,string dDataScadenta)
-        //{
-
-
-        //    ClassConexiuneServer.ConectareDedicata();
-        //    SqlConnection cnn = ClassConexiuneServer.GetConnection();
-        //    ClassConexiuneServer.DeschideConexiunea();
-        //    SqlCommand sqlcommand = new SqlCommand("dbo.mp_CalculIntretinere", cnn);
-        //    sqlcommand.CommandType = CommandType.StoredProcedure;
-        //    sqlcommand.Parameters.AddWithValue(@nIdAsociatie, idAsociatie);
-        //    sqlcommand.Parameters.AddWithValue(@nValidare, Validare);
-        //    sqlcommand.Parameters.AddWithValue(@dDataAfisare, dDataAfisare);
-        //    sqlcommand.Parameters.AddWithValue(@dDataScadenta, dDataScadenta);
-
-        //}
+        
 
         // METODA CARE GENEREAZA GRIDVIEW PE BAZA SELECTIEI DIN TREE in tabul Genereaza tabel intretinere
         public void GenereazaTabel_Click(object sender, EventArgs e)
