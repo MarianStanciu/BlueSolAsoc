@@ -4,7 +4,7 @@ using DGVPrinterHelper;
 using System;
 
 using System.Data;
-
+using System.Data.SqlClient;
 using System.Drawing;
 
 using System.Windows.Forms;
@@ -63,7 +63,7 @@ namespace BlueSolAsoc.Fom_Meniuri
         //GENERARE TABELA CU TOATE DENUMIRILE CHELTUIELILOR SI ADAUGAREA LOR IN TREE  in tabul Genereaza tabel intretinere
         public void adaugareColoane()
         {
-
+            //creare tabel cu calculul intretinerii
             if (!(Calcul_intretinereDS.Tables["denumiri_cheltuieli1"] is null))
             {
                 Calcul_intretinereDS.Tables.Remove("denumiri_cheltuieli1");
@@ -76,7 +76,33 @@ namespace BlueSolAsoc.Fom_Meniuri
                 TreeNode node = new TreeNode(col[i].ToString());
                 treeColoane.Nodes.Add(node);
             }
+            //
+            ClassConexiuneServer.ConectareDedicata();
+            SqlConnection cnn = ClassConexiuneServer.GetConnection();
+            ClassConexiuneServer.DeschideConexiunea();
+            SqlCommand sqlcommand = new SqlCommand("dbo.mp_CalculIntretinere", cnn);
+            sqlcommand.CommandType = CommandType.StoredProcedure;
+            sqlcommand.Parameters.AddWithValue("@nIdAsociatie", idAsociatie);
+            sqlcommand.Parameters.AddWithValue("@nValidare", 0);
+            sqlcommand.Parameters.AddWithValue("@dDataAfisare", "11.11.1111");
+            sqlcommand.Parameters.AddWithValue("@dDataScadenta", "22.11.2222");
+            cnn.Close();
         }
+        //public void TransmiteParametriCalculIntretinere(int idAsociatie,int  Validare, string dDataAfisare,string dDataScadenta)
+        //{
+
+
+        //    ClassConexiuneServer.ConectareDedicata();
+        //    SqlConnection cnn = ClassConexiuneServer.GetConnection();
+        //    ClassConexiuneServer.DeschideConexiunea();
+        //    SqlCommand sqlcommand = new SqlCommand("dbo.mp_CalculIntretinere", cnn);
+        //    sqlcommand.CommandType = CommandType.StoredProcedure;
+        //    sqlcommand.Parameters.AddWithValue(@nIdAsociatie, idAsociatie);
+        //    sqlcommand.Parameters.AddWithValue(@nValidare, Validare);
+        //    sqlcommand.Parameters.AddWithValue(@dDataAfisare, dDataAfisare);
+        //    sqlcommand.Parameters.AddWithValue(@dDataScadenta, dDataScadenta);
+
+        //}
 
         // METODA CARE GENEREAZA GRIDVIEW PE BAZA SELECTIEI DIN TREE in tabul Genereaza tabel intretinere
         public void GenereazaTabel_Click(object sender, EventArgs e)
@@ -410,7 +436,7 @@ namespace BlueSolAsoc.Fom_Meniuri
         {
             
          
-            string verificare = ShowDialogA("BluebitData", "Data Afisare", "Tip Afisare", "Data Scadentei");
+            string verificare = ShowDialogA("BluebitData", "Data Afisarii Listei", "Afisare de TIP", "Numar de zile pana la scadenta:");
            
                 if (verificare.Contains("VALIDARE"))
                 {
@@ -475,14 +501,17 @@ namespace BlueSolAsoc.Fom_Meniuri
                 dtbAfisare.Format = DateTimePickerFormat.Custom;
                 dtbAfisare.CustomFormat = "d-MMM-yyyy";
 
-                //TextBox textBox = new TextBox() { Left = 16, Top = 40, Width = 240, TabIndex = 0, TabStop = true };
-                //eticheta + box pentru data scadenta
-                Label dataScad = new Label() { Left = 16, Top = 65, Width = 240, Text = dataScadenta };
+            //TextBox textBox = new TextBox() { Left = 16, Top = 40, Width = 240, TabIndex = 0, TabStop = true };
+            //eticheta + box pentru data scadenta
 
-                TextBox dataScadTB = new TextBox() { Left = 16, Top = 90, Width = 240, TabIndex = 1, TabStop = true };
+                 Label dataScad = new Label() { Left = 16, Top = 90, Width = 180, Text = dataScadenta };
+                ComboBox dataScadTB = new ComboBox() { Left = 212, Top = 90, Width = 44, TabIndex = 1, TabStop = true };
+            string[] nrZile = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" };
+            dataScadTB.Items.AddRange(nrZile);
+            dataScadTB.SelectedItem = nrZile[14];
                 // eticheta + combobox - tip afisare
                 Label selLabel = new Label() { Left = 16, Top = 130, Width = 88, Text = selStr };
-                ComboBox cmbx = new ComboBox() { Left = 112, Top = 130, Width = 144, TabStop = true };
+                ComboBox cmbx = new ComboBox() { Left = 112, Top = 130, Width = 144, TabIndex = 1, TabStop = true };
                 // cele 2 butoane - validare /anulare
                 Button confirmare = new Button() { Text = "Validez selectia!", Left = 150, Width = 100, Top = 200, TabIndex = 1, TabStop = true };
                 Button anulare = new Button() { Text = "Anulez!", Left = 150, Width = 100, Top = 250, TabIndex = 1, TabStop = true };
@@ -506,10 +535,10 @@ namespace BlueSolAsoc.Fom_Meniuri
                 prompt.CancelButton.DialogResult = DialogResult.No;
                 prompt.Controls.Add(textLabel);
                 prompt.Controls.Add(dtbAfisare);
-                //prompt.Controls.Add(textBox);
-                //prompt.Controls.Add(dataScad);
-                //prompt.Controls.Add(dataScadTB);
-                prompt.Controls.Add(selLabel);
+            //prompt.Controls.Add(textBox);
+            prompt.Controls.Add(dataScad);
+            prompt.Controls.Add(dataScadTB);
+            prompt.Controls.Add(selLabel);
                 prompt.Controls.Add(cmbx);
                 prompt.Controls.Add(confirmare);
                 prompt.Controls.Add(anulare);
@@ -519,6 +548,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                 {
                     string tipAfisare = "";
                     string data = dtbAfisare.Value.ToString("d-MMM-yyyy");
+                string dataSQL = dtbAfisare.Value.ToString("YYYY-MM-DD");
                     string sDataScadenta = dataScadTB.Text;
                     if (dtbAfisare.Text.Length == 0)
                     {
@@ -543,6 +573,18 @@ namespace BlueSolAsoc.Fom_Meniuri
                             DialogResult raspuns = MessageBox.Show("Blocheaza toate calculele pentru luna activa!", " Butonul VALIDARE", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                             if (raspuns == DialogResult.Yes)
                             {
+                                sDataScadenta = dtbAfisare.Value.AddDays(Convert.ToDouble(dataScadTB.SelectedItem)).ToString("YYYY-MM-DD");
+                                ClassConexiuneServer.ConectareDedicata();
+                                SqlConnection cnn = ClassConexiuneServer.GetConnection();
+                                ClassConexiuneServer.DeschideConexiunea();
+                                SqlCommand sqlcommand = new SqlCommand("dbo.mp_CalculIntretinere", cnn);
+                                sqlcommand.CommandType = CommandType.StoredProcedure;
+                                sqlcommand.Parameters.AddWithValue("@nIdAsociatie", idAsociatie);
+                                sqlcommand.Parameters.AddWithValue("@nValidare", 1);
+                                
+                                sqlcommand.Parameters.AddWithValue("@dDataAfisare", dataSQL);
+                                sqlcommand.Parameters.AddWithValue("@dDataScadenta", sDataScadenta);
+                                cnn.Close();
                                 MessageBox.Show("Luna curenta a fost VALIDATA si blocata!");
 
                             }
@@ -565,7 +607,7 @@ namespace BlueSolAsoc.Fom_Meniuri
 
                     if ((dtbAfisare.Value.ToString()) != null)
                     {
-                        sDataScadenta = dtbAfisare.Value.AddDays(30).ToString("d-MMM-yyyy");
+                        sDataScadenta = dtbAfisare.Value.AddDays(Convert.ToDouble(dataScadTB.SelectedItem)).ToString("d-MMM-yyyy");
                     }
 
                     return string.Format("Data afisare:{0} | Data scadenta:{1} | Tip afisare:{2}", data, sDataScadenta, tipAfisare);
