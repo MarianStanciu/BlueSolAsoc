@@ -60,7 +60,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             DataColumnCollection coloane = Calcul_intretinereDS.Tables[sTabelLucru].Columns;
             return coloane;
         }
-        //GENERARE TABELA CU TOATE DENUMIRILE CHELTUIELILOR SI ADAUGAREA LOR IN TREE  in tabul Genereaza tabel intretinere//  Generea tabelul cu cheltuielile de intretinere
+        //GENERARE TABELA CU TOATE DENUMIRILE CHELTUIELILOR SI ADAUGAREA LOR IN TREE  in tabul Genereaza tabel intretinere//  Genere tabelul cu cheltuielile de intretinere
         public void GenerareListaIntretinere()
         {
             //creare tabel cu calculul intretinerii
@@ -315,14 +315,14 @@ namespace BlueSolAsoc.Fom_Meniuri
 
         public void PanelConsumAapartament_Click(object sender, PaintEventArgs e)
         {
-            //if (GridAfisareConsumuri.Enabled == false)
-            //{
-            MessageBox.Show("Pentru a edita valorile din tabel apasa butonul MODIFICA !", "Informare", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
+            if (GridAfisareConsumuri.Enabled == false)
+            {
+                MessageBox.Show("Pentru a edita valorile din tabel apasa butonul MODIFICA !", "Informare", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
         }
 
-        // verificarea introducere date in grid view
+        // verificarea introducere date in grid view / pot fi introduse doar nuemer si doar in coloanele din if(linia 329)
         public void GridAfisareConsumuri_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
             ClassGridView grid = (ClassGridView)sender;
@@ -330,9 +330,10 @@ namespace BlueSolAsoc.Fom_Meniuri
             {
                 if (!IsNumeric(e.FormattedValue.ToString()))  // IsNumeric will be your method where you will check for numebrs 
                 {
-                    MessageBox.Show("Pot fi introduse doar numere!");
+                   
                     GridAfisareConsumuri.CancelEdit();
                 }
+              //  else //MessageBox.Show("Pot fi introduse doar numere!");
             }
         }
 
@@ -429,13 +430,33 @@ namespace BlueSolAsoc.Fom_Meniuri
                     MetodaDGVPrinter(GridCalculIntretinere, verificare);
 
                 }
-                else if (verificare == "NU")
+                else if (verificare.Contains("VERIFICARE"))
+                {
+                MetodaDGVPrinter(GridCalculIntretinere, verificare);
+            }
+            else if (verificare == "NU")
                 {
                     MessageBox.Show("Imprimare anulata!", "Anulat de utilizator", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }              
         }
-       
-      
+
+        //verific daca exista formuri cu documente in editare
+        public bool MST()
+        {
+            bool z = true;
+
+            for (int i = 0; i < Application.OpenForms.Count; i++)
+            {
+                FormBluebit frmDeschis = (FormBluebit)Application.OpenForms[i];
+                if (z == frmDeschis.GetDocActiv())
+                    return true;
+
+
+            }
+            return false;
+
+        }
+        // daca exista formuri cu doc in editare aduc in fata primul gasit si cer urilizatorului sa inchida sau salveze documentul in editare
         public void ValidareLunaActiva()
         {                       
 
@@ -452,25 +473,8 @@ namespace BlueSolAsoc.Fom_Meniuri
                  }      
 
         }
-      
-        public bool MST()
-        {
-            bool z = true;
-           
-            for (int i = 0; i < Application.OpenForms.Count; i++)
-            {
-                FormBluebit frmDeschis = (FormBluebit)Application.OpenForms[i];
-                if (z == frmDeschis.GetDocActiv())
-                    return true;
-               
-
-            }
-            return false;
-           
-          
-            
-        }
-
+  
+        // interfata in care se selecteaza data de afisare , scadenta si tipul de afisare
          public string ShowDialogA(string caption, string text, string selStr, string dataScadenta)
             {
                 Form prompt = new Form();
@@ -536,15 +540,15 @@ namespace BlueSolAsoc.Fom_Meniuri
                     string data = dtbAfisare.Value.ToString("d-MMM-yyyy");
                 string dataSQL = dtbAfisare.Value.ToString("YYYY-MM-DD");
                     string sDataScadenta = dataScadTB.Text;
-                    if (dtbAfisare.Text.Length == 0)
-                    {
-                        data = "12.12.2222";
-                    }
-                    if (cmbx.SelectedItem == null)
-                    {
-                        MessageBox.Show("Selecteaza Tip Afisare");
-                        tipAfisare = "Afisare Neselectata";
-                    }
+                    //if (dtbAfisare.Text.Length == 0)
+                    //{
+                    //    data = "12.12.2222";
+                    //}
+                    //if (cmbx.SelectedItem == null)
+                    //{
+                    //    MessageBox.Show("Selecteaza Tip Afisare");
+                    //    tipAfisare = "Afisare Neselectata";
+                    //}
                     switch (cmbx.SelectedItem)
                     {
                         case "VALIDARE":
@@ -556,9 +560,31 @@ namespace BlueSolAsoc.Fom_Meniuri
                         {
 
                             tipAfisare = "VALIDARE";
-                            DialogResult raspuns = MessageBox.Show("Blocheaza toate calculele pentru luna activa!", " Butonul VALIDARE", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            DialogResult raspuns = MessageBox.Show("VALIDARE si INCHIDERE LUNA!", " Butonul VALIDARE", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                             if (raspuns == DialogResult.Yes)
                             {
+                                // aici avem codul pentru inchiderea formurilor
+                                for (int i = 0; i < Application.OpenForms.Count; i++)
+                                {
+                                    FormBluebit frmDeschis = (FormBluebit)Application.OpenForms[i];
+                                    if (frmDeschis.Text.Equals("AsociatieForm1"))
+                                    {                                      
+                                        frmDeschis.Close();
+                                       // MessageBox.Show("Form inchis");
+                                    }
+                                   else if (frmDeschis.Text.Equals("venituri_incasari"))
+                                    {
+                                        frmDeschis.Close();
+                                       // MessageBox.Show("Form inchis");
+                                    }
+                                    else if (frmDeschis.Text.Equals("cheltuieli_plati"))
+                                    {
+                                        frmDeschis.Close();                                     
+                                       // MessageBox.Show("Form inchis");
+                                    }
+                                }
+
+
                                 sDataScadenta = dtbAfisare.Value.AddDays(Convert.ToDouble(dataScadTB.SelectedItem)).ToString("YYYY-MM-DD");
                                 ClassConexiuneServer.ConectareDedicata();
                                 SqlConnection cnn = ClassConexiuneServer.GetConnection();
@@ -566,11 +592,11 @@ namespace BlueSolAsoc.Fom_Meniuri
                                 SqlCommand sqlcommand = new SqlCommand("dbo.mp_CalculIntretinere", cnn);
                                 sqlcommand.CommandType = CommandType.StoredProcedure;
                                 sqlcommand.Parameters.AddWithValue("@nIdAsociatie", idAsociatie);
-                                sqlcommand.Parameters.AddWithValue("@nValidare", 1);
-                                
+                                sqlcommand.Parameters.AddWithValue("@nValidare", 1);                                
                                 sqlcommand.Parameters.AddWithValue("@dDataAfisare", dataSQL);
-                                sqlcommand.Parameters.AddWithValue("@dDataScadenta", sDataScadenta);
+                                sqlcommand.Parameters.AddWithValue("@dDataScadenta", sDataScadenta);                           
                                 cnn.Close();
+
                                 MessageBox.Show("Luna curenta a fost VALIDATA si blocata!");
 
                             }
