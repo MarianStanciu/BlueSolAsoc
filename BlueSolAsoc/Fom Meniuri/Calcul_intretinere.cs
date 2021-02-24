@@ -51,7 +51,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             extrageTabelaTree();
             treeConsumuriApartament.ExpandAll();// afisarea treeului rezultat in format extins pana la nivel de scara
             PanelConsumAapartament.Hide();// ascunderea panelului ce contine gridul pentru adaugare consumuri pana este selectata o scar din tree                      
-            LunaValidata(idAsociatie);
+            
         }
 
         // aici genezez structura de coloane a unui tabel
@@ -86,6 +86,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             sqlcommand.Parameters.AddWithValue("@nValidare", 0);
             sqlcommand.Parameters.AddWithValue("@dDataAfisare", "1111.11.21");
             sqlcommand.Parameters.AddWithValue("@dDataScadenta", "2222.12.30");
+            sqlcommand.ExecuteNonQuery();
             cnn.Close();
         }
         
@@ -588,8 +589,9 @@ namespace BlueSolAsoc.Fom_Meniuri
                                     }
                                 }
 
-
-                                sDataScadenta = dtbAfisare.Value.AddDays(Convert.ToDouble(dataScadTB.SelectedItem)).ToString("YYYY-MM-DD");
+                                DateTime afis=(DateTime)dtbAfisare.Value.AddDays(Convert.ToDouble(dataScadTB.SelectedItem));
+                                DateTime scadent = afis.AddDays(Convert.ToDouble( dataScadTB.SelectedItem));
+                               // sDataScadenta = dtbAfisare.Value.AddDays(Convert.ToDouble(dataScadTB.SelectedItem)).ToString("YYYY-MM-DD");
                                 ClassConexiuneServer.ConectareDedicata();
                                 SqlConnection cnn = ClassConexiuneServer.GetConnection();
                                 ClassConexiuneServer.DeschideConexiunea();
@@ -597,8 +599,9 @@ namespace BlueSolAsoc.Fom_Meniuri
                                 sqlcommand.CommandType = CommandType.StoredProcedure;
                                 sqlcommand.Parameters.AddWithValue("@nIdAsociatie", idAsociatie);
                                 sqlcommand.Parameters.AddWithValue("@nValidare", 1);                                
-                                sqlcommand.Parameters.AddWithValue("@dDataAfisare", dataSQL);
-                                sqlcommand.Parameters.AddWithValue("@dDataScadenta", sDataScadenta);                           
+                                sqlcommand.Parameters.AddWithValue("@dDataAfisare", afis);
+                                sqlcommand.Parameters.AddWithValue("@dDataScadenta", scadent);
+                                sqlcommand.ExecuteNonQuery();
                                 cnn.Close();
 
                                 MessageBox.Show("Luna curenta a fost VALIDATA si blocata!");

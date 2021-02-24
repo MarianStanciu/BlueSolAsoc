@@ -256,42 +256,48 @@ namespace BlueSolAsoc
     // actiune buton modifica
     private void classButonModifica1_Click(object sender, EventArgs e)
         {
-            SetDocActiv(true);
-            classButonModifica1.Hide();
-            classButonInteriorSterge1.Hide();
-            btnAnuleaza.Show();
-            btnOK.Show();
-            switch (TabSA.SelectedTab.Text)
+            if (LunaValidata(idAsociatie))
             {
-                case "Structura Asociatie":
-                    
-                    dataGridViewAp.Enabled = true;
-                    foreach (var cl in splitContainer1.Panel1.Controls)
-                    {
-                        if (cl is ClassTextBox)
-                        {
-                            ClassTextBox txtB = (ClassTextBox)cl;
-                            txtB.Enabled = true;
+                MessageBox.Show("luna este validata");
+            }
+            else
+            {
+                SetDocActiv(true);
+                classButonModifica1.Hide();
+                classButonInteriorSterge1.Hide();
+                btnAnuleaza.Show();
+                btnOK.Show();
+                switch (TabSA.SelectedTab.Text)
+                {
+                    case "Structura Asociatie":
 
-                        }
-                        if (cl is ClassLabel)
+                        dataGridViewAp.Enabled = true;
+                        foreach (var cl in splitContainer1.Panel1.Controls)
                         {
-                            ClassLabel txtL = (ClassLabel)cl;
-                            txtL.Enabled = true;
-                        }
-                    }
-                    break;
+                            if (cl is ClassTextBox)
+                            {
+                                ClassTextBox txtB = (ClassTextBox)cl;
+                                txtB.Enabled = true;
 
-                case "Parteneri":
-                    
-                    GridParteneri.Enabled = true;
-                    panelAdaugaParteneri.Enabled = false;
-               
-                    break;
-                default:
-                    break;
+                            }
+                            if (cl is ClassLabel)
+                            {
+                                ClassLabel txtL = (ClassLabel)cl;
+                                txtL.Enabled = true;
+                            }
+                        }
+                        break;
+
+                    case "Parteneri":
+
+                        GridParteneri.Enabled = true;
+                        panelAdaugaParteneri.Enabled = false;
+
+                        break;
+                    default:
+                        break;
+                }
             }       
-                     
            
         }
        

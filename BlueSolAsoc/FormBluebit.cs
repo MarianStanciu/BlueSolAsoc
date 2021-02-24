@@ -36,7 +36,7 @@ namespace BlueSolAsoc
             //ClassConexiuneServer.ConectareDedicata();
             //SqlConnection cnn = ClassConexiuneServer.GetConnection();
             //ClassConexiuneServer.DeschideConexiunea();
-            string sqlCerere = " ";
+            string sqlCerere = "Select top 1 * from mv_tabela_luni where activ=1 and luna_incheiata=1 and id_org= "+idAsociatie;
            object Scalar= ClassConexiuneServer.getScalar(sqlCerere);
             if (Scalar!=null)
             {
