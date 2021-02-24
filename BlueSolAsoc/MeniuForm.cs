@@ -48,6 +48,7 @@ namespace BlueSolAsoc
             DataTable TabelAjutator = DataSetComboBox.Tables["tabela_ajutatoare"];
             DataTable TabelaLuniIncheiate = DataSetComboBox.Tables["tabela_luni_incheiate"];
             AtribuireDataSourceCombo();
+            VerificLunaIncheiata();
             lblNumeAsociatie.Text = "Asociatia activa: " + GetDenumireAsociatie();
 
 
@@ -179,6 +180,41 @@ namespace BlueSolAsoc
                 TabelaLuni.Rows.Add(0, data, an, 1, idAsociatie, 0);
                 //DataSetComboBox.TransmiteActualizari("tabela_luni");              
             }
+        }
+
+        private void VerificLunaIncheiata()
+        {
+            DataTable TabelaLuni = DataSetComboBox.Tables["mv_tabela_luni"];
+            DataTable TabelUltimaLuna = DataSetComboBox.Tables["tabel_ultima_luna"];
+            foreach (DataRow row in TabelUltimaLuna.Rows)
+            {
+                ultimaluna = Convert.ToInt32(row["luna"]);
+                ultimulan = Convert.ToInt32(row["an"]);
+                if (ultimaluna == 12)
+                {
+                    ultimaluna = 1;
+                    ultimulan = ultimulan + 1;
+                    //row["luna"] = ultimaluna;
+                    //row["an"] = ultimulan;
+                    //TabelAjutator.ImportRow(row);
+                }
+                else
+                {
+
+                    /* row["luna"] = ultimaluna + 1;
+                     row["an"] = ultimulan;*/
+                    ultimaluna = ultimaluna + 1;
+                    ultimulan = ultimulan;
+                }
+            }
+            object scalar = ClassConexiuneServer.getScalar("select top 1 * from mv_tabela_luni where id_org=" + idAsociatie + " and activ=1 and luna_incheiata=1");
+            if (scalar != null)
+            {
+                TabelaLuni.Rows.Add(0, ultimaluna, ultimulan, 1, idAsociatie, 0, System.DateTime.Now.Date);
+                DataSetComboBox.TransmiteActualizari("mv_tabela_luni");
+
+            }
+            
         }
 
 
