@@ -51,7 +51,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             extrageTabelaTree();
             treeConsumuriApartament.ExpandAll();// afisarea treeului rezultat in format extins pana la nivel de scara
             PanelConsumAapartament.Hide();// ascunderea panelului ce contine gridul pentru adaugare consumuri pana este selectata o scar din tree                      
-
+            LunaValidata(idAsociatie);
         }
 
         // aici genezez structura de coloane a unui tabel
@@ -250,6 +250,10 @@ namespace BlueSolAsoc.Fom_Meniuri
 
         public void btnModifica_Click(object sender, EventArgs e)
         {
+            //if (LunaValidata(idAsociatie))
+            //{
+
+            //}
             SetDocActiv(true);
             switch (TabCalculIntretinere.SelectedTab.Text)
             {

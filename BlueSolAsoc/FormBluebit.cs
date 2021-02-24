@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BlueSolAsoc.butoane_si_controale;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,7 +15,7 @@ namespace BlueSolAsoc
     public partial class FormBluebit : Form
     {
         public bool documentActiv;
-
+        public bool lunaValidata = false;
         public bool GetDocActiv()
         {
             return documentActiv;
@@ -28,6 +29,20 @@ namespace BlueSolAsoc
         {
             InitializeComponent();           
 
+        }
+
+        public bool LunaValidata(int idAsociatie)
+        {
+            //ClassConexiuneServer.ConectareDedicata();
+            //SqlConnection cnn = ClassConexiuneServer.GetConnection();
+            //ClassConexiuneServer.DeschideConexiunea();
+            string sqlCerere = " ";
+           object Scalar= ClassConexiuneServer.getScalar(sqlCerere);
+            if (Scalar!=null)
+            {
+                return true;
+            }
+            else return false;
         }
 
 
