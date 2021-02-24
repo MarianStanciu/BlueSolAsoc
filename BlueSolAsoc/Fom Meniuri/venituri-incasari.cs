@@ -33,6 +33,7 @@ namespace BlueSolAsoc.Fom_Meniuri
         // Declare a variable to hold the portion of the document that
         // is not printed.
         private string stringToPrint;
+       
 
         public venituri_incasari(string denumireAsociatie, int idAsociatie)
         {
@@ -54,7 +55,7 @@ namespace BlueSolAsoc.Fom_Meniuri
 
             classButonInteriorSterge1.Hide();
             btnAnuleaza.Hide();
-
+            SetDocActiv(false);
 
         }
         private void ExtrageDocument(int idAntet)
@@ -227,6 +228,7 @@ namespace BlueSolAsoc.Fom_Meniuri
 
             private void ButtonSalvareOK()
         {
+            SetDocActiv(false);
             DataTable TabelaVenituriIncasari = DataSetVenituriIncasari.Tables["mv_Documente"];
             
             Guid id_temporar = Guid.NewGuid();
@@ -446,6 +448,7 @@ namespace BlueSolAsoc.Fom_Meniuri
 
         private void classButonModifica1_Click(object sender, EventArgs e)
         {
+            SetDocActiv(true);
             classButonInteriorSterge1.Show();
             classButonModifica1.Hide();
             btnAnuleaza.Show();
@@ -465,11 +468,13 @@ namespace BlueSolAsoc.Fom_Meniuri
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-                ButtonSalvareOK();            
+                ButtonSalvareOK();
+            SetDocActiv(false);
         }
 
         private void btnAnuleaza_Click(object sender, EventArgs e)
         {
+            SetDocActiv(false);
             classButonInteriorSterge1.Hide();
             classButonModifica1.Show();
             btnAnuleaza.Hide();
@@ -482,6 +487,9 @@ namespace BlueSolAsoc.Fom_Meniuri
                 // Cursor de la inceput dupa autocomplete
                 textBoxApartamente.SelectionStart = 0;
                 textBoxApartamente.SelectionLength = 0;
+                string[] StringInfo = textBoxApartamente.Text.Split('/');
+                string idProprietar = StringInfo[4].ToString().TrimStart();
+                dataGridViewIstoricProprietar.Rows.Add("Ianuarie","30","100","50","180");
             };
         }
 
@@ -513,6 +521,7 @@ namespace BlueSolAsoc.Fom_Meniuri
 
         private void dataGridView2_DoubleClick(object sender, EventArgs e)
         {
+            SetDocActiv(true);
             if (classButonModifica1.Visible == false) {
                 foreach (DataGridViewRow row in dataGridView2.SelectedRows)
                 {

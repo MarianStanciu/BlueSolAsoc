@@ -33,6 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TabCalculIntretinere = new BlueSolAsoc.butoane_si_controale.ClassTabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnImprima = new BlueSolAsoc.butoane_si_controale.ClassButon();
             this.GenereazaTabel = new BlueSolAsoc.butoane_si_controale.ClassButon();
             this.GridCalculIntretinere = new BlueSolAsoc.butoane_si_controale.ClassGridView();
             this.treeColoane = new System.Windows.Forms.TreeView();
@@ -50,7 +51,7 @@
             this.calcul_intretinereDS1 = new BlueSolAsoc.Calcul_intretinereDS();
             this.mvConsumApartamenteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mv_ConsumApartamenteTableAdapter = new BlueSolAsoc.Calcul_intretinereDSTableAdapters.mv_ConsumApartamenteTableAdapter();
-            this.btnImprima = new BlueSolAsoc.butoane_si_controale.ClassButon();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.TabCalculIntretinere.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridCalculIntretinere)).BeginInit();
@@ -80,6 +81,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btnImprima);
             this.tabPage2.Controls.Add(this.GenereazaTabel);
             this.tabPage2.Controls.Add(this.GridCalculIntretinere);
             this.tabPage2.Controls.Add(this.treeColoane);
@@ -92,22 +94,40 @@
             this.tabPage2.Text = "Genereaza tabel intretinere";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // btnImprima
+            // 
+            this.btnImprima.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnImprima.BackColor = System.Drawing.Color.Aquamarine;
+            this.btnImprima.BackgroundImage = global::BlueSolAsoc.Properties.Resources.icons8_print_80;
+            this.btnImprima.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnImprima.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprima.Location = new System.Drawing.Point(8, 396);
+            this.btnImprima.Name = "btnImprima";
+            this.btnImprima.Size = new System.Drawing.Size(240, 70);
+            this.btnImprima.TabIndex = 4;
+            this.btnImprima.UseVisualStyleBackColor = false;
+            this.btnImprima.Click += new System.EventHandler(this.btnImprima_Click);
+            // 
             // GenereazaTabel
             // 
+            this.GenereazaTabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.GenereazaTabel.BackColor = System.Drawing.Color.Aquamarine;
             this.GenereazaTabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.GenereazaTabel.Location = new System.Drawing.Point(7, 377);
+            this.GenereazaTabel.Location = new System.Drawing.Point(8, 321);
             this.GenereazaTabel.Margin = new System.Windows.Forms.Padding(2);
             this.GenereazaTabel.Name = "GenereazaTabel";
-            this.GenereazaTabel.Size = new System.Drawing.Size(200, 30);
+            this.GenereazaTabel.Size = new System.Drawing.Size(240, 70);
             this.GenereazaTabel.TabIndex = 3;
-            this.GenereazaTabel.Text = "Genereaza Tabel";
+            this.GenereazaTabel.Text = "Genereaza Lista Intretinere";
             this.GenereazaTabel.UseVisualStyleBackColor = false;
             this.GenereazaTabel.Click += new System.EventHandler(this.GenereazaTabel_Click);
             // 
             // GridCalculIntretinere
             // 
             this.GridCalculIntretinere.AllowUserToAddRows = false;
+            this.GridCalculIntretinere.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.Aquamarine;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -117,14 +137,13 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.GridCalculIntretinere.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.GridCalculIntretinere.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GridCalculIntretinere.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GridCalculIntretinere.EnableHeadersVisualStyles = false;
-            this.GridCalculIntretinere.Location = new System.Drawing.Point(226, 2);
+            this.GridCalculIntretinere.Location = new System.Drawing.Point(253, 2);
             this.GridCalculIntretinere.Margin = new System.Windows.Forms.Padding(2);
             this.GridCalculIntretinere.Name = "GridCalculIntretinere";
             this.GridCalculIntretinere.RowHeadersWidth = 51;
             this.GridCalculIntretinere.RowTemplate.Height = 24;
-            this.GridCalculIntretinere.Size = new System.Drawing.Size(741, 485);
+            this.GridCalculIntretinere.Size = new System.Drawing.Size(714, 485);
             this.GridCalculIntretinere.TabIndex = 2;
             // 
             // treeColoane
@@ -132,9 +151,9 @@
             this.treeColoane.CheckBoxes = true;
             this.treeColoane.Dock = System.Windows.Forms.DockStyle.Left;
             this.treeColoane.Location = new System.Drawing.Point(2, 2);
-            this.treeColoane.Margin = new System.Windows.Forms.Padding(2);
+            this.treeColoane.Margin = new System.Windows.Forms.Padding(20, 2, 2, 2);
             this.treeColoane.Name = "treeColoane";
-            this.treeColoane.Size = new System.Drawing.Size(224, 485);
+            this.treeColoane.Size = new System.Drawing.Size(251, 485);
             this.treeColoane.TabIndex = 1;
             // 
             // tabPage1
@@ -273,7 +292,6 @@
             // PanelTreeConsumAp
             // 
             this.PanelTreeConsumAp.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.PanelTreeConsumAp.Controls.Add(this.btnImprima);
             this.PanelTreeConsumAp.Controls.Add(this.treeConsumuriApartament);
             this.PanelTreeConsumAp.Dock = System.Windows.Forms.DockStyle.Left;
             this.PanelTreeConsumAp.Location = new System.Drawing.Point(2, 2);
@@ -306,18 +324,6 @@
             // mv_ConsumApartamenteTableAdapter
             // 
             this.mv_ConsumApartamenteTableAdapter.ClearBeforeFill = true;
-            // 
-            // btnImprima
-            // 
-            this.btnImprima.BackColor = System.Drawing.Color.Aquamarine;
-            this.btnImprima.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImprima.Location = new System.Drawing.Point(39, 386);
-            this.btnImprima.Name = "btnImprima";
-            this.btnImprima.Size = new System.Drawing.Size(188, 70);
-            this.btnImprima.TabIndex = 1;
-            this.btnImprima.Text = "Imprima in PDF";
-            this.btnImprima.UseVisualStyleBackColor = false;
-            this.btnImprima.Click += new System.EventHandler(this.btnImprima_Click);
             // 
             // Calcul_intretinere
             // 
@@ -365,5 +371,6 @@
         private Calcul_intretinereDSTableAdapters.mv_ConsumApartamenteTableAdapter mv_ConsumApartamenteTableAdapter;
         private butoane_si_controale.ClassLabel lblMesajSelecteazScara;
         private butoane_si_controale.ClassButon btnImprima;
+        private System.Drawing.Printing.PrintDocument printDocument1;
     }
 }

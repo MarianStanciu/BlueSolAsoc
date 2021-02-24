@@ -21,8 +21,8 @@ namespace BlueSolAsoc
         private string denumireAsociatie;
         private int idAsociatie;      
         string eroareCaseta = "";
-           
-       
+        
+
 
         public AsociatieForm(string denumireAsociatie, int idAsociatie)
         {
@@ -31,8 +31,8 @@ namespace BlueSolAsoc
             this.idAsociatie = idAsociatie;           
             dataGridViewAp.CellEndEdit += dataGridViewAp_CellEndEdit;
             GridParteneri.CellEndEdit += GridParteneri_CellEndEdit;
+            SetDocActiv(false);
 
-            
 
             try
             {
@@ -256,6 +256,7 @@ namespace BlueSolAsoc
     // actiune buton modifica
     private void classButonModifica1_Click(object sender, EventArgs e)
         {
+            SetDocActiv(true);
             classButonModifica1.Hide();
             classButonInteriorSterge1.Hide();
             btnAnuleaza.Show();
@@ -297,7 +298,7 @@ namespace BlueSolAsoc
         //actiune buton anuleaza
         private void btnAnuleaza_Click(object sender, EventArgs e)
         {
-            
+           SetDocActiv(false);
         
                 switch (TabSA.SelectedTab.Text)
                 {
@@ -466,6 +467,7 @@ namespace BlueSolAsoc
         //actiune buton ok
         private void btnOK_Click(object sender, EventArgs e)
         {
+           SetDocActiv(false);
             switch (TabSA.SelectedTab.Text)
             {
                 case "Structura Asociatie":
@@ -737,7 +739,11 @@ namespace BlueSolAsoc
                 DupaApasareOk(GridParteneri);
             }
         }
+        public  bool verificCalculIntretinereEditare()
+        {
+            return GetDocActiv();
 
+        }
 
 
 

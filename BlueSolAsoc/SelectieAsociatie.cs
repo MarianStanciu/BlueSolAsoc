@@ -36,7 +36,7 @@ namespace BlueSolAsoc
         {
 
 
-            //SqlConnection connection = new SqlConnection(@"Data Source = 82.208.137.149\sqlexpress, 8833; Initial Catalog = proba_transare; Persist Security Info = True; User ID = sa; Password = pro");
+            //SqlConnection connection = new SqlConnection(@"Data Source = 82.208.137.149\sqlexpress, 8833; Initial Catalog = colectie_asoc; Persist Security Info = True; User ID = sa; Password = pro");
             SqlConnection connection = ClassConexiuneServer.GetConnection();
             
             string query = "select id_asociere,valoare from dbo.tabela_organizatii where id_asociere=1";
@@ -120,7 +120,7 @@ namespace BlueSolAsoc
                 {
                     string denumireAsociatieString = b.Text;
                     int id;
-                    using (SqlConnection connection = new SqlConnection(@"Data Source = 82.208.137.149\sqlexpress, 8833; Initial Catalog = proba_transare; Persist Security Info = True; User ID = sa; Password = pro"))
+                    using (SqlConnection connection = new SqlConnection(@"Data Source = 82.208.137.149\sqlexpress, 8833; Initial Catalog = colectie_asoc; Persist Security Info = True; User ID = sa; Password = pro"))
                     {
                         connection.Open();
                         string query = "select id_org from dbo.tabela_organizatii where valoare='" + b.Text + "'";

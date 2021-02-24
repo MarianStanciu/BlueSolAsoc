@@ -4,12 +4,12 @@
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="proba_transareConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="proba_transareConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.BlueSolAsoc.Properties.Settings.GlobalReference.Default.proba_transareConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="colectie_asocConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="colectie_asocConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.BlueSolAsoc.Properties.Settings.GlobalReference.Default.colectie_asocConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="mv_tabela_luniTableAdapter" GeneratorDataComponentClassName="mv_tabela_luniTableAdapter" Name="mv_tabela_luni" UserDataComponentName="mv_tabela_luniTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="proba_transareConnectionString (Settings)" DbObjectName="proba_transare.dbo.mv_tabela_luni" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="colectie_asocConnectionString (Settings)" DbObjectName="colectie_asoc.dbo.mv_tabela_luni" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>SELECT id_tabela_luni, luna, an, activ, id_org, luna_incheiata, data_afisare FROM dbo.mv_tabela_luni</CommandText>

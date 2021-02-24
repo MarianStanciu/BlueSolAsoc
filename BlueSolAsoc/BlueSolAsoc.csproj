@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -52,9 +52,11 @@
       <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -66,10 +68,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AsociatieForm.cs">
+    <Compile Include="Fom Meniuri\AsociatieForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AsociatieForm.Designer.cs">
+    <Compile Include="Fom Meniuri\AsociatieForm.Designer.cs">
       <DependentUpon>AsociatieForm.cs</DependentUpon>
     </Compile>
     <Compile Include="asociatieFormDS.cs">
@@ -131,6 +133,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Calcul_intretinereDS.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Calcul_intretinere_finalDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Calcul_intretinere_finalDS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="CasetaDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,18 +188,6 @@
     </Compile>
     <Compile Include="Fom Meniuri\cheltuieli-plati.Designer.cs">
       <DependentUpon>cheltuieli-plati.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Fom Meniuri\structura-asociatie-formuri\Structura-asociatie-definire .cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Fom Meniuri\structura-asociatie-formuri\Structura-asociatie-definire .Designer.cs">
-      <DependentUpon>Structura-asociatie-definire .cs</DependentUpon>
-    </Compile>
-    <Compile Include="Fom Meniuri\structura-asociatie.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Fom Meniuri\structura-asociatie.Designer.cs">
-      <DependentUpon>structura-asociatie.cs</DependentUpon>
     </Compile>
     <Compile Include="Fom Meniuri\venituri-incasari.cs">
       <SubType>Form</SubType>
@@ -246,7 +241,8 @@
     <Compile Include="SelectieAsociatie.Designer.cs">
       <DependentUpon>SelectieAsociatie.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AsociatieForm.resx">
+    <Compile Include="Settings.cs" />
+    <EmbeddedResource Include="Fom Meniuri\AsociatieForm.resx">
       <DependentUpon>AsociatieForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="butoane si controale\ClassButonSelectieAsoc.resx">
@@ -266,12 +262,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Fom Meniuri\cheltuieli-plati.resx">
       <DependentUpon>cheltuieli-plati.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Fom Meniuri\structura-asociatie-formuri\Structura-asociatie-definire .resx">
-      <DependentUpon>Structura-asociatie-definire .cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Fom Meniuri\structura-asociatie.resx">
-      <DependentUpon>structura-asociatie.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fom Meniuri\venituri-incasari.resx">
       <DependentUpon>venituri-incasari.cs</DependentUpon>
@@ -319,6 +309,17 @@
     </None>
     <None Include="Calcul_intretinereDS.xss">
       <DependentUpon>Calcul_intretinereDS.xsd</DependentUpon>
+    </None>
+    <None Include="Calcul_intretinere_finalDS.xsc">
+      <DependentUpon>Calcul_intretinere_finalDS.xsd</DependentUpon>
+    </None>
+    <None Include="Calcul_intretinere_finalDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Calcul_intretinere_finalDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Calcul_intretinere_finalDS.xss">
+      <DependentUpon>Calcul_intretinere_finalDS.xsd</DependentUpon>
     </None>
     <None Include="CheltuieliDS.xsc">
       <DependentUpon>CheltuieliDS.xsd</DependentUpon>
@@ -455,6 +456,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\intrebare.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-print-80.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

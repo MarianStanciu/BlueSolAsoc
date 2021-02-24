@@ -27,7 +27,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             this.denumireAsociatie = denumireAsociatie;
             this.idAsociatie = idAsociatie;
             DataCurenta.Value = System.DateTime.Now;
-            
+            SetDocActiv(false);
           
           
         }
@@ -381,6 +381,7 @@ namespace BlueSolAsoc.Fom_Meniuri
 
         private void btnModificaCheltuieli_Click(object sender, EventArgs e)
         {
+            SetDocActiv(true);
             btnModificaCheltuieli.Visible = false;
             if (btnModificaCheltuieli.Visible == false)
             {
@@ -404,7 +405,8 @@ namespace BlueSolAsoc.Fom_Meniuri
                     comboBoxParteneri.Text = partener;            
                     sumaFactura.Text = Convert.ToDouble(randSelectat[0]["Valoare"]).ToString();                   
 
-                    AdaugareFacturi(idAntet);                 
+                    AdaugareFacturi(idAntet);
+                SetDocActiv(true);
             }
             else
                 MessageBox.Show("Pentru a modifica apasa butonul MODIFICA");
@@ -447,6 +449,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             }
 
             btnModificaCheltuieli.Visible = true;
+            SetDocActiv(false);
         }
 
         private void btnAnuleazaCheltuieli_Click(object sender, EventArgs e)
@@ -454,6 +457,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             listaDistribuieCheltuiala.Clear();
             CurataTextBox();
             btnModificaCheltuieli.Show();
+            SetDocActiv(false);
         }
         // CALCULARE SUMA IN COLOANA VALOARE
         private void CalculeazaSuma(object sender, DataGridViewCellEventArgs e)

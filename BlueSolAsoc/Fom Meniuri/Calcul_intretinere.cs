@@ -1,16 +1,12 @@
 ﻿using BlueSolAsoc.butoane_si_controale;
-using CasetaDialogTag;
+
 using DGVPrinterHelper;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using System.Windows.Forms;
 
 
@@ -19,17 +15,21 @@ namespace BlueSolAsoc.Fom_Meniuri
     public partial class Calcul_intretinere : FormBluebit
     {
         ClassDataSet Calcul_intretinereDS = new ClassDataSet();
+
         private string denumireAsociatie;
         private int idAsociatie;
+        public string sLunaActiva;
+       
 
-        public Calcul_intretinere()        
+        public Calcul_intretinere()
         {
             InitializeComponent();
         }
-       
-            public Calcul_intretinere(string denumireAsociatie, int idAsociatie)
+
+        public Calcul_intretinere(string denumireAsociatie, int idAsociatie, string lunaActiva)
         {
             InitializeComponent();
+            this.sLunaActiva = lunaActiva;
             this.denumireAsociatie = denumireAsociatie;
             this.idAsociatie = idAsociatie;
             GridAfisareConsumuri.CellEndEdit += gridAfisareConsumuri_CellEndEdit;
@@ -38,78 +38,90 @@ namespace BlueSolAsoc.Fom_Meniuri
             lblMesajSelecteazScara.BringToFront();
             btnSalveaza.Hide();
             btnSterge.Hide();
-            btnAnuleaza.Hide();
-            btnImprima.Visible = false;
-           // GridAfisareConsumuri.Enabled = false;
-         //   GridAfisareConsumuri.CellValidating += GridAfisareConsumuri_CellValidating;
-           
+            btnAnuleaza.Visible = false;
+            btnImprima.Visible = true;
+            btnModifica.Hide();
+            SetDocActiv(false);
         }
-
-       
 
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            adaugareColoane();
+            GenerareListaIntretinere();
             extrageTabelaTree();
             treeConsumuriApartament.ExpandAll();// afisarea treeului rezultat in format extins pana la nivel de scara
-            PanelConsumAapartament.Hide();// ascunderea panelului ce contine gridul pentru adaugare consumuri pana este selectata o scar din tree
-                       
-           CasetaDialog.AfiseazaMesaj("afisare test", "Bluebitdata te saluta",
-                CasetaDialog.ButonMesaj.Ok,
-                CasetaDialog.ButonMesaj.Nimic,
-                CasetaDialog.ButonMesaj.Nu,
-                CasetaDialog.IconitaMesaj.Informare);
-            //if (a == DialogResult.OK)
-            //{
-            //    MessageBox.Show("te salut si eu");
-            //}
+            PanelConsumAapartament.Hide();// ascunderea panelului ce contine gridul pentru adaugare consumuri pana este selectata o scar din tree                      
+            LunaValidata(idAsociatie);
         }
-        //GENERARE TABELA CU TOATE DENUMIRILE CHELTUIELILOR in tabul Genereaza tabel intretinere
-        public void adaugareColoane()
+
+        // aici genezez structura de coloane a unui tabel
+        public DataColumnCollection StructuraColoane(string sTabelLucru)
         {
-            if (!(Calcul_intretinereDS.Tables["denumiri_cheltuieli"] is null))
+            DataColumnCollection coloane = Calcul_intretinereDS.Tables[sTabelLucru].Columns;
+            return coloane;
+        }
+        //GENERARE TABELA CU TOATE DENUMIRILE CHELTUIELILOR SI ADAUGAREA LOR IN TREE  in tabul Genereaza tabel intretinere//  Genere tabelul cu cheltuielile de intretinere
+        public void GenerareListaIntretinere()
+        {
+            //creare tabel cu calculul intretinerii
+            if (!(Calcul_intretinereDS.Tables["denumiri_cheltuieli1"] is null))
             {
-                Calcul_intretinereDS.Tables.Remove("denumiri_cheltuieli");
+                Calcul_intretinereDS.Tables.Remove("denumiri_cheltuieli1");
             }
-            Calcul_intretinereDS.getSetFrom("select * from tabela_asocieri_tipuri where id_tip=15 ", "denumiri_cheltuieli");
-            foreach (DataRow r in Calcul_intretinereDS.Tables["denumiri_cheltuieli"].Rows)
+            // Calcul_intretinereDS.getSetFrom("select * from tabela_asocieri_tipuri where id_tip=15 ", "denumiri_cheltuieli1");
+            Calcul_intretinereDS.getSetFrom("exec mp_getCalculIntretinere " + idAsociatie, "denumiri_cheltuieli1");// aici vom adauga parametrul prin care verificam daca este sau nu validata lista intretinerii
+            DataColumnCollection col = this.StructuraColoane("denumiri_cheltuieli1");
+            for (int i = 0; i < col.Count; i++)
             {
-                TreeNode node = new TreeNode(r["val_label"].ToString());
+                TreeNode node = new TreeNode(col[i].ToString());
                 treeColoane.Nodes.Add(node);
-
             }
-
+            //
+            ClassConexiuneServer.ConectareDedicata();
+            SqlConnection cnn = ClassConexiuneServer.GetConnection();
+            ClassConexiuneServer.DeschideConexiunea();
+            SqlCommand sqlcommand = new SqlCommand("dbo.mp_CalculIntretinere", cnn);
+            sqlcommand.CommandType = CommandType.StoredProcedure;
+            sqlcommand.Parameters.AddWithValue("@nIdAsociatie", idAsociatie);
+            sqlcommand.Parameters.AddWithValue("@nValidare", 0);
+            sqlcommand.Parameters.AddWithValue("@dDataAfisare", "1111.11.21");
+            sqlcommand.Parameters.AddWithValue("@dDataScadenta", "2222.12.30");
+            cnn.Close();
         }
-        // BUTONUL CARE GENEREAZA GRIDVIEW PE BAZA SELECTIEI DIN TREE in tabul Genereaza tabel intretinere
-        private void GenereazaTabel_Click(object sender, EventArgs e)
+        
+
+        // METODA CARE GENEREAZA GRIDVIEW PE BAZA SELECTIEI DIN TREE in tabul Genereaza tabel intretinere
+        public void GenereazaTabel_Click(object sender, EventArgs e)
         {
-            GridCalculIntretinere.Columns.Clear();
+            DataColumnCollection col = this.StructuraColoane("denumiri_cheltuieli1");
+            GridCalculIntretinere.DataSource = Calcul_intretinereDS.Tables["denumiri_cheltuieli1"];
+            GridCalculIntretinere.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            foreach (TreeNode node in treeColoane.Nodes)
+            for (int i = 0; i < Calcul_intretinereDS.Tables["denumiri_cheltuieli1"].Columns.Count; i++)
             {
-                string numeColoana = node.Text.Trim();
-                string headerColoana = node.Text.Trim();
-
-                if (node.Checked)
+                //GridCalculIntretinere.Columns[i].Width = 80;
+                string NumeColoanaGrid = col[i].ColumnName;
+                foreach (TreeNode node in treeColoane.Nodes)
                 {
-                    if (GridCalculIntretinere.Columns[numeColoana] == null)
+                    string numeColoana = node.Text.Trim();
+                    string headerColoana = node.Text.Trim();
+                    if (node.Checked && NumeColoanaGrid == numeColoana)
                     {
-                        GridCalculIntretinere.Columns.Add(numeColoana, headerColoana);
+                        GridCalculIntretinere.Columns[i].Visible = false;
+                    }
+                    if (!(node.Checked) && NumeColoanaGrid == numeColoana)
+                    {
+                        GridCalculIntretinere.Columns[i].Visible = true;
+                        GridCalculIntretinere.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                     }
                 }
-
             }
-            if (GridCalculIntretinere.Columns.Count > 0)
-            {
-                GridCalculIntretinere.Rows.Add();
-            }
+            GridCalculIntretinere.Enabled = false;
 
         }
 
-
         // CREARE TABELA -  TREE PENTRU ADAUGARE INFORMATII PENTRU APARTAMENT in tabul adaugare consumuri apartament
-        private void extrageTabelaTree()
+        public void extrageTabelaTree()
         {
             if (!(Calcul_intretinereDS.Tables["TabelAfisareTreeCalculIntretinere"] is null))
             {
@@ -121,7 +133,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             GetTreeItemsNou(idOrg, valoare, treeConsumuriApartament.Nodes);
         }
         // metoda care returneaza toate elementele copil pentru nodul selectat in tree din tabul adaugare consumuri apartament
-        private void GetTreeItemsNou(int idOrg, string valoare, TreeNodeCollection parinteNod)
+        public void GetTreeItemsNou(int idOrg, string valoare, TreeNodeCollection parinteNod)
         {
             TreeNode copil = new TreeNode();
             copil.Tag = idOrg;
@@ -134,30 +146,19 @@ namespace BlueSolAsoc.Fom_Meniuri
                 string valoare_copil = rand["org_valoare"].ToString();
                 GetTreeItemsNou(idOrgCopil, valoare_copil, copil.Nodes);
             }
-
-        // metoda care selecteaza apartamentele asociate unei scari din tree
-
         }
 
-        private void treeConsumuriApartament_AfterSelect(object sender, TreeViewEventArgs e)
+        public void treeConsumuriApartament_AfterSelect(object sender, TreeViewEventArgs e)
         {
             AfterSelect_treeAdaugareConsumuri(e.Node);
         }
-        public object ReturnareValoare(string query)
-        {
-            ClassConexiuneServer.DeschideConexiunea();
-            SqlConnection cnn = ClassConexiuneServer.GetConnection();
-            SqlCommand command;
-            command = new SqlCommand(query, cnn);
-            var scalar = command.ExecuteScalar();
-            return scalar;
-        }
-        private void AfterSelect_treeAdaugareConsumuri(TreeNode Node)
+
+        public void AfterSelect_treeAdaugareConsumuri(TreeNode Node)
         {
             int nId = System.Convert.ToInt16(Node.Tag);
             int val = (Int32)Calcul_intretinereDS.ReturnareValoare("select aso_id_tip from mv_detaliiOrganizatie where org_id_org=" + nId);
 
-            
+
             if (val == 3)
             {  //adaugare tabela in dataset pentru apartamente  //TABELA DIN VIEW
                 if (!(Calcul_intretinereDS.Tables["mv_ConsumApartamente"] is null))
@@ -174,7 +175,6 @@ namespace BlueSolAsoc.Fom_Meniuri
                 GridAfisareConsumuri.Columns["id_asociatie"].Visible = false;
                 GridAfisareConsumuri.Columns["Denumire Apartament"].HeaderText = "Apartament";
                 GridAfisareConsumuri.Columns["consum_apa_rece"].HeaderText = "MC Apa Rece";
-                //    gridAfisareConsumuri.Sort(gridAfisareConsumuri.Columns["Denumire Apartament"], ListSortDirection.Descending);
                 GridAfisareConsumuri.Columns["consum_apa_calda"].HeaderText = "MC Apa Calda";
                 GridAfisareConsumuri.Columns["numar_persoane"].HeaderText = "Numar Persoane";
                 GridAfisareConsumuri.Columns["Proprietar"].HeaderText = "Nume proprietar";
@@ -186,19 +186,18 @@ namespace BlueSolAsoc.Fom_Meniuri
                 GridAfisareConsumuri.Columns["consum_apa_calda"].DisplayIndex = 4;
                 GridAfisareConsumuri.Columns["Proprietar"].DisplayIndex = 5;
                 GridAfisareConsumuri.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
                 PanelConsumAapartament.Show();
                 GridAfisareConsumuri.Visible = true;
                 GridAfisareConsumuri.Show();
                 lblMesajSelecteazScara.Hide();
-                btnImprima.Visible = true;
+                btnModifica.Show();
             }
             else
             {
                 PanelConsumAapartament.Hide();
-                GridAfisareConsumuri.Visible=false;
+                GridAfisareConsumuri.Visible = false;
                 lblMesajSelecteazScara.Show();
-                btnImprima.Visible = false;
+                btnModifica.Hide();
             }
         }
         public void reimprospateazaGridConsumuri()
@@ -207,7 +206,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             GridAfisareConsumuri.Refresh();
         }
 
-       
+
         //colorare celula editata pe baza valorii initiale comparata cu cea finala
         void gridAfisareConsumuri_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
@@ -226,9 +225,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                         final = decimal.Parse((initial.ToString()));
                         GridAfisareConsumuri.CancelEdit();
                     }
-
                     break;
-
                 case TypeCode.Int32:
                     int b = int.Parse(final.ToString());
                     if (b < 0)
@@ -239,6 +236,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                     }
                     break;
                 default:
+
                     break;
             }
 
@@ -249,67 +247,62 @@ namespace BlueSolAsoc.Fom_Meniuri
 
         }
 
-        private void Calcul_intretinere_Load(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the 'calcul_intretinereDS1.mv_ConsumApartamente' table. You can move, or remove it, as needed.
-            this.mv_ConsumApartamenteTableAdapter.Fill(this.calcul_intretinereDS1.mv_ConsumApartamente);
-          
 
-        }
-
-        private void btnModifica_Click(object sender, EventArgs e)
+        public void btnModifica_Click(object sender, EventArgs e)
         {
+            //if (LunaValidata(idAsociatie))
+            //{
+
+            //}
+            SetDocActiv(true);
             switch (TabCalculIntretinere.SelectedTab.Text)
             {
                 case "Adaugare consumuri apartament":
+                  
                     treeConsumuriApartament.Enabled = false;
                     btnModifica.Hide();
-                    btnSalveaza.Show();
-                    btnAnuleaza.Show();
-                  
+                    btnSalveaza.Visible = true;
+                    btnAnuleaza.Visible = true;
                     GridAfisareConsumuri.Enabled = true;
-
-                        break;
-
+                    break;
                 case "Genereaza tabel intretinere":
 
                     break;
-
-
                 default:
+
                     break;
             }
         }
 
-        private void btnSalveaza_Click(object sender, EventArgs e)
+        public void btnSalveaza_Click(object sender, EventArgs e)
         {
             treeConsumuriApartament.Enabled = true;
             btnModifica.Show();
             btnSalveaza.Hide();
-            btnAnuleaza.Show();
+            btnAnuleaza.Hide();
             Calcul_intretinereDS.TransmiteActualizari("mv_ConsumApartamente");
-           // GridAfisareConsumuri.Enabled = false;
+            SetDocActiv(false);
+            // GridAfisareConsumuri.Enabled = false;
         }
 
-        private void btnAnuleaza_Click_1(object sender, EventArgs e)
+        public void btnAnuleaza_Click_1(object sender, EventArgs e)
         {
             DataRow[] randuriModificate = Calcul_intretinereDS.Tables["mv_ConsumApartamente"].Select(null, null, DataViewRowState.ModifiedCurrent);
             if (randuriModificate.Length > 0)
             {
-              
-                MessageBox.Show("Campurile care au fost editate se vor pierde daca nu sunt salvate !", "Informare", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                
-                if (DialogResult == DialogResult.OK)
+
+                DialogResult aaa = (MessageBox.Show("Campurile care au fost editate se vor pierde daca nu sunt salvate !", "Informare", MessageBoxButtons.OKCancel, MessageBoxIcon.Information));
+
+                if (aaa == DialogResult.OK)
                 {
-                    treeConsumuriApartament.Enabled = true;
-                    btnModifica.Show();
-                    btnSalveaza.Hide();
-                    btnAnuleaza.Show();
-                
-                   
+                    treeConsumuriApartament.Enabled = false;
+                    btnModifica.Visible = true;
+                    btnSalveaza.Visible = false;
+                    btnAnuleaza.Visible = false;
                     GridAfisareConsumuri.CancelEdit();
-                   // GridAfisareConsumuri.Enabled = false;
-                 
+                    GridAfisareConsumuri.DataSource = Calcul_intretinereDS.Tables["mv_ConsumApartamente"];
+                    treeConsumuriApartament.Enabled = true;
+                    SetDocActiv(false);
                 }
             }
             else
@@ -317,54 +310,36 @@ namespace BlueSolAsoc.Fom_Meniuri
                 treeConsumuriApartament.Enabled = true;
                 btnModifica.Show();
                 btnSalveaza.Hide();
-               
                 btnAnuleaza.Hide();
-               
                 GridAfisareConsumuri.CancelEdit();
-               // GridAfisareConsumuri.Enabled = false;
+                SetDocActiv(false);
             }
 
         }
 
-
-
-        
-
-        private void PanelConsumAapartament_Click(object sender, PaintEventArgs e)
+        public void PanelConsumAapartament_Click(object sender, PaintEventArgs e)
         {
-            //if (GridAfisareConsumuri.Enabled == false)
-            //{
+            if (GridAfisareConsumuri.Enabled == false)
+            {
                 MessageBox.Show("Pentru a edita valorile din tabel apasa butonul MODIFICA !", "Informare", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
+            }
 
         }
 
-       // verificarea introducere date in grid view
-        private void GridAfisareConsumuri_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        // verificarea introducere date in grid view / pot fi introduse doar nuemer si doar in coloanele din if(linia 329)
+        public void GridAfisareConsumuri_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            //e.FormattedValue  will return current cell value and 
-            //e.ColumnIndex & e.RowIndex will rerurn current cell position
-
-            // If you want to validate particular cell data must be numeric then check e.FormattedValue is all numeric 
-            // if not then just set  e.Cancel = true and show some message 
-            //Like this 
             ClassGridView grid = (ClassGridView)sender;
-
-            if (grid.Columns[e.ColumnIndex].Name== "consum_apa_rece" || grid.Columns[e.ColumnIndex].Name == "numar_persoane"|| grid.Columns[e.ColumnIndex].Name == "consum_apa_calda")
+            if (grid.Columns[e.ColumnIndex].Name == "consum_apa_rece" || grid.Columns[e.ColumnIndex].Name == "numar_persoane" || grid.Columns[e.ColumnIndex].Name == "consum_apa_calda")
             {
                 if (!IsNumeric(e.FormattedValue.ToString()))  // IsNumeric will be your method where you will check for numebrs 
                 {
-                    MessageBox.Show("Pot fi introduse doar numere!");
-                 //   GridAfisareConsumuri.CurrentCell.Value = null;
+                   
                     GridAfisareConsumuri.CancelEdit();
-
                 }
-
+              //  else //MessageBox.Show("Pot fi introduse doar numere!");
             }
-
         }
-       
-
 
         public static System.Boolean IsNumeric(System.Object Expression)
         {
@@ -373,7 +348,6 @@ namespace BlueSolAsoc.Fom_Meniuri
 
             if (Expression is Int16 || Expression is Int32 || Expression is Int64 || Expression is Decimal || Expression is Single || Expression is Double || Expression is Boolean)
                 return true;
-
             try
             {
                 if (Expression is string)
@@ -386,138 +360,282 @@ namespace BlueSolAsoc.Fom_Meniuri
             return false;
         }
 
-        private void GridAfisareConsumuri_Click(object sender, EventArgs e)
+        public void GridAfisareConsumuri_Click(object sender, EventArgs e)
         {
-            
-            if (btnModifica.Visible==true)
-            {
 
+            if (btnModifica.Visible == true)
+            {
                 MessageBox.Show("Pentru a edita valorile din tabel apasa butonul MODIFICA !", "Informare", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            //else
-            //{
-            //    MessageBox.Show("Pentru a edita valorile din tabel apasa butonul MODIFICA !", "Informare", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
+        }
+        public void OwnerDraw(object sender, DGVCellDrawingEventArgs e)
+        {
+            if (e.row == -1)
+            {
+                DataGridViewHeaderCell cell = GridCalculIntretinere.Columns[e.column].HeaderCell;
+                String printvalue = GridCalculIntretinere.Columns[e.column].HeaderText;
+                e.g.TranslateTransform(e.DrawingBounds.X + e.DrawingBounds.Width - 30, e.DrawingBounds.Y + e.DrawingBounds.Height);
+                e.g.RotateTransform(-90);
+                e.g.DrawString(printvalue, e.CellStyle.Font, new SolidBrush(e.CellStyle.ForeColor), 0, 0);
+                e.g.ResetTransform();
+                if (GridCalculIntretinere.CellBorderStyle != DataGridViewCellBorderStyle.None)
+                    e.g.DrawRectangle(new Pen(GridCalculIntretinere.GridColor), e.DrawingBounds.X, e.DrawingBounds.Y,
+                    e.DrawingBounds.Width, e.DrawingBounds.Height);
+                e.Handled = true;
+            }
         }
 
-        private void MetodaDGVPrinter(ClassGridView gridView, string sDataTip)
+        void MetodaDGVPrinter(ClassGridView gridView, string sDataTip)
         {
-            if (gridView.Columns.Count != 0 | gridView.Visible==false)
+            if (gridView.Columns.Count != 0 | gridView.Visible == false)
             {
+
                 DGVPrinter printer = new DGVPrinter();
+                //titlul documentului
                 printer.TitleSpacing = 5;
                 printer.SubTitleSpacing = 5;
-                printer.Title = "LISTA INTRETINERE, ASOCIATIA:" + denumireAsociatie; //header
-                printer.SubTitle = "LUNA AFISATA:     /"+"DATA AFISARII:" +sDataTip;
+                printer.Title = "Lista costurilor intretinerii, Asociatia de proprietari:" + denumireAsociatie; //header      
+                //subtitlul compus din luna activa pentru calcul + elementele ce vin din caseta de dialog la imprimare
+                printer.SubTitle = "Luna calculata:" + sLunaActiva + " | " + sDataTip;
                 printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
+                //setari privind afisari pe pagina - nr pagini ...
                 printer.PageNumbers = true;
                 printer.PageNumberInHeader = false;
                 printer.PorportionalColumns = false;
+
+                printer.ColumnWidth = DGVPrinter.ColumnWidthSetting.DataWidth;// setatrea latimii coloanelor la continut
                 gridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
-                printer.ColumnWidth = DGVPrinter.ColumnWidthSetting.DataWidth;
-                printer.HeaderCellAlignment = StringAlignment.Near;
-                printer.ColumnWidths.Add(gridView.Columns[0].Name, 10); // formatare latime colaoana 9 [denumire]
-                printer.Footer = "BlueBitData" + "\n" + "Companie de software";// Footer   
-                printer.HeaderCellFormatFlags = StringFormatFlags.DirectionVertical | StringFormatFlags.DirectionRightToLeft;
+                //orientarea pe verticala a numelor de coloana
+                printer.HeaderCellFormatFlags = StringFormatFlags.DirectionVertical;
+                //rotirea numelor de coloana pe verticala de jos in sus si de la stanga la dreapta
+                printer.OwnerDraw += new CellOwnerDrawEventHandler(OwnerDraw);
+
+                printer.Footer = "BlueBitData" + "\n" + "Companie de software";// Footer             
                 printer.FooterFormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
                 printer.FooterColor = Color.Red;
                 printer.printDocument.DefaultPageSettings.Landscape = true;
+                //initializarea print preview
+                printer.PrintPreviewDataGridView(gridView);// print preview   
 
-                printer.PrintPreviewDataGridView(gridView);// print preview           
-                                                           //printer.PrintDataGridView(gridView);// print direct
             }
             else
                 MessageBox.Show("NIMIC DE IMPRIMAT");
-
-
         }
 
-        private void btnImprima_Click(object sender, EventArgs e)
-        {
-           string verificare = PromptForTextAndSelection.ShowDialog("BluebitData", "Data Afisare", "Tip Afisare");
 
-            if (verificare== "fara data;nimic selectat")
-            {
-                MessageBox.Show("Imprimare anulata!");
+        public void btnImprima_Click(object sender, EventArgs e)
+        {
+            
+         
+            string verificare = ShowDialogA("BluebitData", "Data Afisarii Listei", "Afisare de TIP", "Numar de zile pana la scadenta:");
+           
+                if (verificare.Contains("VALIDARE"))
+                {
+                    MetodaDGVPrinter(GridCalculIntretinere, verificare);
+
+                }
+                else if (verificare.Contains("VERIFICARE"))
+                {
+                MetodaDGVPrinter(GridCalculIntretinere, verificare);
             }
-            else
-            {
-                MetodaDGVPrinter(GridAfisareConsumuri, verificare);
-                
-            }
+            else if (verificare == "NU")
+                {
+                    MessageBox.Show("Imprimare anulata!", "Anulat de utilizator", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }              
         }
 
-        public static class PromptForTextAndSelection
+        //verific daca exista formuri cu documente in editare
+        public bool MST()
         {
-            public static string ShowDialog(string caption, string text, string selStr)
+            bool z = true;
+
+            for (int i = 0; i < Application.OpenForms.Count; i++)
+            {
+                FormBluebit frmDeschis = (FormBluebit)Application.OpenForms[i];
+                if (z == frmDeschis.GetDocActiv())
+                    return true;
+
+
+            }
+            return false;
+
+        }
+        // daca exista formuri cu doc in editare aduc in fata primul gasit si cer urilizatorului sa inchida sau salveze documentul in editare
+        public void ValidareLunaActiva()
+        {                       
+
+                for (int i = 0; i < Application.OpenForms.Count; i++)
+                {
+                    FormBluebit frmDeschis = (FormBluebit)Application.OpenForms[i];
+                    if (frmDeschis.GetDocActiv())
+                    {
+                        MessageBox.Show(" Exista un document in editare, Termina editarea si apoi poti reveni la imprimare");
+                        frmDeschis.BringToFront();
+                        frmDeschis.Activate();
+                        break;                        
+                    }              
+                 }      
+
+        }
+  
+        // interfata in care se selecteaza data de afisare , scadenta si tipul de afisare
+         public string ShowDialogA(string caption, string text, string selStr, string dataScadenta)
             {
                 Form prompt = new Form();
                 prompt.ControlBox = false;
-                prompt.Width = 400;
+                prompt.BackColor = Color.Aquamarine;
+                prompt.ForeColor = Color.Black;
+                prompt.FormBorderStyle = FormBorderStyle.Fixed3D;
+                prompt.Width = 300;
                 prompt.Height = 360;
                 prompt.Text = caption;
+                //eticheta + box pentru data afisarii
                 Label textLabel = new Label() { Left = 16, Top = 20, Width = 240, Text = text };
-                TextBox textBox = new TextBox() { Left = 16, Top = 40, Width = 240, TabIndex = 0, TabStop = true };
-                Label selLabel = new Label() { Left = 16, Top = 66, Width = 88, Text = selStr };
-                ComboBox cmbx = new ComboBox() { Left = 112, Top = 64, Width = 144 };
-                cmbx.Items.Add("Verificare");
-                cmbx.Items.Add("Afisare Definitiva");
-                cmbx.Items.Add("Imprimare Test");
-                Button confirmare = new Button() { Text = "Validez selectia!", Left = 16, Width = 80, Top = 150, TabIndex = 1, TabStop = true };
-                Button anulare= new Button() { Text = "Anulez!", Left = 16, Width = 80, Top = 98, TabIndex = 1, TabStop = true };
+                DateTimePicker dtbAfisare = new DateTimePicker() { Left = 16, Top = 40, Width = 240, TabIndex = 0, TabStop = true };
+                dtbAfisare.Format = DateTimePickerFormat.Custom;
+                dtbAfisare.CustomFormat = "d-MMM-yyyy";
+
+            //TextBox textBox = new TextBox() { Left = 16, Top = 40, Width = 240, TabIndex = 0, TabStop = true };
+            //eticheta + box pentru data scadenta
+
+                 Label dataScad = new Label() { Left = 16, Top = 90, Width = 180, Text = dataScadenta };
+                ComboBox dataScadTB = new ComboBox() { Left = 212, Top = 90, Width = 44, TabIndex = 1, TabStop = true };
+            string[] nrZile = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" };
+            dataScadTB.Items.AddRange(nrZile);
+            dataScadTB.SelectedItem = nrZile[14];
+                // eticheta + combobox - tip afisare
+                Label selLabel = new Label() { Left = 16, Top = 130, Width = 88, Text = selStr };
+                ComboBox cmbx = new ComboBox() { Left = 112, Top = 130, Width = 144, TabIndex = 1, TabStop = true };
+                // cele 2 butoane - validare /anulare
+                Button confirmare = new Button() { Text = "Validez selectia!", Left = 150, Width = 100, Top = 200, TabIndex = 1, TabStop = true };
+                Button anulare = new Button() { Text = "Anulez!", Left = 150, Width = 100, Top = 250, TabIndex = 1, TabStop = true };
+                //itemurile din combobox
+                cmbx.Items.Add("VERIFICARE");
+                cmbx.Items.Add("VALIDARE");
+                cmbx.SelectedItem = "VERIFICARE";
+                // aici primesc parametrul care imi permite sa afisez in combobox de selectia doar valoarea VERIFICARE sau VALIDARE si VERIFICARE - pt true - doar verificare
+                //  bool validat =true;
+                bool validat = false;
+
+                if (validat)
+                {
+                    cmbx.Items.Remove("VALIDARE");
+                }
+                // cmbx.Items.Add("TEST");
                 confirmare.Click += (sender, e) => { prompt.Close(); };
                 prompt.AcceptButton = confirmare;
                 prompt.AcceptButton.DialogResult = DialogResult.Yes;
-                
                 prompt.CancelButton = anulare;
                 prompt.CancelButton.DialogResult = DialogResult.No;
                 prompt.Controls.Add(textLabel);
-                prompt.Controls.Add(textBox);
-                prompt.Controls.Add(selLabel);
+                prompt.Controls.Add(dtbAfisare);
+            //prompt.Controls.Add(textBox);
+            prompt.Controls.Add(dataScad);
+            prompt.Controls.Add(dataScadTB);
+            prompt.Controls.Add(selLabel);
                 prompt.Controls.Add(cmbx);
                 prompt.Controls.Add(confirmare);
                 prompt.Controls.Add(anulare);
-             
-                
-            
-               
                 prompt.StartPosition = FormStartPosition.CenterScreen;
-                
-                DialogResult res= prompt.ShowDialog();
-                
-                if (res==DialogResult.Yes )
+                DialogResult res = prompt.ShowDialog();
+                if (res == DialogResult.Yes)
                 {
-                    string tipAfisare;
-                    string data = textBox.Text;
-                    if (textBox.Text.Length == 0)
+                    string tipAfisare = "";
+                    string data = dtbAfisare.Value.ToString("d-MMM-yyyy");
+                string dataSQL = dtbAfisare.Value.ToString("YYYY-MM-DD");
+                    string sDataScadenta = dataScadTB.Text;
+                    //if (dtbAfisare.Text.Length == 0)
+                    //{
+                    //    data = "12.12.2222";
+                    //}
+                    //if (cmbx.SelectedItem == null)
+                    //{
+                    //    MessageBox.Show("Selecteaza Tip Afisare");
+                    //    tipAfisare = "Afisare Neselectata";
+                    //}
+                    switch (cmbx.SelectedItem)
                     {
-                        data = "19.09.1900";
+                        case "VALIDARE":
+                        if (MST())
+                        {
+                            ValidareLunaActiva();
+                        }
+                        else
+                        {
+
+                            tipAfisare = "VALIDARE";
+                            DialogResult raspuns = MessageBox.Show("VALIDARE si INCHIDERE LUNA!", " Butonul VALIDARE", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (raspuns == DialogResult.Yes)
+                            {
+                                // aici avem codul pentru inchiderea formurilor
+                                for (int i = 0; i < Application.OpenForms.Count; i++)
+                                {
+                                    FormBluebit frmDeschis = (FormBluebit)Application.OpenForms[i];
+                                    if (frmDeschis.Text.Equals("AsociatieForm1"))
+                                    {                                      
+                                        frmDeschis.Close();
+                                       // MessageBox.Show("Form inchis");
+                                    }
+                                   else if (frmDeschis.Text.Equals("venituri_incasari"))
+                                    {
+                                        frmDeschis.Close();
+                                       // MessageBox.Show("Form inchis");
+                                    }
+                                    else if (frmDeschis.Text.Equals("cheltuieli_plati"))
+                                    {
+                                        frmDeschis.Close();                                     
+                                       // MessageBox.Show("Form inchis");
+                                    }
+                                }
+
+
+                                sDataScadenta = dtbAfisare.Value.AddDays(Convert.ToDouble(dataScadTB.SelectedItem)).ToString("YYYY-MM-DD");
+                                ClassConexiuneServer.ConectareDedicata();
+                                SqlConnection cnn = ClassConexiuneServer.GetConnection();
+                                ClassConexiuneServer.DeschideConexiunea();
+                                SqlCommand sqlcommand = new SqlCommand("dbo.mp_CalculIntretinere", cnn);
+                                sqlcommand.CommandType = CommandType.StoredProcedure;
+                                sqlcommand.Parameters.AddWithValue("@nIdAsociatie", idAsociatie);
+                                sqlcommand.Parameters.AddWithValue("@nValidare", 1);                                
+                                sqlcommand.Parameters.AddWithValue("@dDataAfisare", dataSQL);
+                                sqlcommand.Parameters.AddWithValue("@dDataScadenta", sDataScadenta);                           
+                                cnn.Close();
+
+                                MessageBox.Show("Luna curenta a fost VALIDATA si blocata!");
+
+                            }
+                            if (raspuns == DialogResult.No)
+                            {
+                                tipAfisare = "VERIFICARE";
+                                MessageBox.Show("Schimb tipul imprimarii in VERIFICARE", "Schimbare tip afisare", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }     
+                        
+                        break;
+                       
+                        case "VERIFICARE":
+                            tipAfisare = "VERIFICARE";
+                            break;
+                        default:
+
+                            break;
                     }
-                    
-                    if (cmbx.SelectedItem == null)
+
+                    if ((dtbAfisare.Value.ToString()) != null)
                     {
-                        tipAfisare = "Verificare fara data";
+                        sDataScadenta = dtbAfisare.Value.AddDays(Convert.ToDouble(dataScadTB.SelectedItem)).ToString("d-MMM-yyyy");
                     }
-                    else  tipAfisare = cmbx.SelectedItem.ToString();
 
-
-                    return string.Format("{0};{1}", data, tipAfisare);
-
-                    
-            
-
-
+                    return string.Format("Data afisare:{0} | Data scadenta:{1} | Tip afisare:{2}", data, sDataScadenta, tipAfisare);
                 }
                 else
-                {
-                    return string.Format("{0};{1}", "fara data", "nimic selectat");
-
+                { //return string.Format("Data afisarii:{0}|Data scadenta:{1}|Tip afisare:{2}", "fara data", "nu are scadenta", "nimic selectat");
+                    return string.Format("{0}", "NU");
                 }
-                
-
             }
-          
-        }
+        
+
     }
+
 }
 

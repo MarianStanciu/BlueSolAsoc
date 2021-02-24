@@ -24,5 +24,6 @@ namespace BlueSolAsoc.butoane_si_controale
             }
 
         public DGVPrinter.ColumnWidthSetting ColumnWidth { get; internal set; }
+        public object HeaderStyle { get; internal set; }
     }
 }

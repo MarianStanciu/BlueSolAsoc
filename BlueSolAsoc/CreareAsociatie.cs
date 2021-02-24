@@ -58,7 +58,7 @@ namespace BlueSolAsoc
 
              string connetionString;
              SqlConnection cnn;
-             connetionString = @"Data Source=82.208.137.149\sqlexpress,8833;Initial Catalog=proba_transare;Persist Security Info=True;User ID=sa;Password=pro";
+             connetionString = @"Data Source=82.208.137.149\sqlexpress,8833;Initial Catalog=colectie_asoc;Persist Security Info=True;User ID=sa;Password=pro";
              cnn = new SqlConnection(connetionString);
              cnn.Open();
              string sql = "Insert into Tabela_Organizatii (id_master,id_tip,valoare) values" + " ('" + "0" + "','" + "1'" + ",'" + DenumireCreareAsocBox.Text + "')";
@@ -84,7 +84,7 @@ namespace BlueSolAsoc
 
            /* string connetionString;
             SqlConnection cnn;
-            connetionString = @"Data Source=82.208.137.149\sqlexpress,8833;Initial Catalog=proba_transare;Persist Security Info=True;User ID=sa;Password=pro";
+            connetionString = @"Data Source=82.208.137.149\sqlexpress,8833;Initial Catalog=colectie_asoc;Persist Security Info=True;User ID=sa;Password=pro";
             cnn = new SqlConnection(connetionString);
             cnn.Open();*/
             //dc[i].ColumnName

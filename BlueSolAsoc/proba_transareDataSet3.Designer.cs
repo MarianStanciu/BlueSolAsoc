@@ -20,9 +20,9 @@ namespace BlueSolAsoc {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("proba_transareDataSet3")]
+    [global::System.Xml.Serialization.XmlRootAttribute("colectie_asocDataSet3")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class proba_transareDataSet3 : global::System.Data.DataSet {
+    public partial class colectie_asocDataSet3 : global::System.Data.DataSet {
         
         private mv_IstoricDocumenteDataTable tablemv_IstoricDocumente;
         
@@ -30,7 +30,7 @@ namespace BlueSolAsoc {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public proba_transareDataSet3() {
+        public colectie_asocDataSet3() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace BlueSolAsoc {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        protected proba_transareDataSet3(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected colectie_asocDataSet3(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -127,7 +127,7 @@ namespace BlueSolAsoc {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            proba_transareDataSet3 cln = ((proba_transareDataSet3)(base.Clone()));
+            colectie_asocDataSet3 cln = ((colectie_asocDataSet3)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -199,9 +199,9 @@ namespace BlueSolAsoc {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "proba_transareDataSet3";
+            this.DataSetName = "colectie_asocDataSet3";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/proba_transareDataSet3.xsd";
+            this.Namespace = "http://tempuri.org/colectie_asocDataSet3.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tablemv_IstoricDocumente = new mv_IstoricDocumenteDataTable();
@@ -225,7 +225,7 @@ namespace BlueSolAsoc {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            proba_transareDataSet3 ds = new proba_transareDataSet3();
+            colectie_asocDataSet3 ds = new colectie_asocDataSet3();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -622,7 +622,7 @@ namespace BlueSolAsoc {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                proba_transareDataSet3 ds = new proba_transareDataSet3();
+                colectie_asocDataSet3 ds = new colectie_asocDataSet3();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -903,7 +903,7 @@ namespace BlueSolAsoc {
         }
     }
 }
-namespace BlueSolAsoc.proba_transareDataSet3TableAdapters {
+namespace BlueSolAsoc.colectie_asocDataSet3TableAdapters {
     
     
     /// <summary>
@@ -1044,7 +1044,7 @@ namespace BlueSolAsoc.proba_transareDataSet3TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::BlueSolAsoc.Properties.Settings.Default.proba_transareConnectionString;
+            this._connection.ConnectionString = global::BlueSolAsoc.Properties.Settings.Default.colectie_asocConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1062,7 +1062,7 @@ namespace BlueSolAsoc.proba_transareDataSet3TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(proba_transareDataSet3.mv_IstoricDocumenteDataTable dataTable) {
+        public virtual int Fill(colectie_asocDataSet3.mv_IstoricDocumenteDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -1075,9 +1075,9 @@ namespace BlueSolAsoc.proba_transareDataSet3TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual proba_transareDataSet3.mv_IstoricDocumenteDataTable GetData() {
+        public virtual colectie_asocDataSet3.mv_IstoricDocumenteDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            proba_transareDataSet3.mv_IstoricDocumenteDataTable dataTable = new proba_transareDataSet3.mv_IstoricDocumenteDataTable();
+            colectie_asocDataSet3.mv_IstoricDocumenteDataTable dataTable = new colectie_asocDataSet3.mv_IstoricDocumenteDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -1151,7 +1151,7 @@ namespace BlueSolAsoc.proba_transareDataSet3TableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateUpdatedRows(proba_transareDataSet3 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(colectie_asocDataSet3 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             return result;
         }
@@ -1161,7 +1161,7 @@ namespace BlueSolAsoc.proba_transareDataSet3TableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateInsertedRows(proba_transareDataSet3 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(colectie_asocDataSet3 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             return result;
         }
@@ -1171,7 +1171,7 @@ namespace BlueSolAsoc.proba_transareDataSet3TableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateDeletedRows(proba_transareDataSet3 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(colectie_asocDataSet3 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             return result;
         }
@@ -1205,7 +1205,7 @@ namespace BlueSolAsoc.proba_transareDataSet3TableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public virtual int UpdateAll(proba_transareDataSet3 dataSet) {
+        public virtual int UpdateAll(colectie_asocDataSet3 dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }
