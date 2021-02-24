@@ -39,13 +39,16 @@ namespace BlueSolAsoc
             DataSetComboBox.getSetFrom("Select * from mv_tabela_luni where id_org=" + id, "mv_tabela_luni"); ;//view pentru tabela + triggeri
             DataSetComboBox.getSetFrom("Select top 1 * from mv_tabela_luni where id_org=" + id + " ORDER BY id_tabela_luni DESC", "tabel_ultima_luna");
             DataSetComboBox.getSetFrom("select * from mv_tabela_luni where 1<1", "tabela_ajutatoare");
+            DataSetComboBox.getSetFrom("Select * from mv_tabela_luni where id_org=" + id + "and luna_incheiata=1","tabela_luni_incheiate");
            
             //AdaugareLunaCurenta();
 
             DataTable TabelaLuni = DataSetComboBox.Tables["mv_tabela_luni"];
             DataTable TabelUltimaLuna = DataSetComboBox.Tables["tabel_ultima_luna"]; // tabel utilizat pentru combobox-uri
             DataTable TabelAjutator = DataSetComboBox.Tables["tabela_ajutatoare"];
+            DataTable TabelaLuniIncheiate = DataSetComboBox.Tables["tabela_luni_incheiate"];
             AtribuireDataSourceCombo();
+            VerificLunaIncheiata();
             lblNumeAsociatie.Text = "Asociatia activa: " + GetDenumireAsociatie();
 
 
@@ -74,6 +77,9 @@ namespace BlueSolAsoc
                 comboBoxLUNA.Hide();
                 lblSelectieAn.Hide();
                 lblSelectieLuna.Hide();
+                gridTabelaLuni.Hide();
+                panelTabelLuni.Hide();
+                comboLuniLucrate.Hide();
 
                 //    lblLunaCurenta.Text = "Luna activa :" + ultimaluna;
                 //}
@@ -176,12 +182,50 @@ namespace BlueSolAsoc
             }
         }
 
+        private void VerificLunaIncheiata()
+        {
+            DataTable TabelaLuni = DataSetComboBox.Tables["mv_tabela_luni"];
+            DataTable TabelUltimaLuna = DataSetComboBox.Tables["tabel_ultima_luna"];
+            foreach (DataRow row in TabelUltimaLuna.Rows)
+            {
+                ultimaluna = Convert.ToInt32(row["luna"]);
+                ultimulan = Convert.ToInt32(row["an"]);
+                if (ultimaluna == 12)
+                {
+                    ultimaluna = 1;
+                    ultimulan = ultimulan + 1;
+                    //row["luna"] = ultimaluna;
+                    //row["an"] = ultimulan;
+                    //TabelAjutator.ImportRow(row);
+                }
+                else
+                {
+
+                    /* row["luna"] = ultimaluna + 1;
+                     row["an"] = ultimulan;*/
+                    ultimaluna = ultimaluna + 1;
+                    ultimulan = ultimulan;
+                }
+            }
+            object scalar = ClassConexiuneServer.getScalar("select top 1 * from mv_tabela_luni where id_org=" + idAsociatie + " and activ=1 and luna_incheiata=1");
+            if (scalar != null)
+            {
+                TabelaLuni.Rows.Add(0, ultimaluna, ultimulan, 1, idAsociatie, 0, System.DateTime.Now.Date);
+                DataSetComboBox.TransmiteActualizari("mv_tabela_luni");
+
+            }
+            
+        }
+
 
         private void AtribuireDataSourceCombo()
         {
             DataTable TabelaLuni = DataSetComboBox.Tables["tabela_luni"];
+            DataTable TabelaLuniIncheiate = DataSetComboBox.Tables["tabela_luni_incheiate"];
             string[] lunicombobox = { "ianuarie", "februarie", "martie", "aprilie", "mai", "iunie", "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie" };
             int[] numarlunicombo = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
+            string stringan = System.DateTime.Now.Year.ToString();
+            int anactual = Convert.ToInt32(stringan);
             int[] ani = { 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030, 2031 };
             DataTable TabelNumarareLuni = new DataTable();
             TabelNumarareLuni.Columns.Add("luna");
@@ -198,7 +242,19 @@ namespace BlueSolAsoc
             //comboBoxAN.ValueMember = "an";
             //comboBoxAN.DisplayMember = "an";
             comboBoxAN.SelectedIndex = -1;
-            comboBoxLUNA.SelectedIndex = -1;           
+            comboBoxLUNA.SelectedIndex = -1;
+
+            comboLuniLucrate.DataSource = TabelaLuniIncheiate;
+            comboLuniLucrate.ValueMember = "id_tabela_luni";
+            comboLuniLucrate.DisplayMember = "den_luna_an";
+            //int idselectat = (int)comboLuniLucrate.SelectedValue;
+            //string item = comboLuniLucrate.SelectedIndex.ToString();
+            //DataRow rand= TabelaLuniIncheiate.Select("id_tabela_luni="+idselectat).FirstOrDefault();
+           /* if (comboLuniLucrate.Text == "10")
+            {
+                comboLuniLucrate.DisplayMember = "Octombrie";
+            }*/
+            //comboLuniLucrate.DisplayMember = "numar_luna";
         }
 
 
@@ -501,49 +557,84 @@ namespace BlueSolAsoc
                 }
             }
 
+        private void ModifLunaIncheiata_Click(object sender, EventArgs e)
+        {
+            if (ModifLunaIncheiata.Text=="Selectare luna anterioara")
+            {
+                comboLuniLucrate.Show();
+                ModifLunaIncheiata.Text = "Confirma";
+            }
+            DataTable TabelaLuni = DataSetComboBox.Tables["mv_tabela_luni"];
+            DataTable TabelaLuniIncheiate = DataSetComboBox.Tables["tabela_luni_incheiate"];
+            comboLuniLucrate.DataSource = TabelaLuniIncheiate;
+            comboLuniLucrate.ValueMember = "id_tabela_luni";
+            comboLuniLucrate.DisplayMember = "den_luna_an";
+            //MessageBox.Show("Ai selectat" + comboLuniLucrate.SelectedValue);
+            int id_luna_de_activat = Convert.ToInt32(comboLuniLucrate.SelectedValue);
+            /* foreach (DataRow dr in TabelaLuni.Rows) // cautam in tabel
+             {
+                 if (dr["id_tabela_luni"] == id_luna_de_activat.ToString())  //  daca id-ul corespunde facem activ
+                 {
+                     dr["activ"] = "1"; //trecem activa luna dorita
 
-            // populare meniuri secundare =====================================================================
-            /*       public void PopulareMeniuSecundar( String[]meniuSecundar)
-                   {
+                 }
 
-                       var rowCount = 1;
-                       var columnCount =meniuSecundar.Length ;
-                       this.tableLayoutPanel2.ColumnCount = columnCount;
-                       this.tableLayoutPanel2.RowCount = rowCount;
+             }
+ */
+            DataRow activ = TabelaLuni.Select("activ=1").FirstOrDefault(); // cauta singurul activ din tabel
+            if (activ != null)
+            {
+                activ["activ"] = "0"; //trec la inactiv luna curenta
+            }
 
-
-                       this.tableLayoutPanel2.ColumnStyles.Clear();
-                       this.tableLayoutPanel2.RowStyles.Clear();
-
-                       for (int i = 0; i < rowCount; i++)
-                       {
-                           this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100 / rowCount));
-                       }
-                       for (int i = 0; i < columnCount; i++)
-                       {
-                           this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100 / columnCount));
-
-                       }
-
-                       String[] denumiriSecundare =(meniuSecundar)  ;
-                       int index = 0;
-                       for (int i = 0; i < rowCount * columnCount; i++)
-                       {
-                           var b = new Button();
-                           //  var b = new ButonMeniuPrincipal();
-
-                           // for (int z = 0; z < denumiri.Length ; z++)
-                           if (index < denumiriSecundare.Length)
-                           {
-                               b.Text = denumiriSecundare[index++];
-                           }
-
-
-                           b.Click += ApasareButon;
-                           b.Dock = DockStyle.Fill;
-                           this.tableLayoutPanel2.Controls.Add(b);
-                       }
-                   }*/
+            DataRow dr = TabelaLuni.Select("id_tabela_luni="+id_luna_de_activat).FirstOrDefault(); // finds all rows with id==2 and selects first or null if haven't found any
+            if (dr != null)
+            {
+                dr["activ"] = "1"; //schimb luna curenta cu cea selectata
+            }
         }
+        // populare meniuri secundare =====================================================================
+        /*       public void PopulareMeniuSecundar( String[]meniuSecundar)
+               {
+
+                   var rowCount = 1;
+                   var columnCount =meniuSecundar.Length ;
+                   this.tableLayoutPanel2.ColumnCount = columnCount;
+                   this.tableLayoutPanel2.RowCount = rowCount;
+
+
+                   this.tableLayoutPanel2.ColumnStyles.Clear();
+                   this.tableLayoutPanel2.RowStyles.Clear();
+
+                   for (int i = 0; i < rowCount; i++)
+                   {
+                       this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100 / rowCount));
+                   }
+                   for (int i = 0; i < columnCount; i++)
+                   {
+                       this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100 / columnCount));
+
+                   }
+
+                   String[] denumiriSecundare =(meniuSecundar)  ;
+                   int index = 0;
+                   for (int i = 0; i < rowCount * columnCount; i++)
+                   {
+                       var b = new Button();
+                       //  var b = new ButonMeniuPrincipal();
+
+                       // for (int z = 0; z < denumiri.Length ; z++)
+                       if (index < denumiriSecundare.Length)
+                       {
+                           b.Text = denumiriSecundare[index++];
+                       }
+
+
+                       b.Click += ApasareButon;
+                       b.Dock = DockStyle.Fill;
+                       this.tableLayoutPanel2.Controls.Add(b);
+                   }
+               }*/
+    }
     }
 
