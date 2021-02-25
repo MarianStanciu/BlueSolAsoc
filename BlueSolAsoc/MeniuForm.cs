@@ -39,7 +39,7 @@ namespace BlueSolAsoc
             DataSetComboBox.getSetFrom("Select * from mv_tabela_luni where id_org=" + id, "mv_tabela_luni"); ;//view pentru tabela + triggeri
             DataSetComboBox.getSetFrom("Select top 1 * from mv_tabela_luni where id_org=" + id + " ORDER BY id_tabela_luni DESC", "tabel_ultima_luna");
             DataSetComboBox.getSetFrom("select * from mv_tabela_luni where 1<1", "tabela_ajutatoare");
-            DataSetComboBox.getSetFrom("Select * from mv_tabela_luni where id_org=" + id + "and luna_incheiata=1","tabela_luni_incheiate");
+            DataSetComboBox.getSetFrom("Select * from mv_tabela_luni where id_org=" + id  ,"tabela_luni_incheiate");
            
             //AdaugareLunaCurenta();
 
@@ -71,6 +71,8 @@ namespace BlueSolAsoc
                 int ultimalunaselect = Convert.ToInt32(ultimaluna);
                 comboBoxAN.Text = ultimulan.ToString();
                 //comboBoxLUNA.Text = ultimaluna.ToString();
+                object lunaactiva = ClassConexiuneServer.getScalar("select luna from mv_tabela_luni where id_org="+idAsociatie+ " and activ = 1");
+                //object scalar = ClassConexiuneServer.getScalar("select top 1 * from mv_tabela_luni where id_org=" + idAsociatie + " and luna_incheiata=0");
                 comboBoxLUNA.SelectedIndex = ultimalunaselect - 1; // problema??
 
                 comboBoxAN.Hide();
@@ -83,7 +85,7 @@ namespace BlueSolAsoc
 
                 //    lblLunaCurenta.Text = "Luna activa :" + ultimaluna;
                 //}
-                switch (ultimaluna)
+                switch (Convert.ToInt32(lunaactiva))
                 {
                     case 1:
                         lblLunaCurenta.Text = "Ianuarie";
@@ -126,6 +128,8 @@ namespace BlueSolAsoc
                         break;
                 }
             }
+
+            
             //gridTabelaLuni[0, 0].Style.BackColor = Color.Cyan;
 
             // Incarcare ultima Luna/AN
@@ -182,7 +186,54 @@ namespace BlueSolAsoc
             }
         }
 
-        private void VerificLunaIncheiata()
+        private void MetodaRefreshDenumireLuna()
+        {
+            object lunaactiva = ClassConexiuneServer.getScalar("select luna from mv_tabela_luni where id_org=" + idAsociatie + " and activ = 1");
+            switch (Convert.ToInt32(lunaactiva))
+            {
+                case 1:
+                    lblLunaCurenta.Text = "Ianuarie";
+                    break;
+                case 2:
+                    lblLunaCurenta.Text = "Februarie";
+                    break;
+                case 3:
+                    lblLunaCurenta.Text = "Martie";
+                    break;
+                case 4:
+                    lblLunaCurenta.Text = "Aprilie";
+                    break;
+                case 5:
+                    lblLunaCurenta.Text = "Mai";
+                    break;
+                case 6:
+                    lblLunaCurenta.Text = "Iunie";
+                    break;
+                case 7:
+                    lblLunaCurenta.Text = "Iulie";
+                    break;
+                case 8:
+                    lblLunaCurenta.Text = "August";
+                    break;
+                case 9:
+                    lblLunaCurenta.Text = "Septembrie";
+                    break;
+                case 10:
+                    lblLunaCurenta.Text = "Octombrie";
+                    break;
+                case 11:
+                    lblLunaCurenta.Text = "Noiembrie";
+                    break;
+                case 12:
+                    lblLunaCurenta.Text = "Decembrie";
+                    break;
+                default:
+                    lblLunaCurenta.Text = "Neselectata";
+                    break;
+            }
+        }
+
+            private void VerificLunaIncheiata()
         {
             DataTable TabelaLuni = DataSetComboBox.Tables["mv_tabela_luni"];
             DataTable TabelUltimaLuna = DataSetComboBox.Tables["tabel_ultima_luna"];
@@ -207,8 +258,9 @@ namespace BlueSolAsoc
                     ultimulan = ultimulan;
                 }
             }
-            object scalar = ClassConexiuneServer.getScalar("select top 1 * from mv_tabela_luni where id_org=" + idAsociatie + " and activ=1 and luna_incheiata=1");
-            if (scalar != null)
+            object scalar = ClassConexiuneServer.getScalar("select top 1 * from mv_tabela_luni where id_org=" + idAsociatie + " and luna_incheiata=0");
+            // luna_incheiata = 0
+            if (scalar == null)
             {
                 TabelaLuni.Rows.Add(0, ultimaluna, ultimulan, 1, idAsociatie, 0, System.DateTime.Now.Date);
                 DataSetComboBox.TransmiteActualizari("mv_tabela_luni");
@@ -220,7 +272,7 @@ namespace BlueSolAsoc
 
         private void AtribuireDataSourceCombo()
         {
-            DataTable TabelaLuni = DataSetComboBox.Tables["tabela_luni"];
+            DataTable TabelaLuni = DataSetComboBox.Tables["mv_tabela_luni"];
             DataTable TabelaLuniIncheiate = DataSetComboBox.Tables["tabela_luni_incheiate"];
             string[] lunicombobox = { "ianuarie", "februarie", "martie", "aprilie", "mai", "iunie", "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie" };
             int[] numarlunicombo = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
@@ -244,7 +296,7 @@ namespace BlueSolAsoc
             comboBoxAN.SelectedIndex = -1;
             comboBoxLUNA.SelectedIndex = -1;
 
-            comboLuniLucrate.DataSource = TabelaLuniIncheiate;
+            comboLuniLucrate.DataSource = TabelaLuni;
             comboLuniLucrate.ValueMember = "id_tabela_luni";
             comboLuniLucrate.DisplayMember = "den_luna_an";
             //int idselectat = (int)comboLuniLucrate.SelectedValue;
@@ -559,38 +611,43 @@ namespace BlueSolAsoc
 
         private void ModifLunaIncheiata_Click(object sender, EventArgs e)
         {
-            if (ModifLunaIncheiata.Text=="Selectare luna anterioara")
+            if (ModifLunaIncheiata.Text == "Selectare luna anterioara")
             {
                 comboLuniLucrate.Show();
                 ModifLunaIncheiata.Text = "Confirma";
             }
-            DataTable TabelaLuni = DataSetComboBox.Tables["mv_tabela_luni"];
-            DataTable TabelaLuniIncheiate = DataSetComboBox.Tables["tabela_luni_incheiate"];
-            comboLuniLucrate.DataSource = TabelaLuniIncheiate;
-            comboLuniLucrate.ValueMember = "id_tabela_luni";
-            comboLuniLucrate.DisplayMember = "den_luna_an";
-            //MessageBox.Show("Ai selectat" + comboLuniLucrate.SelectedValue);
-            int id_luna_de_activat = Convert.ToInt32(comboLuniLucrate.SelectedValue);
-            /* foreach (DataRow dr in TabelaLuni.Rows) // cautam in tabel
-             {
-                 if (dr["id_tabela_luni"] == id_luna_de_activat.ToString())  //  daca id-ul corespunde facem activ
+            else
+            {
+                DataTable TabelaLuni = DataSetComboBox.Tables["mv_tabela_luni"];
+                DataTable TabelaLuniIncheiate = DataSetComboBox.Tables["tabela_luni_incheiate"];
+                comboLuniLucrate.DataSource = TabelaLuni;
+                comboLuniLucrate.ValueMember = "id_tabela_luni";
+                comboLuniLucrate.DisplayMember = "den_luna_an";
+                //MessageBox.Show("Ai selectat" + comboLuniLucrate.SelectedValue);
+                int id_luna_de_activat = Convert.ToInt32(comboLuniLucrate.SelectedValue);
+                /* foreach (DataRow dr in TabelaLuni.Rows) // cautam in tabel
                  {
-                     dr["activ"] = "1"; //trecem activa luna dorita
+                     if (dr["id_tabela_luni"] == id_luna_de_activat.ToString())  //  daca id-ul corespunde facem activ
+                     {
+                         dr["activ"] = "1"; //trecem activa luna dorita
+
+                     }
 
                  }
+     */
+                DataRow activ = TabelaLuni.Select("activ=1").FirstOrDefault(); // cauta singurul activ din tabel
+                if (activ != null)
+                {
+                    activ["activ"] = "0"; //trec la inactiv luna curenta
+                }
 
-             }
- */
-            DataRow activ = TabelaLuni.Select("activ=1").FirstOrDefault(); // cauta singurul activ din tabel
-            if (activ != null)
-            {
-                activ["activ"] = "0"; //trec la inactiv luna curenta
-            }
-
-            DataRow dr = TabelaLuni.Select("id_tabela_luni="+id_luna_de_activat).FirstOrDefault(); // finds all rows with id==2 and selects first or null if haven't found any
-            if (dr != null)
-            {
-                dr["activ"] = "1"; //schimb luna curenta cu cea selectata
+                DataRow dr = TabelaLuni.Select("id_tabela_luni=" + id_luna_de_activat).FirstOrDefault(); // finds all rows with id==2 and selects first or null if haven't found any
+                if (dr != null)
+                {
+                    dr["activ"] = "1"; //schimb luna curenta cu cea selectata
+                }
+                DataSetComboBox.TransmiteActualizari("mv_tabela_luni");
+                MetodaRefreshDenumireLuna();
             }
         }
         // populare meniuri secundare =====================================================================
@@ -636,5 +693,6 @@ namespace BlueSolAsoc
                    }
                }*/
     }
+
     }
 
