@@ -232,7 +232,23 @@ namespace BlueSolAsoc
                     break;
             }
         }
+        private void metodaInactivLunaCurenta()
+        {
+            DataTable TabelaLuni = DataSetComboBox.Tables["mv_tabela_luni"];
+            DataTable TabelaLuniIncheiate = DataSetComboBox.Tables["tabela_luni_incheiate"];
+            comboLuniLucrate.DataSource = TabelaLuni;
+            comboLuniLucrate.ValueMember = "id_tabela_luni";
+            comboLuniLucrate.DisplayMember = "den_luna_an";
+            //MessageBox.Show("Ai selectat" + comboLuniLucrate.SelectedValue);
+            int id_luna_de_activat = Convert.ToInt32(comboLuniLucrate.SelectedValue);
 
+            DataRow activ = TabelaLuni.Select("activ=1").FirstOrDefault(); // cauta singurul activ din tabel
+            if (activ != null)
+            {
+                activ["activ"] = "0"; //trec la inactiv luna curenta
+            }
+      
+        }
             private void VerificLunaIncheiata()
         {
             DataTable TabelaLuni = DataSetComboBox.Tables["mv_tabela_luni"];
@@ -258,10 +274,12 @@ namespace BlueSolAsoc
                     ultimulan = ultimulan;
                 }
             }
+            
             object scalar = ClassConexiuneServer.getScalar("select top 1 * from mv_tabela_luni where id_org=" + idAsociatie + " and luna_incheiata=0");
             // luna_incheiata = 0
             if (scalar == null)
             {
+                metodaInactivLunaCurenta();
                 TabelaLuni.Rows.Add(0, ultimaluna, ultimulan, 1, idAsociatie, 0, System.DateTime.Now.Date);
                 DataSetComboBox.TransmiteActualizari("mv_tabela_luni");
 
