@@ -212,7 +212,8 @@ namespace BlueSolAsoc
             {
                 TabelaLuni.Rows.Add(0, ultimaluna, ultimulan, 1, idAsociatie, 0, System.DateTime.Now.Date);
                 DataSetComboBox.TransmiteActualizari("mv_tabela_luni");
-
+                
+              
             }
             
         }
