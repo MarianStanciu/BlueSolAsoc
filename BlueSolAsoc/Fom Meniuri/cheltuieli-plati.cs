@@ -260,12 +260,16 @@ namespace BlueSolAsoc.Fom_Meniuri
         // fiecare copil care tine de un parinte checked este bifat sau debifat in bloc
         private void CheckedOrUnCheckedNodes(TreeNode parentNode, TreeNodeCollection nodes)
         {
-            if (nodes.Count > 0)
+            
             {
-                foreach (TreeNode node in nodes)
+                if (nodes.Count > 0)
                 {
-                    node.Checked = parentNode.Checked;
-                    CheckedOrUnCheckedNodes(parentNode, node.Nodes);
+                    foreach (TreeNode node in nodes)
+                    {
+                        
+                        node.Checked = parentNode.Checked;
+                        CheckedOrUnCheckedNodes(parentNode, node.Nodes);
+                    }
                 }
             }
         }
@@ -381,13 +385,19 @@ namespace BlueSolAsoc.Fom_Meniuri
 
         private void btnModificaCheltuieli_Click(object sender, EventArgs e)
         {
-            SetDocActiv(true);
-            btnModificaCheltuieli.Visible = false;
-            if (btnModificaCheltuieli.Visible == false)
+            if (LunaValidata(idAsociatie))
             {
+                MessageBox.Show("luna este validata");
+            }
+            else
+            {
+                SetDocActiv(true);
+                btnModificaCheltuieli.Visible = false;
                 
-            }else
-                MessageBox.Show("Pentru a modifica selecteaza un rand apoi apasa butonul MODIFICA");
+                    MessageBox.Show("Pentru a modifica selecteaza un rand apoi apasa butonul MODIFICA");
+
+            }
+           
 
         }
 

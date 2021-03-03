@@ -77,6 +77,13 @@ namespace BlueSolAsoc.Fom_Meniuri
                 treeColoane.Nodes.Add(node);
             }
             //
+
+            if (LunaValidata(idAsociatie))
+            {
+                MessageBox.Show("luna este validata");
+            }
+            else
+            {           
             ClassConexiuneServer.ConectareDedicata();
             SqlConnection cnn = ClassConexiuneServer.GetConnection();
             ClassConexiuneServer.DeschideConexiunea();
@@ -88,6 +95,7 @@ namespace BlueSolAsoc.Fom_Meniuri
             sqlcommand.Parameters.AddWithValue("@dDataScadenta", "2222.12.30");
             sqlcommand.ExecuteNonQuery();
             cnn.Close();
+            }
         }
         
 
@@ -251,13 +259,14 @@ namespace BlueSolAsoc.Fom_Meniuri
 
         public void btnModifica_Click(object sender, EventArgs e)
         {
-            //if (LunaValidata(idAsociatie))
-            //{
-
-            //}
-            SetDocActiv(true);
-            switch (TabCalculIntretinere.SelectedTab.Text)
+            if (LunaValidata(idAsociatie))
             {
+                MessageBox.Show("luna este validata");
+            }
+            else { 
+                SetDocActiv(true);
+                switch (TabCalculIntretinere.SelectedTab.Text)
+                 {
                 case "Adaugare consumuri apartament":
                   
                     treeConsumuriApartament.Enabled = false;
@@ -272,6 +281,7 @@ namespace BlueSolAsoc.Fom_Meniuri
                 default:
 
                     break;
+                 }
             }
         }
 
@@ -510,19 +520,27 @@ namespace BlueSolAsoc.Fom_Meniuri
                 // cele 2 butoane - validare /anulare
                 Button confirmare = new Button() { Text = "Validez selectia!", Left = 150, Width = 100, Top = 200, TabIndex = 1, TabStop = true };
                 Button anulare = new Button() { Text = "Anulez!", Left = 150, Width = 100, Top = 250, TabIndex = 1, TabStop = true };
-                //itemurile din combobox
-                cmbx.Items.Add("VERIFICARE");
+            //itemurile din combobox
+           
+            cmbx.Items.Add("VERIFICARE");
                 cmbx.Items.Add("VALIDARE");
-                cmbx.SelectedItem = "VERIFICARE";
-                // aici primesc parametrul care imi permite sa afisez in combobox de selectia doar valoarea VERIFICARE sau VALIDARE si VERIFICARE - pt true - doar verificare
-                //  bool validat =true;
-                bool validat = false;
+                       cmbx.SelectedItem = "VERIFICARE";
+            try
+            {
+                ClassConexiuneServer.ConectareDedicata();
+                SqlConnection cnn = ClassConexiuneServer.GetConnection();
+                ClassConexiuneServer.DeschideConexiunea();
+                if (LunaValidata(idAsociatie))  cmbx.Items.Remove("VALIDARE");
+                cnn.Close();
 
-                if (validat)
-                {
-                    cmbx.Items.Remove("VALIDARE");
-                }
-                // cmbx.Items.Add("TEST");
+            }
+            catch(Exception a)
+            {
+
+                MessageBox.Show("nu merge"+a);
+            }
+            
+
                 confirmare.Click += (sender, e) => { prompt.Close(); };
                 prompt.AcceptButton = confirmare;
                 prompt.AcceptButton.DialogResult = DialogResult.Yes;
